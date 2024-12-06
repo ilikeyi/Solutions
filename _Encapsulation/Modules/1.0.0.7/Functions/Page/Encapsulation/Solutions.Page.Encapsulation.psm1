@@ -56,22 +56,31 @@ Function Mainpage
 		Write-Host "   $($lang.Dashboard)" -ForegroundColor Yellow
 		Write-Host "   $('-' * 80)"
 
-		Write-Host "   $($lang.MountImageTo): " -NoNewline
+		Write-host "   " -NoNewline
 		if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
+			Write-Host " Open RT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Green
 			Write-Host $Global:Mount_To_Route -ForegroundColor Green
 		} else {
-			Write-Host $Global:Mount_To_Route -ForegroundColor Yellow
+			Write-Host " Open RT " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Red
+			Write-Host $Global:Mount_To_Route -ForegroundColor Red
 		}
 
-		Write-Host "   $($lang.MainImageFolder): " -NoNewline
+		Write-host "   " -NoNewline
 		if (Test-Path -Path $Global:Image_source -PathType Container) {
+			Write-Host " Open MN " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Green
 			Write-Host $Global:Image_source -ForegroundColor Green
 		} else {
+			Write-Host " Open MN " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Red
 			Write-Host $Global:Image_source -ForegroundColor Red
+
 			Write-Host "   $('-' * 80)"
 			Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
 
-			ToWait -wait 2
+			ToWait -wait 6
 			Mainpage
 		}
 
@@ -564,69 +573,18 @@ Function Mainpage
 			ToWait -wait 2
 			Mainpage
 		}
-		"i" {
-			Write-Host "`n   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
-			Write-Host "Install;Install;" -ForegroundColor Green
 
-			Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
-			Write-Host "Install;Install;wim;" -ForegroundColor Green
+		"pri *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-			$TestWimFile = Join-Path -Path $Global:Image_source -ChildPath "sources\install.wim"
-
-			Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
-			Write-Host $TestWimFile -ForegroundColor Green
-
-			if (Test-Path -Path $TestWimFile -PathType Leaf) {
-				Image_Set_Global_Primary_Key -Uid "Install;Install;wim;" -Detailed -DevCode "27"
-			} else {
-				Write-Host "`n   $($lang.NoInstallImage)"
-				Write-Host "   $($TestWimFile)" -ForegroundColor Red
-			}
-
+			Image_Set_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 4).Replace(' ', '')
 			ToWait -wait 2
 			Mainpage
 		}
-		"w" {
-			Write-Host "`n   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
-			Write-Host "Install;Install;" -ForegroundColor Green
+		"View *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-			Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
-			Write-Host "Install;WinRE;wim;" -ForegroundColor Green
-
-			$TestWimFile = Join-Path -Path $Global:Mount_To_Route -ChildPath "Install\Install\Mount\Windows\System32\Recovery\WinRe.wim"
-
-			Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
-			Write-Host $TestWimFile -ForegroundColor Green
-
-			if (Test-Path -Path $TestWimFile -PathType Leaf) {
-				Image_Set_Global_Primary_Key -Uid "Install;WinRE;wim;" -Detailed -DevCode "28"
-			} else {
-				Write-Host "`n   $($lang.NoInstallImage)"
-				Write-Host "   $($TestWimFile)" -ForegroundColor Red
-			}
-
-			ToWait -wait 2
-			Mainpage
-		}
-		"b" {
-			Write-Host "`n   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
-			Write-Host "Boot;Boot;" -ForegroundColor Green
-
-			Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
-			Write-Host "Boot;Boot;wim;" -ForegroundColor Green
-
-			$TestWimFile = Join-Path -Path $Global:Image_source -ChildPath "sources\boot.wim"
-
-			Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
-			Write-Host $TestWimFile -ForegroundColor Green
-
-			if (Test-Path -Path $TestWimFile -PathType Leaf) {
-				Image_Set_Global_Primary_Key -Uid "Boot;Boot;wim;" -Detailed -DevCode "29"
-			} else {
-				Write-Host "`n   $($lang.NoInstallImage)"
-				Write-Host "   $($TestWimFile)" -ForegroundColor Red
-			}
-
+			Image_Primary_Key_Shortcuts_File_View -Name $PSItem.Remove(0, 5).Replace(' ', '')
 			ToWait -wait 2
 			Mainpage
 		}
@@ -1424,6 +1382,14 @@ Function Mainpage
 				}
 			}
 
+			ToWait -wait 2
+			Mainpage
+		}
+
+		"open *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Solutions_Open_Command -Name $PSItem.Remove(0, 5).Replace(' ', '')
 			ToWait -wait 2
 			Mainpage
 		}

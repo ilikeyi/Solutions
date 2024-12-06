@@ -38,46 +38,75 @@ Function Feature_More
 	Write-Host "   $($TestWIMFile)" -ForegroundColor Yellow
 
 	$TestWIMFile = Join-Path -Path $Global:Image_source -ChildPath "Sources\Boot.wim"
+	Write-host "    " -NoNewline
 	if (Test-Path -Path $TestWIMFile -PathType Leaf) {
-		Write-Host "      1   " -NoNewline -ForegroundColor Yellow
-		Write-Host "$($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
+		Write-Host " 1 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-host " " -NoNewline
+
+		Write-Host " View BW " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 		Write-Host " Boot.wim " -BackgroundColor DarkGreen -ForegroundColor White
 	} else {
-		Write-Host "      1   " -NoNewline -ForegroundColor Yellow
-		Write-Host "$($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Red
+		Write-Host " 1 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-host " " -NoNewline
+
+		Write-Host " View BW " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 		Write-Host " Boot.wim " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
+
 	$TestWIMFile = Join-Path -Path $Global:Image_source -ChildPath "Sources\Install.wim"
+	Write-host "    " -NoNewline
 	if (Test-Path -Path $TestWIMFile -PathType Leaf) {
-		Write-Host "      2   " -NoNewline -ForegroundColor Yellow
-		Write-Host "$($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
+		Write-Host " 2 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-host " " -NoNewline
+
+		Write-Host " View IW " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 		Write-Host " Install.wim " -BackgroundColor DarkGreen -ForegroundColor White
 	} else {
-		Write-Host "      2   " -NoNewline -ForegroundColor Yellow
-		Write-Host "$($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Red
+		Write-Host " 2 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-host " " -NoNewline
+
+		Write-Host " View IW " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 		Write-Host " Install.wim " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
 	$TestWIMFile = Join-Path -Path $Global:Image_source -ChildPath "Sources\Install.swm"
+	Write-host "    " -NoNewline
 	if (Test-Path -Path $TestWIMFile -PathType Leaf) {
-		Write-Host "      3   " -NoNewline -ForegroundColor Yellow
-		Write-Host "$($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
+		Write-Host " 3 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-host " " -NoNewline
+
+		Write-Host " View IS " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 		Write-Host " Install.swm " -BackgroundColor DarkGreen -ForegroundColor White
 	} else {
-		Write-Host "      3   " -NoNewline -ForegroundColor Yellow
-		Write-Host "$($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Red
+		Write-Host " 3 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-host " " -NoNewline
+
+		Write-Host " View IS " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 		Write-Host " Install.swm " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
 	$TestWIMFile = Join-Path -Path $Global:Image_source -ChildPath "Sources\Install.esd"
+	Write-host "    " -NoNewline
 	if (Test-Path -Path $TestWIMFile -PathType Leaf) {
-		Write-Host "      4   " -NoNewline -ForegroundColor Yellow
-		Write-Host "$($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
+		Write-Host " 4 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-host " " -NoNewline
+
+		Write-Host " View IE " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 		Write-Host " Install.esd " -BackgroundColor DarkGreen -ForegroundColor White
 	} else {
-		Write-Host "      4   " -NoNewline -ForegroundColor Yellow
-		Write-Host "$($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Red
+		Write-Host " 4 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-host " " -NoNewline
+
+		Write-Host " View IE " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 		Write-Host " Install.esd " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
@@ -86,13 +115,20 @@ Function Feature_More
 			$TestNewPathMount = Join-Path -Path $Global:Mount_To_Route -ChildPath "Install\Install\Mount"
 			$TestNewPathMountRouter = Join-Path -Path $Global:Mount_To_Route -ChildPath "Install\Install\Mount\Windows\System32\Recovery\WinRE.wim"
 			Write-Host "`n   $($TestNewPathMount)" -ForegroundColor Yellow
+			Write-host "    " -NoNewline
 			if (Test-Path -Path $TestNewPathMountRouter -PathType Leaf) {
-				Write-Host "      5   " -NoNewline -ForegroundColor Yellow
-				Write-Host "$($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
+				Write-Host " 5 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+				Write-host " " -NoNewline
+
+				Write-Host " View WR " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+				Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 				Write-Host " Windows\System32\Recovery\WinRE.wim " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host "      5   " -NoNewline -ForegroundColor Yellow
-				Write-Host "$($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Red
+				Write-Host " 5 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+				Write-host " " -NoNewline
+
+				Write-Host " View WR " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+				Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 				Write-Host " Windows\System32\Recovery\WinRE.wim " -BackgroundColor DarkRed -ForegroundColor White
 			}
 		}
@@ -101,52 +137,99 @@ Function Feature_More
 	Write-Host "`n   $($lang.OpenFolder)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 	$SaveToLogsPath = "$($Global:LogsSaveFolder)\$($Global:LogSaveTo)"
+
+	Write-host "   " -NoNewline
 	if (Test-Path -Path $SaveToLogsPath -PathType Container) {
-		Write-Host "     11   " -NoNewline -ForegroundColor Yellow
-		Write-Host $lang.Logging
-		Write-Host "          $($SaveToLogsPath)" -ForegroundColor Green
+		Write-Host " 11 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-host " " -NoNewline
+
+		Write-Host " Open Log " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host "   $($lang.Logging)" -ForegroundColor Green
+		Write-Host "         $($lang.Select_Path): " -NoNewline
+		Write-Host $SaveToLogsPath -ForegroundColor Green
 	} else {
-		Write-Host "     11   " -NoNewline -ForegroundColor Yellow
-		Write-Host $lang.Logging -ForegroundColor Red
+		Write-Host " 11 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-host " " -NoNewline
+
+		Write-Host " Open Log " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host "   $($lang.Logging)" -ForegroundColor Red
+		Write-Host "         $($lang.Select_Path): " -NoNewline
+		Write-Host $SaveToLogsPath -ForegroundColor Red
 	}
 
-	Write-Host "`n     12   " -NoNewline -ForegroundColor Yellow
-	Write-Host $lang.MainImageFolder
+	Write-Host
+	Write-host "   " -NoNewline
 	if (Test-Path -Path $Global:Image_source -PathType Container) {
-		Write-Host "          $($Global:Image_source)" -ForegroundColor Green
+		Write-Host " 12 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-host " " -NoNewline
+
+		Write-Host " Open MN " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host "    $($lang.MainImageFolder)" -ForegroundColor Green
+		Write-Host "         $($lang.Select_Path): " -NoNewline
+		Write-Host $Global:Image_source -ForegroundColor Green
 	} else {
-		Write-Host "          $($Global:Image_source)" -ForegroundColor Red
+		Write-Host " 12 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-host " " -NoNewline
+
+		Write-Host " Open MN " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host "    $($lang.MainImageFolder)" -ForegroundColor Red
+		Write-Host "         $($lang.Select_Path): " -NoNewline
+		Write-Host $Global:Image_source -ForegroundColor Red
 	}
 
-	Write-Host "`n     13   " -NoNewline -ForegroundColor Yellow
-	Write-Host "$($lang.MountImageTo), $($lang.MainImageFolder)"
+	Write-Host
+	Write-host "   " -NoNewline
 	if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
-		Write-Host "          $($Global:Mount_To_Route)" -ForegroundColor Green
+		Write-Host " 13 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-host " " -NoNewline
+
+		Write-Host " Open RT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host "    $($lang.MountImageTo), $($lang.MainImageFolder)" -ForegroundColor Green
+		Write-Host "         $($lang.Select_Path): " -NoNewline
+		Write-Host $Global:Mount_To_Route -ForegroundColor Green
 	} else {
-		Write-Host "          $($Global:Mount_To_Route)" -ForegroundColor Red
+		Write-Host " 13 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-host " " -NoNewline
+
+		Write-Host " Open RT " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host "    $($lang.MountImageTo), $($lang.MainImageFolder)" -ForegroundColor Red
+		Write-Host "         $($lang.Select_Path): " -NoNewline
+		Write-Host $Global:Mount_To_Route -ForegroundColor Red
 	}
 
-	Write-Host "`n     14   " -NoNewline -ForegroundColor Yellow
-	Write-Host $lang.SettingImageTempFolder
+	Write-Host
+	Write-host "   " -NoNewline
 	if (Test-Path -Path $Global:Mount_To_RouteTemp -PathType Container) {
-		Write-Host "          $($Global:Mount_To_RouteTemp)" -ForegroundColor Green
+		Write-Host " 14 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-host " " -NoNewline
+
+		Write-Host " Open Temp " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host "  $($lang.SettingImageTempFolder)" -ForegroundColor Green
+		Write-Host "         $($lang.Select_Path): " -NoNewline
+		Write-Host $Global:Mount_To_RouteTemp -ForegroundColor Green
 	} else {
-		Write-Host "          $($Global:Mount_To_RouteTemp)" -ForegroundColor Red
+		Write-Host " 14 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-host " " -NoNewline
+
+		Write-Host " Open Temp " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host "  $($lang.SettingImageTempFolder)" -ForegroundColor Red
+		Write-Host "         $($lang.Select_Path): " -NoNewline
+		Write-Host $Global:Mount_To_RouteTemp -ForegroundColor Red
 	}
 
 	Write-Host
 	Write-Host "   " -NoNewline
-	Write-Host " H " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " H * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " " -NoNewline
 	switch -Wildcard (Read-Host $lang.PleaseChooseMain)
 	{
-		'Update' {
+		"Update" {
 			Update
 			Modules_Refresh -Function "ToWait -wait 2"
 			Feature_More
 		}
-		'm' {
+		"m" {
 			Write-Host "`n   $($lang.MoreFeature)"
 			Write-Host "   $('-' * 80)"
 			if (Image_Is_Select_IAB) {
@@ -170,7 +253,7 @@ Function Feature_More
 				Image_Assign_Event_Master
 			}
 		}
-		'a' {
+		"a" {
 			Clear-Host
 			Write-Host "`n   $($lang.ViewMounted)" -ForegroundColor Green
 
@@ -204,18 +287,18 @@ Function Feature_More
 			ToWait -wait 2
 			Feature_More
 		}
-		'b' {
+		"b" {
 			UnPack_Create_UI
 			Get_Next
 			ToWait -wait 2
 			Feature_More
 		}
-		'c' {
+		"c" {
 			Update_Create_UI
 			ToWait -wait 2
 			Feature_More
 		}
-		's' {
+		"s" {
 			if ($Global:Developers_Mode) {
 				$Global:Developers_Mode = $False
 			} else {
@@ -225,50 +308,58 @@ Function Feature_More
 			ToWait -wait 2
 			Feature_More
 		}
-		'h' {
+
+		<#
+			.帮助
+		#>
+		"h" {
 			Solutions_Help
 
 			Get_Next
 			ToWait -wait 2
 			Feature_More
 		}
-		'z' {
+		"h *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Solutions_Help_Command -Name $PSItem.Remove(0, 2).Replace(' ', '')
+			ToWait -wait 2
+			Feature_More
+		}
+
+		"z" {
 			Covert_Software_Package_Unpack
 
 			ToWait -wait 2
 			Feature_More
 		}
-		'1' {
-			Image_Get_Detailed -Filename $(Join-Path -Path $Global:Image_source -ChildPath "Sources\Boot.wim") -View
-			Get_Next
-
-			ToWait -wait 2
-			Feature_More
-		}
-		'2' {
-			Image_Get_Detailed -Filename $(Join-Path -Path $Global:Image_source -ChildPath "Sources\Install.wim") -View
-
+		"1" {
+			Image_Primary_Key_Shortcuts_File_View -Name "BW"
 			Get_Next
 			ToWait -wait 2
 			Feature_More
 		}
-		'3' {
-			Image_Get_Detailed -Filename $(Join-Path -Path $Global:Image_source -ChildPath "Sources\Install.swm") -View
-
+		"2" {
+			Image_Primary_Key_Shortcuts_File_View -Name "IW"
 			Get_Next
 			ToWait -wait 2
 			Feature_More
 		}
-		'4' {
-			Image_Get_Detailed -Filename $(Join-Path -Path $Global:Image_source -ChildPath "Sources\Install.esd") -View
-
+		"3" {
+			Image_Primary_Key_Shortcuts_File_View -Name "IS"
 			Get_Next
 			ToWait -wait 2
 			Feature_More
 		}
-		'5' {
+		"4" {
+			Image_Primary_Key_Shortcuts_File_View -Name "IE"
+			Get_Next
+			ToWait -wait 2
+			Feature_More
+		}
+		"5" {
 			if (Image_Is_Select_Install) {
-				Image_Get_Detailed -Filename $(Join-Path -Path $Global:Mount_To_Route -ChildPath "Install\Install\Mount\Windows\System32\Recovery\winre.wim") -View
+				Image_Primary_Key_Shortcuts_File_View -Name "WR"
 				Get_Next
 			} else {
 				Write-Host "   $($lang.BootProcess -f "install")" -ForegroundColor Red
@@ -277,63 +368,37 @@ Function Feature_More
 			ToWait -wait 2
 			Feature_More
 		}
-		'11' {
-			Write-Host "`n   $($lang.OpenFolder)" -ForegroundColor Green
-			Write-Host "   $('-' * 80)"
+		"View *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-			if (Test-Path -Path $SaveToLogsPath -PathType Container) {
-				Write-Host "   $SaveToLogsPath"
-				Start-Process $SaveToLogsPath
-			} else {
-				Write-Host "   $($lang.NoInstallImage)"
-				Write-Host "   $($SaveToLogsPath)" -ForegroundColor Red
-			}
-
+			Image_Primary_Key_Shortcuts_File_View -Name $PSItem.Remove(0, 5).Replace(' ', '')
 			ToWait -wait 2
 			Feature_More
 		}
-		'12' {
-			Write-Host "`n   $($lang.OpenFolder)" -ForegroundColor Green
-			Write-Host "   $('-' * 80)"
-
-			if (Test-Path -Path $Global:Image_source -PathType Container) {
-				Write-Host "   $($Global:Image_source)"
-				Start-Process $($Global:Image_source)
-			} else {
-				Write-Host "   $($lang.NoInstallImage)"
-				Write-Host "   $($Global:Image_source)" -ForegroundColor Red
-			}
-			
+		"11" {
+			Solutions_Open_Command -Name "Log"
 			ToWait -wait 2
 			Feature_More
 		}
-		'13' {
-			Write-Host "`n   $($lang.OpenFolder)" -ForegroundColor Green
-			Write-Host "   $('-' * 80)"
-
-			if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
-				Write-Host "   $($Global:Mount_To_Route)"
-				Start-Process $Global:Mount_To_Route
-			} else {
-				Write-Host "   $($lang.NoInstallImage)"
-				Write-Host "   $($Global:Image_source)" -ForegroundColor Red
-			}
-			
+		"12" {
+			Solutions_Open_Command -Name "MN"
 			ToWait -wait 2
 			Feature_More
 		}
-		'14' {
-			Write-Host "`n   $($lang.OpenFolder)" -ForegroundColor Green
-			Write-Host "   $('-' * 80)"
+		"13" {
+			Solutions_Open_Command -Name "RT"
+			ToWait -wait 2
+			Feature_More
+		}
+		"14" {
+			Solutions_Open_Command -Name "Temp"
+			ToWait -wait 2
+			Feature_More
+		}
+		"open *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-			if (Test-Path -Path $Global:Mount_To_RouteTemp -PathType Container) {
-				Write-Host "   $($Global:Mount_To_RouteTemp)"
-				Start-Process $Global:Mount_To_RouteTemp
-			} else {
-				Write-Host "   $($lang.NoInstallImage)"
-				Write-Host "   $($Global:Image_source)" -ForegroundColor Red
-			}
-
+			Solutions_Open_Command -Name $PSItem.Remove(0, 5).Replace(' ', '')
 			ToWait -wait 2
 			Feature_More
 		}
@@ -444,7 +509,6 @@ Function Image_Get_Detailed
 				Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
 				Write-Host "   $('-' * 80)"
 				Write-Host "   Get-WindowsImage -ImagePath ""$($Filename)""" -ForegroundColor Green
-				Write-Host "   $('-' * 80)`n"
 			}
 	
 			Get-WindowsImage -ImagePath $Filename -ErrorAction SilentlyContinue | ForEach-Object {
@@ -454,7 +518,6 @@ Function Image_Get_Detailed
 					Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
 					Write-Host "   $('-' * 80)"
 					Write-Host "   Get-WindowsImage -ImagePath ""$($Filename)"" -index ""$($SetCurreltIndex)""" -ForegroundColor Green
-					Write-Host "   $('-' * 80)`n"
 				}
 		
 				Get-WindowsImage -ImagePath $Filename -index $SetCurreltIndex -ErrorAction SilentlyContinue | ForEach-Object {
@@ -645,5 +708,71 @@ Function Image_Get_Components_Package
 		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
 		Write-Host "   $('-' * 80)"
 		Write-Host "   $($lang.NotMounted)`n" -ForegroundColor Red
+	}
+}
+
+Function Solutions_Open_Command
+{
+	param
+	(
+		$Name
+	)
+
+	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-host "lang $($Name)" -ForegroundColor Green
+	Write-Host "   $('-' * 80)"
+
+	Write-Host "`n   $($lang.OpenFolder) *" -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
+	Write-Host "   $($lang.Select_Path): " -NoNewline
+	switch ($Name) {
+		"Log" {
+			$SaveToLogsPath = "$($Global:LogsSaveFolder)\$($Global:LogSaveTo)"
+			Write-Host $SaveToLogsPath -ForegroundColor Green
+
+			if (Test-Path -Path $SaveToLogsPath -PathType Container) {
+				Write-Host "   $($lang.OpenFolder)".PadRight(28) -NoNewline
+				Start-Process $SaveToLogsPath
+				Write-Host $lang.Done -ForegroundColor Green
+			} else {
+				Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+			}
+		}
+		"MN" {
+			Write-Host $Global:Image_source -ForegroundColor Green
+
+			if (Test-Path -Path $Global:Image_source -PathType Container) {
+				Write-Host "   $($lang.OpenFolder)".PadRight(28) -NoNewline
+				Start-Process $Global:Image_source
+				Write-Host $lang.Done -ForegroundColor Green
+			} else {
+				Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+			}
+		}
+		"RT" {
+			Write-Host $Global:Mount_To_Route -ForegroundColor Green
+
+			if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
+				Write-Host "   $($lang.OpenFolder)".PadRight(28) -NoNewline
+				Start-Process $Global:Mount_To_Route
+				Write-Host $lang.Done -ForegroundColor Green
+			} else {
+				Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+			}
+		}
+		"Temp" {
+			Write-Host $Global:Mount_To_RouteTemp -ForegroundColor Green
+
+			if (Test-Path -Path $Global:Mount_To_RouteTemp -PathType Container) {
+				Write-Host "   $($lang.OpenFolder)".PadRight(28) -NoNewline
+				Start-Process $Global:Mount_To_RouteTemp
+				Write-Host $lang.Done -ForegroundColor Green
+			} else {
+				Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+			}
+		}
+		default {
+			Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		}
 	}
 }

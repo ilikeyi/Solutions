@@ -8607,7 +8607,7 @@ Function Image_Refresh_Init_GLobal_Rule
 					Uid           = "Install;Install;wim;"
 					ImageFileName = "Install"
 					Suffix        = "wim"
-					Shortcuts     = "I"
+					Shortcuts     = "IW"
 					Path          = $InitNewImageSources
 				}
 			)
@@ -8617,7 +8617,7 @@ Function Image_Refresh_Init_GLobal_Rule
 					Uid           = "Install;WinRE;wim;"
 					ImageFileName = "WinRe"
 					Suffix        = "wim"
-					Shortcuts     = "W"
+					Shortcuts     = "WR"
 					Path          = $InitNewImageMountToRouteRecovery
 					UpdatePath    = "\Windows\System32\Recovery\WinRe.wim"
 				}
@@ -8630,7 +8630,7 @@ Function Image_Refresh_Init_GLobal_Rule
 					Uid           = "Boot;Boot;wim;"
 					ImageFileName = "Boot"
 					Suffix        = "wim"
-					Shortcuts     = "B"
+					Shortcuts     = "BW"
 					Path          = $InitNewImageSources
 				}
 			)
@@ -8643,6 +8643,7 @@ Function Image_Refresh_Init_GLobal_Rule
 					Uid           = "Install;Install;esd;"
 					ImageFileName = "Install"
 					Suffix        = "esd"
+					Shortcuts     = "IE"
 					Path          = $InitNewImageSources
 				}
 			)
@@ -8654,6 +8655,7 @@ Function Image_Refresh_Init_GLobal_Rule
 					Uid           = "Install;Install;swm;"
 					ImageFileName = "Install"
 					Suffix        = "swm"
+					Shortcuts     = "IS"
 					Path          = $InitNewImageSources
 				}
 			)
