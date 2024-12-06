@@ -1,0 +1,196 @@
+{
+	"Config": {
+		"Author":  "Yi",
+		"Url":     "https://fengyi.tel",
+		"Version": "1.0.0.5"
+	},
+	"Deploy": {
+		"ImageSource": {
+			"Tasks": {
+				"Solutions": {
+					"SaveTo": {
+						"FolderName": "",
+						"Path":       "ISO"
+					},
+					"Account": {
+						"Schome": "Designated",
+						"Custom": {},
+						"Designated": {
+							"UserName":       "Administrator",
+							"SyncMainFolder": false,
+							"AutoLogin":      true
+						}
+					},
+					"Schome": {
+						"Engine": {
+							"Enable":  true,
+							"Version": "Multilingual",
+							"OptAdv": {
+								"AutoFix": true
+							},
+							"FirstExperience": {
+								"Prerequisite": {
+									"FirstExpSyncMark":      true,
+									"FirstExpUpdate":        false,
+									"FirstExpDefender":      false,
+									"NetworkLocationWizard": true,
+									"FirstExpSyncLabel":     false,
+									"IsMulti": {
+										"PreAppxCleanup":     false,
+										"LanguageComponents": false,
+										"PreventCleaningUnusedLP": false
+									},
+									"DesktopMenu": {
+										"Enable": false,
+										"Right":  false
+									},
+									"Time": {
+										"Enable": false,
+										"UTF8":   false,
+										"Region": "zh-CN"
+									},
+									"Restart": true
+								},
+								"Finish": {
+									"FirstExpFinishPopup":    false,
+									"FirstExpFinishOnDemand": false,
+									"ResetExecutionPolicy":   true,
+									"ClearFull":              true,
+									"OnlyClearEngine":        true,
+									"Restart":                false
+								}
+							}
+						},
+						"Unattend": {
+							"Enable":  true,
+							"Version": "10",
+							"Command": {
+								"WindowsSetup": [
+									"a94cc882-a451-494d-8d94-523e06470f68",
+									"f6ba749e-3a36-4a2e-bc28-674073cb973b"
+								],
+								"WindowsPE": []
+							},
+							"IsMulti":       "Auto",
+							"InstallMethod": "Auto",
+							"Schome": {
+								"Version":   "Auto",
+								"Semi": {},
+								"UEFI": {
+									"ImageIndex": "1"
+								},
+								"Legacy": {
+									"ProductKey": "TX9XD-98N7V-6WMQ6-BX7FG-H8Q99"
+								}
+							},
+							"AddTo": {
+								"ISOAutounattend": true,
+								"ISOSourcesUnattend": true,
+								"ISOPantherUnattendOEM": true,
+								"ISOPantherUnattendOS": true
+							},
+							"InstallInterface": {
+								"OOBEProductKey": false,
+								"OOBEOSImage": false,
+								"OOBEEula": true
+							},
+							"Server": {
+								"ServerManager": true,
+								"InternetExplorer": {
+									"Administrator": true,
+									"User": true
+								}
+							},
+							"Time": {
+								"Enable": false,
+								"Region": "zh-CN"
+							}
+						},
+						"Collection": {
+							"Enable": true,
+							"OptAdv": {
+								"GenerateReport": true
+							},
+							"Language": {
+								"IsMulti": "Auto",
+								"Multi": [
+									"en-US",
+									"zh-CN"
+								],
+								"Single": "zh-CN"
+							},
+							"Architecture": "Auto",
+							"Office": {
+								"IsDeploy": true,
+								"Version":  "2024",
+								"Language": [
+									"auto"
+								],
+								"DeployTo": "PublicDektop"
+							},
+							"Custom": {
+								"IsDeploy": false,
+								"DeployTo": "SystemDisk",
+								"Version":  "Template"
+							},
+							"Software": {
+								"IsDeploy": false,
+								"App": []
+							},
+							"Fonts": {
+								"IsDeploy": false,
+								"Package": []
+							}
+						}
+					}
+				},
+				"ISO": {
+					"SaveTo":             "",
+					"Structure":  {
+						"InstallType":    true,
+						"UniqueName":     false,
+						"Group":          "Windows Server 2022",
+						"Event":           true,
+						"EngineVersion":  "Multilingual"
+					},
+					"PublicDate": {
+						"Year":           true,
+						"Month":          true
+					},
+					"WindowsVersion": {
+						"Enable":         true,
+						"Version":        "Auto",
+						"InitialRelease": "10"
+					},
+					"WindowsCode": {
+						"Enable":         true,
+						"Code":           "Auto",
+						"InitialCode":    "2022"
+					},
+					"Random":             true,
+					"ImageLanguage":      true,
+					"imageVersions":      true,
+					"imageVersionsType":  false,
+					"Before": {
+						"Rebuild": {
+							"Install":    false,
+							"Boot":       false
+						}
+					},
+					"After": {
+						"TPM":            true,
+						"Sha256":         true,
+						"RemoveImage":    false,
+						"PGP": {
+							"Enable":     false,
+							"Config": {
+								"Pwd":    "",
+								"KeyID":  "0FEBF674EAD23E05"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
