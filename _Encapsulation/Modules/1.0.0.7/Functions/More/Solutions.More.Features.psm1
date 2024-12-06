@@ -724,9 +724,9 @@ Function Solutions_Open_Command
 
 	Write-Host "`n   $($lang.OpenFolder) *" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
-	Write-Host "   $($lang.Select_Path): " -NoNewline
 	switch ($Name) {
 		"Log" {
+			Write-Host "   $($lang.Select_Path): " -NoNewline
 			$SaveToLogsPath = "$($Global:LogsSaveFolder)\$($Global:LogSaveTo)"
 			Write-Host $SaveToLogsPath -ForegroundColor Green
 
@@ -739,6 +739,7 @@ Function Solutions_Open_Command
 			}
 		}
 		"MN" {
+			Write-Host "   $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Image_source -ForegroundColor Green
 
 			if (Test-Path -Path $Global:Image_source -PathType Container) {
@@ -750,6 +751,7 @@ Function Solutions_Open_Command
 			}
 		}
 		"RT" {
+			Write-Host "   $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Mount_To_Route -ForegroundColor Green
 
 			if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
@@ -761,6 +763,7 @@ Function Solutions_Open_Command
 			}
 		}
 		"Temp" {
+			Write-Host "   $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Mount_To_RouteTemp -ForegroundColor Green
 
 			if (Test-Path -Path $Global:Mount_To_RouteTemp -PathType Container) {
