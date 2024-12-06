@@ -482,8 +482,8 @@ Function Mainpage
 
 	Write-Host
 	Write-Host "   " -NoNewline
-	Write-Host " H " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host " $($lang.Help) * " -NoNewline -BackgroundColor White -ForegroundColor Black
+	Write-Host " H * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " " -NoNewline
 	switch -Wildcard (Read-Host $lang.PleaseChooseMain)
 	{
@@ -1497,10 +1497,10 @@ Function Mainpage
 			ToWait -wait 2
 			Mainpage
 		}
-		"help *" {
+		"h *" {
 			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-			Solutions_Help_Command -Name $PSItem.Remove(0, 5).Replace(' ', '')
+			Solutions_Help_Command -Name $PSItem.Remove(0, 2).Replace(' ', '')
 			ToWait -wait 2
 			Mainpage
 		}

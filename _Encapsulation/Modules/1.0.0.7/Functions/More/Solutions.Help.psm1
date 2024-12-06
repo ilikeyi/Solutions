@@ -91,6 +91,18 @@ Function Solutions_Help_Command
 	Write-Host "`n   $($lang.Help) *" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 	switch ($Name) {
+		"lang" {
+			Write-Host "   $($lang.Command): " -NoNewline
+			Write-host "lang *" -ForegroundColor Green
+
+			Get_Next
+		}
+		"update" {
+			Write-Host "   $($lang.Command): " -NoNewline
+			Write-host "update *" -ForegroundColor Green
+
+			Get_Next
+		}
 		"FX" {
 			Write-Host "   $($lang.Command): " -NoNewline
 			Write-host "FX *" -ForegroundColor Green

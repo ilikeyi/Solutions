@@ -1674,7 +1674,7 @@ Function Image_Select
 		#>
 		$GUIImageSourceGroupMountChangeDiSKPane1.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.RadioButton]) {
-				if ($_.Enabled) {
+#				if ($_.Enabled) {
 					if ($_.Checked) {
 						$Match_Done_And_Failed = $True
 						$MarkNewLabelMountTo = (Join_MainFolder -Path $_.Tag)
@@ -1699,7 +1699,7 @@ Function Image_Select
 
 						Save_Dynamic -regkey "Solutions" -name "DiskMinSize" -value $($GUIImageSourceGroupMountChangeLowSize.Text) -String
 					}
-				}
+#				}
 			}
 		}
 
@@ -2132,7 +2132,7 @@ Function Image_Select
 						if (Get-ItemProperty -Path $Current_Image_Sources_Save_To_Reg_Path -Name "MountToRouting" -ErrorAction SilentlyContinue) {
 							$GUIImageSourceGroupMountToShow.Text = Get-ItemPropertyValue -Path $Current_Image_Sources_Save_To_Reg_Path -Name "MountToRouting"
 						} else {
-							$GUIImageSourceGroupMountToShow.Text = "$($Global:Image_source)_Custom"
+#							$GUIImageSourceGroupMountToShow.Text = "$($Global:Image_source)_Custom"
 						}
 
 						<#
