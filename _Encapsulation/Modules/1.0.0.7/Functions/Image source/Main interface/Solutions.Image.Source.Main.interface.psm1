@@ -7717,6 +7717,8 @@ Function Image_Select
 		[pscustomobject]@{ Path = @("");                                      Lang = $lang.Ok_Go_To_No; }
 		[pscustomobject]@{ Path = @("Event_Assign_Task_Customize_Autopilot"); Lang = $lang.Autopilot; }
 		[pscustomobject]@{ Path = @("Event_Assign_Task_Customize");           Lang = $lang.OnDemandPlanTask; }
+		[pscustomobject]@{ Path = @("Image_Eject_Save_Current");              Lang = "$($lang.Mounted_Status): $($lang.Save)"; }
+		[pscustomobject]@{ Path = @("Image_Eject_Dont_Save_Current");         Lang = "$($lang.Mounted_Status): $($lang.Unmount)"; }
 		[pscustomobject]@{ Path = @("Eject_Forcibly_All -Save -DontSave");    Lang = "$($lang.Image_Unmount_After): $($lang.Save)"; }
 		[pscustomobject]@{ Path = @("Eject_Forcibly_All -DontSave");          Lang = "$($lang.Image_Unmount_After): $($lang.DoNotSave)"; }
 		[pscustomobject]@{ Path = @("Verify_Autopilot_Custom_File");          Lang = "$($lang.Wim_Rule_Verify): $($lang.Autopilot_Select_Config)"; }

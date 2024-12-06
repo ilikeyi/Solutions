@@ -768,43 +768,21 @@ Function Mainpage
 			}
 
 			<#
+				.快捷指令：保存当前映像
+			#>
+			"Save" {
+				Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+				Image_Eject_Save_Current
+				ToWait -wait 2
+				Mainpage
+			}
+
+			<#
 				.快捷指令：卸载，默认不保存
 			#>
 			"unmount" {
 				Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-
-				Write-Host "`n   $($lang.Unmount)"
-				Write-Host "   $('-' * 80)"
-				if (Image_Is_Select_IAB) {
-					Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
-
-					$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
-
-					if (Verify_Is_Current_Same) {
-						Write-Host "   $($lang.Mounted)" -ForegroundColor Green
-
-						if ($Global:Developers_Mode) {
-							Write-Host "`n   $($lang.Developers_Mode_Location): 60`n" -ForegroundColor Green
-						}
-
-						if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-							Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-							Write-Host "   $('-' * 80)"
-							Write-Host "   Dismount-WindowsImage -Path ""$($test_mount_folder_Current)"" -Discard" -ForegroundColor Green
-							Write-Host "   $('-' * 80)`n"
-						}
-
-						Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path $test_mount_folder_Current -Discard -ErrorAction SilentlyContinue | Out-Null
-						Image_Mount_Force_Del -NewPath $test_mount_folder_Current
-						Write-Host "   $($lang.Done)" -ForegroundColor Green
-					} else {
-						Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
-					}
-				} else {
-					Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
-				}
-
+				Image_Eject_Dont_Save_Current
 				ToWait -wait 2
 				Mainpage
 			}
@@ -1013,44 +991,6 @@ Function Mainpage
 	
 					Image_Select_Index_UI
 					Get_Next
-				} else {
-					Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
-				}
-
-				ToWait -wait 2
-				Mainpage
-			}
-
-			<#
-				.快捷指令：保存当前映像
-			#>
-			"Save" {
-				Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-
-				Write-Host "`n   $($lang.Save)"
-				Write-Host "   $('-' * 80)"
-				if (Image_Is_Select_IAB) {
-					Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
-	
-					$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
-
-					if (Verify_Is_Current_Same) {
-						Write-Host "   $($lang.Mounted)" -ForegroundColor Green
-
-						if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-							Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-							Write-Host "   $('-' * 80)"
-							Write-Host "   Save-WindowsImage -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
-							Write-Host "   $('-' * 80)`n"
-						}
-
-						Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $test_mount_folder_Current | Out-Null
-						Write-Host "   $($lang.Done)" -ForegroundColor Green
-						Get_Next
-					} else {
-						Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
-					}
 				} else {
 					Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
 				}
