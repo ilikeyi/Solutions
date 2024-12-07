@@ -288,9 +288,10 @@ Function Image_Get_Mount_Status_New
 			} else {
 				if ($IsHotkey) {
 					Write-host " " -NoNewline
-					Write-Host " Pri " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+					Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 					Write-host " " -NoNewline
-					Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+
+					Write-Host " VW " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 					Write-Host " " -NoNewline
 
 					Write-Host " $($Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
@@ -493,7 +494,7 @@ Function Image_Set_Primary_Key_Shortcuts
 	)
 
 	Write-Host "`n   $($lang.Command): " -NoNewline
-	Write-host "Pri $($Name)" -ForegroundColor Green
+	Write-host "Sel $($Name)" -ForegroundColor Green
 	Write-Host "   $('-' * 80)"
 
 	Write-Host "`n   $($lang.Event_Primary_Key) *" -ForegroundColor Yellow
@@ -559,7 +560,7 @@ Function Image_Primary_Key_Shortcuts_File_View
 	)
 
 	Write-Host "`n   $($lang.Command): " -NoNewline
-	Write-host "View $($Name)" -ForegroundColor Green
+	Write-host "VW $($Name)" -ForegroundColor Green
 	Write-Host "   $('-' * 80)"
 
 	Write-Host "`n   $($lang.ViewWIMFileInfo) *" -ForegroundColor Yellow

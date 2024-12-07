@@ -9,26 +9,35 @@ Function Solutions_Menu
 		Write-Host "   $($lang.Dashboard)" -ForegroundColor Yellow
 		Write-Host "   $('-' * 80)"
 
-		Write-Host "   $($lang.MountImageTo): " -NoNewline
+		Write-host "   " -NoNewline
 		if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
+			Write-Host " Open RT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Green
 			Write-Host $Global:Mount_To_Route -ForegroundColor Green
 		} else {
-			Write-Host $Global:Mount_To_Route -ForegroundColor Yellow
+			Write-Host " Open RT " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Red
+			Write-Host $Global:Mount_To_Route -ForegroundColor Red
 		}
 
-		Write-Host "   $($lang.MainImageFolder): " -NoNewline
+		Write-host "   " -NoNewline
 		if (Test-Path -Path $Global:Image_source -PathType Container) {
+			Write-Host " Open MN " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Green
 			Write-Host $Global:Image_source -ForegroundColor Green
 		} else {
+			Write-Host " Open MN " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Red
 			Write-Host $Global:Image_source -ForegroundColor Red
+
 			Write-Host "   $('-' * 80)"
 			Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
 
-			ToWait -wait 2
+			ToWait -wait 6
 			Solutions_Menu
 		}
 
-		Image_Get_Mount_Status
+		Image_Get_Mount_Status -IsHotkey
 	}
 
 	Write-Host "`n   $($lang.Solution)" -ForegroundColor Yellow
@@ -114,14 +123,19 @@ Function Solutions_Menu
 		}
 	}
 
-	switch (Read-Host "`n   $($lang.PleaseChoose)")
+	Write-Host
+	Write-Host "   " -NoNewline
+	Write-Host " H * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
+	Write-Host " " -NoNewline
+	switch -Wildcard (Read-Host $lang.PleaseChooseMain)
 	{
-		'c' {
+		"c" {
 			Solutions
 			ToWait -wait 2
 			Solutions_Menu
 		}
-		'1' {
+		"1" {
 			$File_Path = Join-Path -Path $Global:Image_source -ChildPath "Sources\`$OEM$"
 
 			Write-Host "`n   $($File_Path)" -ForegroundColor Yellow
@@ -137,7 +151,7 @@ Function Solutions_Menu
 			ToWait -wait 2
 			Solutions_Menu
 		}
-		'2' {
+		"2" {
 			$File_Path = Join-Path -Path $Global:Image_source -ChildPath "Sources\Unattend.xml"
 
 			Write-Host "`n   $($File_Path)" -ForegroundColor Yellow
@@ -153,7 +167,7 @@ Function Solutions_Menu
 			ToWait -wait 2
 			Solutions_Menu
 		}
-		'3' {
+		"3" {
 			$File_Path = Join-Path -Path $Global:Image_source -ChildPath "Autounattend.xml"
 
 			Write-Host "`n   $($File_Path)" -ForegroundColor Yellow
@@ -169,7 +183,7 @@ Function Solutions_Menu
 			ToWait -wait 2
 			Solutions_Menu
 		}
-		'a' {
+		"a" {
 			$File_Path = Join-Path -Path $Global:Image_source -ChildPath "Sources\`$OEM$"
 
 			Write-Host "`n   $($File_Path)" -ForegroundColor Yellow
@@ -209,7 +223,7 @@ Function Solutions_Menu
 			ToWait -wait 2
 			Solutions_Menu
 		}
-		'11' {
+		"11" {
 			$File_Path_MainFolder = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\$((Get-Module -Name Solutions).Author)"
 
 			Write-Host "`n   $($File_Path_MainFolder)" -ForegroundColor Yellow
@@ -225,7 +239,7 @@ Function Solutions_Menu
 			ToWait -wait 2
 			Solutions_Menu
 		}
-		'12' {
+		"12" {
 			$File_Path_Unattend = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\Windows\Panther\Unattend.xml"
 
 			Write-Host "`n   $($File_Path_Unattend)" -ForegroundColor Yellow
@@ -241,7 +255,7 @@ Function Solutions_Menu
 			ToWait -wait 2
 			Solutions_Menu
 		}
-		'13' {
+		"13" {
 			$File_Path_Office = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\Users\Public\Desktop\Office"
 
 			Write-Host "`n   $($File_Path_Office)" -ForegroundColor Yellow
@@ -257,7 +271,7 @@ Function Solutions_Menu
 			ToWait -wait 2
 			Solutions_Menu
 		}
-		'aa' {
+		"aa" {
 			$File_Path_MainFolder = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\$((Get-Module -Name Solutions).Author)"
 
 			Write-Host "`n   $($File_Path_MainFolder)" -ForegroundColor Yellow
@@ -297,6 +311,48 @@ Function Solutions_Menu
 			ToWait -wait 2
 			Solutions_Menu
 		}
+
+		"open *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Solutions_Open_Command -Name $PSItem.Remove(0, 5).Replace(' ', '')
+			ToWait -wait 2
+			Solutions_Menu
+		}
+
+		"VW *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Image_Primary_Key_Shortcuts_File_View -Name $PSItem.Remove(0, 3).Replace(' ', '')
+			ToWait -wait 2
+			Solutions_Menu
+		}
+
+		"Sel *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Image_Set_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 4).Replace(' ', '')
+			ToWait -wait 2
+			Solutions_Menu
+		}
+
+		<#
+			.帮助
+		#>
+		"h" {
+			Solutions_Help
+			Get_Next
+			ToWait -wait 2
+			Solutions_Menu
+		}
+		"h *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Solutions_Help_Command -Name $PSItem.Remove(0, 2).Replace(' ', '')
+			ToWait -wait 2
+			Solutions_Menu
+		}
+
 		default {
 			Mainpage
 		}

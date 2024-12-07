@@ -4,26 +4,35 @@
 	Write-Host "   $($lang.Dashboard)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 
-	Write-Host "   $($lang.MountImageTo): " -NoNewline
+	Write-host "   " -NoNewline
 	if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
+		Write-Host " Open RT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Green
 		Write-Host $Global:Mount_To_Route -ForegroundColor Green
 	} else {
-		Write-Host $Global:Mount_To_Route -ForegroundColor Yellow
+		Write-Host " Open RT " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Red
+		Write-Host $Global:Mount_To_Route -ForegroundColor Red
 	}
 
-	Write-Host "   $($lang.MainImageFolder): " -NoNewline
+	Write-host "   " -NoNewline
 	if (Test-Path -Path $Global:Image_source -PathType Container) {
+		Write-Host " Open MN " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Green
 		Write-Host $Global:Image_source -ForegroundColor Green
 	} else {
+		Write-Host " Open MN " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Red
 		Write-Host $Global:Image_source -ForegroundColor Red
+
 		Write-Host "   $('-' * 80)"
 		Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
 
-		ToWait -wait 2
+		ToWait -wait 6
 		InBox_Apps_Menu
 	}
 
-	Image_Get_Mount_Status
+	Image_Get_Mount_Status -IsHotkey
 
 	<#
 		.先决条件
@@ -65,11 +74,14 @@
 	<#
 		.仅支持 Install 时
 	#>
-	if (-not (Image_Is_Select_Install)) {
-		Write-Host "`n   $($lang.InboxAppsManager)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.BootProcess -f "install")" -ForegroundColor Red
-		return
+	if ($Global:Developers_Mode) {
+	} else {
+		if (-not (Image_Is_Select_Install)) {
+			Write-Host "`n   $($lang.InboxAppsManager)" -ForegroundColor Yellow
+			Write-Host "   $('-' * 80)"
+			Write-Host "   $($lang.BootProcess -f "install")" -ForegroundColor Red
+			return
+		}
 	}
 
 	Write-Host "`n   $($lang.Menu)" -ForegroundColor Yellow
@@ -174,30 +186,35 @@
 		Write-Host "`n      A   $($lang.OnDemandPlanTask)" -ForegroundColor Red
 	}
 
-	switch (Read-Host "`n   $($lang.PleaseChoose)")
+	Write-Host
+	Write-Host "   " -NoNewline
+	Write-Host " H * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
+	Write-Host " " -NoNewline
+	switch -Wildcard (Read-Host $lang.PleaseChooseMain)
 	{
-		'1' {
+		"1" {
 			InBox_Apps_Menu_Shortcuts_LXPs_Add
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
-		'2' {
+		"2" {
 			InBox_Apps_Menu_Shortcuts_Add
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
-		'3' {
+		"3" {
 			InBox_Apps_Menu_Shortcuts_LXPs_Update
 			InBox_Apps_Menu_Shortcuts_IAU
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
-		'4' {
+		"4" {
 			InBox_Apps_Menu_Shortcuts_LXPs_Delete
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
-		'a' {
+		"a" {
 			Write-Host "`n   $($lang.User_Interaction): $($lang.OnDemandPlanTask)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			if (Verify_Is_Current_Same) {
@@ -215,12 +232,12 @@
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
-		'o' {
+		"o" {
 			InBox_Apps_Menu_Shortcuts_Delete
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
-		'f' {
+		"f" {
 			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 
 			InBox_Apps_LIPs_Clean_Process
@@ -228,7 +245,7 @@
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
-		'ff' {
+		"ff" {
 			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
 
 			InBox_Apps_LIPs_Clean_Process
@@ -236,7 +253,7 @@
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
-		'p' {
+		"p" {
 			Write-Host "`n   $($lang.GetInBoxApps)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			Write-Host "   $($lang.ExportToLogs)" -ForegroundColor Yellow
@@ -258,7 +275,7 @@
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
-		's' {
+		"s" {
 			Write-Host "`n   $($lang.GetInBoxApps)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			Write-Host "   $($lang.ExportShow)"
@@ -280,7 +297,7 @@
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
-		'ss' {
+		"ss" {
 			Write-Host "`n   $($lang.Setting): $($lang.SaveTo)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			if (Image_Is_Select_IAB) {
@@ -298,6 +315,48 @@
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
+
+		"open *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Solutions_Open_Command -Name $PSItem.Remove(0, 5).Replace(' ', '')
+			ToWait -wait 2
+			InBox_Apps_Menu
+		}
+
+		"VW *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Image_Primary_Key_Shortcuts_File_View -Name $PSItem.Remove(0, 3).Replace(' ', '')
+			ToWait -wait 2
+			InBox_Apps_Menu
+		}
+
+		"Sel *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Image_Set_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 4).Replace(' ', '')
+			ToWait -wait 2
+			InBox_Apps_Menu
+		}
+
+		<#
+			.帮助
+		#>
+		"h" {
+			Solutions_Help
+			Get_Next
+			ToWait -wait 2
+			InBox_Apps_Menu
+		}
+		"h *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Solutions_Help_Command -Name $PSItem.Remove(0, 2).Replace(' ', '')
+			ToWait -wait 2
+			InBox_Apps_Menu
+		}
+
 		default {
 			Mainpage
 		}

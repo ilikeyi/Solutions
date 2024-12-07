@@ -8,26 +8,35 @@ Function Language_Menu
 	Write-Host "   $($lang.Dashboard)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 
-	Write-Host "   $($lang.MountImageTo): " -NoNewline
+	Write-host "   " -NoNewline
 	if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
+		Write-Host " Open RT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Green
 		Write-Host $Global:Mount_To_Route -ForegroundColor Green
 	} else {
-		Write-Host $Global:Mount_To_Route -ForegroundColor Yellow
+		Write-Host " Open RT " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Red
+		Write-Host $Global:Mount_To_Route -ForegroundColor Red
 	}
 
-	Write-Host "   $($lang.MainImageFolder): " -NoNewline
+	Write-host "   " -NoNewline
 	if (Test-Path -Path $Global:Image_source -PathType Container) {
+		Write-Host " Open MN " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Green
 		Write-Host $Global:Image_source -ForegroundColor Green
 	} else {
+		Write-Host " Open MN " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Red
 		Write-Host $Global:Image_source -ForegroundColor Red
+
 		Write-Host "   $('-' * 80)"
 		Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
 
-		ToWait -wait 2
+		ToWait -wait 6
 		Language_Menu
 	}
 
-	Image_Get_Mount_Status
+	Image_Get_Mount_Status -IsHotkey
 
 	Write-Host "`n   $($lang.Language)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
@@ -205,29 +214,34 @@ Function Language_Menu
 		}
 	}
 
-	switch (Read-Host "`n   $($lang.PleaseChoose)")
+	Write-Host
+	Write-Host "   " -NoNewline
+	Write-Host " H * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
+	Write-Host " " -NoNewline
+	switch -Wildcard (Read-Host $lang.PleaseChooseMain)
 	{
-		'e' {
+		"e" {
 			Language_Extract_UI
 			ToWait -wait 2
 			Language_Menu
 		}
-		'1' {
+		"1" {
 			Language_Menu_Shortcuts_LA
 			ToWait -wait 2
 			Language_Menu
 		}
-		'2' {
+		"2" {
 			Language_Menu_Shortcuts_LD			
 			ToWait -wait 2
 			Language_Menu
 		}
-		'3' {
+		"3" {
 			Language_Menu_Shortcuts_LS
 			ToWait -wait 2
 			Language_Menu
 		}
-		'4' {
+		"4" {
 			Write-Host "`n   $($lang.BootSyncToISO)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 
@@ -255,7 +269,7 @@ Function Language_Menu
 			ToWait -wait 2
 			Language_Menu
 		}
-		'11' {
+		"11" {
 			Write-Host "`n   $($lang.Setup_Fix_Missing): $($Lang.Mounted)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 
@@ -283,7 +297,7 @@ Function Language_Menu
 			ToWait -wait 2
 			Language_Menu
 		}
-		'12' {
+		"12" {
 			Write-Host "`n   $($lang.Setup_Fix_Missing): $($Lang.Mounted)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 
@@ -307,7 +321,7 @@ Function Language_Menu
 			ToWait -wait 2
 			Language_Menu
 		}
-		'13' {
+		"13" {
 			Write-Host "`n   $($lang.OpenFolder)" -ForegroundColor Green
 			Write-Host "   $('-' * 80)"
 
@@ -319,7 +333,7 @@ Function Language_Menu
 				Write-Host "   $($SearchFolderRule)" -ForegroundColor Red
 			}
 		}
-		'21' {
+		"21" {
 			Write-Host "`n   $($lang.Setup_Fix_Missing): $($Lang.Mounted)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 
@@ -347,7 +361,7 @@ Function Language_Menu
 			ToWait -wait 2
 			Language_Menu
 		}
-		'22' {
+		"22" {
 			Write-Host "`n   $($lang.Setup_Fix_Missing): $($Lang.Mounted)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 
@@ -371,7 +385,7 @@ Function Language_Menu
 			ToWait -wait 2
 			Language_Menu
 		}
-		'23' {
+		"23" {
 			Write-Host "`n   $($lang.OpenFolder)" -ForegroundColor Green
 			Write-Host "   $('-' * 80)"
 
@@ -383,7 +397,7 @@ Function Language_Menu
 				Write-Host "   $($SearchFolderRuleCustom)" -ForegroundColor Red
 			}
 		}
-		'c' {
+		"c" {
 			Write-Host "`n   $($lang.OnlyLangCleanup)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
@@ -403,7 +417,7 @@ Function Language_Menu
 			ToWait -wait 2
 			Language_Menu
 		}
-		'r' {
+		"r" {
 			Write-Host "`n   $($lang.LangIni)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			if (Verify_Is_Current_Same) {
@@ -449,7 +463,7 @@ Function Language_Menu
 			ToWait -wait 2
 			Language_Menu
 		}
-		'p' {
+		"p" {
 			Write-Host "`n   $($lang.GetImagePackage)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			Write-Host "   $($lang.ExportToLogs)" -ForegroundColor Yellow
@@ -471,7 +485,7 @@ Function Language_Menu
 			ToWait -wait 2
 			Language_Menu
 		}
-		's' {
+		"s" {
 			Write-Host "`n   $($lang.GetImagePackage)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			Write-Host "   $($lang.ExportToLogs)" -ForegroundColor Yellow
@@ -493,7 +507,7 @@ Function Language_Menu
 			ToWait -wait 2
 			Language_Menu
 		}
-		'ss' {
+		"ss" {
 			Write-Host "`n   $($lang.Setting): $($lang.SaveTo)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			if (Image_Is_Select_IAB) {
@@ -511,6 +525,48 @@ Function Language_Menu
 			ToWait -wait 2
 			Language_Menu
 		}
+
+		"open *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Solutions_Open_Command -Name $PSItem.Remove(0, 5).Replace(' ', '')
+			ToWait -wait 2
+			Language_Menu
+		}
+
+		"VW *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Image_Primary_Key_Shortcuts_File_View -Name $PSItem.Remove(0, 3).Replace(' ', '')
+			ToWait -wait 2
+			Language_Menu
+		}
+
+		"Sel *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Image_Set_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 4).Replace(' ', '')
+			ToWait -wait 2
+			Language_Menu
+		}
+
+		<#
+			.帮助
+		#>
+		"h" {
+			Solutions_Help
+			Get_Next
+			ToWait -wait 2
+			Language_Menu
+		}
+		"h *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Solutions_Help_Command -Name $PSItem.Remove(0, 2).Replace(' ', '')
+			ToWait -wait 2
+			Language_Menu
+		}
+
 		default {
 			Mainpage
 		}

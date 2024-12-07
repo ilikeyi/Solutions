@@ -9,26 +9,35 @@ Function Feature_Menu
 		Write-Host "   $($lang.Dashboard)" -ForegroundColor Yellow
 		Write-Host "   $('-' * 80)"
 
-		Write-Host "   $($lang.MountImageTo): " -NoNewline
+		Write-host "   " -NoNewline
 		if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
+			Write-Host " Open RT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Green
 			Write-Host $Global:Mount_To_Route -ForegroundColor Green
 		} else {
-			Write-Host $Global:Mount_To_Route -ForegroundColor Yellow
+			Write-Host " Open RT " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Red
+			Write-Host $Global:Mount_To_Route -ForegroundColor Red
 		}
 
-		Write-Host "   $($lang.MainImageFolder): " -NoNewline
+		Write-host "   " -NoNewline
 		if (Test-Path -Path $Global:Image_source -PathType Container) {
+			Write-Host " Open MN " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Green
 			Write-Host $Global:Image_source -ForegroundColor Green
 		} else {
+			Write-Host " Open MN " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Red
 			Write-Host $Global:Image_source -ForegroundColor Red
+
 			Write-Host "   $('-' * 80)"
 			Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
 
-			ToWait -wait 2
+			ToWait -wait 6
 			Functions_Menu
 		}
 
-		Image_Get_Mount_Status
+		Image_Get_Mount_Status -IsHotkey
 	}
 
 	Write-Host "`n   $($lang.WindowsFeature)" -ForegroundColor Yellow
@@ -50,18 +59,65 @@ Function Feature_Menu
 		Write-Host $lang.Disable -ForegroundColor Red
 	}
 
-	switch (Read-Host "`n   $($lang.PleaseChoose)")
+	Write-Host
+	Write-Host "   " -NoNewline
+	Write-Host " H * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
+	Write-Host " " -NoNewline
+	switch -Wildcard (Read-Host $lang.PleaseChooseMain)
 	{
-		'1' {
+		"1" {
 			Feature_Menu_Shortcuts_Enabled
 			ToWait -wait 2
 			Feature_Menu
 		}
-		'2' {
+		"2" {
 			Feature_Menu_Shortcuts_Disabled
 			ToWait -wait 2
 			Feature_Menu
 		}
+
+		"open *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Solutions_Open_Command -Name $PSItem.Remove(0, 5).Replace(' ', '')
+			ToWait -wait 2
+			Drive_Menu
+		}
+
+		"VW *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Image_Primary_Key_Shortcuts_File_View -Name $PSItem.Remove(0, 3).Replace(' ', '')
+			ToWait -wait 2
+			Drive_Menu
+		}
+
+		"Sel *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Image_Set_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 4).Replace(' ', '')
+			ToWait -wait 2
+			Drive_Menu
+		}
+
+		<#
+			.帮助
+		#>
+		"h" {
+			Solutions_Help
+			Get_Next
+			ToWait -wait 2
+			Drive_Menu
+		}
+		"h *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Solutions_Help_Command -Name $PSItem.Remove(0, 2).Replace(' ', '')
+			ToWait -wait 2
+			Drive_Menu
+		}
+
 		default {
 			Mainpage
 		}

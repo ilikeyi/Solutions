@@ -574,21 +574,6 @@ Function Mainpage
 			Mainpage
 		}
 
-		"pri *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-
-			Image_Set_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 4).Replace(' ', '')
-			ToWait -wait 2
-			Mainpage
-		}
-		"View *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-
-			Image_Primary_Key_Shortcuts_File_View -Name $PSItem.Remove(0, 5).Replace(' ', '')
-			ToWait -wait 2
-			Mainpage
-		}
-
 		<#
 			设置、选择映像源
 		#>
@@ -1390,6 +1375,22 @@ Function Mainpage
 			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
 			Solutions_Open_Command -Name $PSItem.Remove(0, 5).Replace(' ', '')
+			ToWait -wait 2
+			Mainpage
+		}
+
+		"VW *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Image_Primary_Key_Shortcuts_File_View -Name $PSItem.Remove(0, 3).Replace(' ', '')
+			ToWait -wait 2
+			Mainpage
+		}
+
+		"Sel *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Image_Set_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 4).Replace(' ', '')
 			ToWait -wait 2
 			Mainpage
 		}

@@ -286,7 +286,7 @@ Function Image_Eject_UI
 		if ($Temp_Save_Count_item -gt 0) {
 			$UI_Main_Is_New_Event = New-Object system.Windows.Forms.LinkLabel -Property @{
 				autosize       = 1
-				Text           = ""
+				Text           = "$($lang.Wimlib_New -f $Temp_Save_Count_item)"
 				LinkColor      = "GREEN"
 				ActiveLinkColor = "RED"
 				LinkBehavior   = "NeverUnderline"
@@ -296,7 +296,6 @@ Function Image_Eject_UI
 			}
 
 			$UI_Main_Sync_Expand_Tips.controls.AddRange($UI_Main_Is_New_Event)
-			$UI_Main_Is_New_Event.Text = "$($lang.Wimlib_New -f $Temp_Save_Count_item)"
 		} else {
 			$UI_Main_Is_No_Event = New-Object system.Windows.Forms.Label -Property @{
 				autosize       = 1
@@ -446,7 +445,7 @@ Function Image_Eject_UI
 
 	$UI_Main_Menu      = New-Object System.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
-		Height         = 610
+		Height         = 675
 		Width          = 555
 		autoSizeMode   = 1
 		Location       = '20,0'
@@ -546,7 +545,7 @@ Function Image_Eject_UI
 		.可选功能
 	#>
 	$UI_Main_Adv_Name  = New-Object system.Windows.Forms.Label -Property @{
-		Height         = 40
+		Height         = 30
 		Width          = 515
 		margin         = "0,10,0,0"
 		Text           = $lang.AdvOption
@@ -998,9 +997,9 @@ Function Image_Eject_UI
 
 	$UI_Main_Sync_Expand_Tips = New-Object System.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
-		Location       = "20,642"
-		Height         = 36
-		Width          = 530
+		Location       = "620,525"
+		Height         = 60
+		Width          = 280
 	}
 
 	$UI_Main_OK        = New-Object system.Windows.Forms.Button -Property @{
