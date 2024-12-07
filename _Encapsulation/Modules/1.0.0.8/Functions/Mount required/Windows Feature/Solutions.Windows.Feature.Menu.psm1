@@ -82,7 +82,7 @@ Function Feature_Menu
 
 			Solutions_Open_Command -Name $PSItem.Remove(0, 5).Replace(' ', '')
 			ToWait -wait 2
-			Drive_Menu
+			Feature_Menu
 		}
 
 		"View *" {
@@ -90,7 +90,7 @@ Function Feature_Menu
 
 			Image_Primary_Key_Shortcuts_File_View -Name $PSItem.Remove(0, 5).Replace(' ', '')
 			ToWait -wait 2
-			Drive_Menu
+			Feature_Menu
 		}
 
 		"Sel *" {
@@ -98,24 +98,30 @@ Function Feature_Menu
 
 			Image_Set_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 4).Replace(' ', '')
 			ToWait -wait 2
-			Drive_Menu
+			Feature_Menu
 		}
 
 		<#
 			.帮助
 		#>
+		"hf" {
+			Solutions_Help -Full
+			Get_Next
+			ToWait -wait 2
+			Feature_Menu
+		}
 		"h" {
 			Solutions_Help
 			Get_Next
 			ToWait -wait 2
-			Drive_Menu
+			Feature_Menu
 		}
 		"h *" {
 			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-			Solutions_Help_Command -Name $PSItem.Remove(0, 2).Replace(' ', '')
+			Solutions_Help_Command -Name $PSItem.Remove(0, 2).Replace(' ', '') -Pause
 			ToWait -wait 2
-			Drive_Menu
+			Feature_Menu
 		}
 
 		default {

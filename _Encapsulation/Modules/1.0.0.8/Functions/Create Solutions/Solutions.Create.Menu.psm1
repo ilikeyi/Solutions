@@ -339,6 +339,12 @@ Function Solutions_Menu
 		<#
 			.帮助
 		#>
+		"hf" {
+			Solutions_Help -Full
+			Get_Next
+			ToWait -wait 2
+			Solutions_Menu
+		}
 		"h" {
 			Solutions_Help
 			Get_Next

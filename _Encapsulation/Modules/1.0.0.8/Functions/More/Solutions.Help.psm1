@@ -4,15 +4,46 @@
 #>
 Function Solutions_Help
 {
+	param
+	(
+		[Switch]$Full
+	)
+
 	Clear-Host
 	Logo -Title $lang.Help
 
 	Write-Host "   $($lang.Short_Cmd)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
-	Write-Host "     FX *".PadRight(20) -NoNewline -ForegroundColor Yellow
-	Write-Host "$($lang.SpecialFunction): $($lang.Function_Unrestricted), $($lang.Short_Cmd)" -NoNewline
-	Write-Host " { FX Pause } { FX List }" -ForegroundColor Green
 
+	if ($Full) {
+		Solutions_Help_Command -Name "Sel" -Silent
+	} else {
+		Write-host "    " -NoNewline
+		Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-host " " -NoNewline
+		Write-Host " $($lang.Event_Primary_Key), $($lang.Command), $($lang.Help) " -NoNewline -ForegroundColor Yellow
+		Write-Host " H Sel " -BackgroundColor DarkMagenta -ForegroundColor White
+	}
+
+	if ($Full) {
+		Solutions_Help_Command -Name "View" -Silent
+	} else {
+		Write-host "   " -NoNewline
+		Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-host " " -NoNewline
+		Write-Host " $($lang.ViewWIMFileInfo), $($lang.Command), $($lang.Help) " -NoNewline -ForegroundColor Yellow
+		Write-Host " H View " -BackgroundColor DarkMagenta -ForegroundColor White
+	}
+
+	if ($Full) {
+		Solutions_Help_Command -Name "FX" -Silent
+	} else {
+		Write-Host "     FX *".PadRight(20) -NoNewline -ForegroundColor Yellow
+		Write-Host "$($lang.SpecialFunction): $($lang.Function_Unrestricted), $($lang.Short_Cmd)" -NoNewline
+		Write-Host " { FX Pause } { FX List }" -ForegroundColor Green
+	}
+
+	Write-Host
 	Write-Host "     CPK".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host $lang.Event_Primary_Key_CPK
 
@@ -30,28 +61,6 @@ Function Solutions_Help
 
 	Write-Host "     Remount".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host "$($lang.Mount), $($lang.PleaseChoose)"
-
-	Write-Host "`n   $($lang.ViewWIMFileInfo)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
-	ForEach ($item in $Global:Image_Rule) {
-		Write-host "   " -NoNewline
-		Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-		Write-host " " -NoNewline
-		Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
-		Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
-		Write-Host $item.Main.Uid -ForegroundColor Green
-
-		if ($item.Expand.Count -gt 0) {
-			ForEach ($Expand in $item.Expand) {
-				Write-host "   " -NoNewline
-				Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-				Write-host " " -NoNewline
-				Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
-				Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
-				Write-Host $Expand.Uid -ForegroundColor Green
-			}
-		}
-	}
 
 	Write-Host "`n   $($lang.Mounted_Status)"
 	Write-Host "     ESA".PadRight(20) -NoNewline -ForegroundColor Yellow
@@ -101,35 +110,172 @@ Function Solutions_Help
 
 	Write-Host "     Update auto".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host "$($lang.ChkUpdate), $($lang.UpdateSilent)"
+
+	Write-Host
+	Write-Host "   $($lang.Help)" -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
+	Write-host "   " -NoNewline
+	Write-Host " HF " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-host "   $($lang.Rule_Show_Full), $($lang.Help)"
+
+	Write-host "   " -NoNewline
+	Write-Host " H * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-host "  $($lang.ShowCommand)"
 }
 
 Function Solutions_Help_Command
 {
 	param
 	(
-		$Name
+		$Name,
+		[Switch]$Pause,
+		[Switch]$Silent,
+		[Switch]$NoShowFile
 	)
 
-	Write-Host "`n   $($lang.Help) *" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	if (-not $Silent) {
+		Write-Host "`n   $($lang.Help) *" -ForegroundColor Yellow
+		Write-Host "   $('-' * 80)"
+	}
+
 	switch ($Name) {
 		"lang" {
 			Write-Host "   $($lang.Command): " -NoNewline
 			Write-host "lang *" -ForegroundColor Green
 
-			Get_Next
+			Write-Host
+			Write-Host "     lang".PadRight(20) -NoNewline -ForegroundColor Yellow
+			Write-Host $lang.SwitchLanguage
+		
+			Write-Host "     lang list".PadRight(20) -NoNewline -ForegroundColor Yellow
+			Write-Host $lang.AvailableLanguages
+		
+			Write-Host "     lang auto".PadRight(20) -NoNewline -ForegroundColor Yellow
+			Write-Host "$($lang.SwitchLanguage), $($lang.LanguageReset)"
+		
+			Write-Host "     lang *".PadRight(20) -NoNewline -ForegroundColor Yellow
+			Write-Host "$($lang.SwitchLanguage), $($lang.LanguageCode) " -NoNewline
+			Write-Host "{ lang zh-CN }" -ForegroundColor Green
+
+			if ($Pause) {
+				Get_Next
+			}
 		}
 		"update" {
 			Write-Host "   $($lang.Command): " -NoNewline
 			Write-host "update *" -ForegroundColor Green
 
-			Get_Next
+			Write-Host
+			Write-Host "     Update".PadRight(20) -NoNewline -ForegroundColor Yellow
+			Write-Host $lang.ChkUpdate
+
+			Write-Host "     Update auto".PadRight(20) -NoNewline -ForegroundColor Yellow
+			Write-Host "$($lang.ChkUpdate), $($lang.UpdateSilent)"
+
+			if ($Pause) {
+				Get_Next
+			}
 		}
 		"FX" {
-			Write-Host "   $($lang.Command): " -NoNewline
-			Write-host "FX *" -ForegroundColor Green
+				Write-Host "   $($lang.Command): " -NoNewline
+				Write-host "FX *" -ForegroundColor Green
 
-			Get_Next
+			Functions_Tasks_List
+			if ($Pause) {
+				Get_Next
+			}
+		}
+		"Open" {
+			Write-Host "   $($lang.Command): " -NoNewline
+			Write-host "Open *" -ForegroundColor Green
+
+			Solutions_Open_Command -Help
+
+			if ($Pause) {
+				Get_Next
+			}
+		}
+		"Sel" {
+			Write-Host "   $($lang.SelFile)" -ForegroundColor Yellow
+			Write-Host "   $('-' * 80)"
+			ForEach ($item in $Global:Image_Rule) {
+				Write-host "   " -NoNewline
+				Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+				Write-host " " -NoNewline
+				Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+				Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+				Write-Host $item.Main.Uid -ForegroundColor Green
+
+				if (-not $NoShowFile) {
+					$TestWIMFile = Join-Path -Path $item.Main.Path -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)"
+					Write-Host "   $($lang.Select_Path): " -NoNewline
+					Write-Host $TestWIMFile -ForegroundColor Green
+					Write-Host
+				}
+
+				if ($item.Expand.Count -gt 0) {
+					ForEach ($Expand in $item.Expand) {
+						Write-host "   " -NoNewline
+						Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+						Write-host " " -NoNewline
+						Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+						Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+						Write-Host $Expand.Uid -ForegroundColor Green
+
+						if (-not $NoShowFile) {
+							$TestWIMFileExpand = Join-Path -Path $Expand.Path -ChildPath "$($Expand.ImageFileName).$($Expand.Suffix)"
+							Write-Host "   $($lang.Select_Path): " -NoNewline
+							Write-Host $TestWIMFileExpand -ForegroundColor Green
+							Write-Host
+						}
+					}
+				}
+			}
+
+			if ($Pause) {
+				Get_Next
+			}
+		}
+		"View" {
+			Write-Host "`n   $($lang.ViewWIMFileInfo)" -ForegroundColor Green
+			Write-Host "   $('-' * 80)"
+			ForEach ($item in $Global:Image_Rule) {
+				Write-host "   " -NoNewline
+				Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+				Write-host " " -NoNewline
+				Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+				Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+				Write-Host $item.Main.Uid -ForegroundColor Green
+
+				if (-not $NoShowFile) {
+					$TestWIMFile = Join-Path -Path $item.Main.Path -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)"
+					Write-Host "   $($lang.Select_Path): " -NoNewline
+					Write-Host $TestWIMFile -ForegroundColor Green
+					Write-Host
+				}
+
+				if ($item.Expand.Count -gt 0) {
+					ForEach ($Expand in $item.Expand) {
+						Write-host "   " -NoNewline
+						Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+						Write-host " " -NoNewline
+						Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+						Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+						Write-Host $Expand.Uid -ForegroundColor Green
+
+						if (-not $NoShowFile) {
+							$TestWIMFileExpand = Join-Path -Path $Expand.Path -ChildPath "$($Expand.ImageFileName).$($Expand.Suffix)"
+							Write-Host "   $($lang.Select_Path): " -NoNewline
+							Write-Host $TestWIMFileExpand -ForegroundColor Green
+							Write-Host
+						}
+					}
+				}
+			}
+
+			if ($Pause) {
+				Get_Next
+			}
 		}
 		default {
 			Write-Host "   $($lang.NoWork)" -ForegroundColor Red

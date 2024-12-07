@@ -1410,6 +1410,12 @@ Function Mainpage
 		<#
 			.帮助
 		#>
+		"hf" {
+			Solutions_Help -Full
+			Get_Next
+			ToWait -wait 2
+			Mainpage
+		}
 		"h" {
 			Solutions_Help
 			Get_Next
@@ -1419,7 +1425,7 @@ Function Mainpage
 		"h *" {
 			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-			Solutions_Help_Command -Name $PSItem.Remove(0, 2).Replace(' ', '')
+			Solutions_Help_Command -Name $PSItem.Remove(0, 2).Replace(' ', '') -Pause
 			ToWait -wait 2
 			Mainpage
 		}

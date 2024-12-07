@@ -218,6 +218,12 @@ Function Drive_Menu
 		<#
 			.帮助
 		#>
+		"hf" {
+			Solutions_Help -Full
+			Get_Next
+			ToWait -wait 2
+			Drive_Menu
+		}
 		"h" {
 			Solutions_Help
 			Get_Next
@@ -227,7 +233,7 @@ Function Drive_Menu
 		"h *" {
 			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-			Solutions_Help_Command -Name $PSItem.Remove(0, 2).Replace(' ', '')
+			Solutions_Help_Command -Name $PSItem.Remove(0, 2).Replace(' ', '') -Pause
 			ToWait -wait 2
 			Drive_Menu
 		}
