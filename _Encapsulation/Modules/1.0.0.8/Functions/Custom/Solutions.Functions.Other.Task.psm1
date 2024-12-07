@@ -1,0 +1,255 @@
+﻿<#
+	.用户自定义函数起始
+#>
+
+<#
+	.空任务
+#>
+Function Other_Tasks_Empty
+{
+	Write-Host "   Other_Tasks_Clear" -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
+}
+
+<#
+	.清理解决方案 Yi 目录
+#>
+Function Other_Tasks_Clear
+{
+	Write-Host "   Other_Tasks_Clear" -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
+
+	if (Image_Is_Select_IAB) {
+		if (Verify_Is_Current_Same) {
+			$Local_Regedit_File_System = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\$((Get-Module -Name Solutions).Author)"
+			Write-Host "   $($Local_Regedit_File_System)" -ForegroundColor Green
+			Write-Host "   $($lang.Del)".PadRight(28) -NoNewline
+			if (Test-Path -Path $Local_Regedit_File_System -PathType Container) {
+				Remove_Tree -Path $Local_Regedit_File_System
+
+				if (Test-Path -Path $Local_Regedit_File_System -PathType Container) {
+					Write-Host $lang.Failed -ForegroundColor Red
+				} else {
+					Write-Host $lang.Done -ForegroundColor Green
+				}
+			} else {
+				Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+			}
+		} else {
+			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+		}
+	} else {
+		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+	}
+}
+
+<#
+	.添加测试目录
+#>
+Function Other_Tasks_CTD
+{
+	Write-Host "   Other_Tasks_CTD" -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
+
+	if (Image_Is_Select_IAB) {
+		if (Verify_Is_Current_Same) {
+			$RandomGuid = [guid]::NewGuid()
+			$Local_Regedit_File_System = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\$((Get-Module -Name Solutions).Author)\$($RandomGuid)"
+
+			Check_Folder -chkpath $Local_Regedit_File_System
+			Write-Host "   $($Local_Regedit_File_System)" -ForegroundColor Green
+
+			Write-Host "   $($lang.Done)" -ForegroundColor Green
+		} else {
+			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+		}
+	} else {
+		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+	}
+}
+
+<#
+	.Other tasks, global search Function, search condition: Other_Tasks_*, please refer to Dev.Log.xlsx for calling parameters
+	.其它任务，全局搜索 Function，搜索条件：Other_Tasks_*，需要调用参数请参阅 Dev.Log.xlsx
+#>
+<#
+	.TPM 2.0 检查
+#>
+Function Other_Tasks_TPM
+{
+	Write-Host "   Other_Tasks_TPM" -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
+
+	if (Image_Is_Select_IAB) {
+		if (Verify_Is_Current_Same) {
+			$Local_Regedit_File_System = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\Windows\System32\Config\SYSTEM"
+
+			Write-Host "   $($lang.SelFile)"
+			Write-Host "   $($Local_Regedit_File_System)" -ForegroundColor Green
+			if (Test-Path -Path $Local_Regedit_File_System -PathType Leaf) {
+				$RandomGuid = [guid]::NewGuid()
+
+				Write-Host "`n   $($lang.Select_Path): " -NoNewline
+				Write-Host "HKLM:\$($RandomGuid)" -ForegroundColor Yellow
+
+				New-PSDrive -PSProvider Registry -Name OtherTasksTPM -Root HKLM -ErrorAction SilentlyContinue | Out-Null
+
+				Start-Process reg -ArgumentList "Load ""HKLM\$($RandomGuid)"" ""$($Local_Regedit_File_System)""" -Wait -WindowStyle Hidden -ErrorAction SilentlyContinue
+
+				if (Test-Path -Path "HKLM:\$($RandomGuid)" -PathType Container) {
+					if((Test-Path -LiteralPath "HKLM:\$($RandomGuid)\Setup\LabConfig") -ne $true) {
+						New-Item "HKLM:\$($RandomGuid)\Setup\LabConfig" -force -ErrorAction SilentlyContinue | Out-Null
+					}
+
+					New-ItemProperty -LiteralPath "HKLM:\$($RandomGuid)\Setup\LabConfig" -Name "BypassCPUCheck" -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
+					New-ItemProperty -LiteralPath "HKLM:\$($RandomGuid)\Setup\LabConfig" -Name "BypassStorageCheck" -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
+					New-ItemProperty -LiteralPath "HKLM:\$($RandomGuid)\Setup\LabConfig" -Name "BypassRAMCheck" -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
+					New-ItemProperty -LiteralPath "HKLM:\$($RandomGuid)\Setup\LabConfig" -Name "BypassTPMCheck" -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
+					New-ItemProperty -LiteralPath "HKLM:\$($RandomGuid)\Setup\LabConfig" -Name "BypassSecureBootCheck" -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
+
+					[gc]::collect()
+
+					Start-Process reg -ArgumentList "unload ""HKLM\$($RandomGuid)""" -Wait -WindowStyle Hidden -ErrorAction SilentlyContinue
+
+					if (Test-Path -Path "HKLM:\$($RandomGuid)" -PathType Container) {
+						for ($i = 0; $i -lt 5; $i++) {
+							Start-Process reg -ArgumentList "unload ""HKLM\$($RandomGuid)""" -Wait -WindowStyle Hidden -ErrorAction SilentlyContinue
+							Start-Sleep -Seconds 5
+						}
+					}
+
+					Remove-PSDrive -Name OtherTasksTPM
+					Write-Host "   $($lang.Done)" -ForegroundColor Green
+				} else {
+					Write-Host "   $($lang.AddTo), $($lang.Failed)" -ForegroundColor Red
+				}
+			} else {
+				Write-Host "`n   $($lang.NoInstallImage)"
+				Write-Host "   $($Local_Regedit_File_System)" -ForegroundColor Red
+			}
+		} else {
+			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+		}
+	} else {
+		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+	}
+}
+
+<#
+	.修改 boot.wim 支持安装于 REFS 分区
+#>
+Function Other_Tasks_REFS
+{
+	Write-Host "   Other_Tasks_REFS" -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
+
+	if (Image_Is_Select_IAB) {
+		if (Verify_Is_Current_Same) {
+			$Local_Regedit_File_System = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\Windows\System32\Config\SYSTEM"
+
+			Write-Host "   $($lang.SelFile)"
+			Write-Host "   $($Local_Regedit_File_System)" -ForegroundColor Green
+			if (Test-Path -Path $Local_Regedit_File_System -PathType Leaf) {
+				$RandomGuid = [guid]::NewGuid()
+
+				Write-Host "`n   $($lang.Select_Path): " -NoNewline
+				Write-Host "HKLM:\$($RandomGuid)" -ForegroundColor Yellow
+
+				New-PSDrive -PSProvider Registry -Name OtherTasksREFS -Root HKLM -ErrorAction SilentlyContinue | Out-Null
+
+				Start-Process reg -ArgumentList "Load ""HKLM\$($RandomGuid)"" ""$($Local_Regedit_File_System)""" -Wait -WindowStyle Hidden -ErrorAction SilentlyContinue
+
+				if (Test-Path -Path "HKLM:\$($RandomGuid)" -PathType Container) {
+					if((Test-Path -LiteralPath "HKLM:\$($RandomGuid)\ControlSet001\Control\FeatureManagement\Overrides\8\3689412748") -ne $true) {
+						New-Item "HKLM:\$($RandomGuid)\ControlSet001\Control\FeatureManagement\Overrides\8\3689412748" -force -ErrorAction SilentlyContinue | Out-Null
+					}
+
+					New-ItemProperty -LiteralPath "HKLM:\$($RandomGuid)\ControlSet001\Control\FeatureManagement\Overrides\8\3689412748" -Name 'EnabledState' -Value 2 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
+					New-ItemProperty -LiteralPath "HKLM:\$($RandomGuid)\ControlSet001\Control\FeatureManagement\Overrides\8\3689412748" -Name 'EnabledStateOptions' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
+					New-ItemProperty -LiteralPath "HKLM:\$($RandomGuid)\ControlSet001\Control\FeatureManagement\Overrides\8\3689412748" -Name 'Variant' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
+					New-ItemProperty -LiteralPath "HKLM:\$($RandomGuid)\ControlSet001\Control\FeatureManagement\Overrides\8\3689412748" -Name 'VariantPayload' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
+					New-ItemProperty -LiteralPath "HKLM:\$($RandomGuid)\ControlSet001\Control\FeatureManagement\Overrides\8\3689412748" -Name 'VariantPayloadKind' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
+
+					[gc]::collect()
+
+					Start-Process reg -ArgumentList "unload ""HKLM\$($RandomGuid)""" -Wait -WindowStyle Hidden -ErrorAction SilentlyContinue
+
+					if (Test-Path -Path "HKLM:\$($RandomGuid)" -PathType Container) {
+						for ($i = 0; $i -lt 5; $i++) {
+							Start-Process reg -ArgumentList "unload ""HKLM\$($RandomGuid)""" -Wait -WindowStyle Hidden -ErrorAction SilentlyContinue
+							Start-Sleep -Seconds 5
+						}
+					}
+
+					Remove-PSDrive -Name OtherTasksREFS
+					Write-Host "   $($lang.Done)" -ForegroundColor Green
+				} else {
+					Write-Host "   $($lang.AddTo), $($lang.Failed)" -ForegroundColor Red
+				}
+			} else {
+				Write-Host "`n   $($lang.NoInstallImage)"
+				Write-Host "   $($Local_Regedit_File_System)" -ForegroundColor Red
+			}
+		} else {
+			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+		}
+	} else {
+		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+	}
+}
+
+<#
+	.Force format drive letter: volume name
+	.强行格式化盘符：卷标名
+
+	 F = Format Disk
+	 R = Ramdism
+#>
+Function Other_Tasks_RAMDISK
+{
+	param
+	(
+		[switch]$Verify,
+		[Switch]$Silent
+	)
+
+	Write-Host "   Other_Tasks_RAMDISK, Format Disk Ramdisk Volume" -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
+
+	<#
+		.获取 RAMDISK 卷标名
+	#>
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -Name "RAMDisk_Volume_Label" -ErrorAction SilentlyContinue) {
+		$GetRegRAMDISKVolumeLabel = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -Name "RAMDisk_Volume_Label" -ErrorAction SilentlyContinue
+
+		Get-CimInstance -ClassName Win32_Volume -ErrorAction SilentlyContinue | Where-Object { -not ([string]::IsNullOrEmpty($_.DriveLetter) -or [string]::IsNullOrWhiteSpace($_.DriveLetter))} | ForEach-Object {
+			if ($_.Label -eq $GetRegRAMDISKVolumeLabel) {
+				$SearchNewLicense = $_.DriveLetter.Replace(":", "")
+
+				Write-Host "   $($lang.Select_Path): " -NoNewline
+				Write-Host $_.DriveLetter -ForegroundColor Green
+
+				Write-Host "   $($lang.AutoSelectRAMDISK): " -NoNewline
+				Write-host $_.Label -ForegroundColor Green
+
+				Invoke-Expression -Command "Format-Volume -DriveLetter $($SearchNewLicense) -NewFileSystemLabel $($GetRegRAMDISKVolumeLabel)"
+				Write-Host "   $($lang.Done)" -ForegroundColor Green
+			}
+		}
+	} else {
+		Write-Host "   $($lang.UpdateUnavailable)" -ForegroundColor Red
+	}
+}
+
+<#
+	.暂停
+#>
+Function Other_Tasks_Pause
+{
+	Write-Host "   Other_Tasks_Pause" -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
+
+	Get_Next
+	Write-Host "   $($lang.Done)" -ForegroundColor Green
+	Write-Host
+}

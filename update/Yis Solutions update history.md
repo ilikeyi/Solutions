@@ -2,6 +2,25 @@ Yi's Solutions update history
 
 <br>
 <br>
+Release Date: 12/08/2024
+Version: 1.0.0.7
+<br>
+-------------------------------------------
+<br>
+New shortcut commands and dynamic UI * New
+
+<br>
+<br>
+Release Date: 11/28/2024
+Version: 1.0.0.7
+<br>
+-------------------------------------------
+<br>
+Eliminate outdated and build new deployment engine: Yi's Suite * New
+Fix template creation failure * Fix\n   - Error when adding other directories to R:\\ * Fix
+
+<br>
+<br>
 Release Date: 11/18/2024
 Version: 1.0.0.6
 <br>
