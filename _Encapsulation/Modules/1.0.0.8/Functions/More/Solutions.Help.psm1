@@ -22,7 +22,7 @@ Function Solutions_Help
 		Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-host " " -NoNewline
 		Write-Host "         $($lang.Event_Primary_Key), $($lang.Command), $($lang.Help) " -NoNewline -ForegroundColor Yellow
-		Write-Host " H Sel " -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host " Help Sel " -BackgroundColor DarkMagenta -ForegroundColor White
 	}
 
 	if ($Full) {
@@ -32,7 +32,7 @@ Function Solutions_Help
 		Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-host " " -NoNewline
 		Write-Host "        $($lang.ViewWIMFileInfo), $($lang.Command), $($lang.Help) " -NoNewline -ForegroundColor Yellow
-		Write-Host " H View " -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host " Help View " -BackgroundColor DarkMagenta -ForegroundColor White
 	}
 
 	if ($Full) {
@@ -198,7 +198,7 @@ Function Solutions_Help_Command
 		}
 		"Sel" {
 			Write-host "   " -NoNewline
-			Write-Host " H Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " Help Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host "  $($lang.Setting): $($lang.Event_Primary_Key)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			ForEach ($item in $Global:Image_Rule) {
@@ -241,7 +241,7 @@ Function Solutions_Help_Command
 		}
 		"View" {
 			Write-host "   " -NoNewline
-			Write-Host " H View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " Help View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host "  $($lang.ViewWIMFileInfo)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			ForEach ($item in $Global:Image_Rule) {

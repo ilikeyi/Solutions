@@ -136,7 +136,7 @@ Function Feature_More
 		<#
 			.帮助
 		#>
-		{ "H", "Help" -eq $_ } {
+		{ "H", "Help", "H'elp" -eq $_ } {
 			Solutions_Help
 			Get_Next
 			ToWait -wait 2
@@ -168,6 +168,11 @@ Function Feature_More
 
 			Image_Primary_Key_Shortcuts_File_View -Name $PSItem.Remove(0, 5).Replace(' ', '')
 			ToWait -wait 2
+			Feature_More
+		}
+
+		"open" {
+			Solutions_Help_Command -Name "Open" -Pause
 			Feature_More
 		}
 		"open *" {
@@ -495,6 +500,7 @@ Function Solutions_Open_Command
 	)
 
 	if ($Help) {
+		Write-Host
 		Write-host "   " -NoNewline
 		Write-Host " Help Open " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-Host "  $($lang.OpenFolder)" -ForegroundColor Yellow
@@ -560,7 +566,7 @@ Function Solutions_Open_Command
 	}
 
 	Write-Host "`n   $($lang.Command): " -NoNewline
-	Write-host "lang $($Name)" -ForegroundColor Green
+	Write-host "Open $($Name)" -ForegroundColor Green
 	Write-Host "   $('-' * 80)"
 
 	Write-Host "`n   $($lang.OpenFolder) *" -ForegroundColor Yellow

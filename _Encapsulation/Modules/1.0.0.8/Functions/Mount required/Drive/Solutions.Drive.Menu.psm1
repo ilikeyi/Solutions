@@ -191,6 +191,10 @@ Function Drive_Menu
 			Drive_Menu
 		}
 
+		"open" {
+			Solutions_Help_Command -Name "Open" -Pause
+			Drive_Menu
+		}
 		"open *" {
 			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
@@ -218,7 +222,7 @@ Function Drive_Menu
 		<#
 			.帮助
 		#>
-		{ "H", "Help" -eq $_ } {
+		{ "H", "Help", "H'elp" -eq $_ } {
 			Solutions_Help
 			Get_Next
 			ToWait -wait 2

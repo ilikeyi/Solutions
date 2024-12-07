@@ -1383,6 +1383,10 @@ Function Mainpage
 			Mainpage
 		}
 
+		"open" {
+			Solutions_Help_Command -Name "Open" -Pause
+			Mainpage
+		}
 		"open *" {
 			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
@@ -1410,7 +1414,7 @@ Function Mainpage
 		<#
 			.帮助
 		#>
-		{ "H", "Help" -eq $_ } {
+		{ "H", "Help", "H'elp" -eq $_ } {
 			Solutions_Help
 			Get_Next
 			ToWait -wait 2
