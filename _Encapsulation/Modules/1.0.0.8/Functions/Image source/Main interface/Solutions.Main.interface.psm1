@@ -7713,10 +7713,11 @@ Function Image_Select
 		}
 	}
 
-	$OKGoToNew = [Collections.ArrayList]@(
+	$GotoNew = [Collections.ArrayList]@(
 		[pscustomobject]@{ Path = @("");                                      Lang = $lang.Ok_Go_To_No; }
 		[pscustomobject]@{ Path = @("Event_Assign_Task_Customize_Autopilot"); Lang = $lang.Autopilot; }
 		[pscustomobject]@{ Path = @("Event_Assign_Task_Customize");           Lang = $lang.OnDemandPlanTask; }
+		[pscustomobject]@{ Path = @("Image_Select_Mount_Shortcuts");          Lang = "$($lang.Mounted_Status): $($lang.Mount)"; }
 		[pscustomobject]@{ Path = @("Image_Eject_Save_Current");              Lang = "$($lang.Mounted_Status): $($lang.Save)"; }
 		[pscustomobject]@{ Path = @("Image_Eject_Dont_Save_Current");         Lang = "$($lang.Mounted_Status): $($lang.Unmount)"; }
 		[pscustomobject]@{ Path = @("Eject_Forcibly_All -Save -DontSave");    Lang = "$($lang.Image_Unmount_After): $($lang.Save)"; }
@@ -7728,7 +7729,7 @@ Function Image_Select
 	)
 
 	$UI_Main_To.BindingContext = New-Object System.Windows.Forms.BindingContext
-	$UI_Main_To.Datasource = $OKGoToNew
+	$UI_Main_To.Datasource = $GotoNew
 	$UI_Main_To.ValueMember = "Path"
 	$UI_Main_To.DisplayMember = "Lang"
 

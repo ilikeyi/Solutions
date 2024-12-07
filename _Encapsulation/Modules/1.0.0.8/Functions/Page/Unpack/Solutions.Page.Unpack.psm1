@@ -22,21 +22,21 @@ $UnPackName = "$((Get-Module -Name Solutions).Author)Solutions.$(Get-Date -Forma
   .Save the compressed package to
   .压缩包保存到
 #>
-$UnPackSaveTo = "$(Convert-Path "$($PSScriptRoot)\..\..\..\..\..\.." -ErrorAction SilentlyContinue)\_Backup"
+$UnPackSaveTo = "$(Convert-Path "$($PSScriptRoot)\..\..\..\..\..\.." -ErrorAction SilentlyContinue)\_Unpack"
 
 <#
 	.Archive temporary directory
 	.压缩包临时目录
 #>
 $RandomFolderGuid = [guid]::NewGuid()
-$TempFolderUnPack = "$(Convert-Path "$($PSScriptRoot)\..\..\..\..\..\.." -ErrorAction SilentlyContinue)\_Backup\$($RandomFolderGuid)"
+$TempFolderUnPack = "$(Convert-Path "$($PSScriptRoot)\..\..\..\..\..\.." -ErrorAction SilentlyContinue)\_Unpack\$($RandomFolderGuid)"
 
 <#
 	.Exclude files or directories from the compressed package
 	.从压缩包中排除文件或目录
 #>
 $ArchiveExcludeUnPack = @(
-	"-xr-!_Backup"
+	"-xr-!_Unpack"
 	"-xr-!_Encapsulation\Logs"
 	"-xr-!_Encapsulation\_Custom\Engine\LXPs\Logs"
 	"-xr-!_Encapsulation\_Custom\Engine\LXPs\Download"

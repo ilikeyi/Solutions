@@ -162,7 +162,7 @@ Function Update_Create_UI
 		Location       = "8,635"
 		Text           = $lang.OK
 		add_Click      = {
-			$NewConfig = Join-Path -Path $(Convert-Path -Path "$($PSScriptRoot)\..\..\..\..\..") -ChildPath "_Backup\update"
+			$NewConfig = Join-Path -Path $(Convert-Path -Path "$($PSScriptRoot)\..\..\..\..\..") -ChildPath "_Unpack\update"
 
 			$MarkNewRunAction = "-Silent"
 

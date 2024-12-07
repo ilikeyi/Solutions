@@ -1,5 +1,5 @@
 ﻿@{
-	RootModule        = 'Solutions.Page.Encapsulation.psm1'
+	RootModule        = 'Solutions.Main.Menu.psm1'
 	ModuleVersion     = '1.0.0.0'
 	GUID              = '35ebe005-d437-4b5c-bbc8-2dc440f613ff'
 	Author            = 'Yi'

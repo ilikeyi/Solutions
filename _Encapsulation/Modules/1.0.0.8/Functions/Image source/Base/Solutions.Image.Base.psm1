@@ -483,6 +483,25 @@ function Get-RandomHexNumber
 	return $result
 }
 
+Function Image_Select_Mount_Shortcuts
+{
+	Write-Host "`n   $($lang.Mount)"
+	Write-Host "   $('-' * 80)"
+	if (Image_Is_Select_IAB) {
+		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "   $('-' * 80)"
+
+		if (Verify_Is_Current_Same) {
+			Write-Host "   $($lang.Mounted)" -ForegroundColor Red
+		} else {
+			Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "1026"
+			Image_Select_Index_UI
+		}
+	} else {
+		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+	}
+}
+
 Function Image_Set_Primary_Key_Shortcuts
 {
 	param
