@@ -437,7 +437,7 @@ Function Update_And_Download
 				Write-Host "   $($lang.UpdateNotExecuted)"
 			} else {
 				Write-host "   $($lang.AddTo)".PadRight(22) -NoNewline -ForegroundColor Green
-				Save_Dynamic -regkey "LXPs" -name "IsUpdate_Clean" -value $SaveOldVersion -String
+				Save_Dynamic -regkey "LXPs\Update" -name "IsUpdate_Clean" -value $SaveOldVersion -String
 				Write-host $lang.Done
 			}
 		} else {
