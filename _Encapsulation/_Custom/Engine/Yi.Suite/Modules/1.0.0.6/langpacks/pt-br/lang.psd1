@@ -47,6 +47,7 @@
 	PleaseChoose              = Selecione
 	PleaseChooseMain          = Atalho ou seleção
 	FailedCreateFolder        = Falha ao criar diretório
+	Failed                    = Falhar
 	ToMsg                     = \n   {0} Retorne automaticamente ao menu principal após segundos.
 	ToQuit                    = \n   {0} Saia do menu principal após segundos.
 	Restart                   = A reinicialização entra em vigor

@@ -47,6 +47,7 @@
 	PleaseChoose              = Vælg venligst
 	PleaseChooseMain          = Genvej eller valg
 	FailedCreateFolder        = Kunne ikke oprette mappe
+	Failed                    = Svigte
 	ToMsg                     = \n   {0} Vend automatisk tilbage til hovedmenuen efter sekunder.
 	ToQuit                    = \n   {0} Afslut hovedmenuen efter sekunder.
 	Restart                   = Genstart træder i kraft

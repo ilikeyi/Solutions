@@ -47,6 +47,7 @@
 	PleaseChoose              = Veuillez sélectionner
 	PleaseChooseMain          = Raccourci ou sélection
 	FailedCreateFolder        = Échec de la création du répertoire
+	Failed                    = Échouer
 	ToMsg                     = \n   {0} Retour automatique au menu principal après quelques secondes.
 	ToQuit                    = \n   {0} Quittez le menu principal après quelques secondes.
 	Restart                   = Le redémarrage prend effet

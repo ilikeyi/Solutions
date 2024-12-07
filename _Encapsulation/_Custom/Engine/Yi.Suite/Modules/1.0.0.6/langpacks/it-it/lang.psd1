@@ -47,6 +47,7 @@
 	PleaseChoose              = Seleziona
 	PleaseChooseMain          = Collegamento o selezione
 	FailedCreateFolder        = Impossibile creare la directory
+	Failed                    = Fallire
 	ToMsg                     = \n   {0} Ritorna automaticamente al menu principale dopo secondi.
 	ToQuit                    = \n   {0} Uscire dal menu principale dopo secondi.
 	Restart                   = Il riavvio ha effetto

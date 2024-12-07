@@ -47,6 +47,7 @@
 	PleaseChoose              = Prašome pasirinkti
 	PleaseChooseMain          = Spartusis klavišas arba pasirinkimas
 	FailedCreateFolder        = Nepavyko sukurti katalogo
+	Failed                    = Nepavyks
 	ToMsg                     = \n   {0} Po sekundžių automatiškai grįžkite į pagrindinį meniu.
 	ToQuit                    = \n   {0} Po kelių sekundžių išeikite iš pagrindinio meniu.
 	Restart                   = Paleidimas iš naujo įsigalios

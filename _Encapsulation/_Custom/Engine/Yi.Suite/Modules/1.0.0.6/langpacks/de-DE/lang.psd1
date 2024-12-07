@@ -47,6 +47,7 @@
 	PleaseChoose              = Bitte wählen
 	PleaseChooseMain          = Verknüpfung oder Auswahl
 	FailedCreateFolder        = Fehler beim Erstellen des Verzeichnisses
+	Failed                    = scheitern
 	ToMsg                     = \n   Nach {0} Sekunden automatisch zum Hauptmenü zurückkehren.
 	ToQuit                    = \n   Beendet das Hauptmenü in {0} Sekunden.
 	Restart                   = Neustart, um wirksam zu werden

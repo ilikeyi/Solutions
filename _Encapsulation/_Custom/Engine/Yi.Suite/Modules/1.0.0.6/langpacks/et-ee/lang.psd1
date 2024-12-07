@@ -47,6 +47,7 @@
 	PleaseChoose              = Palun valige
 	PleaseChooseMain          = Otsetee või valik
 	FailedCreateFolder        = Kataloogi loomine ebaõnnestus
+	Failed                    = Ebaõnnestuda
 	ToMsg                     = \n   {0} Naaske sekundite pärast automaatselt peamenüüsse.
 	ToQuit                    = \n   {0} Väljuge peamenüüst mõne sekundi pärast.
 	Restart                   = Taaskäivitamine jõustub

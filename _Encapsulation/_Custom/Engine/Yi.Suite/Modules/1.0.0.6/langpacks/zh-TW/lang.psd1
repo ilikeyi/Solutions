@@ -47,6 +47,7 @@
 	PleaseChoose              = 請選擇
 	PleaseChooseMain          = 快速指令或選擇
 	FailedCreateFolder        = 創建目錄失敗
+	Failed                    = 失敗
 	ToMsg                     = \n   {0} 秒後自動返回到主菜單。
 	ToQuit                    = \n   {0} 秒後退出主菜單。
 	Restart                   = 重啟生效

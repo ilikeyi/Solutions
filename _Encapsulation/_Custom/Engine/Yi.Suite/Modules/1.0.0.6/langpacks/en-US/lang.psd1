@@ -47,6 +47,7 @@
 	PleaseChoose              = Please select
 	PleaseChooseMain          = shortcuts or options
 	FailedCreateFolder        = Failed to create directory
+	Failed                    = Failed
 	ToMsg                     = \n   Automatically return to the main menu after {0} seconds.
 	ToQuit                    = \n   Exit the main menu in {0} seconds.
 	Restart                   = Restart to take effect

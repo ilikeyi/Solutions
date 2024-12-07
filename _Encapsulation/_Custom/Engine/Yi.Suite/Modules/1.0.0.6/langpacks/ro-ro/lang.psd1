@@ -47,6 +47,7 @@
 	PleaseChoose              = Vă rugăm să selectați
 	PleaseChooseMain          = Comandă rapidă sau selecție
 	FailedCreateFolder        = Nu s-a putut crea directorul
+	Failed                    = Eșuează
 	ToMsg                     = \n   {0} Reveniți automat la meniul principal după câteva secunde.
 	ToQuit                    = \n   {0} Ieșiți din meniul principal după câteva secunde.
 	Restart                   = Repornirea are efect

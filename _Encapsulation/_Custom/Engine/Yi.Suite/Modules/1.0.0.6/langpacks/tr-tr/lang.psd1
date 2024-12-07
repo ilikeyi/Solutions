@@ -47,6 +47,7 @@
 	PleaseChoose              = Lütfen seçin
 	PleaseChooseMain          = Kısayol veya seçim
 	FailedCreateFolder        = Dizin oluşturulamadı
+	Failed                    = Hata
 	ToMsg                     = \n   {0} Saniyeler sonra otomatik olarak ana menüye dönün.
 	ToQuit                    = \n   {0} Saniyeler sonra ana menüden çıkın.
 	Restart                   = Yeniden başlatma etkili olur

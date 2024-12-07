@@ -47,6 +47,7 @@
 	PleaseChoose              = Kérem válasszon
 	PleaseChooseMain          = Parancsikon vagy kijelölés
 	FailedCreateFolder        = Nem sikerült létrehozni a könyvtárat
+	Failed                    = Uspjeti
 	ToMsg                     = \n   {0} Másodpercek után automatikusan visszatér a főmenübe.
 	ToQuit                    = \n   {0} Másodpercek után lépjen ki a főmenüből.
 	Restart                   = Az újraindítás életbe lép

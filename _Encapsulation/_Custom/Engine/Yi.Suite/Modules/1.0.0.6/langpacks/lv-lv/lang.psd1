@@ -47,6 +47,7 @@
 	PleaseChoose              = Lūdzu, atlasiet
 	PleaseChooseMain          = Īsceļš vai atlase
 	FailedCreateFolder        = Neizdevās izveidot direktoriju
+	Failed                    = Neizdoties
 	ToMsg                     = \n   {0} Pēc sekundēm automātiski atgriezieties galvenajā izvēlnē.
 	ToQuit                    = \n   {0} Pēc dažām sekundēm izejiet no galvenās izvēlnes.
 	Restart                   = Restartēšana stājas spēkā

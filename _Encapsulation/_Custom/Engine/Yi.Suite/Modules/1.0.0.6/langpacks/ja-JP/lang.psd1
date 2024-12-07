@@ -47,6 +47,7 @@
 	PleaseChoose              = 選択してください
 	PleaseChooseMain          = ショートカット コマンドまたは選択
 	FailedCreateFolder        = ディレクトリの作成に失敗しました
+	Failed                    = 失敗
 	ToMsg                     = \n   {0} 秒後に自動的にメインメニューに戻ります。
 	ToQuit                    = \n   {0} 秒でメインメニューを終了します。
 	Restart                   = 再起動して有効にします

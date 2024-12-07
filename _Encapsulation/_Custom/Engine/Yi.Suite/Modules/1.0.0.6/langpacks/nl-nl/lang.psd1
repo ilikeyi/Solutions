@@ -47,6 +47,7 @@
 	PleaseChoose              = Selecteer alstublieft
 	PleaseChooseMain          = Snelkoppeling of selectie
 	FailedCreateFolder        = Kan map niet maken
+	Failed                    = Mislukking
 	ToMsg                     = \n   {0} Keer na enkele seconden automatisch terug naar het hoofdmenu.
 	ToQuit                    = \n   {0} Verlaat het hoofdmenu na enkele seconden.
 	Restart                   = De herstart wordt van kracht

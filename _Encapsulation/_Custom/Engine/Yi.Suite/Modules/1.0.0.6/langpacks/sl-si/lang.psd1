@@ -47,6 +47,7 @@
 	PleaseChoose              = Prosim izberite
 	PleaseChooseMain          = Bližnjica ali izbor
 	FailedCreateFolder        = Imenika ni bilo mogoče ustvariti
+	Failed                    = Spodleteti
 	ToMsg                     = \n   {0} Samodejna vrnitev v glavni meni po nekaj sekundah.
 	ToQuit                    = \n   {0} Po nekaj sekundah zapustite glavni meni.
 	Restart                   = Ponovni zagon stopi v veljavo

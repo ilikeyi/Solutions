@@ -47,6 +47,7 @@
 	PleaseChoose              = Odaberite
 	PleaseChooseMain          = Prečac ili odabir
 	FailedCreateFolder        = Nije uspjelo stvaranje imenika
+	Failed                    = Uspjeti
 	ToMsg                     = \n   {0} Automatski povratak na glavni izbornik nakon nekoliko sekundi.
 	ToQuit                    = \n   {0} Izađite iz glavnog izbornika nakon nekoliko sekundi.
 	Restart                   = Ponovno pokretanje stupa na snagu

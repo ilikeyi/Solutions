@@ -47,6 +47,7 @@
 	PleaseChoose              = Vennligst velg
 	PleaseChooseMain          = Snarvei eller valg
 	FailedCreateFolder        = Kunne ikke opprette katalog
+	Failed                    = Mislykkes
 	ToMsg                     = \n   {0} Gå automatisk tilbake til hovedmenyen etter sekunder.
 	ToQuit                    = \n   {0} Gå ut av hovedmenyen etter sekunder.
 	Restart                   = Omstart trer i kraft

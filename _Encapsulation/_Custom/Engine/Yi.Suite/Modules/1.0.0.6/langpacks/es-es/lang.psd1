@@ -47,6 +47,7 @@
 	PleaseChoose              = Por favor seleccione
 	PleaseChooseMain          = Acceso directo o selección
 	FailedCreateFolder        = No se pudo crear el directorio
+	Failed                    = Fallar
 	ToMsg                     = \n   {0} Regresa automáticamente al menú principal después de unos segundos.
 	ToQuit                    = \n   {0} Salga del menú principal después de unos segundos.
 	Restart                   = El reinicio tiene efecto

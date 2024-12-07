@@ -47,6 +47,7 @@
 	PleaseChoose              = 선택해주세요
 	PleaseChooseMain          = 바로가기 또는 옵션
 	FailedCreateFolder        = 디렉토리 생성 실패
+	Failed                    = 실패했습니다
 	ToMsg                     = \n   {0} 초 후에 자동으로 메인 메뉴로 돌아갑니다.
 	ToQuit                    = \n   {0} 초 후에 주 메뉴를 종료합니다.
 	Restart                   = 다시 시작하여 적용

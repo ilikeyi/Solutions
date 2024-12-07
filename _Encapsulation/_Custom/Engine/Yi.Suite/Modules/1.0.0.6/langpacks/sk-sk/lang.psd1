@@ -47,6 +47,7 @@
 	PleaseChoose              = Vyberte
 	PleaseChooseMain          = Skratka alebo výber
 	FailedCreateFolder        = Nepodarilo sa vytvoriť adresár
+	Failed                    = Zlyhať
 	ToMsg                     = \n   {0} Po niekoľkých sekundách sa automaticky vráti do hlavnej ponuky.
 	ToQuit                    = \n   {0} Opustite hlavnú ponuku po sekundách.
 	Restart                   = Reštart sa prejaví

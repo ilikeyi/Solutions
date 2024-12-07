@@ -47,6 +47,7 @@
 	PleaseChoose              = Vänligen välj
 	PleaseChooseMain          = Genväg eller val
 	FailedCreateFolder        = Det gick inte att skapa katalogen
+	Failed                    = Misslyckas
 	ToMsg                     = \n   {0} Återgå automatiskt till huvudmenyn efter några sekunder.
 	ToQuit                    = \n   {0} Stäng huvudmenyn efter sekunder.
 	Restart                   = Omstart träder i kraft
