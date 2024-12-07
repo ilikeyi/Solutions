@@ -34,12 +34,16 @@ Function Feature_More
 
 	Write-Host
 	Solutions_Help_Command -Name "Sel" -Silent -NoShowFile
+	
+	Write-Host
 	Solutions_Help_Command -Name "View" -Silent -IsVerify
+	
+	Write-Host
 	Solutions_Open_Command -Help -Silent
 
 	Write-Host
 	Write-Host "   " -NoNewline
-	Write-Host " H * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " H'elp * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " " -NoNewline
 	switch -Wildcard (Read-Host $lang.PleaseChooseMain)
@@ -138,9 +142,8 @@ Function Feature_More
 			ToWait -wait 2
 			Feature_More
 		}
-		"h" {
+		{ "H", "Help" -eq $_ } {
 			Solutions_Help
-
 			Get_Next
 			ToWait -wait 2
 			Feature_More
@@ -149,6 +152,13 @@ Function Feature_More
 			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
 			Solutions_Help_Command -Name $PSItem.Remove(0, 2).Replace(' ', '') -Pause
+			ToWait -wait 2
+			Feature_More
+		}
+		"help *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Solutions_Help_Command -Name $PSItem.Remove(0, 5).Replace(' ', '') -Pause
 			ToWait -wait 2
 			Feature_More
 		}
@@ -491,19 +501,21 @@ Function Solutions_Open_Command
 	)
 
 	if ($Help) {
-		Write-Host "`n   $($lang.OpenFolder)" -ForegroundColor Yellow
+		Write-host "   " -NoNewline
+		Write-Host " Help Open " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host "  $($lang.OpenFolder)" -ForegroundColor Yellow
 		Write-Host "   $('-' * 80)"
 		$SaveToLogsPath = "$($Global:LogsSaveFolder)\$($Global:LogSaveTo)"
 
 		Write-host "   " -NoNewline
 		if (Test-Path -Path $SaveToLogsPath -PathType Container) {
 			Write-Host " Open Log " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-			Write-Host "   $($lang.Logging)" -ForegroundColor Green
+			Write-Host "   $($lang.Logging)" -ForegroundColor Yellow
 			Write-Host "   $($lang.Select_Path): " -NoNewline
 			Write-Host $SaveToLogsPath -ForegroundColor Green
 		} else {
 			Write-Host " Open Log " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
-			Write-Host "   $($lang.Logging)" -ForegroundColor Red
+			Write-Host "   $($lang.Logging)" -ForegroundColor Yellow
 			Write-Host "   $($lang.Select_Path): " -NoNewline
 			Write-Host $SaveToLogsPath -ForegroundColor Red
 		}
@@ -512,12 +524,12 @@ Function Solutions_Open_Command
 		Write-host "   " -NoNewline
 		if (Test-Path -Path $Global:Image_source -PathType Container) {
 			Write-Host " Open MN " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-			Write-Host "    $($lang.MainImageFolder)" -ForegroundColor Green
+			Write-Host "    $($lang.MainImageFolder)" -ForegroundColor Yellow
 			Write-Host "   $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Image_source -ForegroundColor Green
 		} else {
 			Write-Host " Open MN " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
-			Write-Host "    $($lang.MainImageFolder)" -ForegroundColor Red
+			Write-Host "    $($lang.MainImageFolder)" -ForegroundColor Yellow
 			Write-Host "   $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Image_source -ForegroundColor Red
 		}
@@ -526,12 +538,12 @@ Function Solutions_Open_Command
 		Write-host "   " -NoNewline
 		if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
 			Write-Host " Open RT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-			Write-Host "    $($lang.MountImageTo), $($lang.MainImageFolder)" -ForegroundColor Green
+			Write-Host "    $($lang.MountImageTo), $($lang.MainImageFolder)" -ForegroundColor Yellow
 			Write-Host "   $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Mount_To_Route -ForegroundColor Green
 		} else {
 			Write-Host " Open RT " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
-			Write-Host "    $($lang.MountImageTo), $($lang.MainImageFolder)" -ForegroundColor Red
+			Write-Host "    $($lang.MountImageTo), $($lang.MainImageFolder)" -ForegroundColor Yellow
 			Write-Host "   $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Mount_To_Route -ForegroundColor Red
 		}
@@ -540,12 +552,12 @@ Function Solutions_Open_Command
 		Write-host "   " -NoNewline
 		if (Test-Path -Path $Global:Mount_To_RouteTemp -PathType Container) {
 			Write-Host " Open Temp " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-			Write-Host "  $($lang.SettingImageTempFolder)" -ForegroundColor Green
+			Write-Host "  $($lang.SettingImageTempFolder)" -ForegroundColor Yellow
 			Write-Host "   $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Mount_To_RouteTemp -ForegroundColor Green
 		} else {
 			Write-Host " Open Temp " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
-			Write-Host "  $($lang.SettingImageTempFolder)" -ForegroundColor Red
+			Write-Host "  $($lang.SettingImageTempFolder)" -ForegroundColor Yellow
 			Write-Host "   $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Mount_To_RouteTemp -ForegroundColor Red
 		}

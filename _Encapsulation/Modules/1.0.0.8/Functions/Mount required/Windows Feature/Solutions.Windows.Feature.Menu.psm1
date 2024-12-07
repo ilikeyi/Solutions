@@ -12,22 +12,22 @@ Function Feature_Menu
 		Write-host "   " -NoNewline
 		if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
 			Write-Host " Open RT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-			Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Green
+			Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Yellow
 			Write-Host $Global:Mount_To_Route -ForegroundColor Green
 		} else {
 			Write-Host " Open RT " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
-			Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Red
+			Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Yellow
 			Write-Host $Global:Mount_To_Route -ForegroundColor Red
 		}
 
 		Write-host "   " -NoNewline
 		if (Test-Path -Path $Global:Image_source -PathType Container) {
 			Write-Host " Open MN " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-			Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Green
+			Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Yellow
 			Write-Host $Global:Image_source -ForegroundColor Green
 		} else {
 			Write-Host " Open MN " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
-			Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Red
+			Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Yellow
 			Write-Host $Global:Image_source -ForegroundColor Red
 
 			Write-Host "   $('-' * 80)"
@@ -61,7 +61,7 @@ Function Feature_Menu
 
 	Write-Host
 	Write-Host "   " -NoNewline
-	Write-Host " H * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " H'elp * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " " -NoNewline
 	switch -Wildcard (Read-Host $lang.PleaseChooseMain)
@@ -110,7 +110,7 @@ Function Feature_Menu
 			ToWait -wait 2
 			Feature_Menu
 		}
-		"h" {
+		{ "H", "Help" -eq $_ } {
 			Solutions_Help
 			Get_Next
 			ToWait -wait 2
@@ -120,6 +120,13 @@ Function Feature_Menu
 			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
 			Solutions_Help_Command -Name $PSItem.Remove(0, 2).Replace(' ', '') -Pause
+			ToWait -wait 2
+			Feature_Menu
+		}
+		"help *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Solutions_Help_Command -Name $PSItem.Remove(0, 5).Replace(' ', '') -Pause
 			ToWait -wait 2
 			Feature_Menu
 		}

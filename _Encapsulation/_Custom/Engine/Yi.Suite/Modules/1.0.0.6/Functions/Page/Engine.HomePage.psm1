@@ -137,18 +137,19 @@ Function Mainpage
 	Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 	Write-Host
-	Write-Host "     " -NoNewline
-	Write-Host " L " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "  $($lang.SwitchLanguage) " -ForegroundColor Green
-
-	Write-Host "     " -NoNewline
-	Write-Host " R " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "  $($lang.RefreshModules) " -ForegroundColor Green
-
-
 	Write-Host
 	Write-Host "   " -NoNewline
-	Write-Host " H " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " lang " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host "   $($lang.SwitchLanguage) " -ForegroundColor Green
+
+	Write-Host "   " -NoNewline
+	Write-Host " R " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host "      $($lang.RefreshModules) " -ForegroundColor Green
+
+	Write-Host
+	Write-Host
+	Write-Host "   " -NoNewline
+	Write-Host " H'elp " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " " -NoNewline
 	switch -Wildcard (Read-Host $lang.PleaseChooseMain)
@@ -233,10 +234,6 @@ Function Mainpage
 		"11" {
 			Instl_Custom_Software
 			ToMainpage -wait 2
-			Mainpage
-		}
-		"l" {
-			Language -Reset
 			Mainpage
 		}
 		"lang" {
@@ -328,7 +325,7 @@ Function Mainpage
 			ToMainpage -wait 2
 			Mainpage
 		}
-		"h" {
+		{ "H", "Help" -eq $_ } {
 			Engine_Help
 			Get_Next
 			ToMainpage -wait 2

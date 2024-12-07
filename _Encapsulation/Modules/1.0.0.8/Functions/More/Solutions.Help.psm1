@@ -18,27 +18,27 @@ Function Solutions_Help
 	if ($Full) {
 		Solutions_Help_Command -Name "Sel" -Silent
 	} else {
-		Write-host "    " -NoNewline
+		Write-host "     " -NoNewline
 		Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-host " " -NoNewline
-		Write-Host " $($lang.Event_Primary_Key), $($lang.Command), $($lang.Help) " -NoNewline -ForegroundColor Yellow
+		Write-Host "         $($lang.Event_Primary_Key), $($lang.Command), $($lang.Help) " -NoNewline -ForegroundColor Yellow
 		Write-Host " H Sel " -BackgroundColor DarkMagenta -ForegroundColor White
 	}
 
 	if ($Full) {
 		Solutions_Help_Command -Name "View" -Silent
 	} else {
-		Write-host "   " -NoNewline
+		Write-host "     " -NoNewline
 		Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-host " " -NoNewline
-		Write-Host " $($lang.ViewWIMFileInfo), $($lang.Command), $($lang.Help) " -NoNewline -ForegroundColor Yellow
+		Write-Host "        $($lang.ViewWIMFileInfo), $($lang.Command), $($lang.Help) " -NoNewline -ForegroundColor Yellow
 		Write-Host " H View " -BackgroundColor DarkMagenta -ForegroundColor White
 	}
 
 	if ($Full) {
 		Solutions_Help_Command -Name "FX" -Silent
 	} else {
-		Write-Host "     FX *".PadRight(20) -NoNewline -ForegroundColor Yellow
+		Write-Host "      FX *".PadRight(20) -NoNewline -ForegroundColor Yellow
 		Write-Host "$($lang.SpecialFunction): $($lang.Function_Unrestricted), $($lang.Short_Cmd)" -NoNewline
 		Write-Host " { FX Pause } { FX List }" -ForegroundColor Green
 	}
@@ -114,13 +114,13 @@ Function Solutions_Help
 	Write-Host
 	Write-Host "   $($lang.Help)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
-	Write-host "   " -NoNewline
+	Write-host "     " -NoNewline
 	Write-Host " HF " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-host "   $($lang.Rule_Show_Full), $($lang.Help)"
+	Write-host "           $($lang.Rule_Show_Full), $($lang.Help)"
 
-	Write-host "   " -NoNewline
-	Write-Host " H * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-host "  $($lang.ShowCommand)"
+	Write-host "     " -NoNewline
+	Write-Host " H'elp * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-host "      $($lang.ShowCommand)"
 }
 
 Function Solutions_Help_Command
@@ -197,7 +197,9 @@ Function Solutions_Help_Command
 			}
 		}
 		"Sel" {
-			Write-Host "   $($lang.Setting): $($lang.Event_Primary_Key)" -ForegroundColor Yellow
+			Write-host "   " -NoNewline
+			Write-Host " H Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host "  $($lang.Setting): $($lang.Event_Primary_Key)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			ForEach ($item in $Global:Image_Rule) {
 				Write-host "   " -NoNewline
@@ -238,7 +240,9 @@ Function Solutions_Help_Command
 			}
 		}
 		"View" {
-			Write-Host "`n   $($lang.ViewWIMFileInfo)" -ForegroundColor Yellow
+			Write-host "   " -NoNewline
+			Write-Host " H View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host "  $($lang.ViewWIMFileInfo)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			ForEach ($item in $Global:Image_Rule) {
 				$TestWIMFile = Join-Path -Path $item.Main.Path -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)"
