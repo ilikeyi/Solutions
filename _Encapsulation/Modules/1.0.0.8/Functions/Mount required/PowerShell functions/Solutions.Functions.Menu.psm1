@@ -118,12 +118,6 @@ Function Functions_Menu
 		<#
 			.帮助
 		#>
-		"hf" {
-			Solutions_Help -Full
-			Get_Next
-			ToWait -wait 2
-			Functions_Menu
-		}
 		{ "H", "Help" -eq $_ } {
 			Solutions_Help
 			Get_Next

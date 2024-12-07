@@ -104,12 +104,6 @@ Function Feature_Menu
 		<#
 			.帮助
 		#>
-		"hf" {
-			Solutions_Help -Full
-			Get_Next
-			ToWait -wait 2
-			Feature_Menu
-		}
 		{ "H", "Help" -eq $_ } {
 			Solutions_Help
 			Get_Next

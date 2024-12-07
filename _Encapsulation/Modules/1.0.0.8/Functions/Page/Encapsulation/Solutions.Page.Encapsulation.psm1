@@ -1410,12 +1410,6 @@ Function Mainpage
 		<#
 			.帮助
 		#>
-		"hf" {
-			Solutions_Help -Full
-			Get_Next
-			ToWait -wait 2
-			Mainpage
-		}
 		{ "H", "Help" -eq $_ } {
 			Solutions_Help
 			Get_Next
@@ -1463,8 +1457,10 @@ Function Mainpage
 
 #			Event_Assign_Task
 
-			$SaveCurrentVersion = (Get-Module -Name Solutions).Version.ToString().Replace('.', '')
-			write-host $SaveCurrentVersion
+
+
+
+
 
 
 

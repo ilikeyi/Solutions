@@ -115,8 +115,8 @@ Function Solutions_Help
 	Write-Host "   $($lang.Help)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 	Write-host "     " -NoNewline
-	Write-Host " HF " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-host "           $($lang.Rule_Show_Full), $($lang.Help)"
+	Write-Host " H'elp All " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-host "    $($lang.Rule_Show_Full), $($lang.Help)"
 
 	Write-host "     " -NoNewline
 	Write-Host " H'elp * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
@@ -315,6 +315,10 @@ Function Solutions_Help_Command
 			if ($Pause) {
 				Get_Next
 			}
+		}
+		"ALL" {
+			Solutions_Help -Full
+			Get_Next
 		}
 		default {
 			Write-Host "   $($lang.NoWork)" -ForegroundColor Red

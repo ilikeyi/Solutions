@@ -136,12 +136,6 @@ Function Feature_More
 		<#
 			.帮助
 		#>
-		"hf" {
-			Solutions_Help -Full
-			Get_Next
-			ToWait -wait 2
-			Feature_More
-		}
 		{ "H", "Help" -eq $_ } {
 			Solutions_Help
 			Get_Next

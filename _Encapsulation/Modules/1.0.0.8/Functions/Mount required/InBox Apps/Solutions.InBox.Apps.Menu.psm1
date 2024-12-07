@@ -343,12 +343,6 @@
 		<#
 			.帮助
 		#>
-		"hf" {
-			Solutions_Help -Full
-			Get_Next
-			ToWait -wait 2
-			InBox_Apps_Menu
-		}
 		{ "H", "Help" -eq $_ } {
 			Solutions_Help
 			Get_Next
