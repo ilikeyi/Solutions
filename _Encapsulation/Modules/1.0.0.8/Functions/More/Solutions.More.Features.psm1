@@ -43,14 +43,14 @@ Function Feature_More
 		Write-Host " 1 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-host " " -NoNewline
 
-		Write-Host " VW BW " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host " View BW " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 		Write-Host " Boot.wim " -BackgroundColor DarkGreen -ForegroundColor White
 	} else {
 		Write-Host " 1 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-host " " -NoNewline
 
-		Write-Host " VW BW " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " View BW " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 		Write-Host " Boot.wim " -BackgroundColor DarkRed -ForegroundColor White
 	}
@@ -62,14 +62,14 @@ Function Feature_More
 		Write-Host " 2 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-host " " -NoNewline
 
-		Write-Host " VW IW " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host " View IW " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 		Write-Host " Install.wim " -BackgroundColor DarkGreen -ForegroundColor White
 	} else {
 		Write-Host " 2 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-host " " -NoNewline
 
-		Write-Host " VW IW " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " View IW " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 		Write-Host " Install.wim " -BackgroundColor DarkRed -ForegroundColor White
 	}
@@ -80,14 +80,14 @@ Function Feature_More
 		Write-Host " 3 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-host " " -NoNewline
 
-		Write-Host " VW IS " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host " View IS " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 		Write-Host " Install.swm " -BackgroundColor DarkGreen -ForegroundColor White
 	} else {
 		Write-Host " 3 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-host " " -NoNewline
 
-		Write-Host " VW IS " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " View IS " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 		Write-Host " Install.swm " -BackgroundColor DarkRed -ForegroundColor White
 	}
@@ -98,14 +98,14 @@ Function Feature_More
 		Write-Host " 4 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-host " " -NoNewline
 
-		Write-Host " VW IE " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host " View IE " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 		Write-Host " Install.esd " -BackgroundColor DarkGreen -ForegroundColor White
 	} else {
 		Write-Host " 4 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-host " " -NoNewline
 
-		Write-Host " VW IE " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " View IE " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 		Write-Host " Install.esd " -BackgroundColor DarkRed -ForegroundColor White
 	}
@@ -120,14 +120,14 @@ Function Feature_More
 				Write-Host " 5 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 				Write-host " " -NoNewline
 
-				Write-Host " VW WR " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+				Write-Host " View WR " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 				Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 				Write-Host " Windows\System32\Recovery\WinRE.wim " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
 				Write-Host " 5 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 				Write-host " " -NoNewline
 
-				Write-Host " VW WR " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+				Write-Host " View WR " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 				Write-Host "    $($lang.ViewWIMFileInfo): " -NoNewline -ForegroundColor Green
 				Write-Host " Windows\System32\Recovery\WinRE.wim " -BackgroundColor DarkRed -ForegroundColor White
 			}
@@ -368,10 +368,10 @@ Function Feature_More
 			ToWait -wait 2
 			Feature_More
 		}
-		"VW *" {
+		"View *" {
 			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-			Image_Primary_Key_Shortcuts_File_View -Name $PSItem.Remove(0, 3).Replace(' ', '')
+			Image_Primary_Key_Shortcuts_File_View -Name $PSItem.Remove(0, 5).Replace(' ', '')
 			ToWait -wait 2
 			Feature_More
 		}

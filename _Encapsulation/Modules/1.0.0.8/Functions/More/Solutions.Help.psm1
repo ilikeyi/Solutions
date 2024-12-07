@@ -31,6 +31,28 @@ Function Solutions_Help
 	Write-Host "     Remount".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host "$($lang.Mount), $($lang.PleaseChoose)"
 
+	Write-Host "`n   $($lang.ViewWIMFileInfo)" -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
+	ForEach ($item in $Global:Image_Rule) {
+		Write-host "   " -NoNewline
+		Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-host " " -NoNewline
+		Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+		Write-Host $item.Main.Uid -ForegroundColor Green
+
+		if ($item.Expand.Count -gt 0) {
+			ForEach ($Expand in $item.Expand) {
+				Write-host "   " -NoNewline
+				Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+				Write-host " " -NoNewline
+				Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+				Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+				Write-Host $Expand.Uid -ForegroundColor Green
+			}
+		}
+	}
+
 	Write-Host "`n   $($lang.Mounted_Status)"
 	Write-Host "     ESA".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host "$($lang.Image_Unmount_After): " -NoNewline

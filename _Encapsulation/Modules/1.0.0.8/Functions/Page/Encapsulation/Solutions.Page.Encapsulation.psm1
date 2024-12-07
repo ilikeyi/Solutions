@@ -147,8 +147,8 @@ Function Mainpage
 	Write-Host " Apply " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ", " -NoNewline
 
-	Write-Host "$($lang.LanguageExtract) " -NoNewline -ForegroundColor Green
 	Write-Host " Euwl " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host ": $($lang.LanguageExtract)" -NoNewline -ForegroundColor Green
 	Write-Host ", " -NoNewline
 
 	Write-Host $lang.Update -ForegroundColor Green
@@ -1391,10 +1391,10 @@ Function Mainpage
 			Mainpage
 		}
 
-		"VW *" {
+		"View *" {
 			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-			Image_Primary_Key_Shortcuts_File_View -Name $PSItem.Remove(0, 3).Replace(' ', '')
+			Image_Primary_Key_Shortcuts_File_View -Name $PSItem.Remove(0, 5).Replace(' ', '')
 			ToWait -wait 2
 			Mainpage
 		}

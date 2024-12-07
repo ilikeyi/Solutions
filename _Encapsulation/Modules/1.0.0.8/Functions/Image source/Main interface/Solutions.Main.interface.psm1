@@ -7721,7 +7721,6 @@ Function Image_Select
 		[pscustomobject]@{ Path = @("Image_Eject_Dont_Save_Current");         Lang = "$($lang.Mounted_Status): $($lang.Unmount)"; }
 		[pscustomobject]@{ Path = @("Eject_Forcibly_All -Save -DontSave");    Lang = "$($lang.Image_Unmount_After): $($lang.Save)"; }
 		[pscustomobject]@{ Path = @("Eject_Forcibly_All -DontSave");          Lang = "$($lang.Image_Unmount_After): $($lang.DoNotSave)"; }
-		[pscustomobject]@{ Path = @("Verify_Autopilot_Custom_File");          Lang = "$($lang.Wim_Rule_Verify): $($lang.Autopilot_Select_Config)"; }
 		[pscustomobject]@{ Path = @("Language_Extract_UI");                   Lang = "$($lang.Language): $($lang.LanguageExtract)"; }
 		[pscustomobject]@{ Path = @("Solutions");                             Lang = "$($lang.Solution): $($lang.IsCreate)"; }
 		[pscustomobject]@{ Path = @("Image_Convert");                         Lang = "$($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm)"; }

@@ -291,9 +291,6 @@ Function Image_Get_Mount_Status_New
 					Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 					Write-host " " -NoNewline
 
-					Write-Host " VW " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-					Write-Host " " -NoNewline
-
 					Write-Host " $($Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 					Write-Host " $($ImageName)".PadRight(8) -NoNewline -ForegroundColor Yellow
 				} else {
@@ -559,7 +556,7 @@ Function Image_Primary_Key_Shortcuts_File_View
 	)
 
 	Write-Host "`n   $($lang.Command): " -NoNewline
-	Write-host "VW $($Name)" -ForegroundColor Green
+	Write-host "View $($Name)" -ForegroundColor Green
 	Write-Host "   $('-' * 80)"
 
 	Write-Host "`n   $($lang.ViewWIMFileInfo) *" -ForegroundColor Yellow
