@@ -7,6 +7,7 @@
 	Menu                      = Menü
 	Learn                     = Çalışmak
 	AddTo                     = A ekle
+	Del                       = Silmek
 	Done                      = Sona ermek
 	Failed                    = Hata
 	OK                        = Elbette
@@ -21,7 +22,7 @@
 	RefreshModules            = Tüm modülleri sıcak yenileme
 	PleaseChoose              = Lütfen seçin
 	PleaseChooseMain          = Kısayol veya seçim
-	FailedCreateFolder        = Dizin oluşturulamadı:
+	FailedCreateFolder        = Dizin oluşturulamadı
 	ToMsg                     = \n   {0} Saniyeler sonra otomatik olarak ana menüye dönün.
 	ToQuit                    = \n   {0} Saniyeler sonra ana menüden çıkın.
 	UserCancel                = Kullanıcı işlemi iptal etti.

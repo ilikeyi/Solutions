@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = 選擇要更改的文件夾
 	LocationStructure         = 新的目錄結構
 	LocationFolderError       = 選擇的路徑無讀寫權限。
-	LocationFolderNew         = 新路徑：{0}
-	LocationFolderOld         = 舊路徑：{0}
+	LocationFolderNew         = 新路徑
+	LocationFolderOld         = 舊路徑
 	LocationFolderSame        = 不可操作，新路徑與舊路徑相同。
 	LocationDone              = 更改完成後
 	LocationDoneSync          = 複製舊文件到新的位置

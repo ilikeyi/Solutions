@@ -1,6 +1,6 @@
 ﻿ConvertFrom-StringData -StringData @'
-	# hr-HR
-	# Croatian (Croatia)
+	# zh-CN
+	# Chinese (Simplified, China)
 
 	Developers_Mode                 = 开发模式
 	Developers_Mode_Location        = 代码定位

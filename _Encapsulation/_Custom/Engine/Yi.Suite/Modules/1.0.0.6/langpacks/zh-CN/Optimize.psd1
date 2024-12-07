@@ -1,6 +1,6 @@
 ﻿ConvertFrom-StringData -StringData @'
-	# hr-HR
-	# Croatian (Croatia)
+	# zh-CN
+	# Chinese (Simplified, China)
 
 	DesktopMenu               = 添加个性化“桌面右键菜单”
 	DesktopMenuShift          = 需要按住 Shift 键后点击右键

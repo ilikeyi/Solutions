@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = Prevent cleaning of unused language packs
 	Restricted                = Recovery Powershell Execution Policy: Restricted
 	DiskSearch                = Search plan:
-	DiskSearchFind            = Searched, running: {0}
+	DiskSearchFind            = Searched, running
 	DeployCleanup             = Clean up the Deploy directory
 	DeployTask                = Deployment tasks
 	Reboot                    = Restart the computer
@@ -30,10 +30,10 @@
 	KeyboardSequence          = Keyboard sequence: \
 	Wubi                      = Wubi
 	Pinyi                     = Pinyin
-	VolumeLabel               = Set system disk volume label: {0}
+	VolumeLabel               = Set system disk volume label
 	SelectVolumename          = Select the "System Disk" volume label name
 	Exclude                   = Defender Exclude
-	FixMainFolder             = Repair {0} Directory Icon
+	FixMainFolder             = Repair Directory Icon
 	Authority                 = Hide directory or file
 	NextDelete                = After logging in next time, clean up the bonus solution
 '@

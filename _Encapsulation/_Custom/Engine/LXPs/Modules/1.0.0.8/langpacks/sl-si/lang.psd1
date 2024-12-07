@@ -7,6 +7,7 @@
 	Menu                      = Meni
 	Learn                     = Študija
 	AddTo                     = Dodaj v
+	Del                       = Izbrisati
 	Done                      = Končaj
 	Failed                    = Spodleteti
 	OK                        = Seveda
@@ -21,7 +22,7 @@
 	RefreshModules            = Vroča osvežitev vseh modulov
 	PleaseChoose              = Prosim izberite
 	PleaseChooseMain          = Bližnjica ali izbor
-	FailedCreateFolder        = Imenika ni bilo mogoče ustvariti:
+	FailedCreateFolder        = Imenika ni bilo mogoče ustvariti
 	ToMsg                     = \n   {0} Samodejna vrnitev v glavni meni po nekaj sekundah.
 	ToQuit                    = \n   {0} Po nekaj sekundah zapustite glavni meni.
 	UserCancel                = Uporabnik je preklical operacijo.

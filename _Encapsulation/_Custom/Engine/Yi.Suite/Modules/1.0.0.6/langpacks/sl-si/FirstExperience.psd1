@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = Preprečite čiščenje neuporabljenih jezikovnih paketov
 	Restricted                = Obnovi pravilnik izvajanja Powershell: omejeno
 	DiskSearch                = Načrt iskanja:
-	DiskSearchFind            = Iskanje in izvajanje: {0}
+	DiskSearchFind            = Iskanje in izvajanje
 	DeployCleanup             = Počistite imenik Deploy
 	DeployTask                = Naloge uvajanja
 	Reboot                    = Znova zaženite računalnik
@@ -30,10 +30,10 @@
 	KeyboardSequence          = Vrstni red tipkovnice:
 	Wubi                      = Wubi
 	Pinyi                     = Pinjin
-	VolumeLabel               = Nastavite oznako nosilca sistemskega diska: {0}
+	VolumeLabel               = Nastavite oznako nosilca sistemskega diska
 	SelectVolumename          = Izberite ime oznake nosilca "Sistemski disk".
 	Exclude                   = Izključitev branilca
-	FixMainFolder             = Popravi ikono imenika {0}
+	FixMainFolder             = Popravi ikono imenika
 	Authority                 = Skriti imenik ali datoteka
 	NextDelete                = Ko se naslednjič prijavite, počistite bonus rešitve
 '@

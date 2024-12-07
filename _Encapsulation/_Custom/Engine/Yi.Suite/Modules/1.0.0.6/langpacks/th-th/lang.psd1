@@ -24,7 +24,7 @@
 	Optimize                  = การเพิ่มประสิทธิภาพ
 	Hide                      = ซ่อน
 	Show                      = แสดง
-	Delete                    = ลบ
+	Del                       = ลบ
 	Done                      = เสร็จ
 	OK                        = แน่นอน
 	Cancel                    = ยกเลิก
@@ -46,7 +46,7 @@
 	LanguageCode              = เครื่องหมายโซน
 	PleaseChoose              = กรุณาเลือก
 	PleaseChooseMain          = ทางลัดหรือการเลือก
-	FailedCreateFolder        = ไม่สามารถสร้างไดเร็กทอรี:
+	FailedCreateFolder        = ไม่สามารถสร้างไดเร็กทอรี
 	ToMsg                     = \n   {0} กลับสู่เมนูหลักโดยอัตโนมัติหลังจากผ่านไปไม่กี่วินาที
 	ToQuit                    = \n   {0} ออกจากเมนูหลักหลังจากผ่านไปไม่กี่วินาที
 	Restart                   = การรีสตาร์ทจะมีผล

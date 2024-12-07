@@ -7,6 +7,7 @@
 	Menu                      = valikosta
 	Learn                     = opiskella
 	AddTo                     = Lisää
+	Del                       = Poistaa
 	Done                      = Valmis
 	Failed                    = epäonnistua
 	OK                        = Varma
@@ -21,7 +22,7 @@
 	RefreshModules            = Päivitä kaikki moduulit kuumana
 	PleaseChoose              = Ole hyvä ja valitse
 	PleaseChooseMain          = Pikakuvake tai valinta
-	FailedCreateFolder        = Hakemiston luominen epäonnistui:
+	FailedCreateFolder        = Hakemiston luominen epäonnistui
 	ToMsg                     = \n   {0} Palaa automaattisesti päävalikkoon sekunnin kuluttua.
 	ToQuit                    = \n   {0} Poistu päävalikosta sekunnin kuluttua.
 	UserCancel                = Käyttäjä on peruuttanut toiminnon.

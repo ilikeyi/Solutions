@@ -24,7 +24,7 @@
 	Optimize                  = Optimizacija
 	Hide                      = Sakriti
 	Show                      = Pokazati
-	Delete                    = Izbrisati
+	Del                       = Izbrisati
 	Done                      = Završiti
 	OK                        = Naravno
 	Cancel                    = Otkazati
@@ -46,7 +46,7 @@
 	LanguageCode              = Oznaka zone
 	PleaseChoose              = Odaberite
 	PleaseChooseMain          = Prečac ili odabir
-	FailedCreateFolder        = Nije uspjelo stvaranje imenika:
+	FailedCreateFolder        = Nije uspjelo stvaranje imenika
 	ToMsg                     = \n   {0} Automatski povratak na glavni izbornik nakon nekoliko sekundi.
 	ToQuit                    = \n   {0} Izađite iz glavnog izbornika nakon nekoliko sekundi.
 	Restart                   = Ponovno pokretanje stupa na snagu

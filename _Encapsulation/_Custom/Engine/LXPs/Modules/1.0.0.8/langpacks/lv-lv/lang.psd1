@@ -7,6 +7,7 @@
 	Menu                      = Izvēlne
 	Learn                     = Pētījums
 	AddTo                     = Pievienot
+	Del                       = Dzēst
 	Done                      = Pabeigt
 	Failed                    = Neizdoties
 	OK                        = Protams
@@ -21,7 +22,7 @@
 	RefreshModules            = Visu moduļu karstā atsvaidzināšana
 	PleaseChoose              = Lūdzu, atlasiet
 	PleaseChooseMain          = Īsceļš vai atlase
-	FailedCreateFolder        = Neizdevās izveidot direktoriju:
+	FailedCreateFolder        = Neizdevās izveidot direktoriju
 	ToMsg                     = \n   {0} Pēc sekundēm automātiski atgriezieties galvenajā izvēlnē.
 	ToQuit                    = \n   {0} Pēc dažām sekundēm izejiet no galvenās izvēlnes.
 	UserCancel                = Lietotājs ir atcēlis darbību.

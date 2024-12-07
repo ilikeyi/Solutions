@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Изаберите фасциклу коју желите да промените
 	LocationStructure         = Нова структура директоријума
 	LocationFolderError       = Изабрана путања нема дозволе за читање и писање.
-	LocationFolderNew         = Нова путања: {0}
-	LocationFolderOld         = Стара путања: {0}
+	LocationFolderNew         = Нова путања
+	LocationFolderOld         = Стара путања
 	LocationFolderSame        = Није оперативан, нови пут је исти као и стари.
 	LocationDone              = Након што су промене завршене
 	LocationDoneSync          = Копирајте старе датотеке на нову локацију

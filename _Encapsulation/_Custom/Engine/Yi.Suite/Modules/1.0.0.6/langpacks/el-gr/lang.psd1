@@ -1,6 +1,6 @@
 ﻿ConvertFrom-StringData -StringData @'
-	# hr-HR
-	# Croatian (Croatia)
+	# el-GR
+	# Greek (Greece)
 
 	FontsUI                   = Segoe UI
 	Mainname                  = Μηχανή ανάπτυξης: Η σουίτα του Yi
@@ -24,7 +24,7 @@
 	Optimize                  = Βελτιστοποίηση
 	Hide                      = Κρύβω
 	Show                      = Επίδειξη
-	Delete                    = Διαγράφω
+	Del                       = Διαγράφω
 	Done                      = Φινίρισμα
 	OK                        = Σίγουρος
 	Cancel                    = Ματαίωση
@@ -46,14 +46,14 @@
 	LanguageCode              = Σήμα ζώνης
 	PleaseChoose              = Επιλέξτε
 	PleaseChooseMain          = Συντόμευση ή επιλογή
-	FailedCreateFolder        = Αποτυχία δημιουργίας καταλόγου:
+	FailedCreateFolder        = Αποτυχία δημιουργίας καταλόγου
 	ToMsg                     = \n   {0} Αυτόματη επιστροφή στο κύριο μενού μετά από δευτερόλεπτα.
 	ToQuit                    = \n   {0} Βγείτε από το κύριο μενού μετά από δευτερόλεπτα.
 	Restart                   = Η επανεκκίνηση τίθεται σε ισχύ
 	AdvOption                 = Προαιρετικά χαρακτηριστικά
 
 	StartDown                 = Ξεκινήστε τη λήψη
-	ConnectTo                 = Σύνδεση σε
+	ConnectTo                 = Συνδεθείτε με
 	FileName                  = Όνομα αρχείου
 	SaveTo                    = Αποθήκευση σε
 	NotAvailable              = Κατάσταση: Μη διαθέσιμο
@@ -74,5 +74,5 @@
 	ISOLengthError            = Η ετικέτα τόμου δεν μπορεί να υπερβαίνει τους {0} χαρακτήρες
 	Help                      = Βοήθεια
 	WorkDone                  = Ολοκληρώθηκε, πατήστε οποιοδήποτε πλήκτρο για να επιστρέψετε στην κύρια διεπαφή...
-	Short_Cmd                 = Συντομεύσεις
+	Short_Cmd                 = Εντολή συντόμευσης
 '@

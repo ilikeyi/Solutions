@@ -7,6 +7,7 @@
 	Menu                      = Meny
 	Learn                     = Studere
 	AddTo                     = Legg til
+	Del                       = Slette
 	Done                      = Fullfør
 	Failed                    = Mislykkes
 	OK                        = Sikker
@@ -21,7 +22,7 @@
 	RefreshModules            = Varm oppdater alle moduler
 	PleaseChoose              = Vennligst velg
 	PleaseChooseMain          = Snarvei eller valg
-	FailedCreateFolder        = Kunne ikke opprette katalog:
+	FailedCreateFolder        = Kunne ikke opprette katalog
 	ToMsg                     = \n   {0} Gå automatisk tilbake til hovedmenyen etter sekunder.
 	ToQuit                    = \n   {0} Gå ut av hovedmenyen etter sekunder.
 	UserCancel                = Brukeren har avbrutt operasjonen.

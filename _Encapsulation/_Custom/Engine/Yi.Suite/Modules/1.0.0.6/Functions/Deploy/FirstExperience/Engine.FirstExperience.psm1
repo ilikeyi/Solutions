@@ -244,7 +244,7 @@ Function FirstExperience_Setting_UI
 	$GUIFEFixMainFolder = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 30
 		Width          = 490
-		Text           = "$($lang.FixMainFolder -f $((Get-Module -Name Engine).Author))"
+		Text           = "$($lang.FixMainFolder): $((Get-Module -Name Engine).Author)"
 		Checked        = $True
 	}
 	$GUIFEFDPermissions = New-Object System.Windows.Forms.CheckBox -Property @{
@@ -330,11 +330,11 @@ Function FirstExperience_Setting_UI
 						System_Disk_Label -VolumeName $(Get-Module -Name Engine).Author
 					}
 				} else {
-					Write-Host "`n   $($lang.VolumeLabel -f '')"
+					Write-Host "`n   $($lang.VolumeLabel)"
 					Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
 				}
 			} else {
-				Write-Host "`n   $($lang.VolumeLabel -f '')"
+				Write-Host "`n   $($lang.VolumeLabel)"
 				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
@@ -387,7 +387,7 @@ Function FirstExperience_Setting_UI
 			if ($GUIFEFixMainFolder.Checked) {
 				Repair_Home_Directory
 			} else {
-				Write-Host "   $($lang.FixMainFolder -f $((Get-Module -Name Engine).Author))"
+				Write-Host "   $($lang.FixMainFolder): $((Get-Module -Name Engine).Author)"
 				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
 			}
 
@@ -1022,7 +1022,7 @@ Function FirstExperience_Deploy
 			if (($AppsUncheck + $AppsExcluded) -Contains $_.Name) {
 			} else {
 				Write-Host "   $($_.Name)"
-				Write-Host "   $($lang.Delete)".PadRight(22) -NoNewline
+				Write-Host "   $($lang.Del)".PadRight(22) -NoNewline
 				Get-AppXProvisionedPackage -Online | Where-Object DisplayName -Like "$($_.Name)" | Remove-AppxProvisionedPackage -AllUsers -Online -ErrorAction SilentlyContinue | Out-Null
 				Get-AppxPackage -Name "$($_.Name)" | Remove-AppxPackage | Out-Null
 				Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -1087,7 +1087,8 @@ Function FirstExperience_Deploy
 		.搜索本地部署：Bat
 	#>
 	Get-ChildItem -Path "$($PSScriptRoot)\..\..\..\..\..\Deploy\bat" -Filter "*.bat" -ErrorAction SilentlyContinue | ForEach-Object {
-		Write-Host	"   $($lang.DiskSearchFind -f $_.Fullname)`n" -ForegroundColor Green
+		Write-Host	"   $($lang.DiskSearchFind): " -NoNewline
+		Write-host $_.Fullname -ForegroundColor Green
 		Start-Process -FilePath $_.Fullname  -wait -WindowStyle Minimized
 	}
 
@@ -1096,7 +1097,8 @@ Function FirstExperience_Deploy
 		.搜索本地部署：ps1
 	#>
 	Get-ChildItem -Path "$($PSScriptRoot)\..\..\..\..\..\Deploy\ps1" -Filter "*.ps1" -ErrorAction SilentlyContinue | ForEach-Object {
-		Write-Host	"   $($lang.DiskSearchFind -f $_.Fullname)`n" -ForegroundColor Green
+		Write-Host	"   $($lang.DiskSearchFind): " -NoNewline
+		Write-host $_.Fullname -ForegroundColor Green
 		$arguments = @(
 			"-ExecutionPolicy",
 			"ByPass",
@@ -1123,7 +1125,8 @@ Function FirstExperience_Deploy
 
 			Write-Host "   $($TempFilePath)"
 			if (Test-Path $TempFilePath -PathType Leaf) {
-				Write-Host	"   $($lang.DiskSearchFind -f $TempFilePath)`n" -ForegroundColor Gray
+				Write-Host	"   $($lang.DiskSearchFind): " -NoNewline
+				Write-host $TempFilePath -ForegroundColor Green
 				Start-Process -FilePath $TempFilePath -wait -WindowStyle Minimized
 			}
 		}
@@ -1145,7 +1148,8 @@ Function FirstExperience_Deploy
 
 			Write-Host "   $($TempFilePath)"
 			if (Test-Path $TempFilePath -PathType Leaf) {
-				Write-Host	"   $($lang.DiskSearchFind -f $TempFilePath)`n" -ForegroundColor Gray
+				Write-Host	"   $($lang.DiskSearchFind): " -NoNewline
+				Write-host $TempFilePath -ForegroundColor Green
 
 				$arguments = @(
 					"-ExecutionPolicy",
@@ -1359,7 +1363,8 @@ Function System_Disk_Label
 		[string]$VolumeName
 	)
 
-	Write-Host "`n   $($lang.VolumeLabel -f $VolumeName)"
+	Write-Host "`n   $($lang.VolumeLabel): " -NoNewline
+	Write-host $VolumeName -ForegroundColor Green
 	Write-Host "   $($lang.Setting)".PadRight(28) -NoNewline
 	(New-Object -ComObject "Shell.Application").NameSpace($env:SystemDrive).Self.Name = $VolumeName
 	Write-Host "   $($lang.Done)`n" -ForegroundColor Green
@@ -1385,7 +1390,7 @@ Function Firewall_Exclusion
 
 Function Repair_Home_Directory
 {
-	Write-Host "`n   $($lang.FixMainFolder -f $((Get-Module -Name Engine).Author))"
+	Write-Host "`n   $($lang.FixMainFolder): $((Get-Module -Name Engine).Author)"
 
 	$DeskEdit = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\..\AIO\DeskEdit")\DeskEdit.exe"
 	if (Test-Path $DeskEdit -PathType Leaf) {

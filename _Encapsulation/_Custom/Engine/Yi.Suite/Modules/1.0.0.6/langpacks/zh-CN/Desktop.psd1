@@ -1,6 +1,6 @@
 ﻿ConvertFrom-StringData -StringData @'
-	# hr-HR
-	# Croatian (Croatia)
+	# zh-CN
+	# Chinese (Simplified, China)
 
 	DesktopAllUsers           = 添加到所有用户的桌面
 	DesktopCurrentUsers       = 仅添加到当前用户的桌面

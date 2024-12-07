@@ -1,6 +1,6 @@
 ﻿ConvertFrom-StringData -StringData @'
-	# hr-HR
-	# Croatian (Croatia)
+	# zh-CN
+	# Chinese (Simplified, China)
 
 	FontsUI                   = Microsoft YaHei UI
 	Mainname                  = 部署引擎：Yi's 套件
@@ -24,7 +24,7 @@
 	Optimize                  = 优化
 	Hide                      = 隐藏
 	Show                      = 显示
-	Delete                    = 删除
+	Del                       = 删除
 	Done                      = 完成
 	OK                        = 确定
 	Cancel                    = 取消
@@ -46,7 +46,7 @@
 	LanguageCode              = 区域标记
 	PleaseChoose              = 请选择
 	PleaseChooseMain          = 快捷指令或选择
-	FailedCreateFolder        = 创建目录失败：
+	FailedCreateFolder        = 创建目录失败
 	ToMsg                     = \n   {0} 秒后自动返回到主菜单。
 	ToQuit                    = \n   {0} 秒后退出主菜单。
 	Restart                   = 重启生效

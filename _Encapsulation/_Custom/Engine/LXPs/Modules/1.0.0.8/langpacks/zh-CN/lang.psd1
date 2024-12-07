@@ -7,6 +7,7 @@
 	Menu                      = 菜单
 	Learn                     = 学习
 	AddTo                     = 添加
+	Del                       = 删除
 	Done                      = 完成
 	Failed                    = 失败
 	OK                        = 确定
@@ -21,7 +22,7 @@
 	RefreshModules            = 热刷新所有模块
 	PleaseChoose              = 请选择
 	PleaseChooseMain          = 快捷指令或选择
-	FailedCreateFolder        = 创建目录失败：
+	FailedCreateFolder        = 创建目录失败
 	ToMsg                     = \n   {0} 秒后自动返回到主菜单。
 	ToQuit                    = \n   {0} 秒后退出主菜单。
 	UserCancel                = 用户已取消操作。

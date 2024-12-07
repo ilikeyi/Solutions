@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = Vältige kasutamata keelepakettide puhastamist
 	Restricted                = Powershelli täitmispoliitika taastamine: piiratud
 	DiskSearch                = Otsinguplaan:
-	DiskSearchFind            = Otsitud ja töötab: {0}
+	DiskSearchFind            = Otsitud ja töötab
 	DeployCleanup             = Puhastage juurutamise kataloog
 	DeployTask                = Kasutuselevõtu ülesanded
 	Reboot                    = Taaskäivitage arvuti
@@ -30,10 +30,10 @@
 	KeyboardSequence          = Klaviatuuri järjekord:
 	Wubi                      = Wubi
 	Pinyi                     = Pinyin
-	VolumeLabel               = Määra süsteemiketta helitugevuse silt: {0}
+	VolumeLabel               = Määra süsteemiketta helitugevuse silt
 	SelectVolumename          = Valige köitesildi nimi "Süsteemketas".
 	Exclude                   = Kaitsja väljajätmine
-	FixMainFolder             = Parandage {0} kataloogiikooni
+	FixMainFolder             = Parandage kataloogiikooni
 	Authority                 = Peidetud kataloog või fail
 	NextDelete                = Pärast järgmine kord sisselogimist puhastage boonuslahendused
 '@

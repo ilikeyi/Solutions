@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = 사용하지 않는 언어 팩 정리 방지
 	Restricted                = Powershell 실행 정책 복구: 제한됨
 	DiskSearch                = 검색 계획:
-	DiskSearchFind            = 검색, 실행 중: {0}
+	DiskSearchFind            = 검색, 실행 중
 	DeployCleanup             = Deploy 디렉토리 정리
 	DeployTask                = 배포 작업
 	Reboot                    = 컴퓨터를 다시 시작합니다.
@@ -30,10 +30,10 @@
 	KeyboardSequence          = 키보드 시퀀스: \
 	Wubi                      = Wubi
 	Pinyi                     = 병음
-	VolumeLabel               = 시스템 디스크 볼륨 레이블 설정: {0}
+	VolumeLabel               = 시스템 디스크 볼륨 레이블 설정
 	SelectVolumename          = "시스템 디스크" 볼륨 레이블 이름 선택
 	Exclude                   = Defender 들어오지 못하게 하다
-	FixMainFolder             = {0} 디렉토리 아이콘 수정
+	FixMainFolder             = 디렉토리 아이콘 수정
 	Authority                 = 숨겨진 디렉토리 또는 파일
 	NextDelete                = 다음 로그인 후 보너스 솔루션이 정리됩니다
 '@

@@ -24,7 +24,7 @@
 	Optimize                  = Optimeerimine
 	Hide                      = Peita
 	Show                      = Näidata
-	Delete                    = Kustutada
+	Del                       = Kustutada
 	Done                      = Lõpeta
 	OK                        = Muidugi
 	Cancel                    = Tühista
@@ -46,7 +46,7 @@
 	LanguageCode              = Tsooni märk
 	PleaseChoose              = Palun valige
 	PleaseChooseMain          = Otsetee või valik
-	FailedCreateFolder        = Kataloogi loomine ebaõnnestus:
+	FailedCreateFolder        = Kataloogi loomine ebaõnnestus
 	ToMsg                     = \n   {0} Naaske sekundite pärast automaatselt peamenüüsse.
 	ToQuit                    = \n   {0} Väljuge peamenüüst mõne sekundi pärast.
 	Restart                   = Taaskäivitamine jõustub

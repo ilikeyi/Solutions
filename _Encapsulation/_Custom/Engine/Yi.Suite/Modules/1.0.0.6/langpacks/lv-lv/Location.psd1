@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Atlasiet mapi, kuru mainīt
 	LocationStructure         = Jauna direktoriju struktūra
 	LocationFolderError       = Atlasītajam ceļam nav lasīšanas un rakstīšanas atļauju.
-	LocationFolderNew         = Jauns ceļš: {0}
-	LocationFolderOld         = Vecais ceļš: {0}
+	LocationFolderNew         = Jauns ceļš
+	LocationFolderOld         = Vecais ceļš
 	LocationFolderSame        = Nedarbojas, jaunais ceļš ir tāds pats kā vecais ceļš.
 	LocationDone              = Pēc izmaiņu pabeigšanas
 	LocationDoneSync          = Kopējiet vecos failus uz jaunu vietu

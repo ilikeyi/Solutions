@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Selecteer de map die u wilt wijzigen
 	LocationStructure         = Nieuwe mapstructuur
 	LocationFolderError       = Het geselecteerde pad heeft geen lees- en schrijfrechten.
-	LocationFolderNew         = Nieuw pad: {0}
-	LocationFolderOld         = Oud pad: {0}
+	LocationFolderNew         = Nieuw pad
+	LocationFolderOld         = Oud pad
 	LocationFolderSame        = Niet operationeel, het nieuwe pad is hetzelfde als het oude pad.
 	LocationDone              = Nadat de wijzigingen zijn voltooid
 	LocationDoneSync          = Kopieer oude bestanden naar een nieuwe locatie

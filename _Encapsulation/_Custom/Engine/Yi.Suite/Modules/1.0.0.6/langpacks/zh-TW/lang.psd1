@@ -24,7 +24,7 @@
 	Optimize                  = 優化
 	Hide                      = 隱藏
 	Show                      = 顯示
-	Delete                    = 刪除
+	Del                       = 刪除
 	Done                      = 完成
 	OK                        = 確定
 	Cancel                    = 取消
@@ -46,7 +46,7 @@
 	LanguageCode              = 區域標記
 	PleaseChoose              = 請選擇
 	PleaseChooseMain          = 快速指令或選擇
-	FailedCreateFolder        = 創建目錄失敗：
+	FailedCreateFolder        = 創建目錄失敗
 	ToMsg                     = \n   {0} 秒後自動返回到主菜單。
 	ToQuit                    = \n   {0} 秒後退出主菜單。
 	Restart                   = 重啟生效

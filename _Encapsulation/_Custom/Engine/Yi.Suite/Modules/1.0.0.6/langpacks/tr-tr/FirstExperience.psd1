@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = Kullanılmayan dil paketlerinin temizlenmesini önleyin
 	Restricted                = Powershell yürütme politikasını geri yükle: kısıtlı
 	DiskSearch                = Arama planı:
-	DiskSearchFind            = Arandı ve çalıştırılıyor: {0}
+	DiskSearchFind            = Arandı ve çalıştırılıyor
 	DeployCleanup             = Dağıtım dizinini temizleyin
 	DeployTask                = Dağıtım görevleri
 	Reboot                    = Bilgisayarınızı yeniden başlatın
@@ -30,10 +30,10 @@
 	KeyboardSequence          = Klavye sırası:
 	Wubi                      = Wubi
 	Pinyi                     = Pinyin
-	VolumeLabel               = Sistem diski birim etiketini ayarlayın: {0}
+	VolumeLabel               = Sistem diski birim etiketini ayarlayın
 	SelectVolumename          = "Sistem Diski" birim etiketi adını seçin
 	Exclude                   = Defans oyuncusunun hariç tutulması
-	FixMainFolder             = {0} dizin simgesini düzeltin
+	FixMainFolder             = Dizin simgesini düzeltin
 	Authority                 = Gizli dizin veya dosya
 	NextDelete                = Bir dahaki sefere giriş yaptıktan sonra bonus çözümlerini temizleyin
 '@

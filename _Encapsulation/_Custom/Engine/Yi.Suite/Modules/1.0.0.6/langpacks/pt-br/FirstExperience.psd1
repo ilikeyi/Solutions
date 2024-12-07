@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = Impedir a limpeza de pacotes de idiomas não utilizados
 	Restricted                = Política de execução de restauração do Powershell: restrita
 	DiskSearch                = Plano de pesquisa:
-	DiskSearchFind            = Pesquisado e em execução: {0}
+	DiskSearchFind            = Pesquisado e em execução
 	DeployCleanup             = Limpe o diretório de implantação
 	DeployTask                = Tarefas de implantação
 	Reboot                    = Reinicie seu computador
@@ -30,10 +30,10 @@
 	KeyboardSequence          = Ordem do teclado:
 	Wubi                      = Wubi
 	Pinyi                     = Pinyin
-	VolumeLabel               = Definir rótulo do volume do disco do sistema: {0}
+	VolumeLabel               = Definir rótulo do volume do disco do sistema
 	SelectVolumename          = Selecione o nome do rótulo do volume "Disco do sistema"
 	Exclude                   = Exclusão do defensor
-	FixMainFolder             = Corrigir ícone de diretório {0}
+	FixMainFolder             = Corrigir ícone de diretório
 	Authority                 = Diretório ou arquivo oculto
 	NextDelete                = Depois de fazer login na próxima vez, limpe as soluções bônus
 '@

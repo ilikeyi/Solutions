@@ -1,6 +1,6 @@
 ﻿ConvertFrom-StringData -StringData @'
-	# hr-HR
-	# Croatian (Croatia)
+	# zh-CN
+	# Chinese (Simplified, China)
 
 	LocationInitial           = 恢复初始化位置
 	LocationCurrent           = 恢复当前位置
@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = 选择要更改的文件夹
 	LocationStructure         = 新的目录结构
 	LocationFolderError       = 选择的路径无读写权限。
-	LocationFolderNew         = 新路径：{0}
-	LocationFolderOld         = 旧路径：{0}
+	LocationFolderNew         = 新路径
+	LocationFolderOld         = 旧路径
 	LocationFolderSame        = 不可操作，新路径与旧路径相同。
 	LocationDone              = 更改完成后
 	LocationDoneSync          = 复制旧文件到新的位置

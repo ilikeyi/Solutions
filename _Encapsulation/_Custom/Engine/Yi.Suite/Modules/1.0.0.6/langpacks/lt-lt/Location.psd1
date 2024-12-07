@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Pasirinkite aplanką, kurį norite pakeisti
 	LocationStructure         = Nauja katalogo struktūra
 	LocationFolderError       = Pasirinktas kelias neturi skaitymo ir rašymo teisių.
-	LocationFolderNew         = Naujas kelias: {0}
-	LocationFolderOld         = Senas kelias: {0}
+	LocationFolderNew         = Naujas kelias
+	LocationFolderOld         = Senas kelias
 	LocationFolderSame        = Neveikia, naujas kelias yra toks pat kaip ir senasis.
 	LocationDone              = Baigus pakeitimus
 	LocationDoneSync          = Nukopijuokite senus failus į naują vietą

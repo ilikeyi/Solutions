@@ -7,6 +7,7 @@
 	Menu                      = Jelovnik
 	Learn                     = Studija
 	AddTo                     = Dodaj u
+	Del                       = Izbrisati
 	Done                      = Završiti
 	Failed                    = Uspjeti
 	OK                        = Naravno
@@ -21,7 +22,7 @@
 	RefreshModules            = Vruće osvježite sve module
 	PleaseChoose              = Odaberite
 	PleaseChooseMain          = Prečac ili odabir
-	FailedCreateFolder        = Nije uspjelo stvaranje imenika:
+	FailedCreateFolder        = Nije uspjelo stvaranje imenika
 	ToMsg                     = \n   {0} Automatski povratak na glavni izbornik nakon nekoliko sekundi.
 	ToQuit                    = \n   {0} Izađite iz glavnog izbornika nakon nekoliko sekundi.
 	UserCancel                = Korisnik je otkazao operaciju.

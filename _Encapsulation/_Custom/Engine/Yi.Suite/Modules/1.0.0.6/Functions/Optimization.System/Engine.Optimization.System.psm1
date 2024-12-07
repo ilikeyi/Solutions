@@ -996,7 +996,7 @@ Function Optimization_System_UI
 	$GUIShortcutArrow  = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 35
 		Width          = 410
-		Text           = "$($lang.Delete) $($lang.ShortcutArrow)"
+		Text           = "$($lang.Del) $($lang.ShortcutArrow)"
 		Checked        = $true
 		ForeColor      = "#008000"
 	}
@@ -1250,7 +1250,7 @@ Function Optimization_System_UI
 	$GUITaskbarWidgetsRemove = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 35
 		Width          = 410
-		Text           = "$($lang.Delete) $($lang.TaskbarWidgetsRemove)"
+		Text           = "$($lang.Del) $($lang.TaskbarWidgetsRemove)"
 		ForeColor      = "#008000"
 	}
 	$GUITeamsAutostarting = New-Object System.Windows.Forms.CheckBox -Property @{
@@ -2377,7 +2377,7 @@ Function Take_Ownership
 	)
 
 	if ($Remove) {
-		Write-Host "   $($lang.Delete)".PadRight(22) -NoNewline
+		Write-Host "   $($lang.Del)".PadRight(22) -NoNewline
 		Remove-Item -LiteralPath "HKLM:\SOFTWARE\Classes\*\shell\TakeOwnership" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -LiteralPath "HKLM:\SOFTWARE\Classes\*\shell\runas" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -LiteralPath "HKLM:\SOFTWARE\Classes\Directory\shell\TakeOwnership" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
@@ -2437,7 +2437,7 @@ Function Copy_Path
 
 	Write-Host "   $($lang.CopyPath)"
 	if ($Remove) {
-		Write-Host "   $($lang.Delete)".PadRight(22) -NoNewline
+		Write-Host "   $($lang.Del)".PadRight(22) -NoNewline
 		Remove-Item -LiteralPath "HKLM:\SOFTWARE\Classes\Allfilesystemobjects\shell\windows.copyaspath" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -2699,7 +2699,7 @@ Function Shortcut_Arrow
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Delete)".PadRight(22) -NoNewline
+		Write-Host "   $($lang.Del)".PadRight(22) -NoNewline
 		if ((Test-Path -LiteralPath "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons") -ne $true) { New-Item "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons" -force -ErrorAction SilentlyContinue | Out-Null }
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons' -Name '29' -Value "$($env:systemroot)\system32\imageres.dll,197" -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "$($env:USERPROFILE)\AppData\Local\iconcache.db" -ErrorAction SilentlyContinue
@@ -3132,7 +3132,7 @@ Function Taskbar_Widgets_Remove
 
 	Write-Host "   $($lang.TaskbarWidgetsRemove)"
 	if ($Remove) {
-		Write-Host "   $($lang.Delete)".PadRight(22) -NoNewline
+		Write-Host "   $($lang.Del)".PadRight(22) -NoNewline
 		Get-AppXProvisionedPackage -Online | Where-Object DisplayName -Like "MicrosoftWindows.Client.WebExperience*" | Remove-AppxProvisionedPackage -AllUsers -Online -ErrorAction SilentlyContinue | Out-Null
 		Get-AppxPackage "MicrosoftWindows.Client.WebExperience*" -ErrorAction SilentlyContinue | Remove-AppxPackage -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -6032,7 +6032,7 @@ Function Desktop_Icon_3D
 Function Reset_TaskBar
 {
 	Write-Host "   $($lang.Reset) $($lang.TaskBar)" -ForegroundColor Green
-	Write-Host "   $($lang.Delete) $($lang.TaskBar)"
+	Write-Host "   $($lang.Del) $($lang.TaskBar)"
 	Remove-Item -Path "$($env:AppData)\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\*.*" -ErrorAction SilentlyContinue | Out-Null
 	Remove-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 	if (Test-Path "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\syspin")\syspin.exe" -PathType Leaf) {

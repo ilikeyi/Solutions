@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Valitse muutettava kansio
 	LocationStructure         = Uusi hakemistorakenne
 	LocationFolderError       = Valitulla polulla ei ole luku- ja kirjoitusoikeuksia.
-	LocationFolderNew         = Uusi polku: {0}
-	LocationFolderOld         = Vanha polku: {0}
+	LocationFolderNew         = Uusi polku
+	LocationFolderOld         = Vanha polku
 	LocationFolderSame        = Ei toiminnassa, uusi polku on sama kuin vanha polku.
 	LocationDone              = Kun muutokset on tehty
 	LocationDoneSync          = Kopioi vanhat tiedostot uuteen paikkaan

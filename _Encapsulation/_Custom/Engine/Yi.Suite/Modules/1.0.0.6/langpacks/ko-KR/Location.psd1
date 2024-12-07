@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = 변경할 폴더 선택
 	LocationStructure         = 새 디렉토리 구조
 	LocationFolderError       = 선택한 경로에 읽기 및 쓰기 권한이 없습니다.
-	LocationFolderNew         = 새 경로: {0}
-	LocationFolderOld         = 이전 경로: {0}
+	LocationFolderNew         = 새 경로
+	LocationFolderOld         = 이전 경로
 	LocationFolderSame        = 작동 불가능, 새 경로는 이전 경로와 동일합니다.
 	LocationDone              = 변경 완료 후
 	LocationDoneSync          = 이전 파일을 새 위치로 복사

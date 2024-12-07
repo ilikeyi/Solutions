@@ -24,7 +24,7 @@
 	Optimize                  = optimizare
 	Hide                      = ascunde
 	Show                      = spectacol
-	Delete                    = şterge
+	Del                       = şterge
 	Done                      = Termina
 	OK                        = Sigur
 	Cancel                    = Anula
@@ -46,7 +46,7 @@
 	LanguageCode              = marcajul zonei
 	PleaseChoose              = Vă rugăm să selectați
 	PleaseChooseMain          = Comandă rapidă sau selecție
-	FailedCreateFolder        = Nu s-a putut crea directorul:
+	FailedCreateFolder        = Nu s-a putut crea directorul
 	ToMsg                     = \n   {0} Reveniți automat la meniul principal după câteva secunde.
 	ToQuit                    = \n   {0} Ieșiți din meniul principal după câteva secunde.
 	Restart                   = Repornirea are efect

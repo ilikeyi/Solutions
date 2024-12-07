@@ -7,6 +7,7 @@
 	Menu                      = Meniu
 	Learn                     = Studiu
 	AddTo                     = Adaugă la
+	Del                       = Şterge
 	Done                      = Termina
 	Failed                    = Eșuează
 	OK                        = Sigur
@@ -21,7 +22,7 @@
 	RefreshModules            = Actualizează la cald toate modulele
 	PleaseChoose              = Vă rugăm să selectați
 	PleaseChooseMain          = Comandă rapidă sau selecție
-	FailedCreateFolder        = Nu s-a putut crea directorul:
+	FailedCreateFolder        = Nu s-a putut crea directorul
 	ToMsg                     = \n   {0} Reveniți automat la meniul principal după câteva secunde.
 	ToQuit                    = \n   {0} Ieșiți din meniul principal după câteva secunde.
 	UserCancel                = Utilizatorul a anulat operația.

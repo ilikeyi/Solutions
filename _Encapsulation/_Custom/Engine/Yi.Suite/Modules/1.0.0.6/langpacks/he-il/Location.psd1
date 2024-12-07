@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = בחר את התיקיה לשינוי
 	LocationStructure         = מבנה ספריות חדש
 	LocationFolderError       = לנתיב שנבחר אין הרשאות קריאה וכתיבה.
-	LocationFolderNew         = נתיב חדש: {0}
-	LocationFolderOld         = נתיב ישן: {0}
+	LocationFolderNew         = נתיב חדש
+	LocationFolderOld         = נתיב ישן
 	LocationFolderSame        = לא מבצעי, הנתיב החדש זהה לנתיב הישן.
 	LocationDone              = לאחר השלמת השינויים
 	LocationDoneSync          = העתק קבצים ישנים למיקום חדש

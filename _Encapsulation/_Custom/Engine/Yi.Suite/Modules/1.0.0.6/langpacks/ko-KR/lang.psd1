@@ -24,7 +24,7 @@
 	Optimize                  = 최적화
 	Hide                      = 숨다
 	Show                      = 보여 주다
-	Delete                    = 삭제
+	Del                       = 삭제
 	Done                      = 완료
 	OK                        = 확인
 	Cancel                    = 취소
@@ -46,7 +46,7 @@
 	LanguageCode              = 구역 마커
 	PleaseChoose              = 선택해주세요
 	PleaseChooseMain          = 바로가기 또는 옵션
-	FailedCreateFolder        = 디렉토리 생성 실패: \
+	FailedCreateFolder        = 디렉토리 생성 실패
 	ToMsg                     = \n   {0} 초 후에 자동으로 메인 메뉴로 돌아갑니다.
 	ToQuit                    = \n   {0} 초 후에 주 메뉴를 종료합니다.
 	Restart                   = 다시 시작하여 적용

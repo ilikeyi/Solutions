@@ -24,7 +24,7 @@
 	Optimize                  = Optimizācija
 	Hide                      = Paslēpties
 	Show                      = Parādīt
-	Delete                    = Dzēst
+	Del                       = Dzēst
 	Done                      = Pabeigt
 	OK                        = Protams
 	Cancel                    = Atcelt
@@ -46,7 +46,7 @@
 	LanguageCode              = Zonas atzīme
 	PleaseChoose              = Lūdzu, atlasiet
 	PleaseChooseMain          = Īsceļš vai atlase
-	FailedCreateFolder        = Neizdevās izveidot direktoriju:
+	FailedCreateFolder        = Neizdevās izveidot direktoriju
 	ToMsg                     = \n   {0} Pēc sekundēm automātiski atgriezieties galvenajā izvēlnē.
 	ToQuit                    = \n   {0} Pēc dažām sekundēm izejiet no galvenās izvēlnes.
 	Restart                   = Restartēšana stājas spēkā

@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = Neleiskite išvalyti nenaudojamų kalbų paketų
 	Restricted                = Atkurti "Powershell" vykdymo politiką: apribota
 	DiskSearch                = Paieškos planas:
-	DiskSearchFind            = Ieškota ir paleista: {0}
+	DiskSearchFind            = Ieškota ir paleista
 	DeployCleanup             = Išvalykite diegimo katalogą
 	DeployTask                = Diegimo užduotys
 	Reboot                    = Iš naujo paleiskite kompiuterį
@@ -30,10 +30,10 @@
 	KeyboardSequence          = Klaviatūros tvarka:
 	Wubi                      = Wubi
 	Pinyi                     = Pinyin
-	VolumeLabel               = Nustatyti sistemos disko tomo etiketę: {0}
+	VolumeLabel               = Nustatyti sistemos disko tomo etiketę
 	SelectVolumename          = Pasirinkite tomo etiketės pavadinimą "Sistemos diskas".
 	Exclude                   = Gynėjo pašalinimas
-	FixMainFolder             = Pataisykite {0} katalogo piktogramą
+	FixMainFolder             = Pataisykite katalogo piktogramą
 	Authority                 = Paslėptas katalogas arba failas
 	NextDelete                = Kitą kartą prisijungę išvalykite premijų sprendimus
 '@

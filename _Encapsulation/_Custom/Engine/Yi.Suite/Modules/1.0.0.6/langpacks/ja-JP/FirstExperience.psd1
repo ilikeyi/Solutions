@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = 未使用の言語パックのクリーニングを防止する
 	Restricted                = Powershell 実行ポリシーの復元: 制限
 	DiskSearch                = 検索プラン：
-	DiskSearchFind            = 検索、実行中：{0}
+	DiskSearchFind            = 検索、実行中
 	DeployCleanup             = Deploy ディレクトリをクリーンアップします
 	DeployTask                = 展開タスク
 	Reboot                    = コンピューターを再起動します
@@ -30,10 +30,10 @@
 	KeyboardSequence          = キーボード シーケンス:
 	Wubi                      = ウビ
 	Pinyi                     = ピンイン
-	VolumeLabel               = システムディスクボリュームラベルを設定します：{0}
+	VolumeLabel               = システムディスクボリュームラベルを設定します
 	SelectVolumename          = 選ぶ "システムディスク" ボリュームラベル名
 	Exclude                   = Defender 除外する
-	FixMainFolder             = {0} ディレクトリアイコンを修正
+	FixMainFolder             = ディレクトリアイコンを修正
 	Authority                 = 隠しディレクトリまたはファイル
 	NextDelete                = 次回のログイン後、ボーナスソリューションはクリーンアップされます
 '@

@@ -7,6 +7,7 @@
 	Menu                      = Speisekarte
 	Learn                     = Studie
 	AddTo                     = Hinzufügen zu
+	Del                       = Löschen
 	Done                      = Beenden
 	Failed                    = Scheitern
 	OK                        = Sicher
@@ -21,7 +22,7 @@
 	RefreshModules            = Hot-Refresh aller Module
 	PleaseChoose              = Bitte auswählen
 	PleaseChooseMain          = Verknüpfung oder Auswahl
-	FailedCreateFolder        = Verzeichnis konnte nicht erstellt werden: \
+	FailedCreateFolder        = Verzeichnis konnte nicht erstellt werden
 	ToMsg                     = \n   {0} Automatische Rückkehr zum Hauptmenü nach Sekunden.
 	ToQuit                    = \n   {0} Verlassen Sie das Hauptmenü nach Sekunden.
 	UserCancel                = Der Benutzer hat den Vorgang abgebrochen.

@@ -6,6 +6,7 @@
 	UpdateServerSelect        = Selezione automatica del server o selezione personalizzata
 	UpdateServerNoSelect      = Seleziona un server disponibile
 	UpdateSilent              = Aggiorna silenziosamente quando sono disponibili aggiornamenti
+	UpdateClean               = Consenti la pulizia delle vecchie versioni a tuo piacimento
 	UpdateReset               = Reimposta questa soluzione
 	UpdateResetTips           = Quando l'indirizzo di download è disponibile, il download viene forzato e aggiornato automaticamente.
 	UpdateCheckServerStatus   = Controlla lo stato del server ( {0} opzioni disponibili )

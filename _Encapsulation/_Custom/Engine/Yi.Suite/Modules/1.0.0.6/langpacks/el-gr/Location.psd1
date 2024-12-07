@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Επιλέξτε το φάκελο που θέλετε να αλλάξετε
 	LocationStructure         = Νέα δομή καταλόγου
 	LocationFolderError       = Η επιλεγμένη διαδρομή δεν έχει δικαιώματα ανάγνωσης και εγγραφής.
-	LocationFolderNew         = Νέα διαδρομή: {0}
-	LocationFolderOld         = Παλιά διαδρομή: {0}
+	LocationFolderNew         = Νέα διαδρομή
+	LocationFolderOld         = Παλιά διαδρομή
 	LocationFolderSame        = Δεν λειτουργεί, η νέα διαδρομή είναι ίδια με την παλιά διαδρομή.
 	LocationDone              = Αφού ολοκληρωθούν οι αλλαγές
 	LocationDoneSync          = Αντιγράψτε παλιά αρχεία σε νέα τοποθεσία

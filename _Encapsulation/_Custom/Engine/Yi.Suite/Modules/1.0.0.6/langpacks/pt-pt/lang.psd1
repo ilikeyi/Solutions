@@ -24,7 +24,7 @@
 	Optimize                  = Otimização
 	Hide                      = Esconder
 	Show                      = Mostrar
-	Delete                    = Excluir
+	Del                       = Excluir
 	Done                      = Terminar
 	OK                        = Claro
 	Cancel                    = Cancelar
@@ -46,7 +46,7 @@
 	LanguageCode              = Marca de zona
 	PleaseChoose              = Selecione
 	PleaseChooseMain          = Atalho ou seleção
-	FailedCreateFolder        = Falha ao criar diretório:
+	FailedCreateFolder        = Falha ao criar diretório
 	ToMsg                     = \n   {0} Regresse automaticamente ao menu principal após segundos.
 	ToQuit                    = \n   {0} Saia do menu principal após segundos.
 	Restart                   = A reinicialização entra em vigor

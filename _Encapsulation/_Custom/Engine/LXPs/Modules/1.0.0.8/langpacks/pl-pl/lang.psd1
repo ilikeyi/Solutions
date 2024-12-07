@@ -7,6 +7,7 @@
 	Menu                      = Menu
 	Learn                     = Badanie
 	AddTo                     = Dodaj do
+	Del                       = Usuwać
 	Done                      = Skończyć
 	Failed                    = Ponieść porażkę
 	OK                        = Jasne
@@ -21,7 +22,7 @@
 	RefreshModules            = Gorące odświeżenie wszystkich modułów
 	PleaseChoose              = Proszę wybrać
 	PleaseChooseMain          = Skrót lub wybór
-	FailedCreateFolder        = Nie udało się utworzyć katalogu:
+	FailedCreateFolder        = Nie udało się utworzyć katalogu
 	ToMsg                     = \n   {0} Automatycznie powróć do menu głównego po sekundach.
 	ToQuit                    = \n   {0} Wyjdź z menu głównego po kilku sekundach.
 	UserCancel                = Użytkownik anulował operację.

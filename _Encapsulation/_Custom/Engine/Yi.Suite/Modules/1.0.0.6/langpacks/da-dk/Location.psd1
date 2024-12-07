@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Vælg den mappe, der skal ændres
 	LocationStructure         = Ny mappestruktur
 	LocationFolderError       = Den valgte sti har ikke læse- og skrivetilladelser.
-	LocationFolderNew         = Ny sti: {0}
-	LocationFolderOld         = Gammel sti: {0}
+	LocationFolderNew         = Ny sti
+	LocationFolderOld         = Gammel sti
 	LocationFolderSame        = Ikke operationel, den nye sti er den samme som den gamle sti.
 	LocationDone              = Efter ændringer er gennemført
 	LocationDoneSync          = Kopier gamle filer til en ny placering

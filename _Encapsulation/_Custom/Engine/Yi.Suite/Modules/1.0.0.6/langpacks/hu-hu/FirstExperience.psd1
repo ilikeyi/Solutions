@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = Spriječite čišćenje neiskorištenih jezičnih paketa
 	Restricted                = Vraćanje pravila izvršavanja Powershell-a: ograničeno
 	DiskSearch                = Plan pretraživanja:
-	DiskSearchFind            = Pretraženo i pokrenuto: {0}
+	DiskSearchFind            = Pretraženo i pokrenuto
 	DeployCleanup             = Očistite direktorij Deploy
 	DeployTask                = Zadaci implementacije
 	Reboot                    = Ponovno pokrenite računalo
@@ -30,10 +30,10 @@
 	KeyboardSequence          = Redoslijed tipkovnice:
 	Wubi                      = Wubi
 	Pinyi                     = Pinyin
-	VolumeLabel               = Rendszerlemez kötetcímke beállítása: {0}
+	VolumeLabel               = Rendszerlemez kötetcímke beállítása
 	SelectVolumename          = Válassza ki a "System Disk" kötetcímke nevét
 	Exclude                   = A védő kizárása
-	FixMainFolder             = Fix {0} könyvtárikon
+	FixMainFolder             = Fix könyvtárikon
 	Authority                 = Rejtett könyvtár vagy fájl
 	NextDelete                = A következő bejelentkezés után tisztítsa meg a bónuszmegoldásokat
 '@

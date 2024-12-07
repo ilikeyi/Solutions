@@ -24,7 +24,7 @@
 	Optimize                  = Optimointi
 	Hide                      = Piilottaa
 	Show                      = Show
-	Delete                    = Poistaa
+	Del                       = Poistaa
 	Done                      = Valmis
 	OK                        = Varma
 	Cancel                    = Peruuttaa
@@ -46,7 +46,7 @@
 	LanguageCode              = Vyöhykemerkki
 	PleaseChoose              = Ole hyvä ja valitse
 	PleaseChooseMain          = Pikakuvake tai valinta
-	FailedCreateFolder        = Hakemiston luominen epäonnistui:
+	FailedCreateFolder        = Hakemiston luominen epäonnistui
 	ToMsg                     = \n   {0} Palaa automaattisesti päävalikkoon sekunnin kuluttua.
 	ToQuit                    = \n   {0} Poistu päävalikosta sekunnin kuluttua.
 	Restart                   = Uudelleenkäynnistys astuu voimaan

@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Selectați folderul de schimbat
 	LocationStructure         = Nouă structură de directoare
 	LocationFolderError       = Calea selectată nu are permisiuni de citire și scriere.
-	LocationFolderNew         = Cale nouă: {0}
-	LocationFolderOld         = Veche cale: {0}
+	LocationFolderNew         = Cale nouă
+	LocationFolderOld         = Veche cale
 	LocationFolderSame        = Nu este operațional, noua cale este aceeași cu cea veche.
 	LocationDone              = După ce modificările sunt finalizate
 	LocationDoneSync          = Copiați fișierele vechi într-o locație nouă

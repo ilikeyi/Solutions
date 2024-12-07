@@ -30,10 +30,10 @@
 	KeyboardSequence          = 鍵盤順序：
 	Wubi                      = 五筆
 	Pinyi                     = 拼音
-	VolumeLabel               = 設置系統盤捲標：{0}
+	VolumeLabel               = 設置系統盤捲標
 	SelectVolumename          = 選擇 "系統盤" 卷標名
 	Exclude                   = Defender 排除
-	FixMainFolder             = 修復 {0} 目錄圖標
+	FixMainFolder             = 修復目錄圖標
 	Authority                 = 隱藏目錄或文件
 	NextDelete                = 下次登錄後，清理附贈解決方案
 '@

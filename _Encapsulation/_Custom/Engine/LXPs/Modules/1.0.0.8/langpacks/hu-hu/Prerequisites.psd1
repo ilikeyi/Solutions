@@ -1,6 +1,6 @@
 ﻿ConvertFrom-StringData -StringData @'
-	# hr-HR
-	# Croatian (Croatia)
+	# hu-HU
+	# Hungarian (Hungary)
 
 	Prerequisites                   = Preduvjeti
 	Check_PSVersion                 = Provjerite PS verziju 5.1 i novije

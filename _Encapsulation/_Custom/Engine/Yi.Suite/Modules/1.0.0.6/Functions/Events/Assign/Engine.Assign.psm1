@@ -139,7 +139,7 @@ Function Image_Assign_Event_Master
 			Height         = 30
 			Width          = 460
 			Padding        = "16,0,0,0"
-			Text           = "$($lang.Delete) $($lang.UninstallUWP)"
+			Text           = "$($lang.Del) $($lang.UninstallUWP)"
 			Tag            = "UWP_Uninstall"
 			Checked        = $True
 		}

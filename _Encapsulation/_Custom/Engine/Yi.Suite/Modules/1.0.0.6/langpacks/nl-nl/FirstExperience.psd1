@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = Voorkom het opschonen van ongebruikte taalpakketten
 	Restricted                = Powershell-uitvoeringsbeleid herstellen: beperkt
 	DiskSearch                = Zoekplan:
-	DiskSearchFind            = Gezocht en actief: {0}
+	DiskSearchFind            = Gezocht en actief
 	DeployCleanup             = Ruim de Deploy-directory op
 	DeployTask                = Implementatietaken
 	Reboot                    = Start uw computer opnieuw op
@@ -30,10 +30,10 @@
 	KeyboardSequence          = Toetsenbordvolgorde:
 	Wubi                      = Wubi
 	Pinyi                     = Pinyin
-	VolumeLabel               = Stel het volumelabel van de systeemschijf in: {0}
+	VolumeLabel               = Stel het volumelabel van de systeemschijf in
 	SelectVolumename          = Selecteer de naam van het volumelabel "Systeemschijf".
 	Exclude                   = Uitsluiting van verdediger
-	FixMainFolder             = Mappictogram voor {0} repareren
+	FixMainFolder             = Mappictogram voor repareren
 	Authority                 = Verborgen map of bestand
 	NextDelete                = Nadat u de volgende keer bent ingelogd, ruimt u de bonusoplossingen op
 '@

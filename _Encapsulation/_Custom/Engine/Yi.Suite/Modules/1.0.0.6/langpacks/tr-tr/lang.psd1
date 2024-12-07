@@ -24,7 +24,7 @@
 	Optimize                  = Optimizasyon
 	Hide                      = Saklamak
 	Show                      = Göstermek
-	Delete                    = Silmek
+	Del                       = Silmek
 	Done                      = Sona ermek
 	OK                        = Elbette
 	Cancel                    = İptal etmek
@@ -46,7 +46,7 @@
 	LanguageCode              = Bölge işareti
 	PleaseChoose              = Lütfen seçin
 	PleaseChooseMain          = Kısayol veya seçim
-	FailedCreateFolder        = Dizin oluşturulamadı:
+	FailedCreateFolder        = Dizin oluşturulamadı
 	ToMsg                     = \n   {0} Saniyeler sonra otomatik olarak ana menüye dönün.
 	ToQuit                    = \n   {0} Saniyeler sonra ana menüden çıkın.
 	Restart                   = Yeniden başlatma etkili olur

@@ -24,7 +24,7 @@
 	Optimize                  = Optimierung
 	Hide                      = Verstecken
 	Show                      = Zeigen
-	Delete                    = Löschen
+	Del                       = Löschen
 	Done                      = Fertig
 	OK                        = OK
 	Cancel                    = Abbrechen
@@ -46,7 +46,7 @@
 	LanguageCode              = Zonenmarkierung
 	PleaseChoose              = Bitte wählen
 	PleaseChooseMain          = Verknüpfung oder Auswahl
-	FailedCreateFolder        = Fehler beim Erstellen des Verzeichnisses: \
+	FailedCreateFolder        = Fehler beim Erstellen des Verzeichnisses
 	ToMsg                     = \n   Nach {0} Sekunden automatisch zum Hauptmenü zurückkehren.
 	ToQuit                    = \n   Beendet das Hauptmenü in {0} Sekunden.
 	Restart                   = Neustart, um wirksam zu werden

@@ -7,6 +7,7 @@
 	Menu                      = Menu
 	Learn                     = Studere
 	AddTo                     = Tilføj til
+	Del                       = Slette
 	Done                      = Slutte
 	Failed                    = Svigte
 	OK                        = Sikker
@@ -21,7 +22,7 @@
 	RefreshModules            = Hot opdater alle moduler
 	PleaseChoose              = Vælg venligst
 	PleaseChooseMain          = Genvej eller valg
-	FailedCreateFolder        = Kunne ikke oprette mappe: \
+	FailedCreateFolder        = Kunne ikke oprette mappe
 	ToMsg                     = \n   {0} Vend automatisk tilbage til hovedmenuen efter sekunder.
 	ToQuit                    = \n   {0} Afslut hovedmenuen efter sekunder.
 	UserCancel                = Brugeren har annulleret handlingen.

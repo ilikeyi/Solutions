@@ -7,6 +7,7 @@
 	Menu                      = תַפרִיט
 	Learn                     = לִלמוֹד
 	AddTo                     = הוסף ל
+	Del                       = לִמְחוֹק
 	Done                      = סִיוּם
 	Failed                    = לְהִכָּשֵׁל
 	OK                        = בַּטוּחַ
@@ -21,7 +22,7 @@
 	RefreshModules            = רענון חם של כל המודולים
 	PleaseChoose              = נא לבחור
 	PleaseChooseMain          = קיצור או בחירה
-	FailedCreateFolder        = יצירת הספרייה נכשלה:
+	FailedCreateFolder        = יצירת הספרייה נכשלה
 	ToMsg                     = \n   {0} חזור אוטומטית לתפריט הראשי לאחר שניות.
 	ToQuit                    = \n   {0} צא מהתפריט הראשי לאחר שניות.
 	UserCancel                = המשתמש ביטל את הפעולה.

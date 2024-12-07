@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Sélectionnez le dossier à modifier
 	LocationStructure         = Nouvelle structure de répertoires
 	LocationFolderError       = Le chemin sélectionné n'a pas de permissions de lecture et d'écriture.
-	LocationFolderNew         = Nouveau chemin: {0}
-	LocationFolderOld         = Ancien chemin: {0}
+	LocationFolderNew         = Nouveau chemin
+	LocationFolderOld         = Ancien chemin
 	LocationFolderSame        = Non fonctionnel, le nouveau chemin est le même que l'ancien chemin.
 	LocationDone              = Une fois les modifications complétées
 	LocationDoneSync          = Copier les anciens fichiers vers un nouvel emplacement

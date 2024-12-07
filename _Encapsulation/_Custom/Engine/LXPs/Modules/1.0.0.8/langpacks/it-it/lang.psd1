@@ -7,6 +7,7 @@
 	Menu                      = Menu
 	Learn                     = Studio
 	AddTo                     = Aggiungere a
+	Del                       = Eliminare
 	Done                      = Fine
 	Failed                    = Fallire
 	OK                        = Sicuro
@@ -21,7 +22,7 @@
 	RefreshModules            = Aggiornamento a caldo di tutti i moduli
 	PleaseChoose              = Seleziona
 	PleaseChooseMain          = Collegamento o selezione
-	FailedCreateFolder        = Impossibile creare la directory:
+	FailedCreateFolder        = Impossibile creare la directory
 	ToMsg                     = \n   {0} Ritorna automaticamente al menu principale dopo secondi.
 	ToQuit                    = \n   {0} Uscire dal menu principale dopo secondi.
 	UserCancel                = L'utente ha annullato l'operazione.

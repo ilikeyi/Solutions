@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = Förhindra rengöring av oanvända språkpaket
 	Restricted                = Återställ Powershell-exekveringspolicy: begränsad
 	DiskSearch                = Sökplan:
-	DiskSearchFind            = Sökte och kör: {0}
+	DiskSearchFind            = Sökte och kör
 	DeployCleanup             = Rensa upp katalogen Deploy
 	DeployTask                = Utplaceringsuppgifter
 	Reboot                    = Starta om datorn
@@ -30,10 +30,10 @@
 	KeyboardSequence          = Tangentbordsordning:
 	Wubi                      = Wubi
 	Pinyi                     = Pinyin
-	VolumeLabel               = Ställ in volymetikett för systemdisk: {0}
+	VolumeLabel               = Ställ in volymetikett för systemdisk
 	SelectVolumename          = Välj namnet på volymetiketten "System Disk".
 	Exclude                   = Uteslutning av försvarare
-	FixMainFolder             = Åtgärda katalogikonen {0}
+	FixMainFolder             = Åtgärda katalogikonen
 	Authority                 = Dold katalog eller fil
 	NextDelete                = Efter att ha loggat in nästa gång, rensa upp bonuslösningarna
 '@

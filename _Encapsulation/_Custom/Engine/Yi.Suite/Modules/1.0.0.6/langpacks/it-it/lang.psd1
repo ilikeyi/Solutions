@@ -24,7 +24,7 @@
 	Optimize                  = Ottimizzazione
 	Hide                      = Nascondere
 	Show                      = Spettacolo
-	Delete                    = Eliminare
+	Del                       = Eliminare
 	Done                      = Fine
 	OK                        = Sicuro
 	Cancel                    = Cancellare
@@ -46,7 +46,7 @@
 	LanguageCode              = Contrassegno di zona
 	PleaseChoose              = Seleziona
 	PleaseChooseMain          = Collegamento o selezione
-	FailedCreateFolder        = Impossibile creare la directory:
+	FailedCreateFolder        = Impossibile creare la directory
 	ToMsg                     = \n   {0} Ritorna automaticamente al menu principale dopo secondi.
 	ToQuit                    = \n   {0} Uscire dal menu principale dopo secondi.
 	Restart                   = Il riavvio ha effetto

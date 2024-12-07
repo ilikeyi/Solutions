@@ -15,8 +15,8 @@
 	CleanupUnusedLP           = מנע ניקוי של חבילות שפה שאינן בשימוש
 	Restricted                = שחזור מדיניות ביצוע של Powershell: מוגבל
 	DiskSearch                = תוכנית חיפוש:
-	DiskSearchFind            = חיפוש ופועל: {0}
-	DeployCleanup             = נקה את ספריית ה-Deploy
+	DiskSearchFind            = חיפוש ופועל
+	DeployCleanup             = נקה את ספריית ה Deploy
 	DeployTask                = משימות פריסה
 	Reboot                    = הפעל מחדש את המחשב
 	NetworkLocationWizard     = אשף מיקום הרשת
@@ -30,10 +30,10 @@
 	KeyboardSequence          = סדר מקלדת:
 	Wubi                      = וובי
 	Pinyi                     = פינין
-	VolumeLabel               = הגדר את תווית נפח הדיסק של המערכת: {0}
+	VolumeLabel               = הגדר את תווית נפח הדיסק של המערכת
 	SelectVolumename          = בחר את שם תווית אמצעי האחסון "דיסק מערכת".
 	Exclude                   = הדרת המגן
-	FixMainFolder             = תקן את סמל הספרייה {0}
+	FixMainFolder             = תקן את סמל הספרייה
 	Authority                 = ספרייה או קובץ מוסתרים
 	NextDelete                = לאחר הכניסה בפעם הבאה, נקה את פתרונות הבונוס
 '@

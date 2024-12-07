@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Wählen Sie den zu ändernden Ordner
 	LocationStructure         = neue Verzeichnisstruktur
 	LocationFolderError       = Der ausgewählte Pfad hat keine Lese und Schreibrechte.
-	LocationFolderNew         = Neuer Pfad: {0}
-	LocationFolderOld         = Alter Pfad: {0}
+	LocationFolderNew         = Neuer Pfad
+	LocationFolderOld         = Alter Pfad
 	LocationFolderSame        = Inoperable, der neue Pfad ist derselbe wie der alte Pfad.
 	LocationDone              = Nachdem die Änderung abgeschlossen ist
 	LocationDoneSync          = Alte Dateien an einen neuen Ort kopieren

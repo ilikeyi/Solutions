@@ -1,6 +1,6 @@
 ﻿ConvertFrom-StringData -StringData @'
-	# hr-HR
-	# Croatian (Croatia)
+	# hu-HU
+	# Hungarian (Hungary)
 
 	OSVersion                 = Odaberite poznati broj verzije
 	DownloadAll               = Preuzmite sve

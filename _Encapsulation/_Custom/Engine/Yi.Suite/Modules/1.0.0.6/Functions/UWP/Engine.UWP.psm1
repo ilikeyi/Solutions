@@ -155,8 +155,8 @@ $AppsUncheck = @(
 Function UWP_Uninstall
 {
 
-	Logo -Title "$($lang.Delete) $($lang.UninstallUWP)"
-	Write-Host "   $($lang.Delete) $($lang.UninstallUWP)" -ForegroundColor Yellow
+	Logo -Title "$($lang.Del) $($lang.UninstallUWP)"
+	Write-Host "   $($lang.Del) $($lang.UninstallUWP)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
@@ -261,7 +261,7 @@ Function UWP_Uninstall
 		autoScaleMode  = 2
 		Height         = 720
 		Width          = 1015
-		Text           = "$($lang.Delete) $($lang.UninstallUWP)"
+		Text           = "$($lang.Del) $($lang.UninstallUWP)"
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		MaximizeBox    = $False
 		StartPosition  = "CenterScreen"
@@ -378,7 +378,7 @@ Function UWP_Uninstall
 		Location       = '474,598'
 		Height         = 22
 		Width          = 510
-		Text           = $lang.DeleteAllUser
+		Text           = $lang.DelAllUser
 		Checked        = $true
 	}
 
@@ -404,7 +404,7 @@ Function UWP_Uninstall
 						if ($_ -is [System.Windows.Forms.CheckBox]) {
 							if ($_.Checked) {
 								Write-Host "   $($_.Text)"
-								Write-Host "   $($lang.Delete)".PadRight(22) -NoNewline
+								Write-Host "   $($lang.Del)".PadRight(22) -NoNewline
 								if ($UI_Main_Remove_Sync_To_All_User.Checked) {
 									Get-AppXProvisionedPackage -Online | Where-Object DisplayName -Like "$($_.Tag)" | Remove-AppxProvisionedPackage -AllUsers -Online -ErrorAction SilentlyContinue | Out-Null
 									Get-AppxPackage -Name "$($_.Tag)" | Remove-AppxPackage | Out-Null
@@ -425,7 +425,7 @@ Function UWP_Uninstall
 						if ($_ -is [System.Windows.Forms.CheckBox]) {
 							if ($_.Checked) {
 								Write-Host "   $($_.Text)"
-								Write-Host "   $($lang.Delete)".PadRight(22) -NoNewline
+								Write-Host "   $($lang.Del)".PadRight(22) -NoNewline
 								if ($UI_Main_Remove_Sync_To_All_User.Checked) {
 									Get-AppXProvisionedPackage -Online | Where-Object DisplayName -Like "$($_.Tag)" | Remove-AppxProvisionedPackage -AllUsers -Online -ErrorAction SilentlyContinue | Out-Null
 									Get-AppxPackage -Name "$($_.Tag)" | Remove-AppxPackage | Out-Null

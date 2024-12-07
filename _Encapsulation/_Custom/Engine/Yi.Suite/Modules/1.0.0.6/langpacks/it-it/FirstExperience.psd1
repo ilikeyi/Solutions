@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = Impedire la pulizia dei pacchetti lingua inutilizzati
 	Restricted                = Ripristina criterio di esecuzione di PowerShell: limitato
 	DiskSearch                = Piano di ricerca:
-	DiskSearchFind            = Cercato e in esecuzione: {0}
+	DiskSearchFind            = Cercato e in esecuzione
 	DeployCleanup             = Pulisci la directory Deploy
 	DeployTask                = Attività di distribuzione
 	Reboot                    = Riavvia il computer
@@ -30,10 +30,10 @@
 	KeyboardSequence          = Ordine della tastiera:
 	Wubi                      = Wubi
 	Pinyi                     = Pinyin
-	VolumeLabel               = Imposta l'etichetta del volume del disco di sistema: {0}
+	VolumeLabel               = Imposta l'etichetta del volume del disco di sistema
 	SelectVolumename          = Seleziona il nome dell'etichetta del volume "Disco di sistema".
 	Exclude                   = Esclusione del difensore
-	FixMainFolder             = Correggi l'icona della directory {0}
+	FixMainFolder             = Correggi l'icona della directory
 	Authority                 = Directory o file nascosti
 	NextDelete                = Dopo aver effettuato l'accesso la prossima volta, ripulisci le soluzioni bonus
 '@

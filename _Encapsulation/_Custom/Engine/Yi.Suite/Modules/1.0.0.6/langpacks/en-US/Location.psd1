@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Select the folder to be changed
 	LocationStructure         = New directory structure
 	LocationFolderError       = The selected path has no read and write permissions.
-	LocationFolderNew         = New path: {0}
-	LocationFolderOld         = Old path: {0}
+	LocationFolderNew         = New path
+	LocationFolderOld         = Old path
 	LocationFolderSame        = Cannot be made, the new path is the same as the old path.
 	LocationDone              = After the change is complete
 	LocationDoneSync          = Copy old files to new location

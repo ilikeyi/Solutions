@@ -1,6 +1,6 @@
 ﻿ConvertFrom-StringData -StringData @'
-	# hr-HR
-	# Croatian (Croatia)
+	# hu-HU
+	# Hungarian (Hungary)
 
 	UpdateCreate              = Stvorite paket nadogradnje
 	UpdateLow                 = Minimalni zahtjevi: \

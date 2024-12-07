@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = ป้องกันการทำความสะอาดชุดภาษาที่ไม่ได้ใช้
 	Restricted                = กู้คืนนโยบายการดำเนินการ Powershell: ถูกจำกัด
 	DiskSearch                = แผนการค้นหา:
-	DiskSearchFind            = ค้นหาและทำงาน: {0}
+	DiskSearchFind            = ค้นหาและทำงาน
 	DeployCleanup             = ทำความสะอาดไดเร็กทอรี Deploy
 	DeployTask                = งานปรับใช้
 	Reboot                    = รีสตาร์ทคอมพิวเตอร์ของคุณ
@@ -30,10 +30,10 @@
 	KeyboardSequence          = ลำดับแป้นพิมพ์:
 	Wubi                      = อู๋บี
 	Pinyi                     = พินอิน
-	VolumeLabel               = ตั้งค่าป้ายกำกับโวลุ่มดิสก์ระบบ: {0}
+	VolumeLabel               = ตั้งค่าป้ายกำกับโวลุ่มดิสก์ระบบ
 	SelectVolumename          = เลือกชื่อป้ายกำกับโวลุ่ม "System Disk"
 	Exclude                   = การยกเว้นผู้พิทักษ์
-	FixMainFolder             = แก้ไขไอคอนไดเรกทอรี {0}
+	FixMainFolder             = แก้ไขไอคอนไดเรกทอรี
 	Authority                 = ไดเรกทอรีหรือไฟล์ที่ซ่อนอยู่
 	NextDelete                = หลังจากเข้าสู่ระบบครั้งถัดไป ให้ล้างโซลูชันโบนัส
 '@

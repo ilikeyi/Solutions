@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = منع تنظيف حزم اللغات غير المستخدمة
 	Restricted                = استعادة سياسة تنفيذ Powershell: مقيدة
 	DiskSearch                = خطة البحث:
-	DiskSearchFind            = تم البحث والتشغيل: {0}
+	DiskSearchFind            = تم البحث والتشغيل
 	DeployCleanup             = تنظيف دليل النشر
 	DeployTask                = مهام النشر
 	Reboot                    = أعد تشغيل جهاز الكمبيوتر الخاص بك
@@ -30,10 +30,10 @@
 	KeyboardSequence          = ترتيب لوحة المفاتيح:
 	Wubi                      = ووبي
 	Pinyi                     = بينيين
-	VolumeLabel               = تعيين تسمية حجم قرص النظام: {0}
+	VolumeLabel               = تعيين تسمية حجم قرص النظام
 	SelectVolumename          = حدد اسم تسمية وحدة التخزين "قرص النظام".
 	Exclude                   = استبعاد المدافع
-	FixMainFolder             = إصلاح رمز الدليل {0}.
+	FixMainFolder             = إصلاح رمز الدليل
 	Authority                 = الدليل أو الملف المخفي
 	NextDelete                = بعد تسجيل الدخول في المرة القادمة، قم بتنظيف حلول المكافآت
 '@

@@ -24,7 +24,7 @@
 	Optimize                  = optimizavimas
 	Hide                      = paslėpti
 	Show                      = parodyti
-	Delete                    = ištrinti
+	Del                       = ištrinti
 	Done                      = Baigti
 	OK                        = Žinoma
 	Cancel                    = Atšaukti
@@ -46,7 +46,7 @@
 	LanguageCode              = zonos ženklas
 	PleaseChoose              = Prašome pasirinkti
 	PleaseChooseMain          = Spartusis klavišas arba pasirinkimas
-	FailedCreateFolder        = Nepavyko sukurti katalogo:
+	FailedCreateFolder        = Nepavyko sukurti katalogo
 	ToMsg                     = \n   {0} Po sekundžių automatiškai grįžkite į pagrindinį meniu.
 	ToQuit                    = \n   {0} Po kelių sekundžių išeikite iš pagrindinio meniu.
 	Restart                   = Paleidimas iš naujo įsigalios

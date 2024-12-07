@@ -6,6 +6,7 @@
 	UpdateServerSelect        = Samodejna izbira strežnika ali izbira po meri
 	UpdateServerNoSelect      = Izberite razpoložljiv strežnik
 	UpdateSilent              = Posodobite tiho, ko so na voljo posodobitve
+	UpdateClean               = Dovolite čiščenje starih različic v prostem času
 	UpdateReset               = Ponastavite to rešitev
 	UpdateResetTips           = Ko je naslov za prenos na voljo, se prenos vsili in samodejno posodobi.
 	UpdateCheckServerStatus   = Preverite stanje strežnika ( na voljo je {0} možnosti )

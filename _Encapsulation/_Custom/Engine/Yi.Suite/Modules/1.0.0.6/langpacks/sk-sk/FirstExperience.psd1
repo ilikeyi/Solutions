@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = Zabráňte čisteniu nepoužívaných jazykových balíkov
 	Restricted                = Obnoviť politiku vykonávania Powershell: obmedzené
 	DiskSearch                = Vyhľadávací plán:
-	DiskSearchFind            = Vyhľadávané a spustené: {0}
+	DiskSearchFind            = Vyhľadávané a spustené
 	DeployCleanup             = Vyčistite adresár Deploy
 	DeployTask                = Úlohy nasadenia
 	Reboot                    = Reštartujte počítač
@@ -30,10 +30,10 @@
 	KeyboardSequence          = Poradie klávesnice:
 	Wubi                      = Wubi
 	Pinyi                     = Pinyin
-	VolumeLabel               = Nastaviť označenie zväzku systémového disku: {0}
+	VolumeLabel               = Nastaviť označenie zväzku systémového disku
 	SelectVolumename          = Vyberte názov štítka zväzku "Systémový disk".
 	Exclude                   = Vylúčenie obrancu
-	FixMainFolder             = Opravte ikonu adresára {0}
+	FixMainFolder             = Opravte ikonu adresára
 	Authority                 = Skrytý adresár alebo súbor
 	NextDelete                = Po ďalšom prihlásení vyčistite bonusové riešenia
 '@

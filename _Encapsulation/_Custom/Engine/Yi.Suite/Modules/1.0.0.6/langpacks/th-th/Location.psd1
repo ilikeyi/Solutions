@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = เลือกโฟลเดอร์ที่จะเปลี่ยนแปลง
 	LocationStructure         = โครงสร้างไดเรกทอรีใหม่
 	LocationFolderError       = เส้นทางที่เลือกไม่มีสิทธิ์ในการอ่านและเขียน
-	LocationFolderNew         = เส้นทางใหม่: {0}
-	LocationFolderOld         = เส้นทางเก่า: {0}
+	LocationFolderNew         = เส้นทางใหม่
+	LocationFolderOld         = เส้นทางเก่า
 	LocationFolderSame        = ไม่ทำงาน เส้นทางใหม่ก็เหมือนกับเส้นทางเก่า
 	LocationDone              = หลังจากการเปลี่ยนแปลงเสร็จสิ้น
 	LocationDoneSync          = คัดลอกไฟล์เก่าไปยังตำแหน่งใหม่

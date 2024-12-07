@@ -1,6 +1,6 @@
 ﻿ConvertFrom-StringData -StringData @'
-	# hr-HR
-	# Croatian (Croatia)
+	# zh-CN
+	# Chinese (Simplified, China)
 
 	FirstDeployment           = 首次体验部署
 	FirstDeploymentPopup      = 弹出主界面
@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = 阻止清理未使用的语言包
 	Restricted                = 恢复 Powershell 执行策略：受限
 	DiskSearch                = 搜索计划：
-	DiskSearchFind            = 搜索到，正在运行中：{0}
+	DiskSearchFind            = 搜索到，正在运行中
 	DeployCleanup             = 清理 Deploy 目录
 	DeployTask                = 部署任务
 	Reboot                    = 重新启动计算机
@@ -30,10 +30,10 @@
 	KeyboardSequence          = 键盘顺序：
 	Wubi                      = 五笔
 	Pinyi                     = 拼音
-	VolumeLabel               = 设置系统盘卷标：{0}
+	VolumeLabel               = 设置系统盘卷标
 	SelectVolumename          = 选择 "系统盘" 卷标名
 	Exclude                   = Defender 排除
-	FixMainFolder             = 修复 {0} 目录图标
+	FixMainFolder             = 修复目录图标
 	Authority                 = 隐藏目录或文件
 	NextDelete                = 下次登录后，清理附赠解决方案
 '@

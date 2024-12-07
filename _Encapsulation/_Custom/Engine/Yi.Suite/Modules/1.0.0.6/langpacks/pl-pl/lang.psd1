@@ -24,7 +24,7 @@
 	Optimize                  = Optymalizacja
 	Hide                      = Ukrywać
 	Show                      = Pokazywać
-	Delete                    = Usuwać
+	Del                       = Usuwać
 	Done                      = Skończyć
 	OK                        = Jasne
 	Cancel                    = Anulować
@@ -46,7 +46,7 @@
 	LanguageCode              = Znak strefy
 	PleaseChoose              = Proszę wybrać
 	PleaseChooseMain          = Skrót lub wybór
-	FailedCreateFolder        = Nie udało się utworzyć katalogu:
+	FailedCreateFolder        = Nie udało się utworzyć katalogu
 	ToMsg                     = \n   {0} Automatycznie powróć do menu głównego po sekundach.
 	ToQuit                    = \n   {0} Wyjdź z menu głównego po kilku sekundach.
 	Restart                   = Ponowne uruchomienie zaczyna obowiązywać

@@ -24,7 +24,7 @@
 	Optimize                  = Optimizacija
 	Hide                      = Skriti
 	Show                      = Pokazati
-	Delete                    = Izbrisati
+	Del                       = Izbrisati
 	Done                      = Končaj
 	OK                        = Seveda
 	Cancel                    = Prekliči
@@ -46,7 +46,7 @@
 	LanguageCode              = Conska oznaka
 	PleaseChoose              = Prosim izberite
 	PleaseChooseMain          = Bližnjica ali izbor
-	FailedCreateFolder        = Imenika ni bilo mogoče ustvariti:
+	FailedCreateFolder        = Imenika ni bilo mogoče ustvariti
 	ToMsg                     = \n   {0} Samodejna vrnitev v glavni meni po nekaj sekundah.
 	ToQuit                    = \n   {0} Po nekaj sekundah zapustite glavni meni.
 	Restart                   = Ponovni zagon stopi v veljavo

@@ -7,6 +7,7 @@
 	Menu                      = Menu
 	Learn                     = Estudar
 	AddTo                     = Adicionar à
+	Del                       = Excluir
 	Done                      = Terminar
 	Failed                    = Falhar
 	OK                        = Claro
@@ -21,7 +22,7 @@
 	RefreshModules            = Atualização a quente de todos os módulos
 	PleaseChoose              = Selecione
 	PleaseChooseMain          = Atalho ou seleção
-	FailedCreateFolder        = Falha ao criar diretório:
+	FailedCreateFolder        = Falha ao criar diretório
 	ToMsg                     = \n   {0} Retorne automaticamente ao menu principal após segundos.
 	ToQuit                    = \n   {0} Saia do menu principal após segundos.
 	UserCancel                = O usuário cancelou a operação.

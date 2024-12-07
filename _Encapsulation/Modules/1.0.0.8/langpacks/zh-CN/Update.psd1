@@ -6,6 +6,7 @@
 	UpdateServerSelect        = 自动选择服务器或自定义选择
 	UpdateServerNoSelect      = 请选择可用的服务器
 	UpdateSilent              = 有可用更新时，静默更新
+	UpdateClean               = 允许空闲时清理旧版本
 	UpdateReset               = 重置此解决方案
 	UpdateResetTips           = 下载地址可用时，强制下载并自动更新。
 	UpdateCheckServerStatus   = 检查服务器状态 ( 共 {0} 个可选 )

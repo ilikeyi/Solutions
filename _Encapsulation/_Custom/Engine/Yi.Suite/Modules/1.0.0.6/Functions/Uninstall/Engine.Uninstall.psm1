@@ -4,8 +4,8 @@
 #>
 Function Uninstall
 {
-	Logo -Title "$($lang.Delete) $($lang.MainHisName)"
-	Write-Host "   $($lang.Delete) $($lang.MainHisName)" -ForegroundColor Yellow
+	Logo -Title "$($lang.Del) $($lang.MainHisName)"
+	Write-Host "   $($lang.Del) $($lang.MainHisName)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
@@ -16,7 +16,7 @@ Function Uninstall
 		autoScaleMode  = 2
 		Height         = 720
 		Width          = 550
-		Text           = "$($lang.Delete) $($lang.MainHisName)"
+		Text           = "$($lang.Del) $($lang.MainHisName)"
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		MaximizeBox    = $False
 		StartPosition  = "CenterScreen"
@@ -36,19 +36,19 @@ Function Uninstall
 	$UI_Main_Delete_ICON = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 35
 		Width          = 490
-		Text           = "$($lang.Delete) $($lang.Redundant)"
+		Text           = "$($lang.Del) $($lang.Redundant)"
 		Checked        = $true
 	}
 	$UI_Main_Delete_Right_Menu = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 35
 		Width          = 490
-		Text           = "$($lang.Delete) $($lang.DesktopMenu)"
+		Text           = "$($lang.Del) $($lang.DesktopMenu)"
 		Checked        = $true
 	}
 	$UI_Main_Defender_Exclude = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 35
 		Width          = 490
-		Text           = "$($lang.Delete) $($lang.Exclude) ( $($Global:UniqueMainFolder) )"
+		Text           = "$($lang.Del) $($lang.Exclude) ( $($Global:UniqueMainFolder) )"
 		Checked        = $true
 	}
 	$UI_Main_Restore_Restricted = New-Object System.Windows.Forms.CheckBox -Property @{
@@ -66,7 +66,7 @@ Function Uninstall
 	$UI_Main_Uninstall_All = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 35
 		Width          = 490
-		Text           = "$($lang.Delete) $($lang.MainHisName)"
+		Text           = "$($lang.Del) $($lang.MainHisName)"
 		Checked        = $true
 	}
 	$UI_Main_OK        = New-Object system.Windows.Forms.Button -Property @{
@@ -80,8 +80,8 @@ Function Uninstall
 			if ($UI_Main_Delete_ICON.Checked) {
 				$syspin   = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\syspin")\syspin.exe"
 
-				Write-Host "   $($lang.Delete) $($lang.Redundant)" -ForegroundColor Green
-				Write-Host "   $($lang.Delete) $($env:USERPROFILE)\Desktop\$($lang.MainHisName).lnk"
+				Write-Host "   $($lang.Del) $($lang.Redundant)" -ForegroundColor Green
+				Write-Host "   $($lang.Del) $($env:USERPROFILE)\Desktop\$($lang.MainHisName).lnk"
 				Remove-Item -Path "$($env:USERPROFILE)\Desktop\Bundled Solutions.lnk" -ErrorAction SilentlyContinue
 				Remove-Item -Path "$($env:USERPROFILE)\Desktop\附赠解决方案.lnk" -ErrorAction SilentlyContinue
 				Remove-Item -Path "$($env:USERPROFILE)\Desktop\附贈解決方案.lnk" -ErrorAction SilentlyContinue
@@ -89,7 +89,7 @@ Function Uninstall
 				Remove-Item -Path "$($env:USERPROFILE)\Desktop\ボーナスソリューション.lnk" -ErrorAction SilentlyContinue
 				Remove-Item -Path "$($env:USERPROFILE)\Desktop\Bonuslösung.lnk" -ErrorAction SilentlyContinue
 
-				Write-Host "   $($lang.Delete) $($env:SystemDrive)\Users\Public\Desktop\$($lang.MainHisName).lnk"
+				Write-Host "   $($lang.Del) $($env:SystemDrive)\Users\Public\Desktop\$($lang.MainHisName).lnk"
 				Remove-Item -Path "$($env:SystemDrive)\Users\Public\Desktop\Bundled Solutions.lnk" -ErrorAction SilentlyContinue
 				Remove-Item -Path "$($env:SystemDrive)\Users\Public\Desktop\附赠解决方案.lnk" -ErrorAction SilentlyContinue
 				Remove-Item -Path "$($env:SystemDrive)\Users\Public\Desktop\附贈解決方案.lnk" -ErrorAction SilentlyContinue
@@ -98,7 +98,7 @@ Function Uninstall
 				Remove-Item -Path "$($env:SystemDrive)\Users\Public\Desktop\Bonuslösung.lnk" -ErrorAction SilentlyContinue
 
 				$StartMenu = "$($env:SystemDrive)\ProgramData\Microsoft\Windows\Start Menu\Programs\$((Get-Module -Name Engine).Author)'s Solutions"
-				Write-Host "   $($lang.Delete) $($StartMenu)`n"
+				Write-Host "   $($lang.Del) $($StartMenu)`n"
 				Remove_Tree -Path $StartMenu
 
 				if (Test-Path $syspin -PathType Leaf) {
@@ -109,7 +109,7 @@ Function Uninstall
 				Personalise -Del
 			}
 			if ($UI_Main_Defender_Exclude.Checked) {
-				Write-Host "   $($lang.Delete) $($lang.Exclude) ( $($Global:UniqueMainFolder) )`n" -ForegroundColor Green
+				Write-Host "   $($lang.Del) $($lang.Exclude) ( $($Global:UniqueMainFolder) )`n" -ForegroundColor Green
 				Remove-MpPreference -ExclusionPath "$($Global:UniqueMainFolder)"
 			}
 			if ($UI_Main_Restore_Restricted.Checked) {
@@ -133,7 +133,7 @@ Function Uninstall
 				}
 			}
 			if ($UI_Main_Uninstall_All.Checked) {
-				Write-Host "   $($lang.Delete) $($lang.MainHisName) ( $($Global:UniqueMainFolder) )`n" -ForegroundColor Green
+				Write-Host "   $($lang.Del) $($lang.MainHisName) ( $($Global:UniqueMainFolder) )`n" -ForegroundColor Green
 				Remove_Tree -Path "$($Global:UniqueMainFolder)"
 			}
 			$UI_Main.Close()

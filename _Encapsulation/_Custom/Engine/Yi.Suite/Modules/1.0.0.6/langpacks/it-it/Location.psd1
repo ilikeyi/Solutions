@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Seleziona la cartella da modificare
 	LocationStructure         = Nuova struttura di directory
 	LocationFolderError       = Il percorso selezionato non dispone di autorizzazioni di lettura e scrittura.
-	LocationFolderNew         = Nuovo percorso: {0}
-	LocationFolderOld         = Vecchio percorso: {0}
+	LocationFolderNew         = Nuovo percorso
+	LocationFolderOld         = Vecchio percorso
 	LocationFolderSame        = Non operativo, il nuovo percorso è uguale al vecchio percorso.
 	LocationDone              = Una volta completate le modifiche
 	LocationDoneSync          = Copia i vecchi file nella nuova posizione

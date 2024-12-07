@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Vyberte priečinok, ktorý chcete zmeniť
 	LocationStructure         = Nová adresárová štruktúra
 	LocationFolderError       = Vybraná cesta nemá oprávnenia na čítanie a zápis.
-	LocationFolderNew         = Nová cesta: {0}
-	LocationFolderOld         = Stará cesta: {0}
+	LocationFolderNew         = Nová cesta
+	LocationFolderOld         = Stará cesta
 	LocationFolderSame        = Nie je v prevádzke, nová cesta je rovnaká ako stará cesta.
 	LocationDone              = Po dokončení zmien
 	LocationDoneSync          = Skopírujte staré súbory na nové miesto

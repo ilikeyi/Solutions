@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Виберіть папку, яку потрібно змінити
 	LocationStructure         = Нова структура каталогу
 	LocationFolderError       = Вибраний шлях не має дозволів на читання та запис.
-	LocationFolderNew         = Новий шлях: {0}
-	LocationFolderOld         = Старий шлях: {0}
+	LocationFolderNew         = Новий шлях
+	LocationFolderOld         = Старий шлях
 	LocationFolderSame        = Не працює, новий шлях збігається зі старим.
 	LocationDone              = Після внесення змін
 	LocationDoneSync          = Скопіюйте старі файли в нове місце

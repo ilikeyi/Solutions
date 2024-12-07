@@ -13,7 +13,7 @@ Function Personalise
 
 	Write-Host "   $($lang.DesktopMenu)" -ForegroundColor Green
 	if ($Del) {
-		Write-Host "   $($lang.Delete)".PadRight(28) -NoNewline
+		Write-Host "   $($lang.Del)".PadRight(28) -NoNewline
 		Remove-Item -Path "HKLM:\SOFTWARE\Classes\Directory\Background\shell\$((Get-Module -Name Engine).Author)" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\$((Get-Module -Name Engine).Author).MainPanel" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\$((Get-Module -Name Engine).Author).Dir" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null

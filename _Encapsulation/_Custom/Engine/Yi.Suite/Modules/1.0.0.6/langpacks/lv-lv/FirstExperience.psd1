@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = Novērst neizmantoto valodu pakotņu tīrīšanu
 	Restricted                = Atjaunot Powershell izpildes politiku: ierobežota
 	DiskSearch                = Meklēšanas plāns:
-	DiskSearchFind            = Meklēta un darbojas: {0}
+	DiskSearchFind            = Meklēta un darbojas
 	DeployCleanup             = Iztīriet izvietošanas direktoriju
 	DeployTask                = Izvietošanas uzdevumi
 	Reboot                    = Restartējiet datoru
@@ -30,10 +30,10 @@
 	KeyboardSequence          = Tastatūras secība:
 	Wubi                      = Vubi
 	Pinyi                     = Pinyin
-	VolumeLabel               = Iestatīt sistēmas diska skaļuma iezīmi: {0}
+	VolumeLabel               = Iestatīt sistēmas diska skaļuma iezīmi
 	SelectVolumename          = Atlasiet sējuma etiķetes nosaukumu "Sistēmas disks".
 	Exclude                   = Aizstāvju izslēgšana
-	FixMainFolder             = Labojiet {0} direktorija ikonu
+	FixMainFolder             = Labojiet direktorija ikonu
 	Authority                 = Slēpts direktorijs vai fails
 	NextDelete                = Pēc pieteikšanās nākamajā reizē notīriet bonusa risinājumus
 '@

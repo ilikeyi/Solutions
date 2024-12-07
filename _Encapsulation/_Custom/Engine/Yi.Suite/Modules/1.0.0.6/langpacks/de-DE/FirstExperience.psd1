@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = Verhindern Sie die Bereinigung nicht verwendeter Sprachpakete
 	Restricted                = Powershell-Ausführungsrichtlinie wiederherstellen: eingeschränkt
 	DiskSearch                = Suchplan:
-	DiskSearchFind            = Gesucht und ausgeführt: {0}
+	DiskSearchFind            = Gesucht und ausgeführt
 	DeployCleanup             = Bereinigen Sie das Deploy-Verzeichnis
 	DeployTask                = Bereitstellungsaufgaben
 	Reboot                    = Starten Sie Ihren Computer neu
@@ -30,10 +30,10 @@
 	KeyboardSequence          = Tastaturreihenfolge:
 	Wubi                      = Wubi
 	Pinyi                     = Pinyin
-	VolumeLabel               = Volume Label des Systemlaufwerks festlegen: {0}
+	VolumeLabel               = Volume Label des Systemlaufwerks festlegen
 	SelectVolumename          = Wählen Sie den Namen des Volume Labels "Systemfestplatte"
 	Exclude                   = Defender ausschließen
-	FixMainFolder             = {0} Verzeichnissymbol reparieren
+	FixMainFolder             = Verzeichnissymbol reparieren
 	Authority                 = Verstecktes Verzeichnis oder Datei
 	NextDelete                = Nach dem nächsten Login die Bonuslösung bereinigen
 '@

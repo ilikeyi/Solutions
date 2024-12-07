@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = Undgå rengøring af ubrugte sprogpakker
 	Restricted                = Gendan Powershell-udførelsespolitik: begrænset
 	DiskSearch                = Søgeplan:
-	DiskSearchFind            = Søgte og kører: {0}
+	DiskSearchFind            = Søgte og kører
 	DeployCleanup             = Ryd op i Deploy-mappen
 	DeployTask                = Implementeringsopgaver
 	Reboot                    = Genstart din computer
@@ -30,10 +30,10 @@
 	KeyboardSequence          = Tastaturrækkefølge:
 	Wubi                      = Wubi
 	Pinyi                     = Pinyin
-	VolumeLabel               = Indstil systemdiskvolumenetiket: {0}
+	VolumeLabel               = Indstil systemdiskvolumenetiket
 	SelectVolumename          = Vælg "System Disk" volumen etiketnavnet
 	Exclude                   = Udelukkelse af forsvarer
-	FixMainFolder             = Ret {0} biblioteksikon
+	FixMainFolder             = Ret biblioteksikon
 	Authority                 = Skjult mappe eller fil
 	NextDelete                = Efter at have logget ind næste gang, skal du rydde op i bonusløsningerne
 '@

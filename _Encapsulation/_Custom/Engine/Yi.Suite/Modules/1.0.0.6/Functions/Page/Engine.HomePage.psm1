@@ -94,7 +94,7 @@ Function Mainpage
 
 	Write-Host "     " -NoNewline
 	Write-Host " 3 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "  $($lang.Delete) $($lang.Mainname)" -ForegroundColor Green
+	Write-Host "  $($lang.Del) $($lang.Mainname)" -ForegroundColor Green
 
 	Write-Host
 
@@ -120,7 +120,7 @@ Function Mainpage
 
 	Write-Host "     " -NoNewline
 	Write-Host " 9 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "  $($lang.Delete) $($lang.UninstallUWP)" -ForegroundColor Green
+	Write-Host "  $($lang.Del) $($lang.UninstallUWP)" -ForegroundColor Green
 
 	Write-Host "    " -NoNewline
 	Write-Host " 10 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White

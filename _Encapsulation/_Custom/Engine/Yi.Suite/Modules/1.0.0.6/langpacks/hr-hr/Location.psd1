@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Odaberite mapu koju želite promijeniti
 	LocationStructure         = Nova struktura imenika
 	LocationFolderError       = Odabrana staza nema dopuštenja za čitanje i pisanje.
-	LocationFolderNew         = Novi put: {0}
-	LocationFolderOld         = Stari put: {0}
+	LocationFolderNew         = Novi put
+	LocationFolderOld         = Stari put
 	LocationFolderSame        = Nije u funkciji, novi put je isti kao i stari.
 	LocationDone              = Nakon što su izmjene dovršene
 	LocationDoneSync          = Kopirajte stare datoteke na novo mjesto

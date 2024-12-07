@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = حدد المجلد المراد تغييره
 	LocationStructure         = هيكل الدليل الجديد
 	LocationFolderError       = المسار المحدد لا يحتوي على أذونات القراءة والكتابة.
-	LocationFolderNew         = مسار جديد: {0}
-	LocationFolderOld         = المسار القديم: {0}
+	LocationFolderNew         = مسار جديد}
+	LocationFolderOld         = المسار القديم}
 	LocationFolderSame        = غير فعال، المسار الجديد هو نفس المسار القديم.
 	LocationDone              = بعد الانتهاء من التغييرات
 	LocationDoneSync          = انسخ الملفات القديمة إلى الموقع الجديد

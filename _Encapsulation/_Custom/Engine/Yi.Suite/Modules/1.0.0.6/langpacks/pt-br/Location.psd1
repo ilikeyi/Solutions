@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Selecione a pasta a ser alterada
 	LocationStructure         = Nova estrutura de diretório
 	LocationFolderError       = O caminho selecionado não possui permissões de leitura e gravação.
-	LocationFolderNew         = Novo caminho: {0}
-	LocationFolderOld         = Caminho antigo: {0}
+	LocationFolderNew         = Novo caminho
+	LocationFolderOld         = Caminho antigo
 	LocationFolderSame        = Não operacional, o novo caminho é igual ao caminho antigo.
 	LocationDone              = Depois que as alterações forem concluídas
 	LocationDoneSync          = Copie arquivos antigos para um novo local

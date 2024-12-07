@@ -7,6 +7,7 @@
 	Menu                      = Menu
 	Learn                     = Learn
 	AddTo                     = Add
+	Del                       = Delete
 	Done                      = Complete
 	Failed                    = Failed
 	OK                        = OK
@@ -21,7 +22,7 @@
 	RefreshModules            = Hot refresh all modules
 	PleaseChoose              = Please select
 	PleaseChooseMain          = shortcuts or options
-	FailedCreateFolder        = Failed to create directory: \
+	FailedCreateFolder        = Failed to create directory
 	ToMsg                     = \n   Automatically return to the main menu after {0} seconds.
 	ToQuit                    = \n   Exit the main menu in {0} seconds.
 	UserCancel                = The user has cancelled the operation.

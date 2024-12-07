@@ -6,6 +6,7 @@
 	UpdateServerSelect        = Automaatne serveri valik või kohandatud valik
 	UpdateServerNoSelect      = Valige saadaolev server
 	UpdateSilent              = Värskendage vaikselt, kui värskendused on saadaval
+	UpdateClean               = Lubage vabal ajal vanu versioone puhastada
 	UpdateReset               = Lähtestage see lahendus
 	UpdateResetTips           = Kui allalaadimisaadress on saadaval, siis allalaadimine sunnitakse ja seda värskendatakse automaatselt.
 	UpdateCheckServerStatus   = Kontrolli serveri olekut ( saadaval on {0} valikut )

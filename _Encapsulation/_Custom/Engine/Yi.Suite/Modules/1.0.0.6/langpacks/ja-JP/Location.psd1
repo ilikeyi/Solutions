@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = 変更するフォルダを選択します
 	LocationStructure         = 新しいディレクトリ構造
 	LocationFolderError       = 選択したパスに読み取りおよび書き込み権限がありません。
-	LocationFolderNew         = 新しいパス：{0}
-	LocationFolderOld         = 古いパス：{0}
+	LocationFolderNew         = 新しいパス
+	LocationFolderOld         = 古いパス
 	LocationFolderSame        = 操作不能、新しいパスは古いパスと同じです。
 	LocationDone              = 変更が完了した後
 	LocationDoneSync          = 古いファイルを新しい場所にコピーします

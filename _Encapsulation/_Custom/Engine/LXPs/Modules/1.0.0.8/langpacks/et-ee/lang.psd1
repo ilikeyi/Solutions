@@ -7,6 +7,7 @@
 	Menu                      = Menüü
 	Learn                     = Uuring
 	AddTo                     = Lisa juurde
+	Del                       = Kustutada
 	Done                      = Lõpeta
 	Failed                    = Ebaõnnestuda
 	OK                        = Muidugi
@@ -21,7 +22,7 @@
 	RefreshModules            = Kõigi moodulite kuumvärskendus
 	PleaseChoose              = Palun valige
 	PleaseChooseMain          = Otsetee või valik
-	FailedCreateFolder        = Kataloogi loomine ebaõnnestus:
+	FailedCreateFolder        = Kataloogi loomine ebaõnnestus
 	ToMsg                     = \n   {0} Naaske sekundite pärast automaatselt peamenüüsse.
 	ToQuit                    = \n   {0} Väljuge peamenüüst mõne sekundi pärast.
 	UserCancel                = Kasutaja on toimingu tühistanud.

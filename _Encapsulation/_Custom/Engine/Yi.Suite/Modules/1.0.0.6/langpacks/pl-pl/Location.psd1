@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Wybierz folder, który chcesz zmienić
 	LocationStructure         = Nowa struktura katalogów
 	LocationFolderError       = Wybrana ścieżka nie ma uprawnień do odczytu i zapisu.
-	LocationFolderNew         = Nowa ścieżka: {0}
-	LocationFolderOld         = Stara ścieżka: {0}
+	LocationFolderNew         = Nowa ścieżka
+	LocationFolderOld         = Stara ścieżka
 	LocationFolderSame        = Nie działa. Nowa ścieżka jest taka sama jak stara.
 	LocationDone              = Po zakończeniu zmian
 	LocationDoneSync          = Skopiuj stare pliki do nowej lokalizacji

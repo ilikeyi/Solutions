@@ -869,8 +869,11 @@ public extern static int SHSetKnownFolderPath(ref Guid folderId, uint flags, Int
 		}
 	}
 	
-	Write-Host "   $($lang.LocationFolderOld -f $MarkNewFolderPath)"
-	Write-Host "   $($lang.LocationFolderNew -f $NewFolder)"
+	Write-Host "   $($lang.LocationFolderOld): " -NoNewline
+	Write-host $MarkNewFolderPath
+
+	Write-Host "   $($lang.LocationFolderNew): " -NoNewline
+	Write-host $NewFolder
 
 	if ($MarkNewFolderPath -eq $NewFolder) {
 		Write-Host "   $($lang.LocationFolderSame)`n" -ForegroundColor Red
@@ -897,7 +900,8 @@ public extern static int SHSetKnownFolderPath(ref Guid folderId, uint flags, Int
 				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 		} else {
-			Write-Host "   $($lang.FailedCreateFolder -f $NewFolder)`n" -ForegroundColor Red
+			Write-Host "   $($lang.FailedCreateFolder)"
+			Write-host "   $NewFolder)`n" -ForegroundColor Red
 		}
 	}
 }

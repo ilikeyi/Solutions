@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Valige muudetav kaust
 	LocationStructure         = Uus kataloogistruktuur
 	LocationFolderError       = Valitud teel pole lugemis- ja kirjutamisõigusi.
-	LocationFolderNew         = Uus tee: {0}
-	LocationFolderOld         = Vana tee: {0}
+	LocationFolderNew         = Uus tee
+	LocationFolderOld         = Vana tee
 	LocationFolderSame        = Ei tööta, uus tee on sama, mis vana.
 	LocationDone              = Pärast muudatuste lõpetamist
 	LocationDoneSync          = Kopeerige vanad failid uude asukohta

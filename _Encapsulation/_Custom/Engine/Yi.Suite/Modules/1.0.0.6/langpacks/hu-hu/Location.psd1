@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Válassza ki a módosítani kívánt mappát
 	LocationStructure         = Új könyvtárstruktúra
 	LocationFolderError       = A kiválasztott útvonal nem rendelkezik olvasási és írási jogosultsággal.
-	LocationFolderNew         = Új elérési út: {0}
-	LocationFolderOld         = Régi elérési út: {0}
+	LocationFolderNew         = Új elérési út
+	LocationFolderOld         = Régi elérési út
 	LocationFolderSame        = Nem működik, az új elérési út megegyezik a régivel.
 	LocationDone              = A változtatások befejezése után
 	LocationDoneSync          = Másolja a régi fájlokat új helyre

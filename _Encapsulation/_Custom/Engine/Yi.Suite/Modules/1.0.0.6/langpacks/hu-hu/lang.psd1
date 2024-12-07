@@ -24,7 +24,7 @@
 	Optimize                  = Optimalizálás
 	Hide                      = Elrejt
 	Show                      = Megmutat
-	Delete                    = Töröl
+	Del                       = Töröl
 	Done                      = Befejezés
 	OK                        = Persze
 	Cancel                    = Mégsem
@@ -46,7 +46,7 @@
 	LanguageCode              = Zóna jel
 	PleaseChoose              = Kérem válasszon
 	PleaseChooseMain          = Parancsikon vagy kijelölés
-	FailedCreateFolder        = Nem sikerült létrehozni a könyvtárat:
+	FailedCreateFolder        = Nem sikerült létrehozni a könyvtárat
 	ToMsg                     = \n   {0} Másodpercek után automatikusan visszatér a főmenübe.
 	ToQuit                    = \n   {0} Másodpercek után lépjen ki a főmenüből.
 	Restart                   = Az újraindítás életbe lép

@@ -24,7 +24,7 @@
 	Optimize                  = 最適化
 	Hide                      = 隠れる
 	Show                      = 見せる
-	Delete                    = 削除
+	Del                       = 削除
 	Done                      = 完了
 	OK                        = 決定
 	Cancel                    = キャンセル
@@ -46,7 +46,7 @@
 	LanguageCode              = ゾーンマーカー
 	PleaseChoose              = 選択してください
 	PleaseChooseMain          = ショートカット コマンドまたは選択
-	FailedCreateFolder        = ディレクトリの作成に失敗しました：
+	FailedCreateFolder        = ディレクトリの作成に失敗しました
 	ToMsg                     = \n   {0} 秒後に自動的にメインメニューに戻ります。
 	ToQuit                    = \n   {0} 秒でメインメニューを終了します。
 	Restart                   = 再起動して有効にします

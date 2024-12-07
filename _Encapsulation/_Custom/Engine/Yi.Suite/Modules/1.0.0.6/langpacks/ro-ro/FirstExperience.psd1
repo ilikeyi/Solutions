@@ -15,7 +15,7 @@
 	CleanupUnusedLP           = Preveniți curățarea pachetelor de limbi neutilizate
 	Restricted                = Restabiliți politica de execuție Powershell: restricționată
 	DiskSearch                = Plan de căutare:
-	DiskSearchFind            = Căutare și rulare: {0}
+	DiskSearchFind            = Căutare și rulare
 	DeployCleanup             = Curățați directorul Deploy
 	DeployTask                = Sarcini de implementare
 	Reboot                    = Reporniți computerul
@@ -30,10 +30,10 @@
 	KeyboardSequence          = Ordinea tastaturii:
 	Wubi                      = Wubi
 	Pinyi                     = Pinyin
-	VolumeLabel               = Setați eticheta de volum al discului de sistem: {0}
+	VolumeLabel               = Setați eticheta de volum al discului de sistem
 	SelectVolumename          = Selectați numele etichetei de volum "Disc de sistem".
 	Exclude                   = Excluderea apărătorului
-	FixMainFolder             = Remediați pictograma director {0}
+	FixMainFolder             = Remediați pictograma director
 	Authority                 = Director sau fișier ascuns
 	NextDelete                = După ce vă conectați data viitoare, curățați soluțiile bonus
 '@

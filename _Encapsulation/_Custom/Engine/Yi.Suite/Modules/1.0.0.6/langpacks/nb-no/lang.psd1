@@ -24,7 +24,7 @@
 	Optimize                  = Optimalisering
 	Hide                      = Gjemme
 	Show                      = Vise
-	Delete                    = Slette
+	Del                       = Slette
 	Done                      = Fullfør
 	OK                        = Sikker
 	Cancel                    = Kansellere
@@ -46,7 +46,7 @@
 	LanguageCode              = Sonemerke
 	PleaseChoose              = Vennligst velg
 	PleaseChooseMain          = Snarvei eller valg
-	FailedCreateFolder        = Kunne ikke opprette katalog:
+	FailedCreateFolder        = Kunne ikke opprette katalog
 	ToMsg                     = \n   {0} Gå automatisk tilbake til hovedmenyen etter sekunder.
 	ToQuit                    = \n   {0} Gå ut av hovedmenyen etter sekunder.
 	Restart                   = Omstart trer i kraft

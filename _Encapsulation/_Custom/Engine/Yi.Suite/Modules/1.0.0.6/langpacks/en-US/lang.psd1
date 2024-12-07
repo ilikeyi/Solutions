@@ -24,7 +24,7 @@
 	Optimize                  = Optimization
 	Hide                      = Hide
 	Show                      = Show
-	Delete                    = Delete
+	Del                       = Delete
 	Done                      = Complete
 	OK                        = OK
 	Cancel                    = Cancel
@@ -46,7 +46,7 @@
 	LanguageCode              = Region tag
 	PleaseChoose              = Please select
 	PleaseChooseMain          = shortcuts or options
-	FailedCreateFolder        = Failed to create directory: \
+	FailedCreateFolder        = Failed to create directory
 	ToMsg                     = \n   Automatically return to the main menu after {0} seconds.
 	ToQuit                    = \n   Exit the main menu in {0} seconds.
 	Restart                   = Restart to take effect

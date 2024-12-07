@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Değiştirilecek klasörü seçin
 	LocationStructure         = Yeni dizin yapısı
 	LocationFolderError       = Seçilen yolun okuma ve yazma izinleri yok.
-	LocationFolderNew         = Yeni yol: {0}
-	LocationFolderOld         = Eski yol: {0}
+	LocationFolderNew         = Yeni yol
+	LocationFolderOld         = Eski yol
 	LocationFolderSame        = Operasyonel değil, yeni yol eski yolla aynı.
 	LocationDone              = Değişiklikler tamamlandıktan sonra
 	LocationDoneSync          = Eski dosyaları yeni konuma kopyalayın

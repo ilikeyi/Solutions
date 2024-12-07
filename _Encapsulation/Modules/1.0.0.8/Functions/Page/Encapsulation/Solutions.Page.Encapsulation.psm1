@@ -1456,7 +1456,8 @@ Function Mainpage
 
 #			Event_Assign_Task
 
-
+			$SaveCurrentVersion = (Get-Module -Name Solutions).Version.ToString().Replace('.', '')
+			write-host $SaveCurrentVersion
 
 
 

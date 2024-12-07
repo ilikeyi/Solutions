@@ -24,7 +24,7 @@
 	Optimize                  = تحسين
 	Hide                      = يخفي
 	Show                      = يعرض
-	Delete                    = يمسح
+	Del                       = يمسح
 	Done                      = ينهي
 	OK                        = بالتأكيد
 	Cancel                    = يلغي
@@ -46,7 +46,7 @@
 	LanguageCode              = علامة المنطقة
 	PleaseChoose              = الرجاء التحديد
 	PleaseChooseMain          = الاختصار أو الاختيار
-	FailedCreateFolder        = فشل في إنشاء الدليل:
+	FailedCreateFolder        = فشل في إنشاء الدليل
 	ToMsg                     = \n   {0} العودة تلقائيا إلى القائمة الرئيسية بعد ثواني.
 	ToQuit                    = \n   {0} الخروج من القائمة الرئيسية بعد ثواني.
 	Restart                   = إعادة التشغيل تصبح نافذة المفعول

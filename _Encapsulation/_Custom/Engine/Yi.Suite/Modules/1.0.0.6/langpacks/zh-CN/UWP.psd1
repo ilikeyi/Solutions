@@ -1,6 +1,6 @@
 ﻿ConvertFrom-StringData -StringData @'
-	# hr-HR
-	# Croatian (Croatia)
+	# zh-CN
+	# Chinese (Simplified, China)
 
 	UninstallUWP              = UWP 应用
 	UninstallUWPRely          = 依赖项，不建议删除

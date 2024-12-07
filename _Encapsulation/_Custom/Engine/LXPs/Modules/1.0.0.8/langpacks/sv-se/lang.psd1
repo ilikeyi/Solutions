@@ -7,6 +7,7 @@
 	Menu                      = Meny
 	Learn                     = Studera
 	AddTo                     = Lägg till
+	Del                       = Radera
 	Done                      = Avsluta
 	Failed                    = Misslyckas
 	OK                        = Säker
@@ -21,7 +22,7 @@
 	RefreshModules            = Varmuppdatera alla moduler
 	PleaseChoose              = Vänligen välj
 	PleaseChooseMain          = Genväg eller val
-	FailedCreateFolder        = Det gick inte att skapa katalogen:
+	FailedCreateFolder        = Det gick inte att skapa katalogen
 	ToMsg                     = \n   {0} Återgå automatiskt till huvudmenyn efter några sekunder.
 	ToQuit                    = \n   {0} Stäng huvudmenyn efter sekunder.
 	UserCancel                = Användaren har avbrutit åtgärden.

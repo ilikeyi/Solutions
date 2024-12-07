@@ -24,7 +24,7 @@
 	Optimize                  = אופטימיזציה
 	Hide                      = לְהַסתִיר
 	Show                      = לְהַצִיג
-	Delete                    = לִמְחוֹק
+	Del                       = לִמְחוֹק
 	Done                      = סִיוּם
 	OK                        = בַּטוּחַ
 	Cancel                    = לְבַטֵל
@@ -46,7 +46,7 @@
 	LanguageCode              = סימן אזור
 	PleaseChoose              = נא לבחור
 	PleaseChooseMain          = קיצור או בחירה
-	FailedCreateFolder        = יצירת הספרייה נכשלה:
+	FailedCreateFolder        = יצירת הספרייה נכשלה
 	ToMsg                     = \n   {0} חזור אוטומטית לתפריט הראשי לאחר שניות.
 	ToQuit                    = \n   {0} צא מהתפריט הראשי לאחר שניות.
 	Restart                   = הפעלה מחדש נכנסת לתוקף

@@ -8,8 +8,8 @@
 	LocationUserFolderTips    = Välj den mapp som ska ändras
 	LocationStructure         = Ny katalogstruktur
 	LocationFolderError       = Den valda sökvägen har inte läs- och skrivbehörighet.
-	LocationFolderNew         = Ny sökväg: {0}
-	LocationFolderOld         = Gammal sökväg: {0}
+	LocationFolderNew         = Ny sökväg
+	LocationFolderOld         = Gammal sökväg
 	LocationFolderSame        = Inte i drift, den nya vägen är densamma som den gamla.
 	LocationDone              = Efter att ändringar är klara
 	LocationDoneSync          = Kopiera gamla filer till en ny plats

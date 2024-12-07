@@ -1,6 +1,6 @@
 ﻿ConvertFrom-StringData -StringData @'
-	# hr-HR
-	# Croatian (Croatia)
+	# hu-HU
+	# Hungarian (Hungary)
 
 	Developers_Mode                 = Način razvoja
 	Developers_Mode_Location        = Pozicioniranje koda

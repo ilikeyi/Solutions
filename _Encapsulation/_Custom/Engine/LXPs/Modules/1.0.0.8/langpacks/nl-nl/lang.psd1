@@ -7,6 +7,7 @@
 	Menu                      = Menu
 	Learn                     = Studie
 	AddTo                     = Toevoegen aan
+	Del                       = Verwijderen
 	Done                      = Finish
 	Failed                    = Mislukking
 	OK                        = Zeker
@@ -21,7 +22,7 @@
 	RefreshModules            = Heet vernieuw alle modules
 	PleaseChoose              = Selecteer alstublieft
 	PleaseChooseMain          = Snelkoppeling of selectie
-	FailedCreateFolder        = Kan map niet maken:
+	FailedCreateFolder        = Kan map niet maken
 	ToMsg                     = \n   {0} Keer na enkele seconden automatisch terug naar het hoofdmenu.
 	ToQuit                    = \n   {0} Verlaat het hoofdmenu na enkele seconden.
 	UserCancel                = De gebruiker heeft de bewerking geannuleerd.

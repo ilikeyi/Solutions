@@ -24,7 +24,7 @@
 	Optimize                  = Optimalizace
 	Hide                      = Skrýt
 	Show                      = Show
-	Delete                    = Vymazat
+	Del                       = Vymazat
 	Done                      = Dokončit
 	OK                        = Jasně
 	Cancel                    = Zrušit
@@ -46,7 +46,7 @@
 	LanguageCode              = Značka zóny
 	PleaseChoose              = Vyberte prosím
 	PleaseChooseMain          = Zkratka nebo výběr
-	FailedCreateFolder        = Nepodařilo se vytvořit adresář:
+	FailedCreateFolder        = Nepodařilo se vytvořit adresář
 	ToMsg                     = \n   {0} Po několika sekundách se automaticky vrátí do hlavní nabídky.
 	ToQuit                    = \n   {0} Po několika sekundách opusťte hlavní nabídku.
 	Restart                   = Restart se projeví
