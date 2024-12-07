@@ -33,9 +33,9 @@ Function Feature_More
 	Write-Host $lang.UpdateCreate -ForegroundColor Green
 
 	Write-Host
-	Solutions_Help_Command -Name "Sel" -Select -NoShowFile
+	Solutions_Help_Command -Name "Sel" -Silent -NoShowFile
 	Solutions_Help_Command -Name "View" -Silent
-	Solutions_Open_Command -Help
+	Solutions_Open_Command -Help -Silent
 
 	Write-Host
 	Write-Host "   " -NoNewline

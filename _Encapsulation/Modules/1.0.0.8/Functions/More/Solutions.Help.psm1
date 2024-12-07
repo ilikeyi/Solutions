@@ -177,8 +177,8 @@ Function Solutions_Help_Command
 			}
 		}
 		"FX" {
-				Write-Host "   $($lang.Command): " -NoNewline
-				Write-host "FX *" -ForegroundColor Green
+			Write-Host "   $($lang.Command): " -NoNewline
+			Write-host "FX *" -ForegroundColor Green
 
 			Functions_Tasks_List
 			if ($Pause) {
@@ -196,7 +196,7 @@ Function Solutions_Help_Command
 			}
 		}
 		"Sel" {
-			Write-Host "   $($lang.SelFile)" -ForegroundColor Yellow
+			Write-Host "   $($lang.Setting): $($lang.Event_Primary_Key)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			ForEach ($item in $Global:Image_Rule) {
 				Write-host "   " -NoNewline
@@ -237,7 +237,7 @@ Function Solutions_Help_Command
 			}
 		}
 		"View" {
-			Write-Host "`n   $($lang.ViewWIMFileInfo)" -ForegroundColor Green
+			Write-Host "`n   $($lang.ViewWIMFileInfo)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			ForEach ($item in $Global:Image_Rule) {
 				Write-host "   " -NoNewline
