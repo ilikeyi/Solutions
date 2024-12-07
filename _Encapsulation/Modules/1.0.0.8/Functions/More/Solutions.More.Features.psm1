@@ -34,7 +34,7 @@ Function Feature_More
 
 	Write-Host
 	Solutions_Help_Command -Name "Sel" -Silent -NoShowFile
-	Solutions_Help_Command -Name "View" -Silent
+	Solutions_Help_Command -Name "View" -Silent -IsVerify
 	Solutions_Open_Command -Help -Silent
 
 	Write-Host
