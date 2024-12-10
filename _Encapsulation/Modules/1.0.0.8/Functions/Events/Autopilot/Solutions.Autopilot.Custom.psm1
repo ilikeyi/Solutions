@@ -5611,7 +5611,7 @@ Function Image_Assign_Autopilot_Master
 		}
 	}
 	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Autopilot" -Name "Is_Auto_Hide_Public" -ErrorAction SilentlyContinue) {
-		$GetLanguagePrompt = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Autopilot" -Name "Is_Auto_Hide_Public"
+		$GetLanguagePrompt = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Autopilot" -Name "Is_Auto_Hide_Public" -ErrorAction SilentlyContinue
 		switch ($GetLanguagePrompt) {
 			"True" {
 				$UI_Main_Public_Auto_Hide.Checked = $True

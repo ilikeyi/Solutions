@@ -107,12 +107,20 @@ Function Solutions_Help
 	Write-Host "$($lang.ChkUpdate), $($lang.UpdateSilent)"
 
 	Write-Host
-	Write-Host "     API *".PadRight(20) -NoNewline -ForegroundColor Yellow
-	Write-Host $lang.API
+	Write-host "   " -NoNewline
+	Write-Host " API * " -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host "   $('-' * 80)"
+	Write-host "     " -NoNewline
+	Write-Host " Set API " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-host "      $($lang.Setting), $($lang.API)"
+	Write-host "     " -NoNewline
+	Write-Host " API Set " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-host "      $($lang.Setting), $($lang.API)"
 
-	Write-Host "     RR".PadRight(20) -NoNewline -ForegroundColor Yellow
-	Write-Host "$($lang.RefreshModules): " -NoNewline
-	Write-host $lang.Prerequisites -ForegroundColor Yellow
+	Write-host "     " -NoNewline
+	Write-Host " Api List " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-host "     $($lang.ShowCommand)"
+
 
 	Write-Host
 	Write-host "   " -NoNewline
@@ -120,11 +128,16 @@ Function Solutions_Help
 	Write-Host "   $('-' * 80)"
 	Write-host "     " -NoNewline
 	Write-Host " Help All " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-host "    $($lang.Rule_Show_Full), $($lang.Help)"
+	Write-host "     $($lang.Rule_Show_Full), $($lang.Help)"
 
 	Write-host "     " -NoNewline
 	Write-Host " Help * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-host "      $($lang.ShowCommand)"
+	Write-host "       $($lang.ShowCommand)"
+
+	write-host
+	Write-Host "   R'R".PadRight(20) -NoNewline -ForegroundColor Yellow
+	Write-Host "$($lang.RefreshModules): " -NoNewline
+	Write-host $lang.Prerequisites -ForegroundColor Yellow
 }
 
 Function Solutions_Help_Command

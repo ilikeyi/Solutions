@@ -14,15 +14,35 @@ Function Solutions_API_Command
 		"List" {
 			$GetALlName = @()
 			Get-ChildItem -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import" -ErrorAction SilentlyContinue | ForEach-Object {
-				$GetALlName += $([System.IO.Path]::GetFileNameWithoutExtension($_.Name))
+				<#
+					.捕捉路径
+				#>
+				$GetNewPath = $([System.IO.Path]::GetFileNameWithoutExtension($_.Name))
+
+				if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$($GetNewPath)" -Name "Path") {
+					$GetImportFileName = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$($GetNewPath)" -Name "Path" -ErrorAction SilentlyContinue
+				} else {
+					$GetImportFileName = ""
+				}
+
+				$GetALlName += @{
+					Name = $([System.IO.Path]::GetFileNameWithoutExtension($_.Name))
+					Path = $GetImportFileName
+				}
 			}
 
 			if ($GetALlName.Count -gt 0) {
 				ForEach ($item in $GetALlName) {
-					Write-Host "   $($item)" -ForegroundColor Green
+					Write-Host "   $($lang.RuleName): " -NoNewline
+					Write-Host $item.Name -ForegroundColor Green
+
+					Write-Host "   $($lang.Select_Path): " -NoNewline
+					Write-Host $item.Path -ForegroundColor Green
+
+					Write-Host
 				}
 			} else {
-				Write-Host "`n   $($lang.NoWork)" -ForegroundColor Red
+				Write-Host "   $($lang.NoWork)" -ForegroundColor Red
 			}
 
 			Get_Next
@@ -38,7 +58,7 @@ Function Solutions_API_Command
 			Write-Host $Name -ForegroundColor Green
 
 			if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$($Name)" -Name "Path" -ErrorAction SilentlyContinue) {
-				$GetImportFileName = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$($Name)" -Name "Path"
+				$GetImportFileName = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$($Name)" -Name "Path" -ErrorAction SilentlyContinue
 
 				Write-Host "   $($lang.Filename): " -NoNewline -ForegroundColor Yellow
 				

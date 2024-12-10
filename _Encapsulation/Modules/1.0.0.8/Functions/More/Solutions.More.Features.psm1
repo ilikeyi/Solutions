@@ -37,8 +37,7 @@ Function Feature_More
 	
 	Write-Host
 	Solutions_Help_Command -Name "View" -Silent -IsVerify
-	
-	Write-Host
+
 	Solutions_Open_Command -Help -Silent
 
 	Write-Host

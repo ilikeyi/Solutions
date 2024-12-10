@@ -464,7 +464,7 @@ Function Solutions_Create_UI
 		if (-not (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Collection" -Name "$($Script:init_To_GPS)_Exclude_Software" -ErrorAction SilentlyContinue)) {
 			Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Collection" -name "$($Script:init_To_GPS)_Exclude_Software" -value "" -Multi
 		}
-		$GetExcludeSoftware = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Collection" -Name "$($Script:init_To_GPS)_Exclude_Software"
+		$GetExcludeSoftware = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Collection" -Name "$($Script:init_To_GPS)_Exclude_Software" -ErrorAction SilentlyContinue
 
 		$ExcludeSoftware = @()
 		ForEach ($item in $GetExcludeSoftware) {
@@ -474,7 +474,7 @@ Function Solutions_Create_UI
 		if (-not (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Collection" -Name "$($Script:init_To_GPS)_Exclude_Fonts" -ErrorAction SilentlyContinue)) {
 			Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Collection" -name "$($Script:init_To_GPS)_Exclude_Fonts" -value "" -Multi
 		}
-		$GetExcludeFonts = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Collection" -Name "$($Script:init_To_GPS)_Exclude_Fonts"
+		$GetExcludeFonts = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Collection" -Name "$($Script:init_To_GPS)_Exclude_Fonts" -ErrorAction SilentlyContinue
 
 		$ExcludeFonts = @()
 		ForEach ($item in $GetExcludeFonts) {
@@ -874,7 +874,7 @@ volume
 		if (-not (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Create" -Name "$($Script:init_To_GPS)_Save_Command_WinSetup" -ErrorAction SilentlyContinue)) {
 			Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Create" -name "$($Script:init_To_GPS)_Save_Command_WinSetup" -value $Script:Init_Pre_Select_Command -Multi
 		}
-		$Get_Init_Select_Guid_Command = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Create" -Name "$($Script:init_To_GPS)_Save_Command_WinSetup"
+		$Get_Init_Select_Guid_Command = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Create" -Name "$($Script:init_To_GPS)_Save_Command_WinSetup" -ErrorAction SilentlyContinue
 
 		$Group_Get_Init_Select_Guid_Command = @()
 		ForEach ($item in $Get_Init_Select_Guid_Command) {
@@ -887,7 +887,7 @@ volume
 		if (-not (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Create" -Name "$($Script:init_To_GPS)_Save_Command_WinSPE" -ErrorAction SilentlyContinue)) {
 			Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Create" -name "$($Script:init_To_GPS)_Save_Command_WinSPE" -value "" -Multi
 		}
-		$Get_Init_Select_Guid_PE_Command = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Create" -Name "$($Script:init_To_GPS)_Save_Command_WinSPE"
+		$Get_Init_Select_Guid_PE_Command = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Create" -Name "$($Script:init_To_GPS)_Save_Command_WinSPE" -ErrorAction SilentlyContinue
 
 		$Group_Get_Init_Select_PE_Guid_Command = @()
 		ForEach ($item in $Get_Init_Select_Guid_PE_Command) {

@@ -486,11 +486,7 @@ Function Mainpage
 
 	Write-Host
 	Write-host "   " -NoNewline
-	Write-Host " API * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "  $($lang.API)" -ForegroundColor Green
-
-	Write-host "     " -NoNewline
-	Write-Host " R'r " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " R'R " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.RefreshModules)"
 
 	Write-Host

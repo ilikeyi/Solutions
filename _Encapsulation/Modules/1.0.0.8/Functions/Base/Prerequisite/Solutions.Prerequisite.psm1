@@ -76,7 +76,7 @@ Function Prerequisite
 
 	Write-Host "   $($lang.UpdateClean): " -NoNewline
 	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Update" -Name "IsUpdate_Clean" -ErrorAction SilentlyContinue) {
-		$GetOldVersion = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Update" -Name "IsUpdate_Clean"
+		$GetOldVersion = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Update" -Name "IsUpdate_Clean" -ErrorAction SilentlyContinue
 		$SaveCurrentVersion = (Get-Module -Name Solutions).Version.ToString()
 
 		if ($GetOldVersion -eq $SaveCurrentVersion) {
