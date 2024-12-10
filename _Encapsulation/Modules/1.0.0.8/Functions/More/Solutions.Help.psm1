@@ -204,6 +204,90 @@ Function Solutions_Help_Command
 
 			Get_Next
 		}
+		"Save" {
+			Write-host "   " -NoNewline
+			Write-Host " Help Save " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " $($lang.Setting): $($lang.Event_Primary_Key)" -ForegroundColor Yellow
+			Write-Host "   $('-' * 80)"
+			ForEach ($item in $Global:Image_Rule) {
+				if ($item.Main.Suffix -eq "wim") {
+					Write-host "   " -NoNewline
+					Write-Host " Save " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+					Write-host " " -NoNewline
+					Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+					Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+					Write-Host $item.Main.Uid -ForegroundColor Green
+
+					$InitNewImageSources = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($item.Main.ImageFileName)\Mount"
+
+					Write-Host "   $($lang.Select_Path): " -NoNewline
+					Write-Host $InitNewImageSources -ForegroundColor Green
+					Write-Host
+				}
+
+				if ($item.Expand.Count -gt 0) {
+					ForEach ($Expand in $item.Expand) {
+						if ($Expand.Suffix -eq "wim") {
+							Write-host "   " -NoNewline
+							Write-Host " Save " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+							Write-host " " -NoNewline
+							Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+							Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+							Write-Host $Expand.Uid -ForegroundColor Green
+
+							$InitNewImageMountToRouteRecovery = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($Expand.ImageFileName)\Mount"
+							Write-Host "   $($lang.Select_Path): " -NoNewline
+							Write-Host $InitNewImageMountToRouteRecovery -ForegroundColor Green
+							Write-Host
+						}
+					}
+				}
+			}
+
+			Get_Next
+		}
+		"Unmount" {
+			Write-host "   " -NoNewline
+			Write-Host " Help Unmount " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " $($lang.Setting): $($lang.Event_Primary_Key)" -ForegroundColor Yellow
+			Write-Host "   $('-' * 80)"
+			ForEach ($item in $Global:Image_Rule) {
+				if ($item.Main.Suffix -eq "wim") {
+					Write-host "   " -NoNewline
+					Write-Host " Unmount " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+					Write-host " " -NoNewline
+					Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+					Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+					Write-Host $item.Main.Uid -ForegroundColor Green
+
+					$InitNewImageSources = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($item.Main.ImageFileName)\Mount"
+
+					Write-Host "   $($lang.Select_Path): " -NoNewline
+					Write-Host $InitNewImageSources -ForegroundColor Green
+					Write-Host
+				}
+
+				if ($item.Expand.Count -gt 0) {
+					ForEach ($Expand in $item.Expand) {
+						if ($Expand.Suffix -eq "wim") {
+							Write-host "   " -NoNewline
+							Write-Host " Unmount " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+							Write-host " " -NoNewline
+							Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+							Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+							Write-Host $Expand.Uid -ForegroundColor Green
+
+							$InitNewImageMountToRouteRecovery = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($Expand.ImageFileName)\Mount"
+							Write-Host "   $($lang.Select_Path): " -NoNewline
+							Write-Host $InitNewImageMountToRouteRecovery -ForegroundColor Green
+							Write-Host
+						}
+					}
+				}
+			}
+
+			Get_Next
+		}
 		"Set" {
 			Write-Host "`n   $($lang.API)"
 			Write-Host "   $('-' * 80)"
