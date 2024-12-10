@@ -1514,14 +1514,11 @@ Function Language_Extract_UI
 		Width          = 20
 		SizeMode       = "StretchImage"
 	}
-	$UI_Main_Error     = New-Object System.Windows.Forms.RichTextBox -Property @{
+	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 255
-		Width          = 260
+		Width          = 245
 		Location       = "655,370"
-		BorderStyle    = 0
 		Text           = ""
-		BackColor      = "#FFFFFF"
-		ReadOnly       = $True
 	}
 	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
