@@ -121,7 +121,6 @@ Function Solutions_Help
 	Write-Host " Api List " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-host "     $($lang.ShowCommand)"
 
-
 	Write-Host
 	Write-host "   " -NoNewline
 	Write-Host $lang.Help -BackgroundColor DarkMagenta -ForegroundColor White
@@ -212,6 +211,20 @@ Function Solutions_Help_Command
 			if ($Pause) {
 				Get_Next
 			}
+		}
+		"Set" {
+			Write-Host "`n   $($lang.API)"
+			Write-Host "   $('-' * 80)"
+			write-host "   " -NoNewline
+			Write-host " Set API " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-host "     $($lang.Setting), $($lang.API)"
+
+			write-host
+			write-host "   " -NoNewline
+			Write-host " Set ISO " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-host "     $($lang.Setting), $($lang.Iso_File)"
+
+			Get_Next
 		}
 		"Sel" {
 			Write-host "   " -NoNewline

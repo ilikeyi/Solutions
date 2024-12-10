@@ -1,7 +1,6 @@
 ﻿
 <#
-	.Create upgrade package user interface
-	.创建升级包用户界面
+	.API
 #>
 Function Solutions_API_Command
 {
@@ -105,7 +104,22 @@ Function Solutions_API_Help
 		$Name
 	)
 
-	Write-host "   Using:"
+	Write-Host "`n   $($lang.API)"
+	Write-Host "   $('-' * 80)"
+	write-host "   " -NoNewline
+	Write-host " API Set " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-host "      $($lang.Setting), $($lang.API)"
+
+	write-host
+	write-host "   " -NoNewline
+	Write-host " API List " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-host "     $($lang.Command)"
+
+	write-host
+	write-host "   " -NoNewline
+	Write-host " API * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-host "        $($lang.Running), $($lang.RuleName)"
+	Write-host "                  API Yi" -ForegroundColor Green
 
 	Get_Next
 }
