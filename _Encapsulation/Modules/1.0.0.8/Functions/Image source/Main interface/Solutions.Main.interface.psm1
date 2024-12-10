@@ -3581,7 +3581,7 @@ Write-Host "Test"
 		Location       = '15,15'
 	}
 	$GUIImageSourceGroupAPI_Shortcut_Panel = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
-		Height         = 450
+		Height         = 515
 		Width          = 475
 		Location       = '15,45'
 		Padding        = "15,0,0,0"
@@ -3617,7 +3617,7 @@ Write-Host "Test"
 	$GUIImageSourceGroupAPI_Shortcut_Panel_Refresh = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 35
 		Width          = 460
-		Location       = '20,530'
+		Location       = '20,595'
 		Text           = $lang.Refresh
 		LinkColor      = "GREEN"
 		ActiveLinkColor = "RED"
@@ -3632,7 +3632,7 @@ Write-Host "Test"
 	$GUIImageSourceGroupAPI_Shortcut_Clear_Select = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 35
 		Width          = 450
-		Location       = '20,570'
+		Location       = '20,630'
 		Text           = "$($lang.Del), $($lang.Choose)"
 		LinkColor      = "GREEN"
 		ActiveLinkColor = "RED"
@@ -3766,7 +3766,7 @@ Write-Host "Test"
 			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = $null
 
 			$FileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{
-				Filter = "PowerShell Files (*.ps1;*.psm1;)|*.ps1;*.psm1;"
+				Filter = "PowerShell Files (*.ps1;*.psd1;*.psm1;)|*.ps1;*.psd1;*.psm1;"
 			}
 
 			if ($FileBrowser.ShowDialog() -eq "OK") {
@@ -9179,6 +9179,7 @@ Write-Host "Test"
 
 	switch ($Page) {
 		"ISO" {
+			$UI_Main.Text = $lang.ISO_File
 			Write-Host "`n   $($lang.ISO_File)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 
@@ -9200,6 +9201,7 @@ Write-Host "Test"
 			$UI_Main.ShowDialog() | Out-Null
 		}
 		"API" {
+			$UI_Main.Text = $lang.API
 			Write-Host "`n   $($lang.API)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			Refresh_Rule_Shortcuts
