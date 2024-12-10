@@ -510,55 +510,59 @@ Function Image_Set_Primary_Key_Shortcuts
 	)
 
 	Write-Host "`n   $($lang.Command): " -NoNewline
-	Write-host "Sel $($Name)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-host "Sel" -ForegroundColor Green
+
+	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-host $Name -ForegroundColor Green
 
 	Write-Host "`n   $($lang.Event_Primary_Key) *" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 	ForEach ($item in $Global:Image_Rule) {
-		if ($item.Main.Shortcuts -eq $Name) {
-			Write-Host "   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
-			Write-Host $item.Main.Group -ForegroundColor Green
-
-			Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
-			Write-Host $item.Main.Uid -ForegroundColor Green
-
-			$TestWimFile = Join-Path -Path $item.Main.Path -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)"
-
-			Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
-			Write-Host $TestWimFile -ForegroundColor Green
-
-			if (Test-Path -Path $TestWimFile -PathType Leaf) {
-				Image_Set_Global_Primary_Key -Uid $item.Main.Uid -Detailed -DevCode "0406"
-			} else {
-				Write-Host "`n   $($lang.NoInstallImage)"
-				Write-Host "   $($TestWimFile)" -ForegroundColor Red
+		if ($item.Main.Suffix -eq "wim") {
+			if ($item.Main.Shortcuts -eq $Name) {
+				Write-Host "   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
+				Write-Host $item.Main.Group -ForegroundColor Green
+	
+				Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+				Write-Host $item.Main.Uid -ForegroundColor Green
+	
+				$TestWimFile = Join-Path -Path $item.Main.Path -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)"
+	
+				Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
+				Write-Host $TestWimFile -ForegroundColor Green
+	
+				if (Test-Path -Path $TestWimFile -PathType Leaf) {
+					Image_Set_Global_Primary_Key -Uid $item.Main.Uid -Detailed -DevCode "0406"
+				} else {
+					Write-Host "`n   $($lang.NoInstallImage)"
+					Write-Host "   $($TestWimFile)" -ForegroundColor Red
+				}
+	
+				return
 			}
 
-			return
-		}
+			if ($item.Expand.Count -gt 0) {
+				ForEach ($Expand in $item.Expand) {
+					if ($Expand.Shortcuts -eq $Name) {
+						Write-Host "   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
+						Write-Host $Expand.Group -ForegroundColor Green
 
-		if ($item.Expand.Count -gt 0) {
-			ForEach ($Expand in $item.Expand) {
-				if ($Expand.Shortcuts -eq $Name) {
-					Write-Host "   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
-					Write-Host $Expand.Group -ForegroundColor Green
+						Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+						Write-Host $Expand.Uid -ForegroundColor Green
+						$NewFileFullPathExpand = "$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)"
 
-					Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
-					Write-Host $Expand.Uid -ForegroundColor Green
-					$NewFileFullPathExpand = "$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)"
+						Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
+						Write-Host $NewFileFullPathExpand -ForegroundColor Green
 
-					Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
-					Write-Host $NewFileFullPathExpand -ForegroundColor Green
+						if (Test-Path -Path $NewFileFullPathExpand -PathType Leaf) {
+							Image_Set_Global_Primary_Key -Uid $Expand.Uid -Detailed -DevCode "1208"
+						} else {
+							Write-Host "`n   $($lang.NoInstallImage)"
+							Write-Host "   $($NewFileFullPathExpand)" -ForegroundColor Red
+						}
 
-					if (Test-Path -Path $NewFileFullPathExpand -PathType Leaf) {
-						Image_Set_Global_Primary_Key -Uid $Expand.Uid -Detailed -DevCode "1208"
-					} else {
-						Write-Host "`n   $($lang.NoInstallImage)"
-						Write-Host "   $($NewFileFullPathExpand)" -ForegroundColor Red
+						return
 					}
-
-					return
 				}
 			}
 		}
@@ -575,8 +579,10 @@ Function Image_Primary_Key_Shortcuts_File_View
 	)
 
 	Write-Host "`n   $($lang.Command): " -NoNewline
-	Write-host "View $($Name)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-host "View" -ForegroundColor Green
+
+	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-host $Name -ForegroundColor Green
 
 	Write-Host "`n   $($lang.ViewWIMFileInfo) *" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"

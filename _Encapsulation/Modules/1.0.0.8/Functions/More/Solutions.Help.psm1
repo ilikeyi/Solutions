@@ -219,34 +219,38 @@ Function Solutions_Help_Command
 			Write-Host "  $($lang.Setting): $($lang.Event_Primary_Key)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			ForEach ($item in $Global:Image_Rule) {
-				Write-host "   " -NoNewline
-				Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-				Write-host " " -NoNewline
-				Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
-				Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
-				Write-Host $item.Main.Uid -ForegroundColor Green
+				if ($item.Main.Suffix -eq "wim") {
+					Write-host "   " -NoNewline
+					Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+					Write-host " " -NoNewline
+					Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+					Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+					Write-Host $item.Main.Uid -ForegroundColor Green
 
-				if (-not $NoShowFile) {
-					$TestWIMFile = Join-Path -Path $item.Main.Path -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)"
-					Write-Host "   $($lang.Select_Path): " -NoNewline
-					Write-Host $TestWIMFile -ForegroundColor Green
-					Write-Host
+					if (-not $NoShowFile) {
+						$TestWIMFile = Join-Path -Path $item.Main.Path -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)"
+						Write-Host "   $($lang.Select_Path): " -NoNewline
+						Write-Host $TestWIMFile -ForegroundColor Green
+						Write-Host
+					}
 				}
 
 				if ($item.Expand.Count -gt 0) {
 					ForEach ($Expand in $item.Expand) {
-						Write-host "   " -NoNewline
-						Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-						Write-host " " -NoNewline
-						Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
-						Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
-						Write-Host $Expand.Uid -ForegroundColor Green
+						if ($Expand.Suffix -eq "wim") {
+							Write-host "   " -NoNewline
+							Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+							Write-host " " -NoNewline
+							Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+							Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+							Write-Host $Expand.Uid -ForegroundColor Green
 
-						if (-not $NoShowFile) {
-							$TestWIMFileExpand = Join-Path -Path $Expand.Path -ChildPath "$($Expand.ImageFileName).$($Expand.Suffix)"
-							Write-Host "   $($lang.Select_Path): " -NoNewline
-							Write-Host $TestWIMFileExpand -ForegroundColor Green
-							Write-Host
+							if (-not $NoShowFile) {
+								$TestWIMFileExpand = Join-Path -Path $Expand.Path -ChildPath "$($Expand.ImageFileName).$($Expand.Suffix)"
+								Write-Host "   $($lang.Select_Path): " -NoNewline
+								Write-Host $TestWIMFileExpand -ForegroundColor Green
+								Write-Host
+							}
 						}
 					}
 				}

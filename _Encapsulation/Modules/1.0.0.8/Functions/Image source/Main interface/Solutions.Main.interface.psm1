@@ -402,7 +402,6 @@ Function Image_Select
 	$SupportPSFilename = @(
 		".ps1"
 		".psm1"
-		".psd1"
 	)
 
 	<#
@@ -417,7 +416,7 @@ Function Image_Select
 	If (Test-Path -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import") {
 	} else {
 		New-Item "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$((Get-Module -Name Solutions).Author)" -force -ErrorAction SilentlyContinue | Out-Null
-		$InitPath = Join-Path -Path $([Environment]::GetFolderPath("Desktop")) -ChildPath "$((Get-Module -Name Solutions).Author).PS1"
+		$InitPath = Join-Path -Path $([Environment]::GetFolderPath("Desktop")) -ChildPath "$((Get-Module -Name Solutions).Author).ps1"
 		New-ItemProperty -LiteralPath "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$((Get-Module -Name Solutions).Author)" -Name "Path" -Value $InitPath -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
 	}
 
@@ -3685,7 +3684,7 @@ Function Image_Select
 			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = $null
 
 			$FileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{
-				Filter = "PowerShell Files (*.ps1;*.psm1;*.psd1)|*.ps1;*.psm1;*.psd1;"
+				Filter = "PowerShell Files (*.ps1;*.psm1;)|*.ps1;*.psm1;"
 			}
 
 			if ($FileBrowser.ShowDialog() -eq "OK") {

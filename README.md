@@ -110,12 +110,14 @@ Detailed introduction
       <dl>
         <dd>1.1.&nbsp;&nbsp;Check for updates: In order to better stay up to date with the latest version, you can check whether the latest version is available at any time</dd>
         <dd>1.2.&nbsp;&nbsp;Hot refresh: After changing the script, enter R in the main interface and execute "reload module" to complete the hot refresh</dd>
-        <dd>1.3.&nbsp;&nbsp;Multi-language packs</dd>
-        <dd>1.4.&nbsp;&nbsp;Event mode: automatic driving, custom assigned events, manual operation</dd>
-        <dd>1.5.&nbsp;&nbsp;Descending order: Automatically identify ARM64, x64, and x86 architectures, and automatically select dependent programs in descending order according to the architecture.</dd>
-        <dd>1.6.&nbsp;&nbsp;ISO: Automatically identify ISO tag names and initialize rules (supports inclusion class matching), decompress, mount, pop up, verify hash, display corresponding ISO files according to rules, search, automatically classify: files, language packages, function packages , InBox Apps</dd>
-        <dd>1.7.&nbsp;&nbsp;Fix</dd>
-        <dd>1.8.&nbsp;&nbsp;Mount points</dd>
+        <dd>1.3.&nbsp;&nbsp;Shortcut command: When there is an available shortcut command, you can quickly enter and activate the corresponding instruction set</dd>
+        <dd>1.4.&nbsp;&nbsp;API: Application Programming Interface</dd>
+        <dd>1.5.&nbsp;&nbsp;Multi-language packs</dd>
+        <dd>1.6.&nbsp;&nbsp;Event mode: automatic driving, custom assigned events, manual operation</dd>
+        <dd>1.7.&nbsp;&nbsp;Descending order: Automatically identify ARM64, x64, and x86 architectures, and automatically select dependent programs in descending order according to the architecture.</dd>
+        <dd>1.8.&nbsp;&nbsp;ISO: Automatically identify ISO tag names and initialize rules (supports inclusion class matching), decompress, mount, pop up, verify hash, display corresponding ISO files according to rules, search, automatically classify: files, language packages, function packages , InBox Apps</dd>
+        <dd>1.9.&nbsp;&nbsp;Fix</dd>
+        <dd>1.10.&nbsp;&nbsp;Mount points</dd>
       </dl>
     </dd>
 
