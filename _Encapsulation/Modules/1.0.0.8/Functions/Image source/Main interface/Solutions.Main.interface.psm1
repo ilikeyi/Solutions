@@ -3650,7 +3650,7 @@ Write-Host "Test"
 
 			if ($Temp_Save_Select_Path.Count -gt 0) {
 				Foreach ($item in $Temp_Save_Select_Path) {
-					write-host $item
+					Remove-Item "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$($item)" -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
 				}
 
 				Refresh_Rule_Shortcuts
