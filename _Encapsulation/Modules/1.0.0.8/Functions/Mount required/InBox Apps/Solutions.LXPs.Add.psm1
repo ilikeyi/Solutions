@@ -625,10 +625,22 @@ Function LXPs_Region_Add
 		.选择规则
 	#>
 	$UI_Main_Rule_Name = New-Object system.Windows.Forms.Label -Property @{
-		Height         = 30
+		Height         = 40
 		Width          = 530
 		margin         = "0,40,0,0"
 		Text           = $lang.AddSources
+	}
+	$UI_Main_Setting_ISO = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 40
+		Width          = 520
+		Padding        = "16,0,0,0"
+		Text           = "$($lang.Setting): $($lang.ISO_File)"
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			Image_Select -Page "ISO"
+		}
 	}
 	$UI_Main_Rule      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
@@ -1602,6 +1614,7 @@ Function LXPs_Region_Add
 		$UI_Main_InBox_Apps_Clear_Rule_View,
 
 		$UI_Main_Rule_Name,
+		$UI_Main_Setting_ISO,
 		$UI_Main_Rule,
 
 		$UI_Main_Select_Sources_Name,

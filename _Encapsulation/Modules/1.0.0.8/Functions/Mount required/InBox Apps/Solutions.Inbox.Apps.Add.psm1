@@ -878,10 +878,22 @@ Function InBox_Apps_Add_UI
 		.选择来源
 	#>
 	$UI_Main_Select_Sources_Name = New-Object system.Windows.Forms.Label -Property @{
-		Height         = 30
+		Height         = 40
 		Width          = 520
 		margin         = "0,30,0,0"
 		Text           = $lang.AddSources
+	}
+	$UI_Main_Setting_ISO = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 40
+		Width          = 520
+		Padding        = "16,0,0,0"
+		Text           = "$($lang.Setting): $($lang.ISO_File)"
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			Image_Select -Page "ISO"
+		}
 	}
 	$UI_Main_Select_Sources = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		Height         = 300
@@ -1264,6 +1276,7 @@ Function InBox_Apps_Add_UI
 			.选择添加来源
 		#>
 		$UI_Main_Select_Sources_Name,
+		$UI_Main_Setting_ISO,
 		$UI_Main_Select_Sources,
 
 		<#

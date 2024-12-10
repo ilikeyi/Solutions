@@ -384,12 +384,9 @@ Function Image_Set_Disk_Sources
 #>
 Function Image_Select
 {
-	Logo -Title $lang.SelectSettingImage
-	Write-Host "   $($lang.Dashboard)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
-
-	Write-Host "   $($lang.Logging): " -NoNewline -ForegroundColor Yellow
-	Write-Host "$($Global:LogsSaveFolder)\$($Global:LogSaveTo)" -ForegroundColor Green
+	param (
+		$Page
+	)
 
 	<#
 		.Mark the registry location
@@ -402,16 +399,43 @@ Function Image_Select
 		New-Item -Path $Path -Force -ErrorAction SilentlyContinue | Out-Null
 	}
 
+	$SupportPSFilename = @(
+		".ps1"
+		".psm1"
+		".psd1"
+	)
+
 	<#
 		.Initialization: Disk
 		.初始化：磁盘
 	#>
 	Image_Init_Disk_Sources
 
-	$GetCurrentDiskTo = Get-ItemPropertyValue -Path $Path -Name "DiskTo" -ErrorAction SilentlyContinue
-	Write-Host "`n   $($lang.SelectSettingImage)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
-	Write-Host "   $($GetCurrentDiskTo)" -ForegroundColor Green
+	<#
+		.初始化：API
+	#>
+	If (Test-Path -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import") {
+	} else {
+		New-Item "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$((Get-Module -Name Solutions).Author)" -force -ErrorAction SilentlyContinue | Out-Null
+		$InitPath = Join-Path -Path $([Environment]::GetFolderPath("Desktop")) -ChildPath "$((Get-Module -Name Solutions).Author).PS1"
+		New-ItemProperty -LiteralPath "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$((Get-Module -Name Solutions).Author)" -Name "Path" -Value $InitPath -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
+	}
+
+	if ($Page) {
+
+	} else {
+		Logo -Title $lang.SelectSettingImage
+		Write-Host "   $($lang.Dashboard)" -ForegroundColor Yellow
+		Write-Host "   $('-' * 80)"
+
+		Write-Host "   $($lang.Logging): " -NoNewline -ForegroundColor Yellow
+		Write-Host "$($Global:LogsSaveFolder)\$($Global:LogSaveTo)" -ForegroundColor Green
+
+		$GetCurrentDiskTo = Get-ItemPropertyValue -Path $Path -Name "DiskTo" -ErrorAction SilentlyContinue
+		Write-Host "`n   $($lang.SelectSettingImage)" -ForegroundColor Yellow
+		Write-Host "   $('-' * 80)"
+		Write-Host "   $($GetCurrentDiskTo)" -ForegroundColor Green
+	}
 
 	<#
 		.Create an array of languages and use them for later comparison
@@ -428,6 +452,274 @@ Function Image_Select
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
+
+	Function Add_New_Rule_Name
+	{
+		param
+		(
+			[switch]$IsForce
+		)
+
+		if (Verify_New_RuleName) {
+			if ($IsForce) {
+				If (Test-Path -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$($GUIImageSourceGroupAPI_Rule_Path.Text)") {
+				} else {
+					$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+					$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.NoInstallImage), $($lang.PleaseChoose): $($lang.AddTo)"
+					$GUIImageSourceGroupAPI_Rule_Path.BackColor = "LightPink"
+					return
+				}
+			} else {
+				<#
+					.添加前，验证是否有旧的规则名存在
+				#>
+				If (Test-Path -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$($GUIImageSourceGroupAPI_Rule_Path.Text)") {
+					$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+					$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.Existed): $($GUIImageSourceGroupAPI_Rule_Path.Text)"
+					$GUIImageSourceGroupAPI_Rule_Path.BackColor = "LightPink"
+					return
+				}
+			}
+
+			if ($GUIImageSourceGroupAPI_New_Path_IsCheck.Checked) {
+				If ([String]::IsNullOrEmpty($GUIImageSourceGroupAPI_New_Path.Text)) {
+					$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+					$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.SelectFromError): $($lang.NoChoose): $($lang.SelFile)"
+					$GUIImageSourceGroupAPI_New_Path.BackColor = "LightPink"
+					return
+				} else {
+					if (Test-Path -Path $GUIImageSourceGroupAPI_New_Path.Text -PathType leaf) {
+						if ($SupportPSFilename -Contains $([System.IO.Path]::GetExtension($GUIImageSourceGroupAPI_New_Path.Text))) {
+							
+						} else {
+							$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+							$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.RuleNameFormat): $($SupportPSFilename)"
+							$GUIImageSourceGroupAPI_New_Path.BackColor = "LightPink"
+							return
+						}
+					} else {
+						$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+						$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.SelectFromError): $($lang.NoInstallImage)"
+						$GUIImageSourceGroupAPI_New_Path.BackColor = "LightPink"
+						return
+					}
+				}
+			}
+
+			New-Item "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$($GUIImageSourceGroupAPI_Rule_Path.Text)" -force -ErrorAction SilentlyContinue | Out-Null
+			New-ItemProperty -LiteralPath "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$($GUIImageSourceGroupAPI_Rule_Path.Text)" -Name "Path" -Value $GUIImageSourceGroupAPI_New_Path.Text -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
+
+			Refresh_Rule_Shortcuts
+
+			if ($IsForce) {
+				$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.Change): $($GUIImageSourceGroupAPI_Rule_Path.Text), $($lang.Done)"
+			} else {
+				$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.AddTo): $($GUIImageSourceGroupAPI_Rule_Path.Text), $($lang.Done)"
+				$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.Change): $($GUIImageSourceGroupAPI_Rule_Path.Text), $($lang.Done)"
+			}
+			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+
+			$GUIImageSourceGroupAPI_Rule_Path.Text = ""
+			$GUIImageSourceGroupAPI_Rule_Path.BackColor = "#FFFFFF"
+			$GUIImageSourceGroupAPI_New_Path.Text = ""
+			$GUIImageSourceGroupAPI_New_Path.BackColor = "#FFFFFF"
+		}
+	}
+
+	<#
+		.API：验证规则名
+		.API：验证规则名
+	#>
+	Function Verify_New_RuleName
+	{
+		$GUIImageSourceGroupAPIErrorMsg_Icon.Image = $null
+		$GUIImageSourceGroupAPIErrorMsg.Text = ""
+		$GUIImageSourceGroupAPI_Rule_Path.BackColor = "#FFFFFF"
+		$GUIImageSourceGroupAPI_New_Path.BackColor = "#FFFFFF"
+
+		<#
+			.Judgment: 1. Null value
+			.判断：1. 空值
+		#>
+		if ([string]::IsNullOrEmpty($GUIImageSourceGroupAPI_Rule_Path.Text)) {
+			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+			$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.SelectFromError): $($lang.RuleNameNotInput)"
+			$GUIImageSourceGroupAPI_Rule_Path.BackColor = "LightPink"
+			return $False
+		}
+
+		<#
+			.Judgment: 2. The prefix cannot contain spaces
+			.判断：2. 前缀不能带空格
+		#>
+		if ($GUIImageSourceGroupAPI_Rule_Path.Text -match '^\s') {
+			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+			$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.SelectFromError): $($lang.ISO9660TipsErrorSpace))"
+			$GUIImageSourceGroupAPI_Rule_Path.BackColor = "LightPink"
+			return $False
+		}
+
+		<#
+			.Judgment: 3. No spaces at the end
+			.判断：3. 后缀不能带空格
+		#>
+		if ($GUIImageSourceGroupAPI_Rule_Path.Text -match '\s$') {
+			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+			$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.SelectFromError): $($lang.ISO9660TipsErrorSpace))"
+			$GUIImageSourceGroupAPI_Rule_Path.BackColor = "LightPink"
+			return $False
+		}
+
+		<#
+			.Judgment: 4. There can be no two spaces in between
+			.判断：4. 中间不能含有二个空格
+		#>
+		if ($GUIImageSourceGroupAPI_Rule_Path.Text -match '\s{2,}') {
+			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+			$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.SelectFromError): $($lang.ISO9660TipsErrorSpace))"
+			$GUIImageSourceGroupAPI_Rule_Path.BackColor = "LightPink"
+			return $False
+		}
+
+		<#
+			.Judgment: 5. Cannot contain: \\ /: *? "" <> |
+			.判断：5, 不能包含：\\ / : * ? "" < > |
+		#>
+		if ($GUIImageSourceGroupAPI_Rule_Path.Text -match '[~#$@!%&*{}<>?/|+"]') {
+			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+			$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.SelectFromError): $($lang.ISO9660TipsErrorOther))"
+			$GUIImageSourceGroupAPI_Rule_Path.BackColor = "LightPink"
+			return $False
+		}
+
+		<#
+			.Judgment: 6. No more than 260 characters
+			.判断：6. 不能大于 260 字符
+		#>
+		if ($UIUnzip_Search_Sift_Custon.Text.length -gt 6) {
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+			$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.ISOLengthError -f "6")"
+			$UIUnzip_Search_Sift_Custon.BackColor = "LightPink"
+			return
+		}
+
+		return $True
+	}
+
+	<#
+		.Event: Click Event and select the image source
+		.事件：点击了事件，选择映像源
+	#>
+	Function Refresh_Rule_Shortcuts
+	{
+		$GUIImageSourceGroupAPI_Shortcut_Panel.controls.Clear()
+		$GUIImageSourceGroupAPI_Rule_Path.BackColor = "#FFFFFF"
+		$GUIImageSourceGroupAPI_New_Path.BackColor = "#FFFFFF"
+		$GUIImageSourceGroupAPIErrorMsg.Text = ""
+		$GUIImageSourceGroupAPIErrorMsg_Icon.Image = $null
+
+		$GetALlName = @()
+		Get-ChildItem -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import" -ErrorAction SilentlyContinue | ForEach-Object {
+			$GetALlName += $([System.IO.Path]::GetFileNameWithoutExtension($_.Name))
+		}
+
+		if ($GetALlName.Count -gt 0) {
+			ForEach ($item in $GetALlName) {
+				<#
+					.捕捉路径
+				#>
+				if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$($item)" -Name "Path" -ErrorAction SilentlyContinue) {
+					$GetImportFileName = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$($item)" -Name "Path"
+				} else {
+					$GetImportFileName = ""
+				}
+
+				$ShortcutsShortName = $([System.IO.Path]::GetFileNameWithoutExtension($item))
+				$Checkbox      = New-Object System.Windows.Forms.CheckBox -Property @{
+					Height     = 30
+					Width      = 425
+					Text       = "$($lang.RuleName): $($item)"
+					Name       = $ShortcutsShortName
+					Tag        = $GetImportFileName
+				}
+
+				$CheckboxPath = New-Object system.Windows.Forms.Label -Property @{
+					autoSize   = 1
+					Text       = ""
+					Padding    = "16,5,0,15"
+				}
+
+				$CheckboxChange    = New-Object system.Windows.Forms.LinkLabel -Property @{
+					Height         = 35
+					Width          = 425
+					Padding        = "16,0,0,0"
+					Text           = $lang.Change
+					Name           = $ShortcutsShortName
+					Tag            = $GetImportFileName
+					LinkColor      = "GREEN"
+					ActiveLinkColor = "RED"
+					LinkBehavior   = "NeverUnderline"
+					add_Click      = {
+						$GUIImageSourceGroupAPI_Rule_Path.BackColor = "#FFFFFF"
+						$GUIImageSourceGroupAPI_New_Path.BackColor = "#FFFFFF"
+						$GUIImageSourceGroupAPIErrorMsg.Text = ""
+						$GUIImageSourceGroupAPIErrorMsg_Icon.Image = $null
+						$GUIImageSourceGroupAPI_Rule_Path.Text = $this.Name
+						$GUIImageSourceGroupAPI_New_Path.Text = $this.Tag
+					}
+				}
+
+				$CheckboxDel       = New-Object system.Windows.Forms.LinkLabel -Property @{
+					Height         = 35
+					Width          = 425
+					Padding        = "16,0,0,0"
+					Text           = $lang.Del
+					Name           = $ShortcutsShortName
+					LinkColor      = "GREEN"
+					ActiveLinkColor = "RED"
+					LinkBehavior   = "NeverUnderline"
+					add_Click      = {
+						Remove-Item "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Import\$($This.Name)" -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
+						Refresh_Rule_Shortcuts
+
+						$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.Del): $($This.Name), $($lang.Done)"
+						$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+
+						$GUIImageSourceGroupAPI_Rule_Path.Text = ""
+						$GUIImageSourceGroupAPI_Rule_Path.BackColor = "#FFFFFF"
+						$GUIImageSourceGroupAPI_New_Path.Text = ""
+						$GUIImageSourceGroupAPI_New_Path.BackColor = "#FFFFFF"
+					}
+				}
+
+				$Checkbox_Wrap     = New-Object system.Windows.Forms.Label -Property @{
+					Height         = 20
+					Width          = 410
+				}
+
+				If ([String]::IsNullOrEmpty($GetImportFileName)) {
+					$CheckboxPath.Text = "$($lang.Select_Path): $($lang.Failed)"
+				} else {
+					$CheckboxPath.Text = "$($lang.Select_Path): $($GetImportFileName)"
+				}
+
+				$GUIImageSourceGroupAPI_Shortcut_Panel.controls.AddRange((
+					$Checkbox,
+					$CheckboxPath,
+					$CheckboxChange,
+					$CheckboxDel,
+					$Checkbox_Wrap
+				))
+			}
+		} else {
+			$UI_Main_Pre_Rule_NoWork = New-Object system.Windows.Forms.Label -Property @{
+				Height         = 30
+				Width          = 425
+				Text           = $lang.NoWork
+			}
+			$GUIImageSourceGroupAPI_Shortcut_Panel.controls.AddRange($UI_Main_Pre_Rule_NoWork)
+		}
+	}
 
 	<#
 		.从规则里验证 MVS (MSDN)
@@ -901,7 +1193,6 @@ Function Image_Select
 		.Event: Add directory structure
 		.事件：添加目录结构
 	#>
-
 	Function RefreshNewPath
 	{
 		<#
@@ -2695,7 +2986,7 @@ Function Image_Select
 								$UIUnzip_Select_Sources.controls.AddRange($CheckBox)
 							}
 						} else {
-							$UI_Main_Pre_Rule_Not_Find = New-Object system.Windows.Forms.Label  -Property @{
+							$UI_Main_Pre_Rule_Not_Find = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 30
 								Width          = 645
 								Padding        = "22,0,0,0"
@@ -2739,7 +3030,7 @@ Function Image_Select
 								$UIUnzip_Select_Sources.controls.AddRange($CheckBox)
 							}
 						} else {
-							$UI_Main_Pre_Rule_Not_Find = New-Object system.Windows.Forms.Label  -Property @{
+							$UI_Main_Pre_Rule_Not_Find = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 30
 								Width          = 645
 								Padding        = "22,0,0,0"
@@ -2829,6 +3120,7 @@ Function Image_Select
 						$UIUnzip_Search_Sift_Custon.BackColor = "LightPink"
 						return
 					}
+
 					<#
 						.Judgment: 7. No more than 260 characters
 						.判断：7. 不能大于 260 字符
@@ -3164,16 +3456,336 @@ Function Image_Select
 	}
 
 	<#
+		.组：蒙板：设置界面
+	#>
+	$UI_MainSetting    = New-Object system.Windows.Forms.Panel -Property @{
+		BorderStyle    = 0
+		Height         = 678
+		Width          = 1072
+		autoSizeMode   = 1
+		Padding        = "8,0,8,0"
+		Location       = '0,0'
+	}
+
+	<#
 		.动态显示映像来源：磁盘
 	#>
 	$UI_Main_Select_Sources = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
-		Height         = 450
+		Height         = 455
 		Width          = 695
 		BorderStyle    = 0
 		autoSizeMode   = 0
 		autoScroll     = $True
 		Location       = '0,0'
 		Padding        = 15
+	}
+
+	<#
+		.组：设置 API
+	#>
+	$GUIImageSourceGroupAPI = New-Object system.Windows.Forms.Panel -Property @{
+		BorderStyle    = 0
+		Height         = 678
+		Width          = 1072
+		autoSizeMode   = 1
+		Padding        = "8,0,8,0"
+		Location       = '0,0'
+		Visible        = $False
+	}
+
+	$GUIImageSourceGroupAPI_Shortcut_Name = New-Object system.Windows.Forms.Label -Property @{
+		Height         = 30
+		Width          = 428
+		Text           = $lang.Short_Cmd
+		Location       = '15,15'
+	}
+	$GUIImageSourceGroupAPI_Shortcut_Panel = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
+		Height         = 450
+		Width          = 475
+		Location       = '15,45'
+		Padding        = "15,0,0,0"
+		BorderStyle    = 0
+		autoSizeMode   = 0
+		autoScroll     = $True
+	}
+
+	$UI_Main_List_Select = New-Object System.Windows.Forms.ContextMenuStrip
+	$UI_Main_List_Select.Items.Add($lang.AllSel).add_Click({
+		$GUIImageSourceGroupAPI_Shortcut_Panel.Controls | ForEach-Object {
+			if ($_ -is [System.Windows.Forms.CheckBox]) {
+				if ($_.Enabled) {
+					$_.Checked = $true
+				}
+			}
+		}
+	})
+	$UI_Main_List_Select.Items.Add($lang.AllClear).add_Click({
+		$GUIImageSourceGroupAPI_Shortcut_Panel.Controls | ForEach-Object {
+			if ($_ -is [System.Windows.Forms.CheckBox]) {
+				if ($_.Enabled) {
+					$_.Checked = $false
+				}
+			}
+		}
+	})
+	$GUIImageSourceGroupAPI_Shortcut_Panel.ContextMenuStrip = $UI_Main_List_Select
+
+	<#
+		从注册表读取保存的命名规则：刷新
+	#>
+	$GUIImageSourceGroupAPI_Shortcut_Panel_Refresh = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 35
+		Width          = 460
+		Location       = '20,530'
+		Text           = $lang.Refresh
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			Refresh_Rule_Shortcuts
+ 
+			$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.Refresh), $($lang.Done)"
+			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+		}
+	}
+	$GUIImageSourceGroupAPI_Shortcut_Clear_Select = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 35
+		Width          = 450
+		Location       = '20,570'
+		Text           = "$($lang.Del), $($lang.Choose)"
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$Temp_Save_Select_Path = @()
+			
+			$GUIImageSourceGroupAPI_Shortcut_Panel.Controls | ForEach-Object {
+				if ($_ -is [System.Windows.Forms.CheckBox]) {
+					if ($_.Checked) {
+						$Temp_Save_Select_Path += $_.Name
+					}
+				}
+			}
+
+			if ($Temp_Save_Select_Path.Count -gt 0) {
+				Foreach ($item in $Temp_Save_Select_Path) {
+					write-host $item
+				}
+
+				Refresh_Rule_Shortcuts
+				$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.Del), $($lang.Choose), $($lang.Done)"
+				$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+			} else {
+				$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.Del), $($lang.Failed), $($lang.NoWork)"
+				$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Info.ico")
+			}
+		}
+	}
+
+	$GUIImageSourceGroupAPISettingPanel = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
+		Height         = 540
+		Width          = 475
+		BorderStyle    = 0
+		autoSizeMode   = 0
+		autoScroll     = $True
+		Location       = '575,20'
+	}
+
+	$GUIImageSourceGroupAPI_Adv = New-Object System.Windows.Forms.Label -Property @{
+		Height         = 30
+		Width          = 428
+		Text           = $lang.AdvOption
+	}
+	$GUIImageSourceGroupAPI_New_Path_IsCheck = New-Object System.Windows.Forms.CheckBox -Property @{
+		Height         = 30
+		Width          = 438
+		Padding        = "25,0,0,0"
+		Text           = $lang.RuleNewPathISCheck
+		Checked        = $True
+		add_Click      = {
+			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = $null
+			$GUIImageSourceGroupAPIErrorMsg.Text = ""
+			$GUIImageSourceGroupAPI_Rule_Path.BackColor = "#FFFFFF"
+			$GUIImageSourceGroupAPI_New_Path.BackColor = "#FFFFFF"
+		}
+	}
+
+	$GUIImageSourceGroupAPI_Adv_Wrap = New-Object system.Windows.Forms.Label -Property @{
+		Height       = 30
+		Width        = 428
+	}
+
+	<#
+		.名称
+	#>
+	$GUIImageSourceGroupAPI_New_Rule_Name = New-Object system.Windows.Forms.Label -Property @{
+		Height         = 30
+		Width          = 428
+		Text           = $lang.RuleName
+	}
+	$GUIImageSourceGroupAPI_Rule_Path = New-Object System.Windows.Forms.TextBox -Property @{
+		Height         = 30
+		Width          = 420
+		margin         = "25,0,0,15"
+		Text           = ""
+		add_Click      = {
+			$GUIImageSourceGroupAPI_Rule_Path.BackColor = "#FFFFFF"
+			$GUIImageSourceGroupAPIErrorMsg.Text = ""
+			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = $null
+		}
+	}
+
+	$GUIImageSourceGroupAPI_Rule_Path_Tips = New-Object system.Windows.Forms.Label -Property @{
+		autoSize       = 1
+		Padding        = "22,0,0,0"
+		Text           = $lang.RuleNewNameTips -f "6"
+	}
+
+	$GUIImageSourceGroupAPI_New_Rule_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
+		Height       = 40
+		Width        = 428
+	}
+
+	<#
+		.路径
+	#>
+	$GUIImageSourceGroupAPI_New_Path_Name = New-Object system.Windows.Forms.Label -Property @{
+		Height         = 30
+		Width          = 428
+		Text           = $lang.Select_Path
+	}
+	$GUIImageSourceGroupAPI_New_Path = New-Object System.Windows.Forms.TextBox -Property @{
+		Height         = 30
+		Width          = 420
+		margin         = "25,0,0,20"
+		Text           = ""
+		add_Click      = {
+			$GUIImageSourceGroupAPI_New_Path.BackColor = "#FFFFFF"
+			$GUIImageSourceGroupAPIErrorMsg.Text = ""
+			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = $null
+		}
+	}
+	$GUIImageSourceGroupAPI_New_Path_Tips = New-Object system.Windows.Forms.Label -Property @{
+		autoSize       = 1
+		Padding        = "22,0,0,20"
+		Text           = "$($lang.RuleNameFormat): $($SupportPSFilename)"
+	}
+
+	$GUIImageSourceGroupAPI_New_Path_Select = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 45
+		Width          = 428
+		Padding        = "22,0,0,0"
+		Text           = $lang.SelFile
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$GUIImageSourceGroupAPI_New_Path.BackColor = "#FFFFFF"
+			$GUIImageSourceGroupAPIErrorMsg.Text = ""
+			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = $null
+
+			$FileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{
+				Filter = "PowerShell Files (*.ps1;*.psm1;*.psd1)|*.ps1;*.psm1;*.psd1;"
+			}
+
+			if ($FileBrowser.ShowDialog() -eq "OK") {
+				$GUIImageSourceGroupAPI_New_Path.Text = $FileBrowser.FileName
+
+				$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.SelFile), $($lang.Done)"
+				$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+			} else {
+				$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$GUIImageSourceGroupAPIErrorMsg.Text = $lang.UserCancel
+			}
+		}
+	}
+
+	$GUIImageSourceGroupAPI_New_Path_Paste = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 45
+		Width          = 428
+		Padding        = "22,0,0,0"
+		Text           = $lang.Paste
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$GUIImageSourceGroupAPIErrorMsg.Text = ""
+			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = $null
+
+			if ([string]::IsNullOrEmpty($GUIImageSourceGroupAPI_New_Path.Text)) {
+				$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.Paste), $($lang.Inoperable)"
+				$GUIImageSourceGroupAPI_New_Path.BackColor = "LightPink"
+			} else {
+				Set-Clipboard -Value $GUIImageSourceGroupAPI_New_Path.Text
+
+				$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+				$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.Paste), $($lang.Done)"
+			}
+		}
+	}
+
+	$GUIImageSourceGroupAPIErrorMsg_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
+		Location       = "575,583"
+		Height         = 20
+		Width          = 20
+		SizeMode       = "StretchImage"
+	}
+	$GUIImageSourceGroupAPIErrorMsg = New-Object System.Windows.Forms.Label -Property @{
+		Location       = "600,585"
+		Height         = 40
+		Width          = 443
+		Text           = ""
+	}
+
+	<#
+		.API: 修改
+	#>
+	$GUIImageSourceGroupAPI_Change = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "575,635"
+		Height         = 36
+		Width          = 153
+		Text           = $lang.Change
+		add_Click      = { Add_New_Rule_Name -IsForce }
+	}
+
+	<#
+		.API: 添加
+	#>
+	$GUIImageSourceGroupAPI_Add = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "733,635"
+		Height         = 36
+		Width          = 153
+		Text           = $lang.AddTo
+		add_Click      = { Add_New_Rule_Name }
+	}
+
+	$GUIImageSourceGroupAPICanel = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "890,635"
+		Height         = 36
+		Width          = 153
+		Text           = $lang.Cancel
+		add_Click      = {
+			if ($Page) {
+				$UI_Main.Close()
+			} else {
+				$GUIImageSourceGroupAPIErrorMsg_Icon.Image = $null
+				$GUIImageSourceGroupAPIErrorMsg.Text = ""
+
+				$GUIImageSourceGroupAPI.visible = $False             # 蒙板：设置 API
+				$GUIImageSourceGroupSetting.visible = $True          # 蒙板：设置界面
+				$UI_Mask_Image_Mount_To.visible = $False             # 蒙板：更改挂载到
+				$UI_Mask_Image_Language.visible = $False             # 蒙板：更改 ISO 挂载的映像主语言
+				$UI_Main_View_Detailed.visible = $False              # 蒙板：解压 ISO，显示详细规则
+				$UIUnzipPanel_Select_Rule.visible = $False           # #蒙板：解压 ISO，选择规则
+				$UIUnzipPanel.visible = $False                       # 蒙板：解压 ISO
+				$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板：其它信息
+				$UI_MainSetting.visible = $False                     # 设置主界面
+			}
+		}
 	}
 
 	<#
@@ -3246,6 +3858,28 @@ Function Image_Select
 		Width          = 475
 		Padding        = "16,0,0,0"
 		Text           = "$($lang.UpdateCurrent): $((Get-Module -Name Solutions).Version.ToString())"
+	}
+
+	$GUIImageSourceSettingAPI = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 35
+		Width          = 478
+		margin         = "0,25,0,0"
+		Text           = $lang.API
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			Refresh_Rule_Shortcuts
+			$GUIImageSourceGroupAPI.visible = $True              # 蒙板：设置 API
+			$GUIImageSourceGroupSetting.visible = $False         # 蒙板：设置界面
+			$UI_Mask_Image_Mount_To.visible = $False             # 蒙板：更改挂载到
+			$UI_Mask_Image_Language.visible = $False             # 蒙板：更改 ISO 挂载的映像主语言
+			$UI_Main_View_Detailed.visible = $False              # 蒙板：解压 ISO，显示详细规则
+			$UIUnzipPanel_Select_Rule.visible = $False           # #蒙板：解压 ISO，选择规则
+			$UIUnzipPanel.visible = $False                       # 蒙板：解压 ISO
+			$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板：其它信息
+			$UI_MainSetting.visible = $False                     # 设置主界面
+		}
 	}
 
 	<#
@@ -4852,7 +5486,16 @@ Function Image_Select
 			}
 
 			Save_Dynamic -regkey "Solutions" -name "ISOTo" -value $GUIImageSourceISOCustomizePath.Text -String
-			$GUIImageSourceGroupSetting.visible = $False
+
+			$GUIImageSourceGroupAPI.visible = $False             # 蒙板：设置 API
+			$GUIImageSourceGroupSetting.visible = $False         # 蒙板：设置界面
+			$UI_Mask_Image_Mount_To.visible = $False             # 蒙板：更改挂载到
+			$UI_Mask_Image_Language.visible = $False             # 蒙板：更改 ISO 挂载的映像主语言
+			$UI_Main_View_Detailed.visible = $False              # 蒙板：解压 ISO，显示详细规则
+			$UIUnzipPanel_Select_Rule.visible = $False           # #蒙板：解压 ISO，选择规则
+			$UIUnzipPanel.visible = $False                       # 蒙板：解压 ISO
+			$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板：其它信息
+			$UI_MainSetting.visible = $True                      # 设置主界面
 
 			<#
 				.添加托动和事件
@@ -4870,7 +5513,16 @@ Function Image_Select
 		add_Click      = {
 			$GUIImageSourceGroupSettingErrorMsg_Icon.Image = $null
 			$GUIImageSourceGroupSettingErrorMsg.Text = ""
-			$GUIImageSourceGroupSetting.visible = $False
+
+			$GUIImageSourceGroupAPI.visible = $False             # 蒙板：设置 API
+			$GUIImageSourceGroupSetting.visible = $False         # 蒙板：设置界面
+			$UI_Mask_Image_Mount_To.visible = $False             # 蒙板：更改挂载到
+			$UI_Mask_Image_Language.visible = $False             # 蒙板：更改 ISO 挂载的映像主语言
+			$UI_Main_View_Detailed.visible = $False              # 蒙板：解压 ISO，显示详细规则
+			$UIUnzipPanel_Select_Rule.visible = $False           # #蒙板：解压 ISO，选择规则
+			$UIUnzipPanel.visible = $False                       # 蒙板：解压 ISO
+			$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板：其它信息
+			$UI_MainSetting.visible = $True                      # 设置主界面
 
 			<#
 				.添加托动和事件
@@ -4934,8 +5586,17 @@ Function Image_Select
 									$Global:MainImageLangName = $itemRegion.Name
 
 									$GUIImageSourceLanguageInfo.Text = "$($Global:MainImageLangName), $($lang.LanguageCode) ( $($Global:MainImageLang) ), $($lang.LanguageShort) ( $($Global:MainImageLangShort) )"
-									$UI_Mask_Image_Language.visible = $False
-		
+
+									$GUIImageSourceGroupAPI.visible = $False             # 蒙板：设置 API
+									$GUIImageSourceGroupSetting.visible = $False         # 蒙板：设置界面
+									$UI_Mask_Image_Mount_To.visible = $False             # 蒙板：更改挂载到
+									$UI_Mask_Image_Language.visible = $False             # 蒙板：更改 ISO 挂载的映像主语言
+									$UI_Main_View_Detailed.visible = $False              # 蒙板：解压 ISO，显示详细规则
+									$UIUnzipPanel_Select_Rule.visible = $False           # #蒙板：解压 ISO，选择规则
+									$UIUnzipPanel.visible = $False                       # 蒙板：解压 ISO
+									$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板：其它信息
+									$UI_MainSetting.visible = $True                      # 设置主界面
+
 									<#
 										.添加托动和事件
 									#>
@@ -4959,7 +5620,15 @@ Function Image_Select
 		Width          = 280
 		Text           = $lang.Cancel
 		add_Click      = {
-			$UI_Mask_Image_Language.visible = $False
+			$GUIImageSourceGroupAPI.visible = $False             # 蒙板：设置 API
+			$GUIImageSourceGroupSetting.visible = $False         # 蒙板：设置界面
+			$UI_Mask_Image_Mount_To.visible = $False             # 蒙板：更改挂载到
+			$UI_Mask_Image_Language.visible = $False             # 蒙板：更改 ISO 挂载的映像主语言
+			$UI_Main_View_Detailed.visible = $False              # 蒙板：解压 ISO，显示详细规则
+			$UIUnzipPanel_Select_Rule.visible = $False           # #蒙板：解压 ISO，选择规则
+			$UIUnzipPanel.visible = $False                       # 蒙板：解压 ISO
+			$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板：其它信息
+			$UI_MainSetting.visible = $True                      # 设置主界面
 
 			<#
 				.添加托动和事件
@@ -5100,7 +5769,16 @@ Function Image_Select
 						}
 					}
 
-					$UI_Mask_Image_Mount_To.visible = $False
+					$GUIImageSourceGroupAPI.visible = $False             # 蒙板：设置 API
+					$GUIImageSourceGroupSetting.visible = $False         # 蒙板：设置界面
+					$UI_Mask_Image_Mount_To.visible = $False             # 蒙板：更改挂载到
+					$UI_Mask_Image_Language.visible = $False             # 蒙板：更改 ISO 挂载的映像主语言
+					$UI_Main_View_Detailed.visible = $False              # 蒙板：解压 ISO，显示详细规则
+					$UIUnzipPanel_Select_Rule.visible = $False           # #蒙板：解压 ISO，选择规则
+					$UIUnzipPanel.visible = $False                       # 蒙板：解压 ISO
+					$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板：其它信息
+					$UI_MainSetting.visible = $True                      # 设置主界面
+
 					Image_Select_Refresh_Sources_List
 
 					if (Test-Path -Path $GUIImageSourceGroupMountFromPath.Text -PathType Container) {
@@ -5309,7 +5987,16 @@ Function Image_Select
 
 				Rename-Item -Path $GUIImageSourceGroupMountFromPath.Text -NewName $GUIImageSourceGroupMountFromRename_New_Path.Text
 	
-				$UI_Mask_Image_Mount_To.visible = $False
+				$GUIImageSourceGroupAPI.visible = $False             # 蒙板：设置 API
+				$GUIImageSourceGroupSetting.visible = $False         # 蒙板：设置界面
+				$UI_Mask_Image_Mount_To.visible = $False             # 蒙板：更改挂载到
+				$UI_Mask_Image_Language.visible = $False             # 蒙板：更改 ISO 挂载的映像主语言
+				$UI_Main_View_Detailed.visible = $False              # 蒙板：解压 ISO，显示详细规则
+				$UIUnzipPanel_Select_Rule.visible = $False           # #蒙板：解压 ISO，选择规则
+				$UIUnzipPanel.visible = $False                       # 蒙板：解压 ISO
+				$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板：其它信息
+				$UI_MainSetting.visible = $True                      # 设置主界面
+
 				Image_Select_Refresh_Sources_List
 	
 				$Verify_New_Rename_Folder = Join-Path -Path $Global:MainMasterFolder -ChildPath $GUIImageSourceGroupMountFromRename_New_Path.Text
@@ -5443,7 +6130,16 @@ Function Image_Select
 
 				Copy-Item -Path $GUIImageSourceGroupMountFromPath.Text -Destination $Verify_New_Rename_Folder_Some -Recurse
 
-				$UI_Mask_Image_Mount_To.visible = $False
+				$GUIImageSourceGroupAPI.visible = $False             # 蒙板：设置 API
+				$GUIImageSourceGroupSetting.visible = $False         # 蒙板：设置界面
+				$UI_Mask_Image_Mount_To.visible = $False             # 蒙板：更改挂载到
+				$UI_Mask_Image_Language.visible = $False             # 蒙板：更改 ISO 挂载的映像主语言
+				$UI_Main_View_Detailed.visible = $False              # 蒙板：解压 ISO，显示详细规则
+				$UIUnzipPanel_Select_Rule.visible = $False           # #蒙板：解压 ISO，选择规则
+				$UIUnzipPanel.visible = $False                       # 蒙板：解压 ISO
+				$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板：其它信息
+				$UI_MainSetting.visible = $True                      # 设置主界面
+
 				Image_Select_Refresh_Sources_List
 	
 				$Verify_New_Rename_Folder = Join-Path -Path $Global:MainMasterFolder -ChildPath $GUIImageSourceGroupMountFromRename_New_Path.Text
@@ -5853,7 +6549,15 @@ Function Image_Select
 			$UI_Main.Add_DragOver($UI_Main_DragOver)
 			$UI_Main.Add_DragDrop($UI_Main_DragDrop)
 
-			$UI_Mask_Image_Mount_To.visible = $False
+			$GUIImageSourceGroupAPI.visible = $False             # 蒙板：设置 API
+			$GUIImageSourceGroupSetting.visible = $False         # 蒙板：设置界面
+			$UI_Mask_Image_Mount_To.visible = $False             # 蒙板：更改挂载到
+			$UI_Mask_Image_Language.visible = $False             # 蒙板：更改 ISO 挂载的映像主语言
+			$UI_Main_View_Detailed.visible = $False              # 蒙板：解压 ISO，显示详细规则
+			$UIUnzipPanel_Select_Rule.visible = $False           # #蒙板：解压 ISO，选择规则
+			$UIUnzipPanel.visible = $False                       # 蒙板：解压 ISO
+			$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板：其它信息
+			$UI_MainSetting.visible = $True                      # 设置主界面
 		}
 	}
 
@@ -6205,7 +6909,16 @@ Function Image_Select
 				}
 			}
 
-			$GUIImageSourceGroupOtherPanel.visible = $False
+			$GUIImageSourceGroupAPI.visible = $False             # 蒙板：设置 API
+			$GUIImageSourceGroupSetting.visible = $False         # 蒙板：设置界面
+			$UI_Mask_Image_Mount_To.visible = $False             # 蒙板：更改挂载到
+			$UI_Mask_Image_Language.visible = $False             # 蒙板：更改 ISO 挂载的映像主语言
+			$UI_Main_View_Detailed.visible = $False              # 蒙板：解压 ISO，显示详细规则
+			$UIUnzipPanel_Select_Rule.visible = $False           # #蒙板：解压 ISO，选择规则
+			$UIUnzipPanel.visible = $False                       # 蒙板：解压 ISO
+			$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板：其它信息
+			$UI_MainSetting.visible = $True                      # 设置主界面
+
 			Image_Select_Refresh_Sources_List
 		}
 	}
@@ -6229,7 +6942,15 @@ Function Image_Select
 		Width          = 280
 		Text           = $lang.Cancel
 		add_Click      = {
-			$GUIImageSourceGroupOtherPanel.visible = $False
+			$GUIImageSourceGroupAPI.visible = $False             # 蒙板：设置 API
+			$GUIImageSourceGroupSetting.visible = $False         # 蒙板：设置界面
+			$UI_Mask_Image_Mount_To.visible = $False             # 蒙板：更改挂载到
+			$UI_Mask_Image_Language.visible = $False             # 蒙板：更改 ISO 挂载的映像主语言
+			$UI_Main_View_Detailed.visible = $False              # 蒙板：解压 ISO，显示详细规则
+			$UIUnzipPanel_Select_Rule.visible = $False           # #蒙板：解压 ISO，选择规则
+			$UIUnzipPanel.visible = $False                       # 蒙板：解压 ISO
+			$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板：其它信息
+			$UI_MainSetting.visible = $True                      # 设置主界面
 		}
 	}
 
@@ -7032,10 +7753,14 @@ Function Image_Select
 		Width          = 280
 		Text           = $lang.Cancel
 		add_Click      = {
-			Image_Select_Refresh_Sources_List
-			$UIUnzipPanel.visible = $False
-			$UI_Main.remove_DragDrop($UI_Main_Unzip_DragDrop)
-			$UI_Main.Add_DragDrop($UI_Main_DragDrop)
+			if ($Page) {
+				$UI_Main.Close()
+			} else {
+				Image_Select_Refresh_Sources_List
+				$UIUnzipPanel.visible = $False
+				$UI_Main.remove_DragDrop($UI_Main_Unzip_DragDrop)
+				$UI_Main.Add_DragDrop($UI_Main_DragDrop)
+			}
 		}
 	}
 
@@ -7183,11 +7908,6 @@ Function Image_Select
 		ActiveLinkColor = "RED"
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
-			if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -Name "DiskTo" -ErrorAction SilentlyContinue) {
-				$itemISO = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -Name "DiskTo" -ErrorAction SilentlyContinue
-				$UIUnzipPanel_Menu_Sources_Path.Text = Join-Path -Path $itemISO -ChildPath $Global:Init_Search_ISO_Folder_Name
-			}
-
 			ISO_Select_Refresh_Sources_List
 
 			$UIUnzipPanelErrorMsg.Text = "$($lang.Image_Restore_Default), $($lang.Done)"
@@ -7872,6 +8592,11 @@ Function Image_Select
 	}
 	$UI_Main.controls.AddRange((
 		<#
+			.蒙板：设置 API
+		#>
+		$GUIImageSourceGroupAPI,
+
+		<#
 			.蒙板：设置界面
 		#>
 		$GUIImageSourceGroupSetting,
@@ -7906,6 +8631,13 @@ Function Image_Select
 		#>
 		$GUIImageSourceGroupOtherPanel,
 
+		$UI_MainSetting
+	))
+
+	<#
+		.主界面蒙板
+	#>
+	$UI_MainSetting.controls.AddRange((
 		<#
 			.按钮：设置
 		#>
@@ -7927,6 +8659,7 @@ Function Image_Select
 		$UI_Main_Select_Sources,
 
 		<#
+
 			.动态显示：挂载到
 		#>
 		$GUIImageSourceGroupMount,
@@ -7952,6 +8685,36 @@ Function Image_Select
 		$UI_Main_Ok,
 		$UI_Main_Canel
 	))
+
+	$GUIImageSourceGroupAPI.controls.AddRange((
+		$GUIImageSourceGroupAPI_Shortcut_Name,
+		$GUIImageSourceGroupAPI_Shortcut_Panel,
+		$GUIImageSourceGroupAPI_Shortcut_Panel_Refresh,
+		$GUIImageSourceGroupAPI_Shortcut_Clear_Select,
+
+		$GUIImageSourceGroupAPISettingPanel,
+
+		$GUIImageSourceGroupAPIErrorMsg_Icon,
+		$GUIImageSourceGroupAPIErrorMsg,
+		$GUIImageSourceGroupAPI_Change,
+		$GUIImageSourceGroupAPI_Add,
+		$GUIImageSourceGroupAPICanel
+	))
+	$GUIImageSourceGroupAPISettingPanel.controls.AddRange((
+		$GUIImageSourceGroupAPI_Adv,
+		$GUIImageSourceGroupAPI_New_Path_IsCheck,
+		$GUIImageSourceGroupAPI_Adv_Wrap,
+		$GUIImageSourceGroupAPI_New_Rule_Name,
+		$GUIImageSourceGroupAPI_Rule_Path,
+		$GUIImageSourceGroupAPI_Rule_Path_Tips,
+		$GUIImageSourceGroupAPI_New_Rule_Name_Wrap,
+		$GUIImageSourceGroupAPI_New_Path_Name,
+		$GUIImageSourceGroupAPI_New_Path,
+		$GUIImageSourceGroupAPI_New_Path_Tips,
+		$GUIImageSourceGroupAPI_New_Path_Select,
+		$GUIImageSourceGroupAPI_New_Path_Paste
+	))
+
 	$UI_Primary_Key_Group.controls.AddRange((
 		$UI_Primary_Key_Name,
 		$UI_Primary_Key_Select
@@ -7996,6 +8759,11 @@ Function Image_Select
 		#>
 		$GUIImageSourceSettingUP,
 		$GUIImageSourceSettingUPCurrentVersion,
+
+		<#
+			.显示 API 设置界面
+		#>
+		$GUIImageSourceSettingAPI,
 
 		$GUIImageSourceSettingAdv,                    # 可选功能
 		$GUIImageSourceSettingEnv,                    # 将路由功能添加到系统变量
@@ -8330,7 +9098,49 @@ Function Image_Select
 		}
 	}
 
-	$UI_Main.ShowDialog() | Out-Null
+	switch ($Page) {
+		"ISO" {
+			Write-Host "`n   $($lang.ISO_File)" -ForegroundColor Yellow
+			Write-Host "   $('-' * 80)"
+
+			if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -Name "DiskTo" -ErrorAction SilentlyContinue) {
+				$itemISO = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -Name "DiskTo" -ErrorAction SilentlyContinue
+				$UIUnzipPanel_Menu_Sources_Path.Text = Join-Path -Path $itemISO -ChildPath $Global:Init_Search_ISO_Folder_Name
+			}
+
+			$GUIImageSourceGroupAPI.visible = $False             # 蒙板：设置 API
+			$GUIImageSourceGroupSetting.visible = $False         # 蒙板：设置界面
+			$UI_Mask_Image_Mount_To.visible = $False             # 蒙板：更改挂载到
+			$UI_Mask_Image_Language.visible = $False             # 蒙板：更改 ISO 挂载的映像主语言
+			$UI_Main_View_Detailed.visible = $False              # 蒙板：解压 ISO，显示详细规则
+			$UIUnzipPanel_Select_Rule.visible = $False           # #蒙板：解压 ISO，选择规则
+			$UIUnzipPanel.visible = $True                        # 蒙板：解压 ISO
+			$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板：其它信息
+			$UI_MainSetting.visible = $False                     # 设置主界面
+
+			$UI_Main.ShowDialog() | Out-Null
+		}
+		"API" {
+			Write-Host "`n   $($lang.API)" -ForegroundColor Yellow
+			Write-Host "   $('-' * 80)"
+			Refresh_Rule_Shortcuts
+
+			$GUIImageSourceGroupAPI.visible = $True              # 蒙板：设置 API
+			$GUIImageSourceGroupSetting.visible = $False         # 蒙板：设置界面
+			$UI_Mask_Image_Mount_To.visible = $False             # 蒙板：更改挂载到
+			$UI_Mask_Image_Language.visible = $False             # 蒙板：更改 ISO 挂载的映像主语言
+			$UI_Main_View_Detailed.visible = $False              # 蒙板：解压 ISO，显示详细规则
+			$UIUnzipPanel_Select_Rule.visible = $False           # #蒙板：解压 ISO，选择规则
+			$UIUnzipPanel.visible = $False                       # 蒙板：解压 ISO
+			$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板：其它信息
+			$UI_MainSetting.visible = $False                     # 设置主界面
+
+			$UI_Main.ShowDialog() | Out-Null
+		}
+		default {
+			$UI_Main.ShowDialog() | Out-Null
+		}
+	}
 }
 
 <#
@@ -8575,6 +9385,31 @@ Function ISO_Verify_Sources_Language
 			$Global:MainImageLangName  = $itemRegion.Name
 			$GUIImageSourceLanguageInfo.Text = "$($Global:MainImageLangName), $($lang.LanguageCode) ( $($Global:MainImageLang) ), $($lang.LanguageShort) ( $($Global:MainImageLangShort) ), $($lang.MatchMode)"
 			return
+		}
+	}
+}
+
+<#
+	.快捷指令：选择映像来源页面
+#>
+Function Image_Select_Page_Shortcuts
+{
+	param
+	(
+		$Name
+	)
+
+	Write-Host "`n   $($lang.SelectSettingImage) *" -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
+	switch ($Name) {
+		"ISO" {
+			Image_Select -Page $Name
+		}
+		"API" {
+			Image_Select -Page $Name
+		}
+		default {
+			Write-Host "   $($lang.NoWork)" -ForegroundColor Red
 		}
 	}
 }

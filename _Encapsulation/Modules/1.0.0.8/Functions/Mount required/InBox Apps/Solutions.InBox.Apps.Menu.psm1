@@ -353,17 +353,39 @@
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
-		"h *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+		{ $_ -like "H'elp *" -or  $_ -like "Help *" -or $_ -like "H *" } {
+			Write-Host "`n   $($lang.Short_Cmd)`n" -ForegroundColor Yellow
 
-			Solutions_Help_Command -Name $PSItem.Remove(0, 2).Replace(' ', '') -Pause
-			ToWait -wait 2
-			InBox_Apps_Menu
-		}
-		"help *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			if ($_ -like "H'elp *") {
+				Write-Host "   $($lang.Command): " -NoNewline
+				Write-host "H'elp" -ForegroundColor Green
 
-			Solutions_Help_Command -Name $PSItem.Remove(0, 5).Replace(' ', '') -Pause
+				$NewRuleName = $PSItem.Remove(0, 6).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+				Solutions_Help_Command -Name $NewRuleName
+			}
+
+			if ($_ -like "Help *") {
+				Write-Host "   $($lang.Command): " -NoNewline
+				Write-host "Help" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 5).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+				Solutions_Help_Command -Name $NewRuleName
+			}
+
+			if ($_ -like "H *") {
+				Write-Host "   $($lang.Command): " -NoNewline
+				Write-host "H" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 2).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+				Solutions_Help_Command -Name $NewRuleName
+			}
+
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}

@@ -103,6 +103,7 @@ Function Create_Template_UI
 			$UI_Public_Name_CustomizeName.BackColor = "LightPink"
 			return $False
 		}
+
 		<#
 			.Judgment: 7. No more than 260 characters
 			.判断：7. 不能大于 260 字符
@@ -188,6 +189,7 @@ Function Create_Template_UI
 			$GUISelectTypeInstallCustomizeName.BackColor = "LightPink"
 			return $False
 		}
+
 		<#
 			.Judgment: 7. No more than 260 characters
 			.判断：7. 不能大于 260 字符
@@ -273,6 +275,7 @@ Function Create_Template_UI
 			$GUISelectTypeWinRECustomizeName.BackColor = "LightPink"
 			return $False
 		}
+
 		<#
 			.Judgment: 7. No more than 260 characters
 			.判断：7. 不能大于 260 字符
@@ -358,6 +361,7 @@ Function Create_Template_UI
 			$GUISelectTypeBootCustomizeName.BackColor = "LightPink"
 			return $False
 		}
+
 		<#
 			.Judgment: 7. No more than 260 characters
 			.判断：7. 不能大于 260 字符

@@ -147,7 +147,7 @@ Function Image_Eject_UI
 								margin         = "4,0,0,22"
 								Text           = ""
 							}
-							$GUIImage_Select_Expand_Adv = New-Object system.Windows.Forms.Label  -Property @{
+							$GUIImage_Select_Expand_Adv = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 30
 								Width          = 435
 								Text           = $lang.AdvOption

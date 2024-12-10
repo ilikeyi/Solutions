@@ -3426,7 +3426,7 @@ Function Image_Assign_Autopilot_Master
 				$UI_Main_Export_Event_Custom_Menu.controls.AddRange($GUIImageSelectFunctionLangAdd)
 
 				if ([string]::IsNullOrEmpty($Autopilot.Deploy.Prerequisite.ExtractLanguage.Add.Region)) {
-					$UI_Main_Pre_Rule_Not_Find = New-Object system.Windows.Forms.Label  -Property @{
+					$UI_Main_Pre_Rule_Not_Find = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 435
 						Padding        = "50,0,0,0"
@@ -3514,7 +3514,7 @@ Function Image_Assign_Autopilot_Master
 								}
 
 								$UI_Main_Export_Event_Custom_Menu.controls.AddRange($GUIImageSelectFunctionLangAdd_btn)
-							
+
 								$GUIImageSelectFunctionLangAdd_Status = New-Object system.Windows.Forms.Label -Property @{
 									Height         = 30
 									Width          = 435
@@ -3651,7 +3651,7 @@ Function Image_Assign_Autopilot_Master
 				$UI_Main_Export_Event_Custom_Menu.controls.AddRange($GUIImageSelectFunctionLangDel)
 
 				if ([string]::IsNullOrEmpty($Autopilot.Deploy.Prerequisite.ExtractLanguage.Del.Region)) {
-					$UI_Main_Pre_Rule_Not_Find = New-Object system.Windows.Forms.Label  -Property @{
+					$UI_Main_Pre_Rule_Not_Find = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 435
 						Padding        = "50,0,0,0"

@@ -99,12 +99,14 @@ Function Mainpage
 
 	Write-Host
 	Write-host "   " -NoNewline
-	Write-Host " S " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host " $($lang.Setting)" -NoNewline
+	Write-Host " S'et * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host "  $($lang.Setting)" -NoNewline
 	Write-Host ", $($lang.SelectSettingImage)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
-	Write-Host "      1   " -NoNewline -ForegroundColor Yellow
-	Write-Host "$($lang.Mount) " -NoNewline -ForegroundColor Green
+	Write-host "     " -NoNewline
+	Write-Host " 1 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-host " " -NoNewline
+	Write-Host " $($lang.Mount) " -NoNewline -ForegroundColor Green
 	Write-Host " Mount * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ", " -NoNewline
 
@@ -484,9 +486,11 @@ Function Mainpage
 
 	Write-Host
 	Write-host "   " -NoNewline
-	Write-Host " RR " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-host " " -NoNewline
-	Write-Host " R " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " API * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host "  $($lang.API)" -ForegroundColor Green
+
+	Write-host "     " -NoNewline
+	Write-Host " R'r " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.RefreshModules)"
 
 	Write-Host
@@ -577,8 +581,44 @@ Function Mainpage
 		<#
 			设置、选择映像源
 		#>
-		"s" {
+		{ "s", "Set", "S'et" -eq $_ } {
 			Image_Select
+			ToWait -wait 2
+			Mainpage
+		}
+		{ $_ -like "s *" -or $_ -like "set *" -or $_ -like "s'et *" } {
+			Write-Host "`n   $($lang.Short_Cmd)`n" -ForegroundColor Yellow
+			
+			if ($_ -like "s'et *") {
+				Write-Host "   $($lang.Command): " -NoNewline
+				Write-host "S'et" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 5).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+				Image_Select_Page_Shortcuts -Name $NewRuleName
+			}
+
+			if ($_ -like "set *") {
+				Write-Host "   $($lang.Command): " -NoNewline
+				Write-host "Set" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 4).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+				Image_Select_Page_Shortcuts -Name $NewRuleName
+			}
+
+			if ($_ -like "s *") {
+				Write-Host "   $($lang.Command): " -NoNewline
+				Write-host "S" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 2).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+				Image_Select_Page_Shortcuts -Name $NewRuleName
+			}
+
 			ToWait -wait 2
 			Mainpage
 		}
@@ -593,7 +633,7 @@ Function Mainpage
 		<#
 			热刷新：先决条件
 		#>
-		"rr" {
+		{ "RR", "r'r" -eq $_ } {
 			Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			Write-Host "   $($lang.RefreshModules): " -NoNewline
@@ -1420,17 +1460,39 @@ Function Mainpage
 			ToWait -wait 2
 			Mainpage
 		}
-		"h *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+		{ $_ -like "H'elp *" -or  $_ -like "Help *" -or $_ -like "H *" } {
+			Write-Host "`n   $($lang.Short_Cmd)`n" -ForegroundColor Yellow
+			
+			if ($_ -like "H'elp *") {
+				Write-Host "   $($lang.Command): " -NoNewline
+				Write-host "H'elp" -ForegroundColor Green
 
-			Solutions_Help_Command -Name $PSItem.Remove(0, 2).Replace(' ', '') -Pause
-			ToWait -wait 2
-			Mainpage
-		}
-		"help *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+				$NewRuleName = $PSItem.Remove(0, 6).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+				Solutions_Help_Command -Name $NewRuleName
+			}
 
-			Solutions_Help_Command -Name $PSItem.Remove(0, 5).Replace(' ', '') -Pause
+			if ($_ -like "Help *") {
+				Write-Host "   $($lang.Command): " -NoNewline
+				Write-host "Help" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 5).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+				Solutions_Help_Command -Name $NewRuleName
+			}
+
+			if ($_ -like "H *") {
+				Write-Host "   $($lang.Command): " -NoNewline
+				Write-host "H" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 2).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+				Solutions_Help_Command -Name $NewRuleName
+			}
+
 			ToWait -wait 2
 			Mainpage
 		}
@@ -1442,6 +1504,26 @@ Function Mainpage
 			return
 		}
 		default {
+			Mainpage
+		}
+
+		"API" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Solutions_API_Help
+			ToWait -wait 2
+			Mainpage
+		}
+		"API *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Write-Host "`n   API: $($lang.Developers_Mode)" -ForegroundColor Yellow
+			Write-Host "   $('-' * 80)"
+
+			Solutions_API_Command -Name $PSItem.Remove(0, 4).Replace(' ', '')
+
+			Write-Host "   $('-' * 80)"
+			Write-Host "   API: $($lang.Developers_Mode), $($lang.Done)" -ForegroundColor Green
+			ToWait -wait 2
 			Mainpage
 		}
 
@@ -1460,16 +1542,16 @@ Function Mainpage
 #			ISO_Create_UI -Autopilot $Autopilot.Deploy.ImageSource.Tasks.ISO -ISO
 
 #			Event_Assign_Task
-
-
-
-
-
-
-
-
-
-
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			$Global:EventQueueMode = $False
 			$Global:AutopilotMode = $False
 			# End

@@ -86,11 +86,6 @@ Function Solutions_Help
 	Write-Host "                    $($lang.Repair): $($lang.Clear_Bad_Mount)" -ForegroundColor Green
 
 	Write-Host
-	Write-Host "     RR".PadRight(20) -NoNewline -ForegroundColor Yellow
-	Write-Host "$($lang.RefreshModules): " -NoNewline
-	Write-host $lang.Prerequisites -ForegroundColor Yellow
-
-	Write-Host
 	Write-Host "     lang".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host $lang.SwitchLanguage
 
@@ -112,14 +107,23 @@ Function Solutions_Help
 	Write-Host "$($lang.ChkUpdate), $($lang.UpdateSilent)"
 
 	Write-Host
-	Write-Host "   $($lang.Help)" -ForegroundColor Yellow
+	Write-Host "     API *".PadRight(20) -NoNewline -ForegroundColor Yellow
+	Write-Host $lang.API
+
+	Write-Host "     RR".PadRight(20) -NoNewline -ForegroundColor Yellow
+	Write-Host "$($lang.RefreshModules): " -NoNewline
+	Write-host $lang.Prerequisites -ForegroundColor Yellow
+
+	Write-Host
+	Write-host "   " -NoNewline
+	Write-Host $lang.Help -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "   $('-' * 80)"
 	Write-host "     " -NoNewline
-	Write-Host " H'elp All " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " Help All " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-host "    $($lang.Rule_Show_Full), $($lang.Help)"
 
 	Write-host "     " -NoNewline
-	Write-Host " H'elp * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " Help * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-host "      $($lang.ShowCommand)"
 }
 

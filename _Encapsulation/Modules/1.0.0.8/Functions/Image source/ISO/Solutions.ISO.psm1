@@ -235,6 +235,7 @@ Function ISO_Create_UI
 			$GUIISO_Engline_Name_Custom.BackColor = "LightPink"
 			return $False
 		}
+
 		<#
 			.Judgment: 7. No more than 260 characters
 			.判断：7. 不能大于 260 字符
@@ -317,6 +318,7 @@ Function ISO_Create_UI
 			$GUIISO_Group_Name_Custom.BackColor = "LightPink"
 			return $False
 		}
+
 		<#
 			.Judgment: 7. No more than 260 characters
 			.判断：7. 不能大于 260 字符
@@ -399,6 +401,7 @@ Function ISO_Create_UI
 			$GUIISO_Event_Name_Custom.BackColor = "LightPink"
 			return $False
 		}
+
 		<#
 			.Judgment: 7. No more than 260 characters
 			.判断：7. 不能大于 260 字符
@@ -2179,6 +2182,7 @@ Function ISO_Create_UI
 				$GUIISOSaveCustomizePath.BackColor = "LightPink"
 				return $False
 			}
+
 			<#
 				.Judgment: 7. No more than 260 characters
 				.判断：7. 不能大于 260 字符
@@ -2270,6 +2274,7 @@ Function ISO_Create_UI
 				$GUIISOFolderName.BackColor = "LightPink"
 				return $False
 			}
+
 			<#
 				.Judgment: 7. No more than 260 characters
 				.判断：7. 不能大于 260 字符

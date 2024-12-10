@@ -301,6 +301,21 @@ Function Mainpage
 		}
 
 		<#
+			.Help
+			.帮助
+		#>
+		{ "H", "Help", "H'elp" -eq $_ } {
+			Engine_Help
+			Get_Next
+			ToMainpage -wait 2
+			Mainpage
+		}
+		"q" {
+			return
+		}
+		default { Mainpage }
+
+		<#
 			.快速测试区域
 		#>
 		"t" {
@@ -325,15 +340,5 @@ Function Mainpage
 			ToMainpage -wait 2
 			Mainpage
 		}
-		{ "H", "Help", "H'elp" -eq $_ } {
-			Engine_Help
-			Get_Next
-			ToMainpage -wait 2
-			Mainpage
-		}
-		"q" {
-			return
-		}
-		default { Mainpage }
 	}
 }

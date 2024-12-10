@@ -1276,7 +1276,6 @@ Function Language_Extract_UI
 		Height         = 30
 		Width          = 500
 		Text           = $lang.AddTo
-		Tag            = "Add"
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
@@ -1286,7 +1285,6 @@ Function Language_Extract_UI
 		Height         = 30
 		Width          = 500
 		Text           = $lang.Del
-		Tag            = "Del"
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
