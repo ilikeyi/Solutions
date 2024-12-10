@@ -220,7 +220,7 @@ Function Solutions_Help_Command
 
 					$InitNewImageSources = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($item.Main.ImageFileName)\Mount"
 
-					Write-Host "   $($lang.Select_Path): " -NoNewline
+					Write-Host "    $($lang.Select_Path): " -NoNewline
 					Write-Host $InitNewImageSources -ForegroundColor Green
 					Write-Host
 				}
@@ -236,7 +236,7 @@ Function Solutions_Help_Command
 							Write-Host $Expand.Uid -ForegroundColor Green
 
 							$InitNewImageMountToRouteRecovery = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($Expand.ImageFileName)\Mount"
-							Write-Host "   $($lang.Select_Path): " -NoNewline
+							Write-Host "    $($lang.Select_Path): " -NoNewline
 							Write-Host $InitNewImageMountToRouteRecovery -ForegroundColor Green
 							Write-Host
 						}
@@ -262,7 +262,7 @@ Function Solutions_Help_Command
 
 					$InitNewImageSources = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($item.Main.ImageFileName)\Mount"
 
-					Write-Host "   $($lang.Select_Path): " -NoNewline
+					Write-Host "    $($lang.Select_Path): " -NoNewline
 					Write-Host $InitNewImageSources -ForegroundColor Green
 					Write-Host
 				}
@@ -278,7 +278,7 @@ Function Solutions_Help_Command
 							Write-Host $Expand.Uid -ForegroundColor Green
 
 							$InitNewImageMountToRouteRecovery = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($Expand.ImageFileName)\Mount"
-							Write-Host "   $($lang.Select_Path): " -NoNewline
+							Write-Host "    $($lang.Select_Path): " -NoNewline
 							Write-Host $InitNewImageMountToRouteRecovery -ForegroundColor Green
 							Write-Host
 						}
@@ -318,7 +318,7 @@ Function Solutions_Help_Command
 
 					if (-not $NoShowFile) {
 						$TestWIMFile = Join-Path -Path $item.Main.Path -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)"
-						Write-Host "   $($lang.Select_Path): " -NoNewline
+						Write-Host "    $($lang.Select_Path): " -NoNewline
 						Write-Host $TestWIMFile -ForegroundColor Green
 						Write-Host
 					}
@@ -336,7 +336,7 @@ Function Solutions_Help_Command
 
 							if (-not $NoShowFile) {
 								$TestWIMFileExpand = Join-Path -Path $Expand.Path -ChildPath "$($Expand.ImageFileName).$($Expand.Suffix)"
-								Write-Host "   $($lang.Select_Path): " -NoNewline
+								Write-Host "    $($lang.Select_Path): " -NoNewline
 								Write-Host $TestWIMFileExpand -ForegroundColor Green
 								Write-Host
 							}
@@ -365,7 +365,7 @@ Function Solutions_Help_Command
 						Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 						Write-Host $item.Main.Uid -ForegroundColor Green
 
-						Write-Host "   $($lang.Select_Path): " -NoNewline
+						Write-Host "    $($lang.Select_Path): " -NoNewline
 						Write-Host $TestWIMFile -ForegroundColor Green
 						Write-Host
 					}
@@ -377,7 +377,7 @@ Function Solutions_Help_Command
 					Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 					Write-Host $item.Main.Uid -ForegroundColor Green
 
-					Write-Host "   $($lang.Select_Path): " -NoNewline
+					Write-Host "    $($lang.Select_Path): " -NoNewline
 					if (Test-Path -Path $TestWIMFile -PathType leaf) {
 						Write-Host $TestWIMFile -ForegroundColor Green
 					} else {
@@ -398,7 +398,7 @@ Function Solutions_Help_Command
 								Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 								Write-Host $Expand.Uid -ForegroundColor Green
 
-								Write-Host "   $($lang.Select_Path): " -NoNewline
+								Write-Host "    $($lang.Select_Path): " -NoNewline
 								Write-Host $TestWIMFileExpand -ForegroundColor Green
 								Write-Host
 							}
@@ -410,7 +410,7 @@ Function Solutions_Help_Command
 							Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 							Write-Host $Expand.Uid -ForegroundColor Green
 
-							Write-Host "   $($lang.Select_Path): " -NoNewline
+							Write-Host "    $($lang.Select_Path): " -NoNewline
 							if (Test-Path -Path $TestWIMFileExpand -PathType leaf) {
 								Write-Host $TestWIMFileExpand -ForegroundColor Green
 							} else {

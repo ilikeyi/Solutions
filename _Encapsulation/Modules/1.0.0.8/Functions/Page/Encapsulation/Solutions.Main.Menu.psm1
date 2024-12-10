@@ -1248,6 +1248,7 @@ Function Mainpage
 					}
 					"FX *" {
 						Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+						$Global:Function_Unrestricted = @()
 
 						$NewType = $PSItem.Remove(0, 3).Replace(' ', '')
 						switch ($NewType) {
