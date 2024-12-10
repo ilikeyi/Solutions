@@ -2,7 +2,7 @@
 	# et-ee
 	# Estonian (Estonia)
 
-	API                             = rakenduste programmeerimisliides
+	API                             = Rakenduste programmeerimisliides
 	RuleNameNotInput                = Sisestage reegli nimi
 	RuleNewNameTips                 = Otsetee nimi ei tohi ületada {0} tähemärki ega tohi sisaldada ees- ja lõppu, \\ / : * ? & @ ! "" < > |
 	RuleNewPathISCheck              = Veenduge, et failitee on saadaval

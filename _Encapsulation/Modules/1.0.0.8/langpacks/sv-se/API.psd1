@@ -2,7 +2,7 @@
 	# sv-SE
 	# Swedish (Sweden)
 
-	API                             = applikationsprogrammeringsgränssnitt
+	API                             = Applikationsprogrammeringsgränssnitt
 	RuleNameNotInput                = Vänligen fyll i regelnamnet
 	RuleNewNameTips                 = Genvägens namn får inte överstiga {0} tecken och får inte innehålla: inledande och efterföljande mellanslag, \\ / : * ? & @ ! "" < > |
 	RuleNewPathISCheck              = Kontrollera att sökvägen är tillgänglig

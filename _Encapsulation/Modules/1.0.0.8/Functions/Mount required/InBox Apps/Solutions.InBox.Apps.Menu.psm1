@@ -6,23 +6,23 @@
 
 	Write-host "   " -NoNewline
 	if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
-		Write-Host " Open RT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-		Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Yellow
+		Write-Host " O'D RT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host "  $($lang.MountImageTo): " -NoNewline -ForegroundColor Yellow
 		Write-Host $Global:Mount_To_Route -ForegroundColor Green
 	} else {
-		Write-Host " Open RT " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
-		Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Yellow
+		Write-Host " O'D RT " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host "  $($lang.MountImageTo): " -NoNewline -ForegroundColor Yellow
 		Write-Host $Global:Mount_To_Route -ForegroundColor Red
 	}
 
 	Write-host "   " -NoNewline
 	if (Test-Path -Path $Global:Image_source -PathType Container) {
-		Write-Host " Open MN " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-		Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Yellow
+		Write-Host " O'D MN " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host "  $($lang.MainImageFolder): " -NoNewline -ForegroundColor Yellow
 		Write-Host $Global:Image_source -ForegroundColor Green
 	} else {
-		Write-Host " Open MN " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
-		Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Yellow
+		Write-Host " O'D MN " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host "  $($lang.MainImageFolder): " -NoNewline -ForegroundColor Yellow
 		Write-Host $Global:Image_source -ForegroundColor Red
 
 		Write-Host "   $('-' * 80)"
@@ -108,10 +108,10 @@
 	Write-Host "`n      $($lang.InboxAppsManager)" -ForegroundColor Yellow
 	Write-Host "      $('-' * 77)"
 	if (Verify_Is_Current_Same) {
-		Write-Host "         O   " -NoNewline -ForegroundColor Yellow
+		Write-Host "         A   " -NoNewline -ForegroundColor Yellow
 		Write-Host "$($lang.InboxAppsManager): $($lang.InboxAppsOfflineDel)" -ForegroundColor Green
 	} else {
-		Write-Host "         O   " -NoNewline -ForegroundColor Yellow
+		Write-Host "         A   " -NoNewline -ForegroundColor Yellow
 		Write-Host "$($lang.InboxAppsManager): $($lang.InboxAppsOfflineDel)" -ForegroundColor Red
 	}
 
@@ -168,9 +168,9 @@
 	}
 
 	if (Verify_Is_Current_Same) {
-		Write-Host "`n      A   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+		Write-Host "`n      C   $($lang.OnDemandPlanTask)" -ForegroundColor Green
 	} else {
-		Write-Host "`n      A   $($lang.OnDemandPlanTask)" -ForegroundColor Red
+		Write-Host "`n      C   $($lang.OnDemandPlanTask)" -ForegroundColor Red
 	}
 
 	Write-Host
@@ -201,7 +201,7 @@
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
-		"a" {
+		"c" {
 			Write-Host "`n   $($lang.User_Interaction): $($lang.OnDemandPlanTask)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			if (Verify_Is_Current_Same) {
@@ -219,7 +219,7 @@
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
-		"o" {
+		"A" {
 			InBox_Apps_Menu_Shortcuts_Delete
 			ToWait -wait 2
 			InBox_Apps_Menu
@@ -303,14 +303,43 @@
 			InBox_Apps_Menu
 		}
 
-		"open" {
+		{ "O", "Od", "O'D" -eq $_ } {
 			Solutions_Help_Command -Name "Open" -Pause
 			InBox_Apps_Menu
 		}
-		"open *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+		{ $_ -like "O'D *" -or $_ -like "Od *" -or $_ -like "O *" } {
+			Write-Host "`n   $($lang.Short_Cmd)`n" -ForegroundColor Yellow
 
-			Solutions_Open_Command -Name $PSItem.Remove(0, 5).Replace(' ', '')
+			if ($_ -like "O'D *") {
+				Write-Host "   $($lang.Command): " -NoNewline
+				Write-host "O'D" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 4).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+				Solutions_Open_Command -Name $NewRuleName
+			}
+
+			if ($_ -like "OD *") {
+				Write-Host "   $($lang.Command): " -NoNewline
+				Write-host "OD" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 3).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+				Solutions_Open_Command -Name $NewRuleName
+			}
+
+			if ($_ -like "O *") {
+				Write-Host "   $($lang.Command): " -NoNewline
+				Write-host "O" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 2).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+				Solutions_Open_Command -Name $NewRuleName
+			}
+
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}

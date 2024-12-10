@@ -2,7 +2,7 @@
 	# da-dk
 	# Danish (Denmark)
 
-	API                             = applikationsprogrammeringsgrænseflade
+	API                             = Applikationsprogrammeringsgrænseflade
 	RuleNameNotInput                = Udfyld venligst reglens navn
 	RuleNewNameTips                 = Genvejsnavnet må ikke overstige {0} tegn og må ikke indeholde: foranstående og efterfølgende mellemrum, \\ / : * ? & @ ! "" < > |
 	RuleNewPathISCheck              = Bekræft, at filstien er tilgængelig
