@@ -452,7 +452,7 @@ Function Functions_Tasks_List
 		foreach ($item in $PowerShell_Function_Tasks) {
 			Write-host "   $($lang.Short_Cmd): ".PadRight(22) -NoNewline
 			$NewType = $item.Remove(0, 12)
-			Write-host "FX $($NewType)" -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-host " FX $($NewType) " -BackgroundColor DarkMagenta -ForegroundColor White
 
 			Write-host "   $($lang.RuleName): ".PadRight(22) -NoNewline
 			Write-host "Function $($item)" -ForegroundColor Yellow

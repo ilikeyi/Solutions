@@ -39,6 +39,12 @@ $Global:SearchISOType = @(
 	"*.iso"
 )
 
+$Script:Support_PS_Filename = @(
+	".ps1"
+	".psd1"
+	".psm1"
+)
+
 <#
 	.已知 MVS (MSDN) 版本
 #>
@@ -399,11 +405,6 @@ Function Image_Select
 		New-Item -Path $Path -Force -ErrorAction SilentlyContinue | Out-Null
 	}
 
-	$SupportPSFilename = @(
-		".ps1"
-		".psm1"
-	)
-
 	<#
 		.Initialization: Disk
 		.初始化：磁盘
@@ -488,11 +489,11 @@ Function Image_Select
 					return
 				} else {
 					if (Test-Path -Path $GUIImageSourceGroupAPI_New_Path.Text -PathType leaf) {
-						if ($SupportPSFilename -Contains $([System.IO.Path]::GetExtension($GUIImageSourceGroupAPI_New_Path.Text))) {
+						if ($Script:Support_PS_Filename -Contains $([System.IO.Path]::GetExtension($GUIImageSourceGroupAPI_New_Path.Text))) {
 							
 						} else {
 							$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
-							$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.RuleNameFormat): $($SupportPSFilename)"
+							$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.RuleNameFormat): $($Script:Support_PS_Filename)"
 							$GUIImageSourceGroupAPI_New_Path.BackColor = "LightPink"
 							return
 						}
@@ -648,6 +649,89 @@ Function Image_Select
 					Padding    = "16,5,0,15"
 				}
 
+				$GUIImageSourceGroupAPI_Shortcut_Panel.controls.AddRange((
+					$Checkbox,
+					$CheckboxPath
+				))
+
+				$CheckboxCreate    = New-Object system.Windows.Forms.LinkLabel -Property @{
+					Height         = 35
+					Width          = 425
+					Padding        = "16,0,0,0"
+					Text           = $lang.RuleNewTempate
+					Name           = $ShortcutsShortName
+					Tag            = $GetImportFileName
+					LinkColor      = "GREEN"
+					ActiveLinkColor = "RED"
+					LinkBehavior   = "NeverUnderline"
+					add_Click      = {
+						$ThisFileType = $([System.IO.Path]::GetExtension($This.Tag))
+						switch -WildCard ($ThisFileType) {
+							".psd1" {
+								$RandomGuid = [guid]::NewGuid()
+								$NewPsmFile = [System.IO.Path]::GetFileNameWithoutExtension($This.Tag)
+								$NewPsFile = "$([System.IO.Path]::GetDirectoryName($This.Tag))\$($NewPsmFile).psm1"
+@"
+@{
+	RootModule        = '$($NewPsmFile).psm1'
+	ModuleVersion     = '1.0.0.0'
+	GUID              = '$($RandomGuid)'
+	Author            = ''
+	Copyright         = ''
+	Description       = ''
+	PowerShellVersion = '5.1'
+	NestedModules     = @()
+	FunctionsToExport = '*'
+	CmdletsToExport   = '*'
+	VariablesToExport = '*'
+	AliasesToExport   = '*'
+
+	PrivateData = @{
+		PSData = @{
+			# Tags = @()
+			LicenseUri   = ''
+			ProjectUri   = ''
+#			IconUri      = ''
+#			ReleaseNotes = ''
+		}
+	}
+	HelpInfoURI = ''
+#	DefaultCommandPrefix = ''
+}
+"@ | Out-File -FilePath $This.Tag -Encoding utf8 -ErrorAction SilentlyContinue
+
+@"
+Write-Host "Test $($RandomGuid)"
+"@ | Out-File -FilePath $NewPsFile -Encoding utf8 -ErrorAction SilentlyContinue
+							}
+							default {
+@"
+Write-Host "Test"
+"@ | Out-File -FilePath $This.Tag -Encoding utf8 -ErrorAction SilentlyContinue
+							}
+						}
+
+						Refresh_Rule_Shortcuts
+
+						$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.RuleNewTempate): $($This.Name), $($lang.Done)"
+						$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+
+						$GUIImageSourceGroupAPI_Rule_Path.Text = ""
+						$GUIImageSourceGroupAPI_Rule_Path.BackColor = "#FFFFFF"
+						$GUIImageSourceGroupAPI_New_Path.Text = ""
+						$GUIImageSourceGroupAPI_New_Path.BackColor = "#FFFFFF"
+					}
+				}
+
+				if ([string]::IsNullOrEmpty($GetImportFileName)) {
+					$GUIImageSourceGroupAPI_Shortcut_Panel.controls.AddRange($CheckboxCreate)
+				} else {		
+					if (Test-Path -Path $GetImportFileName -PathType leaf) {
+					} else {
+						$GUIImageSourceGroupAPI_Shortcut_Panel.controls.AddRange($CheckboxCreate)
+					}
+				}
+
 				$CheckboxChange    = New-Object system.Windows.Forms.LinkLabel -Property @{
 					Height         = 35
 					Width          = 425
@@ -703,8 +787,6 @@ Function Image_Select
 				}
 
 				$GUIImageSourceGroupAPI_Shortcut_Panel.controls.AddRange((
-					$Checkbox,
-					$CheckboxPath,
 					$CheckboxChange,
 					$CheckboxDel,
 					$Checkbox_Wrap
@@ -3667,7 +3749,7 @@ Function Image_Select
 	$GUIImageSourceGroupAPI_New_Path_Tips = New-Object system.Windows.Forms.Label -Property @{
 		autoSize       = 1
 		Padding        = "22,0,0,20"
-		Text           = "$($lang.RuleNameFormat): $($SupportPSFilename)"
+		Text           = "$($lang.RuleNameFormat): $($Script:Support_PS_Filename)"
 	}
 
 	$GUIImageSourceGroupAPI_New_Path_Select = New-Object system.Windows.Forms.LinkLabel -Property @{
@@ -8690,9 +8772,7 @@ Function Image_Select
 		$GUIImageSourceGroupAPI_Shortcut_Panel,
 		$GUIImageSourceGroupAPI_Shortcut_Panel_Refresh,
 		$GUIImageSourceGroupAPI_Shortcut_Clear_Select,
-
 		$GUIImageSourceGroupAPISettingPanel,
-
 		$GUIImageSourceGroupAPIErrorMsg_Icon,
 		$GUIImageSourceGroupAPIErrorMsg,
 		$GUIImageSourceGroupAPI_Change,

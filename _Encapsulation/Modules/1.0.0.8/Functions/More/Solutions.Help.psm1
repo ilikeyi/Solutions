@@ -174,9 +174,7 @@ Function Solutions_Help_Command
 			Write-Host "$($lang.SwitchLanguage), $($lang.LanguageCode) " -NoNewline
 			Write-Host "{ lang zh-CN }" -ForegroundColor Green
 
-			if ($Pause) {
-				Get_Next
-			}
+			Get_Next
 		}
 		"update" {
 			Write-Host "   $($lang.Command): " -NoNewline
@@ -189,18 +187,14 @@ Function Solutions_Help_Command
 			Write-Host "     Update auto".PadRight(20) -NoNewline -ForegroundColor Yellow
 			Write-Host "$($lang.ChkUpdate), $($lang.UpdateSilent)"
 
-			if ($Pause) {
-				Get_Next
-			}
+			Get_Next
 		}
 		"FX" {
 			Write-Host "   $($lang.Command): " -NoNewline
 			Write-host "FX *" -ForegroundColor Green
 
 			Functions_Tasks_List
-			if ($Pause) {
-				Get_Next
-			}
+			Get_Next
 		}
 		"Open" {
 			Write-Host "   $($lang.Command): " -NoNewline
@@ -208,9 +202,7 @@ Function Solutions_Help_Command
 
 			Solutions_Open_Command -Help
 
-			if ($Pause) {
-				Get_Next
-			}
+			Get_Next
 		}
 		"Set" {
 			Write-Host "`n   $($lang.API)"

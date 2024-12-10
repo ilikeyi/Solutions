@@ -32,6 +32,9 @@ Function Solutions_API_Command
 
 			if ($GetALlName.Count -gt 0) {
 				ForEach ($item in $GetALlName) {
+					Write-Host "   $($lang.Short_Cmd): " -NoNewline
+					Write-Host " API $($item.Name) " -BackgroundColor DarkMagenta -ForegroundColor White
+
 					Write-Host "   $($lang.RuleName): " -NoNewline
 					Write-Host $item.Name -ForegroundColor Green
 

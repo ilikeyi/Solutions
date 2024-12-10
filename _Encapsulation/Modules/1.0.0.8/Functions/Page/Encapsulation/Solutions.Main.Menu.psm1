@@ -1512,13 +1512,13 @@ Function Mainpage
 		"API *" {
 			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-			Write-Host "`n   API: $($lang.Developers_Mode)" -ForegroundColor Yellow
+			Write-Host "`n   $($lang.Developers_Mode): $($lang.API)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 
-			Solutions_API_Command -Name $PSItem.Remove(0, 4).Replace(' ', '')
+			Solutions_API_Command -Name $PSItem.Remove(0, 4)
 
 			Write-Host "   $('-' * 80)"
-			Write-Host "   API: $($lang.Developers_Mode), $($lang.Done)" -ForegroundColor Green
+			Write-Host "   API: $($lang.API), $($lang.Done)" -ForegroundColor Green
 			ToWait -wait 2
 			Mainpage
 		}

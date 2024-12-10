@@ -71,19 +71,6 @@
 		return
 	}
 
-	<#
-		.仅支持 Install 时
-	#>
-	if ($Global:Developers_Mode) {
-	} else {
-		if (-not (Image_Is_Select_Install)) {
-			Write-Host "`n   $($lang.InboxAppsManager)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.BootProcess -f "install")" -ForegroundColor Red
-			return
-		}
-	}
-
 	Write-Host "`n   $($lang.Menu)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 	if (Verify_Is_Current_Same) {
