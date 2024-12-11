@@ -12,22 +12,22 @@ Function Functions_Menu
 		Write-host "   " -NoNewline
 		if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
 			Write-Host " O'D RT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-			Write-Host "  $($lang.MountImageTo): " -NoNewline -ForegroundColor Yellow
+			Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Yellow
 			Write-Host $Global:Mount_To_Route -ForegroundColor Green
 		} else {
 			Write-Host " O'D RT " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
-			Write-Host "  $($lang.MountImageTo): " -NoNewline -ForegroundColor Yellow
+			Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Yellow
 			Write-Host $Global:Mount_To_Route -ForegroundColor Red
 		}
 
 		Write-host "   " -NoNewline
 		if (Test-Path -Path $Global:Image_source -PathType Container) {
 			Write-Host " O'D MN " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-			Write-Host "  $($lang.MainImageFolder): " -NoNewline -ForegroundColor Yellow
+			Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Yellow
 			Write-Host $Global:Image_source -ForegroundColor Green
 		} else {
 			Write-Host " O'D MN " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
-			Write-Host "  $($lang.MainImageFolder): " -NoNewline -ForegroundColor Yellow
+			Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Yellow
 			Write-Host $Global:Image_source -ForegroundColor Red
 
 			Write-Host "   $('-' * 80)"

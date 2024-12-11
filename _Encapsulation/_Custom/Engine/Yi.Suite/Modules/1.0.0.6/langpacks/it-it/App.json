@@ -42,9 +42,9 @@
 					"Structure": "..\\..\\..\\..\\App\\7z",
 					"Unpwd":     "",
 					"Url": {
-						"arm64": "https://www.7-zip.org/a/7z2408-arm64.exe",
-						"x64":   "https://www.7-zip.org/a/7z2408-x64.exe",
-						"x86":   "https://www.7-zip.org/a/7z2408.exe"
+						"arm64": "https://www.7-zip.org/a/7z2409-arm64.exe",
+						"x64":   "https://www.7-zip.org/a/7z2409-x64.exe",
+						"x86":   "https://www.7-zip.org/a/7z2409.exe"
 					},
 					"FindFile":  "7z*",
 					"param":     "/S"
