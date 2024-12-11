@@ -1,21 +1,4 @@
-﻿Function Create_Template
-{
-	param
-	(
-		[Switch]$Silent
-	)
-
-	if (-not $Silent) {
-		Logo -Title $lang.RuleNewTempate
-		Write-Host "   $($lang.RuleNewTempate)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-	}
-
-	Create_Template_UI
-}
-
-
-<#
+﻿<#
 	.Create upgrade package user interface
 	.创建升级包用户界面
 #>
@@ -27,6 +10,9 @@ Function Create_Template_UI
 		[Switch]$NewAdd,
 		[Switch]$NewDel
 	)
+
+	Write-Host "`n   $($lang.RuleNewTempate)" -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing

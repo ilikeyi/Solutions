@@ -57,15 +57,6 @@
 	HealthyForceStop                = Sündmuse töötlemisel ilmnes pöördumatu viga ja protsess peatati sunniviisiliselt.\n\n   Põhjustab peamisi probleeme: \n\n      1. Füüsiline riistvara on kahjustatud, kõvaketas;\n\n      2. Kui kasutate RAMDISK mälu virtuaalset ketast (sh hübriid), kontrollige füüsilist mälu;\n\n      3. Kontrollige MVS-i (MSDN) algset SHA256-d. Kui see on järjepidev, muutke kataloogi ja proovige uuesti.\n\n      4. Selles näites teisi ei ole loetletud.
 	Superseded                      = Puhastage asendatud
 	SupersededTips                  = Sisaldab aegunud värskendusi, komponente jne.
-	SpecialFunction                 = PowerShelli funktsioonid
-	Functions_Before                = Enne jooksmist
-	Functions_Rear                  = Pärast lõpetamist
-	Functions_Wait_Assign           = Määrata funktsiooni nimi
-	Functions_Running_Order         = Käivita jada pärast jaotamist
-	Functions_Duplicate             = Ärge lisage, kui on duplikaate
-	Functions_AutoSelect            = Pärast lisamist kontrollige uusi üksusi automaatselt
-	FunctionTips                    = Määrate PowerShelli funktsiooni Palun valige omistatava funktsiooni nimi ja käivitage see järjekorras.
-	Function_Unrestricted           = Piiramatu
 	UnmountFailed                   = Olen proovinud mitut meetodit, kuid midagi ei saa teha, ma tahan teid järgmisel korral näha.
 	SaveTo                          = Salvestada
 	WorkDone                        = Lõpetatud, vajutage põhiliidesele naasmiseks suvalist klahvi...

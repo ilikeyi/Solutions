@@ -57,15 +57,6 @@
 	HealthyForceStop                = În timpul procesării evenimentului, a fost întâlnită o eroare ireversibilă și evenimentul a fost încheiat forțat.\n\n   Cauza probleme principale:\n\n      1. Hard diskul fizic este deteriorat;\n\n      2. Dacă utilizați un disc virtual cu memorie RAMDISK (inclusiv hibrid), vă rugăm să verificați memoria fizică;\n\n      3. Verificați SHA256 original al MVS (MSDN), vă rugăm să schimbați directorul și să încercați din nou. Dacă SHA256 este inconsecvent, vă rugăm să îl descărcați din nou.\n\n      4. Altele nu sunt enumerate în acest exemplu.
 	Superseded                      = Curățați cel înlocuit
 	SupersededTips                  = Include actualizări învechite, componente etc.
-	SpecialFunction                 = Funcții PowerShell
-	Functions_Before                = Înainte de a alerga
-	Functions_Rear                  = După finalizare
-	Functions_Wait_Assign           = Numele funcției care urmează să fie atribuit
-	Functions_Running_Order         = Rulați secvența după alocare
-	Functions_Duplicate             = Nu adăugați dacă există duplicate
-	Functions_AutoSelect            = Verificați automat elementele noi după adăugare
-	FunctionTips                    = Alocați o funcție PowerShell Vă rugăm să selectați numele funcției de atribuit și să o rulați în ordine.
-	Function_Unrestricted           = Nerestricționat
 	UnmountFailed                   = Am încercat mai multe metode, dar nu se poate face nimic.
 	SaveTo                          = Salva la
 	WorkDone                        = Finalizat, apăsați orice tastă pentru a reveni la interfața principală...

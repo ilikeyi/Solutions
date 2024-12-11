@@ -91,11 +91,11 @@ Function Mainpage
 	Write-Host "   $('-' * 80)"
 	Write-host "    " -NoNewline
 	Write-Host " A " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
+	Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 
 	Write-host "    " -NoNewline
 	Write-Host " C " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+	Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 	Write-Host
 	Write-host "   " -NoNewline
@@ -105,7 +105,6 @@ Function Mainpage
 	Write-Host "   $('-' * 80)"
 	Write-host "    " -NoNewline
 	Write-Host " 1 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-host " " -NoNewline
 	Write-Host "  $($lang.Mount) " -NoNewline -ForegroundColor Green
 	Write-Host " Mount * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ", " -NoNewline
@@ -130,9 +129,9 @@ Function Mainpage
 	Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Green
 	Write-Host " ISD * " -BackgroundColor DarkMagenta -ForegroundColor White
 
-	Write-Host "          " -NoNewline
+	Write-Host "        " -NoNewline
 
-	Write-Host "$($lang.Export_Image) " -NoNewline -ForegroundColor Green
+	Write-Host " $($lang.Export_Image) " -NoNewline -ForegroundColor Green
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host " Export " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
@@ -157,23 +156,23 @@ Function Mainpage
 
 	Write-host "    " -NoNewline
 	Write-Host " 2 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "   $($lang.UnpackISO)" -ForegroundColor Yellow
+	Write-Host "  $($lang.UnpackISO)" -ForegroundColor Yellow
 
 	Write-host "    " -NoNewline
 	if (Image_Is_Mount_Specified -Master "Install" -ImageFileName "Install") {
 		Write-Host " 3 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
-		Write-Host "   $($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm)" -ForegroundColor Red
+		Write-Host "  $($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm)" -ForegroundColor Red
 	} else {
 		Write-Host " 3 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-		Write-Host "   $($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm)" -ForegroundColor Green
+		Write-Host "  $($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm)" -ForegroundColor Green
 	}
 
-	Write-Host "     4    " -NoNewline -ForegroundColor Green
+	Write-Host "     4   " -NoNewline -ForegroundColor Green
 	Write-Host $lang.MoreFeature -ForegroundColor Yellow
 
 	Write-Host "`n   $($lang.AssignNeedMount)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
-	Write-Host "    11   " -NoNewline -ForegroundColor Green
+	Write-Host "    11  " -NoNewline -ForegroundColor Green
 	Write-Host " $($lang.Mounted_Status): " -ForegroundColor Yellow -NoNewline
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
@@ -220,7 +219,7 @@ Function Mainpage
 		}
 	}
 
-	Write-Host "    12   " -NoNewline -ForegroundColor Green
+	Write-Host "    12  " -NoNewline -ForegroundColor Green
 	Write-Host " $($lang.Solution): " -ForegroundColor Yellow -NoNewline
 	Write-Host "$($lang.IsCreate) " -NoNewline -ForegroundColor Green
 	Write-Host " SC " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
@@ -235,245 +234,245 @@ Function Mainpage
 		Write-Host $lang.Del -ForegroundColor Red
 	}
 
-	Write-Host "    13   " -NoNewline -ForegroundColor Green
+	Write-Host "    13  " -NoNewline -ForegroundColor Green
 	Write-Host " $($lang.Language): " -ForegroundColor Yellow -NoNewline
 	Write-Host "$($lang.LanguageExtract) " -NoNewline -ForegroundColor Green
-	Write-Host " LE " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " Lang E " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ", " -NoNewline
 
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Green
-			Write-Host " LA " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " Lang A " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Green
-			Write-Host " LD " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " Lang D " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.SwitchLanguage) " -NoNewline -ForegroundColor Green
-			Write-Host " LS " -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " Lang S " -BackgroundColor DarkMagenta -ForegroundColor White
 		} else {
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
-			Write-Host " LA " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " Lang A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Red
-			Write-Host " LD " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " Lang D " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.SwitchLanguage) " -NoNewline -ForegroundColor Red
-			Write-Host " LS " -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " Lang S " -BackgroundColor DarkRed -ForegroundColor White
 		}
 	} else {
 		Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
-		Write-Host " LA " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " Lang A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host ", " -NoNewline
 
 		Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Red
-		Write-Host " LD " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " Lang D " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host ", " -NoNewline
 
 		Write-Host "$($lang.SwitchLanguage) " -NoNewline -ForegroundColor Red
-		Write-Host " LS " -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " Lang S " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
-	Write-Host "    14   " -NoNewline -ForegroundColor Green
+	Write-Host "    14  " -NoNewline -ForegroundColor Green
 	Write-Host " $($lang.InboxAppsManager): " -ForegroundColor Yellow -NoNewline
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Green
-			Write-Host " IAA " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " IA A " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Green
-			Write-Host " IAD " -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " IA D " -BackgroundColor DarkMagenta -ForegroundColor White
 
-			Write-Host "          $($lang.LocalExperiencePack): " -NoNewline -ForegroundColor Yellow
+			Write-Host "         $($lang.LocalExperiencePack): " -NoNewline -ForegroundColor Yellow
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Green
-			Write-Host " LEPA " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " LXPs A " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Green
-			Write-Host " LEPD " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " LXPs D " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Update) " -NoNewline -ForegroundColor Green
-			Write-Host " LEPU " -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " LXPs U " -BackgroundColor DarkMagenta -ForegroundColor White
 		} else {
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
-			Write-Host " IAA " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " IA A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Red
-			Write-Host " IAD " -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " IA D " -BackgroundColor DarkRed -ForegroundColor White
 
-			Write-Host "          $($lang.LocalExperiencePack): " -NoNewline -ForegroundColor Yellow
+			Write-Host "         $($lang.LocalExperiencePack): " -NoNewline -ForegroundColor Yellow
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
-			Write-Host " LEPA " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " LXPs A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Red
-			Write-Host " LEPD " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " LXPs D " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Update) " -NoNewline -ForegroundColor Red
-			Write-Host " LEPU " -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " LXPs U " -BackgroundColor DarkRed -ForegroundColor White
 		}
 	} else {
 		Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
-		Write-Host " IAA " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " IA A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host ", " -NoNewline
 
 		Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Red
-		Write-Host " IAD " -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " IA D " -BackgroundColor DarkRed -ForegroundColor White
 
-		Write-Host "          $($lang.LocalExperiencePack): " -NoNewline -ForegroundColor Yellow
+		Write-Host "         $($lang.LocalExperiencePack): " -NoNewline -ForegroundColor Yellow
 		Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
-		Write-Host " LEPA " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " LXPs A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host ", " -NoNewline
 
 		Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Red
-		Write-Host " LEPD " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " LXPs D " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host ", " -NoNewline
 
 		Write-Host "$($lang.Update) " -NoNewline -ForegroundColor Red
-		Write-Host " LEPU " -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " LXPs U " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
-	Write-Host "    15   " -NoNewline -ForegroundColor Green
+	Write-Host "    15  " -NoNewline -ForegroundColor Green
 	Write-Host " $($lang.CUpdate): " -ForegroundColor Yellow -NoNewline
 	Write-Host "$($lang.RuleNewTempate) " -NoNewline -ForegroundColor Green
-	Write-Host " CUCT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " CU C " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ", " -NoNewline
 
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Green
-			Write-Host " CUA " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " CU A " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Green
-			Write-Host " CUD " -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " CU D " -BackgroundColor DarkMagenta -ForegroundColor White
 		} else {
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
-			Write-Host " CUA " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " CU A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Red
-			Write-Host " CUD " -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " CU D " -BackgroundColor DarkRed -ForegroundColor White
 		}
 	} else {
 		Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
-		Write-Host " CUA " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " CU A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host ", " -NoNewline
 
 		Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Red
-		Write-Host " CUD " -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " CU D " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
-	Write-Host "    16   " -NoNewline -ForegroundColor Green
+	Write-Host "    16  " -NoNewline -ForegroundColor Green
 	Write-Host " $($lang.Drive): " -ForegroundColor Yellow -NoNewline
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Green
-			Write-Host " DA " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " DD A " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Green
-			Write-Host " DD " -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " DD D " -BackgroundColor DarkMagenta -ForegroundColor White
 		} else {
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
-			Write-Host " DA " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " DD A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Red
-			Write-Host " DD " -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " DD D " -BackgroundColor DarkRed -ForegroundColor White
 		}
 	} else {
 		Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
-		Write-Host " DA " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " DD A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host ", " -NoNewline
 
 		Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Red
-		Write-Host " DD " -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " DD D " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
-	Write-Host "    17   " -NoNewline -ForegroundColor Green
+	Write-Host "    17  " -NoNewline -ForegroundColor Green
 	Write-Host " $($lang.Editions): " -ForegroundColor Yellow -NoNewline
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "$($lang.Change) " -NoNewline -ForegroundColor Green
-			Write-Host " IVC " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " IV C " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.EditionsProductKey) " -NoNewline -ForegroundColor Green
-			Write-Host " IVK " -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " IV K " -BackgroundColor DarkMagenta -ForegroundColor White
 		} else {
 			Write-Host "$($lang.Change) " -NoNewline -ForegroundColor Red
-			Write-Host " IVC " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " IV C " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.EditionsProductKey) " -NoNewline -ForegroundColor Red
-			Write-Host " IVK " -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " IV K " -BackgroundColor DarkRed -ForegroundColor White
 		}
 	} else {
 		Write-Host "$($lang.Change) " -NoNewline -ForegroundColor Red
-		Write-Host " IVC " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " IV C " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host ", " -NoNewline
 
 		Write-Host "$($lang.EditionsProductKey) " -NoNewline -ForegroundColor Red
-		Write-Host " IVK " -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " IV K " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
-	Write-Host "    18   " -NoNewline -ForegroundColor Green
+	Write-Host "    18  " -NoNewline -ForegroundColor Green
 	Write-Host " $($lang.WindowsFeature): " -ForegroundColor Yellow -NoNewline
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "$($lang.Enable) " -NoNewline -ForegroundColor Green
-			Write-Host " WFE " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " WF E " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Disable) " -NoNewline -ForegroundColor Green
-			Write-Host " WFD " -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " WF D " -BackgroundColor DarkMagenta -ForegroundColor White
 		} else {
 			Write-Host "$($lang.Enable) " -NoNewline -ForegroundColor Red
-			Write-Host " WFE " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " WF E " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Disable) " -NoNewline -ForegroundColor Red
-			Write-Host " WFD " -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " WF D " -BackgroundColor DarkRed -ForegroundColor White
 		}
 	} else {
 		Write-Host "$($lang.Enable) " -NoNewline -ForegroundColor Red
-		Write-Host " WFE " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " WF E " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host ", " -NoNewline
 
 		Write-Host "$($lang.Disable) " -NoNewline -ForegroundColor Red
-		Write-Host " WFD " -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " WF D " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
-	Write-Host "    19   " -NoNewline -ForegroundColor Green
+	Write-Host "    19  " -NoNewline -ForegroundColor Green
 	Write-Host " $($lang.SpecialFunction): " -ForegroundColor Yellow -NoNewline
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "$($lang.Functions_Before) " -NoNewline -ForegroundColor Green
-			Write-Host " PFB " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " PF B " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Functions_Rear) " -NoNewline -ForegroundColor Green
-			Write-Host " PFA " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " PF A " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Function_Unrestricted) " -NoNewline -ForegroundColor Green
 			Write-Host " FX * " -BackgroundColor DarkMagenta -ForegroundColor White
 		} else {
 			Write-Host "$($lang.Functions_Before) " -NoNewline -ForegroundColor Red
-			Write-Host " PFB " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " PF B " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Functions_Rear) " -NoNewline -ForegroundColor Red
-			Write-Host " PFA " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " PF A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Function_Unrestricted) " -NoNewline -ForegroundColor Green
@@ -481,11 +480,11 @@ Function Mainpage
 		}
 	} else {
 		Write-Host "$($lang.Functions_Before) " -NoNewline -ForegroundColor Red
-		Write-Host " PFB " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " PF B " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host ", " -NoNewline
 
 		Write-Host "$($lang.Functions_Rear) " -NoNewline -ForegroundColor Red
-		Write-Host " PFA " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " PF A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host ", " -NoNewline
 
 		Write-Host "$($lang.Function_Unrestricted) " -NoNewline -ForegroundColor Green
@@ -495,7 +494,7 @@ Function Mainpage
 	Write-Host
 	Write-host "   " -NoNewline
 	Write-Host " R'R " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "  $($lang.RefreshModules)"
+	Write-Host " $($lang.RefreshModules)"
 
 	Write-Host
 	Write-Host "   " -NoNewline
@@ -705,13 +704,15 @@ Function Mainpage
 			"Mount *" {
 				Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-				$NewIndex = $PSItem.Remove(0, 6).Replace(' ', '')
+				Write-Host "`n   $($lang.Command): " -NoNewline
+				Write-host "Mount" -ForegroundColor Green
 
-				Write-Host "`n   $($lang.Mount), $($lang.MountedIndexSelect): " -NoNewline
-				Write-Host $NewIndex -ForegroundColor Green
+				$NewRuleName = $PSItem.Remove(0, 6).Replace(' ', '')
+				Write-Host "   $($lang.MountedIndexSelect): " -NoNewline
+				Write-Host $NewRuleName -ForegroundColor Green
 				Write-Host "   $('-' * 80)"
 
-				if ($NewIndex -match '^\d+$') {
+				if ($NewRuleName -match '^\d+$') {
 					if (Image_Is_Select_IAB) {
 						Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
 						Write-Host "   $('-' * 80)"
@@ -720,7 +721,7 @@ Function Mainpage
 							Write-Host "   $($lang.Mounted)" -ForegroundColor Red
 						} else {
 							Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "1026"
-							Image_Select_Index_UI -AutoSelectIndex $NewIndex
+							Image_Select_Index_UI -AutoSelectIndex $NewRuleName
 						}
 					} else {
 						Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
@@ -876,13 +877,15 @@ Function Mainpage
 			"isd *" {
 				Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-				$NewIndex = $PSItem.Remove(0, 4).Replace(' ', '')
+				Write-Host "`n   $($lang.Command): " -NoNewline
+				Write-host "isd" -ForegroundColor Green
 
-				Write-Host "`n   $($lang.Del), $($lang.MountedIndexSelect): " -NoNewline
-				Write-Host $NewIndex -ForegroundColor Green
+				$NewRuleName = $PSItem.Remove(0, 4).Replace(' ', '')
+				Write-Host "   $($lang.MountedIndexSelect): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
 				Write-Host "   $('-' * 80)"
 
-				if ($NewIndex -match '^\d+$') {
+				if ($NewRuleName -match '^\d+$') {
 					if (Image_Is_Select_IAB) {
 						Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
 						Write-Host "   $('-' * 80)"
@@ -891,7 +894,7 @@ Function Mainpage
 							Write-Host "   $($lang.Mounted)" -ForegroundColor Red
 						} else {
 							Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "0818"
-							Image_Select_Del_UI -AutoSelectIndex $NewIndex
+							Image_Select_Del_UI -AutoSelectIndex $NewRuleName
 							Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "0818e"
 						}
 					} else {
@@ -910,7 +913,9 @@ Function Mainpage
 			#>
 			"euwl" {
 				Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+
+				Write-Host "`n   $($lang.Command): " -NoNewline
+				Write-host "euwl" -ForegroundColor Green
 
 				Write-Host "`n   $($lang.Wim_Rule_Update)"
 				Write-Host "   $('-' * 80)"
@@ -1006,243 +1011,215 @@ Function Mainpage
 				ToWait -wait 2
 				Mainpage
 			}
-
-			<#
-				.快捷指令：组：语言包
-			#>
-				<#
-					.快捷指令：语言包：提取
-				#>
-				"LE" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-
-					Write-Host "`n   $($lang.LanguageExtract)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
-					Language_Extract_UI
-
-					ToWait -wait 2
-					Mainpage
-				}
-
-				<#
-					.快捷指令：语言包：添加
-				#>
-				"LA" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					Language_Menu_Shortcuts_LA
-					ToWait -wait 2
-					Mainpage
-				}
-
-				<#
-					.快捷指令：语言包：添加
-				#>
-				"LD" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					Language_Menu_Shortcuts_LD
-					ToWait -wait 2
-					Mainpage
-				}
-
-				<#
-					.快捷指令：语言包：添加
-				#>
-				"LS" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					Language_Menu_Shortcuts_LS
-					ToWait -wait 2
-					Mainpage
-				}
-
 			<#
 				.快捷指令：组：InBox Apps
 			#>
-				<#
-					.快捷指令：InBox Apps：添加
-				#>
-				"IAA" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					InBox_Apps_Menu_Shortcuts_Add
-					ToWait -wait 2
-					Mainpage
+
+			"IA *" {
+				Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+				Write-Host "`n   $($lang.Command): " -NoNewline
+				Write-host "IA" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 3).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+
+				switch ($NewRuleName) {
+					"a" {
+						InBox_Apps_Menu_Shortcuts_Add
+					}
+					"d" {
+						InBox_Apps_Menu_Shortcuts_Delete
+					}
+					default {
+						Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					}
 				}
 
-				<#
-					.快捷指令：InBox Apps：删除
-				#>
-				"IAD" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					InBox_Apps_Menu_Shortcuts_Delete
-					ToWait -wait 2
-					Mainpage
+				ToWait -wait 2
+				Mainpage
+			}
+
+			"LXPs *" {
+				Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+				Write-Host "`n   $($lang.Command): " -NoNewline
+				Write-host "LXPs" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 5).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+
+				switch ($NewRuleName) {
+					"a" {
+						InBox_Apps_Menu_Shortcuts_LXPs_Add
+					}
+					"d" {
+						InBox_Apps_Menu_Shortcuts_LXPs_Delete
+					}
+					"u" {
+						InBox_Apps_Menu_Shortcuts_LXPs_Update
+					}
+					default {
+						Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					}
 				}
 
-				<#
-					.快捷指令：本地语言体验包：添加
-				#>
-				"LEPA" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					InBox_Apps_Menu_Shortcuts_LXPs_Add
-					ToWait -wait 2
-					Mainpage
-				}
-
-				<#
-					.快捷指令：本地语言体验包：更新
-				#>
-				"LEPU" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					InBox_Apps_Menu_Shortcuts_LXPs_Update
-					ToWait -wait 2
-					Mainpage
-				}
-
-				<#
-					.快捷指令：本地语言体验包：删除
-				#>
-				"LEPD" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					InBox_Apps_Menu_Shortcuts_LXPs_Delete
-					ToWait -wait 2
-					Mainpage
-				}
+				ToWait -wait 2
+				Mainpage
+			}
 
 			<#
 				.快捷指令：组：累积更新
 			#>
-				<#
-					.快捷指令：累积更新：添加
-				#>
-				"CUCT" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			"CU *" {
+				Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-					Write-Host "`n   $($lang.RuleNewTempate)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
-					Create_Template_UI
-					ToWait -wait 2
-					Mainpage
+				Write-Host "`n   $($lang.Command): " -NoNewline
+				Write-host "CU" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 3).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+
+				switch ($NewRuleName) {
+					"c" {
+						Create_Template_UI
+					}
+					"a" {
+						Update_Menu_Shortcuts_Add
+					}
+					"d" {
+						Update_Menu_Shortcuts_Delete
+					}
+					default {
+						Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					}
 				}
 
-				<#
-					.快捷指令：累积更新：添加
-				#>
-				"CUA" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					Update_Menu_Shortcuts_Add
-					ToWait -wait 2
-					Mainpage
-				}
-
-				<#
-					.快捷指令：累积更新：删除
-				#>
-				"CUD" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					Update_Menu_Shortcuts_Delete
-					ToWait -wait 2
-					Mainpage
-				}
+				ToWait -wait 2
+				Mainpage
+			}
 
 			<#
-				.快捷指令：组：驱动
+				.快捷指令：驱动
 			#>
-				<#
-					.快捷指令：驱动：添加
-				#>
-				"DA" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					Drive_Menu_Shortcuts_Add
-					ToWait -wait 2
-					Mainpage
+			"DD *" {
+				Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+				Write-Host "`n   $($lang.Command): " -NoNewline
+				Write-host "DD" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 3).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+
+				switch ($NewRuleName) {
+					"a" {
+						Drive_Menu_Shortcuts_Add
+					}
+					"d" {
+						Drive_Menu_Shortcuts_Delete
+					}
+					default {
+						Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					}
 				}
 
-				<#
-					.快捷指令：驱动：删除
-				#>
-				"DD" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					Drive_Menu_Shortcuts_Delete
-					ToWait -wait 2
-					Mainpage
-				}
+				ToWait -wait 2
+				Mainpage
+			}
 
 			<#
 				.Shortcut: Group: Image Version
 				.快捷指令：组：映像版本
 			#>
-				<#
-					.Shortcut: Image Version: Change
-					.快捷指令：映像版本：更改
-				#>
-				"IVC" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					Editions_GUI
-					ToWait -wait 2
-					Mainpage
+			"IV *" {
+				Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+				Write-Host "`n   $($lang.Command): " -NoNewline
+				Write-host "IV" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 3).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+
+				switch ($NewRuleName) {
+					"c" {
+						Editions_GUI
+					}
+					"k" {
+						Editions_GUI
+					}
+					default {
+						Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					}
 				}
 
-				<#
-					.Shortcut: Image Version: Product Serial Number
-					.快捷指令：映像版本：产品序列号
-				#>
-				"IVK" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					Editions_GUI
-					ToWait -wait 2
-					Mainpage
-				}
+				ToWait -wait 2
+				Mainpage
+			}
 
 			<#
 				.Shortcut: Group: Windows Function
 				.快捷指令：组：Windows 功能
 			#>
-				<#
-					.Shortcut:Windows Features:Enable
-					.快捷指令：Windows 功能：启用
-				#>
-				"WFE" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					Feature_Menu_Shortcuts_Enabled
-					ToWait -wait 2
-					Mainpage
+			"WF *" {
+				Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+				Write-Host "`n   $($lang.Command): " -NoNewline
+				Write-host "WF" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 3).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+
+				switch ($NewRuleName) {
+					"e" {
+						Feature_Menu_Shortcuts_Enabled
+					}
+					"d" {
+						Feature_Menu_Shortcuts_Disabled
+					}
+					default {
+						Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					}
 				}
 
-				<#
-					.Shortcut:Windows Features:Disable
-					.快捷指令：Windows 功能：禁用
-				#>
-				"WFD" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					Feature_Menu_Shortcuts_Disabled
-					ToWait -wait 2
-					Mainpage
-				}
+				ToWait -wait 2
+				Mainpage
+			}
 
 			<#
 				.Shortcut: Group: PowerShell Functions
 				.快捷指令：组：PowerShell Functions 函数功能
 			#>
-				<#
-					.Shortcut command: PowerShell Functions Function: When there is an event, before running
-					.快捷指令：PowerShell Functions 函数功能：有事件时，运行前
-				#>
-				"PFB" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					Functions_Menu_Shortcuts_PFB
-					ToWait -wait 2
-					Mainpage
+			"PF *" {
+				Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+				Write-Host "`n   $($lang.Command): " -NoNewline
+				Write-host "PF" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 3).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+
+				switch ($NewRuleName) {
+					"b" {
+						Functions_Menu_Shortcuts_PFB
+					}
+					"a" {
+						Functions_Menu_Shortcuts_PFA
+					}
+					default {
+						Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					}
 				}
 
-				<#
-					.Shortcut command: PowerShell Functions Function function: When there is an event, run
-					.快捷指令：PowerShell Functions 函数功能：有事件时，运行后
-				#>
-				"PFA" {
-					Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
-					Functions_Menu_Shortcuts_PFA
-					ToWait -wait 2
-					Mainpage
-				}
+				ToWait -wait 2
+				Mainpage
+			}
 
 				<#
 					.Shortcut: PowerShell Functions Function: Unlimited
@@ -1255,11 +1232,17 @@ Function Mainpage
 						Mainpage
 					}
 					"FX *" {
-						Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 						$Global:Function_Unrestricted = @()
+						Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-						$NewType = $PSItem.Remove(0, 3).Replace(' ', '')
-						switch ($NewType) {
+						Write-Host "`n   $($lang.Command): " -NoNewline
+						Write-host "FX" -ForegroundColor Green
+
+						$NewRuleName = $PSItem.Remove(0, 3).Replace(' ', '')
+						Write-Host "   $($lang.RuleName): " -NoNewline
+						Write-host $NewRuleName -ForegroundColor Green
+
+						switch ($NewRuleName) {
 							"list" {
 								Functions_Tasks_List
 								Get_Next
@@ -1292,8 +1275,14 @@ Function Mainpage
 			"Update *" {
 				Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-				$NewType = $PSItem.Remove(0, 7).Replace(' ', '')
-				switch ($NewType) {
+				Write-Host "`n   $($lang.Command): " -NoNewline
+				Write-host "Update" -ForegroundColor Green
+
+				$NewRuleName = $PSItem.Remove(0, 7).Replace(' ', '')
+				Write-Host "   $($lang.RuleName): " -NoNewline
+				Write-host $NewRuleName -ForegroundColor Green
+
+				switch ($NewRuleName) {
 					"auto" {
 						Update -Auto
 					}
@@ -1375,9 +1364,29 @@ Function Mainpage
 		"lang *" {
 			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-			$NewLanguage = $PSItem.Remove(0, 5).Replace(' ', '')
+			Write-Host "`n   $($lang.Command): " -NoNewline
+			Write-host "lang" -ForegroundColor Green
+
+			$NewRuleName = $PSItem.Remove(0, 5).Replace(' ', '')
+			Write-Host "   $($lang.RuleName): " -NoNewline
+			Write-host $NewRuleName -ForegroundColor Green
+
 			$Langpacks_Sources = "$($PSScriptRoot)\..\..\..\langpacks"
-			switch ($NewLanguage) {
+			switch ($NewRuleName) {
+				"e" {
+					Write-Host "`n   $($lang.LanguageExtract)" -ForegroundColor Yellow
+					Write-Host "   $('-' * 80)"
+					Language_Extract_UI
+				}
+				"a" {
+					Language_Menu_Shortcuts_LA
+				}
+				"d" {
+					Language_Menu_Shortcuts_LD
+				}
+				"s" {
+					Language_Menu_Shortcuts_LS
+				}
 				"list" {
 					Write-Host "`n   $($lang.AvailableLanguages)"
 					Write-Host "   $('-' * 80)"
@@ -1411,12 +1420,12 @@ Function Mainpage
 				}
 				default {
 					Write-Host "`n   $($lang.SwitchLanguage): " -NoNewline
-					Write-Host $NewLanguage -ForegroundColor Green
+					Write-Host $NewRuleName -ForegroundColor Green
 					Write-Host "   $('-' * 80)"
 
-					if (Test-Path "$($Langpacks_Sources)\$($NewLanguage)\Lang.psd1" -PathType Leaf) {
+					if (Test-Path "$($Langpacks_Sources)\$($NewRuleName)\Lang.psd1" -PathType Leaf) {
 						Write-Host "   $($lang.Done)" -ForegroundColor Green
-						Save_Dynamic -regkey "Solutions" -name "Language" -value $NewLanguage -String
+						Save_Dynamic -regkey "Solutions" -name "Language" -value $NewRuleName -String
 						Modules_Refresh -Function "ToWait -wait 2", "Mainpage"
 					} else {
 						Write-Host "   $($lang.UpdateUnavailable)" -ForegroundColor Red

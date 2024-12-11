@@ -57,15 +57,6 @@
 	HealthyForceStop                = Apdorojant įvykį, įvyko negrįžtama klaida ir įvykis buvo priverstinai nutrauktas.\n\n   Sukelia pagrindines problemas:\n\n      1. Sugadinta fizinė įranga, kietasis diskas;\n\n      2. Jei naudojate RAMDISK atminties virtualųjį diską (įskaitant hibridinį), patikrinkite fizinę atmintį;\n\n      3. Patikrinkite originalų MVS (MSDN) SHA256, pakeiskite katalogą ir bandykite dar kartą.\n\n      4. Kiti šiame pavyzdyje nenurodyti.
 	Superseded                      = Išvalykite pakeistą
 	SupersededTips                  = Apima pasenusius naujinimus, komponentus ir kt.
-	SpecialFunction                 = PowerShell funkcijos
-	Functions_Before                = Prieš bėgimą
-	Functions_Rear                  = Baigus
-	Functions_Wait_Assign           = Priskirtinas funkcijos pavadinimas
-	Functions_Running_Order         = Vykdymo seka po paskirstymo
-	Functions_Duplicate             = Nepridėkite, jei yra dublikatų
-	Functions_AutoSelect            = Pridėjus naujus elementus automatiškai patikrinkite
-	FunctionTips                    = Priskiriate "PowerShell" funkciją Pasirinkite priskirtos funkcijos pavadinimą ir paleiskite ją eilės tvarka.
-	Function_Unrestricted           = Neribojama
 	UnmountFailed                   = Išbandžiau kelis būdus, bet nieko negaliu padaryti, tik norėčiau pasimatyti kitą kartą.
 	SaveTo                          = Išsaugoti į
 	WorkDone                        = Baigta, paspauskite bet kurį klavišą, kad grįžtumėte į pagrindinę sąsają...

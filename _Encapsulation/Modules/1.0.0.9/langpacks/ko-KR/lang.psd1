@@ -57,15 +57,6 @@
 	HealthyForceStop                = 이벤트 처리 중 되돌릴 수 없는 오류가 발생하여 강제 종료되었습니다.\n\n   주요 문제의 원인:\n\n      1. 물리적 하드웨어 손상, 하드 디스크;\n\n      2. RAMDISK 메모리 가상 디스크 (하이브리드 포함) 를 사용하는 경우 물리적 메모리를 확인하십시오.\n\n      3. 원본 MSDN 버전의 SHA256 을 확인하십시오.동일한 경우 디렉토리를 변경하고 다시 시도하십시오 .SHA256 이 일치하지 않으면 다운로드하여 다시 시도하십시오.\n\n      4. 이 예에 나열되지 않은 기타.
 	Superseded                      = 청소 교체
 	SupersededTips                  = 오래된 업데이트, 구성 요소 등이 포함됩니다
-	SpecialFunction                 = PowerShell 기능
-	Functions_Before                = 달리기 전
-	Functions_Rear                  = 마친 후
-	Functions_Wait_Assign           = 할당할 기능 이름
-	Functions_Running_Order         = 할당 후 순서 실행
-	Functions_Duplicate             = 중복되면 추가하지 마세요
-	Functions_AutoSelect            = 추가 후 새 항목을 자동으로 확인
-	FunctionTips                    = PowerShell 함수를 할당 중입니다. 할당할 함수 이름을 선택하고 순서대로 실행하세요.
-	Function_Unrestricted           = 무제한
 	UnmountFailed                   = 이미 여러 방법을 써봤지만 할 수 있는 게 없어요. 동생은 이때만 공격할 수 있어요. 다음에 영웅들과 함께 뵙고 싶어요.
 	SaveTo                          = 저장 위치
 	WorkDone                        = 완료, 기본 인터페이스로 돌아가려면 아무 키나 누르십시오...

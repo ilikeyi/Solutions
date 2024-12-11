@@ -153,21 +153,37 @@ Function Solutions_Help_Command
 	switch ($Name) {
 		"lang" {
 			Write-Host "   $($lang.Command): " -NoNewline
-			Write-host "lang *" -ForegroundColor Green
+			Write-host "Lang *" -ForegroundColor Green
 
-			Write-Host
-			Write-Host "     lang".PadRight(20) -NoNewline -ForegroundColor Yellow
+			Write-Host "`n   $($lang.AssignNeedMount)" -ForegroundColor Yellow
+			Write-Host "   $('-' * 80)"
+			Write-Host "     Lang E".PadRight(20) -NoNewline -ForegroundColor Yellow
+			Write-Host $lang.LanguageExtract
+
+			Write-Host "     Lang A".PadRight(20) -NoNewline -ForegroundColor Yellow
+			Write-Host $lang.AddTo
+
+			Write-Host "     Lang D".PadRight(20) -NoNewline -ForegroundColor Yellow
+			Write-Host $lang.Del
+
+			Write-Host "     Lang S".PadRight(20) -NoNewline -ForegroundColor Yellow
 			Write-Host $lang.SwitchLanguage
-		
-			Write-Host "     lang list".PadRight(20) -NoNewline -ForegroundColor Yellow
+
+
+			Write-Host "`n   $($lang.User_Interaction)" -ForegroundColor Yellow
+			Write-Host "   $('-' * 80)"
+			Write-Host "     Lang".PadRight(20) -NoNewline -ForegroundColor Yellow
+			Write-Host $lang.SwitchLanguage
+
+			Write-Host "     Lang list".PadRight(20) -NoNewline -ForegroundColor Yellow
 			Write-Host $lang.AvailableLanguages
-		
-			Write-Host "     lang auto".PadRight(20) -NoNewline -ForegroundColor Yellow
+
+			Write-Host "     Lang auto".PadRight(20) -NoNewline -ForegroundColor Yellow
 			Write-Host "$($lang.SwitchLanguage), $($lang.LanguageReset)"
-		
-			Write-Host "     lang *".PadRight(20) -NoNewline -ForegroundColor Yellow
+
+			Write-Host "     Lang *".PadRight(20) -NoNewline -ForegroundColor Yellow
 			Write-Host "$($lang.SwitchLanguage), $($lang.LanguageCode) " -NoNewline
-			Write-Host "{ lang zh-CN }" -ForegroundColor Green
+			Write-Host "{ Lang zh-CN }" -ForegroundColor Green
 
 			Get_Next
 		}

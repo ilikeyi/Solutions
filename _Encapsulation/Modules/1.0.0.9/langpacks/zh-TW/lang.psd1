@@ -57,15 +57,6 @@
 	HealthyForceStop                = 處理事件時，遇到不可逆的錯誤，已強行終止。\n\n   造成主要的問題：\n\n      1、物理硬件受損，硬盤；\n\n      2、如果您使用 RAMDISK 內存虛擬盤（含混合），請檢查物理內存；\n\n      3、校驗 MVS (MSDN) 原版 SHA256，如果一致，請重新換目錄後嘗試，如果 SHA256 不一致，請重新下載後嘗試；\n\n      4、其它，不在此例出的。
 	Superseded                      = 清理取代的
 	SupersededTips                  = 包括過時的更新、組件等
-	SpecialFunction                 = PowerShell 函數
-	Functions_Before                = 運行前
-	Functions_Rear                  = 完成後
-	Functions_Wait_Assign           = 待指派的函數名稱
-	Functions_Running_Order         = 分配後運行順序
-	Functions_Duplicate             = 重複時不再添加
-	Functions_AutoSelect            = 新增後自動勾選新增項
-	FunctionTips                    = 您正在指派 PowerShell 函數，請選擇待指派的函數名稱，依序依序執行。
-	Function_Unrestricted           = 不受限制
 	UnmountFailed                   = 已經用過幾種方法了，無能為力，小弟只能就此罷工了，願與大俠下次江湖見。
 	SaveTo                          = 保存到
 	WorkDone                        = 完成，按任意鍵返回主界面...

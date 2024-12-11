@@ -57,15 +57,6 @@
 	HealthyForceStop                = Durante o processamento do evento, foi encontrado um erro irreversível e o evento foi encerrado à força.\n\n   Causa os principais problemas: \n\n      1. O hardware físico está danificado, disco rígido;\n\n      2. Se você usar disco virtual de memória RAMDISK (incluindo híbrido), verifique a memória física;\n\n      3. Verifique o SHA256 original do MVS (MSDN). Se estiver consistente, altere o diretório e tente novamente. Se o SHA256 estiver inconsistente, baixe-o novamente e tente novamente;\n\n      4. Outros não estão listados neste exemplo.
 	Superseded                      = Limpe o substituído
 	SupersededTips                  = Inclui atualizações desatualizadas, componentes, etc.
-	SpecialFunction                 = Funções do PowerShell
-	Functions_Before                = Antes de correr
-	Functions_Rear                  = Após a conclusão
-	Functions_Wait_Assign           = Nome da função a ser atribuída
-	Functions_Running_Order         = Sequência de execução após alocação
-	Functions_Duplicate             = Não adicione se houver duplicatas
-	Functions_AutoSelect            = Verifique automaticamente novos itens após adicionar
-	FunctionTips                    = Você está atribuindo uma função do PowerShell Selecione o nome da função a ser atribuída e execute-a em ordem.
-	Function_Unrestricted           = Irrestrito
 	UnmountFailed                   = Eu tentei vários métodos, mas nada pode ser feito, só posso desistir. Gostaria de ver você na próxima vez.
 	SaveTo                          = Salvar em
 	WorkDone                        = Concluído, pressione qualquer tecla para retornar à interface principal...

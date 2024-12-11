@@ -57,15 +57,6 @@
 	HealthyForceStop                = Encountered an irreversible error while processing\n   the event and was forcibly terminated.\n\n   Causes the main problem:\n\n      1. Physical hardware damage, hard disk;\n\n      2. If you use RAMDISK memory virtual disk (including hybrid),\n         please check the physical memory;\n\n      3. Verify the SHA256 of the original MVS (MSDN) version.\n         if the same, please change the directory and try again.\n         if the SHA256 is inconsistent, please download and try again;\n\n      4. Others are not listed in this example.
 	Superseded                      = Superseded
 	SupersededTips                  = Includes outdated updates, components, etc.
-	SpecialFunction                 = PowerShell functions
-	Functions_Before                = Before running
-	Functions_Rear                  = After finishing
-	Functions_Wait_Assign           = Name of the function to be allocated
-	Functions_Running_Order         = Post-allocation running order
-	Functions_Duplicate             = No more duplicates
-	Functions_AutoSelect            = Automatically check off additions after adding
-	FunctionTips                    = You are assigning PowerShell functions, select the names of the functions to be assigned and run them in order.
-	Function_Unrestricted           = Unrestricted
 	UnmountFailed                   = I have used several methods, and there is nothing I can do. The younger brother can only strike out. I hope to see you next time with the heroes.
 	SaveTo                          = Save to
 	WorkDone                        = Finish, press any key to return to the main interface...

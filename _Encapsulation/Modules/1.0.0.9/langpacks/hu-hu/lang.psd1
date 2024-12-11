@@ -57,15 +57,6 @@
 	HealthyForceStop                = Az esemény feldolgozása során visszafordíthatatlan hiba lépett fel, és az eseményt erőszakkal megszakították.\n\n   Fő problémákat okoz:\n\n      1. Fizikai hardver sérült, merevlemez;\n\n      2. Ha RAMDISK memória virtuális lemezt használ (beleértve a hibridet is), ellenőrizze a fizikai memóriát;\n\n      3. Ellenőrizze az MVS (MSDN) eredeti SHA256-át, ha konzisztens, módosítsa a könyvtárat, és próbálja újra.\n\n      4. Mások nem szerepelnek ebben a példában.
 	Superseded                      = Tisztítsa meg a cserélt
 	SupersededTips                  = Tartalmazza az elavult frissítéseket, összetevőket stb.
-	SpecialFunction                 = PowerShell függvények
-	Functions_Before                = Futás előtt
-	Functions_Rear                  = Befejezés után
-	Functions_Wait_Assign           = A hozzárendelendő funkciónév
-	Functions_Running_Order         = Futtassa a sorozatot az elosztás után
-	Functions_Duplicate             = Ne adja hozzá, ha ismétlődések vannak
-	Functions_AutoSelect            = Az új elemek automatikus ellenőrzése hozzáadása után
-	FunctionTips                    = PowerShell-függvényt rendel hozzá. Kérjük, válassza ki a hozzárendelni kívánt függvény nevét, és futtassa le.
-	Function_Unrestricted           = Korlátlan
 	UnmountFailed                   = Több módszert is kipróbáltam, de semmit sem tudok tenni, csak annyit, hogy legközelebb találkozunk.
 	SaveTo                          = Mentse ide
 	WorkDone                        = Befejezve, nyomja meg bármelyik gombot, hogy visszatérjen a fő felületre...

@@ -57,15 +57,6 @@
 	HealthyForceStop                = Apstrādājot notikumu, tika konstatēta neatgriezeniska kļūda, un notikums tika piespiedu kārtā pārtraukts. \n\n   Izraisa galvenās problēmas: \n\n      1. Bojāta fiziskā aparatūra, cietais disks;\n\n      2. Ja izmantojat RAMDISK atmiņas virtuālo disku (ieskaitot hibrīdu), lūdzu, pārbaudiet fizisko atmiņu;\n\n      3. Pārbaudiet MVS (MSDN) sākotnējo SHA256, lūdzu, mainiet direktoriju un mēģiniet vēlreiz.\n\n      4. Citi šajā piemērā nav minēti.
 	Superseded                      = Notīriet nomainīto
 	SupersededTips                  = Ietver novecojušus atjauninājumus, komponentus utt.
-	SpecialFunction                 = PowerShell funkcijas
-	Functions_Before                = Pirms skriešanas
-	Functions_Rear                  = Pēc pabeigšanas
-	Functions_Wait_Assign           = Piešķiramais funkcijas nosaukums
-	Functions_Running_Order         = Palaist secību pēc piešķiršanas
-	Functions_Duplicate             = Nepievienot, ja ir dublikāti
-	Functions_AutoSelect            = Pēc pievienošanas automātiski pārbaudiet jaunos vienumus
-	FunctionTips                    = Jūs piešķirat PowerShell funkciju, lūdzu, atlasiet piešķiramās funkcijas nosaukumu un palaidiet to secībā.
-	Function_Unrestricted           = Neierobežots
 	UnmountFailed                   = Esmu izmēģinājis vairākas metodes, bet neko nevaru izdarīt. Es gribētu jūs redzēt nākamreiz.
 	SaveTo                          = Saglabāt uz
 	WorkDone                        = Pabeigts, nospiediet jebkuru taustiņu, lai atgrieztos galvenajā saskarnē...

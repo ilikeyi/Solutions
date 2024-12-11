@@ -1442,8 +1442,10 @@ Function Image_Save_Primary_Key_Shortcuts
 	)
 
 	Write-Host "`n   $($lang.Command): " -NoNewline
-	Write-host "Save $($Name)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-host "Save" -ForegroundColor Green
+
+	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-host $Name -ForegroundColor Green
 
 	Write-Host "`n   $($lang.Event_Primary_Key) *" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
@@ -1571,8 +1573,10 @@ Function Image_Unmount_Primary_Key_Shortcuts
 	)
 
 	Write-Host "`n   $($lang.Command): " -NoNewline
-	Write-host "Unmount $($Name)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-host "Unmount" -ForegroundColor Green
+
+	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-host $Name -ForegroundColor Green
 
 	Write-Host "`n   $($lang.Event_Primary_Key) *" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"

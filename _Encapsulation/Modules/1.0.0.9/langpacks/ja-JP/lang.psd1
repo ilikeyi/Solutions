@@ -57,15 +57,6 @@
 	HealthyForceStop                = イベントの処理中に不可逆エラーが発生し, 強制的に終了しました。\n\n   主な問題の原因：\n\n      1. 物理的なハードウェアの損傷, ハードディスク。\n\n      2. RAMDISK メモリ仮想ディスク（ハイブリッドを含む）を使用する場合は, 物理メモリを確認してください。\n\n      3. 元の MVS (MSDN) バージョンのSHA256を確認します。同じ場合は, ディレクトリを変更して再試行してください。SHA256に一貫性がない場合は, ダウンロードして再試行してください。\n\n      4. その他, この例にはリストされていません。
 	Superseded                      = クリーンアップ交換
 	SupersededTips                  = 古いアップデート, コンポーネントなどが含まれます
-	SpecialFunction                 = PowerShell 関数
-	Functions_Before                = 走る前に
-	Functions_Rear                  = 終わった後
-	Functions_Wait_Assign           = 割り当てる関数名
-	Functions_Running_Order         = 割り当て後の実行注文
-	Functions_Duplicate             = 重複がある場合は追加しないでください
-	Functions_AutoSelect            = 新しいアイテムを追加した後に自動的にチェックする
-	FunctionTips                    = PowerShell 関数を割り当てています。割り当てる関数の名前を選択し, 順番に実行してください。
-	Function_Unrestricted           = 無制限
 	UnmountFailed                   = すでにいくつかの方法を使っていますが, 私にできることは何もありません。弟はこの時点でしか攻撃できません。次回はヒーローとお会いしましょう。
 	SaveTo                          = 保存先
 	WorkDone                        = 完了し, メインインターフェイスに戻って任意のキーを押します...

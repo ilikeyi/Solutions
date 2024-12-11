@@ -57,15 +57,6 @@
 	HealthyForceStop                = Tijdens het verwerken van de gebeurtenis is er een onomkeerbare fout opgetreden en is de gebeurtenis met geweld beëindigd.\n\n   Veroorzaakt belangrijkste problemen:\n\n      1. Fysieke hardware is beschadigd, harde schijf;\n\n      2. Als u een virtuele RAMDISK-geheugenschijf (inclusief hybride) gebruikt, controleer dan het fysieke geheugen;\n\n      3. Controleer de originele SHA256 van MVS (MSDN). Als deze consistent is, verander dan de map en probeer het opnieuw. Als de SHA256 inconsistent is, download deze dan opnieuw en probeer het opnieuw.\n\n      4. Anderen worden in dit voorbeeld niet vermeld.
 	Superseded                      = Maak het vervangen schoon
 	SupersededTips                  = Inclusief verouderde updates, componenten, enz.
-	SpecialFunction                 = PowerShell functies
-	Functions_Before                = Voordat je gaat rennen
-	Functions_Rear                  = Na voltooiing
-	Functions_Wait_Assign           = Functienaam die moet worden toegewezen
-	Functions_Running_Order         = Voervolgorde na toewijzing uit
-	Functions_Duplicate             = Voeg niet toe als er duplicaten zijn
-	Functions_AutoSelect            = Controleer automatisch nieuwe items na het toevoegen
-	FunctionTips                    = U wijst een PowerShell-functie toe. Selecteer de naam van de functie die u wilt toewijzen en voer deze in volgorde uit.
-	Function_Unrestricted           = Onbeperkt
 	UnmountFailed                   = Ik heb verschillende methoden geprobeerd, maar er kan niets aan worden gedaan. Ik kan er alleen maar mee stoppen. Ik zou je graag de volgende keer willen zien.
 	SaveTo                          = Opslaan naar
 	WorkDone                        = Voltooid, druk op een willekeurige toets om terug te keren naar de hoofdinterface...

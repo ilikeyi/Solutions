@@ -57,15 +57,6 @@
 	HealthyForceStop                = Beim Verarbeiten des Ereignisses ist ein irreversibler Fehler aufgetreten und wurde zwangsweise beendet.\n\n   Verursacht das Hauptproblem:\n\n      1. Physischer Hardwareschaden, Festplatte;\n\n      2. Wenn Sie eine virtuelle Festplatte mit RAMDISK-Speicher (einschließlich Hybrid) verwenden,\n         überprüfen Sie bitte den physischen Speicher;\n\n      3. Überprüfen Sie den SHA256 der ursprünglichen MVS (MSDN) Version. Wenn derselbe ist,\n         ändern Sie bitte das Verzeichnis und versuchen Sie es erneut.\n         Wenn der SHA256 inkonsistent ist, laden Sie ihn bitte herunter und versuchen Sie es erneut.\n\n      4. Andere, die in diesem Beispiel nicht aufgeführt sind.
 	Superseded                      = Aufräumen ersetzt
 	SupersededTips                  = Beinhaltet veraltete Updates, Komponenten usw
-	SpecialFunction                 = PowerShell Funktion
-	Functions_Before                = Vor dem Laufen
-	Functions_Rear                  = Nach dem Beenden
-	Functions_Wait_Assign           = Funktionsname, der zugewiesen werden soll
-	Functions_Running_Order         = Reihenfolge nach Zuteilung ausführen
-	Functions_Duplicate             = Nicht hinzufügen, wenn Duplikate vorhanden sind
-	Functions_AutoSelect            = Überprüfen Sie neue Elemente nach dem Hinzufügen automatisch
-	FunctionTips                    = Sie weisen eine PowerShell-Funktion zu. Bitte wählen Sie den Namen der zuzuweisenden Funktion aus und führen Sie sie nacheinander aus.
-	Function_Unrestricted           = Uneingeschränkt
 	UnmountFailed                   = Ich habe bereits mehrere Methoden angewendet, aber ich kann nichts tun. Der jüngere Bruder kann an dieser Stelle nur zuschlagen. Ich bin bereit, dich das nächste Mal mit den Helden zu sehen.
 	SaveTo                          = Speichern unter
 	WorkDone                        = Fertig, drücken Sie eine beliebige Taste, um zur Hauptschnittstelle zurückzukehren...

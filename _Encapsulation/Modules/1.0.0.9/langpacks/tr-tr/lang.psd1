@@ -57,15 +57,6 @@
 	HealthyForceStop                = Olay işlenirken geri dönüşü olmayan bir hatayla karşılaşıldı ve olay zorla sonlandırıldı.\n\n   Ana sorunlara neden olur: \n\n      1. Fiziksel donanım hasar görmüş, sabit disk;\n\n      2. RAMDISK bellek sanal diski (hibrit dahil) kullanıyorsanız, lütfen fiziksel belleği kontrol edin;\n\n      3. MVS'nin orijinal SHA256'sını (MSDN) doğrulayın. Tutarlıysa lütfen dizini değiştirin ve yeniden deneyin. SHA256 tutarsızsa lütfen yeniden indirin ve yeniden deneyin;\n\n      4. Diğerleri bu örnekte listelenmemiştir.
 	Superseded                      = Değiştirilenleri temizleyin
 	SupersededTips                  = Eski güncellemeler, bileşenler vb. içerir.
-	SpecialFunction                 = PowerShell işlevleri
-	Functions_Before                = Koşmadan önce
-	Functions_Rear                  = Tamamlandıktan sonra
-	Functions_Wait_Assign           = Atanacak fonksiyon adı
-	Functions_Running_Order         = Tahsisten sonra çalıştırma sırası
-	Functions_Duplicate             = Kopyalar varsa eklemeyin
-	Functions_AutoSelect            = Yeni öğeleri ekledikten sonra otomatik olarak kontrol et
-	FunctionTips                    = Bir PowerShell fonksiyonu atıyorsunuz. Lütfen atanacak fonksiyonun adını seçin ve sırasıyla çalıştırın.
-	Function_Unrestricted           = Sınırsız
 	UnmountFailed                   = Birkaç yöntem denedim ama hiçbir şey yapılamaz. Sadece vazgeçebilirim. Bir dahaki sefere seni görmek isterim.
 	SaveTo                          = Kaydet
 	WorkDone                        = Tamamlandı, ana arayüze dönmek için herhangi bir tuşa basın...

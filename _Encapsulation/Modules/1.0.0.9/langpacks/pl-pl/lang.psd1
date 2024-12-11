@@ -57,15 +57,6 @@
 	HealthyForceStop                = Podczas przetwarzania zdarzenia napotkano nieodwracalny błąd i zdarzenie zostało wymuszone. \n\n   Powoduje główne problemy: \n\n      1. Uszkodzony jest sprzęt fizyczny, dysk twardy; \n\n      2. Jeżeli korzystasz z dysku wirtualnego z pamięcią RAMDISK (w tym hybrydową), sprawdź pamięć fizyczną;\n\n      3. Sprawdź oryginalny SHA256 MVS (MSDN). Jeśli jest spójny, zmień katalog i spróbuj ponownie. Jeśli SHA256 jest niespójny, pobierz go ponownie i spróbuj ponownie.\n\n      4. Inne nie są wymienione w tym przykładzie.
 	Superseded                      = Wyczyść wymienione
 	SupersededTips                  = Zawiera nieaktualne aktualizacje, komponenty itp.
-	SpecialFunction                 = Funkcje PowerShella
-	Functions_Before                = Przed biegiem
-	Functions_Rear                  = Po zakończeniu
-	Functions_Wait_Assign           = Nazwa funkcji, która ma zostać przypisana
-	Functions_Running_Order         = Uruchom sekwencję po alokacji
-	Functions_Duplicate             = Nie dodawaj, jeśli występują duplikaty
-	Functions_AutoSelect            = Automatycznie sprawdzaj nowe pozycje po dodaniu
-	FunctionTips                    = Przypisujesz funkcję PowerShell. Wybierz nazwę funkcji, która ma zostać przypisana, i uruchom ją w odpowiedniej kolejności.
-	Function_Unrestricted           = Nieograniczony
 	UnmountFailed                   = Próbowałem kilku metod, ale nic nie da się zrobić. Mogę tylko zakończyć. Chciałbym cię zobaczyć następnym razem.
 	SaveTo                          = Zapisz w
 	WorkDone                        = Zakończono, naciśnij dowolny klawisz, aby powrócić do głównego interfejsu...

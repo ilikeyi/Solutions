@@ -57,15 +57,6 @@
 	HealthyForceStop                = Tapahtumaa käsiteltäessä havaittiin peruuttamaton virhe ja prosessi keskeytettiin väkisin.\n\n   Aiheuttaa tärkeimpiä ongelmia: \n\n      1. Fyysinen laitteisto on vaurioitunut, kiintolevy;\n\n      2. Jos käytät RAMDISK muistin virtuaalilevyä (mukaan lukien hybridi), tarkista fyysinen muisti;\n\n      3. Tarkista MVS:n (MSDN) alkuperäinen SHA256, jos se on johdonmukainen, vaihda hakemisto ja yritä uudelleen. Jos SHA256 on epäjohdonmukainen, lataa se uudelleen ja yritä uudelleen.\n\n      4. Muita ei ole lueteltu tässä esimerkissä.
 	Superseded                      = Puhdista vaihdettu
 	SupersededTips                  = Sisältää vanhentuneet päivitykset, komponentit jne.
-	SpecialFunction                 = PowerShell toiminnot
-	Functions_Before                = Ennen juoksua
-	Functions_Rear                  = Valmistumisen jälkeen
-	Functions_Wait_Assign           = Määritettävä toiminnon nimi
-	Functions_Running_Order         = Suorita sekvenssi allokoinnin jälkeen
-	Functions_Duplicate             = Älä lisää, jos on kaksoiskappaleita
-	Functions_AutoSelect            = Tarkista uudet kohteet automaattisesti lisäämisen jälkeen
-	FunctionTips                    = Olet määrittämässä PowerShell funktiota Valitse määritettävän toiminnon nimi ja suorita se järjestyksessä.
-	Function_Unrestricted           = Rajoittamaton
 	UnmountFailed                   = Olen kokeillut useita menetelmiä, mutta mitään ei voi tehdä. Haluaisin nähdä sinut seuraavan kerran.
 	SaveTo                          = Tallenna kohteeseen
 	WorkDone                        = Valmis, palaa pääliittymään painamalla mitä tahansa näppäintä...

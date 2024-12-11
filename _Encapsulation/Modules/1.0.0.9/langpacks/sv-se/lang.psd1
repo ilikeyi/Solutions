@@ -57,15 +57,6 @@
 	HealthyForceStop                = Under bearbetningen av händelsen påträffades ett oåterkalleligt fel och händelsen avbröts med tvång.\n\n   Orsakar huvudproblem:\n\n      1. Fysisk hårdvara är skadad, hårddisk;\n\n      2. Om du använder virtuell disk med RAMDISK-minne (inklusive hybrid), kontrollera det fysiska minnet;\n\n      3. Verifiera den ursprungliga SHA256 av MVS (MSDN) Om den är konsekvent, ändra katalogen och försök igen Om SHA256 är inkonsekvent, ladda ner den igen och försök igen.\n\n      4. Andra är inte listade i detta exempel.
 	Superseded                      = Rensa upp det utbytta
 	SupersededTips                  = Inkluderar föråldrade uppdateringar, komponenter etc.
-	SpecialFunction                 = PowerShell-funktioner
-	Functions_Before                = Innan du springer
-	Functions_Rear                  = Efter färdigställande
-	Functions_Wait_Assign           = Funktionsnamn som ska tilldelas
-	Functions_Running_Order         = Kör sekvens efter tilldelning
-	Functions_Duplicate             = Lägg inte till om det finns dubbletter
-	Functions_AutoSelect            = Kontrollera automatiskt nya objekt efter tillägg
-	FunctionTips                    = Du tilldelar en PowerShell-funktion Vänligen välj namnet på funktionen som ska tilldelas och kör den i ordning.
-	Function_Unrestricted           = Obegränsad
 	UnmountFailed                   = Jag har provat flera metoder, men ingenting kan göras. Jag kan bara sluta.
 	SaveTo                          = Spara till
 	WorkDone                        = Slutfört, tryck på valfri tangent för att återgå till huvudgränssnittet...

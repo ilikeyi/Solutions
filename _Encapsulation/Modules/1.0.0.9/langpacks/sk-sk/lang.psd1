@@ -57,15 +57,6 @@
 	HealthyForceStop                = Počas spracovania udalosti došlo k nezvratnej chybe a udalosť bola násilne ukončená.\n\n   Spôsobuje hlavné problémy: \n\n      1. Fyzický hardvér je poškodený, pevný disk;\n\n      2. Ak používate pamäťový virtuálny disk RAMDISK (vrátane hybridného), skontrolujte fyzickú pamäť;\n\n      3. Overte pôvodný SHA256 MVS (MSDN), zmeňte adresár a skúste to znova. Ak je SHA256 nekonzistentný, stiahnite si ho znova a skúste to znova.\n\n      4. Iné nie sú v tomto príklade uvedené.
 	Superseded                      = Vyčistite vymenené
 	SupersededTips                  = Zahŕňa zastarané aktualizácie, komponenty atď.
-	SpecialFunction                 = Funkcie PowerShell
-	Functions_Before                = Pred behom
-	Functions_Rear                  = Po dokončení
-	Functions_Wait_Assign           = Názov funkcie, ktorá sa má priradiť
-	Functions_Running_Order         = Spustiť sekvenciu po pridelení
-	Functions_Duplicate             = Nepridávajte, ak existujú duplikáty
-	Functions_AutoSelect            = Automaticky kontrolovať nové položky po pridaní
-	FunctionTips                    = Priraďujete funkciu prostredia PowerShell, vyberte názov funkcie, ktorá sa má priradiť, a spustite ju v poradí.
-	Function_Unrestricted           = Neobmedzené
 	UnmountFailed                   = Skúsil som niekoľko metód, ale nedá sa nič robiť.
 	SaveTo                          = Uložiť do
 	WorkDone                        = Dokončené, stlačením ľubovoľného klávesu sa vrátite do hlavného rozhrania...

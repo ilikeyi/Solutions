@@ -57,15 +57,6 @@
 	HealthyForceStop                = Tijekom obrade događaja došlo je do nepopravljive pogreške i događaj je prisilno prekinut.\n\n   Uzrokuje glavne probleme: \n\n      1. Fizički hardver je oštećen, tvrdi disk;\n\n      2. Ako koristite RAMDISK memorijski virtualni disk (uključujući hibridni), provjerite fizičku memoriju;\n\n      3. Provjerite izvorni SHA256 MVS-a (MSDN), promijenite direktorij i pokušajte ponovno.\n\n      4. Ostali nisu navedeni u ovom primjeru.
 	Superseded                      = Očistite zamijenjeno
 	SupersededTips                  = Uključuje zastarjela ažuriranja, komponente itd.
-	SpecialFunction                 = PowerShell funkcije
-	Functions_Before                = Prije trčanja
-	Functions_Rear                  = Nakon završetka
-	Functions_Wait_Assign           = Naziv funkcije koji će se dodijeliti
-	Functions_Running_Order         = Pokreni niz nakon dodjele
-	Functions_Duplicate             = Nemojte dodavati ako postoje duplikati
-	Functions_AutoSelect            = Automatski provjeravajte nove stavke nakon dodavanja
-	FunctionTips                    = Dodjeljujete funkciju PowerShell-a Odaberite naziv funkcije koju želite dodijeliti i pokrenite je redom.
-	Function_Unrestricted           = Neograničen
 	UnmountFailed                   = Probao sam nekoliko metoda, ali ništa se ne može učiniti. Volio bih te vidjeti sljedeći put.
 	SaveTo                          = Spremiti u
 	WorkDone                        = Završeno, pritisnite bilo koju tipku za povratak na glavno sučelje...
