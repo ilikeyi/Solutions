@@ -151,24 +151,29 @@ Function Solutions_Help_Command
 	}
 
 	switch ($Name) {
-		"lang" {
+		"LP" {
 			Write-Host "   $($lang.Command): " -NoNewline
-			Write-host "Lang *" -ForegroundColor Green
+			Write-host "lp *" -ForegroundColor Green
 
 			Write-Host "`n   $($lang.AssignNeedMount)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
-			Write-Host "     Lang E".PadRight(20) -NoNewline -ForegroundColor Yellow
+			Write-Host "     lp E".PadRight(20) -NoNewline -ForegroundColor Yellow
 			Write-Host $lang.LanguageExtract
 
-			Write-Host "     Lang A".PadRight(20) -NoNewline -ForegroundColor Yellow
+			Write-Host "     lp A".PadRight(20) -NoNewline -ForegroundColor Yellow
 			Write-Host $lang.AddTo
 
-			Write-Host "     Lang D".PadRight(20) -NoNewline -ForegroundColor Yellow
+			Write-Host "     lp D".PadRight(20) -NoNewline -ForegroundColor Yellow
 			Write-Host $lang.Del
 
-			Write-Host "     Lang S".PadRight(20) -NoNewline -ForegroundColor Yellow
+			Write-Host "     lp S".PadRight(20) -NoNewline -ForegroundColor Yellow
 			Write-Host $lang.SwitchLanguage
 
+			Get_Next
+		}
+		"lang" {
+			Write-Host "   $($lang.Command): " -NoNewline
+			Write-host "Lang *" -ForegroundColor Green
 
 			Write-Host "`n   $($lang.User_Interaction)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"

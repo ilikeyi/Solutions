@@ -237,44 +237,44 @@ Function Mainpage
 	Write-Host "    13  " -NoNewline -ForegroundColor Green
 	Write-Host " $($lang.Language): " -ForegroundColor Yellow -NoNewline
 	Write-Host "$($lang.LanguageExtract) " -NoNewline -ForegroundColor Green
-	Write-Host " Lang E " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " LP E " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ", " -NoNewline
 
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Green
-			Write-Host " Lang A " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " LP A " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Green
-			Write-Host " Lang D " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " LP D " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.SwitchLanguage) " -NoNewline -ForegroundColor Green
-			Write-Host " Lang S " -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " LP S " -BackgroundColor DarkMagenta -ForegroundColor White
 		} else {
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
-			Write-Host " Lang A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " LP A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Red
-			Write-Host " Lang D " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " LP D " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.SwitchLanguage) " -NoNewline -ForegroundColor Red
-			Write-Host " Lang S " -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " LP S " -BackgroundColor DarkRed -ForegroundColor White
 		}
 	} else {
 		Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
-		Write-Host " Lang A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " LP A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host ", " -NoNewline
 
 		Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Red
-		Write-Host " Lang D " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " LP D " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host ", " -NoNewline
 
 		Write-Host "$($lang.SwitchLanguage) " -NoNewline -ForegroundColor Red
-		Write-Host " Lang S " -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " LP S " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
 	Write-Host "    14  " -NoNewline -ForegroundColor Green
@@ -1361,17 +1361,16 @@ Function Mainpage
 			Mainpage
 		}
 
-		"lang *" {
+		"lp *" {
 			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
 			Write-Host "`n   $($lang.Command): " -NoNewline
-			Write-host "lang" -ForegroundColor Green
+			Write-host "LP" -ForegroundColor Green
 
-			$NewRuleName = $PSItem.Remove(0, 5).Replace(' ', '')
+			$NewRuleName = $PSItem.Remove(0, 3).Replace(' ', '')
 			Write-Host "   $($lang.RuleName): " -NoNewline
 			Write-host $NewRuleName -ForegroundColor Green
 
-			$Langpacks_Sources = "$($PSScriptRoot)\..\..\..\langpacks"
 			switch ($NewRuleName) {
 				"e" {
 					Write-Host "`n   $($lang.LanguageExtract)" -ForegroundColor Yellow
@@ -1387,6 +1386,27 @@ Function Mainpage
 				"s" {
 					Language_Menu_Shortcuts_LS
 				}
+				default {
+					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+				}
+			}
+
+			ToWait -wait 2
+			Mainpage
+		}
+
+		"lang *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Write-Host "`n   $($lang.Command): " -NoNewline
+			Write-host "lang" -ForegroundColor Green
+
+			$NewRuleName = $PSItem.Remove(0, 5).Replace(' ', '')
+			Write-Host "   $($lang.RuleName): " -NoNewline
+			Write-host $NewRuleName -ForegroundColor Green
+
+			$Langpacks_Sources = "$($PSScriptRoot)\..\..\..\langpacks"
+			switch ($NewRuleName) {
 				"list" {
 					Write-Host "`n   $($lang.AvailableLanguages)"
 					Write-Host "   $('-' * 80)"
