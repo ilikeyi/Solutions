@@ -1727,11 +1727,34 @@ Write-Host "Test"
 				}
 			}
 
-			$UI_Main_Pre_Rule  = New-Object system.Windows.Forms.Label -Property @{
+			$UI_Main_Pre_Rule  = New-Object system.Windows.Forms.LinkLabel -Property @{
 				Height         = 30
 				Width          = 658
 				Padding        = "25,0,0,0"
-				Text           = $itemISO
+				Text           = "$($itemISO), $($TempSelectAraayPreRule.Count) $($lang.EventManagerCount)"
+				Tag            = $itemISO
+				LinkColor      = "GREEN"
+				ActiveLinkColor = "RED"
+				LinkBehavior   = "NeverUnderline"
+				add_Click      = {
+					$UI_Main_Error.Text = ""
+					$UI_Main_Error_Icon.Image = $null
+
+					if ([string]::IsNullOrEmpty($This.Tag)) {
+						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+						$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+					} else {
+						if (Test-Path -Path $This.Tag -PathType Container) {
+							Start-Process $This.Tag
+		
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+							$UI_Main_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Done)"
+						} else {
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+							$UI_Main_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Inoperable)"
+						}
+					}
+				}
 			}
 			$UI_Main_Select_Sources.controls.AddRange($UI_Main_Pre_Rule)
 
@@ -1789,13 +1812,6 @@ Write-Host "Test"
 		<#
 			.其它位置
 		#>
-		$UI_Main_Other_Rule = New-Object system.Windows.Forms.Label -Property @{
-			Height         = 35
-			Width          = 658
-			Text           = "$($lang.RuleOther): $($TempSelectAraayOtherRule.Count) $($lang.EventManagerCount)"
-		}
-		$UI_Main_Select_Sources.controls.AddRange($UI_Main_Other_Rule)
-
 		if (-not (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources" -Name 'Sources_Other_Directory' -ErrorAction SilentlyContinue)) {
 			Save_Dynamic -regkey "Solutions\ImageSources" -name "Sources_Other_Directory" -value "" -Multi
 		}
@@ -1805,6 +1821,13 @@ Write-Host "Test"
 		ForEach ($item in $GetExcludeSoftware) {
 			$TempSelectAraayOtherRule += $item
 		}
+
+		$UI_Main_Other_Rule = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 35
+			Width          = 658
+			Text           = "$($lang.RuleOther): $($TempSelectAraayOtherRule.Count) $($lang.EventManagerCount)"
+		}
+		$UI_Main_Select_Sources.controls.AddRange($UI_Main_Other_Rule)
 
 		if ($TempSelectAraayOtherRule.count -gt 0) {
 			ForEach ($item in $TempSelectAraayOtherRule) {
