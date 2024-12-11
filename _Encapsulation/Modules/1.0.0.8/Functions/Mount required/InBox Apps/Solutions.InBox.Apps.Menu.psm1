@@ -76,6 +76,7 @@
 	}
 
 	Write-Host "`n      $($lang.InboxAppsClear)" -ForegroundColor Yellow
+	Write-Host "      $('-' * 77)"
 	if (Verify_Is_Current_Same) {
 		Write-Host "         F   " -NoNewline -ForegroundColor Yellow
 		Write-Host $lang.AllClear -ForegroundColor Green
@@ -152,7 +153,6 @@
 		}
 		"3" {
 			InBox_Apps_Menu_Shortcuts_LXPs_Update
-			InBox_Apps_Menu_Shortcuts_IAU
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
@@ -185,6 +185,8 @@
 			InBox_Apps_Menu
 		}
 		"f" {
+			Write-Host "`n   $($lang.InboxAppsClear)" -ForegroundColor Yellow
+			Write-Host "   $('-' * 80)"
 			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 
 			InBox_Apps_LIPs_Clean_Process
@@ -192,7 +194,9 @@
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
-		"ff" {
+		"e" {
+			Write-Host "`n   $($lang.InboxAppsClear)" -ForegroundColor Yellow
+			Write-Host "   $('-' * 80)"
 			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
 
 			InBox_Apps_LIPs_Clean_Process
