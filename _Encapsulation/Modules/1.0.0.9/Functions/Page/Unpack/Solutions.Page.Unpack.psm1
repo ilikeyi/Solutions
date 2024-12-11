@@ -901,7 +901,7 @@ Function Update_Create_Version
 	},
 	"changelog": {
 		"title": "$((Get-Module -Name Solutions).Author)'s Solutions - Change log",
-		"log":   "   - New shortcut commands and dynamic UI * New\n   - Eliminate outdated and build new deployment engine: Yi's Suite * New\n   - Fix template creation failure * Fix\n   - Error when adding other directories to R:\\ * Fix\n   - Autopilot: Fixed the issue that the InBox Apps add-in could not be set up * Fix\n   - Autopilot: Added learning configuration reference document: \\_Learn\\Autopilot.profile * New\n   - Autopilot: Fixed the error of when Import and Setup start * Fix\n   - Added Windows 11 24H2 autonomous driving solutions, packaging tutorials, video tutorials, rules, etc. * New\n   - Added Windows Server 2025 autonomous driving solutions, rules, etc. * New\n   - Windows 11 22H2: Obsolete ones removed * Del\n   - Windows 11 23H2: Update packaging tutorial and update the binding area when installing InBox Apps applications *Up\n   - InBox Apps: Add region tags during installation * New\n   - InBox Apps: Allow automatic combination of dependent packages during installation * New"
+		"log":   "   - API: Application Programming Interface, Shortcut: (API *) * New\n   - New shortcut commands and dynamic UI * New\n   - Eliminate outdated and build new deployment engine: Yi's Suite * New"
 	},
 	"url": "$((Get-Module -Name Solutions).HelpInfoURI)/download/solutions/latest.zip"
 }
