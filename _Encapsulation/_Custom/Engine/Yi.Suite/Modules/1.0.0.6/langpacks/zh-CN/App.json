@@ -1,0 +1,55 @@
+﻿{
+	"Config": {
+		"Authon":  "Yi Feng",
+		"Website": "https://fengyi.tel",
+		"LatestTime": "12-08-2024",
+		"DefaultSelect": [
+			"45bf2c42-ec67-440a-8403-0ad31864f47a",
+			"a1f51cf8-32c8-431c-8b2e-f7f8ad208863"
+		]
+	},
+	"App": [
+		{
+			"Group": "浏览器",
+			"App": [
+				{
+					"GUID":      "45bf2c42-ec67-440a-8403-0ad31864f47a",
+					"Name":      "Google Chrome",
+					"Action":    "Install",
+					"Manner":    "Fast",
+					"DLetter":   "PSScriptRoot",
+					"Structure": "..\\..\\..\\..\\App\\Google Chrome",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "",
+						"x86":   "https://dl.google.com/chrome/install/latest/chrome_installer.exe"
+					},
+					"FindFile":  "Chrome*",
+					"param":     "/silent /install"
+				}
+			]
+		},
+		{
+			"Group": "压缩软件",
+			"App": [
+				{
+					"GUID":      "a1f51cf8-32c8-431c-8b2e-f7f8ad208863",
+					"Name":      "7Zip",
+					"Action":    "Install",
+					"Manner":    "Fast",
+					"DLetter":   "PSScriptRoot",
+					"Structure": "..\\..\\..\\..\\App\\7z",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "https://www.7-zip.org/a/7z2409-arm64.exe",
+						"x64":   "https://www.7-zip.org/a/7z2409-x64.exe",
+						"x86":   "https://www.7-zip.org/a/7z2409.exe"
+					},
+					"FindFile":  "7z*",
+					"param":     "/S"
+				}
+			]
+		}
+	]
+}

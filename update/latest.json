@@ -10,7 +10,7 @@
 	},
 	"changelog": {
 		"title": "Yi's Solutions - Change log",
-		"log":   "   - API: Application Programming Interface, Shortcut: (API *) * New\n   - New shortcut commands and dynamic UI * New\n   - Eliminate outdated and build new deployment engine: Yi's Suite * New"
+		"log":   "   - API: Application Programming Interface, Shortcut: (API *) * New\n   - New shortcut commands and dynamic UI * New"
 	},
 	"url": "https://github.com/ilikeyi/Solutions/raw/refs/heads/main/update/latest.zip"
 }
