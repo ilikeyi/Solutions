@@ -8,13 +8,6 @@ Function Drive_Menu
 	Write-Host "   $($lang.Dashboard)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 
-	Write-Host "   $($lang.MountImageTo): " -NoNewline
-	if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
-		Write-Host $Global:Mount_To_Route -ForegroundColor Green
-	} else {
-		Write-Host $Global:Mount_To_Route -ForegroundColor Yellow
-	}
-
 	Write-host "   " -NoNewline
 	if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
 		Write-Host " O'D RT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
