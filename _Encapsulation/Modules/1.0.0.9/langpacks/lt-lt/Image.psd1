@@ -61,8 +61,7 @@
 	Mounted                         = Sumontuotas
 	NotMounted                      = Nemontuotas
 	NotMountedSpecify               = Nemontuojamas, galite nurodyti montavimo vietą
-	MountedIndexSuccess             = Sumontuotas, legaliomis priemonėmis
-	MountedIndexError               = Neįprastas montavimas, ištrinkite ir bandykite dar kartą.
+	MountedIndexError               = Nenormalus montavimas, ištrinkite ir bandykite dar kartą.
 	ImageSouresNoSelect             = Pasirinkę vaizdo šaltinį, parodykite daugiau informacijos
 	Mounted_Mode                    = Montavimo režimas
 	Mounted_Status                  = Montavimo būsena

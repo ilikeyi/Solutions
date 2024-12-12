@@ -61,7 +61,6 @@
 	Mounted                         = Namontované
 	NotMounted                      = Nie je namontované
 	NotMountedSpecify               = Nie je namontované, môžete určiť miesto montáže
-	MountedIndexSuccess             = Namontované zákonnými prostriedkami
 	MountedIndexError               = Abnormálna montáž, odstráňte ju a skúste to znova.
 	ImageSouresNoSelect             = Zobrazte ďalšie podrobnosti po výbere zdroja obrazu
 	Mounted_Mode                    = Režim montáže

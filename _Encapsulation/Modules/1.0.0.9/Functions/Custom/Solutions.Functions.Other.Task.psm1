@@ -1,13 +1,16 @@
 ﻿<#
 	.用户自定义函数起始
 #>
-
 <#
 	.空任务
 #>
 Function Other_Tasks_Empty
 {
-	Write-Host "   Other_Tasks_Clear" -ForegroundColor Yellow
+	Write-host "   $($lang.RuleName): ".PadRight(22) -NoNewline
+	Write-host "Function Other_Tasks_Empty" -ForegroundColor Yellow
+
+	Write-host "   $($lang.RuleDescription): ".PadRight(22) -NoNewline
+	Write-host $($lang.Other_Tasks_Empty) -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 }
 
@@ -16,9 +19,12 @@ Function Other_Tasks_Empty
 #>
 Function Other_Tasks_Clear
 {
-	Write-Host "   Other_Tasks_Clear" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-host "   $($lang.RuleName): ".PadRight(22) -NoNewline
+	Write-host "Function Other_Tasks_Clear" -ForegroundColor Yellow
 
+	Write-host "   $($lang.RuleDescription): ".PadRight(22) -NoNewline
+	Write-host $($lang.Other_Tasks_Clear) -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			$Local_Regedit_File_System = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\$((Get-Module -Name Solutions).Author)"
@@ -48,9 +54,12 @@ Function Other_Tasks_Clear
 #>
 Function Other_Tasks_CTD
 {
-	Write-Host "   Other_Tasks_CTD" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-host "   $($lang.RuleName): ".PadRight(22) -NoNewline
+	Write-host "Function Other_Tasks_CTD" -ForegroundColor Yellow
 
+	Write-host "   $($lang.RuleDescription): ".PadRight(22) -NoNewline
+	Write-host $($lang.Other_Tasks_CTD) -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			$RandomGuid = [guid]::NewGuid()
@@ -77,9 +86,12 @@ Function Other_Tasks_CTD
 #>
 Function Other_Tasks_TPM
 {
-	Write-Host "   Other_Tasks_TPM" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-host "   $($lang.RuleName): ".PadRight(22) -NoNewline
+	Write-host "Function Other_Tasks_TPM" -ForegroundColor Yellow
 
+	Write-host "   $($lang.RuleDescription): ".PadRight(22) -NoNewline
+	Write-host $($lang.Other_Tasks_TPM) -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			$Local_Regedit_File_System = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\Windows\System32\Config\SYSTEM"
@@ -140,9 +152,12 @@ Function Other_Tasks_TPM
 #>
 Function Other_Tasks_REFS
 {
-	Write-Host "   Other_Tasks_REFS" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-host "   $($lang.RuleName): ".PadRight(22) -NoNewline
+	Write-host "Function Other_Tasks_REFS" -ForegroundColor Yellow
 
+	Write-host "   $($lang.RuleDescription): ".PadRight(22) -NoNewline
+	Write-host $($lang.Other_Tasks_REFS) -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			$Local_Regedit_File_System = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\Windows\System32\Config\SYSTEM"
@@ -213,7 +228,11 @@ Function Other_Tasks_RAMDISK
 		[Switch]$Silent
 	)
 
-	Write-Host "   Other_Tasks_RAMDISK, Format Disk Ramdisk Volume" -ForegroundColor Yellow
+	Write-host "   $($lang.RuleName): ".PadRight(22) -NoNewline
+	Write-host "Function Other_Tasks_RAMDISK" -ForegroundColor Yellow
+
+	Write-host "   $($lang.RuleDescription): ".PadRight(22) -NoNewline
+	Write-host $($lang.Other_Tasks_RAMDISK) -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 
 	<#
@@ -226,11 +245,11 @@ Function Other_Tasks_RAMDISK
 			if ($_.Label -eq $GetRegRAMDISKVolumeLabel) {
 				$SearchNewLicense = $_.DriveLetter.Replace(":", "")
 
-				Write-Host "   $($lang.Select_Path): " -NoNewline
-				Write-Host $_.DriveLetter -ForegroundColor Green
-
 				Write-Host "   $($lang.AutoSelectRAMDISK): " -NoNewline
 				Write-host $_.Label -ForegroundColor Green
+
+				Write-Host "   $($lang.Select_Path): " -NoNewline
+				Write-Host $_.DriveLetter -ForegroundColor Green
 
 				Invoke-Expression -Command "Format-Volume -DriveLetter $($SearchNewLicense) -NewFileSystemLabel $($GetRegRAMDISKVolumeLabel)"
 				Write-Host "   $($lang.Done)" -ForegroundColor Green
@@ -246,7 +265,11 @@ Function Other_Tasks_RAMDISK
 #>
 Function Other_Tasks_Pause
 {
-	Write-Host "   Other_Tasks_Pause" -ForegroundColor Yellow
+	Write-host "   $($lang.RuleName): ".PadRight(22) -NoNewline
+	Write-host "Function Other_Tasks_Pause" -ForegroundColor Yellow
+
+	Write-host "   $($lang.RuleDescription): ".PadRight(22) -NoNewline
+	Write-host $($lang.Other_Tasks_Pause) -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 
 	Get_Next

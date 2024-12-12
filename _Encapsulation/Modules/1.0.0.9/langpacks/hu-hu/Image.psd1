@@ -61,8 +61,7 @@
 	Mounted                         = Felszerelt
 	NotMounted                      = Nincs felszerelve
 	NotMountedSpecify               = Nincs felszerelve, a rögzítési hely megadható
-	MountedIndexSuccess             = Felszerelve, legális úton
-	MountedIndexError               = Rendellenes szerelés, törölje, és próbálja újra.
+	MountedIndexError               = Rendellenes szerelés, törölje és próbálja újra.
 	ImageSouresNoSelect             = További részletek megjelenítése a képforrás kiválasztása után
 	Mounted_Mode                    = Mount mód
 	Mounted_Status                  = Felszerelés állapota

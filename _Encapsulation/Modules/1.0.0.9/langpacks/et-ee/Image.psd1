@@ -61,8 +61,7 @@
 	Mounted                         = Paigaldatud
 	NotMounted                      = Pole monteeritud
 	NotMountedSpecify               = Pole monteeritud, saate määrata paigalduskoha
-	MountedIndexSuccess             = Paigaldatud seaduslike vahenditega
-	MountedIndexError               = Ebanormaalne paigaldus, palun kustutage ja proovige uuesti.
+	MountedIndexError               = Ebanormaalne paigaldus, kustutage ja proovige uuesti.
 	ImageSouresNoSelect             = Kuva rohkem üksikasju pärast pildiallika valimist
 	Mounted_Mode                    = Paigaldusrežiim
 	Mounted_Status                  = Kinnituse olek

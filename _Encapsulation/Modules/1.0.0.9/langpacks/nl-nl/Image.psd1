@@ -61,8 +61,7 @@
 	Mounted                         = Gemonteerd
 	NotMounted                      = Niet gemonteerd
 	NotMountedSpecify               = Niet gemonteerd, u kunt de montagelocatie opgeven
-	MountedIndexSuccess             = Gemonteerd, via legale middelen
-	MountedIndexError               = Abnormale montage. Verwijder deze en probeer het opnieuw.
+	MountedIndexError               = Abnormale montage, verwijder en probeer het opnieuw.
 	ImageSouresNoSelect             = Toon meer details na het selecteren van de afbeeldingsbron
 	Mounted_Mode                    = Montagemodus
 	Mounted_Status                  = Mount-status

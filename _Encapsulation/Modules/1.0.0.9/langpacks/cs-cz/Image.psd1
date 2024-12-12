@@ -61,7 +61,6 @@
 	Mounted                         = Jízdní
 	NotMounted                      = Není namontováno
 	NotMountedSpecify               = Není namontováno, můžete určit místo montáže
-	MountedIndexSuccess             = Namontováno právními prostředky
 	MountedIndexError               = Abnormální montáž, smažte a zkuste to znovu.
 	ImageSouresNoSelect             = Zobrazit další podrobnosti po výběru zdroje obrazu
 	Mounted_Mode                    = Režim montáže

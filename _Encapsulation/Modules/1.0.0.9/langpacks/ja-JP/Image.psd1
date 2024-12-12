@@ -61,7 +61,6 @@
 	Mounted                         = マウント
 	NotMounted                      = マウントされていません
 	NotMountedSpecify               = マウントされていない場合は, マウント場所を指定できます
-	MountedIndexSuccess             = 法的な手段によってマウントされた
 	MountedIndexError               = マウントが異常です。削除して再試行してください。
 	ImageSouresNoSelect             = 画像ソースを選択した後, 詳細を表示する
 	Mounted_Mode                    = マウントモード

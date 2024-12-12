@@ -61,8 +61,7 @@
 	Mounted                         = Mounted
 	NotMounted                      = Not mounted
 	NotMountedSpecify               = Not mounted, you can specify the mounting location
-	MountedIndexSuccess             = Mounted, By legal means
-	MountedIndexError               = Mount abnormally, please delete it and try again.
+	MountedIndexError               = Abnormal mount, delete it and try again.
 	ImageSouresNoSelect             = Show more details after selecting the image source
 	Mounted_Mode                    = Mount mode
 	Mounted_Status                  = Mount status

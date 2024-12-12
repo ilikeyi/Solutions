@@ -61,8 +61,7 @@
 	Mounted                         = ติดแล้ว
 	NotMounted                      = ไม่ได้ติด
 	NotMountedSpecify               = ไม่ได้ติดตั้ง คุณสามารถระบุตำแหน่งการติดตั้งได้
-	MountedIndexSuccess             = ติดตั้งด้วยวิธีทางกฎหมาย
-	MountedIndexError               = การติดตั้งผิดปกติ โปรดลบและลองอีกครั้ง
+	MountedIndexError               = การติดตั้งผิดปกติ ลบแล้วลองอีกครั้ง
 	ImageSouresNoSelect             = แสดงรายละเอียดเพิ่มเติมหลังจากเลือกแหล่งที่มาของภาพ
 	Mounted_Mode                    = โหมดเมานต์
 	Mounted_Status                  = สถานะเมานท์

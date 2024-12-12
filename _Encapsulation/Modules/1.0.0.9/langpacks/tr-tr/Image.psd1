@@ -61,8 +61,7 @@
 	Mounted                         = Monte edilmiş
 	NotMounted                      = Monte edilmemiş
 	NotMountedSpecify               = Monte edilmemiş, montaj yerini belirtebilirsiniz
-	MountedIndexSuccess             = Yasal yollarla monte edildi
-	MountedIndexError               = Anormal montaj, lütfen silin ve tekrar deneyin.
+	MountedIndexError               = Anormal montaj, silin ve tekrar deneyin.
 	ImageSouresNoSelect             = Görüntü kaynağını seçtikten sonra daha fazla ayrıntı göster
 	Mounted_Mode                    = Montaj modu
 	Mounted_Status                  = Montaj durumu

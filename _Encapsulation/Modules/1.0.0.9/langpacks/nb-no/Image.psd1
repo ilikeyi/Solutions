@@ -61,8 +61,7 @@
 	Mounted                         = Montert
 	NotMounted                      = Ikke montert
 	NotMountedSpecify               = Ikke montert, du kan angi monteringssted
-	MountedIndexSuccess             = Montert, gjennom lovlige midler
-	MountedIndexError               = Unormal montering, vennligst slett og prøv igjen.
+	MountedIndexError               = Unormal montering, slett og prøv igjen.
 	ImageSouresNoSelect             = Vis flere detaljer etter at du har valgt bildekilde
 	Mounted_Mode                    = Monteringsmodus
 	Mounted_Status                  = Monteringsstatus

@@ -61,7 +61,6 @@
 	Mounted                         = Моунтед
 	NotMounted                      = Није монтирано
 	NotMountedSpecify               = Није монтирано, можете одредити локацију за монтажу
-	MountedIndexSuccess             = Монтирано, легалним путем
 	MountedIndexError               = Ненормално монтирање, избришите и покушајте поново.
 	ImageSouresNoSelect             = Прикажите више детаља након одабира извора слике
 	Mounted_Mode                    = Режим монтирања

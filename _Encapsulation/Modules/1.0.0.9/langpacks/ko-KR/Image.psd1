@@ -61,8 +61,7 @@
 	Mounted                         = 탑재
 	NotMounted                      = 장착되지 않음
 	NotMountedSpecify               = 마운트되지 않음, 마운트 위치를 지정할 수 있습니다.
-	MountedIndexSuccess             = 법적 수단으로 탑재
-	MountedIndexError               = 마운트가 이상합니다. 삭제하고 다시 시도하십시오.
+	MountedIndexError               = 마운트가 비정상적입니다. 삭제 후 다시 시도해 보세요.
 	ImageSouresNoSelect             = 이미지 소스 선택 후 세부 정보 표시
 	Mounted_Mode                    = 마운트 모드
 	Mounted_Status                  = 마운트 상태

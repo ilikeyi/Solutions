@@ -61,8 +61,7 @@
 	Mounted                         = 已挂载
 	NotMounted                      = 未挂载
 	NotMountedSpecify               = 未挂载，可指定挂载位置
-	MountedIndexSuccess             = 已挂载，通过合法方式
-	MountedIndexError               = 非正常挂载，请删除后重新尝试。
+	MountedIndexError               = 非正常挂载，删除后重试。
 	ImageSouresNoSelect             = 选择映像源后显示更多详细信息
 	Mounted_Mode                    = 挂载模式
 	Mounted_Status                  = 挂载状态

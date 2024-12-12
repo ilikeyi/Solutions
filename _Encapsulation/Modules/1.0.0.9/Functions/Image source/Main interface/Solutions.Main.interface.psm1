@@ -2698,7 +2698,7 @@ Write-Host "Test"
 							}
 							"Ok" {
 								$GUIImageSelectInstall.ForeColor = "Green"
-								$GUIImageSelectInstallTips.Text = $lang.MountedIndexSuccess
+								$GUIImageSelectInstallTips.Text = "$($lang.Mounted), $($lang.Healthy)"
 							}
 							Default {
 								$GUIImageSelectInstallTips.Text = $lang.MountedIndexError

@@ -61,8 +61,7 @@
 	Mounted                         = شنت
 	NotMounted                      = غير مثبتة
 	NotMountedSpecify               = غير مثبت، يمكنك تحديد مكان التثبيت
-	MountedIndexSuccess             = شنت، من خلال الوسائل القانونية
-	MountedIndexError               = تركيب غير طبيعي، يرجى حذفه والمحاولة مرة أخرى.
+	MountedIndexError               = تركيب غير طبيعي، احذفه وحاول مرة أخرى.
 	ImageSouresNoSelect             = عرض المزيد من التفاصيل بعد تحديد مصدر الصورة
 	Mounted_Mode                    = وضع التثبيت
 	Mounted_Status                  = حالة جبل

@@ -365,7 +365,8 @@ Function Image_Get_Mount_Status_New
 								Write-Host "   $($lang.MountedIndex): $($ImageIndexNew)" -NoNewline -ForegroundColor Yellow
 
 								if (Test-Path -Path $test_mount_folder -PathType Container) {
-									Write-Host "      $($lang.MountedIndexSuccess)" -ForegroundColor Green
+									Write-Host "      $($lang.Mounted) " -NoNewline -ForegroundColor Green
+									Write-Host " $($lang.Healthy) " -BackgroundColor Darkgreen -ForegroundColor Black
 								} else {
 									Write-Host "      $($lang.NotMounted)" -ForegroundColor Red
 								}

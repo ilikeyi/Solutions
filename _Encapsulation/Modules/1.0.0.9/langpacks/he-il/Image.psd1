@@ -61,8 +61,7 @@
 	Mounted                         = רָכוּב
 	NotMounted                      = לא רכוב
 	NotMountedSpecify               = לא מותקן, אתה יכול לציין את מיקום ההרכבה
-	MountedIndexSuccess             = רכוב, באמצעים חוקיים
-	MountedIndexError               = הרכבה חריגה, נא למחוק ולנסות שוב.
+	MountedIndexError               = הרכבה חריגה, מחק ונסה שוב.
 	ImageSouresNoSelect             = הצג פרטים נוספים לאחר בחירת מקור התמונה
 	Mounted_Mode                    = מצב הרכבה
 	Mounted_Status                  = מצב הר

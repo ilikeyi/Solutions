@@ -61,7 +61,6 @@
 	Mounted                         = Asennettu
 	NotMounted                      = Ei asennettu
 	NotMountedSpecify               = Ei asennettu, voit määrittää asennuspaikan
-	MountedIndexSuccess             = Asennettu laillisin keinoin
 	MountedIndexError               = Epänormaali asennus, poista ja yritä uudelleen.
 	ImageSouresNoSelect             = Näytä lisätietoja kuvalähteen valitsemisen jälkeen
 	Mounted_Mode                    = Asennustila

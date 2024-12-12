@@ -61,7 +61,6 @@
 	Mounted                         = Montato
 	NotMounted                      = Non montato
 	NotMountedSpecify               = Non montato, è possibile specificare la posizione di montaggio
-	MountedIndexSuccess             = Montato, con mezzi legali
 	MountedIndexError               = Montaggio anomalo, elimina e riprova.
 	ImageSouresNoSelect             = Mostra più dettagli dopo aver selezionato la sorgente dell'immagine
 	Mounted_Mode                    = Modalità di montaggio

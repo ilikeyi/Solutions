@@ -61,8 +61,7 @@
 	Mounted                         = Montat
 	NotMounted                      = Nemontat
 	NotMountedSpecify               = Nemontat, puteți specifica locația de montare
-	MountedIndexSuccess             = Montat, prin mijloace legale
-	MountedIndexError               = Montare anormală, vă rugăm să ștergeți și să încercați din nou.
+	MountedIndexError               = Montare anormală, ștergeți și încercați din nou.
 	ImageSouresNoSelect             = Afișați mai multe detalii după selectarea sursei imaginii
 	Mounted_Mode                    = Modul de montare
 	Mounted_Status                  = Starea montajului

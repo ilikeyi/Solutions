@@ -61,8 +61,7 @@
 	Mounted                         = Монтиран
 	NotMounted                      = He e монтиран
 	NotMountedSpecify               = He e монтиран, можете да посочите мястото за монтаж
-	MountedIndexSuccess             = Монтирано, чрез законни средства
-	MountedIndexError               = Ненормално монтиране, моля изтрийте и опитайте отново.
+	MountedIndexError               = Ненормално монтиране, изтрийте и опитайте отново.
 	ImageSouresNoSelect             = Показване на повече подробности, след като изберете източник на изображение
 	Mounted_Mode                    = Режим на монтиране
 	Mounted_Status                  = Състояние на монтиране

@@ -211,6 +211,7 @@ Function Event_Assign
 			}
 			IsEvent = @(
 				"Image_Eject_UI"
+				"Event_Completion_Setting_UI"
 				"Event_Completion_Start_Setting_UI"
 			)
 		}
@@ -228,6 +229,7 @@ Function Event_Assign
 			}
 			IsEvent = @(
 				"Image_Eject_UI"
+				"Event_Completion_Setting_UI"
 				"Event_Completion_Start_Setting_UI"
 			)
 		}
@@ -245,6 +247,7 @@ Function Event_Assign
 			}
 			IsEvent = @(
 				"Image_Eject_UI"
+				"Event_Completion_Setting_UI"
 				"Event_Completion_Start_Setting_UI"
 			)
 		}
@@ -262,6 +265,7 @@ Function Event_Assign
 			}
 			IsEvent = @(
 				"Image_Eject_UI"
+				"Event_Completion_Setting_UI"
 				"Event_Completion_Start_Setting_UI"
 			)
 		}

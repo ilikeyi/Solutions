@@ -42,30 +42,6 @@ Function Editions_GUI
 			Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
 			return
 		}
-
-		<#
-			.判断挂载合法性
-		#>
-		if (-not (Verify_Is_Current_Same)) {
-			Write-Host "`n   $($lang.Editions)"
-			Write-Host "   $('-' * 80)"
-
-			$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
-
-			if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
-				if((Get-ChildItem $test_mount_folder_Current -Recurse -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) {
-					Write-Host "   $($lang.MountedIndexError)" -ForegroundColor Red
-				} else {
-					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
-				}
-			} else {
-				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
-				Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
-			}
-
-			return
-		}
 	}
 
 	Write-Host "`n   $($lang.Editions): $($lang.Change), $($lang.EditionsProductKey)" -ForegroundColor Yellow

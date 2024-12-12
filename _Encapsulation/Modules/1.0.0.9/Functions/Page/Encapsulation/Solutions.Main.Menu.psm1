@@ -1248,10 +1248,10 @@ Function Mainpage
 								Get_Next
 							}
 							default {
-								if ([string]::IsNullOrEmpty($NewType)) {
+								if ([string]::IsNullOrEmpty($NewRuleName)) {
 									Functions_Unrestricted_UI
 								} else {
-									Functions_Unrestricted_UI -Custom "Other_Tasks_$($NewType)"
+									Functions_Unrestricted_UI -Custom "Other_Tasks_$($NewRuleName)"
 								}
 							}
 						}

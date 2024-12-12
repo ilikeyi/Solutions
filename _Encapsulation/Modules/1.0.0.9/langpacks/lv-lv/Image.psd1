@@ -61,8 +61,7 @@
 	Mounted                         = Uzmontēts
 	NotMounted                      = Nav uzstādīts
 	NotMountedSpecify               = Nav uzstādīts, jūs varat norādīt montāžas vietu
-	MountedIndexSuccess             = Uzstādīts, izmantojot likumīgus līdzekļus
-	MountedIndexError               = Nepareiza montāža, lūdzu, izdzēsiet un mēģiniet vēlreiz.
+	MountedIndexError               = Nepareiza montāža, izdzēsiet un mēģiniet vēlreiz.
 	ImageSouresNoSelect             = Rādīt sīkāku informāciju pēc attēla avota izvēles
 	Mounted_Mode                    = Montāžas režīms
 	Mounted_Status                  = Montāžas statuss
