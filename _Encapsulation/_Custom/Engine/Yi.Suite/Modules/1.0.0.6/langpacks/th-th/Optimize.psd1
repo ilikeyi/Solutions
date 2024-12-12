@@ -6,7 +6,7 @@
 	DesktopMenuShift          = คุณต้องกดปุ่ม Shift ค้างไว้แล้วคลิกขวา
 	ExcludeDefenders          = เพิ่มโฮมไดเร็กตอรี่ให้กับ Defenders ยกเว้นไดเร็กทอรี
 	FDPermissions             = การซ่อนโฟลเดอร์และการอนุญาต
-	Shortcut                  = ทางลัดรวมถึงเมนูเริ่ม
+	Shortcuts                 = ทางลัดรวมถึงเมนูเริ่ม
 
 	# Install
 	DownloadLinkError         = ที่อยู่การดาวน์โหลดไม่ถูกต้อง

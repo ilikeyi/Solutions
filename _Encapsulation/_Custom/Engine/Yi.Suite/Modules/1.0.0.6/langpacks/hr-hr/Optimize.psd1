@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Trebate držati tipku Shift i kliknuti desnom tipkom miša
 	ExcludeDefenders          = Dodaj matični direktorij u Defenders exclude direktorije
 	FDPermissions             = Skrivanje mape i dopuštenja
-	Shortcut                  = Prečaci, uključujući početni izbornik
+	Shortcuts                 = Prečaci, uključujući početni izbornik
 
 	# Install
 	DownloadLinkError         = Adresa za preuzimanje nije važeća.

@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Du måste hålla ned Skift-tangenten och högerklicka
 	ExcludeDefenders          = Lägg till hemkatalog till Defenders exclude-kataloger
 	FDPermissions             = Mappdöljning och behörigheter
-	Shortcut                  = Genvägar, inklusive startmenyn
+	Shortcuts                 = Genvägar, inklusive startmenyn
 
 	# Install
 	DownloadLinkError         = Nedladdningsadressen är ogiltig.

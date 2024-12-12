@@ -9,6 +9,7 @@
 	Learn                           = Studiu
 	Menu                            = Meniu
 	Short_Cmd                       = Comandă de comandă rapidă
+	Shortcut                        = Scurtătură
 	Update                          = Reînnoi
 	CUpdate                         = Actualizări cumulate
 	Rebuild                         = Reconstrucţie

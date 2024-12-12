@@ -9,6 +9,7 @@
 	Learn                           = Проучване
 	Menu                            = Меню
 	Short_Cmd                       = Преки пътища
+	Shortcut                        = Пряк път
 	Update                          = Подновявам
 	CUpdate                         = Кумулативни актуализации
 	Rebuild                         = Реконструкция

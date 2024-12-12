@@ -9,6 +9,7 @@
 	Learn                           = Çalışmak
 	Menu                            = Menü
 	Short_Cmd                       = Kısayol komutu
+	Shortcut                        = Kısayol
 	Update                          = Yenilemek
 	CUpdate                         = Toplu güncellemeler
 	Rebuild                         = Yeniden yapılanma

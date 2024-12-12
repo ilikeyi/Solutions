@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Jums ir nepieciešams turēt nospiestu taustiņu Shift un ar peles labo pogu noklikšķiniet
 	ExcludeDefenders          = Pievienojiet mājas direktoriju Defenders izslēgšanas direktorijiem
 	FDPermissions             = Mapju slēpšana un atļaujas
-	Shortcut                  = Īsceļus, tostarp sākuma izvēlni
+	Shortcuts                 = Īsceļus, tostarp sākuma izvēlni
 
 	# Install
 	DownloadLinkError         = Lejupielādes adrese nav derīga.

@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Trebuie să țineți apăsată tasta Shift și să faceți clic dreapta
 	ExcludeDefenders          = Adăugați directorul principal la directoarele de excludere ale Defenders
 	FDPermissions             = Ascunderea dosarului și permisiunile
-	Shortcut                  = Comenzi rapide, inclusiv meniul de pornire
+	Shortcuts                 = Comenzi rapide, inclusiv meniul de pornire
 
 	# Install
 	DownloadLinkError         = Adresa de descărcare este nevalidă.

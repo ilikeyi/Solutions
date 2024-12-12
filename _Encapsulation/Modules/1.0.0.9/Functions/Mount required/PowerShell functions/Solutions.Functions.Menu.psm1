@@ -161,6 +161,114 @@ Function Functions_Menu
 			Functions_Menu
 		}
 
+		<#
+			.快捷指令：挂载
+		#>
+		"mount" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Write-Host "`n   $($lang.Mount)"
+			Write-Host "   $('-' * 80)"
+			if (Image_Is_Select_IAB) {
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
+
+				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Red
+				} else {
+					Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "1026"
+					Image_Select_Index_UI
+				}
+			} else {
+				Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+
+				Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
+				Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+
+				ToWait -wait 2
+				Image_Assign_Event_Master
+			}
+
+			ToWait -wait 2
+			Functions_Menu
+		}
+
+		<#
+			.快捷指令：挂载 + 索引号
+		#>
+		"Mount *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Write-Host "`n   $($lang.Command): " -NoNewline
+			Write-host "Mount" -ForegroundColor Green
+
+			$NewRuleName = $PSItem.Remove(0, 6).Replace(' ', '')
+			Write-Host "   $($lang.MountedIndexSelect): " -NoNewline
+			Write-Host $NewRuleName -ForegroundColor Green
+			Write-Host "   $('-' * 80)"
+
+			if ($NewRuleName -match '^\d+$') {
+				if (Image_Is_Select_IAB) {
+					Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+					Write-Host "   $('-' * 80)"
+
+					if (Verify_Is_Current_Same) {
+						Write-Host "   $($lang.Mounted)" -ForegroundColor Red
+					} else {
+						Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "1026"
+						Image_Select_Index_UI -AutoSelectIndex $NewRuleName
+					}
+				} else {
+					Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+
+					Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
+					Write-Host "   $('-' * 80)"
+					Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+
+					ToWait -wait 2
+					Image_Assign_Event_Master
+				}
+			} else {
+				Write-Host "   $($lang.VerifyNumberFailed)" -ForegroundColor Red
+			}
+
+			ToWait -wait 2
+			Functions_Menu
+		}
+
+		<#
+			.快捷指令：保存当前映像
+		#>
+		"Save" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Image_Eject_Save_Current
+			ToWait -wait 2
+			Functions_Menu
+		}
+		"Save *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Image_Save_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 5).Replace(' ', '')
+			ToWait -wait 2
+			Functions_Menu
+		}
+
+		<#
+			.快捷指令：卸载，默认不保存
+		#>
+		"unmount" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Image_Eject_Dont_Save_Current
+			ToWait -wait 2
+			Functions_Menu
+		}
+		"unmount *" {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Image_Unmount_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 7).Replace(' ', '')
+			ToWait -wait 2
+			Functions_Menu
+		}
+
 		"View *" {
 			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 

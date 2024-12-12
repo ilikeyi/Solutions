@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Você precisa manter pressionada a tecla Shift e clicar com o botão direito
 	ExcludeDefenders          = Adicionar diretório inicial aos diretórios de exclusão dos Defenders
 	FDPermissions             = Ocultação de pastas e permissões
-	Shortcut                  = Atalhos, incluindo menu iniciar
+	Shortcuts                 = Atalhos, incluindo menu iniciar
 
 	# Install
 	DownloadLinkError         = O endereço de download é inválido.

@@ -9,6 +9,7 @@
 	Learn                           = Studere
 	Menu                            = Menu
 	Short_Cmd                       = Genveje
+	Shortcut                        = Genvej
 	Update                          = Forny
 	CUpdate                         = Kumulative opdateringer
 	Rebuild                         = Rekonstruktion

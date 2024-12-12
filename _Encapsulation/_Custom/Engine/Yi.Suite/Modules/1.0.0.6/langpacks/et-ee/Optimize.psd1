@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Peate hoidma all tõstuklahvi ja paremklõpsama
 	ExcludeDefenders          = Kodukataloogi lisamine Defendersi välistavad kataloogid
 	FDPermissions             = Kausta peitmine ja load
-	Shortcut                  = Otseteed, sealhulgas menüü Start
+	Shortcuts                 = Otseteed, sealhulgas menüü Start
 
 	# Install
 	DownloadLinkError         = Allalaadimise aadress on kehtetu.

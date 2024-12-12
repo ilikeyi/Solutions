@@ -3,7 +3,7 @@
 	# French (France)
 
 	IsCreate                        = Créer
-	Solution                        = Solution
+	Solution                        = Solutions
 	EnabledSoftwarePacker           = Collection
 	EnabledUnattend                 = Il faudrait répondre à l'avance
 	EnabledEnglish                  = Moteur de déploiement

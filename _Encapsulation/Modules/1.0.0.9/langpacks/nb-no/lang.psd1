@@ -9,6 +9,7 @@
 	Learn                           = Studere
 	Menu                            = Meny
 	Short_Cmd                       = Snarveiskommando
+	Shortcut                        = Snarvei
 	Update                          = Fornye
 	CUpdate                         = Kumulative oppdateringer
 	Rebuild                         = Gjenoppbygging

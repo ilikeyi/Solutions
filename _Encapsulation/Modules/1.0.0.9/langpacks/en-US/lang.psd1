@@ -9,6 +9,7 @@
 	Learn                           = Learn
 	Menu                            = Menu
 	Short_Cmd                       = Shortcut command
+	Shortcut                        = Shortcut
 	Update                          = Updates
 	CUpdate                         = Cumulative updates
 	Rebuild                         = Rebuild

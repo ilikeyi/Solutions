@@ -9,6 +9,7 @@
 	Learn                           = Studijuoti
 	Menu                            = Meniu
 	Short_Cmd                       = Sparčiųjų klavišų komanda
+	Shortcut                        = Snelkoppeling
 	Update                          = Atnaujinti
 	CUpdate                         = Kaupiamieji atnaujinimai
 	Rebuild                         = Rekonstrukcija

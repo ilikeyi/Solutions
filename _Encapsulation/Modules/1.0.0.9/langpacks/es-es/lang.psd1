@@ -9,6 +9,7 @@
 	Learn                           = Estudiar
 	Menu                            = Menú
 	Short_Cmd                       = Comando de acceso directo
+	Shortcut                        = Atajo
 	Update                          = Renovar
 	CUpdate                         = Actualizaciones acumulativas
 	Rebuild                         = Reconstrucción

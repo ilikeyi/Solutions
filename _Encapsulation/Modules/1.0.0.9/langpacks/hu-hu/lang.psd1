@@ -9,6 +9,7 @@
 	Learn                           = Tanulmány
 	Menu                            = Menü
 	Short_Cmd                       = Gyorsbillentyű parancsot
+	Shortcut                        = Parancsikont
 	Update                          = Megújítani
 	CUpdate                         = Kumulatív frissítések
 	Rebuild                         = Újjáépítés

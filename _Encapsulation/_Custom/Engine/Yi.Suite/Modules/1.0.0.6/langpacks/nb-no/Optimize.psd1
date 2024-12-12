@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Du må holde nede Shift-tasten og høyreklikke
 	ExcludeDefenders          = Legg til hjemmekatalog til Defenders ekskluderingskataloger
 	FDPermissions             = Mappeskjul og tillatelser
-	Shortcut                  = Snarveier, inkludert startmenyen
+	Shortcuts                 = Snarveier, inkludert startmenyen
 
 	# Install
 	DownloadLinkError         = Nedlastingsadressen er ugyldig.

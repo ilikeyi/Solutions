@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Du skal holde Shift-tasten nede og højreklikke
 	ExcludeDefenders          = Føj hjemmemappe til Defenders-ekskluderingsmapper
 	FDPermissions             = Mappeskjul og tilladelser
-	Shortcut                  = Genveje, herunder startmenuen
+	Shortcuts                 = Genveje, herunder startmenuen
 
 	# Install
 	DownloadLinkError         = Downloadadressen er ugyldig.

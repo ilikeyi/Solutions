@@ -9,6 +9,7 @@
 	Learn                           = Studie
 	Menu                            = Speisekarte
 	Short_Cmd                       = Verknüpfungsbefehl
+	Shortcut                        = Abkürzung
 	Update                          = Erneuern
 	CUpdate                         = kumulative Updates
 	Rebuild                         = Wiederaufbau

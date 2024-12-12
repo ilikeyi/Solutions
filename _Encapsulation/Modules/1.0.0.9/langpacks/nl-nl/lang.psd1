@@ -9,6 +9,7 @@
 	Learn                           = Studie
 	Menu                            = Menu
 	Short_Cmd                       = Snelkoppeling commando
+	Shortcut                        = Snelkoppeling
 	Update                          = Vernieuwen
 	CUpdate                         = Cumulatieve updates
 	Rebuild                         = Wederopbouw

@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Vous devez maintenir la touche Maj enfoncée et faire un clic droit
 	ExcludeDefenders          = Ajouter le répertoire personnel aux répertoires d'exclusion de Defenders
 	FDPermissions             = Masquage des dossiers et autorisations
-	Shortcut                  = Raccourcis, y compris le menu Démarrer
+	Shortcuts                 = Raccourcis, y compris le menu Démarrer
 
 	# Install
 	DownloadLinkError         = L'adresse de téléchargement n'est pas valide.

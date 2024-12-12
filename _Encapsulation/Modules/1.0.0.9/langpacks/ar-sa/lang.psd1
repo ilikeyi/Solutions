@@ -9,6 +9,7 @@
 	Learn                           = يذاكر
 	Menu                            = قائمة طعام
 	Short_Cmd                       = الاختصارات
+	Shortcut                        = الاختصار
 	Update                          = تجديد
 	CUpdate                         = التحديثات التراكمية
 	Rebuild                         = إعادة الإعمار

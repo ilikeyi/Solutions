@@ -9,6 +9,7 @@
 	Learn                           = ศึกษา
 	Menu                            = เมนู
 	Short_Cmd                       = คำสั่งทางลัด
+	Shortcut                        = ทางลัด
 	Update                          = ต่ออายุ
 	CUpdate                         = การปรับปรุงสะสม
 	Rebuild                         = การฟื้นฟู

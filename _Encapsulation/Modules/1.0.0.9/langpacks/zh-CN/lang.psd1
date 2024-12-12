@@ -9,6 +9,7 @@
 	Learn                           = 学习
 	Menu                            = 菜单
 	Short_Cmd                       = 快捷指令
+	Shortcut                        = 捷徑
 	Update                          = 更新
 	CUpdate                         = 累积更新
 	Rebuild                         = 重建

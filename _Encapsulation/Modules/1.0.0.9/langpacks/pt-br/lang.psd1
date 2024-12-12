@@ -9,6 +9,7 @@
 	Learn                           = Estudar
 	Menu                            = Menu
 	Short_Cmd                       = Comando de atalho
+	Shortcut                        = Atalho
 	Update                          = Renovar
 	CUpdate                         = Atualizações cumulativas
 	Rebuild                         = Reconstrução

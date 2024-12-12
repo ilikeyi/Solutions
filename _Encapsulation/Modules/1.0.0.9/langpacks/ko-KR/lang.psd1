@@ -9,6 +9,7 @@
 	Learn                           = 공부하다
 	Menu                            = 메뉴
 	Short_Cmd                       = 바로 가기 명령
+	Shortcut                        = 지름길
 	Update                          = 고쳐 쓰다
 	CUpdate                         = 누적 업데이트
 	Rebuild                         = 재건

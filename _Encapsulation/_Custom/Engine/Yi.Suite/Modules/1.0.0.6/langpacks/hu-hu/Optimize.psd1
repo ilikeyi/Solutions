@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Tartsa lenyomva a Shift billentyűt, és kattintson a jobb gombbal
 	ExcludeDefenders          = Saját könyvtár hozzáadása a Defenders kizárt könyvtárakhoz
 	FDPermissions             = Mappa elrejtése és engedélyei
-	Shortcut                  = Parancsikonok, beleértve a start menüt
+	Shortcuts                 = Parancsikonok, beleértve a start menüt
 
 	# Install
 	DownloadLinkError         = A letöltési cím érvénytelen.

@@ -290,15 +290,15 @@ Function Mainpage
 
 			Write-Host "         $($lang.LocalExperiencePack): " -NoNewline -ForegroundColor Yellow
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Green
-			Write-Host " LXPs A " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " EP A " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Green
-			Write-Host " LXPs D " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " EP D " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Update) " -NoNewline -ForegroundColor Green
-			Write-Host " LXPs U " -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " EP U " -BackgroundColor DarkMagenta -ForegroundColor White
 		} else {
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
 			Write-Host " IA A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
@@ -309,15 +309,15 @@ Function Mainpage
 
 			Write-Host "         $($lang.LocalExperiencePack): " -NoNewline -ForegroundColor Yellow
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
-			Write-Host " LXPs A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " EP A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Red
-			Write-Host " LXPs D " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " EP D " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.Update) " -NoNewline -ForegroundColor Red
-			Write-Host " LXPs U " -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " EP U " -BackgroundColor DarkRed -ForegroundColor White
 		}
 	} else {
 		Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
@@ -329,15 +329,15 @@ Function Mainpage
 
 		Write-Host "         $($lang.LocalExperiencePack): " -NoNewline -ForegroundColor Yellow
 		Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
-		Write-Host " LXPs A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " EP A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host ", " -NoNewline
 
 		Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Red
-		Write-Host " LXPs D " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " EP D " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host ", " -NoNewline
 
 		Write-Host "$($lang.Update) " -NoNewline -ForegroundColor Red
-		Write-Host " LXPs U " -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " EP U " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
 	Write-Host "    15  " -NoNewline -ForegroundColor Green
@@ -519,7 +519,7 @@ Function Mainpage
 			Mainpage
 		}
 		"4" {
-			Feature_More
+			Feature_More_Menu
 			ToWait -wait 2
 			Mainpage
 		}
@@ -1041,13 +1041,13 @@ Function Mainpage
 				Mainpage
 			}
 
-			"LXPs *" {
+			"EP *" {
 				Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
 
 				Write-Host "`n   $($lang.Command): " -NoNewline
-				Write-host "LXPs" -ForegroundColor Green
+				Write-host "EP" -ForegroundColor Green
 
-				$NewRuleName = $PSItem.Remove(0, 5).Replace(' ', '')
+				$NewRuleName = $PSItem.Remove(0, 3).Replace(' ', '')
 				Write-Host "   $($lang.RuleName): " -NoNewline
 				Write-host $NewRuleName -ForegroundColor Green
 

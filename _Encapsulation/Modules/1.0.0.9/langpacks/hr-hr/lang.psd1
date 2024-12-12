@@ -9,6 +9,7 @@
 	Learn                           = Studija
 	Menu                            = Jelovnik
 	Short_Cmd                       = Naredba prečaca
+	Shortcut                        = Prečac
 	Update                          = Obnoviti
 	CUpdate                         = Kumulativna ažuriranja
 	Rebuild                         = Rekonstrukcija

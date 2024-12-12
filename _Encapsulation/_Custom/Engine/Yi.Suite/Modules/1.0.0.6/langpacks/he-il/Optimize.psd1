@@ -6,7 +6,7 @@
 	DesktopMenuShift          = עליך ללחוץ על מקש Shift וללחוץ לחיצה ימנית
 	ExcludeDefenders          = הוסף ספריית בית לספריות אי הכללה של Defenders
 	FDPermissions             = הסתרת תיקיות והרשאות
-	Shortcut                  = קיצורי דרך, כולל תפריט התחלה
+	Shortcuts                 = קיצורי דרך, כולל תפריט התחלה
 
 	# Install
 	DownloadLinkError         = כתובת ההורדה לא חוקית.

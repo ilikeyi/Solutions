@@ -9,6 +9,7 @@
 	Learn                           = Studio
 	Menu                            = Menu
 	Short_Cmd                       = Comando di scelta rapida
+	Shortcut                        = Scorciatoia
 	Update                          = Rinnovare
 	CUpdate                         = Aggiornamenti cumulativi
 	Rebuild                         = Ricostruzione

@@ -6,7 +6,7 @@
 	DesktopMenuShift          = U moet de Shift-toets ingedrukt houden en met de rechtermuisknop klikken
 	ExcludeDefenders          = Voeg een thuismap toe aan Defenders-exclusief mappen
 	FDPermissions             = Map verbergen en machtigingen
-	Shortcut                  = Snelkoppelingen, inclusief startmenu
+	Shortcuts                 = Snelkoppelingen, inclusief startmenu
 
 	# Install
 	DownloadLinkError         = Het downloadadres is ongeldig.

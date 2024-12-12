@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Shift 키를 누른 상태에서 마우스 오른쪽 버튼을 클릭해야 합니다
 	ExcludeDefenders          = Defenders 제외 디렉토리에 홈 디렉토리 추가
 	FDPermissions             = 폴더 숨기기 및 권한
-	Shortcut                  = 시작 메뉴를 포함한 바로 가기
+	Shortcuts                 = 시작 메뉴를 포함한 바로 가기
 
 	# Install
 	DownloadLinkError         = 다운로드 주소가 잘못되었습니다.

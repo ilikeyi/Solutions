@@ -9,6 +9,7 @@
 	Learn                           = Študija
 	Menu                            = Meni
 	Short_Cmd                       = Bližnjični ukaz
+	Shortcut                        = Bližnjica
 	Update                          = Obnoviti
 	CUpdate                         = Kumulativne posodobitve
 	Rebuild                         = Rekonstrukcija

@@ -9,6 +9,7 @@
 	Learn                           = Štúdium
 	Menu                            = Menu
 	Short_Cmd                       = Skratkový príkaz
+	Shortcut                        = Skratka
 	Update                          = Obnoviť
 	CUpdate                         = Kumulatívne aktualizácie
 	Rebuild                         = Rekonštrukcia

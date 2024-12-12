@@ -9,6 +9,7 @@
 	Learn                           = Uuring
 	Menu                            = Menüü
 	Short_Cmd                       = Otseteed
+	Shortcut                        = Otsetee
 	Update                          = Uuendada
 	CUpdate                         = Kumulatiivsed värskendused
 	Rebuild                         = Rekonstrueerimine

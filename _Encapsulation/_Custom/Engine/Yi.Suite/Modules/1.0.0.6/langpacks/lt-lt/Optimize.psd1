@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Turite laikyti nuspaudę klavišą "Shift" ir dešiniuoju pelės mygtuku spustelėkite
 	ExcludeDefenders          = Pridėkite namų katalogą prie "Defenders" neįtrauktų katalogų
 	FDPermissions             = Aplanko slėpimas ir leidimai
-	Shortcut                  = Sparčiuosius klavišus, įskaitant pradžios meniu
+	Shortcuts                 = Sparčiuosius klavišus, įskaitant pradžios meniu
 
 	# Install
 	DownloadLinkError         = Atsisiuntimo adresas neteisingas.

@@ -9,6 +9,7 @@
 	Learn                           = Студија
 	Menu                            = Мени
 	Short_Cmd                       = Команда пречице
+	Shortcut                        = Пречица
 	Update                          = Обновити
 	CUpdate                         = Кумулативних ажурирања
 	Rebuild                         = Реконструкција

@@ -9,6 +9,7 @@
 	Learn                           = Studera
 	Menu                            = Meny
 	Short_Cmd                       = Genvägskommando
+	Shortcut                        = 捷径
 	Update                          = Förnya
 	CUpdate                         = Kumulativa uppdateringar
 	Rebuild                         = Rekonstruktion

@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Halten Sie die Umschalttaste gedrückt und klicken Sie dann mit der rechten Maustaste
 	ExcludeDefenders          = Heimatverzeichnis zum Ausschlussverzeichnis von Defenders hinzufügen
 	FDPermissions             = Ordner ausblenden und Berechtigungen
-	Shortcut                  = Shortcut, einschließlich des Startmenüs
+	Shortcuts                 = Shortcut, einschließlich des Startmenüs
 
 	# Install
 	DownloadLinkError         = Die Download Adresse ist ungültig.

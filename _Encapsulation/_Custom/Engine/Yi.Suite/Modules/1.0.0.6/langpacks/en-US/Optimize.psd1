@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Need to hold down the Shift key and click the right button
 	ExcludeDefenders          = Add home directory to Defenders exclude directory
 	FDPermissions             = Folder hiding and permissions
-	Shortcut                  = Shortcuts, including the start menu
+	Shortcuts                 = Shortcuts, including the start menu
 
 	# Install
 	DownloadLinkError         = The download address is invalid.

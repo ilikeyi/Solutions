@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Shift キーを押しながら右クリックする必要があります
 	ExcludeDefenders          = ホームディレクトリを Defenders 除外ディレクトリに追加します
 	FDPermissions             = フォルダーの非表示とアクセス許可
-	Shortcut                  = スタートメニューを含むショートカット
+	Shortcuts                 = スタートメニューを含むショートカット
 
 	# Install
 	DownloadLinkError         = ダウンロードアドレスが無効です。

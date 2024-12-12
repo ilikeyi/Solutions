@@ -9,6 +9,7 @@
 	Learn                           = Opiskella
 	Menu                            = Valikosta
 	Short_Cmd                       = Pikanäppäimet
+	Shortcut                        = Pikakuvake
 	Update                          = Uusia
 	CUpdate                         = Kumulatiiviset päivitykset
 	Rebuild                         = Jälleenrakennus

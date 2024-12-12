@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Shift tuşunu basılı tutup sağ tıklamanız gerekir
 	ExcludeDefenders          = Defenders'ın hariç tuttuğu dizinlere ana dizini ekleyin
 	FDPermissions             = Klasör gizleme ve izinler
-	Shortcut                  = Başlat menüsü dahil kısayollar
+	Shortcuts                 = Başlat menüsü dahil kısayollar
 
 	# Install
 	DownloadLinkError         = İndirme adresi geçersiz.

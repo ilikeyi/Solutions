@@ -6,7 +6,7 @@
 	DesktopMenuShift          = È necessario tenere premuto il tasto Maiusc e fare clic con il tasto destro
 	ExcludeDefenders          = Aggiungi la directory home alle directory di esclusione di Defenders
 	FDPermissions             = Nascondere cartelle e permessi
-	Shortcut                  = Scorciatoie, incluso il menu di avvio
+	Shortcuts                 = Scorciatoie, incluso il menu di avvio
 
 	# Install
 	DownloadLinkError         = L'indirizzo di download non è valido.

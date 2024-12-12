@@ -9,6 +9,7 @@
 	Learn                           = Μελέτη
 	Menu                            = Μενού
 	Short_Cmd                       = Συντομεύσεις
+	Shortcut                        = Συντομότερος τρόπος
 	Update                          = Ανανεώνω
 	CUpdate                         = Σωρευτικές ενημερώσεις
 	Rebuild                         = Ανοικοδόμηση

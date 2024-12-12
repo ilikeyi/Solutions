@@ -3,7 +3,7 @@
 	# English (United States)
 
 	IsCreate                        = Create
-	Solution                        = Solution
+	Solution                        = Solutions
 	EnabledSoftwarePacker           = Collection
 	EnabledUnattend                 = Answer in advance
 	EnabledEnglish                  = Deployment engine

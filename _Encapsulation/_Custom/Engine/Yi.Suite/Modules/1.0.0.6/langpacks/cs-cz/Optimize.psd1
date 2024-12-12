@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Musíte podržet klávesu Shift a kliknout pravým tlačítkem
 	ExcludeDefenders          = Přidat domovský adresář do adresářů vyloučených ochránců
 	FDPermissions             = Skrytí složky a oprávnění
-	Shortcut                  = Zkratky, včetně nabídky Start
+	Shortcuts                 = Zkratky, včetně nabídky Start
 
 	# Install
 	DownloadLinkError         = Adresa pro stahování je neplatná.

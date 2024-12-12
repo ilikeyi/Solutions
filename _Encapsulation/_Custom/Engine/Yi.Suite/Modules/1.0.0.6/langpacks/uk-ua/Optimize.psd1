@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Потрібно, утримуючи клавішу Shift, клацнути правою кнопкою миші
 	ExcludeDefenders          = Додати домашній каталог до каталогів виключення Defenders
 	FDPermissions             = Приховування папок і дозволи
-	Shortcut                  = Ярлики, включаючи меню "Пуск".
+	Shortcuts                 = Ярлики, включаючи меню "Пуск".
 
 	# Install
 	DownloadLinkError         = Адреса завантаження недійсна.

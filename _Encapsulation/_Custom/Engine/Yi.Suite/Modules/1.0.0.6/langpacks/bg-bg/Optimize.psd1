@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Трябва да задържите клавиша Shift и да щракнете с десния бутон
 	ExcludeDefenders          = Добавете домашна директория към Defenders exclude directories
 	FDPermissions             = Скриване на папка и разрешения
-	Shortcut                  = Преки пътища, включително старт менюто
+	Shortcuts                 = Преки пътища, включително старт менюто
 
 	# Install
 	DownloadLinkError         = Адресът за изтегляне е невалиден.

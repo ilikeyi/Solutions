@@ -9,6 +9,7 @@
 	Learn                           = 勉強
 	Menu                            = メニュー
 	Short_Cmd                       = ショートカットコマンド
+	Shortcut                        = ショートカット
 	Update                          = 更新する
 	CUpdate                         = 累積的な更新
 	Rebuild                         = 再建

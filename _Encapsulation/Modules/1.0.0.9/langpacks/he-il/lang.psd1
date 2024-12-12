@@ -9,6 +9,7 @@
 	Learn                           = לִלמוֹד
 	Menu                            = תַפרִיט
 	Short_Cmd                       = פקודת קיצור
+	Shortcut                        = קיצור דרך
 	Update                          = לְחַדֵשׁ
 	CUpdate                         = עדכונים מצטברים
 	Rebuild                         = שִׁחזוּר

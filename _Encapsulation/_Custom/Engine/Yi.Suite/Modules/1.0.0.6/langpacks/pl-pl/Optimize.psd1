@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Musisz przytrzymać klawisz Shift i kliknąć prawym przyciskiem myszy
 	ExcludeDefenders          = Dodaj katalog domowy do katalogów wykluczonych przez Defenders
 	FDPermissions             = Ukrywanie folderów i uprawnienia
-	Shortcut                  = Skróty, w tym menu Start
+	Shortcuts                 = Skróty, w tym menu Start
 
 	# Install
 	DownloadLinkError         = Adres pobierania jest nieprawidłowy.

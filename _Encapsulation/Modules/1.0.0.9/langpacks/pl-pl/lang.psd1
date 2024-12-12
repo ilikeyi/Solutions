@@ -9,6 +9,7 @@
 	Learn                           = Badanie
 	Menu                            = Menu
 	Short_Cmd                       = Polecenie skrótu
+	Shortcut                        = Skrót
 	Update                          = Odnowić
 	CUpdate                         = Aktualizacje zbiorcze
 	Rebuild                         = Rekonstrukcja

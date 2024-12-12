@@ -16,21 +16,30 @@ Function Solutions_Help
 	Write-Host "   $('-' * 80)"
 
 	if ($Full) {
-		Solutions_Help_Command -Name "Sel" -Silent
-	} else {
-		Write-host "     " -NoNewline
-		Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-		Write-host " " -NoNewline
-		Write-Host "         $($lang.Event_Primary_Key), $($lang.Command), $($lang.Help) " -ForegroundColor Yellow
-	}
-
-	if ($Full) {
 		Solutions_Help_Command -Name "View" -Silent
 	} else {
 		Write-host "     " -NoNewline
 		Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-host " " -NoNewline
 		Write-Host "        $($lang.ViewWIMFileInfo), $($lang.Command), $($lang.Help)"
+	}
+
+	if ($Full) {
+		Solutions_Help_Command -Name "Save" -Silent
+	} else {
+		Write-host "     " -NoNewline
+		Write-Host " Save " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-host " " -NoNewline
+		Write-Host "        $($lang.Event_Primary_Key), $($lang.Command), $($lang.Help) "
+	}
+
+	if ($Full) {
+		Solutions_Help_Command -Name "Sel" -Silent
+	} else {
+		Write-host "     " -NoNewline
+		Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-host " " -NoNewline
+		Write-Host "         $($lang.Event_Primary_Key), $($lang.Command), $($lang.Help) "
 	}
 
 	if ($Full) {
@@ -263,7 +272,9 @@ Function Solutions_Help_Command
 				}
 			}
 
-			Get_Next
+			if (-not $Silent) {
+				Get_Next
+			}
 		}
 		"Unmount" {
 			Write-host "   " -NoNewline

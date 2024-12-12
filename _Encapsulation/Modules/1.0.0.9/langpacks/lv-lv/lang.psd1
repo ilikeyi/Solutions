@@ -9,6 +9,7 @@
 	Learn                           = Pētījums
 	Menu                            = Izvēlne
 	Short_Cmd                       = Īsinājumtaustiņu komanda
+	Shortcut                        = Īsceļu
 	Update                          = Atjaunot
 	CUpdate                         = Kumulatīvie atjauninājumi
 	Rebuild                         = Rekonstrukcija

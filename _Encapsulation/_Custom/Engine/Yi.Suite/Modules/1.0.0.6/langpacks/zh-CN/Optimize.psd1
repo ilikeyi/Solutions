@@ -6,7 +6,7 @@
 	DesktopMenuShift          = 需要按住 Shift 键后点击右键
 	ExcludeDefenders          = 添加主目录到 Defenders 排除目录
 	FDPermissions             = 文件夹隐藏及权限
-	Shortcut                  = 快捷方式，包括开始菜单
+	Shortcuts                 = 快捷方式，包括开始菜单
 
 	# Install
 	DownloadLinkError         = 下载地址无效。

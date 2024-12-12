@@ -73,6 +73,7 @@ Function Image_Mount_Check
 		Write-Host "   $($lang.Mounted)"
 	} else {
 		Write-Host "   $($lang.NotMounted)"
+
 		if (Test-Path -Path $test_mount_folder -PathType Container) {
 			<#
 				.强行卸载，不保存
@@ -288,14 +289,12 @@ Function Image_Get_Mount_Status_New
 			} else {
 				if ($IsHotkey) {
 					Write-host " " -NoNewline
-					Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-					Write-host " " -NoNewline
+					Write-Host " View Mount Save Unmount Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 
-					Write-Host " $($Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+					Write-host " " -NoNewline
+					Write-Host " $($Shortcuts) * " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 					Write-Host " $($ImageName)".PadRight(8) -NoNewline -ForegroundColor Yellow
 				} else {
-					Write-Host " " -NoNewline
-					Write-Host " $($Shortcuts) " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 					Write-Host " $($ImageName)".PadRight(8) -NoNewline -ForegroundColor Yellow
 				}
 			}
@@ -329,12 +328,14 @@ Function Image_Get_Mount_Status_New
 
 								if (Test-Path -Path $test_mount_folder -PathType Container) {
 									if((Get-ChildItem $test_mount_folder -Recurse -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) {
-										Write-Host "      $($lang.MountedIndexError)" -ForegroundColor Red
+										Write-Host "  $($lang.MountedIndexError)" -BackgroundColor Darkred -ForegroundColor White
 									} else {
-										Write-Host "      $($lang.NotMounted)" -ForegroundColor Red
+										Write-host " " -NoNewline
+										Write-Host " $($lang.NotMounted) " -BackgroundColor Darkred -ForegroundColor White
 									}
 								} else {
-									Write-Host "      $($lang.NotMounted)" -ForegroundColor Red
+									Write-host " " -NoNewline
+									Write-Host " $($lang.NotMounted) " -BackgroundColor Darkred -ForegroundColor White
 								}
 							}
 						}
@@ -343,16 +344,18 @@ Function Image_Get_Mount_Status_New
 							New-Variable -Scope global -Name "Mark_Is_Mount_$($ImageMaster)_$($ImageName)" -Value $True -Force
 
 							if (-not $Silent) {
-								Write-Host "   $($lang.MountedIndex): $($ImageName)" -NoNewline -ForegroundColor Yellow
+								Write-Host "  $($lang.MountedIndex): $($ImageName)" -NoNewline -ForegroundColor Yellow
 
 								if (Test-Path -Path $test_mount_folder -PathType Container) {
 									if((Get-ChildItem $test_mount_folder -Recurse -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) {
-										Write-Host "      $($lang.MountedIndexError)" -ForegroundColor Red
+										Write-Host "  $($lang.MountedIndexError)" -BackgroundColor Darkred -ForegroundColor White
 									} else {
-										Write-Host "      $($lang.NotMounted)" -ForegroundColor Red
+										Write-host " " -NoNewline
+										Write-Host " $($lang.NotMounted) " -BackgroundColor Darkred -ForegroundColor White
 									}
 								} else {
-									Write-Host "      $($lang.NotMounted)" -ForegroundColor Red
+									Write-host " " -NoNewline
+									Write-Host " $($lang.NotMounted) " -BackgroundColor Darkred -ForegroundColor White
 								}
 							}
 						}
@@ -362,13 +365,14 @@ Function Image_Get_Mount_Status_New
 							New-Variable -Scope global -Name "Mark_Is_Mount_$($ImageMaster)_$($ImageName)" -Value $True -Force
 
 							if (-not $Silent) {
-								Write-Host "   $($lang.MountedIndex): $($ImageIndexNew)" -NoNewline -ForegroundColor Yellow
+								Write-Host "  $($lang.MountedIndex): $($ImageIndexNew)" -NoNewline -ForegroundColor Yellow
 
 								if (Test-Path -Path $test_mount_folder -PathType Container) {
 									Write-Host "      $($lang.Mounted) " -NoNewline -ForegroundColor Green
 									Write-Host " $($lang.Healthy) " -BackgroundColor Darkgreen -ForegroundColor Black
 								} else {
-									Write-Host "      $($lang.NotMounted)" -ForegroundColor Red
+									Write-host " " -NoNewline
+									Write-Host " $($lang.NotMounted) " -BackgroundColor Darkred -ForegroundColor White
 								}
 							}
 						}
@@ -377,7 +381,7 @@ Function Image_Get_Mount_Status_New
 							New-Variable -Scope global -Name "Mark_Is_Mount_$($ImageMaster)_$($ImageName)" -Value $True -Force
 
 							if (-not $Silent) {
-								Write-Host "   $($lang.MountedIndexError)" -ForegroundColor Red
+								Write-Host "  $($lang.MountedIndexError)" -BackgroundColor Darkred -ForegroundColor White
 							}
 						}
 					}
@@ -393,7 +397,8 @@ Function Image_Get_Mount_Status_New
 
 		} else {
 			if (-not $Silent) {
-				Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+				Write-host " " -NoNewline
+				Write-Host " $($lang.NotMounted) " -BackgroundColor Darkred -ForegroundColor White
 			}
 		}
 	}

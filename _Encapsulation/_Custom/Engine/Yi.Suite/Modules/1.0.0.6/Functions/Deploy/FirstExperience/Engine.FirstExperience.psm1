@@ -256,7 +256,7 @@ Function FirstExperience_Setting_UI
 	$GUIFEShortcut     = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 30
 		Width          = 490
-		Text           = $lang.Shortcut
+		Text           = $lang.Shortcuts
 		Checked        = $True
 	}
 	$GUIFEDeployCleanup = New-Object System.Windows.Forms.Checkbox -Property @{
@@ -398,7 +398,7 @@ Function FirstExperience_Setting_UI
 				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
-			Write-Host "   $($lang.Shortcut)"
+			Write-Host "   $($lang.Shortcuts)"
 			if ($GUIFEShortcut.Checked) {
 				Shortcut_Process
 				Write-Host "   $($lang.Done)`n" -ForegroundColor Green

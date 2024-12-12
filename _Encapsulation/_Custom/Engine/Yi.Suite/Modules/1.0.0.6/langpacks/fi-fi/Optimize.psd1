@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Sinun on pidettävä Shift-näppäintä painettuna ja napsautettava hiiren kakkospainikkeella
 	ExcludeDefenders          = Lisää kotihakemisto Defendersin poissulkeviin hakemistoihin
 	FDPermissions             = Kansion piilottaminen ja käyttöoikeudet
-	Shortcut                  = Pikakuvakkeet, mukaan lukien aloitusvalikko
+	Shortcuts                 = Pikakuvakkeet, mukaan lukien aloitusvalikko
 
 	# Install
 	DownloadLinkError         = Latausosoite on virheellinen.

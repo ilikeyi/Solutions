@@ -6,7 +6,7 @@
 	DesktopMenuShift          = Držati morate tipko Shift in klikniti z desno miškino tipko
 	ExcludeDefenders          = Dodaj domači imenik v imenike za izključitev Defenders
 	FDPermissions             = Skrivanje mape in dovoljenja
-	Shortcut                  = Bližnjice, vključno z začetnim menijem
+	Shortcuts                 = Bližnjice, vključno z začetnim menijem
 
 	# Install
 	DownloadLinkError         = Naslov za prenos ni veljaven.

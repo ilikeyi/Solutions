@@ -8,6 +8,7 @@
 	Learn                           = Studie
 	Menu                            = Menu
 	Short_Cmd                       = Zkratky
+	Shortcut                        = Zkratka
 	Update                          = Obnovit
 	CUpdate                         = Kumulativní aktualizace
 	Rebuild                         = Rekonstrukce
