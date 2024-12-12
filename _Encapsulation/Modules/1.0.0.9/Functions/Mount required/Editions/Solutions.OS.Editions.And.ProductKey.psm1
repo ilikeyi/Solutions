@@ -4,48 +4,22 @@
 #>
 Function Editions_GUI
 {
-	if (-not $Global:EventQueueMode) {
-		Logo -Title "$($lang.Editions): $($lang.Change), $($lang.EditionsProductKey)"
-		Write-Host "   $($lang.Dashboard)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-
-		Write-Host "   $($lang.MountImageTo): " -NoNewline
-		if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
-			Write-Host $Global:Mount_To_Route -ForegroundColor Green
-		} else {
-			Write-Host $Global:Mount_To_Route -ForegroundColor Yellow
-		}
-
-		Write-Host "   $($lang.MainImageFolder): " -NoNewline
-		if (Test-Path -Path $Global:Image_source -PathType Container) {
-			Write-Host $Global:Image_source -ForegroundColor Green
-		} else {
-			Write-Host $Global:Image_source -ForegroundColor Red
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
-
-			ToWait -wait 2
-			Editions_GUI
-		}
-
-		Image_Get_Mount_Status
-
-		<#
-			.先决条件
-		#>
-		<#
-			.判断是否选择 Install, Boot, WinRE
-		#>
-		if (-not (Image_Is_Select_IAB)) {
-			Write-Host "`n   $($lang.Editions)"
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
-			return
-		}
-	}
-
 	Write-Host "`n   $($lang.Editions): $($lang.Change), $($lang.EditionsProductKey)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
+
+	if (Image_Is_Select_IAB) {
+		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "   $('-' * 80)"
+
+		if (Verify_Is_Current_Same) {
+			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+		} else {
+			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+			return
+		}
+	} else {
+		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+	}
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing

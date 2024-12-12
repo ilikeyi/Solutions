@@ -1412,10 +1412,10 @@ Function Image_Eject_Save_Current
 		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
 		Write-Host "   $('-' * 80)"
 
-		$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
-
 		if (Verify_Is_Current_Same) {
 			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+			$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
@@ -1537,10 +1537,10 @@ Function Image_Eject_Dont_Save_Current
 		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
 		Write-Host "   $('-' * 80)"
 
-		$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
-
 		if (Verify_Is_Current_Same) {
 			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+			$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 			if ($Global:Developers_Mode) {
 				Write-Host "`n   $($lang.Developers_Mode_Location): 60`n" -ForegroundColor Green

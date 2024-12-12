@@ -164,16 +164,23 @@
 		"c" {
 			Write-Host "`n   $($lang.User_Interaction): $($lang.OnDemandPlanTask)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
-			if (Verify_Is_Current_Same) {
-				<#
-						.Assign available tasks
-						.分配可用的任务
-				#>
-				Event_Assign -Rule "LXPs_Region_Add" -Run
-			} else {
+			if (Image_Is_Select_IAB) {
 				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
 				Write-Host "   $('-' * 80)"
-				Write-Host "   $($lang.NotMounted)`n" -ForegroundColor Red
+
+				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+					<#
+							.Assign available tasks
+							.分配可用的任务
+					#>
+					Event_Assign -Rule "LXPs_Region_Add" -Run
+				} else {
+					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+				}
+			} else {
+				Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
 			}
 
 			ToWait -wait 2
@@ -189,8 +196,22 @@
 			Write-Host "   $('-' * 80)"
 			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 
-			InBox_Apps_LIPs_Clean_Process
-			Get_Next
+			if (Image_Is_Select_IAB) {
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
+
+				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+					InBox_Apps_LIPs_Clean_Process
+					Get_Next
+				} else {
+					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+				}
+			} else {
+				Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+			}
+
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
@@ -199,8 +220,22 @@
 			Write-Host "   $('-' * 80)"
 			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
 
-			InBox_Apps_LIPs_Clean_Process
-			Get_Next
+			if (Image_Is_Select_IAB) {
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
+
+				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+					InBox_Apps_LIPs_Clean_Process
+					Get_Next
+				} else {
+					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+				}
+			} else {
+				Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+			}
+
 			ToWait -wait 2
 			InBox_Apps_Menu
 		}
@@ -208,17 +243,25 @@
 			Write-Host "`n   $($lang.GetInBoxApps)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			Write-Host "   $($lang.ExportToLogs)" -ForegroundColor Yellow
-
 			if (Image_Is_Select_IAB) {
-				$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
-				if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
-					$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report"
-				} else {
-					$Temp_Export_SaveTo = $Temp_Expand_Rule
-				}
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
 
-				Image_Get_Apps_Package -Save $Temp_Export_SaveTo
-				Get_Next
+				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+					$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+					if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
+						$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report"
+					} else {
+						$Temp_Export_SaveTo = $Temp_Expand_Rule
+					}
+
+					Image_Get_Apps_Package -Save $Temp_Export_SaveTo
+					Get_Next
+				} else {
+					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+				}
 			} else {
 				Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
 			}
@@ -230,17 +273,25 @@
 			Write-Host "`n   $($lang.GetInBoxApps)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			Write-Host "   $($lang.ExportShow)"
-
 			if (Image_Is_Select_IAB) {
-				$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
-				if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
-					$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report"
-				} else {
-					$Temp_Export_SaveTo = $Temp_Expand_Rule
-				}
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
 
-				Image_Get_Apps_Package -Save $Temp_Export_SaveTo -View
-				Get_Next
+				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+					$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+					if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
+						$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report"
+					} else {
+						$Temp_Export_SaveTo = $Temp_Expand_Rule
+					}
+
+					Image_Get_Apps_Package -Save $Temp_Export_SaveTo -View
+					Get_Next
+				} else {
+					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+				}
 			} else {
 				Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
 			}
@@ -252,6 +303,9 @@
 			Write-Host "`n   $($lang.Setting): $($lang.SaveTo)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			if (Image_Is_Select_IAB) {
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
+
 				if (Verify_Is_Current_Same) {
 					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
 
@@ -380,16 +434,23 @@ Function InBox_Apps_Menu_Shortcuts_Add
 {
 	Write-Host "`n   $($lang.InboxAppsManager): $($lang.AddTo)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
-	if (Verify_Is_Current_Same) {
-		<#
-			.Assign available tasks
-			.分配可用的任务
-		#>
-		Event_Assign -Rule "InBox_Apps_Add_UI" -Run
-	} else {
+	if (Image_Is_Select_IAB) {
 		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
 		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+
+		if (Verify_Is_Current_Same) {
+			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+			<#
+				.Assign available tasks
+				.分配可用的任务
+			#>
+			Event_Assign -Rule "InBox_Apps_Add_UI" -Run
+		} else {
+			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+		}
+	} else {
+		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
 	}
 }
 
@@ -397,16 +458,23 @@ Function InBox_Apps_Menu_Shortcuts_Delete
 {
 	Write-Host "`n   $($lang.InboxAppsManager): $($lang.InboxAppsOfflineDel)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
-	if (Verify_Is_Current_Same) {
-		<#
-			.Assign available tasks
-			.分配可用的任务
-		#>
-		Event_Assign -Rule "InBox_Apps_Offline_Delete_UI" -Run
-	} else {
+	if (Image_Is_Select_IAB) {
 		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
 		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+
+		if (Verify_Is_Current_Same) {
+			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+			<#
+				.Assign available tasks
+				.分配可用的任务
+			#>
+			Event_Assign -Rule "InBox_Apps_Offline_Delete_UI" -Run
+		} else {
+			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+		}
+	} else {
+		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
 	}
 }
 
@@ -414,16 +482,23 @@ Function InBox_Apps_Menu_Shortcuts_LXPs_Add
 {
 	Write-Host "`n   $($lang.LocalExperiencePack): $($lang.AddTo)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
-	if (Verify_Is_Current_Same) {
-		<#
-			.Assign available tasks
-			.分配可用的任务
-		#>
-		Event_Assign -Rule "LXPs_Region_Add" -Run
-	} else {
+	if (Image_Is_Select_IAB) {
 		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
 		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+
+		if (Verify_Is_Current_Same) {
+			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+			<#
+				.Assign available tasks
+				.分配可用的任务
+			#>
+			Event_Assign -Rule "LXPs_Region_Add" -Run
+		} else {
+			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+		}
+	} else {
+		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
 	}
 }
 
@@ -431,16 +506,23 @@ Function InBox_Apps_Menu_Shortcuts_LXPs_Update
 {
 	Write-Host "`n   $($lang.LocalExperiencePack): $($lang.Update)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
-	if (Verify_Is_Current_Same) {
-		<#
-			.Assign available tasks
-			.分配可用的任务
-		#>
-		Event_Assign -Rule "LXPs_Update_UI" -Run
-	} else {
+	if (Image_Is_Select_IAB) {
 		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
 		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+
+		if (Verify_Is_Current_Same) {
+			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+			<#
+				.Assign available tasks
+				.分配可用的任务
+			#>
+			Event_Assign -Rule "LXPs_Update_UI" -Run
+		} else {
+			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+		}
+	} else {
+		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
 	}
 }
 
@@ -448,15 +530,22 @@ Function InBox_Apps_Menu_Shortcuts_LXPs_Delete
 {
 	Write-Host "`n   $($lang.LocalExperiencePack): $($lang.Del)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
-	if (Verify_Is_Current_Same) {
-		<#
-			.Assign available tasks
-			.分配可用的任务
-		#>
-		Event_Assign -Rule "LXPs_Remove_UI" -Run
-	} else {
+	if (Image_Is_Select_IAB) {
 		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
 		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+
+		if (Verify_Is_Current_Same) {
+			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+			<#
+				.Assign available tasks
+				.分配可用的任务
+			#>
+			Event_Assign -Rule "LXPs_Remove_UI" -Run
+		} else {
+			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+		}
+	} else {
+		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
 	}
 }

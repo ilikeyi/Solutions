@@ -1880,6 +1880,7 @@ Function LXPs_Region_Add
 #>
 Function InBox_Apps_LIPs_Clean_Process
 {
+	
 	<#
 		.初始化，获取预安装 InBox Apps 应用
 	#>
@@ -1893,128 +1894,133 @@ Function InBox_Apps_LIPs_Clean_Process
 		.判断挂载目录是否存在
 	#>
 	if (Image_Is_Select_IAB) {
-		if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
-			<#
-				.从设置里判断是否允许排除规则
-			#>
-			if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-				ForEach ($item in $Global:Exclude_InBox_Apps_Delete) {
-					$InitlUWPPrePakcageDelete += $item
-				}
-			}
+		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "   $('-' * 80)"
 
-			<#
-				.输出当前所有排除规则
-			#>
-			Write-Host "`n   $($lang.ExcludeItem)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
-			if ($InitlUWPPrePakcageDelete.count -gt 0) {
-				ForEach ($item in $InitlUWPPrePakcageDelete) {
-					Write-Host "   $($item)" -ForegroundColor Green
-				}
-			} else {
-				Write-Host "   $($lang.NoWork)" -ForegroundColor Red
-			}
+		if (Verify_Is_Current_Same) {
+			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
 
-			<#
-				.获取所有已安装的 InBox Apps 应用，并输出到数组
-			#>
-			Write-Host "`n   $($lang.GetInBoxApps)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
-			try {
-				Get-AppXProvisionedPackage -path $test_mount_folder_Current -ErrorAction SilentlyContinue | ForEach-Object {
-					$InitlUWPPrePakcage += $_.PackageName
-					Write-Host "   $($_.PackageName)" -ForegroundColor Green
-				}
-			} catch {
-				Write-Host "   $($_)" -ForegroundColor Yellow
-				Write-Host "   $($lang.SelectFromError)" -ForegroundColor Red
-				Write-Host "   $($lang.GetInBoxApps), $($lang.Inoperable)" -ForegroundColor Red
-				return
-			}
-
-			<#
-				.从排除规则获取需要排除的项目
-			#>
-			if ($InitlUWPPrePakcage.count -gt 0) {
-				ForEach ($Item in $InitlUWPPrePakcage) {
-					ForEach ($WildCard in $InitlUWPPrePakcageDelete) {
-						if ($item -like $WildCard) {
-							$InitlUWPPrePakcageExclude += $item
-						}
+			if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
+				<#
+					.从设置里判断是否允许排除规则
+				#>
+				if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+					ForEach ($item in $Global:Exclude_InBox_Apps_Delete) {
+						$InitlUWPPrePakcageDelete += $item
 					}
 				}
 
-				Write-Host "`n   $($lang.ExcludeItem): " -NoNewline -ForegroundColor Yellow
-				Write-Host "$($InitlUWPPrePakcageExclude.count) $($lang.EventManagerCount)" -ForegroundColor Green
+				<#
+					.输出当前所有排除规则
+				#>
+				Write-Host "`n   $($lang.ExcludeItem)" -ForegroundColor Yellow
 				Write-Host "   $('-' * 80)"
-				if ($InitlUWPPrePakcageExclude.count -gt 0) {
-					ForEach ($item in $InitlUWPPrePakcageExclude) {
+				if ($InitlUWPPrePakcageDelete.count -gt 0) {
+					ForEach ($item in $InitlUWPPrePakcageDelete) {
 						Write-Host "   $($item)" -ForegroundColor Green
 					}
 				} else {
 					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
 				}
 
-				Write-Host "`n   $($lang.LXPsWaitRemove)" -ForegroundColor Green
+				<#
+					.获取所有已安装的 InBox Apps 应用，并输出到数组
+				#>
+				Write-Host "`n   $($lang.GetInBoxApps)" -ForegroundColor Yellow
 				Write-Host "   $('-' * 80)"
-				ForEach ($item in $InitlUWPPrePakcage) {
-					if ($InitlUWPPrePakcageExclude -notContains $item) {
-						<#
-							.初始化每任务运行时间
-						#>
-						$InBoxAppsTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
-						$InBoxAppsTasksTime = New-Object System.Diagnostics.Stopwatch
-						$InBoxAppsTasksTime.Reset()
-						$InBoxAppsTasksTime.Start()
-
-						Write-Host "   $($lang.TimeStart)" -NoNewline
-						Write-Host "$($InBoxAppsTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
-						Write-Host "   $('-' * 80)"
-
-						Write-Host "   $($lang.RuleFileType): ".PadRight(21) -NoNewline -ForegroundColor Yellow
-						Write-Host $item -ForegroundColor Green
-
-						if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-							Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-							Write-Host "   $('-' * 80)"
-							Write-Host "   Remove-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackageName ""$($item)""`n" -ForegroundColor Green
-						}
-
-						Write-Host "   $($lang.Del)".PadRight(21) -NoNewline
-						try {
-							Remove-AppxProvisionedPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove-AppxProvisionedPackage.log" -Path $test_mount_folder_Current -PackageName $item -ErrorAction SilentlyContinue | Out-Null
-							Write-Host $lang.Done -ForegroundColor Green
-						} catch {
-							Write-Host $_
-							Write-Host "   $($lang.Failed)" -ForegroundColor Red
-						}
-
-						$InBoxAppsTasksTime.Stop()
-						Write-Host "`n   $($lang.TimeEnd)" -NoNewline
-						Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-
-						Write-Host "   $($lang.TimeEndAll)" -NoNewline
-						Write-Host $InBoxAppsTasksTime.Elapsed -ForegroundColor Yellow
-
-						Write-Host "   $($lang.TimeEndAllseconds)" -NoNewline
-						Write-Host "$($InBoxAppsTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
-						Write-Host "   $('-' * 80)"
-						Write-Host
+				try {
+					Get-AppXProvisionedPackage -path $test_mount_folder_Current -ErrorAction SilentlyContinue | ForEach-Object {
+						$InitlUWPPrePakcage += $_.PackageName
+						Write-Host "   $($_.PackageName)" -ForegroundColor Green
 					}
+				} catch {
+					Write-Host "   $($_)" -ForegroundColor Yellow
+					Write-Host "   $($lang.SelectFromError)" -ForegroundColor Red
+					Write-Host "   $($lang.GetInBoxApps), $($lang.Inoperable)" -ForegroundColor Red
+					return
+				}
+
+				<#
+					.从排除规则获取需要排除的项目
+				#>
+				if ($InitlUWPPrePakcage.count -gt 0) {
+					ForEach ($Item in $InitlUWPPrePakcage) {
+						ForEach ($WildCard in $InitlUWPPrePakcageDelete) {
+							if ($item -like $WildCard) {
+								$InitlUWPPrePakcageExclude += $item
+							}
+						}
+					}
+
+					Write-Host "`n   $($lang.ExcludeItem): " -NoNewline -ForegroundColor Yellow
+					Write-Host "$($InitlUWPPrePakcageExclude.count) $($lang.EventManagerCount)" -ForegroundColor Green
+					Write-Host "   $('-' * 80)"
+					if ($InitlUWPPrePakcageExclude.count -gt 0) {
+						ForEach ($item in $InitlUWPPrePakcageExclude) {
+							Write-Host "   $($item)" -ForegroundColor Green
+						}
+					} else {
+						Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					}
+
+					Write-Host "`n   $($lang.LXPsWaitRemove)" -ForegroundColor Green
+					Write-Host "   $('-' * 80)"
+					ForEach ($item in $InitlUWPPrePakcage) {
+						if ($InitlUWPPrePakcageExclude -notContains $item) {
+							<#
+								.初始化每任务运行时间
+							#>
+							$InBoxAppsTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
+							$InBoxAppsTasksTime = New-Object System.Diagnostics.Stopwatch
+							$InBoxAppsTasksTime.Reset()
+							$InBoxAppsTasksTime.Start()
+
+							Write-Host "   $($lang.TimeStart)" -NoNewline
+							Write-Host "$($InBoxAppsTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
+							Write-Host "   $('-' * 80)"
+
+							Write-Host "   $($lang.RuleFileType): ".PadRight(21) -NoNewline -ForegroundColor Yellow
+							Write-Host $item -ForegroundColor Green
+
+							if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
+								Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
+								Write-Host "   $('-' * 80)"
+								Write-Host "   Remove-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackageName ""$($item)""`n" -ForegroundColor Green
+							}
+
+							Write-Host "   $($lang.Del)".PadRight(21) -NoNewline
+							try {
+								Remove-AppxProvisionedPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove-AppxProvisionedPackage.log" -Path $test_mount_folder_Current -PackageName $item -ErrorAction SilentlyContinue | Out-Null
+								Write-Host $lang.Done -ForegroundColor Green
+							} catch {
+								Write-Host $_
+								Write-Host "   $($lang.Failed)" -ForegroundColor Red
+							}
+
+							$InBoxAppsTasksTime.Stop()
+							Write-Host "`n   $($lang.TimeEnd)" -NoNewline
+							Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
+
+							Write-Host "   $($lang.TimeEndAll)" -NoNewline
+							Write-Host $InBoxAppsTasksTime.Elapsed -ForegroundColor Yellow
+
+							Write-Host "   $($lang.TimeEndAllseconds)" -NoNewline
+							Write-Host "$($InBoxAppsTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
+							Write-Host "   $('-' * 80)"
+							Write-Host
+						}
+					}
+				} else {
+					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
 				}
 			} else {
-				Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+				Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
 			}
 		} else {
-			Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.NotMounted)`n" -ForegroundColor Red
+			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.NotMounted)`n" -ForegroundColor Red
+		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
 	}
 }
 

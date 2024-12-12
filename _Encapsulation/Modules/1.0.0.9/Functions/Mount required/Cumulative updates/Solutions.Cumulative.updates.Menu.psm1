@@ -44,7 +44,7 @@ Function Update_Menu
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host $lang.AddTo -ForegroundColor Green
-		} else{
+		} else {
 			Write-Host $lang.AddTo -ForegroundColor Red
 		}
 	} else {
@@ -154,15 +154,18 @@ Function Update_Menu
 			Write-Host "`n   $($lang.CuringUpdate)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			if (Image_Is_Select_IAB) {
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
+
 				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
 					New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
 					Event_Process_Task_Need_Mount
 					New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 
 					Get_Next
 				} else {
-					Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
 					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
 				}
 			} else {
@@ -176,15 +179,18 @@ Function Update_Menu
 			Write-Host "`n   $($lang.Superseded)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			if (Image_Is_Select_IAB) {
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
+
 				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
 					New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
 					Image_Clear_Superseded
 					New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 
 					Get_Next
 				} else {
-					Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
 					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
 				}
 			} else {
@@ -198,7 +204,12 @@ Function Update_Menu
 			Write-Host "`n   $($lang.Superseded)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			if (Image_Is_Select_IAB) {
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
+
 				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
 					New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
 					New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
 					Image_Clear_Superseded
@@ -207,8 +218,6 @@ Function Update_Menu
 
 					Get_Next
 				} else {
-					Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
 					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
 				}
 			} else {
@@ -224,7 +233,12 @@ Function Update_Menu
 			Write-Host "   $($lang.ExportToLogs)" -ForegroundColor Yellow
 
 			if (Image_Is_Select_IAB) {
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
+
 				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
 					$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 					if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
 						$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report"
@@ -235,8 +249,6 @@ Function Update_Menu
 					Image_Get_Components_Package -Save $Temp_Export_SaveTo
 					Get_Next
 				} else {
-					Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
 					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
 				}
 			} else {
@@ -252,7 +264,12 @@ Function Update_Menu
 			Write-Host "   $($lang.ExportToLogs)" -ForegroundColor Yellow
 
 			if (Image_Is_Select_IAB) {
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
+
 				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
 					$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 					if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
 						$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report"
@@ -263,8 +280,6 @@ Function Update_Menu
 					Image_Get_Components_Package -Save $Temp_Export_SaveTo -View
 					Get_Next
 				} else {
-					Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
 					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
 				}
 			} else {
@@ -278,13 +293,14 @@ Function Update_Menu
 			Write-Host "`n   $($lang.Setting): $($lang.SaveTo)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			if (Image_Is_Select_IAB) {
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
+
 				if (Verify_Is_Current_Same) {
 					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
 
 					Setting_Export_To_UI
 				} else {
-					Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
 					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
 				}
 			} else {
@@ -409,15 +425,18 @@ Function Update_Menu_Shortcuts_Add
 	Write-Host "`n   $($lang.CUpdate): $($lang.AddTo)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 	if (Image_Is_Select_IAB) {
+		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "   $('-' * 80)"
+
 		if (Verify_Is_Current_Same) {
+			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
 			<#
 				.Assign available tasks
 				.分配可用的任务
 			#>
 			Event_Assign -Rule "Cumulative_updates_Add_UI" -Run
 		} else {
-			Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
 			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
 		}
 	} else {
@@ -430,15 +449,18 @@ Function Update_Menu_Shortcuts_Delete
 	Write-Host "`n   $($lang.CUpdate): $($lang.Del)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 	if (Image_Is_Select_IAB) {
+		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "   $('-' * 80)"
+
 		if (Verify_Is_Current_Same) {
+			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
 			<#
 				.Assign available tasks
 				.分配可用的任务
 			#>
 			Event_Assign -Rule "Cumulative_updates_Delete_UI" -Run
 		} else {
-			Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
 			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
 		}
 	} else {

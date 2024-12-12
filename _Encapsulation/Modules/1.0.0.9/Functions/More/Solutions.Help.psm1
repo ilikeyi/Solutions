@@ -210,7 +210,10 @@ Function Solutions_Help_Command
 			Write-host "FX *" -ForegroundColor Green
 
 			Functions_Tasks_List
-			Get_Next
+
+			if (-not $Silent) {
+				Get_Next
+			}
 		}
 		{ "O", "Od", "O'D" -eq $_ } {
 			Write-Host "   $($lang.Command): " -NoNewline

@@ -64,9 +64,10 @@ Function Functions_Menu
 		Write-Host $lang.Functions_Rear -ForegroundColor Red
 	}
 
-
-	Write-Host "`n      F   " -NoNewline -ForegroundColor Yellow
-	Write-Host $lang.Function_Unrestricted -ForegroundColor Green
+	Write-Host
+	Write-Host "   " -NoNewline
+	Write-Host " FX * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " $($lang.Function_Unrestricted) " -ForegroundColor Green
 
 	Write-Host
 	Write-Host "   " -NoNewline
@@ -85,8 +86,36 @@ Function Functions_Menu
 			ToWait -wait 2
 			Functions_Menu
 		}
-		"F" {
+		"FX" {
 			Functions_Unrestricted_UI
+			ToWait -wait 2
+			Functions_Menu
+		}
+		"FX *" {
+			$Global:Function_Unrestricted = @()
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+
+			Write-Host "`n   $($lang.Command): " -NoNewline
+			Write-host "FX" -ForegroundColor Green
+
+			$NewRuleName = $PSItem.Remove(0, 3).Replace(' ', '')
+			Write-Host "   $($lang.RuleName): " -NoNewline
+			Write-host $NewRuleName -ForegroundColor Green
+
+			switch ($NewRuleName) {
+				"list" {
+					Functions_Tasks_List
+					Get_Next
+				}
+				default {
+					if ([string]::IsNullOrEmpty($NewRuleName)) {
+						Functions_Unrestricted_UI
+					} else {
+						Functions_Unrestricted_UI -Custom "Other_Tasks_$($NewRuleName)"
+					}
+				}
+			}
+
 			ToWait -wait 2
 			Functions_Menu
 		}

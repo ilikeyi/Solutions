@@ -125,15 +125,24 @@ Function Drive_Menu
 			Write-Host "   $($lang.ExportToLogs)" -ForegroundColor Yellow
 
 			if (Image_Is_Select_IAB) {
-				$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
-				if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
-					$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report"
-				} else {
-					$Temp_Export_SaveTo = $Temp_Expand_Rule
-				}
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
 
-				Image_Get_Installed_Drive -Save $Temp_Export_SaveTo
-				Get_Next
+				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+					$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+					if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
+						$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report"
+					} else {
+						$Temp_Export_SaveTo = $Temp_Expand_Rule
+					}
+
+					Image_Get_Installed_Drive -Save $Temp_Export_SaveTo
+					Get_Next
+				} else {
+					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+				}
 			} else {
 				Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
 			}
@@ -144,18 +153,27 @@ Function Drive_Menu
 		"s" {
 			Write-Host "`n   $($lang.ViewDrive)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
-
 			Write-Host "   $($lang.ExportToLogs)" -ForegroundColor Yellow
-			if (Image_Is_Select_IAB) {
-				$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
-				if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
-					$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report"
-				} else {
-					$Temp_Export_SaveTo = $Temp_Expand_Rule
-				}
 
-				Image_Get_Installed_Drive -Save $Temp_Export_SaveTo -View
-				Get_Next
+			if (Image_Is_Select_IAB) {
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
+
+				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+					$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+					if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
+						$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report"
+					} else {
+						$Temp_Export_SaveTo = $Temp_Expand_Rule
+					}
+
+					Image_Get_Installed_Drive -Save $Temp_Export_SaveTo -View
+					Get_Next
+				} else {
+					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+				}
 			} else {
 				Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
 			}
@@ -167,13 +185,14 @@ Function Drive_Menu
 			Write-Host "`n   $($lang.Setting): $($lang.SaveTo)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			if (Image_Is_Select_IAB) {
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
+
 				if (Verify_Is_Current_Same) {
 					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
 
 					Setting_Export_To_UI
 				} else {
-					Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
 					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
 				}
 			} else {
@@ -296,11 +315,14 @@ Function Drive_Menu_Shortcuts_Add
 	Write-Host "`n   $($lang.Drive): $($lang.AddTo)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 	if (Image_Is_Select_IAB) {
+		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "   $('-' * 80)"
+
 		if (Verify_Is_Current_Same) {
+			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
 			Event_Assign -Rule "Drive_Add_UI" -Run
 		} else {
-			Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
 			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
 		}
 	} else {
@@ -313,11 +335,14 @@ Function Drive_Menu_Shortcuts_Delete
 	Write-Host "`n   $($lang.Drive): $($lang.Del)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 	if (Image_Is_Select_IAB) {
+		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "   $('-' * 80)"
+
 		if (Verify_Is_Current_Same) {
+			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
 			Event_Assign -Rule "Drive_Delete_UI" -Run
 		} else {
-			Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
 			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
 		}
 	} else {

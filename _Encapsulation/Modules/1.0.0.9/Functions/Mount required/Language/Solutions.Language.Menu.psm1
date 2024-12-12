@@ -400,18 +400,24 @@ Function Language_Menu
 		"c" {
 			Write-Host "`n   $($lang.OnlyLangCleanup)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
 
-			if (Verify_Is_Current_Same) {
-				Write-Host "   $($lang.Mounted)" -ForegroundColor Green
-				<#
-					.Assign available tasks
-					.分配可用的任务
-				#>
-				Event_Assign -Rule "Language_Cleanup_Components_UI" -Run
+			if (Image_Is_Select_IAB) {
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
+
+				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+					<#
+						.Assign available tasks
+						.分配可用的任务
+					#>
+					Event_Assign -Rule "Language_Cleanup_Components_UI" -Run
+				} else {
+					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+				}
 			} else {
-				Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+				Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
 			}
 
 			ToWait -wait 2
@@ -420,12 +426,22 @@ Function Language_Menu
 		"r" {
 			Write-Host "`n   $($lang.LangIni)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
-			if (Verify_Is_Current_Same) {
-				if (Image_Is_Select_Boot) {
-					Language_Refresh_Ini
-					Get_Next
+
+			if (Image_Is_Select_IAB) {
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
+
+				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+					if (Image_Is_Select_Boot) {
+						Language_Refresh_Ini
+						Get_Next
+					} else {
+						Write-Host "   $($lang.BootProcess -f "boot")" -ForegroundColor Red
+					}
 				} else {
-					Write-Host "   $($lang.BootProcess -f "boot")" -ForegroundColor Red
+					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
 				}
 			} else {
 				Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
@@ -444,6 +460,7 @@ Function Language_Menu
 
 				if (Verify_Is_Current_Same) {
 					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 						Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
 						Write-Host "   $('-' * 80)"
@@ -469,15 +486,24 @@ Function Language_Menu
 			Write-Host "   $($lang.ExportToLogs)" -ForegroundColor Yellow
 
 			if (Image_Is_Select_IAB) {
-				$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
-				if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
-					$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report"
-				} else {
-					$Temp_Export_SaveTo = $Temp_Expand_Rule
-				}
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
 
-				Image_Get_Components_Package -Save $Temp_Export_SaveTo
-				Get_Next
+				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+					$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+					if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
+						$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report"
+					} else {
+						$Temp_Export_SaveTo = $Temp_Expand_Rule
+					}
+
+					Image_Get_Components_Package -Save $Temp_Export_SaveTo
+					Get_Next
+				} else {
+					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+				}
 			} else {
 				Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
 			}
@@ -491,15 +517,24 @@ Function Language_Menu
 			Write-Host "   $($lang.ExportToLogs)" -ForegroundColor Yellow
 
 			if (Image_Is_Select_IAB) {
-				$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
-				if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
-					$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report"
-				} else {
-					$Temp_Export_SaveTo = $Temp_Expand_Rule
-				}
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
 
-				Image_Get_Components_Package -Save $Temp_Export_SaveTo -View
-				Get_Next
+				if (Verify_Is_Current_Same) {
+					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+
+					$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+					if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
+						$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report"
+					} else {
+						$Temp_Export_SaveTo = $Temp_Expand_Rule
+					}
+
+					Image_Get_Components_Package -Save $Temp_Export_SaveTo -View
+					Get_Next
+				} else {
+					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+				}
 			} else {
 				Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
 			}
@@ -511,6 +546,9 @@ Function Language_Menu
 			Write-Host "`n   $($lang.Setting): $($lang.SaveTo)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			if (Image_Is_Select_IAB) {
+				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "   $('-' * 80)"
+		
 				if (Verify_Is_Current_Same) {
 					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
 

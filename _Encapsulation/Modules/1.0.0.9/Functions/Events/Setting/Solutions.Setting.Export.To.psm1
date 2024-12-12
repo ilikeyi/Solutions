@@ -72,6 +72,7 @@ Function Setting_Export_To_UI
 		}
 	}
 	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
 		Location       = "620,635"
 		Height         = 36
 		Width          = 280
