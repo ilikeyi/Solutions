@@ -41,8 +41,8 @@ Function Event_Completion_Setting_UI
 			}
 		}
 
-		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 		$UI_Main_Error.Text = "$($lang.Save), $($lang.Done)"
+		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 		return $true
 	}
 

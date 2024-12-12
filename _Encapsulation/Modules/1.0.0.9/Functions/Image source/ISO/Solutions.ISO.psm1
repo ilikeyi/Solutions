@@ -118,8 +118,8 @@ Function ISO_Create_UI
 
 		Refres_Event_Tasks_ISO_Create
 
-		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 		$UI_Main_Error.Text = "$($lang.EventManagerCurrentClear), $($lang.Done)"
+		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 	}
 
 	<#
@@ -715,8 +715,8 @@ Function ISO_Create_UI
 	#>
 	Function ISO_Create_Refresh_Event_Status
 	{
-		$UI_Main_Error_Icon.Image = $null
 		$UI_Main_Error.Text = ""
+		$UI_Main_Error_Icon.Image = $null
 
 		if ($UI_Main_Is_Create_ISO.Enabled) {
 			if ($UI_Main_Is_Create_ISO.Checked) {
@@ -803,8 +803,8 @@ Function ISO_Create_UI
 		margin         = "0,35,0,0"
 		Text           = $lang.ISORefreshAuto
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 
 			if ($GUIISORefreshAuto.Checked) {
 				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -name "IsRefreshLabel" -value "True" -String
@@ -863,8 +863,8 @@ Function ISO_Create_UI
 		Padding        = "52,0,0,0"
 		Checked        = $True
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 		}
 	}
 	$GUIISOCheckISO9660Tips = New-Object system.Windows.Forms.Label -Property @{
@@ -1655,6 +1655,7 @@ Function ISO_Create_UI
 				}
 			} else {
 				$UI_Main_Error.Text = $lang.UserCanel
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			}
 		}
 	}
@@ -1672,18 +1673,18 @@ Function ISO_Create_UI
 			$UI_Main_Error_Icon.Image = $null
 			
 			if ([string]::IsNullOrEmpty($GUIISOSaveCustomizePath.Text)) {
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				$GUIISOSaveCustomizePath.BackColor = "LightPink"
 			} else {
 				if (Test-Path -Path $GUIISOSaveCustomizePath.Text -PathType Container) {
 					Start-Process $GUIISOSaveCustomizePath.Text
 
-					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 					$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Done)"
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 				} else {
-					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					$GUIISOSaveCustomizePath.BackColor = "LightPink"
 				}
 			}
@@ -1702,14 +1703,14 @@ Function ISO_Create_UI
 			$UI_Main_Error_Icon.Image = $null
 
 			if ([string]::IsNullOrEmpty($GUIISOSaveCustomizePath.Text)) {
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				$UI_Main_Error.Text = "$($lang.Paste), $($lang.Inoperable)"
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				$GUIISOSaveCustomizePath.BackColor = "LightPink"
 			} else {
 				Set-Clipboard -Value $GUIISOSaveCustomizePath.Text
 
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 				$UI_Main_Error.Text = "$($lang.Paste), $($lang.Done)"
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			}
 		}
 	}
@@ -1788,14 +1789,14 @@ Function ISO_Create_UI
 			$UI_Main_Error_Icon.Image = $null
 
 			if ([string]::IsNullOrEmpty($GUIISOSaveShow.Text)) {
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				$UI_Main_Apply_Detailed_Error.Text = "$($lang.Paste), $($lang.Inoperable)"
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				$GUIISOSaveShow.BackColor = "LightPink"
 			} else {
 				Set-Clipboard -Value $GUIISOSaveShow.Text
 
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 				$UI_Main_Error.Text = "$($lang.Paste), $($lang.Done)"
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			}
 		}
 	}
@@ -1835,8 +1836,8 @@ Function ISO_Create_UI
 		Padding        = "20,0,0,0"
 		Text           = $lang.Reconstruction -f "boot"
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 
 			if ($GUIISORebuldBoot.Checked) {
 				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -name "DoNotCheckBootSize" -value "True" -String
@@ -1861,8 +1862,8 @@ Function ISO_Create_UI
 		Padding        = "20,0,0,0"
 		Text           = $lang.Reconstruction -f "install"
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 		}
 	}
 	$GUIISORebuldInstallTips = New-Object system.Windows.Forms.Label -Property @{
@@ -1880,8 +1881,8 @@ Function ISO_Create_UI
 		Width          = 455
 		Text           = $lang.ISOCreateRear
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 		}
 	}
 
@@ -1894,8 +1895,8 @@ Function ISO_Create_UI
 		Padding        = "20,0,0,0"
 		Text           = $lang.Bypass_TPM
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 
 			if ($GUIISOBypassTPM.Checked) {
 				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -name "IsBypassTPM" -value "True" -String
@@ -1936,8 +1937,8 @@ Function ISO_Create_UI
 		Padding        = "20,0,0,0"
 		Text           = $lang.CreateSHA256
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 		}
 	}
 	$GUIISOEmptyDirectory = New-Object System.Windows.Forms.CheckBox -Property @{
@@ -1946,8 +1947,8 @@ Function ISO_Create_UI
 		Padding        = "20,0,0,0"
 		Text           = $lang.EmptyDirectory
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 		}
 	}
 
@@ -1957,8 +1958,8 @@ Function ISO_Create_UI
 		Padding        = "20,0,0,0"
 		Text           = $lang.CreateASC
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 
 			if ($GUIISOCreateASC.Checked) {
 				$GUIISOCreateASCPanel.Enabled = $True
@@ -1986,8 +1987,8 @@ Function ISO_Create_UI
 		Width          = 395
 		Text           = $Global:secure_password
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 		}
 	}
 
@@ -2003,8 +2004,8 @@ Function ISO_Create_UI
 		Text           = ""
 		DropDownStyle  = "DropDownList"
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 		}
 	}
 
@@ -2616,8 +2617,8 @@ Function ISO_Create_UI
 		
 					Refres_Event_Tasks_ISO_Create
 
-					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 					$UI_Main_Error.Text = "$($lang.Save), $($lang.Done)"
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 
 					return $True
 				} else {

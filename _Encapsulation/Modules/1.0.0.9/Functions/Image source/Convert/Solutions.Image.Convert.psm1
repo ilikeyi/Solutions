@@ -128,8 +128,8 @@ Function Image_Convert_UI
 
 			Refres_Event_Tasks_Image_Convert
 
-			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Error.Text = "$($lang.Save), $($lang.Done)"
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			return $True
 		}
 
@@ -173,8 +173,8 @@ Function Image_Convert_UI
 
 			Refres_Event_Tasks_Image_Convert
 
-			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Error.Text = "$($lang.Save), $($lang.Done)"
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			return $True
 		}
 
@@ -231,8 +231,8 @@ Function Image_Convert_UI
 
 			Refres_Event_Tasks_Image_Convert
 
-			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Error.Text = "$($lang.Save), $($lang.Done)"
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			return $True
 		}
 
@@ -266,13 +266,13 @@ Function Image_Convert_UI
 
 			Refres_Event_Tasks_Image_Convert
 
-			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Error.Text = "$($lang.Save), $($lang.Done)"
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			return $True
 		}
 
-		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 		$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.NoChoose)"
+		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 		return $False
 	}
 
@@ -469,8 +469,8 @@ Function Image_Convert_UI
 		Text           = "$($lang.Rebuild): Install.wim"
 		Enabled        = $False
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 		}
 	}
 
@@ -484,8 +484,8 @@ Function Image_Convert_UI
 		Text           = $lang.ConvertSplit
 		Enabled        = $False
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 
 			if ($This.Checked) {
 				$GUIImageConvertSplitSelect.Enabled = $True
@@ -532,8 +532,8 @@ Function Image_Convert_UI
 		Add_SelectedValueChanged = {
 		}
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 		}
 	}
 
@@ -583,8 +583,8 @@ Function Image_Convert_UI
 		Text           = $lang.ConvertBackup
 		Checked        = $True
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 		}
 	}
 	$GUIImageConvertBackupTips = New-Object system.Windows.Forms.Label -Property @{

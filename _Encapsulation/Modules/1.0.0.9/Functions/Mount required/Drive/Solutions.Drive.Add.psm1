@@ -66,12 +66,12 @@ Function Drive_Add_UI
 
 			Refres_Event_Tasks_Drive_Add_UI
 
-			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Error.Text = "$($lang.Save), $($lang.Done)"
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			return $True
 		} else {
-			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.NoChoose)"
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			return $False
 		}
 	}
@@ -100,8 +100,8 @@ Function Drive_Add_UI
 
 		Refres_Event_Tasks_Drive_Add_UI
 
-		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 		$UI_Main_Error.Text = "$($lang.EventManagerCurrentClear), $($lang.Done)"
+		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 	}
 
 	Function Drive_Add_Refresh_Sources
@@ -178,19 +178,19 @@ Function Drive_Add_UI
 					add_Click       = {
 						$UI_Main_Error.Text = ""
 						$UI_Main_Error_Icon.Image = $null
-			
+
 						if ([string]::IsNullOrEmpty($This.Tag)) {
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 							$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 						} else {
 							if (Test-Path -Path $This.Tag -PathType Container) {
 								Start-Process $This.Tag
-			
-								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+
 								$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Done)"
+								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 							} else {
-								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 								$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 							}
 						}
 					}
@@ -208,19 +208,19 @@ Function Drive_Add_UI
 					add_Click       = {
 						$UI_Main_Error.Text = ""
 						$UI_Main_Error_Icon.Image = $null
-			
+
 						if ([string]::IsNullOrEmpty($This.Tag)) {
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 							$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 						} else {
 							if (Test-Path -Path $This.Tag -PathType Container) {
 								Start-Process $This.Tag
-			
-								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+
 								$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Done)"
+								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 							} else {
-								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 								$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 							}
 						}
 					}
@@ -238,15 +238,15 @@ Function Drive_Add_UI
 					add_Click       = {
 						$UI_Main_Error.Text = ""
 						$UI_Main_Error_Icon.Image = $null
-	
+
 						if ([string]::IsNullOrEmpty($This.Tag)) {
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 							$UI_Main_Error.Text = "$($lang.Paste), $($lang.Inoperable)"
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 						} else {
 							Set-Clipboard -Value $This.Tag
-	
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+
 							$UI_Main_Error.Text = "$($lang.Paste), $($lang.Done)"
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 						}
 					}
 				}
@@ -373,17 +373,17 @@ Function Drive_Add_UI
 						$UI_Main_Error_Icon.Image = $null
 
 						if ([string]::IsNullOrEmpty($This.Tag)) {
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 							$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 						} else {
 							if (Test-Path -Path $This.Tag -PathType Container) {
 								Start-Process $This.Tag
-			
-								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+
 								$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Done)"
+								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 							} else {
-								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 								$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 							}
 						}
 					}
@@ -401,19 +401,19 @@ Function Drive_Add_UI
 					add_Click       = {
 						$UI_Main_Error.Text = ""
 						$UI_Main_Error_Icon.Image = $null
-			
+
 						if ([string]::IsNullOrEmpty($This.Tag)) {
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 							$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 						} else {
 							if (Test-Path -Path $This.Tag -PathType Container) {
 								Start-Process $This.Tag
-			
-								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+
 								$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Done)"
+								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 							} else {
-								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 								$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 							}
 						}
 					}
@@ -433,13 +433,13 @@ Function Drive_Add_UI
 						$UI_Main_Error_Icon.Image = $null
 
 						if ([string]::IsNullOrEmpty($This.Tag)) {
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 							$UI_Main_Error.Text = "$($lang.Paste), $($lang.Inoperable)"
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 						} else {
 							Set-Clipboard -Value $This.Tag
-	
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+
 							$UI_Main_Error.Text = "$($lang.Paste), $($lang.Done)"
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 						}
 					}
 				}
@@ -563,15 +563,15 @@ Function Drive_Add_UI
 					}
 
 					if ($Get_Temp_Select_Update_Add_Folder -Contains $filename) {
-						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 						$UI_Main_Error.Text = $lang.Existed
+						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					} else {
 						$Script:Temp_Select_Custom_Folder_Queue += $filename
 						Drive_Add_Refresh_Sources
 					}
 				} else {
-					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.SelectFolder)"
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				}
 			}
 		}
@@ -780,15 +780,15 @@ Function Drive_Add_UI
 
 			if ($FolderBrowser.ShowDialog() -eq "OK") {
 				if ($Get_Temp_Select_Update_Add_Folder -Contains $FolderBrowser.SelectedPath) {
-					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					$UI_Main_Error.Text = $lang.Existed
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				} else {
 					$Script:Temp_Select_Custom_Folder_Queue += $FolderBrowser.SelectedPath
 					Drive_Add_Refresh_Sources
 				}
 			} else {
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				$UI_Main_Error.Text = $lang.UserCanel
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			}
 		}
 	}

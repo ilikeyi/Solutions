@@ -45,8 +45,8 @@ Function ISO_Associated_UI
 
 		Refres_Event_Tasks_ISO_Associated
 
-		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 		$UI_Main_Error.Text = "$($lang.EventManagerCurrentClear), $($lang.Done)"
+		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 	}
 
 	Function ISO_Associated_Refresh_Sources
@@ -68,17 +68,17 @@ Function ISO_Associated_UI
 				$UI_Main_Error_Icon.Image = $null
 
 				if ([string]::IsNullOrEmpty($This.Tag)) {
-					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				} else {
 					if (Test-Path -Path $This.Tag -PathType Container) {
 						Start-Process $This.Tag
-	
-						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+
 						$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Done)"
+						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 					} else {
-						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 						$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					}
 				}
 			}
@@ -276,8 +276,8 @@ Function ISO_Associated_UI
 
 			Refres_Event_Tasks_ISO_Associated
 
-			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Error.Text = "$($lang.Save), $($lang.Done)"
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 		}
 	}
 	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
@@ -313,8 +313,8 @@ Function ISO_Associated_UI
 		ISO_Associated_Refresh_Sources
 		Refres_Event_Tasks_ISO_Associated
 	} else {
-		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 		$UI_Main_Error.Text = $lang.Inoperable
+		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 
 		$UI_Main_Event_Clear.Enabled = $False
 		$UI_Main_Save.Enabled = $False

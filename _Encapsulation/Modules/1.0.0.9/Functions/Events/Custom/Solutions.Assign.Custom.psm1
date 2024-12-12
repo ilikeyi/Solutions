@@ -2219,8 +2219,8 @@ Function Image_Assign_Event_Master
 		Tag            = "Image_Convert_UI"
 		Checked        = $True
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 		}
 	}
 	$GUIImageSelectFunctionISO = New-Object System.Windows.Forms.CheckBox -Property @{
@@ -2231,8 +2231,8 @@ Function Image_Assign_Event_Master
 		Tag            = "ISO_Create_UI"
 		Checked        = $True
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 		}
 	}
 
@@ -2261,8 +2261,8 @@ Function Image_Assign_Event_Master
 		Checked        = $True
 		ForeColor      = "#DAA520"
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 		}
 	}
 	$GUIImageSelectFunctionWaitTime = New-Object System.Windows.Forms.CheckBox -Property @{
@@ -2274,8 +2274,8 @@ Function Image_Assign_Event_Master
 		Checked        = $True
 		ForeColor      = "#DAA520"
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 		}
 	}
 
@@ -2288,8 +2288,8 @@ Function Image_Assign_Event_Master
 		Width          = 485
 		Text           = $lang.AssignSkip
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 
 			if ($this.Checked) {
 				$UI_Main_Select_Wim.Enabled = $False
@@ -2402,8 +2402,8 @@ Function Image_Assign_Event_Master
 					if ($Global:Queue_Assign_Not_Monuted_Expand_Select.Count -gt 0) {
 						$UI_Main.Close()
 					} else {
-						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 						$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.AssignNoMount)"
+						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					}
 				} else {
 					<#
@@ -2583,8 +2583,8 @@ Function Image_Assign_Event_Master
 										if (($Mul_Temp_Save_UI_Main.Count -gt 0) -or ($Mul_Temp_Save_UI_Expand.Count -gt 0)) {
 											$Mark_Allow_Add_To = $True
 										} else {
-											$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 											$UI_Main_Error.Text = "$($lang.Event_Primary_Key), $($item.Main.ImageFileName)"
+											$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 											return
 										}
 										#endregion
@@ -2786,8 +2786,8 @@ Function Image_Assign_Event_Master
 									if (($Temp_New_Save_UI_Expand.Count -gt 0) -or ($Temp_New_Save_UI_Expand_Expand.Count -gt 0)) {
 										$Mark_Allow_Add_To = $True
 									} else {
-										$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 										$UI_Main_Error.Text = "$($lang.Event_Primary_Key), $($item.Main.ImageFileName)"
+										$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 										return
 									}
 									#endregion
@@ -2929,8 +2929,8 @@ Function Image_Assign_Event_Master
 	
 						$UI_Main.Close()
 					} else {
+						$UI_Main_Error.Text = $lang.IABSelectNo
 						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
-						$UI_Main_Error.Text = "$($lang.IABSelectNo)"
 					}
 				}
 			} else {
@@ -2947,8 +2947,8 @@ Function Image_Assign_Event_Master
 				}
 				#endregion
 
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.NoChoose)"
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			}
 		}
 	}

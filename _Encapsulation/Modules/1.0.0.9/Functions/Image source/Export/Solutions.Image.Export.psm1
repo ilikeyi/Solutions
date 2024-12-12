@@ -252,8 +252,8 @@ Function Image_Select_Export_UI
 					}
 				}
 			} else {
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.NoChoose)"
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			}
 		}
 	}

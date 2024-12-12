@@ -31,8 +31,8 @@ Function Event_Completion_Start_Setting_UI
 			}
 		}
 
-		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 		$UI_Main_Error.Text = "$($lang.Save), $($lang.Done)"
+		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 	}
 
 	<#
@@ -155,8 +155,8 @@ Function Event_Completion_Start_Setting_UI
 
 			Autopilot_Event_Completion_Save
 
-			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Error.Text = "$($lang.Image_Popup_Default), $($lang.Done)"
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 		}
 	}
 
@@ -175,8 +175,8 @@ Function Event_Completion_Start_Setting_UI
  			$UI_Time_Time.Text = "0"
 			$UI_Time_Minute.Text = "30"
 
-			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Error.Text = "$($lang.Image_Restore_Default), $($lang.Done)"
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 		}
 	}
 

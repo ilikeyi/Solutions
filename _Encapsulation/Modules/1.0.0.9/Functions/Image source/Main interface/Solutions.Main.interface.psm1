@@ -597,8 +597,8 @@ Function Image_Select
 			.判断：6. 不能大于 260 字符
 		#>
 		if ($UIUnzip_Search_Sift_Custon.Text.length -gt 6) {
-			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.ISOLengthError -f "6")"
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			$UIUnzip_Search_Sift_Custon.BackColor = "LightPink"
 			return
 		}
@@ -1670,11 +1670,11 @@ Write-Host "Test"
 		$UI_Main_Error.Text = ""
 		$UI_Main_Error_Icon.Image = $null
 
-		<#
-			.禁用确定按钮
-		#>
-		$UI_Main_Ok.Enabled = $False
-		$UI_Main_To.Visible = $False
+		$UI_Main_Ok.Visible = $False                    # 隐藏: 确定按钮
+		$UI_Main_To.Visible = $False                    # 隐藏：前往到
+		$GUIImageSourceGroupMount.Visible = $False      # 动态显示：挂载到
+		$GUIImageSourceGroupLang.Visible = $False       # 动态显示：更改语言
+		$GUIImageSourceGroupOther.Visible = $False      # 动态显示：详细
 
 		<#
 			.清除选择主键
@@ -1741,17 +1741,17 @@ Write-Host "Test"
 					$UI_Main_Error_Icon.Image = $null
 
 					if ([string]::IsNullOrEmpty($This.Tag)) {
-						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 						$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					} else {
 						if (Test-Path -Path $This.Tag -PathType Container) {
 							Start-Process $This.Tag
 		
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 							$UI_Main_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Done)"
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 						} else {
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 							$UI_Main_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Inoperable)"
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 						}
 					}
 				}
@@ -2060,8 +2060,8 @@ Write-Host "Test"
 	#>
 	Function Image_Select_Refresh_Sources_Event
 	{
-		$UI_Mask_Image_Mount_To_Error_Icon.Image = $null
 		$UI_Mask_Image_Mount_To_Error.Text = ""
+		$UI_Mask_Image_Mount_To_Error_Icon.Image = $null
 		$Match_Done_And_Failed = $False
 
 		<#
@@ -2126,8 +2126,8 @@ Write-Host "Test"
 	}
 
 	$GetDiskAvailableClick = {
-		$UI_Mask_Image_Mount_To_Error_Icon.Image = $null
 		$UI_Mask_Image_Mount_To_Error.Text = ""
+		$UI_Mask_Image_Mount_To_Error_Icon.Image = $null
 
 		if ($GUIImageSourceGroupMountChangeDiSKLowSize.Checked) {
 			$GUIImageSourceGroupMountChangeLowSize.Enabled = $True
@@ -2256,17 +2256,17 @@ Write-Host "Test"
 	#>
 	Function Refresh_Click_Image_Sources
 	{
-		<#
-			.禁用确定按钮
-		#>
-		$UI_Main_Ok.Enabled = $False
-		$UI_Main_To.Visible = $False
+		$UI_Main_Ok.Visible = $False                    # 隐藏: 确定按钮
+		$UI_Main_To.Visible = $False                    # 隐藏：前往到
+		$GUIImageSourceGroupMount.Visible = $False      # 动态显示：挂载到
+		$GUIImageSourceGroupLang.Visible = $False       # 动态显示：更改语言
+		$GUIImageSourceGroupOther.Visible = $False      # 动态显示：详细
 
 		$UI_Main_Error.Text = ""
 		$UI_Main_Error_Icon.Image = $null
 
-		$UI_Mask_Image_Mount_To_Error_Icon.Image = $null
 		$UI_Mask_Image_Mount_To_Error.Text = ""
+		$UI_Mask_Image_Mount_To_Error_Icon.Image = $null
 
 		$GUISelectOtherSettingSaveModeErrorMsg.Text = ""
 		$GUISelectOtherSettingSaveModeErrorMsg_Icon.Image = $null
@@ -2573,11 +2573,12 @@ Write-Host "Test"
 			}
 		}
 
-		<#
-			.启用确定按钮
-		#>
-		$UI_Main_Ok.Enabled = $True
-		$UI_Main_To.Visible = $True
+		$UI_Main_Ok.Visible = $True                    # 隐藏: 确定按钮
+		$UI_Main_To.Visible = $True                    # 隐藏：前往到
+		$GUIImageSourceGroupMount.Visible = $True      # 动态显示：挂载到
+		$GUIImageSourceGroupLang.Visible = $True       # 动态显示：更改语言
+		$GUIImageSourceGroupOther.Visible = $True      # 动态显示：详细
+
 		$UI_Main_Error.Text = "$($lang.Ok_Go_To): $($lang.Autopilot), $($lang.OnDemandPlanTask), $($lang.MoreFeature)"
 		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Info.ico")
 	}
@@ -3480,8 +3481,8 @@ Write-Host "Test"
 	}
 
 	$UI_Main_DragOver = [System.Windows.Forms.DragEventHandler]{
-		$UI_Main_Error_Icon.Image = $null
 		$UI_Main_Error.Text = ""
+		$UI_Main_Error_Icon.Image = $null
 	
 		if ($_.Data.GetDataPresent([Windows.Forms.DataFormats]::FileDrop)) {
 			$_.Effect = 'Copy'
@@ -3490,8 +3491,8 @@ Write-Host "Test"
 		}
 	}
 	$UI_Main_DragDrop = {
-		$UI_Main_Error_Icon.Image = $null
 		$UI_Main_Error.Text = ""
+		$UI_Main_Error_Icon.Image = $null
 	
 		if ($_.Data.GetDataPresent([Windows.Forms.DataFormats]::FileDrop)) {
 			foreach ($filename in $_.Data.GetData([Windows.Forms.DataFormats]::FileDrop)) {
@@ -5793,17 +5794,17 @@ Write-Host "Test"
 
 
 			if ([string]::IsNullOrEmpty($GUIImageSourceGroupMountFromPath.Text)) {
-				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				$UI_Mask_Image_Mount_To_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			} else {
 				if (Test-Path -Path $GUIImageSourceGroupMountFromPath.Text -PathType Container) {
 					Start-Process $GUIImageSourceGroupMountFromPath.Text
 
-					$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 					$UI_Mask_Image_Mount_To_Error.Text = "$($lang.OpenFolder): $($GUIImageSourceGroupMountFromPath.Text), $($lang.Done)"
+					$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 				} else {
-					$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					$UI_Mask_Image_Mount_To_Error.Text = "$($lang.OpenFolder): $($GUIImageSourceGroupMountFromPath.Text), $($lang.Inoperable)"
+					$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				}
 			}
 		}
@@ -5827,13 +5828,13 @@ Write-Host "Test"
 
 
 			if ([string]::IsNullOrEmpty($GUIImageSourceGroupMountFromPath.Text)) {
-				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				$UI_Mask_Image_Mount_To_Error.Text = "$($lang.Paste), $($lang.Inoperable)"
+				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			} else {
 				Set-Clipboard -Value $GUIImageSourceGroupMountFromPath.Text
 
-				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 				$UI_Mask_Image_Mount_To_Error.Text = "$($lang.Paste), $($lang.Done)"
+				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			}
 		}
 	}
@@ -5919,17 +5920,17 @@ Write-Host "Test"
 				$UI_Mask_Image_Mount_To_Error_Icon.Image = $null
 
 				if ([string]::IsNullOrEmpty($GUIImageSourceGroupMountFromDelete_Custom_Path.Text)) {
-					$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					$UI_Mask_Image_Mount_To_Error.Text = "$($lang.OpenFolder): $($lang.Inoperable)"
+					$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				} else {
 					if (Test-Path -Path $GUIImageSourceGroupMountFromDelete_Custom_Path.Text -PathType Container) {
 						Start-Process $GUIImageSourceGroupMountFromDelete_Custom_Path.Text
 
-						$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 						$UI_Mask_Image_Mount_To_Error.Text = "$($lang.OpenFolder): $($GUIImageSourceGroupMountFromDelete_Custom_Path.Text), $($lang.Done)"
+						$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 					} else {
-						$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 						$UI_Mask_Image_Mount_To_Error.Text = "$($lang.OpenFolder): $($GUIImageSourceGroupMountFromDelete_Custom_Path.Text), $($lang.Inoperable)"
+						$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					}
 				}
 			}
@@ -6299,17 +6300,17 @@ Write-Host "Test"
 			$UI_Mask_Image_Mount_To_Error_Icon.Image = $null
 
 			if ([string]::IsNullOrEmpty($GUIImageSourceGroupMountToShow.Text)) {
-				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				$UI_Mask_Image_Mount_To_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			} else {
 				if (Test-Path -Path $GUIImageSourceGroupMountToShow.Text -PathType Container) {
 					Start-Process $GUIImageSourceGroupMountToShow.Text
 
-					$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 					$UI_Mask_Image_Mount_To_Error.Text = "$($lang.OpenFolder): $($GUIImageSourceGroupMountToShow.Text), $($lang.Done)"
+					$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 				} else {
-					$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					$UI_Mask_Image_Mount_To_Error.Text = "$($lang.OpenFolder): $($GUIImageSourceGroupMountToShow.Text), $($lang.Inoperable)"
+					$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				}
 			}
 		}
@@ -6332,13 +6333,13 @@ Write-Host "Test"
 			$UI_Mask_Image_Mount_To_Error_Icon.Image = $null
 
 			if ([string]::IsNullOrEmpty($GUIImageSourceGroupMountToShow.Text)) {
-				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				$UI_Mask_Image_Mount_To_Error.Text = "$($lang.Paste), $($lang.Inoperable)"
+				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			} else {
 				Set-Clipboard -Value $GUIImageSourceGroupMountToShow.Text
 
-				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 				$UI_Mask_Image_Mount_To_Error.Text = "$($lang.Paste), $($lang.Done)"
+				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			}
 		}
 	}
@@ -6394,17 +6395,17 @@ Write-Host "Test"
 			$UI_Mask_Image_Mount_To_Error_Icon.Image = $null
 
 			if ([string]::IsNullOrEmpty($GUIImageSourceGroupMountToTempShow.Text)) {
-				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				$UI_Mask_Image_Mount_To_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			} else {
 				if (Test-Path -Path $GUIImageSourceGroupMountToTempShow.Text -PathType Container) {
 					Start-Process $GUIImageSourceGroupMountToTempShow.Text
 
-					$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 					$UI_Mask_Image_Mount_To_Error.Text = "$($lang.OpenFolder): $($GUIImageSourceGroupMountToTempShow.Text), $($lang.Done)"
+					$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 				} else {
-					$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					$UI_Mask_Image_Mount_To_Error.Text = "$($lang.OpenFolder): $($GUIImageSourceGroupMountToTempShow.Text), $($lang.Inoperable)"
+					$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				}
 			}
 		}
@@ -6427,13 +6428,13 @@ Write-Host "Test"
 			$UI_Mask_Image_Mount_To_Error_Icon.Image = $null
 
 			if ([string]::IsNullOrEmpty($GUIImageSourceGroupMountToTempShow.Text)) {
-				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				$UI_Mask_Image_Mount_To_Error.Text = "$($lang.Paste), $($lang.Inoperable)"
+				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			} else {
 				Set-Clipboard -Value $GUIImageSourceGroupMountToTempShow.Text
 
-				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 				$UI_Mask_Image_Mount_To_Error.Text = "$($lang.Paste), $($lang.Done)"
+				$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			}
 		}
 	}
@@ -6470,8 +6471,8 @@ Write-Host "Test"
 		Padding        = "16,0,0,0"
 		Text           = $lang.SettingImagePathTemp
 		add_Click      = {
-			$UI_Mask_Image_Mount_To_Error_Icon.Image = $null
 			$UI_Mask_Image_Mount_To_Error.Text = ""
+			$UI_Mask_Image_Mount_To_Error_Icon.Image = $null
 
 			if ($This.Checked) {
 				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)" -name "UseTempFolder" -value "True" -String
@@ -6675,6 +6676,7 @@ Write-Host "Test"
 		autoSizeMode   = 1
 		Padding        = "0,0,8,0"
 		Location       = '0,485'
+		Visible        = $False
 	}
 	$GUIImageSourceMountTitle = New-Object System.Windows.Forms.Label -Property @{
 		Height         = 35
@@ -6712,6 +6714,7 @@ Write-Host "Test"
 		autoSizeMode   = 1
 		Padding        = "0,0,8,0"
 		Location       = '0,520'
+		Visible        = $False
 	}
 	$GUIImageSourceLangTitle = New-Object System.Windows.Forms.Label -Property @{
 		Height         = 35
@@ -6749,6 +6752,7 @@ Write-Host "Test"
 		autoSizeMode   = 1
 		Padding        = "0,0,8,0"
 		Location       = '0,555'
+		Visible        = $False
 	}
 	$GUIImageSourceOtherTitle = New-Object System.Windows.Forms.Label -Property @{
 		Height         = 30
@@ -8532,8 +8536,8 @@ Write-Host "Test"
 		Add_SelectedValueChanged = {
 		}
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 		}
 	}
 
@@ -8563,7 +8567,7 @@ Write-Host "Test"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.OK
-		Enabled        = $False
+		Visible        = $False
 		add_Click      = {
 			$UI_Main_Select_Sources.Controls | ForEach-Object {
 				if ($_ -is [System.Windows.Forms.RadioButton]) {

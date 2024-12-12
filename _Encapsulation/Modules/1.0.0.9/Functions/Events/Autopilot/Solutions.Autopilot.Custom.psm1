@@ -3171,8 +3171,8 @@ Function Image_Assign_Autopilot_Master
 				$UI_Main_Autopilot_View_Detailed_Show.Text += "     $($lang.NoWork)`n"
 			}
 		} else {
-			$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			$UI_Main_Prerequisite_Error.Text = "$($lang.SelectFromError): $($lang.Detailed_View)"
+			$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 		}
 	}
 
@@ -3215,17 +3215,17 @@ Function Image_Assign_Autopilot_Master
 				$UI_Main_Export_Error_Icon.Image = $null
 
 				if ([string]::IsNullOrEmpty($This.Tag)) {
-					$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					$UI_Main_Export_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Inoperable)"
+					$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 				} else {
 					if (Test-Path -Path $This.Tag -PathType Container) {
 						Start-Process $This.Tag
 	
-						$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 						$UI_Main_Export_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Done)"
+						$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 					} else {
-						$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 						$UI_Main_Export_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Inoperable)"
+						$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					}
 				}
 			}
@@ -3263,17 +3263,17 @@ Function Image_Assign_Autopilot_Master
 							$UI_Main_Export_Error_Icon.Image = $null
 
 							if ([string]::IsNullOrEmpty($This.Tag)) {
-								$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 								$UI_Main_Export_Error.Text = "$($lang.OpenFolder): $($This.Text), $($lang.Inoperable)"
+								$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 							} else {
 								if (Test-Path -Path $This.Tag -PathType Container) {
 									Start-Process $This.Tag
 
-									$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 									$UI_Main_Export_Error.Text = "$($lang.OpenFolder): $($This.Text), $($lang.Done)"
+									$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 								} else {
-									$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 									$UI_Main_Export_Error.Text = "$($lang.OpenFolder): $($This.Text), $($lang.Inoperable)"
+									$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 								}
 							}
 						}
@@ -3343,8 +3343,8 @@ Function Image_Assign_Autopilot_Master
 		$NewArch  = $Global:Architecture
 		$NewArchC = $Global:Architecture.Replace("AMD64", "x64")
 
-		$UI_Main_Export_Error_Icon.Image = $null
 		$UI_Main_Export_Error.Text = ""
+		$UI_Main_Export_Error_Icon.Image = $null
 
 		<#
 			.获取选择的目录
@@ -3988,17 +3988,17 @@ Function Image_Assign_Autopilot_Master
 						$UI_Main_Export_Error_Icon.Image = $null
 
 						if ([string]::IsNullOrEmpty($This.Tag)) {
-							$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 							$UI_Main_Export_Error.Text = "$($lang.OpenFolder): $($This.Text), $($lang.Inoperable)"
+							$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 						} else {
 							if (Test-Path -Path $This.Tag -PathType Container) {
 								Start-Process $This.Tag
 
-								$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 								$UI_Main_Export_Error.Text = "$($lang.OpenFolder): $($This.Text), $($lang.Done)"
+								$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 							} else {
-								$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 								$UI_Main_Export_Error.Text = "$($lang.OpenFolder): $($This.Text), $($lang.Inoperable)"
+								$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 							}
 						}
 					}
@@ -5185,11 +5185,11 @@ Function Image_Assign_Autopilot_Master
 									if (Test-Path -Path $This.Tag -PathType Container) {
 										Start-Process $This.Tag
 
-										$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 										$UI_Main_Prerequisite_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Done)"
+										$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 									} else {
-										$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 										$UI_Main_Prerequisite_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Inoperable)"
+										$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 									}
 								}
 							}
@@ -5334,11 +5334,11 @@ Function Image_Assign_Autopilot_Master
 									if (Test-Path -Path $This.Tag -PathType Container) {
 										Start-Process $This.Tag
 
-										$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 										$UI_Main_Prerequisite_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Done)"
+										$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 									} else {
-										$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 										$UI_Main_Prerequisite_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Inoperable)"
+										$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 									}
 								}
 							}
@@ -5468,25 +5468,25 @@ Function Image_Assign_Autopilot_Master
 			#>
 			if ($CountSatisfy -gt 0) {
 				$UI_Main_Prerequisite_Ok.Enabled = $True
-				$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Info.ico")
 				$UI_Main_Prerequisite_Error.Text = $lang.Prerequisite_Is_Not_satisfied -f $Script:Prerequisite_Is_Satisfy.Count, $CountSatisfy, $Other_ISO_Falied
+				$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Info.ico")
 
 			} else {
 				if ($Other_ISO_Falied -gt 0) {
 					$UI_Main_Prerequisite_Ok.Enabled = $False
-					$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Info.ico")
 					$UI_Main_Prerequisite_Error.Text = $lang.Prerequisite_Is_Not_satisfied -f $Script:Prerequisite_Is_Satisfy.Count, $CountSatisfy, $Other_ISO_Falied
+					$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Info.ico")
 
 				} else {
 					$UI_Main_Prerequisite_Ok.Enabled = $False
-					$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 					$UI_Main_Prerequisite_Error.Text = $lang.Prerequisite_Is_satisfy -f $Script:Prerequisite_Is_Satisfy.Count
+					$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 				}
 			}
 		} else {
 			$UI_Main_Prerequisite_Ok.Enabled = $False
-			$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			$UI_Main_Prerequisite_Error.Text = $lang.Nowork
+			$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			$UI_Main_Prerequisite_Eject_Cdrom_After_Tips.Text = $lang.Nowork
 
 			$UI_Main_Prerequisite_Eject_Cdrom_After.Checked = $False
@@ -5646,8 +5646,8 @@ Function Image_Assign_Autopilot_Master
 
 			Autopilot_Refresh_Public_Events_All
 
-			$UI_Main_Public_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Public_Error.Text = "$($lang.Import_Event_Clear_Global): $($lang.Done)"
+			$UI_Main_Public_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 		}
 	}
 
@@ -5671,8 +5671,8 @@ Function Image_Assign_Autopilot_Master
 
 			Autopilot_Refresh_Public_Events_All
 
-			$UI_Main_Public_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Public_Error.Text = "$($lang.Import_Event_Clear_Current): $($lang.Done)"
+			$UI_Main_Public_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 		}
 	}
 
@@ -6079,8 +6079,8 @@ Function Image_Assign_Autopilot_Master
 				Refresh_All_Rule_Guid
 				Refresh_Prerequisite_Is_Satisfy
 			} else {
-				$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\info.ico")
 				$UI_Main_Prerequisite_Error.Text = "$($lang.SelectFromError): $($lang.Detailed_View)"
+				$UI_Main_Prerequisite_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\info.ico")
 			}
 		}
 	}
@@ -6164,8 +6164,8 @@ Function Image_Assign_Autopilot_Master
 
 			Autopilot_Refresh_Event_All
 
-			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Error.Text = "$($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm), $($lang.EventManagerCurrentClear): $($lang.Done)"
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 		}
 	}
 
@@ -6204,8 +6204,8 @@ Function Image_Assign_Autopilot_Master
 
 			Autopilot_Refresh_Event_All
 
-			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Error.Text = "$($lang.Solution): $($lang.IsCreate), ISO, $($lang.EventManagerCurrentClear): $($lang.Done)"
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 		}
 	}
 
@@ -6246,8 +6246,8 @@ Function Image_Assign_Autopilot_Master
 
 			Autopilot_Refresh_Event_All
 
-			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Error.Text = "$($lang.UnpackISO), $($lang.EventManagerCurrentClear): $($lang.Done)"
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 		}
 	}
 
@@ -6290,8 +6290,8 @@ Function Image_Assign_Autopilot_Master
 		Width          = 485
 		Text           = $lang.AssignSkip
 		add_Click      = {
-			$UI_Main_Error_Icon.Image = $null
 			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
 
 			if ($this.Checked) {
 				$UI_Main_Select_Wim.Enabled = $False

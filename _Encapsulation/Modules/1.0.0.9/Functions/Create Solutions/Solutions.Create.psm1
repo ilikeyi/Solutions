@@ -349,8 +349,8 @@ Function Solutions_Create_UI
 
 		Refres_Event_Tasks_Solutions_Add
 
-		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\Assets\icon\Success.ico")
 		$UI_Main_Error.Text = "$($lang.EventManagerCurrentClear), $($lang.Done)"
+		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\Assets\icon\Success.ico")
 	}
 
 	Function Solutions_Create_Refresh_Regional
