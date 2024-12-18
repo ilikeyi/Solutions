@@ -6,7 +6,7 @@ Function Language_Add_UI
 {
 	param
 	(
-		[String[]]$Autopilot
+		[array]$Autopilot
 	)
 
 	<#

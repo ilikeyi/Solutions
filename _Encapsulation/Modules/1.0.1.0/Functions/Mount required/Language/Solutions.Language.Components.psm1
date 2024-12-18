@@ -6,7 +6,7 @@ Function Language_Cleanup_Components_UI
 {
 	param
 	(
-		[String[]]$Autopilot
+		[array]$Autopilot
 	)
 
 	Add-Type -AssemblyName System.Windows.Forms

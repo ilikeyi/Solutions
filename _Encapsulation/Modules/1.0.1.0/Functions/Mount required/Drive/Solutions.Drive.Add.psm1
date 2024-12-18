@@ -6,7 +6,7 @@ Function Drive_Add_UI
 {
 	param
 	(
-		[String[]]$Autopilot
+		[array]$Autopilot
 	)
 
 	<#

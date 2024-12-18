@@ -11,7 +11,7 @@ Function Feature_Enabled_Match_UI
 {
 	param
 	(
-		[String[]]$Autopilot
+		[array]$Autopilot
 	)
 
 	Add-Type -AssemblyName System.Windows.Forms

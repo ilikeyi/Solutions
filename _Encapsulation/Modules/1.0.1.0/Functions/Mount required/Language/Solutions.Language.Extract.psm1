@@ -6,7 +6,7 @@ Function Language_Extract_UI
 {
 	param
 	(
-		[String[]]$Autopilot,
+		[array]$Autopilot,
 		[switch]$Add,
 		[switch]$Del
 	)

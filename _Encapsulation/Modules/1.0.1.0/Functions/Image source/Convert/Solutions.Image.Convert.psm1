@@ -53,7 +53,7 @@ Function Image_Convert_UI
 {
 	param
 	(
-		[String[]]$Autopilot
+		[array]$Autopilot
 	)
 
 	Add-Type -AssemblyName System.Windows.Forms
@@ -1000,7 +1000,7 @@ Function Image_Convert_UI
 		if (Autopilot_Image_Convert_Save) {
 			Write-Host $lang.Done -ForegroundColor Green
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host "$($lang.SelectFromError): $($lang.NoChoose)" -ForegroundColor Red
 
 			$UI_Main.ShowDialog() | Out-Null
 		}

@@ -69,7 +69,7 @@ Function ISO_Create_UI
 {
 	param
 	(
-		[String[]]$Autopilot,
+		[array]$Autopilot,
 		[switch]$ISO,
 		[switch]$mount
 	)

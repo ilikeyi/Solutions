@@ -3868,11 +3868,31 @@ Function Image_Assign_Autopilot_Master
 		<#
 			.生成 ISO
 		#>
-		$Autopilot_Assign_Menu_ISO_Associated_Schemes = New-Object system.Windows.Forms.Label -Property @{
-			Height         = 30
+		$Autopilot_Assign_Menu_ISO_Associated_Schemes = New-Object System.Windows.Forms.CheckBox -Property @{
+			Height         = 35
 			Width          = 435
 			margin         = "0,35,0,0"
 			Text           = $lang.ISO_Associated_Schemes
+			Checked        = $True
+			add_Click      = {
+				if ($This.Checked) {
+					$UI_Main_Export_Event_Custom_Menu.Controls | ForEach-Object {
+						if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
+							if ("ISO" -eq $_.Name) {
+								$_.Enabled = $True
+							}
+						}
+					}
+				} else {
+					$UI_Main_Export_Event_Custom_Menu.Controls | ForEach-Object {
+						if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
+							if ("ISO" -eq $_.Name) {
+								$_.Enabled = $False
+							}
+						}
+					}
+				}
+			}
 		}
 		$UI_Main_Export_Event_Custom_Menu.controls.AddRange($Autopilot_Assign_Menu_ISO_Associated_Schemes)
 

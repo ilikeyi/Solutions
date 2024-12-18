@@ -6,7 +6,7 @@ Function LXPs_Remove_UI
 {
 	param
 	(
-		[String[]]$Autopilot
+		[array]$Autopilot
 	)
 
 	Add-Type -AssemblyName System.Windows.Forms

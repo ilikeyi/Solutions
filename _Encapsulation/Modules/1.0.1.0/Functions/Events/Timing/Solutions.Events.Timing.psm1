@@ -6,7 +6,7 @@ Function Event_Completion_Start_Setting_UI
 {
 	param
 	(
-		[String[]]$Autopilot
+		[array]$Autopilot
 	)
 
 	Add-Type -AssemblyName System.Windows.Forms

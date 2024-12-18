@@ -6,7 +6,7 @@ Function InBox_Apps_Match_Delete_UI
 {
 	param
 	(
-		[String[]]$Autopilot
+		[array]$Autopilot
 	)
 
 	Add-Type -AssemblyName System.Windows.Forms

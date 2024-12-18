@@ -6,7 +6,7 @@ Function Cumulative_updates_Delete_UI
 {
 	param
 	(
-		[String[]]$Autopilot
+		[array]$Autopilot
 	)
 
 	<#

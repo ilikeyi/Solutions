@@ -236,7 +236,7 @@ Function Solutions_Create_UI
 {
 	param
 	(
-		[String[]]$Autopilot,
+		[array]$Autopilot,
 		[switch]$ISO,
 		[switch]$mount
 	)
@@ -7327,7 +7327,7 @@ Function Solutions_Index_UI
 {
 	param
 	(
-		[String[]]$Autopilot
+		[array]$Autopilot
 	)
 
 	Add-Type -AssemblyName System.Windows.Forms

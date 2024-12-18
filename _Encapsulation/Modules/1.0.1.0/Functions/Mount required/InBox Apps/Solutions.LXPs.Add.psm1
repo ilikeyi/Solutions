@@ -6,7 +6,7 @@ Function LXPs_Region_Add
 {
 	param
 	(
-		[String[]]$Autopilot
+		[array]$Autopilot
 	)
 
 	$Script:Temp_Select_Language_Add_Folder = @()

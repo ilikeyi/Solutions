@@ -6,7 +6,7 @@ Function Cumulative_updates_Add_UI
 {
 	param
 	(
-		[String[]]$Autopilot
+		[array]$Autopilot
 	)
 
 	<#

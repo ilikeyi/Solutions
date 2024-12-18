@@ -6,7 +6,7 @@ Function Drive_Delete_UI
 {
 	param
 	(
-		[String[]]$Autopilot
+		[array]$Autopilot
 	)
 
 	<#

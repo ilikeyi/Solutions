@@ -43,7 +43,7 @@ Function Feature_More_UI
 {
 	param
 	(
-		[String[]]$Autopilot
+		[array]$Autopilot
 	)
 
 	$SearchFolderRule = @(

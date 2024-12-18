@@ -6,7 +6,7 @@ Function InBox_Apps_Add_UI
 {
 	param
 	(
-		[String[]]$Autopilot
+		[array]$Autopilot
 	)
 
 	<#
