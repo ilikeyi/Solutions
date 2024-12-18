@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 Yi’s soultions
 -
-It consists of multiple parts: packaging script, packaging tutorial, video tutorial, deployment engine: fully automatically adds Windows installed languages, Yi’s Suite, etc.
+It consists of multiple parts: encapsulation script, packaging tutorial, video tutorial, deployment engine: fully automatically adds Windows installed languages, Yi’s Suite, etc.
 
 To help you solve the difficult problem of packaging multilingual versions, the production method provided by Yi and the deployment engine can perfectly solve this problem. You can initiate this packaging journey at will and end this "unpackageable journey".
 
@@ -257,31 +257,31 @@ D:\Yi.Solutions\_Encapsulation\_SIP.ps1
       <p>1.2.&nbsp;&nbsp;Other items</p>
       <dl>
         <dd>
-          <p>1.2.1.&nbsp;&nbsp;Backup
+          <p>1.2.1.&nbsp;&nbsp;Backup, when routing function is available: <code>Yi -unpack</code>
             <dl>
-              <dd>&nbsp;&nbsp;&nbsp;&nbsp;<code>D:\YiSolutions\_Encapsulation\_Unpack.ps1</code>, when routing function is available: <code>Yi -unpack</code></dd>
+              <dd>&nbsp;&nbsp;&nbsp;&nbsp;<code>D:\YiSolutions\_Encapsulation\_Unpack.ps1</code></dd>
               <dd>&nbsp;&nbsp;&nbsp;&nbsp;When the package script performs a check for updates, the backed-up file can be used as an upgrade package.</dd>
             </dl>
           </p>
 
 <br>
-          <p>1.2.2.&nbsp;&nbsp;Create a deployment engine upgrade package
+          <p>1.2.2.&nbsp;&nbsp;Create a deployment engine upgrade package, when routing function is available: <code>Yi -Ceup</code>
             <dl>
-              <dd>&nbsp;&nbsp;&nbsp;&nbsp;<code>D:\YiSolutions\_Encapsulation\_Create.Custom.Engine.upgrade.package.ps1</code>, when routing function is available: <code>Yi -Ceup</code></dd>
+              <dd>&nbsp;&nbsp;&nbsp;&nbsp;<code>D:\YiSolutions\_Encapsulation\_Create.Custom.Engine.upgrade.package.ps1</code></dd>
             </dl>
           </p>
 
 <br>
-          <p>1.2.3.&nbsp;&nbsp;Convert all software into compressed packages
+          <p>1.2.3.&nbsp;&nbsp;Convert all software into compressed packages, when routing function is available: <code>Yi -Zip</code>
             <dl>
-              <dd>&nbsp;&nbsp;&nbsp;&nbsp;<code>D:\YiSolutions\_Encapsulation\_Zip.ps1</code>, when routing function is available: <code>Yi -Zip</code></dd>
+              <dd>&nbsp;&nbsp;&nbsp;&nbsp;<code>D:\YiSolutions\_Encapsulation\_Zip.ps1</code></dd>
             </dl>
           </p>
 
 <br>
-          <p>1.2.4.&nbsp;&nbsp;Create templates
+          <p>1.2.4.&nbsp;&nbsp;Create templates, when routing function is available: <code>Yi -CT</code>
             <dl>
-              <dd>&nbsp;&nbsp;&nbsp;&nbsp;<code>D:\YiSolutions\_Encapsulation\_Create.Template.ps1</code>, when routing function is available: <code>Yi -CT</code></dd>
+              <dd>&nbsp;&nbsp;&nbsp;&nbsp;<code>D:\YiSolutions\_Encapsulation\_Create.Template.ps1</code></dd>
             </dl>
           </p>
         </dd>
