@@ -1653,8 +1653,6 @@ Function Menu_Shortcuts_Image_Language
 
 	switch ($NewRuleName) {
 		"e" {
-			Write-Host "`n   $($lang.LanguageExtract)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
 			Language_Extract_UI
 		}
 		"a" {

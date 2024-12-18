@@ -352,8 +352,73 @@ Function LXPs_Region_Add
 					$CheckBox.Checked = $True
 				}
 
-				$UI_Main_Rule.controls.AddRange($CheckBox)
-				
+				$CheckBox_Open_Folder = New-Object system.Windows.Forms.LinkLabel -Property @{
+					Height         = 40
+					Width          = 455
+					Padding        = "45,0,0,0"
+					Text           = $lang.OpenFolder
+					Tag            = $item
+					LinkColor      = "GREEN"
+					ActiveLinkColor = "RED"
+					LinkBehavior   = "NeverUnderline"
+					add_Click      = {
+						$UI_Main_Error.Text = ""
+						$UI_Main_Error_Icon.Image = $null
+
+						if ([string]::IsNullOrEmpty($This.Tag)) {
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+							$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+						} else {
+							if (Test-Path -Path $This.Tag -PathType Container) {
+								Start-Process $This.Tag
+
+								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+								$UI_Main_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Done)"
+							} else {
+								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+								$UI_Main_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Inoperable)"
+							}
+						}
+					}
+				}
+
+				$CheckBox_Paste = New-Object system.Windows.Forms.LinkLabel -Property @{
+					Height         = 40
+					Width          = 455
+					Padding        = "45,0,0,0"
+					Text           = $lang.Paste
+					Tag            = $item
+					LinkColor      = "GREEN"
+					ActiveLinkColor = "RED"
+					LinkBehavior   = "NeverUnderline"
+					add_Click      = {
+						$UI_Main_Error.Text = ""
+						$UI_Main_Error_Icon.Image = $null
+
+						if ([string]::IsNullOrEmpty($This.Tag)) {
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+							$UI_Main_Error.Text = "$($lang.Paste), $($lang.Inoperable)"
+						} else {
+							Set-Clipboard -Value $This.Tag
+
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+							$UI_Main_Error.Text = "$($lang.Paste), $($lang.Done)"
+						}
+					}
+				}
+
+				$CheckBox_Wrap = New-Object system.Windows.Forms.Label -Property @{
+					Height     = 15
+					Width      = 480
+				}
+
+				$UI_Main_Rule.controls.AddRange((
+					$CheckBox,
+					$CheckBox_Open_Folder,
+					$CheckBox_Paste,
+					$CheckBox_Wrap
+				))
+
 				$FileA = [IO.Path]::GetFileNameWithoutExtension("$($TruePath)\$($itemMain.Path)")
 				$FileName = "$($FileA).ps1"
 				$EnginePath = "$($TruePath)\$($itemMain.Path)\$($FileName)"
@@ -362,7 +427,7 @@ Function LXPs_Region_Add
 					$UI_Multilevel_Open_Engine = New-Object system.Windows.Forms.LinkLabel -Property @{
 						Height         = 40
 						Width          = 525
-						Padding        = "48,0,0,0"
+						Padding        = "45,0,0,0"
 						Text           = "$($lang.Running): $($FileName)"
 						Tag            = $EnginePath
 						LinkColor      = "GREEN"
@@ -403,7 +468,7 @@ Function LXPs_Region_Add
 					add_Click = {
 						$UI_Main_Error.Text = ""
 						$UI_Main_Error_Icon.Image = $null
-						
+
 						Refresh_Sources_New_LXPs
 					}
 				}
@@ -412,7 +477,72 @@ Function LXPs_Region_Add
 					$CheckBox.Checked = $True
 				}
 
-				$UI_Main_Rule.controls.AddRange($CheckBox)
+				$CheckBox_Open_Folder = New-Object system.Windows.Forms.LinkLabel -Property @{
+					Height         = 40
+					Width          = 455
+					Padding        = "45,0,0,0"
+					Text           = $lang.OpenFolder
+					Tag            = $item
+					LinkColor      = "GREEN"
+					ActiveLinkColor = "RED"
+					LinkBehavior   = "NeverUnderline"
+					add_Click      = {
+						$UI_Main_Error.Text = ""
+						$UI_Main_Error_Icon.Image = $null
+
+						if ([string]::IsNullOrEmpty($This.Tag)) {
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+							$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+						} else {
+							if (Test-Path -Path $This.Tag -PathType Container) {
+								Start-Process $This.Tag
+
+								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+								$UI_Main_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Done)"
+							} else {
+								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+								$UI_Main_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Inoperable)"
+							}
+						}
+					}
+				}
+
+				$CheckBox_Paste = New-Object system.Windows.Forms.LinkLabel -Property @{
+					Height         = 40
+					Width          = 455
+					Padding        = "45,0,0,0"
+					Text           = $lang.Paste
+					Tag            = $item
+					LinkColor      = "GREEN"
+					ActiveLinkColor = "RED"
+					LinkBehavior   = "NeverUnderline"
+					add_Click      = {
+						$UI_Main_Error.Text = ""
+						$UI_Main_Error_Icon.Image = $null
+
+						if ([string]::IsNullOrEmpty($This.Tag)) {
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+							$UI_Main_Error.Text = "$($lang.Paste), $($lang.Inoperable)"
+						} else {
+							Set-Clipboard -Value $This.Tag
+
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+							$UI_Main_Error.Text = "$($lang.Paste), $($lang.Done)"
+						}
+					}
+				}
+
+				$CheckBox_Wrap = New-Object system.Windows.Forms.Label -Property @{
+					Height     = 15
+					Width      = 480
+				}
+
+				$UI_Main_Rule.controls.AddRange((
+					$CheckBox,
+					$CheckBox_Open_Folder,
+					$CheckBox_Paste,
+					$CheckBox_Wrap
+				))
 			}
 		} else {
 			$UI_Main_Other_Rule_Not_Find = New-Object system.Windows.Forms.Label -Property @{
@@ -423,7 +553,6 @@ Function LXPs_Region_Add
 			}
 			$UI_Main_Rule.controls.AddRange($UI_Main_Other_Rule_Not_Find)
 		}
-
 
 		Refresh_Sources_New_LXPs
 	}

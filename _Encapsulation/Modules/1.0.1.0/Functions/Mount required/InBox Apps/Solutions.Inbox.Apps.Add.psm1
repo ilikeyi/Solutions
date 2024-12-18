@@ -201,7 +201,72 @@ Function InBox_Apps_Add_UI
 				$CheckBox.checked = $False
 			}
 
-			$UI_Main_Select_Sources.controls.AddRange($CheckBox)
+			$CheckBox_Open_Folder = New-Object system.Windows.Forms.LinkLabel -Property @{
+				Height         = 40
+				Width          = 495
+				Padding        = "16,0,0,0"
+				Text           = $lang.OpenFolder
+				Tag            = $NewPath
+				LinkColor      = "GREEN"
+				ActiveLinkColor = "RED"
+				LinkBehavior   = "NeverUnderline"
+				add_Click      = {
+					$UI_Main_Error.Text = ""
+					$UI_Main_Error_Icon.Image = $null
+
+					if ([string]::IsNullOrEmpty($This.Tag)) {
+						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+						$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+					} else {
+						if (Test-Path -Path $This.Tag -PathType Container) {
+							Start-Process $This.Tag
+
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+							$UI_Main_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Done)"
+						} else {
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+							$UI_Main_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Inoperable)"
+						}
+					}
+				}
+			}
+
+			$CheckBox_Paste = New-Object system.Windows.Forms.LinkLabel -Property @{
+				Height         = 40
+				Width          = 495
+				Padding        = "16,0,0,0"
+				Text           = $lang.Paste
+				Tag            = $NewPath
+				LinkColor      = "GREEN"
+				ActiveLinkColor = "RED"
+				LinkBehavior   = "NeverUnderline"
+				add_Click      = {
+					$UI_Main_Error.Text = ""
+					$UI_Main_Error_Icon.Image = $null
+
+					if ([string]::IsNullOrEmpty($This.Tag)) {
+						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+						$UI_Main_Error.Text = "$($lang.Paste), $($lang.Inoperable)"
+					} else {
+						Set-Clipboard -Value $This.Tag
+
+						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+						$UI_Main_Error.Text = "$($lang.Paste), $($lang.Done)"
+					}
+				}
+			}
+
+			$CheckBox_Wrap = New-Object system.Windows.Forms.Label -Property @{
+				Height     = 15
+				Width      = 480
+			}
+
+			$UI_Main_Select_Sources.controls.AddRange((
+				$CheckBox,
+				$CheckBox_Open_Folder,
+				$CheckBox_Paste,
+				$CheckBox_Wrap
+			))
 		}
 	}
 
@@ -558,7 +623,72 @@ Function InBox_Apps_Add_UI
 				$CheckBox.Checked = $False
 			}
 
-			$UI_Main_Select_Sources.controls.AddRange($CheckBox)
+			$CheckBox_Open_Folder = New-Object system.Windows.Forms.LinkLabel -Property @{
+				Height         = 40
+				Width          = 455
+				Padding        = "16,0,0,0"
+				Text           = $lang.OpenFolder
+				Tag            = $item
+				LinkColor      = "GREEN"
+				ActiveLinkColor = "RED"
+				LinkBehavior   = "NeverUnderline"
+				add_Click      = {
+					$UI_Main_Error.Text = ""
+					$UI_Main_Error_Icon.Image = $null
+
+					if ([string]::IsNullOrEmpty($This.Tag)) {
+						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+						$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+					} else {
+						if (Test-Path -Path $This.Tag -PathType Container) {
+							Start-Process $This.Tag
+
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+							$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Done)"
+						} else {
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+							$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+						}
+					}
+				}
+			}
+
+			$CheckBox_Paste = New-Object system.Windows.Forms.LinkLabel -Property @{
+				Height         = 40
+				Width          = 455
+				Padding        = "16,0,0,0"
+				Text           = $lang.Paste
+				Tag            = $item
+				LinkColor      = "GREEN"
+				ActiveLinkColor = "RED"
+				LinkBehavior   = "NeverUnderline"
+				add_Click      = {
+					$UI_Main_Error.Text = ""
+					$UI_Main_Error_Icon.Image = $null
+
+					if ([string]::IsNullOrEmpty($This.Tag)) {
+						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+						$UI_Main_Error.Text = "$($lang.Paste), $($lang.Inoperable)"
+					} else {
+						Set-Clipboard -Value $This.Tag
+
+						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+						$UI_Main_Error.Text = "$($lang.Paste), $($lang.Done)"
+					}
+				}
+			}
+
+			$CheckBox_Wrap = New-Object system.Windows.Forms.Label -Property @{
+				Height     = 15
+				Width      = 480
+			}
+
+			$UI_Main_Select_Sources.controls.AddRange((
+				$CheckBox,
+				$CheckBox_Open_Folder,
+				$CheckBox_Paste,
+				$CheckBox_Wrap
+			))
 		}
 	}
 
@@ -896,7 +1026,7 @@ Function InBox_Apps_Add_UI
 		}
 	}
 	$UI_Main_Select_Sources = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
-		Height         = 300
+		Height         = 550
 		Width          = 530
 		BorderStyle    = 0
 		autoSizeMode   = 0

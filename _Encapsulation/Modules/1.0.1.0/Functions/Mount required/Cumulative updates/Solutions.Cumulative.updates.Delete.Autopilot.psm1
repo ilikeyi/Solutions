@@ -173,7 +173,7 @@ Function Cumulative_updates_Delete_UI_Autopilot
 						}
 					}
 				}
-	
+
 				$AddSourcesPathOpen = New-Object system.Windows.Forms.LinkLabel -Property @{
 					Height          = 40
 					Width           = 525
@@ -186,7 +186,7 @@ Function Cumulative_updates_Delete_UI_Autopilot
 					add_Click       = {
 						$UI_Main_Error.Text = ""
 						$UI_Main_Error_Icon.Image = $null
-	
+
 						if ([string]::IsNullOrEmpty($This.Tag)) {
 							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 							$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
@@ -203,7 +203,7 @@ Function Cumulative_updates_Delete_UI_Autopilot
 						}
 					}
 				}
-	
+
 				$AddSourcesPathPaste = New-Object system.Windows.Forms.LinkLabel -Property @{
 					Height          = 40
 					Width           = 525
@@ -216,19 +216,19 @@ Function Cumulative_updates_Delete_UI_Autopilot
 					add_Click       = {
 						$UI_Main_Error.Text = ""
 						$UI_Main_Error_Icon.Image = $null
-	
+
 						if ([string]::IsNullOrEmpty($This.Tag)) {
 							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 							$UI_Main_Error.Text = "$($lang.Paste), $($lang.Inoperable)"
 						} else {
 							Set-Clipboard -Value $This.Tag
-	
+
 							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 							$UI_Main_Error.Text = "$($lang.Paste), $($lang.Done)"
 						}
 					}
 				}
-	
+
 				if (Test-Path -Path $item -PathType Container) {
 					<#
 						.目录可用时，自动选择：预置规则
@@ -249,7 +249,7 @@ Function Cumulative_updates_Delete_UI_Autopilot
 							$CheckBox.Checked = $False
 						}
 					}
-	
+
 					<#
 						.不再检查目录里是否存在文件
 					#>
@@ -263,24 +263,23 @@ Function Cumulative_updates_Delete_UI_Autopilot
 							<#
 								.提示，未发现文件
 							#>
-	
+
 							$UI_Main_Rule.controls.AddRange($AddSourcesPath)
 							$CheckBox.Enabled = $False
 						} else {
 							$CheckBox.Enabled = $True
 						}
 					}
-	
-					$UI_Main_Rule.controls.AddRange((
-						$AddSourcesPathOpen,
-						$AddSourcesPathPaste
-					))
-	
+
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 520
 					}
-					$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+					$UI_Main_Rule.controls.AddRange((
+						$AddSourcesPathOpen,
+						$AddSourcesPathPaste,
+						$AddSourcesPath_Wrap
+					))
 				} else {
 					$CheckBox.Enabled = $False
 	
@@ -297,13 +296,15 @@ Function Cumulative_updates_Delete_UI_Autopilot
 							Update_Del_Refresh_Sourcs_Autopilot
 						}
 					}
-					$UI_Main_Rule.controls.AddRange($AddSourcesPathNoFolder)
-	
+
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 520
 					}
-					$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+					$UI_Main_Rule.controls.AddRange((
+						$AddSourcesPathNoFolder,
+						$AddSourcesPath_Wrap
+					))
 				}
 			}
 		}
@@ -448,18 +449,16 @@ Function Cumulative_updates_Delete_UI_Autopilot
 						LinkBehavior    = "NeverUnderline"
 						add_Click       = $UI_Main_Create_New_Tempate_Click
 					}
-	
-					$UI_Main_Rule.controls.AddRange((
-						$CheckBox,
-						$No_Find_Multistage_Rule
-					))
-	
+
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 520
 					}
-	
-					$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+					$UI_Main_Rule.controls.AddRange((
+						$CheckBox,
+						$No_Find_Multistage_Rule,
+						$AddSourcesPath_Wrap
+					))
 				}
 			}
 		}
@@ -618,18 +617,16 @@ Function Cumulative_updates_Delete_UI_Autopilot
 							$CheckBox.Enabled = $True
 						}
 					}
-	
-					$UI_Main_Rule.controls.AddRange((
-						$AddSourcesPathOpen,
-						$AddSourcesPathPaste
-					))
 
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 520
 					}
-
-					$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+					$UI_Main_Rule.controls.AddRange((
+						$AddSourcesPathOpen,
+						$AddSourcesPathPaste,
+						$AddSourcesPath_Wrap
+					))
 				} else {
 					$CheckBox.Enabled = $False
 
@@ -646,13 +643,14 @@ Function Cumulative_updates_Delete_UI_Autopilot
 							Update_Del_Refresh_Sourcs_Autopilot
 						}
 					}
-					$UI_Main_Rule.controls.AddRange($AddSourcesPathNoFolder)
-
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 520
 					}
-					$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+					$UI_Main_Rule.controls.AddRange((
+						$AddSourcesPathNoFolder,
+						$AddSourcesPath_Wrap
+					))
 				}
 			}
 		} else {
@@ -662,13 +660,14 @@ Function Cumulative_updates_Delete_UI_Autopilot
 				Padding        = "33,0,0,0"
 				Text           = $lang.NoWork
 			}
-			$UI_Main_Rule.controls.AddRange($UI_Main_Other_Rule_Not_Find)
-
 			$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 				Height         = 30
 				Width          = 520
 			}
-			$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+			$UI_Main_Rule.controls.AddRange((
+				$UI_Main_Other_Rule_Not_Find,
+				$AddSourcesPath_Wrap
+			))
 		}
 	}
 
@@ -807,13 +806,14 @@ Function Cumulative_updates_Delete_UI_Autopilot
 					Update_Del_Refresh_Sourcs_Autopilot
 				}
 			}
-			$UI_Main_Rule.controls.AddRange($AddSourcesPathNoFolder)
-
 			$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 				Height         = 30
 				Width          = 520
 			}
-			$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+			$UI_Main_Rule.controls.AddRange((
+				$AddSourcesPathNoFolder,
+				$AddSourcesPath_Wrap
+			))
 		}
 	}
 

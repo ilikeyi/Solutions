@@ -330,17 +330,16 @@ Function Cumulative_updates_Delete_UI
 							$CheckBox.Enabled = $True
 						}
 					}
-	
-					$UI_Main_Rule.controls.AddRange((
-						$AddSourcesPathOpen,
-						$AddSourcesPathPaste
-					))
-	
+
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 520
 					}
-					$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+					$UI_Main_Rule.controls.AddRange((
+						$AddSourcesPathOpen,
+						$AddSourcesPathPaste,
+						$AddSourcesPath_Wrap
+					))
 				} else {
 					$CheckBox.Enabled = $False
 	
@@ -357,13 +356,14 @@ Function Cumulative_updates_Delete_UI
 							Update_Del_Refresh_Sourcs
 						}
 					}
-					$UI_Main_Rule.controls.AddRange($AddSourcesPathNoFolder)
-	
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 520
 					}
-					$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+					$UI_Main_Rule.controls.AddRange((
+						$AddSourcesPathNoFolder,
+						$AddSourcesPath_Wrap
+					))
 				}
 			}
 		}
@@ -509,17 +509,15 @@ Function Cumulative_updates_Delete_UI
 						add_Click       = $UI_Main_Create_New_Tempate_Click
 					}
 	
-					$UI_Main_Rule.controls.AddRange((
-						$CheckBox,
-						$No_Find_Multistage_Rule
-					))
-	
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 520
 					}
-	
-					$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+					$UI_Main_Rule.controls.AddRange((
+						$CheckBox,
+						$No_Find_Multistage_Rule,
+						$AddSourcesPath_Wrap
+					))
 				}
 			}
 		}
@@ -678,18 +676,16 @@ Function Cumulative_updates_Delete_UI
 							$CheckBox.Enabled = $True
 						}
 					}
-	
-					$UI_Main_Rule.controls.AddRange((
-						$AddSourcesPathOpen,
-						$AddSourcesPathPaste
-					))
 
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 520
 					}
-
-					$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+					$UI_Main_Rule.controls.AddRange((
+						$AddSourcesPathOpen,
+						$AddSourcesPathPaste,
+						$AddSourcesPath_Wrap
+					))
 				} else {
 					$CheckBox.Enabled = $False
 
@@ -706,13 +702,14 @@ Function Cumulative_updates_Delete_UI
 							Update_Del_Refresh_Sourcs
 						}
 					}
-					$UI_Main_Rule.controls.AddRange($AddSourcesPathNoFolder)
-
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 520
 					}
-					$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+					$UI_Main_Rule.controls.AddRange((
+						$AddSourcesPathNoFolder,
+						$AddSourcesPath_Wrap
+					))
 				}
 			}
 		} else {
@@ -722,13 +719,14 @@ Function Cumulative_updates_Delete_UI
 				Padding        = "33,0,0,0"
 				Text           = $lang.NoWork
 			}
-			$UI_Main_Rule.controls.AddRange($UI_Main_Other_Rule_Not_Find)
-
 			$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 				Height         = 30
 				Width          = 520
 			}
-			$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+			$UI_Main_Rule.controls.AddRange((
+				$UI_Main_Other_Rule_Not_Find,
+				$AddSourcesPath_Wrap
+			))
 		}
 	}
 
@@ -853,13 +851,14 @@ Function Cumulative_updates_Delete_UI
 					Update_Del_Refresh_Sourcs
 				}
 			}
-			$UI_Main_Rule.controls.AddRange($AddSourcesPathNoFolder)
-
 			$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 				Height         = 30
 				Width          = 520
 			}
-			$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+			$UI_Main_Rule.controls.AddRange((
+				$AddSourcesPathNoFolder,
+				$AddSourcesPath_Wrap
+			))
 		}
 	}
 

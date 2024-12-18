@@ -11,6 +11,9 @@ Function Language_Extract_UI
 		[switch]$Del
 	)
 
+	Write-Host "`n   $($lang.LanguageExtract)" -ForegroundColor Yellow
+	Write-Host "   $('-' * 80)"
+
 	$Search_Folder_Multistage_Rule = Join-Path -Path $Global:MainMasterFolder -ChildPath "$($Global:ImageType)\_Custom"
 
 	$SearchFolderRule = @(
@@ -672,8 +675,17 @@ Function Language_Extract_UI
 					$UI_Main_View_Detailed_Show.Text += "     $($UpdateUnpacking)"
 
 					Check_Folder -chkpath "$($CopyTo)\$($NewLanguage)"
-					$arguments = "e", "-y", """$($SearchTempFile)""", "-o""$($CopyTo)\$($NewLanguage)""", "$($SearchNewPath)\*.*";
-					Start-Process -FilePath $Verify_Install_Path $arguments -Wait -WindowStyle Hidden
+
+					$arguments = @(
+						"e",
+						"-y",
+						"""$($SearchTempFile)""",
+						"-o""$($CopyTo)\$($NewLanguage)""",
+						"""$($SearchNewPath)\*.*"""
+					)
+
+					Start-Process -FilePath $Verify_Install_Path -argument $arguments -Wait -WindowStyle Hidden
+
 					$UI_Main_View_Detailed_Show.Text += "     $($lang.Done)`n"
 
 					ForEach ($itemCheckRepir in $Language_Repair_FileList) {
@@ -1403,11 +1415,21 @@ Function Language_Extract_UI
 		Padding        = "15,0,8,0"
 	}
 
-	$UI_Main_Extract_Search = New-Object system.Windows.Forms.Button -Property @{
+	$UI_Main_Setting_ISO = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
 		Height         = 36
 		Width          = 280
 		Location       = "620,10"
+		Text           = $lang.ISO_File
+		add_Click      = {
+			Image_Select -Page "ISO"
+		}
+	}
+	$UI_Main_Extract_Search = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Height         = 36
+		Width          = 280
+		Location       = "620,50"
 		Text           = $lang.LanguageExtractSearch
 		add_Click      = {
 			if (Extract_Language_Check_Customize -RuleNaming -SelectLanguage -SelectWIM -AddAndDel -SavePath -FolderName) {
@@ -1424,7 +1446,7 @@ Function Language_Extract_UI
 		UseVisualStyleBackColor = $True
 		Height         = 36
 		Width          = 280
-		Location       = "620,50"
+		Location       = "620,90"
 		Text           = $lang.LanguageExtractAddTo
 		add_Click      = {
 			if (Extract_Language_Check_Customize -RuleNaming -SelectLanguage -SelectWIM -AddAndDel -SavePath -FolderName) {
@@ -1444,7 +1466,7 @@ Function Language_Extract_UI
 	$UI_Main_Extract_View = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 30
 		Width          = 500
-		Location       = "620,100"
+		Location       = "620,140"
 		Text           = $lang.History_View
 		LinkColor      = "GREEN"
 		ActiveLinkColor = "RED"
@@ -1461,7 +1483,7 @@ Function Language_Extract_UI
 	$UI_Main_Extract_Adv = New-Object System.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 437
-		Location       = '620,140'
+		Location       = '620,185'
 		Text           = $lang.AdvOption
 	}
 	<#
@@ -1471,7 +1493,7 @@ Function Language_Extract_UI
 		UseVisualStyleBackColor = $True
 		Height         = 36
 		Width          = 280
-		Location       = "620,170"
+		Location       = "620,215"
 		Text           = $lang.Setup_Fix_Missing_Extract
 		add_Click      = {
 			if ($UI_Main_Extract_Rule_Only_And_Full.Checked) {
@@ -1488,7 +1510,7 @@ Function Language_Extract_UI
 	$UI_Main_Extract_Rule_Only_And_Full = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 40
 		Width          = 280
-		Location       = "620,215"
+		Location       = "620,260"
 		Text           = $lang.Extract_Rule_Only_And_Full
 		Checked        = $True
 		add_Click      = {
@@ -1497,9 +1519,9 @@ Function Language_Extract_UI
 		}
 	}
 	$UI_Main_Extract_Repair_Tips = New-Object system.Windows.Forms.Label -Property @{
-		Height         = 80
-		Width          = 260
-		Location       = "635,260"
+		Height         = 100
+		Width          = 265
+		Location       = "635,300"
 		Text           = $lang.Setup_Fix_Missing_Extract_Tips
 	}
 
@@ -1509,15 +1531,15 @@ Function Language_Extract_UI
 	}
 
 	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "630,368"
+		Location       = "630,448"
 		Height         = 20
 		Width          = 20
 		SizeMode       = "StretchImage"
 	}
 	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
-		Height         = 255
+		Height         = 160
 		Width          = 245
-		Location       = "655,370"
+		Location       = "655,450"
 		Text           = ""
 	}
 	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
@@ -1535,6 +1557,7 @@ Function Language_Extract_UI
 		$UI_Main_View_Return,
 		$UI_Main_View_Detailed,
 		$UI_Main_Menu,
+		$UI_Main_Setting_ISO,
 		$UI_Main_Extract_Search,
 		$UI_Main_Extract_Import,
 		$UI_Main_Extract_View,
@@ -1677,7 +1700,7 @@ Function Language_Extract_UI
 
 		$CheckBox     = New-Object System.Windows.Forms.RadioButton -Property @{
 			Height    = $([math]::Ceiling($InitLength / $InitCharacterLength) * $InitControlHeight)
-			Width     = 493
+			Width     = 495
 			Text      = $item
 			Tag       = $item
 			Margin    = "32,0,0,0"
@@ -1693,7 +1716,72 @@ Function Language_Extract_UI
 			$CheckBox.Checked = $False
 		}
 
-		$UI_Main_Rule.controls.AddRange($CheckBox)
+		$CheckBox_Open_Folder = New-Object system.Windows.Forms.LinkLabel -Property @{
+			Height         = 40
+			Width          = 495
+			Padding        = "45,0,0,0"
+			Text           = $lang.OpenFolder
+			Tag            = $item
+			LinkColor      = "GREEN"
+			ActiveLinkColor = "RED"
+			LinkBehavior   = "NeverUnderline"
+			add_Click      = {
+				$UI_Main_Error.Text = ""
+				$UI_Main_Error_Icon.Image = $null
+
+				if ([string]::IsNullOrEmpty($This.Tag)) {
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+					$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
+				} else {
+					if (Test-Path -Path $This.Tag -PathType Container) {
+						Start-Process $This.Tag
+
+						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+						$UI_Main_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Done)"
+					} else {
+						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+						$UI_Main_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Inoperable)"
+					}
+				}
+			}
+		}
+
+		$CheckBox_Paste = New-Object system.Windows.Forms.LinkLabel -Property @{
+			Height         = 40
+			Width          = 495
+			Padding        = "45,0,0,0"
+			Text           = $lang.Paste
+			Tag            = $item
+			LinkColor      = "GREEN"
+			ActiveLinkColor = "RED"
+			LinkBehavior   = "NeverUnderline"
+			add_Click      = {
+				$UI_Main_Error.Text = ""
+				$UI_Main_Error_Icon.Image = $null
+
+				if ([string]::IsNullOrEmpty($This.Tag)) {
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+					$UI_Main_Error.Text = "$($lang.Paste), $($lang.Inoperable)"
+				} else {
+					Set-Clipboard -Value $This.Tag
+
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+					$UI_Main_Error.Text = "$($lang.Paste), $($lang.Done)"
+				}
+			}
+		}
+
+		$CheckBox_Wrap = New-Object system.Windows.Forms.Label -Property @{
+			Height     = 15
+			Width      = 495
+		}
+
+		$UI_Main_Rule.controls.AddRange((
+			$CheckBox,
+			$CheckBox_Open_Folder,
+			$CheckBox_Paste,
+			$CheckBox_Wrap
+		))
 	}
 
 	<#
@@ -1802,6 +1890,7 @@ Function Language_Extract_UI
 		Text           = $lang.RulePre
 	}
 	$UI_Main_Extract_Rule_Select_Sourcest.controls.AddRange($UI_Main_Extract_Pre_Rule)
+
 	ForEach ($itemPre in $Global:Pre_Config_Rules) {
 		$UI_Main_Extract_Group = New-Object system.Windows.Forms.Label -Property @{
 			Height    = 30

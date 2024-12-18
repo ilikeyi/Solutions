@@ -23,6 +23,7 @@ Function Logo
 	}
 
 	if ($Global:Developers_Mode) {
+		$Host.UI.RawUI.WindowTitle += " | $($lang.Developers_Mode)"
 		Write-Host " $($lang.Developers_Mode) " -NoNewline -BackgroundColor White -ForegroundColor Black
 		Write-Host " Dev " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	}

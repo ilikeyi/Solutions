@@ -292,17 +292,16 @@ Function Drive_Add_UI
 							$CheckBox.Enabled = $True
 						}
 					}
-	
-					$UI_Main_Rule.controls.AddRange((
-						$AddSourcesPathOpen,
-						$AddSourcesPathPaste
-					))
-	
+
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 520
 					}
-					$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+					$UI_Main_Rule.controls.AddRange((
+						$AddSourcesPathOpen,
+						$AddSourcesPathPaste,
+						$AddSourcesPath_Wrap
+					))
 				} else {
 					$CheckBox.Enabled = $False
 	
@@ -319,13 +318,14 @@ Function Drive_Add_UI
 							Drive_Add_Refresh_Sources
 						}
 					}
-					$UI_Main_Rule.controls.AddRange($AddSourcesPathNoFolder)
-	
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 520
 					}
-					$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+					$UI_Main_Rule.controls.AddRange((
+						$AddSourcesPathNoFolder,
+						$AddSourcesPath_Wrap
+					))
 				}
 			}
 		}
@@ -485,17 +485,16 @@ Function Drive_Add_UI
 							$CheckBox.Enabled = $True
 						}
 					}
-	
-					$UI_Main_Rule.controls.AddRange((
-						$AddSourcesPathOpen,
-						$AddSourcesPathPaste
-					))
 
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 520
 					}
-					$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+					$UI_Main_Rule.controls.AddRange((
+						$AddSourcesPathOpen,
+						$AddSourcesPathPaste,
+						$AddSourcesPath_Wrap
+					))
 				} else {
 					$CheckBox.Enabled = $False
 
@@ -512,13 +511,14 @@ Function Drive_Add_UI
 							Drive_Add_Refresh_Sources
 						}
 					}
-					$UI_Main_Rule.controls.AddRange($AddSourcesPathNoFolder)
-
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 520
 					}
-					$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+					$UI_Main_Rule.controls.AddRange((
+						$AddSourcesPathNoFolder,
+						$AddSourcesPath_Wrap
+					))
 				}
 			}
 		} else {
@@ -528,13 +528,14 @@ Function Drive_Add_UI
 				Padding        = "33,0,0,0"
 				Text           = $lang.NoWork
 			}
-			$UI_Main_Rule.controls.AddRange($UI_Main_Other_Rule_Not_Find)
-
 			$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 				Height         = 30
 				Width          = 520
 			}
-			$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
+			$UI_Main_Rule.controls.AddRange((
+				$UI_Main_Other_Rule_Not_Find,
+				$AddSourcesPath_Wrap
+			))
 		}
 	}
 
