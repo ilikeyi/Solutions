@@ -1,0 +1,36 @@
+﻿ConvertFrom-StringData -StringData @'
+	# ar-SA
+	# Arabic (Saudi Arabia)
+
+	FontsUI                   = Segoe UI
+	LXPs                      = حزم تجربة اللغة المحلية (LXPs)
+	Menu                      = قائمة طعام
+	Learn                     = يذاكر
+	AddTo                     = اضف إليه
+	Del                       = يمسح
+	Done                      = ينهي
+	Failed                    = يفشل
+	OK                        = بالتأكيد
+	Cancel                    = يلغي
+	AllSel                    = حدد الكل
+	AllClear                  = مسح الكل
+	Operable                  = قابلة للتشغيل
+	Inoperable                = غير صالح للعمل
+	SwitchLanguage            = تبديل اللغة
+	LanguageReset             = إعادة ضبط إعدادات اللغة
+	LanguageCode              = علامة المنطقة
+	RefreshModules            = التحديث الساخن لجميع الوحدات
+	PleaseChoose              = الرجاء التحديد
+	PleaseChooseMain          = الاختصار أو الاختيار
+	FailedCreateFolder        = فشل في إنشاء الدليل
+	ToMsg                     = \n   {0} العودة تلقائيا إلى القائمة الرئيسية بعد ثواني.
+	UserCancel                = لقد ألغى المستخدم العملية.
+	Detailed                  = مفصل
+	FileName                  = اسم الملف
+	Help                      = يساعد
+	WorkDone                  = اكتمل، اضغط على أي مفتاح للعودة إلى الواجهة الرئيسية...
+	Short_Cmd                 = الاختصارات
+	Enable                    = يُمكَِن
+	Disable                   = إبطال
+	Setting                   = يثبت
+'@

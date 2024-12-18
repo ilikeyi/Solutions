@@ -1,0 +1,11 @@
+<Configuration>
+	<Add OfficeClientEdition="64" Channel="Current">
+		<Product ID="O365ProPlusRetail">
+			<Language ID="zh-cn" />
+			<Language ID="en-us" />
+			<Language ID="zh-tw" />
+<!--			<Language ID="ja-jp" /> -->
+<!--			<Language ID="ko-kr" /> -->
+		</Product>
+	</Add>
+</Configuration>
