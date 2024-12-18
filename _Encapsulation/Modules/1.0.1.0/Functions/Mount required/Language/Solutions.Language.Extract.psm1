@@ -1288,6 +1288,7 @@ Function Language_Extract_UI
 		Height         = 30
 		Width          = 500
 		Text           = $lang.AddTo
+		Tag            = "Add"
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
@@ -1297,6 +1298,7 @@ Function Language_Extract_UI
 		Height         = 30
 		Width          = 500
 		Text           = $lang.Del
+		Tag            = "Del"
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
@@ -2324,7 +2326,7 @@ Function Language_Extract_UI
 			} else {
 
 			}
-
+$UI_Main.ShowDialog() | Out-Null
 			Write-Host $lang.Done -ForegroundColor Green
 		} else {
 			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
