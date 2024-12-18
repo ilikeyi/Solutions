@@ -2326,7 +2326,7 @@ Function Language_Extract_UI
 			} else {
 
 			}
-$UI_Main.ShowDialog() | Out-Null
+
 			Write-Host $lang.Done -ForegroundColor Green
 		} else {
 			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
