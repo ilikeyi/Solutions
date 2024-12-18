@@ -110,18 +110,18 @@ Function Mainpage
 	Write-host "    " -NoNewline
 	Write-Host " 1 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.Mount) " -NoNewline -ForegroundColor Green
-	Write-Host " Mt * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " MT * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ", " -NoNewline
 
 	Write-Host "$($lang.Rebuild) " -NoNewline -ForegroundColor Green
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
-			Write-Host " Rbd * " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " RBD * " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		} else {
-			Write-Host " Rbd * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " RBD * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		}
 	} else {
-		Write-Host " Rbd * " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host " RBD * " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 	}
 
 	Write-Host ", " -NoNewline

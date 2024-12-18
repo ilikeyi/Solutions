@@ -254,7 +254,7 @@ Function Image_Get_Mount_Status
 			Write-host " " -NoNewline
 		}
 
-		Write-Host " Mt " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host " MT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-host " " -NoNewline
 		Write-Host " Save " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-host " " -NoNewline

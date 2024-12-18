@@ -67,19 +67,22 @@ Detailed introduction
 2. Setting
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Setting_en-US.webp)
 
-3. ISO
+3. API
+![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Api_en-US.webp)
+
+4. ISO
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/ISO_en-US.webp)
 
-4. Main Menu: No primary key selected
+5. Main Menu: No primary key selected
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Menu_en-US.webp)
 
-5. Main Menu: Primary key set
+6. Main Menu: Primary key set
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Menu.Sel_en-US.webp)
 
-6. Shortcuts User Guide
+7. Shortcuts User Guide
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Shortcut_en-US.webp)
 
-<ol>Download the original vector file, which requires Adobe Illustrator 2025 to open</ol>
+<ol>Vector original file, document version Illustator 2020, open it with Adobe Illustrator 2024 or higher</ol>
 <ol><a href="https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Shortcut.ai">Github</a> | <a href="https://fengyi.tel/download/solutions/Screenshots/Shortcut.ai">Yi</a></ol>
 </details>
 
