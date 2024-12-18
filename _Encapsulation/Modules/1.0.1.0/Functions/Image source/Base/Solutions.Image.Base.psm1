@@ -744,11 +744,11 @@ Function Menu_Shortcuts_Image_Sources_Add_IAB
 		if ($NewRuleName -like $Item.ToLower()) {
 			$NewRuleName = $NewRuleName.replace($item.ToLower(), '') | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 			$NewImageIndex = $Item
+			$Global:Primary_Key_Image = @()
 			break
 		}
 	}
 
-	$Global:Primary_Key_Image = @()
 	if ([string]::IsNullOrEmpty($NewImageIndex)) {
 		Write-host $lang.NoChoose -ForegroundColor Red
 	} else {
@@ -844,11 +844,11 @@ Function Menu_Shortcuts_Remove_Index
 		if ($NewRuleName -like $Item.ToLower()) {
 			$NewRuleName = $NewRuleName.replace($item.ToLower(), '') | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 			$NewImageIndex = $Item
+			$Global:Primary_Key_Image = @()
 			break
 		}
 	}
 
-	$Global:Primary_Key_Image = @()
 	if ([string]::IsNullOrEmpty($NewImageIndex)) {
 		Write-host $lang.NoChoose -ForegroundColor Red
 	} else {
@@ -964,11 +964,11 @@ Function Menu_Shortcuts_Mount_Index
 		if ($NewRuleName -like $Item.ToLower()) {
 			$NewRuleName = $NewRuleName.replace($item.ToLower(), '') | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 			$NewImageIndex = $Item
+			$Global:Primary_Key_Image = @()
 			break
 		}
 	}
 
-	$Global:Primary_Key_Image = @()
 	if ([string]::IsNullOrEmpty($NewImageIndex)) {
 		Write-host $lang.NoChoose -ForegroundColor Red
 	} else {
@@ -1106,11 +1106,11 @@ Function Menu_Shortcuts_Export_Key
 		if ($NewRuleName -like $Item.ToLower()) {
 			$NewRuleName = $NewRuleName.replace($item.ToLower(), '') | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 			$NewImageIndex = $Item
+			$Global:Primary_Key_Image = @()
 			break
 		}
 	}
 
-	$Global:Primary_Key_Image = @()
 	if ([string]::IsNullOrEmpty($NewImageIndex)) {
 		Write-host $lang.NoChoose -ForegroundColor Red
 	} else {
@@ -1205,11 +1205,11 @@ Function Menu_Shortcuts_Rebuild_Key
 		if ($NewRuleName -like $Item.ToLower()) {
 			$NewRuleName = $NewRuleName.replace($item.ToLower(), '') | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 			$NewImageIndex = $Item
+			$Global:Primary_Key_Image = @()
 			break
 		}
 	}
 
-	$Global:Primary_Key_Image = @()
 	if ([string]::IsNullOrEmpty($NewImageIndex)) {
 		Write-host $lang.NoChoose -ForegroundColor Red
 	} else {
@@ -1296,11 +1296,11 @@ Function Menu_Shortcuts_Apply_Key
 		if ($NewRuleName -like $Item.ToLower()) {
 			$NewRuleName = $NewRuleName.replace($item.ToLower(), '') | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 			$NewImageIndex = $Item
+			$Global:Primary_Key_Image = @()
 			break
 		}
 	}
 
-	$Global:Primary_Key_Image = @()
 	if ([string]::IsNullOrEmpty($NewImageIndex)) {
 		Write-host $lang.NoChoose -ForegroundColor Red
 	} else {
