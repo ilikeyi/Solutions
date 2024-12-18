@@ -4217,11 +4217,31 @@ Function Image_Assign_Autopilot_Master
 		<#
 			.需要挂载项
 		#>
-		$GUIImageSelectEventAssignNeedMount = New-Object system.Windows.Forms.Label -Property @{
-			Height         = 30
+		$GUIImageSelectEventAssignNeedMount = New-Object System.Windows.Forms.CheckBox -Property @{
+			Height         = 35
 			Width          = 450
 			margin         = "0,35,0,0"
 			Text           = $lang.AssignNeedMount
+			Checked        = $True
+			add_Click      = {
+				if ($This.Checked) {
+					$UI_Main_Export_Event_Custom_Menu.Controls | ForEach-Object {
+						if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
+							if ("IsMainGroup" -eq $_.Tag) {
+								$_.Enabled = $True
+							}
+						}
+					}
+				} else {
+					$UI_Main_Export_Event_Custom_Menu.Controls | ForEach-Object {
+						if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
+							if ("IsMainGroup" -eq $_.Tag) {
+								$_.Enabled = $False
+							}
+						}
+					}
+				}
+			}
 		}
 		$UI_Main_Export_Event_Custom_Menu.controls.AddRange($GUIImageSelectEventAssignNeedMount)
 
