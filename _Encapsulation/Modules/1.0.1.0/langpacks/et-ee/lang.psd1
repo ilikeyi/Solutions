@@ -31,7 +31,7 @@
 	AvailableLanguages              = Saadaolevad keeled
 	SwitchLanguage                  = Keelt vahetada
 	PleaseChoose                    = Palun valige
-	PleaseChooseMain                = tehke otsetee või valige
+	Options                         = Valikud
 	Choose                          = Valitud
 	NoChoose                        = Pole valitud
 	AdvOption                       = Valikulised funktsioonid

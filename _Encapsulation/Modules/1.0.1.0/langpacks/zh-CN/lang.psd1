@@ -9,7 +9,7 @@
 	Learn                           = 学习
 	Menu                            = 菜单
 	Short_Cmd                       = 快捷指令
-	Shortcut                        = 捷徑
+	Shortcut                        = 捷径
 	Update                          = 更新
 	CUpdate                         = 累积更新
 	Rebuild                         = 重建
@@ -31,7 +31,7 @@
 	AvailableLanguages              = 可用语言
 	SwitchLanguage                  = 切换语言
 	PleaseChoose                    = 请选择
-	PleaseChooseMain                = 快捷指令或选择
+	Options                         = 选项
 	Choose                          = 已选择
 	NoChoose                        = 未选择
 	AdvOption                       = 可选功能

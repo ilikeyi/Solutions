@@ -45,7 +45,6 @@
 	LanguageReset             = Réinitialiser les paramètres de langue
 	LanguageCode              = Marque de zone
 	PleaseChoose              = Veuillez sélectionner
-	PleaseChooseMain          = Raccourci ou sélection
 	FailedCreateFolder        = Échec de la création du répertoire
 	Failed                    = Échouer
 	ToMsg                     = \n   {0} Retour automatique au menu principal après quelques secondes.
@@ -75,4 +74,5 @@
 	Help                      = Aide
 	WorkDone                  = Terminé, appuyez sur n'importe quelle touche pour revenir à l'interface principale...
 	Short_Cmd                 = Raccourcis
+	Options                   = Possibilités
 '@

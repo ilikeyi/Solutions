@@ -45,7 +45,6 @@
 	LanguageReset             = Spracheinstellungen zurücksetzen
 	LanguageCode              = Zonenmarkierung
 	PleaseChoose              = Bitte wählen
-	PleaseChooseMain          = Verknüpfung oder Auswahl
 	FailedCreateFolder        = Fehler beim Erstellen des Verzeichnisses
 	Failed                    = scheitern
 	ToMsg                     = \n   Nach {0} Sekunden automatisch zum Hauptmenü zurückkehren.
@@ -75,4 +74,5 @@
 	Help                      = Helfen
 	WorkDone                  = Wenn Sie fertig sind, drücken Sie eine beliebige Taste, um zur Hauptoberfläche zurückzukehren ...
 	Short_Cmd                 = Verknüpfungen
+	Options                   = Optionen
 '@

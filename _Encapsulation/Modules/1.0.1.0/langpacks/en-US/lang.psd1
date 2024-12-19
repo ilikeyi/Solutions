@@ -31,7 +31,7 @@
 	AvailableLanguages              = Available languages
 	SwitchLanguage                  = Switch language
 	PleaseChoose                    = Please choose
-	PleaseChooseMain                = Shortcuts or options
+	Options                         = Options
 	Choose                          = Chosen
 	NoChoose                        = Not selected
 	AdvOption                       = Optional function

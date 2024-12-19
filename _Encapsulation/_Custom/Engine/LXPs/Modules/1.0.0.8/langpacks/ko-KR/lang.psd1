@@ -21,7 +21,6 @@
 	LanguageCode              = 구역 마커
 	RefreshModules            = 모든 모듈을 핫 리프레시
 	PleaseChoose              = 선택하세요
-	PleaseChooseMain          = 바로가기 또는 옵션
 	FailedCreateFolder        = 디렉터리 생성 실패
 	ToMsg                     = \n   {0} 몇 초 후 자동으로 주 메뉴로 돌아갑니다.
 	UserCancel                = 사용자가 작업을 취소했습니다.
@@ -30,6 +29,7 @@
 	Help                      = 돕다
 	WorkDone                  = 완료, 기본 인터페이스로 돌아가려면 아무 키나 누르십시오...
 	Short_Cmd                 = 바로 가기 명령
+	Options                   = 옵션
 	Enable                    = 할 수 있게 하다
 	Disable                   = 장애가 있는
 	Setting                   = 설정

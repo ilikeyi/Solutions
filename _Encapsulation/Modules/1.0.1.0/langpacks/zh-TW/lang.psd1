@@ -31,7 +31,7 @@
 	AvailableLanguages              = 可用語言
 	SwitchLanguage                  = 切換語言
 	PleaseChoose                    = 請選擇
-	PleaseChooseMain                = 快速指令或選擇
+	Options                         = 選項
 	Choose                          = 已選擇
 	NoChoose                        = 未選擇
 	AdvOption                       = 可選功能

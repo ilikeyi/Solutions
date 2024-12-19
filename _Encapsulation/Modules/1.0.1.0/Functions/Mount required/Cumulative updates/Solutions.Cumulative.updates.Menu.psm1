@@ -137,8 +137,14 @@ Function Update_Menu
 	Write-Host "   " -NoNewline
 	Write-Host " H'elp * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
-	Write-Host " " -NoNewline
-	switch -Wildcard (Read-Host $lang.PleaseChooseMain)
+	Write-Host ", " -NoNewline
+
+	Write-Host " $($lang.Short_Cmd) " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host ", " -NoNewline
+	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host ": " -NoNewline
+
+	switch -Wildcard (Read-Host)
 	{
 		"1" {
 			Update_Menu_Shortcuts_Add

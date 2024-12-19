@@ -31,7 +31,7 @@
 	AvailableLanguages              = Beschikbare talen
 	SwitchLanguage                  = Van taal wisselen
 	PleaseChoose                    = Selecteer alstublieft
-	PleaseChooseMain                = Snelkoppeling of selectie
+	Options                         = Opties
 	Choose                          = Gekozen
 	NoChoose                        = Niet geselecteerd
 	AdvOption                       = Optionele functies

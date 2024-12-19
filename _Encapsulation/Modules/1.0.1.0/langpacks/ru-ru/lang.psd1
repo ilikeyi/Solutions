@@ -31,7 +31,7 @@
 	AvailableLanguages              = Доступные языки
 	SwitchLanguage                  = Переключить язык
 	PleaseChoose                    = Пожалуйста, выберите
-	PleaseChooseMain                = Ярлык или выбор
+	Options                         = Параметры
 	Choose                          = Выбрано
 	NoChoose                        = Не выбрано
 	AdvOption                       = Дополнительные функции

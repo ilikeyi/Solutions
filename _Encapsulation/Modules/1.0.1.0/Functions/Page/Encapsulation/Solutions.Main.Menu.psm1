@@ -504,8 +504,17 @@ Function Mainpage
 	Write-Host "   " -NoNewline
 	Write-Host " H'elp * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
-	Write-Host " " -NoNewline
-	switch -Wildcard (Read-Host $lang.PleaseChooseMain)
+	Write-Host ", " -NoNewline
+
+	Write-Host " $($lang.Short_Cmd) " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host ", " -NoNewline
+	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host ", " -NoNewline
+	Write-Host "$($lang.SpecialFunction) " -NoNewline
+	Write-Host " PS * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host ": " -NoNewline
+
+	switch -Wildcard (Read-Host)
 	{
 		"1" {
 			Image_Assign_Event_Master
@@ -1133,6 +1142,17 @@ Function Mainpage
 
 			Write-Host "   $('-' * 80)"
 			Write-Host "   API: $($lang.API), $($lang.Done)" -ForegroundColor Green
+			ToWait -wait 2
+			Mainpage
+		}
+
+		<#
+			.快捷指令：清除变量
+		#>
+		"PS *" {
+			ForEach ($Function in $PSItem.Remove(0, 3)) {
+				Invoke-Expression -Command $Function
+			}
 			ToWait -wait 2
 			Mainpage
 		}

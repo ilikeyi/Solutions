@@ -45,7 +45,6 @@
 	LanguageReset             = Nyelvi beállítások visszaállítása
 	LanguageCode              = Zóna jel
 	PleaseChoose              = Kérem válasszon
-	PleaseChooseMain          = Parancsikon vagy kijelölés
 	FailedCreateFolder        = Nem sikerült létrehozni a könyvtárat
 	Failed                    = Uspjeti
 	ToMsg                     = \n   {0} Másodpercek után automatikusan visszatér a főmenübe.
@@ -75,4 +74,5 @@
 	Help                      = Segítség
 	WorkDone                  = Befejezve, nyomja meg bármelyik gombot, hogy visszatérjen a fő felületre...
 	Short_Cmd                 = Parancsikonok
+	Options                   = Opciók
 '@

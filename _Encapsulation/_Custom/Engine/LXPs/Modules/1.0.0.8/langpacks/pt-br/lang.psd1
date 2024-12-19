@@ -21,7 +21,6 @@
 	LanguageCode              = Marca de zona
 	RefreshModules            = Atualização a quente de todos os módulos
 	PleaseChoose              = Selecione
-	PleaseChooseMain          = Atalho ou seleção
 	FailedCreateFolder        = Falha ao criar diretório
 	ToMsg                     = \n   {0} Retorne automaticamente ao menu principal após segundos.
 	UserCancel                = O usuário cancelou a operação.
@@ -30,6 +29,7 @@
 	Help                      = Ajuda
 	WorkDone                  = Concluído, pressione qualquer tecla para retornar à interface principal...
 	Short_Cmd                 = Atalhos
+	Options                   = Opções
 	Enable                    = Habilitar
 	Disable                   = Desativar
 	Setting                   = Configurar

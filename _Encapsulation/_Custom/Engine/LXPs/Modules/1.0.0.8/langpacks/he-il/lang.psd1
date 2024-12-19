@@ -21,7 +21,6 @@
 	LanguageCode              = סימן אזור
 	RefreshModules            = רענון חם של כל המודולים
 	PleaseChoose              = נא לבחור
-	PleaseChooseMain          = קיצור או בחירה
 	FailedCreateFolder        = יצירת הספרייה נכשלה
 	ToMsg                     = \n   {0} חזור אוטומטית לתפריט הראשי לאחר שניות.
 	UserCancel                = המשתמש ביטל את הפעולה.
@@ -30,6 +29,7 @@
 	Help                      = עֶזרָה
 	WorkDone                  = הושלם, הקש על מקש כלשהו כדי לחזור לממשק הראשי...
 	Short_Cmd                 = קיצורי דרך
+	Options                   = אפשרויות
 	Enable                    = לְאַפשֵׁר
 	Disable                   = השבת
 	Setting                   = לְהַקִים

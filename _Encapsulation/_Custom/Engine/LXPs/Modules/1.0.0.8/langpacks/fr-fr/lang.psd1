@@ -21,7 +21,6 @@
 	LanguageCode              = Marque de zone
 	RefreshModules            = Actualiser à chaud tous les modules
 	PleaseChoose              = Veuillez sélectionner
-	PleaseChooseMain          = Raccourci ou sélection
 	FailedCreateFolder        = Échec de la création du répertoire
 	ToMsg                     = \n   {0} Retour automatique au menu principal après quelques secondes.
 	UserCancel                = L'utilisateur a annulé l'opération.
@@ -30,6 +29,7 @@
 	Help                      = Aide
 	WorkDone                  = Terminé, appuyez sur n'importe quelle touche pour revenir à l'interface principale...
 	Short_Cmd                 = Raccourcis
+	Options                   = Possibilités
 	Enable                    = Activer
 	Disable                   = Désactiver
 	Setting                   = Installation

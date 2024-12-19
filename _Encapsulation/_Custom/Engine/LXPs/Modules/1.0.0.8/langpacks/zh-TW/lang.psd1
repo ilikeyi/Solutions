@@ -21,7 +21,6 @@
 	LanguageCode              = 區域標記
 	RefreshModules            = 熱刷新所有模組
 	PleaseChoose              = 請選擇
-	PleaseChooseMain          = 快速指令或選擇
 	FailedCreateFolder        = 創建目錄失敗
 	ToMsg                     = \n   {0} 秒後自動返回到主菜單。
 	UserCancel                = 用戶已取消操作。
@@ -30,6 +29,7 @@
 	Help                      = 幫助
 	WorkDone                  = 完成，按任意鍵返回主界面...
 	Short_Cmd                 = 快捷指令
+	Options                   = 選項
 	Enable                    = 啟用
 	Disable                   = 禁用
 	Setting                   = 設置

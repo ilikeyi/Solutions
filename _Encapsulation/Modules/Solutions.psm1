@@ -841,7 +841,7 @@ $Global:Languages_Available = @(
 		LIP      = ""
 		Expand   = @()
 	}
- 	@{
+	@{
 		RegionID = "1037"
 		Region   = "he-IL"
 		Tag      = "il"

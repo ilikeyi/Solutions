@@ -21,7 +21,6 @@
 	LanguageCode              = Region tag
 	RefreshModules            = Hot refresh all modules
 	PleaseChoose              = Please select
-	PleaseChooseMain          = shortcuts or options
 	FailedCreateFolder        = Failed to create directory
 	ToMsg                     = \n   Automatically return to the main menu after {0} seconds.
 	UserCancel                = The user has cancelled the operation.
@@ -30,6 +29,7 @@
 	Help                      = Help
 	WorkDone                  = Finish, press any key to return to the main interface...
 	Short_Cmd                 = Shortcut command
+	Options                   = Options
 	Enable                    = Enable
 	Disable                   = Disable
 	Setting                   = Set up

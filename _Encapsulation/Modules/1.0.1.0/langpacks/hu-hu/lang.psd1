@@ -31,7 +31,7 @@
 	AvailableLanguages              = Elérhető nyelvek
 	SwitchLanguage                  = Nyelvet váltani
 	PleaseChoose                    = Kérem válasszon
-	PleaseChooseMain                = Parancsikon vagy kijelölés
+	Options                         = Opciók
 	Choose                          = Kiválasztott
 	NoChoose                        = Nincs kiválasztva
 	AdvOption                       = Választható funkciók

@@ -21,7 +21,6 @@
 	LanguageCode              = Tsooni märk
 	RefreshModules            = Kõigi moodulite kuumvärskendus
 	PleaseChoose              = Palun valige
-	PleaseChooseMain          = Otsetee või valik
 	FailedCreateFolder        = Kataloogi loomine ebaõnnestus
 	ToMsg                     = \n   {0} Naaske sekundite pärast automaatselt peamenüüsse.
 	UserCancel                = Kasutaja on toimingu tühistanud.
@@ -30,6 +29,7 @@
 	Help                      = Abi
 	WorkDone                  = Lõpetatud, vajutage põhiliidesele naasmiseks suvalist klahvi...
 	Short_Cmd                 = Otseteed
+	Options                   = Valikud
 	Enable                    = Lubada
 	Disable                   = Keela
 	Setting                   = Üles seada

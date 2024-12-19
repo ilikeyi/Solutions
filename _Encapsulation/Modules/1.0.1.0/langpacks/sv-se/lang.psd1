@@ -31,7 +31,7 @@
 	AvailableLanguages              = Tillgängliga språk
 	SwitchLanguage                  = Byta språk
 	PleaseChoose                    = Vänligen välj
-	PleaseChooseMain                = Genväg eller val
+	Options                         = Alternativ
 	Choose                          = Vald
 	NoChoose                        = Ej vald
 	AdvOption                       = Valfria funktioner

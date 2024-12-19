@@ -45,7 +45,6 @@
 	LanguageReset             = Dil ayarlarını sıfırla
 	LanguageCode              = Bölge işareti
 	PleaseChoose              = Lütfen seçin
-	PleaseChooseMain          = Kısayol veya seçim
 	FailedCreateFolder        = Dizin oluşturulamadı
 	Failed                    = Hata
 	ToMsg                     = \n   {0} Saniyeler sonra otomatik olarak ana menüye dönün.
@@ -75,4 +74,5 @@
 	Help                      = Yardım
 	WorkDone                  = Tamamlandı, ana arayüze dönmek için herhangi bir tuşa basın...
 	Short_Cmd                 = Kısayollar
+	Options                   = Seçenekler
 '@

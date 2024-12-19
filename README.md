@@ -121,7 +121,7 @@ Detailed introduction
       <p>1.&nbsp;&nbsp;The main functions of the encapsulated script</p>
       <dl>
         <dd>1.1.&nbsp;&nbsp;Check for updates: In order to better stay up to date with the latest version, you can check whether the latest version is available at any time</dd>
-        <dd>1.2.&nbsp;&nbsp;Hot refresh: After changing the script, enter R in the main interface and execute "reload module" to complete the hot refresh</dd>
+        <dd>1.2.&nbsp;&nbsp;Hot refresh all modules: In the main interface, you can enter: R = fast hot refresh, R'R = include other when hot refresh</dd>
         <dd>1.3.&nbsp;&nbsp;Multi-language packs</dd>
         <dd>1.4.&nbsp;&nbsp;Shortcut command: When there is an available shortcut command, you can quickly enter and activate the corresponding instruction set</dd>
         <dd>1.5.&nbsp;&nbsp;API: Application Programming Interface</dd>

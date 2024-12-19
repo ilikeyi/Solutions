@@ -45,7 +45,6 @@
 	LanguageReset             = Ripristina le impostazioni della lingua
 	LanguageCode              = Contrassegno di zona
 	PleaseChoose              = Seleziona
-	PleaseChooseMain          = Collegamento o selezione
 	FailedCreateFolder        = Impossibile creare la directory
 	Failed                    = Fallire
 	ToMsg                     = \n   {0} Ritorna automaticamente al menu principale dopo secondi.
@@ -75,4 +74,5 @@
 	Help                      = Aiuto
 	WorkDone                  = Completato, premere un tasto qualsiasi per tornare all'interfaccia principale...
 	Short_Cmd                 = Scorciatoie
+	Options                   = Opzioni
 '@

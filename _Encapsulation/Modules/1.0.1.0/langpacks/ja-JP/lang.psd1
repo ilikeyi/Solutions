@@ -31,7 +31,7 @@
 	AvailableLanguages              = 利用可能な言語
 	SwitchLanguage                  = 言語を切り替える
 	PleaseChoose                    = 選んでください
-	PleaseChooseMain                = ショートカット コマンドまたは選択
+	Options                         = オプション
 	Choose                          = 選ばれた
 	NoChoose                        = 選択されていない
 	AdvOption                       = オプション機能

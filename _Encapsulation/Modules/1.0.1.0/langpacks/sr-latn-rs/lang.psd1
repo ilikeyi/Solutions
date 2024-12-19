@@ -31,7 +31,7 @@
 	AvailableLanguages              = Доступни језици
 	SwitchLanguage                  = Промени језик
 	PleaseChoose                    = Молимо изаберите
-	PleaseChooseMain                = Пречица или избор
+	Options                         = Опције
 	Choose                          = Изабрано
 	NoChoose                        = Није изабрано
 	AdvOption                       = Опционе карактеристике

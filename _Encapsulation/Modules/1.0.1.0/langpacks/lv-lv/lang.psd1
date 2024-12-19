@@ -31,7 +31,7 @@
 	AvailableLanguages              = Pieejamās valodas
 	SwitchLanguage                  = Mainīt valodu
 	PleaseChoose                    = Lūdzu, atlasiet
-	PleaseChooseMain                = Īsceļš vai atlase
+	Options                         = Iespējas
 	Choose                          = Atlasīts
 	NoChoose                        = Nav atlasīts
 	AdvOption                       = Izvēles funkcijas

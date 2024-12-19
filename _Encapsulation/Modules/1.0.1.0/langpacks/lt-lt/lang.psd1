@@ -31,7 +31,7 @@
 	AvailableLanguages              = Galimos kalbos
 	SwitchLanguage                  = Pakeisti kalbą
 	PleaseChoose                    = Prašome pasirinkti
-	PleaseChooseMain                = Spartusis klavišas arba pasirinkimas
+	Options                         = Parinktys
 	Choose                          = Pasirinkta
 	NoChoose                        = Nepasirinkta
 	AdvOption                       = Pasirenkamos funkcijos

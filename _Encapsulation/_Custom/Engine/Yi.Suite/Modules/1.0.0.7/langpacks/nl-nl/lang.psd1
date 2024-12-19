@@ -45,7 +45,6 @@
 	LanguageReset             = Taalinstellingen resetten
 	LanguageCode              = Zonemarkering
 	PleaseChoose              = Selecteer alstublieft
-	PleaseChooseMain          = Snelkoppeling of selectie
 	FailedCreateFolder        = Kan map niet maken
 	Failed                    = Mislukking
 	ToMsg                     = \n   {0} Keer na enkele seconden automatisch terug naar het hoofdmenu.
@@ -75,4 +74,5 @@
 	Help                      = Hulp
 	WorkDone                  = Voltooid, druk op een willekeurige toets om terug te keren naar de hoofdinterface...
 	Short_Cmd                 = Snelkoppelingen
+	Options                   = Opties
 '@

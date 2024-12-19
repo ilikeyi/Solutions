@@ -21,7 +21,6 @@
 	LanguageCode              = Značka zóny
 	RefreshModules            = Hot aktualizovat všechny moduly
 	PleaseChoose              = Vyberte prosím
-	PleaseChooseMain          = Zkratka nebo výběr
 	FailedCreateFolder        = Nepodařilo se vytvořit adresář
 	ToMsg                     = \n   {0} Po několika sekundách se automaticky vrátí do hlavní nabídky.
 	UserCancel                = Uživatel operaci zrušil.
@@ -30,6 +29,7 @@
 	Help                      = Pomoc
 	WorkDone                  = Dokončeno, stisknutím libovolné klávesy se vraťte do hlavního rozhraní...
 	Short_Cmd                 = Zkratky
+	Options                   = Možnosti
 	Enable                    = Umožnit
 	Disable                   = Zakázat
 	Setting                   = Nastavit

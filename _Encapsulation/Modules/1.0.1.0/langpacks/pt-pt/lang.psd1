@@ -31,7 +31,7 @@
 	AvailableLanguages              = Idiomas disponíveis
 	SwitchLanguage                  = Mudar de idioma
 	PleaseChoose                    = Selecione
-	PleaseChooseMain                = Atalho ou seleção
+	Options                         = Opções
 	Choose                          = Selecionado
 	NoChoose                        = Não selecionado
 	AdvOption                       = Recursos opcionais

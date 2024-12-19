@@ -21,7 +21,6 @@
 	LanguageCode              = Zonenmarkierung
 	RefreshModules            = Hot-Refresh aller Module
 	PleaseChoose              = Bitte auswählen
-	PleaseChooseMain          = Verknüpfung oder Auswahl
 	FailedCreateFolder        = Verzeichnis konnte nicht erstellt werden
 	ToMsg                     = \n   {0} Automatische Rückkehr zum Hauptmenü nach Sekunden.
 	UserCancel                = Der Benutzer hat den Vorgang abgebrochen.
@@ -30,6 +29,7 @@
 	Help                      = Helfen
 	WorkDone                  = Wenn Sie fertig sind, drücken Sie eine beliebige Taste, um zur Hauptoberfläche zurückzukehren ...
 	Short_Cmd                 = Verknüpfungen
+	Options                   = Optionen
 	Enable                    = Ermöglichen
 	Disable                   = Behinderte
 	Setting                   = Einstellung

@@ -21,7 +21,6 @@
 	LanguageCode              = ゾーンマーカー
 	RefreshModules            = すべてのモジュールをホットリフレッシュします
 	PleaseChoose              = 選んでください
-	PleaseChooseMain          = ショートカット コマンドまたは選択
 	FailedCreateFolder        = ディレクトリの作成に失敗しました
 	ToMsg                     = \n   {0} 数秒後、自動的にメインメニューに戻ります。
 	UserCancel                = ユーザーが操作をキャンセルしました。
@@ -30,6 +29,7 @@
 	Help                      = ヘルプ
 	WorkDone                  = 完了し, メインインターフェイスに戻って任意のキーを押します...
 	Short_Cmd                 = ショートカットコマンド
+	Options                   = オプション
 	Enable                    = 有効
 	Disable                   = 無効
 	Setting                   = 設定

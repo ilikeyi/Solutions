@@ -30,7 +30,7 @@
 	AvailableLanguages              = Dostupné jazyky
 	SwitchLanguage                  = Přepnout jazyk
 	PleaseChoose                    = Vyberte prosím
-	PleaseChooseMain                = použijte zkratku nebo vyberte
+	Options                         = Možnosti
 	Choose                          = Vybraný
 	NoChoose                        = Nevybráno
 	AdvOption                       = Volitelné funkce

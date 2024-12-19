@@ -31,7 +31,7 @@
 	AvailableLanguages              = Mevcut diller
 	SwitchLanguage                  = Dili değiştir
 	PleaseChoose                    = Lütfen seçin
-	PleaseChooseMain                = Kısayol veya seçim
+	Options                         = Seçenekler
 	Choose                          = Seçildi
 	NoChoose                        = Seçilmedi
 	AdvOption                       = Isteğe bağlı özellikler

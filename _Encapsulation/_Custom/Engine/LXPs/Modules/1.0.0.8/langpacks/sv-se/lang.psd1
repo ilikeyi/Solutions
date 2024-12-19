@@ -21,7 +21,6 @@
 	LanguageCode              = Zonmärke
 	RefreshModules            = Varmuppdatera alla moduler
 	PleaseChoose              = Vänligen välj
-	PleaseChooseMain          = Genväg eller val
 	FailedCreateFolder        = Det gick inte att skapa katalogen
 	ToMsg                     = \n   {0} Återgå automatiskt till huvudmenyn efter några sekunder.
 	UserCancel                = Användaren har avbrutit åtgärden.
@@ -30,6 +29,7 @@
 	Help                      = Hjälp
 	WorkDone                  = Slutfört, tryck på valfri tangent för att återgå till huvudgränssnittet...
 	Short_Cmd                 = Genvägar
+	Options                   = Alternativ
 	Enable                    = Aktivera
 	Disable                   = Inaktivera
 	Setting                   = Inrätta

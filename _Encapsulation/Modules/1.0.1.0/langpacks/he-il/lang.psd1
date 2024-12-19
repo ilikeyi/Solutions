@@ -31,7 +31,7 @@
 	AvailableLanguages              = שפות זמינות
 	SwitchLanguage                  = להחליף שפה
 	PleaseChoose                    = נא לבחור
-	PleaseChooseMain                = קיצור או בחירה
+	Options                         = אפשרויות
 	Choose                          = נִבחָר
 	NoChoose                        = לא נבחר
 	AdvOption                       = תכונות אופציונליות

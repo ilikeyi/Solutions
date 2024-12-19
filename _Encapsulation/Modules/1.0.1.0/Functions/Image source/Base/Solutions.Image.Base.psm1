@@ -173,7 +173,7 @@ Function Image_Mount_Force_Del
 				dism /cleanup-wim | Out-Null
 				Clear-WindowsCorruptMountPoint -LogPath "$(Get_Mount_To_Logs)\Clear.log" -ErrorAction SilentlyContinue | Out-Null
 				dism /Unmount-Wim /Mountdir:"""$($NewPath)""" /Discard | Out-Null
-	
+
 				if (Test-Path -Path $NewPath -PathType Container) {
 					dism /cleanup-wim | Out-Null
 					Clear-WindowsCorruptMountPoint -LogPath "$(Get_Mount_To_Logs)\Clear.log" -ErrorAction SilentlyContinue | Out-Null
@@ -184,7 +184,7 @@ Function Image_Mount_Force_Del
 				}
 			}
 		}
-		
+
 		<#
 			.For the third time, if it fails, delete it forcibly.
 			.第三次，不行就强行删除。
@@ -205,7 +205,7 @@ Function Image_Mount_Force_Del
 				}
 			}
 		}
-		
+
 		<#
 			.For the fourth time, four but three, it went on strike.
 			.第四次，四不过三，罢工了。
@@ -563,22 +563,22 @@ Function Image_Set_Primary_Key_Shortcuts
 			if ($item.Main.Shortcuts -eq $Name) {
 				Write-Host "   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
 				Write-Host $item.Main.Group -ForegroundColor Green
-	
+
 				Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 				Write-Host $item.Main.Uid -ForegroundColor Green
-	
+
 				$TestWimFile = Join-Path -Path $item.Main.Path -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)"
-	
+
 				Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
 				Write-Host $TestWimFile -ForegroundColor Green
-	
+
 				if (Test-Path -Path $TestWimFile -PathType Leaf) {
 					Image_Set_Global_Primary_Key -Uid $item.Main.Uid -Detailed -DevCode "0406"
 				} else {
 					Write-Host "`n   $($lang.NoInstallImage)"
 					Write-Host "   $($TestWimFile)" -ForegroundColor Red
 				}
-	
+
 				return
 			}
 
@@ -729,7 +729,7 @@ Function Menu_Shortcuts_Image_Sources_Add_IAB
 	ForEach ($item in $Global:Image_Rule) {
 		if ($item.Main.Suffix -eq "wim") {
 			$Scope += $item.Main.Shortcuts
-		
+
 			if ($item.Expand.Count -gt 0) {
 				ForEach ($Expand in $item.Expand) {
 					if ($Expand.Suffix -eq "wim") {
@@ -829,7 +829,7 @@ Function Menu_Shortcuts_Remove_Index
 	ForEach ($item in $Global:Image_Rule) {
 		if ($item.Main.Suffix -eq "wim") {
 			$Scope += $item.Main.Shortcuts
-		
+
 			if ($item.Expand.Count -gt 0) {
 				ForEach ($Expand in $item.Expand) {
 					if ($Expand.Suffix -eq "wim") {
@@ -949,7 +949,7 @@ Function Menu_Shortcuts_Mount_Index
 	ForEach ($item in $Global:Image_Rule) {
 		if ($item.Main.Suffix -eq "wim") {
 			$Scope += $item.Main.Shortcuts
-		
+
 			if ($item.Expand.Count -gt 0) {
 				ForEach ($Expand in $item.Expand) {
 					if ($Expand.Suffix -eq "wim") {
@@ -1007,7 +1007,7 @@ Function Menu_Shortcuts_Mount_Index
 		}
 	} else {
 		Write-Host "   $($lang.VerifyNumberFailed)" -ForegroundColor Red
-		
+
 		if (Image_Is_Select_IAB) {
 			Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
@@ -1094,7 +1094,7 @@ Function Menu_Shortcuts_Export_Key
 	$Scope = @()
 	ForEach ($item in $Global:Image_Rule) {
 		$Scope += $item.Main.Shortcuts
-		
+
 		if ($item.Expand.Count -gt 0) {
 			ForEach ($Expand in $item.Expand) {
 				$Scope += $Expand.Shortcuts
@@ -1284,7 +1284,7 @@ Function Menu_Shortcuts_Apply_Key
 	$Scope = @()
 	ForEach ($item in $Global:Image_Rule) {
 		$Scope += $item.Main.Shortcuts
-	
+
 		if ($item.Expand.Count -gt 0) {
 			ForEach ($Expand in $item.Expand) {
 				$Scope += $Expand.Shortcuts

@@ -21,7 +21,6 @@
 	LanguageCode              = Contrassegno di zona
 	RefreshModules            = Aggiornamento a caldo di tutti i moduli
 	PleaseChoose              = Seleziona
-	PleaseChooseMain          = Collegamento o selezione
 	FailedCreateFolder        = Impossibile creare la directory
 	ToMsg                     = \n   {0} Ritorna automaticamente al menu principale dopo secondi.
 	UserCancel                = L'utente ha annullato l'operazione.
@@ -30,6 +29,7 @@
 	Help                      = Aiuto
 	WorkDone                  = Completato, premere un tasto qualsiasi per tornare all'interfaccia principale...
 	Short_Cmd                 = Scorciatoie
+	Options                   = Opzioni
 	Enable                    = Abilitare
 	Disable                   = Disabilita
 	Setting                   = Impostare

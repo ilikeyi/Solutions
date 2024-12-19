@@ -21,7 +21,6 @@
 	LanguageCode              = Zonemarkering
 	RefreshModules            = Heet vernieuw alle modules
 	PleaseChoose              = Selecteer alstublieft
-	PleaseChooseMain          = Snelkoppeling of selectie
 	FailedCreateFolder        = Kan map niet maken
 	ToMsg                     = \n   {0} Keer na enkele seconden automatisch terug naar het hoofdmenu.
 	UserCancel                = De gebruiker heeft de bewerking geannuleerd.
@@ -30,6 +29,7 @@
 	Help                      = Hulp
 	WorkDone                  = Voltooid, druk op een willekeurige toets om terug te keren naar de hoofdinterface...
 	Short_Cmd                 = Snelkoppelingen
+	Options                   = Opties
 	Enable                    = Inschakelen
 	Disable                   = Uitzetten
 	Setting                   = Opgezet

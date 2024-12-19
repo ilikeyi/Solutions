@@ -21,7 +21,6 @@
 	LanguageCode              = Bölge işareti
 	RefreshModules            = Tüm modülleri sıcak yenileme
 	PleaseChoose              = Lütfen seçin
-	PleaseChooseMain          = Kısayol veya seçim
 	FailedCreateFolder        = Dizin oluşturulamadı
 	ToMsg                     = \n   {0} Saniyeler sonra otomatik olarak ana menüye dönün.
 	UserCancel                = Kullanıcı işlemi iptal etti.
@@ -30,6 +29,7 @@
 	Help                      = Yardım
 	WorkDone                  = Tamamlandı, ana arayüze dönmek için herhangi bir tuşa basın...
 	Short_Cmd                 = Kısayollar
+	Options                   = Seçenekler
 	Enable                    = Olanak vermek
 	Disable                   = Devre dışı bırakmak
 	Setting                   = Kurmak

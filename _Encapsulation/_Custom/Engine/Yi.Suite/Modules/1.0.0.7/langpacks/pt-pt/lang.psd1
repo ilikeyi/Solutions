@@ -45,7 +45,6 @@
 	LanguageReset             = Repor definições de idioma
 	LanguageCode              = Marca de zona
 	PleaseChoose              = Selecione
-	PleaseChooseMain          = Atalho ou seleção
 	FailedCreateFolder        = Falha ao criar diretório
 	Failed                    = Falhar
 	ToMsg                     = \n   {0} Regresse automaticamente ao menu principal após segundos.
@@ -75,4 +74,5 @@
 	Help                      = Ajuda
 	WorkDone                  = Concluído, prima qualquer tecla para voltar à interface principal...
 	Short_Cmd                 = Atalhos
+	Options                   = Opções
 '@

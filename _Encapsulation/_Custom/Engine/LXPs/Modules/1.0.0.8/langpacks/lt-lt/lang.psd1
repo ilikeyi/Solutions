@@ -21,7 +21,6 @@
 	LanguageCode              = Zonos ženklas
 	RefreshModules            = Karštas visų modulių atnaujinimas
 	PleaseChoose              = Prašome pasirinkti
-	PleaseChooseMain          = Spartusis klavišas arba pasirinkimas
 	FailedCreateFolder        = Nepavyko sukurti katalogo
 	ToMsg                     = \n   {0} Po sekundžių automatiškai grįžkite į pagrindinį meniu.
 	UserCancel                = Vartotojas atšaukė operaciją.
@@ -30,6 +29,7 @@
 	Help                      = Padėti
 	WorkDone                  = Baigta, paspauskite bet kurį klavišą, kad grįžtumėte į pagrindinę sąsają...
 	Short_Cmd                 = Spartieji klavišai
+	Options                   = Parinktys
 	Enable                    = Įjungti
 	Disable                   = Išjungti
 	Setting                   = nustatyti

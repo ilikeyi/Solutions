@@ -347,11 +347,11 @@ $($getSerVer.changelog.log)`n"
 				if ($UI_Main_Silent.Checked) {
 					$FlagsCheckForceUpdate = $True
 				}
-	
+
 				if ($UI_Main_Reset.Checked) {
 					$FlagsCheckForceUpdate = $True
 				}
-	
+
 				If ($FlagsCheckForceUpdate) {
 					Update_And_Download -url $url
 				} else {

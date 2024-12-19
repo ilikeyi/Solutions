@@ -31,7 +31,7 @@
 	AvailableLanguages              = Διαθέσιμες γλώσσες
 	SwitchLanguage                  = Αλλαγή γλώσσας
 	PleaseChoose                    = Επιλέξτε
-	PleaseChooseMain                = Συντομεύστε ή επιλέξτε
+	Options                         = Επιλογές
 	Choose                          = Επιλεγμένο
 	NoChoose                        = Δεν έχει επιλεγεί
 	AdvOption                       = Προαιρετικά χαρακτηριστικά

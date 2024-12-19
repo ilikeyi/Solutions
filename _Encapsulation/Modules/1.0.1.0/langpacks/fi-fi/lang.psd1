@@ -31,7 +31,7 @@
 	AvailableLanguages              = Saatavilla olevat kielet
 	SwitchLanguage                  = Vaihtaa kieltä
 	PleaseChoose                    = Ole hyvä ja valitse
-	PleaseChooseMain                = pikakuvake tai valitse
+	Options                         = Vaihtoehdot
 	Choose                          = Valittu
 	NoChoose                        = Ei valittu
 	AdvOption                       = Valinnaiset ominaisuudet

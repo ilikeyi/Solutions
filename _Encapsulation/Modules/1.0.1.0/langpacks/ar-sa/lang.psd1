@@ -31,7 +31,7 @@
 	AvailableLanguages              = اللغات المتاحة
 	SwitchLanguage                  = تبديل اللغة
 	PleaseChoose                    = الرجاء التحديد
-	PleaseChooseMain                = الاختصار، أو حدد
+	Options                         = خيارات
 	Choose                          = مختارة
 	NoChoose                        = لم يتم التحديد
 	AdvOption                       = ميزات اختيارية

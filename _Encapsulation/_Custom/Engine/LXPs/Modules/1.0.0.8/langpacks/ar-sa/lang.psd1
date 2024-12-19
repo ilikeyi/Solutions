@@ -21,7 +21,6 @@
 	LanguageCode              = علامة المنطقة
 	RefreshModules            = التحديث الساخن لجميع الوحدات
 	PleaseChoose              = الرجاء التحديد
-	PleaseChooseMain          = الاختصار أو الاختيار
 	FailedCreateFolder        = فشل في إنشاء الدليل
 	ToMsg                     = \n   {0} العودة تلقائيا إلى القائمة الرئيسية بعد ثواني.
 	UserCancel                = لقد ألغى المستخدم العملية.
@@ -30,6 +29,7 @@
 	Help                      = يساعد
 	WorkDone                  = اكتمل، اضغط على أي مفتاح للعودة إلى الواجهة الرئيسية...
 	Short_Cmd                 = الاختصارات
+	Options                   = خيارات
 	Enable                    = يُمكَِن
 	Disable                   = إبطال
 	Setting                   = يثبت

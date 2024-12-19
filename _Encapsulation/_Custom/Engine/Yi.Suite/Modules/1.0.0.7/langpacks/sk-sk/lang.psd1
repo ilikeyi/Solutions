@@ -45,7 +45,6 @@
 	LanguageReset             = Obnovte nastavenia jazyka
 	LanguageCode              = Zónová značka
 	PleaseChoose              = Vyberte
-	PleaseChooseMain          = Skratka alebo výber
 	FailedCreateFolder        = Nepodarilo sa vytvoriť adresár
 	Failed                    = Zlyhať
 	ToMsg                     = \n   {0} Po niekoľkých sekundách sa automaticky vráti do hlavnej ponuky.
@@ -75,4 +74,5 @@
 	Help                      = Pomôcť
 	WorkDone                  = Dokončené, stlačením ľubovoľného klávesu sa vrátite do hlavného rozhrania...
 	Short_Cmd                 = Skratky
+	Options                   = Možnosti
 '@

@@ -31,7 +31,7 @@
 	AvailableLanguages              = Langues offertes
 	SwitchLanguage                  = Changer de langue
 	PleaseChoose                    = Veuillez choisir
-	PleaseChooseMain                = raccourcir ou sélectionner
+	Options                         = Possibilités
 	Choose                          = Choisi
 	NoChoose                        = Non sélectionné
 	AdvOption                       = Fonctionnalités optionnelles

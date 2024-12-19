@@ -31,7 +31,7 @@
 	AvailableLanguages              = 사용 가능한 언어
 	SwitchLanguage                  = 언어를 바꾸다
 	PleaseChoose                    = 선택해주세요
-	PleaseChooseMain                = 바로가기 또는 옵션
+	Options                         = 옵션
 	Choose                          = 선택된
 	NoChoose                        = 선택되지 않은
 	AdvOption                       = 옵션 기능

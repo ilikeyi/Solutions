@@ -56,7 +56,7 @@ Function Prerequisite
 			}
 			default {
 				Write-Host " $($lang.Check_Did_not_pass) " -BackgroundColor DarkRed -ForegroundColor White
-	
+
 				Write-Host "`n   $($lang.How_solve): " -ForegroundColor Yellow
 				Write-Host "   $('-' * 80)"
 				Write-Host "    $($lang.HigherTermail)`n"
@@ -285,11 +285,11 @@ Function Prerequisite
 		.检查重复项
 	#>
 	foreach ($item in $Duplicate_Rule_ISO) {
-	    if ($Duplicate_Rule_ISO_seen[$item]) {
-	        $Duplicate_Rule_ISO_duplicates += $item
-	    } else {
-	        $Duplicate_Rule_ISO_seen[$item] = $true
-	    }
+		if ($Duplicate_Rule_ISO_seen[$item]) {
+			$Duplicate_Rule_ISO_duplicates += $item
+		} else {
+			$Duplicate_Rule_ISO_seen[$item] = $true
+		}
 	}
 	$Duplicate_Rule_ISO_duplicates = $Duplicate_Rule_ISO_duplicates | Select-Object -Unique
 
@@ -333,11 +333,11 @@ Function Prerequisite
 		.检查重复项
 	#>
 	foreach ($item in $Duplicate_Rule_Language) {
-	    if ($Duplicate_Rule_Language_seen[$item]) {
-	        $Duplicate_Rule_Language_duplicates += $item
-	    } else {
-	        $Duplicate_Rule_Language_seen[$item] = $true
-	    }
+		if ($Duplicate_Rule_Language_seen[$item]) {
+			$Duplicate_Rule_Language_duplicates += $item
+		} else {
+			$Duplicate_Rule_Language_seen[$item] = $true
+		}
 	}
 	$Duplicate_Rule_Language_duplicates = $Duplicate_Rule_Language_duplicates | Select-Object -Unique
 
