@@ -502,15 +502,17 @@ Function Mainpage
 
 	Write-Host
 	Write-Host "   " -NoNewline
-	Write-Host " H'elp * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
-	Write-Host ", " -NoNewline
+	Write-Host " H'elp * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " " -NoNewline
 
 	Write-Host " $($lang.Short_Cmd) " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host ", " -NoNewline
+	Write-Host " " -NoNewline
+
 	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host ", " -NoNewline
-	Write-Host "$($lang.SpecialFunction) " -NoNewline
+	Write-Host " " -NoNewline
+
+	Write-Host " $($lang.SpecialFunction) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " PS * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ": " -NoNewline
 
@@ -1150,7 +1152,17 @@ Function Mainpage
 			.快捷指令：清除变量
 		#>
 		"PS *" {
-			ForEach ($Function in $PSItem.Remove(0, 3)) {
+			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			$NewPS = $PSItem.Remove(0, 3)
+
+			Write-Host "`n   $($lang.Command): " -NoNewline
+			Write-host "PS" -ForegroundColor Green
+
+			Write-Host "   $($lang.SpecialFunction): " -NoNewline
+			Write-host $NewPS -ForegroundColor Green
+			Write-Host "   $('-' * 80)"
+
+			ForEach ($Function in $NewPS) {
 				Invoke-Expression -Command $Function
 			}
 			ToWait -wait 2
