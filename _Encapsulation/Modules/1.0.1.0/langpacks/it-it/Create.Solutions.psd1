@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Distribuire il pacchetto di installazione di Microsoft Office
 	SolutionsDeployOfficeChange     = Modifica la configurazione della distribuzione
 	SolutionsDeployOfficePre        = Versione del pacchetto preinstallato
-	SolutionsDeployOfficeNoSelect   = Nessun pacchetto di preinstallazione di Office selezionato.
+	SolutionsDeployOfficeNoSelect   = Nessun pacchetto di preinstallazione di Office selezionato
 	SolutionsDeployOfficeVersion    = {0} versione
 	SolutionsDeployOfficeOnly       = Mantieni i pacchetti lingua specificati
 	SolutionsDeployOfficeSync       = Conserva la sincronizzazione della lingua nella configurazione della distribuzione

@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Implementeer het Microsoft Office-installatiepakket
 	SolutionsDeployOfficeChange     = Wijzig de implementatieconfiguratie
 	SolutionsDeployOfficePre        = Vooraf geïnstalleerde pakketversie
-	SolutionsDeployOfficeNoSelect   = Er is geen Office-voorinstallatiepakket geselecteerd.
+	SolutionsDeployOfficeNoSelect   = Er is geen Office-voorinstallatiepakket geselecteerd
 	SolutionsDeployOfficeVersion    = {0} versie
 	SolutionsDeployOfficeOnly       = Bewaar gespecificeerde taalpakketten
 	SolutionsDeployOfficeSync       = Behoud de taalsynchronisatie met de implementatieconfiguratie

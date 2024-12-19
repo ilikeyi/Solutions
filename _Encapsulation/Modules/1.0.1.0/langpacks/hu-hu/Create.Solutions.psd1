@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Telepítse a Microsoft Office telepítőcsomagját
 	SolutionsDeployOfficeChange     = Módosítsa a telepítési konfigurációt
 	SolutionsDeployOfficePre        = Előre telepített csomag verzió
-	SolutionsDeployOfficeNoSelect   = Nincs kiválasztva Office előtelepítő csomag.
+	SolutionsDeployOfficeNoSelect   = Nincs kiválasztva Office előtelepítő csomag
 	SolutionsDeployOfficeVersion    = {0} verzió
 	SolutionsDeployOfficeOnly       = Tartsa meg a megadott nyelvi csomagokat
 	SolutionsDeployOfficeSync       = A nyelvi szinkronizálás megőrzése a telepítési konfigurációhoz

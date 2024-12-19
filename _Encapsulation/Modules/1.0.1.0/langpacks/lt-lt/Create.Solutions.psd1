@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Įdiekite "Microsoft Office" diegimo paketą
 	SolutionsDeployOfficeChange     = Keisti diegimo konfigūraciją
 	SolutionsDeployOfficePre        = Iš anksto įdiegta paketo versija
-	SolutionsDeployOfficeNoSelect   = Nepasirinktas joks "Office" išankstinio diegimo paketas.
+	SolutionsDeployOfficeNoSelect   = Nepasirinktas joks "Office" išankstinio diegimo paketas
 	SolutionsDeployOfficeVersion    = {0} versija
 	SolutionsDeployOfficeOnly       = Išsaugokite nurodytus kalbų paketus
 	SolutionsDeployOfficeSync       = Išsaugokite kalbos sinchronizavimą su diegimo konfigūracija

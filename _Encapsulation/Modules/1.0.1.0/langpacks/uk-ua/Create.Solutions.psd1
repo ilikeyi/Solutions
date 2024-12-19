@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Розгорніть інсталяційний пакет Microsoft Office
 	SolutionsDeployOfficeChange     = Змінити конфігурацію розгортання
 	SolutionsDeployOfficePre        = Попередньо встановлена версія пакета
-	SolutionsDeployOfficeNoSelect   = Пакет попередньої інсталяції Office не вибрано.
+	SolutionsDeployOfficeNoSelect   = Пакет попередньої інсталяції Office не вибрано
 	SolutionsDeployOfficeVersion    = {0} версія
 	SolutionsDeployOfficeOnly       = Зберігайте вказані мовні пакети
 	SolutionsDeployOfficeSync       = Зберегти синхронізацію мови з конфігурацією розгортання

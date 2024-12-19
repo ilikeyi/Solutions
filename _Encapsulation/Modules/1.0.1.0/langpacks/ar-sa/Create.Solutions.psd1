@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = نشر حزمة تثبيت Microsoft Office
 	SolutionsDeployOfficeChange     = تغيير تكوين النشر
 	SolutionsDeployOfficePre        = إصدار الحزمة المثبتة مسبقًا
-	SolutionsDeployOfficeNoSelect   = لم يتم تحديد حزمة التثبيت المسبق لـ Office.
+	SolutionsDeployOfficeNoSelect   = لم يتم تحديد حزمة التثبيت المسبق لـ Office
 	SolutionsDeployOfficeVersion    = نسخة {0}.
 	SolutionsDeployOfficeOnly       = احتفظ بحزم اللغات المحددة
 	SolutionsDeployOfficeSync       = الحفاظ على مزامنة اللغة لتكوين النشر

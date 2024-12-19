@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Αναπτύξτε το πακέτο εγκατάστασης του Microsoft Office
 	SolutionsDeployOfficeChange     = Αλλαγή διαμόρφωσης ανάπτυξης
 	SolutionsDeployOfficePre        = Προεγκατεστημένη έκδοση πακέτου
-	SolutionsDeployOfficeNoSelect   = Δεν έχει επιλεγεί πακέτο προεγκατάστασης του Office.
+	SolutionsDeployOfficeNoSelect   = Δεν έχει επιλεγεί πακέτο προεγκατάστασης του Office
 	SolutionsDeployOfficeVersion    = Έκδοση {0}
 	SolutionsDeployOfficeOnly       = Διατηρήστε καθορισμένα πακέτα γλωσσών
 	SolutionsDeployOfficeSync       = Διατήρηση συγχρονισμού γλώσσας στη διαμόρφωση ανάπτυξης

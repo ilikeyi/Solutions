@@ -3715,7 +3715,7 @@ Function Autopilot_ISO_Import
 		$FileName
 	)
 
-	Write-Host "   $($FileName)" -ForegroundColor Yellow
+	Write-Host "`n   $($FileName)" -ForegroundColor Yellow
 	Write-Host "   $('-' * 80)"
 	Write-Host "   $($lang.CRCSHA)".PadRight(28) -NoNewline
 
@@ -3959,13 +3959,26 @@ Function ISO_Create_Process
 				.Processing: Create ASC
 				.处理：绕过 TPM
 			#>
+			$BypassTPMCmd = Join-Path -Path $(Convert-Path "$($PSScriptRoot)\..\..\..\..") -ChildPath "AIO\bypass11\Quick_11_iso_esd_wim_TPM_toggle.bat"
+
 			Write-Host "`n   $($lang.Bypass_TPM)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 80)"
 			if ($Global:BypassTPM) {
 				Write-Host "   $($lang.Operable)" -ForegroundColor Green
 				Write-Host "   $($lang.LXPsWaitAddUpdate)".PadRight(28) -NoNewline
 
-				start-process -FilePath "$($PSScriptRoot)\..\..\..\..\AIO\bypass11\Quick_11_iso_esd_wim_TPM_toggle.bat" -ArgumentList "$($Global:ISOSaveToFolder)$($Global:ISOSaveToFileName)" -wait -WindowStyle Minimized
+				$arguments = @(
+					"""$(Join-Path -Path $Global:ISOSaveToFolder -ChildPath $Global:ISOSaveToFileName)"""
+				)
+
+				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
+					Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
+					Write-Host "   $('-' * 80)"
+					Write-Host "   Start-Process -FilePath '$($BypassTPMCmd)' -ArgumentList '$($Arguments)'" -ForegroundColor Green
+					Write-Host "   $('-' * 80)`n"
+				}
+
+				Start-Process -FilePath $BypassTPMCmd -ArgumentList $Arguments -wait -WindowStyle Minimized
 
 				Write-Host "   $($lang.Done)" -ForegroundColor Green
 			} else {

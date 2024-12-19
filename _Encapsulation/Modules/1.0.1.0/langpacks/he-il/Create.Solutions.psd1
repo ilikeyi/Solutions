@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = פרוס את חבילת ההתקנה של Microsoft Office
 	SolutionsDeployOfficeChange     = שנה את תצורת הפריסה
 	SolutionsDeployOfficePre        = גרסת חבילה מותקנת מראש
-	SolutionsDeployOfficeNoSelect   = לא נבחרה חבילת התקנה מראש של Office.
+	SolutionsDeployOfficeNoSelect   = לא נבחרה חבילת התקנה מראש של Office
 	SolutionsDeployOfficeVersion    = גרסה {0}
 	SolutionsDeployOfficeOnly       = שמור על חבילות שפה שצוינו
 	SolutionsDeployOfficeSync       = שמור את סנכרון השפה לתצורת הפריסה

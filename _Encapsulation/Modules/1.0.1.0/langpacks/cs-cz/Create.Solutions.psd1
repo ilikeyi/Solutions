@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Nasaďte instalační balíček Microsoft Office
 	SolutionsDeployOfficeChange     = Změnit konfiguraci nasazení
 	SolutionsDeployOfficePre        = Předinstalovaná verze balíčku
-	SolutionsDeployOfficeNoSelect   = Není vybrán žádný předinstalační balíček Office.
+	SolutionsDeployOfficeNoSelect   = Není vybrán žádný předinstalační balíček Office
 	SolutionsDeployOfficeVersion    = Verze {0}
 	SolutionsDeployOfficeOnly       = Ponechejte si určené jazykové balíčky
 	SolutionsDeployOfficeSync       = Zachovat synchronizaci jazyka s konfigurací nasazení

@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Izvietojiet Microsoft Office instalācijas pakotni
 	SolutionsDeployOfficeChange     = Mainiet izvietošanas konfigurāciju
 	SolutionsDeployOfficePre        = Iepriekš instalēta pakotnes versija
-	SolutionsDeployOfficeNoSelect   = Nav atlasīta neviena Office priekšinstalēšanas pakotne.
+	SolutionsDeployOfficeNoSelect   = Nav atlasīta neviena Office priekšinstalēšanas pakotne
 	SolutionsDeployOfficeVersion    = {0} versija
 	SolutionsDeployOfficeOnly       = Saglabājiet norādītās valodu pakotnes
 	SolutionsDeployOfficeSync       = Saglabājiet valodas sinhronizāciju ar izvietošanas konfigurāciju

@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Stellen Sie das Microsoft Office Installationspaket bereit
 	SolutionsDeployOfficeChange     = Bereitstellungskonfiguration ändern
 	SolutionsDeployOfficePre        = Vorinstallierte Paketversion
-	SolutionsDeployOfficeNoSelect   = Office Vorinstallationspaket ist nicht ausgewählt.
+	SolutionsDeployOfficeNoSelect   = Office Vorinstallationspaket ist nicht ausgewählt
 	SolutionsDeployOfficeVersion    = {0} Ausführung
 	SolutionsDeployOfficeOnly       = Behalten Sie das angegebene Sprachpaket bei
 	SolutionsDeployOfficeSync       = Behalten Sie die Sprachsynchronisierung mit der Bereitstellungskonfiguration bei

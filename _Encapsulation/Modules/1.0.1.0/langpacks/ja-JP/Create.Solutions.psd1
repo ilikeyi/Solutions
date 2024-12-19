@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Microsoft Office インストール パッケージを展開します
 	SolutionsDeployOfficeChange     = 配置構成を変更します
 	SolutionsDeployOfficePre        = パッケージのバージョンをプレインストールします
-	SolutionsDeployOfficeNoSelect   = Office プレインストール パッケージが選択されていません。
+	SolutionsDeployOfficeNoSelect   = Office プレインストール パッケージが選択されていません
 	SolutionsDeployOfficeVersion    = {0} バージョン
 	SolutionsDeployOfficeOnly       = 指定した言語パックを保持します
 	SolutionsDeployOfficeSync       = 指定した言語パックを保持します

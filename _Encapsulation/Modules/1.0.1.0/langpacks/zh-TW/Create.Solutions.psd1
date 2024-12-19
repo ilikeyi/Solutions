@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = 部署 Microsoft Office 安裝包
 	SolutionsDeployOfficeChange     = 更改部署配置
 	SolutionsDeployOfficePre        = 預安裝包版本
-	SolutionsDeployOfficeNoSelect   = 未選擇 Office 預安裝包。
+	SolutionsDeployOfficeNoSelect   = 未選擇 Office 預安裝包
 	SolutionsDeployOfficeVersion    = {0} 版本
 	SolutionsDeployOfficeOnly       = 保留指定的語言包
 	SolutionsDeployOfficeSync       = 保留語言同步到部署配置

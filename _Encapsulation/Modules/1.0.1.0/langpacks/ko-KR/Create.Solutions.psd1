@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Microsoft Office 설치 패키지 배포
 	SolutionsDeployOfficeChange     = 배포 구성 변경
 	SolutionsDeployOfficePre        = 사전 설치된 패키지 버전
-	SolutionsDeployOfficeNoSelect   = Office 사전 설치 패키지가 선택되지 않았습니다.
+	SolutionsDeployOfficeNoSelect   = Office 사전 설치 패키지가 선택되지 않았습니다
 	SolutionsDeployOfficeVersion    = {0} 버전
 	SolutionsDeployOfficeOnly       = 지정된 언어 팩 유지
 	SolutionsDeployOfficeSync       = 배포 구성에 언어 동기화 유지

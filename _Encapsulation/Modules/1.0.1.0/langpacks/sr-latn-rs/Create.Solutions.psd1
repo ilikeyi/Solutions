@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Поставите инсталациони пакет Мицрософт Оффице
 	SolutionsDeployOfficeChange     = Промените конфигурацију примене
 	SolutionsDeployOfficePre        = Претходно инсталирана верзија пакета
-	SolutionsDeployOfficeNoSelect   = Није изабран пакет за прединсталацију система Оффице.
+	SolutionsDeployOfficeNoSelect   = Није изабран пакет за прединсталацију система Оффице
 	SolutionsDeployOfficeVersion    = {0} верзија
 	SolutionsDeployOfficeOnly       = Задржите одређене језичке пакете
 	SolutionsDeployOfficeSync       = Сачувајте синхронизацију језика са конфигурацијом примене

@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Implementar o pacote de instalação do Microsoft Office
 	SolutionsDeployOfficeChange     = Alterar configuração de implementação
 	SolutionsDeployOfficePre        = Versão do pacote pré-instalado
-	SolutionsDeployOfficeNoSelect   = Nenhum pacote de pré-instalação do Office selecionado.
+	SolutionsDeployOfficeNoSelect   = Nenhum pacote de pré-instalação do Office selecionado
 	SolutionsDeployOfficeVersion    = {0} versão
 	SolutionsDeployOfficeOnly       = Mantenha os pacotes de idiomas especificados
 	SolutionsDeployOfficeSync       = Preservar a sincronização do idioma com a configuração de implementação

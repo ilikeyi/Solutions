@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Implementer Microsoft Office-installationspakken
 	SolutionsDeployOfficeChange     = Skift implementeringskonfiguration
 	SolutionsDeployOfficePre        = Forudinstalleret pakkeversion
-	SolutionsDeployOfficeNoSelect   = Ingen Office-præinstallationspakke valgt.
+	SolutionsDeployOfficeNoSelect   = Ingen Office-præinstallationspakke valgt
 	SolutionsDeployOfficeVersion    = {0} version
 	SolutionsDeployOfficeOnly       = Behold angivne sprogpakker
 	SolutionsDeployOfficeSync       = Bevar sprogsynkronisering til implementeringskonfiguration

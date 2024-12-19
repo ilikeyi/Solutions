@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Разположете инсталационния пакет на Microsoft Office
 	SolutionsDeployOfficeChange     = Промяна на конфигурацията за внедряване
 	SolutionsDeployOfficePre        = Предварително инсталирана версия на пакета
-	SolutionsDeployOfficeNoSelect   = Няма избран пакет за предварително инсталиране на Office.
+	SolutionsDeployOfficeNoSelect   = Няма избран пакет за предварително инсталиране на Office
 	SolutionsDeployOfficeVersion    = {0} версия
 	SolutionsDeployOfficeOnly       = Запазете определени езикови пакети
 	SolutionsDeployOfficeSync       = Запазете синхронизирането на езика с конфигурацията за внедряване

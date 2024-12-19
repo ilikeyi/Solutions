@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Distribuer installasjonspakken for Microsoft Office
 	SolutionsDeployOfficeChange     = Endre distribusjonskonfigurasjonen
 	SolutionsDeployOfficePre        = Forhåndsinstallert pakkeversjon
-	SolutionsDeployOfficeNoSelect   = Ingen forhåndsinstallasjonspakke for Office er valgt.
+	SolutionsDeployOfficeNoSelect   = Ingen forhåndsinstallasjonspakke for Office er valgt
 	SolutionsDeployOfficeVersion    = {0} versjon
 	SolutionsDeployOfficeOnly       = Behold spesifiserte språkpakker
 	SolutionsDeployOfficeSync       = Bevar språksynkronisering til distribusjonskonfigurasjon

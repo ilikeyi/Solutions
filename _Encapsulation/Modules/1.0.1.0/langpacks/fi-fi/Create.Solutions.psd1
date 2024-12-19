@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Ota käyttöön Microsoft Office -asennuspaketti
 	SolutionsDeployOfficeChange     = Muuta käyttöönottoasetuksia
 	SolutionsDeployOfficePre        = Esiasennettu pakettiversio
-	SolutionsDeployOfficeNoSelect   = Office-esiasennuspakettia ei ole valittu.
+	SolutionsDeployOfficeNoSelect   = Office-esiasennuspakettia ei ole valittu
 	SolutionsDeployOfficeVersion    = {0} versio
 	SolutionsDeployOfficeOnly       = Säilytä määritetyt kielipaketit
 	SolutionsDeployOfficeSync       = Säilytä kielen synkronointi käyttöönottokokoonpanoon

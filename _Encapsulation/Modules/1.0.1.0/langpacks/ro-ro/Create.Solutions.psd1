@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Implementați pachetul de instalare Microsoft Office
 	SolutionsDeployOfficeChange     = Modificați configurația de implementare
 	SolutionsDeployOfficePre        = Versiunea pachetului preinstalat
-	SolutionsDeployOfficeNoSelect   = Nu a fost selectat niciun pachet de preinstalare Office.
+	SolutionsDeployOfficeNoSelect   = Nu a fost selectat niciun pachet de preinstalare Office
 	SolutionsDeployOfficeVersion    = Versiunea {0}
 	SolutionsDeployOfficeOnly       = Păstrați pachetele de limbi specificate
 	SolutionsDeployOfficeSync       = Păstrați sincronizarea limbii cu configurația de implementare

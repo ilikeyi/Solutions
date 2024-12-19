@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Juurutage Microsoft Office'i installipakett
 	SolutionsDeployOfficeChange     = Muutke juurutamise konfiguratsiooni
 	SolutionsDeployOfficePre        = Eelinstallitud paketi versioon
-	SolutionsDeployOfficeNoSelect   = Office'i eelinstallipaketti pole valitud.
+	SolutionsDeployOfficeNoSelect   = Office'i eelinstallipaketti pole valitud
 	SolutionsDeployOfficeVersion    = {0} versioon
 	SolutionsDeployOfficeOnly       = Hoidke kindlaksmääratud keelepaketid alles
 	SolutionsDeployOfficeSync       = Säilitage keele sünkroonimine juurutuse konfiguratsiooniga

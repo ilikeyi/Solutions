@@ -78,7 +78,7 @@
 	SolutionsDeployOfficeInstall    = Microsoft Office yükleme paketini dağıtma
 	SolutionsDeployOfficeChange     = Dağıtım yapılandırmasını değiştir
 	SolutionsDeployOfficePre        = Önceden yüklenmiş paket sürümü
-	SolutionsDeployOfficeNoSelect   = Hiçbir Office ön yükleme paketi seçilmedi.
+	SolutionsDeployOfficeNoSelect   = Hiçbir Office ön yükleme paketi seçilmedi
 	SolutionsDeployOfficeVersion    = {0} sürümü
 	SolutionsDeployOfficeOnly       = Belirtilen dil paketlerini sakla
 	SolutionsDeployOfficeSync       = Dağıtım yapılandırmasıyla dil senkronizasyonunu koruyun

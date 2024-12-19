@@ -6777,9 +6777,12 @@ volume
 						$Solutions_Office_Select.Text = $Autopilot.Schome.Collection.Office.Version
 
 						if ([string]::IsNullOrEmpty($Solutions_Office_Select.Text)) {
-							$SolutionsOffice.Checked = $False
-							$SolutionsOfficeShow.Enabled = $False
+							$SolutionsOffice.Checked = $True
+							$SolutionsOfficeShow.Enabled = $True
 							Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Office" -name "$($Script:init_To_GPS)_AllowDeploy" -value "False" -String
+
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\Assets\icon\Error.ico")
+							$UI_Main_Error.Text = "$($lang.SolutionsDeployOfficeNoSelect): $($Autopilot.Schome.Collection.Office.Version)"
 						} else {
 							$SolutionsOffice.Checked = $True
 							$SolutionsOfficeShow.Enabled = $True
