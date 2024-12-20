@@ -41,7 +41,7 @@
 	Existed                         = Jau pastāv
 	FailedCreateFolder              = Neizdevās izveidot direktoriju
 	FailedCreateFile                = Neizdevās izveidot failu
-	ToMsg                           = \n   {0} Pēc sekundēm automātiski atgriezieties galvenajā izvēlnē.
+	ToMsg                           = {0} Pēc sekundēm automātiski atgriezieties galvenajā izvēlnē.
 	OnDemandPlanTask                = Zināmo notikumu pielāgota piešķiršana
 	Operable                        = Darbināms
 	Inoperable                      = Nederīgs

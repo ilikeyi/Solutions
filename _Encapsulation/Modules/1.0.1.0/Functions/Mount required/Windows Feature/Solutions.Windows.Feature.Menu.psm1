@@ -6,10 +6,10 @@ Function Feature_Menu
 {
 	if (-not $Global:EventQueueMode) {
 		Logo -Title $lang.WindowsFeature
-		Write-Host "   $($lang.Dashboard)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Dashboard)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
-		Write-host "   " -NoNewline
+		Write-host "  " -NoNewline
 		if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
 			Write-Host " O'D RT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host " $($lang.MountImageTo): " -NoNewline -ForegroundColor Yellow
@@ -20,7 +20,7 @@ Function Feature_Menu
 			Write-Host $Global:Mount_To_Route -ForegroundColor Red
 		}
 
-		Write-host "   " -NoNewline
+		Write-host "  " -NoNewline
 		if (Test-Path -Path $Global:Image_source -PathType Container) {
 			Write-Host " O'D MN " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Yellow
@@ -30,8 +30,8 @@ Function Feature_Menu
 			Write-Host " $($lang.MainImageFolder): " -NoNewline -ForegroundColor Yellow
 			Write-Host $Global:Image_source -ForegroundColor Red
 
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.NoInstallImage)" -ForegroundColor Red
 
 			ToWait -wait 6
 			Functions_Menu
@@ -40,27 +40,27 @@ Function Feature_Menu
 		Image_Get_Mount_Status -IsHotkey
 	}
 
-	Write-Host "`n   $($lang.WindowsFeature)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.WindowsFeature)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	if (Verify_Is_Current_Same) {
-		Write-Host "      1   " -NoNewline -ForegroundColor Yellow
+		Write-Host "     1   " -NoNewline -ForegroundColor Yellow
 		Write-Host $lang.Enable -ForegroundColor Green
 	} else {
-		Write-Host "      1   " -NoNewline -ForegroundColor Yellow
+		Write-Host "     1   " -NoNewline -ForegroundColor Yellow
 		Write-Host $lang.Enable -ForegroundColor Red
 	}
 
 	if (Verify_Is_Current_Same) {
-		Write-Host "      2   " -NoNewline -ForegroundColor Yellow
+		Write-Host "     2   " -NoNewline -ForegroundColor Yellow
 		Write-Host $lang.Disable -ForegroundColor Green
 	} else {
-		Write-Host "      2   " -NoNewline -ForegroundColor Yellow
+		Write-Host "     2   " -NoNewline -ForegroundColor Yellow
 		Write-Host $lang.Disable -ForegroundColor Red
 	}
 
 	Write-Host
-	Write-Host "   " -NoNewline
+	Write-host "  " -NoNewline
 	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " H'elp * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host " " -NoNewline
@@ -89,7 +89,7 @@ Function Feature_Menu
 			Feature_Menu
 		}
 		{ $_ -like "O'D *" -or $_ -like "Od *" -or $_ -like "O *" } {
-			Write-Host "`n   $($lang.Short_Cmd)`n" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)`n" -ForegroundColor Yellow
 			Menu_Shortcuts_OpenFolder -Command $PSItem
 			ToWait -wait 2
 			Feature_Menu
@@ -99,7 +99,7 @@ Function Feature_Menu
 			.快捷指令：挂载
 		#>
 		"mt" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Menu_Shortcuts_Mount
 			ToWait -wait 2
 			Feature_Menu
@@ -109,7 +109,7 @@ Function Feature_Menu
 			.快捷指令：挂载 + 索引号
 		#>
 		"mt *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Menu_Shortcuts_Mount_Index -Command $PSItem
 			ToWait -wait 2
 			Feature_Menu
@@ -119,13 +119,13 @@ Function Feature_Menu
 			.快捷指令：保存当前映像
 		#>
 		"Save" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Image_Eject_Save_Current
 			ToWait -wait 2
 			Feature_Menu
 		}
 		"Save *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Image_Save_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 5).Replace(' ', '')
 			ToWait -wait 2
 			Feature_Menu
@@ -135,13 +135,13 @@ Function Feature_Menu
 			.快捷指令：卸载，默认不保存
 		#>
 		"unmount" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Image_Eject_Dont_Save_Current
 			ToWait -wait 2
 			Feature_Menu
 		}
 		"unmount *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Image_Unmount_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 7).Replace(' ', '')
 			ToWait -wait 2
 			Feature_Menu
@@ -151,11 +151,11 @@ Function Feature_Menu
 			.快捷指令：强行卸载所有已挂载前：保存
 		#>
 		"ESA" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-			Write-Host "`n   $($lang.Image_Unmount_After): " -NoNewline
+			Write-Host "`n  $($lang.Image_Unmount_After): " -NoNewline
 			Write-Host $lang.Save -ForegroundColor Green
-			Write-Host "   $('-' * 80)"
+			Write-Host "  $('-' * 80)"
 			Eject_Forcibly_All -Save -DontSave
 
 			ToWait -wait 2
@@ -166,11 +166,11 @@ Function Feature_Menu
 			.快捷指令：强行卸载所有已挂载前：不保存
 		#>
 		"EDNS" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-			Write-Host "`n   $($lang.Image_Unmount_After): " -NoNewline
+			Write-Host "`n  $($lang.Image_Unmount_After): " -NoNewline
 			Write-Host $lang.DoNotSave -ForegroundColor Green
-			Write-Host "   $('-' * 80)"
+			Write-Host "  $('-' * 80)"
 			Eject_Forcibly_All -DontSave
 
 			ToWait -wait 2
@@ -178,14 +178,14 @@ Function Feature_Menu
 		}
 
 		"View *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Image_Primary_Key_Shortcuts_File_View -Name $PSItem.Remove(0, 5).Replace(' ', '')
 			ToWait -wait 2
 			Feature_Menu
 		}
 
 		"Sel *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Image_Set_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 4).Replace(' ', '')
 			ToWait -wait 2
 			Feature_Menu
@@ -201,7 +201,7 @@ Function Feature_Menu
 			Feature_Menu
 		}
 		{ $_ -like "H'elp *" -or  $_ -like "Help *" -or $_ -like "H *" } {
-			Write-Host "`n   $($lang.Short_Cmd)`n" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)`n" -ForegroundColor Yellow
 			Menu_Shortcuts_Help -Command $PSItem
 			ToWait -wait 2
 			Feature_Menu
@@ -211,9 +211,9 @@ Function Feature_Menu
 			.开发者模式
 		#>
 		"Dev" {
-			Write-Host "`n   $($lang.Developers_Mode)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.Setting)".PadRight(28) -NoNewline
+			Write-Host "`n  $($lang.Developers_Mode)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.Setting)".PadRight(28) -NoNewline
 			if ($Global:Developers_Mode) {
 				$Global:Developers_Mode = $False
 				Write-Host $lang.Disable -ForegroundColor Green
@@ -234,46 +234,46 @@ Function Feature_Menu
 
 Function Feature_Menu_Shortcuts_Enabled
 {
-	Write-Host "`n   $($lang.WindowsFeature): $($lang.Enable)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.WindowsFeature): $($lang.Enable)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Verify_Is_Current_Same) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 			<#
 				.Assign available tasks
 				.分配可用的任务
 			#>
 			Event_Assign -Rule "Feature_Enabled_UI" -Run
 		} else {
-			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+			Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 	}
 }
 
 Function Feature_Menu_Shortcuts_Disabled
 {
-	Write-Host "`n   $($lang.WindowsFeature): $($lang.Disable)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.WindowsFeature): $($lang.Disable)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Verify_Is_Current_Same) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 			<#
 				.Assign available tasks
 				.分配可用的任务
 			#>
 			Event_Assign -Rule "Feature_Disable_UI" -Run
 		} else {
-			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+			Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 	}
 }

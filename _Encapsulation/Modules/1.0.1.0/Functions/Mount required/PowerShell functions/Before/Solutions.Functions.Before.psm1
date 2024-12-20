@@ -14,7 +14,7 @@
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -269,7 +269,7 @@
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "12" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -370,17 +370,17 @@
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				$Temp_Functions_Before_Task = (Get-Variable -Scope global -Name "Queue_Functions_Before_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Functions_Before_Task.Count -gt 0) {
 					ForEach ($item in $Temp_Functions_Before_Task) {
-						Write-Host "   $($item)"
+						Write-Host "  $($item)"
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 
@@ -508,8 +508,8 @@
 	}
 
 	if ($Global:EventQueueMode) {
-		Write-Host "`n   $($lang.SpecialFunction): $($lang.Functions_Before)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.SpecialFunction): $($lang.Functions_Before)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 		$UI_Main.controls.AddRange((
@@ -520,8 +520,8 @@
 	}
 
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-		Write-Host "`n   $($lang.SpecialFunction): $($lang.Functions_Before)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.SpecialFunction): $($lang.Functions_Before)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Image_Is_Select_IAB) {
 			$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
@@ -605,9 +605,9 @@
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
 
 		New-Variable -Scope global -Name "Queue_Functions_Before_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
 

@@ -22,7 +22,7 @@
 	RefreshModules            = Hot-Refresh aller Module
 	PleaseChoose              = Bitte auswählen
 	FailedCreateFolder        = Verzeichnis konnte nicht erstellt werden
-	ToMsg                     = \n   {0} Automatische Rückkehr zum Hauptmenü nach Sekunden.
+	ToMsg                     = {0} Automatische Rückkehr zum Hauptmenü nach Sekunden.
 	UserCancel                = Der Benutzer hat den Vorgang abgebrochen.
 	Detailed                  = Detailliert
 	FileName                  = Dateiname

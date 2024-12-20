@@ -41,7 +41,7 @@
 	Existed                         = Već postoji
 	FailedCreateFolder              = Stvaranje imenika nije uspjelo
 	FailedCreateFile                = Izrada datoteke nije uspjela
-	ToMsg                           = \n   {0} Automatski povratak na glavni izbornik nakon nekoliko sekundi.
+	ToMsg                           = {0} Automatski povratak na glavni izbornik nakon nekoliko sekundi.
 	OnDemandPlanTask                = Prilagođeno dodjeljivanje poznatih događaja
 	Operable                        = Operabilan
 	Inoperable                      = Neoperabilan

@@ -41,7 +41,7 @@
 	Existed                         = On jo olemassa
 	FailedCreateFolder              = Hakemiston luominen epäonnistui
 	FailedCreateFile                = Tiedoston luominen epäonnistui
-	ToMsg                           = \n   {0} Palaa automaattisesti päävalikkoon sekunnin kuluttua.
+	ToMsg                           = {0} Palaa automaattisesti päävalikkoon sekunnin kuluttua.
 	OnDemandPlanTask                = Tunnettujen tapahtumien mukautettu määritys
 	Operable                        = Toimiva
 	Inoperable                      = Käyttökelvoton

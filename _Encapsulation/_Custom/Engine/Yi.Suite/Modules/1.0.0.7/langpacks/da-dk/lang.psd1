@@ -47,7 +47,7 @@
 	PleaseChoose              = Vælg venligst
 	FailedCreateFolder        = Kunne ikke oprette mappe
 	Failed                    = Svigte
-	ToMsg                     = \n   {0} Vend automatisk tilbage til hovedmenuen efter sekunder.
+	ToMsg                     = {0} Vend automatisk tilbage til hovedmenuen efter sekunder.
 	Restart                   = Genstart træder i kraft
 	AdvOption                 = Valgfrie funktioner
 

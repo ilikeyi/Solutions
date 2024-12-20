@@ -41,7 +41,7 @@
 	Existed                         = 已存在
 	FailedCreateFolder              = 创建目录失败
 	FailedCreateFile                = 创建文件失败
-	ToMsg                           = \n   {0} 秒后自动返回到主菜单。
+	ToMsg                           = {0} 秒后自动返回到主菜单。
 	OnDemandPlanTask                = 自定义分配已知事件
 	Operable                        = 可操作
 	Inoperable                      = 不可操作

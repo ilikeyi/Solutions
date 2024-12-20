@@ -1,7 +1,7 @@
 ﻿Function Feature_Disable_UI
 {
-	Write-Host "`n   $($lang.WindowsFeature): $($lang.Disable)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.WindowsFeature): $($lang.Disable)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	<#
 		.所有文件
@@ -322,7 +322,7 @@
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -475,7 +475,7 @@
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "11" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -657,17 +657,17 @@
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				$Temp_Queue_Is_Feature_Disable_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Feature_Disable_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Queue_Is_Feature_Disable_Custom_Select.count -gt 0) {
 					ForEach ($item in $Temp_Queue_Is_Feature_Disable_Custom_Select) {
-						Write-Host "   $($item)" -ForegroundColor Green
+						Write-Host "  $($item)" -ForegroundColor Green
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 
@@ -812,48 +812,48 @@ Function Feature_Disable_Process
 
 	$Temp_Queue_Is_Feature_Disable_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Feature_Disable_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Queue_Is_Feature_Disable_Custom_Select.count -gt 0) {
-		Write-Host "   $($lang.YesWork)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.YesWork)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Queue_Is_Feature_Disable_Custom_Select) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			Write-Host "  $($item)" -ForegroundColor Green
 		}
 
-		Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Queue_Is_Feature_Disable_Custom_Select) {
-			Write-Host "   $($item)"
+			Write-Host "  $($item)"
 
 			if (Test-Path -Path $test_mount_folder_Current_Windows -PathType Container) {
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-					Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-					Write-Host "`n   $($lang.Developers_Mode_Location)1136" -ForegroundColor Green
-					Write-Host "   $('-' * 80)"
+					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+					Write-Host "`n  $($lang.Developers_Mode_Location)1136" -ForegroundColor Green
+					Write-Host "  $('-' * 80)"
 					Write-Host "   Disable-WindowsOptionalFeature -Path ""$($test_mount_folder_Current)"" -FeatureName ""$($item)""" -ForegroundColor Green
-					Write-Host "   $('-' * 80)`n"
+					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "   $($lang.Disable)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.Disable)".PadRight(28) -NoNewline
 				Disable-WindowsOptionalFeature -Path $test_mount_folder_Current -FeatureName $item | Out-Null
 			} else {
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-					Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-					Write-Host "   $($lang.Developers_Mode_Location)1137" -ForegroundColor Green
-					Write-Host "   $('-' * 80)"
+					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+					Write-Host "  $($lang.Developers_Mode_Location)1137" -ForegroundColor Green
+					Write-Host "  $('-' * 80)"
 					Write-Host "   Disable-WindowsOptionalFeature -Path ""$($test_mount_folder_Current)"" -FeatureName ""$($item)""" -ForegroundColor Green
-					Write-Host "   $('-' * 80)`n"
+					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "   $($lang.Disable)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.Disable)".PadRight(28) -NoNewline
 				Disable-WindowsOptionalFeature -Path $test_mount_folder_Current -FeatureName $item | Out-Null
 			}
-			Write-Host "   $($lang.Done)" -ForegroundColor Green
+			Write-Host "  $($lang.Done)" -ForegroundColor Green
 
 			Write-Host
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }

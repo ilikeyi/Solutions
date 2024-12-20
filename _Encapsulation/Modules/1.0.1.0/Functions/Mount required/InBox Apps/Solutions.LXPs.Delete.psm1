@@ -18,7 +18,7 @@ Function LXPs_Remove_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -204,7 +204,7 @@ Function LXPs_Remove_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "822" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -306,28 +306,28 @@ Function LXPs_Remove_UI
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.LXPsWaitAddUpdate)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.LXPsWaitAddUpdate)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_Select.count -gt 0) {
 					ForEach ($item in $Temp_Assign_Task_Select) {
-						Write-Host "   $($item)" -ForegroundColor Green
+						Write-Host "  $($item)" -ForegroundColor Green
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 
-				Write-Host "`n   $($lang.LXPsWaitRemove)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.LXPsWaitRemove)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Delete_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_Select.count -gt 0) {
 					ForEach ($item in $Temp_Assign_Task_Select) {
-						Write-Host "   $($item)" -ForegroundColor Green
+						Write-Host "  $($item)" -ForegroundColor Green
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 
@@ -384,8 +384,8 @@ Function LXPs_Remove_UI
 	}
 
 	if ($Global:EventQueueMode) {
-		Write-Host "`n   $($lang.LocalExperiencePack): $($lang.Del)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.LocalExperiencePack): $($lang.Del)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 		$UI_Main.controls.AddRange((
@@ -396,8 +396,8 @@ Function LXPs_Remove_UI
 	}
 
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-		Write-Host "`n   $($lang.LocalExperiencePack): $($lang.Del)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.LocalExperiencePack): $($lang.Del)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 
@@ -445,9 +445,9 @@ Function LXPs_Remove_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
 
 		$UI_Main_Is_Wait_Del.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.CheckBox]) {
@@ -494,27 +494,27 @@ Function InBox_Apps_LIPs_Delete_Process
 	$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 	if ($Temp_LXPs_Delete.Count -gt 0) {
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_LXPs_Delete) {
-			Write-Host "   $($item)" -ForegroundColor Yellow
+			Write-Host "  $($item)" -ForegroundColor Yellow
 		}
 
-		Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_LXPs_Delete) {
 			$New_wait_delete_match = @()
-			Write-Host "   $($item)" -ForegroundColor Yellow
+			Write-Host "  $($item)" -ForegroundColor Yellow
 
 			if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-					Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
+					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
 					Write-Host "   Get-AppXProvisionedPackage -Path ""$($test_mount_folder_Current)"" | Where-Object DisplayName -Like ""*LanguageExperiencePack*$($item)*"" | Remove-AppxProvisionedPackage" -ForegroundColor Green
-					Write-Host "   $('-' * 80)`n"
+					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "   $($lang.Del)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
 				try {
 					Get-appxprovisionedpackage -Path $test_mount_folder_Current | where-object {
 						if ($_.packagename –like "*LanguageExperiencePack*$($item)*") {
@@ -523,8 +523,8 @@ Function InBox_Apps_LIPs_Delete_Process
 					}
 
 					if ($New_wait_delete_match.count -gt 0) {
-						Write-Host "`n   $($lang.YesWork)" -ForegroundColor Yellow
-						Write-Host "   $('-' * 80)"
+						Write-Host "`n  $($lang.YesWork)" -ForegroundColor Yellow
+						Write-Host "  $('-' * 80)"
 						foreach ($itemnew in $New_wait_delete_match) {
 							InBox_Apps_LIPs_Delete_Process_add -packnewname $itemnew
 						}
@@ -533,18 +533,18 @@ Function InBox_Apps_LIPs_Delete_Process
 					}
 				} catch {
 					Write-Host $_
-					Write-Host "   $($lang.Failed)" -ForegroundColor Red
+					Write-Host "  $($lang.Failed)" -ForegroundColor Red
 				}
 
 				Write-Host
 			} else {
-				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
-				Write-Host "   $($lang.NotMounted)`n" -ForegroundColor Red
+				Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
+				Write-Host "  $($lang.NotMounted)`n" -ForegroundColor Red
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }
 
@@ -560,14 +560,14 @@ Function InBox_Apps_LIPs_Delete_Process_add
 
 	$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
-	Write-Host "   $($packnewname)"
-	Write-Host "   $($lang.Del)".PadRight(28) -NoNewline
+	Write-Host "  $($packnewname)"
+	Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
 
 	try {
 		Remove-AppxProvisionedPackage -Path $test_mount_folder_Current -PackageName $packnewname -ErrorAction SilentlyContinue | Out-Null
 		Write-Host $lang.Done -ForegroundColor Green
 	} catch {
 		Write-Host $_
-		Write-Host "   $($lang.Failed)" -ForegroundColor Red
+		Write-Host "  $($lang.Failed)" -ForegroundColor Red
 	}
 }

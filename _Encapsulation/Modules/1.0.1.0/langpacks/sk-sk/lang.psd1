@@ -41,7 +41,7 @@
 	Existed                         = Už existuje
 	FailedCreateFolder              = Nepodarilo sa vytvoriť adresár
 	FailedCreateFile                = Súbor sa nepodarilo vytvoriť
-	ToMsg                           = \n   {0} Po niekoľkých sekundách sa automaticky vráti do hlavnej ponuky.
+	ToMsg                           = {0} Po niekoľkých sekundách sa automaticky vráti do hlavnej ponuky.
 	OnDemandPlanTask                = Vlastné priraďovanie známych udalostí
 	Operable                        = Funkčné
 	Inoperable                      = Nefunkčné

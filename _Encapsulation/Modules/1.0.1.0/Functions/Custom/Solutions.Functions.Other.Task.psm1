@@ -6,12 +6,12 @@
 #>
 Function Other_Tasks_Empty
 {
-	Write-host "   $($lang.RuleName): ".PadRight(22) -NoNewline
+	Write-Host "  $($lang.RuleName): ".PadRight(22) -NoNewline
 	Write-host "Function Other_Tasks_Empty" -ForegroundColor Yellow
 
-	Write-host "   $($lang.RuleDescription): ".PadRight(22) -NoNewline
+	Write-Host "  $($lang.RuleDescription): ".PadRight(22) -NoNewline
 	Write-host $($lang.Other_Tasks_Empty) -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 }
 
 <#
@@ -19,17 +19,17 @@ Function Other_Tasks_Empty
 #>
 Function Other_Tasks_Clear
 {
-	Write-host "   $($lang.RuleName): ".PadRight(22) -NoNewline
+	Write-Host "  $($lang.RuleName): ".PadRight(22) -NoNewline
 	Write-host "Function Other_Tasks_Clear" -ForegroundColor Yellow
 
-	Write-host "   $($lang.RuleDescription): ".PadRight(22) -NoNewline
+	Write-Host "  $($lang.RuleDescription): ".PadRight(22) -NoNewline
 	Write-host $($lang.Other_Tasks_Clear) -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			$Local_Regedit_File_System = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\$((Get-Module -Name Solutions).Author)"
-			Write-Host "   $($Local_Regedit_File_System)" -ForegroundColor Green
-			Write-Host "   $($lang.Del)".PadRight(28) -NoNewline
+			Write-Host "  $($Local_Regedit_File_System)" -ForegroundColor Green
+			Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
 			if (Test-Path -Path $Local_Regedit_File_System -PathType Container) {
 				Remove_Tree -Path $Local_Regedit_File_System
 
@@ -39,13 +39,13 @@ Function Other_Tasks_Clear
 					Write-Host $lang.Done -ForegroundColor Green
 				}
 			} else {
-				Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+				Write-Host "  $($lang.NoInstallImage)" -ForegroundColor Red
 			}
 		} else {
-			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+			Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 	}
 }
 
@@ -54,26 +54,26 @@ Function Other_Tasks_Clear
 #>
 Function Other_Tasks_CTD
 {
-	Write-host "   $($lang.RuleName): ".PadRight(22) -NoNewline
+	Write-Host "  $($lang.RuleName): ".PadRight(22) -NoNewline
 	Write-host "Function Other_Tasks_CTD" -ForegroundColor Yellow
 
-	Write-host "   $($lang.RuleDescription): ".PadRight(22) -NoNewline
+	Write-Host "  $($lang.RuleDescription): ".PadRight(22) -NoNewline
 	Write-host $($lang.Other_Tasks_CTD) -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			$RandomGuid = [guid]::NewGuid()
 			$Local_Regedit_File_System = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\$((Get-Module -Name Solutions).Author)\$($RandomGuid)"
 
 			Check_Folder -chkpath $Local_Regedit_File_System
-			Write-Host "   $($Local_Regedit_File_System)" -ForegroundColor Green
+			Write-Host "  $($Local_Regedit_File_System)" -ForegroundColor Green
 
-			Write-Host "   $($lang.Done)" -ForegroundColor Green
+			Write-Host "  $($lang.Done)" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+			Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 	}
 }
 
@@ -86,22 +86,22 @@ Function Other_Tasks_CTD
 #>
 Function Other_Tasks_TPM
 {
-	Write-host "   $($lang.RuleName): ".PadRight(22) -NoNewline
+	Write-Host "  $($lang.RuleName): ".PadRight(22) -NoNewline
 	Write-host "Function Other_Tasks_TPM" -ForegroundColor Yellow
 
-	Write-host "   $($lang.RuleDescription): ".PadRight(22) -NoNewline
+	Write-Host "  $($lang.RuleDescription): ".PadRight(22) -NoNewline
 	Write-host $($lang.Other_Tasks_TPM) -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			$Local_Regedit_File_System = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\Windows\System32\Config\SYSTEM"
 
-			Write-Host "   $($lang.SelFile)"
-			Write-Host "   $($Local_Regedit_File_System)" -ForegroundColor Green
+			Write-Host "  $($lang.SelFile)"
+			Write-Host "  $($Local_Regedit_File_System)" -ForegroundColor Green
 			if (Test-Path -Path $Local_Regedit_File_System -PathType Leaf) {
 				$RandomGuid = [guid]::NewGuid()
 
-				Write-Host "`n   $($lang.Select_Path): " -NoNewline
+				Write-Host "`n  $($lang.Select_Path): " -NoNewline
 				Write-Host "HKLM:\$($RandomGuid)" -ForegroundColor Yellow
 
 				New-PSDrive -PSProvider Registry -Name OtherTasksTPM -Root HKLM -ErrorAction SilentlyContinue | Out-Null
@@ -131,19 +131,19 @@ Function Other_Tasks_TPM
 					}
 
 					Remove-PSDrive -Name OtherTasksTPM
-					Write-Host "   $($lang.Done)" -ForegroundColor Green
+					Write-Host "  $($lang.Done)" -ForegroundColor Green
 				} else {
-					Write-Host "   $($lang.AddTo), $($lang.Failed)" -ForegroundColor Red
+					Write-Host "  $($lang.AddTo), $($lang.Failed)" -ForegroundColor Red
 				}
 			} else {
-				Write-Host "`n   $($lang.NoInstallImage)"
-				Write-Host "   $($Local_Regedit_File_System)" -ForegroundColor Red
+				Write-Host "`n  $($lang.NoInstallImage)"
+				Write-Host "  $($Local_Regedit_File_System)" -ForegroundColor Red
 			}
 		} else {
-			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+			Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 	}
 }
 
@@ -152,22 +152,22 @@ Function Other_Tasks_TPM
 #>
 Function Other_Tasks_REFS
 {
-	Write-host "   $($lang.RuleName): ".PadRight(22) -NoNewline
+	Write-Host "  $($lang.RuleName): ".PadRight(22) -NoNewline
 	Write-host "Function Other_Tasks_REFS" -ForegroundColor Yellow
 
-	Write-host "   $($lang.RuleDescription): ".PadRight(22) -NoNewline
+	Write-Host "  $($lang.RuleDescription): ".PadRight(22) -NoNewline
 	Write-host $($lang.Other_Tasks_REFS) -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			$Local_Regedit_File_System = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\Windows\System32\Config\SYSTEM"
 
-			Write-Host "   $($lang.SelFile)"
-			Write-Host "   $($Local_Regedit_File_System)" -ForegroundColor Green
+			Write-Host "  $($lang.SelFile)"
+			Write-Host "  $($Local_Regedit_File_System)" -ForegroundColor Green
 			if (Test-Path -Path $Local_Regedit_File_System -PathType Leaf) {
 				$RandomGuid = [guid]::NewGuid()
 
-				Write-Host "`n   $($lang.Select_Path): " -NoNewline
+				Write-Host "`n  $($lang.Select_Path): " -NoNewline
 				Write-Host "HKLM:\$($RandomGuid)" -ForegroundColor Yellow
 
 				New-PSDrive -PSProvider Registry -Name OtherTasksREFS -Root HKLM -ErrorAction SilentlyContinue | Out-Null
@@ -197,19 +197,19 @@ Function Other_Tasks_REFS
 					}
 
 					Remove-PSDrive -Name OtherTasksREFS
-					Write-Host "   $($lang.Done)" -ForegroundColor Green
+					Write-Host "  $($lang.Done)" -ForegroundColor Green
 				} else {
-					Write-Host "   $($lang.AddTo), $($lang.Failed)" -ForegroundColor Red
+					Write-Host "  $($lang.AddTo), $($lang.Failed)" -ForegroundColor Red
 				}
 			} else {
-				Write-Host "`n   $($lang.NoInstallImage)"
-				Write-Host "   $($Local_Regedit_File_System)" -ForegroundColor Red
+				Write-Host "`n  $($lang.NoInstallImage)"
+				Write-Host "  $($Local_Regedit_File_System)" -ForegroundColor Red
 			}
 		} else {
-			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+			Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 	}
 }
 
@@ -228,12 +228,12 @@ Function Other_Tasks_RAMDISK
 		[Switch]$Silent
 	)
 
-	Write-host "   $($lang.RuleName): ".PadRight(22) -NoNewline
+	Write-Host "  $($lang.RuleName): ".PadRight(22) -NoNewline
 	Write-host "Function Other_Tasks_RAMDISK" -ForegroundColor Yellow
 
-	Write-host "   $($lang.RuleDescription): ".PadRight(22) -NoNewline
+	Write-Host "  $($lang.RuleDescription): ".PadRight(22) -NoNewline
 	Write-host $($lang.Other_Tasks_RAMDISK) -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 
 	<#
 		.获取 RAMDISK 卷标名
@@ -245,18 +245,18 @@ Function Other_Tasks_RAMDISK
 			if ($_.Label -eq $GetRegRAMDISKVolumeLabel) {
 				$SearchNewLicense = $_.DriveLetter.Replace(":", "")
 
-				Write-Host "   $($lang.AutoSelectRAMDISK): " -NoNewline
+				Write-Host "  $($lang.AutoSelectRAMDISK): " -NoNewline
 				Write-host $_.Label -ForegroundColor Green
 
-				Write-Host "   $($lang.Select_Path): " -NoNewline
+				Write-Host "  $($lang.Select_Path): " -NoNewline
 				Write-Host $_.DriveLetter -ForegroundColor Green
 
 				Invoke-Expression -Command "Format-Volume -DriveLetter $($SearchNewLicense) -NewFileSystemLabel $($GetRegRAMDISKVolumeLabel)"
-				Write-Host "   $($lang.Done)" -ForegroundColor Green
+				Write-Host "  $($lang.Done)" -ForegroundColor Green
 			}
 		}
 	} else {
-		Write-Host "   $($lang.UpdateUnavailable)" -ForegroundColor Red
+		Write-Host "  $($lang.UpdateUnavailable)" -ForegroundColor Red
 	}
 }
 
@@ -265,14 +265,14 @@ Function Other_Tasks_RAMDISK
 #>
 Function Other_Tasks_Pause
 {
-	Write-host "   $($lang.RuleName): ".PadRight(22) -NoNewline
+	Write-Host "  $($lang.RuleName): ".PadRight(22) -NoNewline
 	Write-host "Function Other_Tasks_Pause" -ForegroundColor Yellow
 
-	Write-host "   $($lang.RuleDescription): ".PadRight(22) -NoNewline
+	Write-Host "  $($lang.RuleDescription): ".PadRight(22) -NoNewline
 	Write-host $($lang.Other_Tasks_Pause) -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 
 	Get_Next
-	Write-Host "   $($lang.Done)" -ForegroundColor Green
+	Write-Host "  $($lang.Done)" -ForegroundColor Green
 	Write-Host
 }

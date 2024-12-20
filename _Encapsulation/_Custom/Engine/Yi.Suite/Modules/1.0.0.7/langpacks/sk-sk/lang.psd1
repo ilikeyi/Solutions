@@ -47,7 +47,7 @@
 	PleaseChoose              = Vyberte
 	FailedCreateFolder        = Nepodarilo sa vytvoriť adresár
 	Failed                    = Zlyhať
-	ToMsg                     = \n   {0} Po niekoľkých sekundách sa automaticky vráti do hlavnej ponuky.
+	ToMsg                     = {0} Po niekoľkých sekundách sa automaticky vráti do hlavnej ponuky.
 	Restart                   = Reštart sa prejaví
 	AdvOption                 = Voliteľné funkcie
 

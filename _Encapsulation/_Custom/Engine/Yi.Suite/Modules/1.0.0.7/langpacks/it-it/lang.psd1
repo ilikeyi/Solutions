@@ -47,7 +47,7 @@
 	PleaseChoose              = Seleziona
 	FailedCreateFolder        = Impossibile creare la directory
 	Failed                    = Fallire
-	ToMsg                     = \n   {0} Ritorna automaticamente al menu principale dopo secondi.
+	ToMsg                     = {0} Ritorna automaticamente al menu principale dopo secondi.
 	Restart                   = Il riavvio ha effetto
 	AdvOption                 = Funzionalità opzionali
 

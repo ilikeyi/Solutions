@@ -47,7 +47,7 @@
 	PleaseChoose              = Please select
 	FailedCreateFolder        = Failed to create directory
 	Failed                    = Failed
-	ToMsg                     = \n   Automatically return to the main menu after {0} seconds.
+	ToMsg                     = Automatically return to the main menu after {0} seconds.
 	Restart                   = Restart to take effect
 	AdvOption                 = Optional function
 

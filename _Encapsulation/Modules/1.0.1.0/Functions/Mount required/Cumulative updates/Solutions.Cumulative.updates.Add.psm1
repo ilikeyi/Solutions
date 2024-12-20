@@ -43,7 +43,7 @@ Function Cumulative_updates_Add_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -1304,7 +1304,7 @@ Function Cumulative_updates_Add_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "25" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -1408,34 +1408,34 @@ Function Cumulative_updates_Add_UI
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_Select.count -gt 0) {
 					ForEach ($item in $Temp_Assign_Task_Select) {
-						Write-Host "   $($item)" -ForegroundColor Green
+						Write-Host "  $($item)" -ForegroundColor Green
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 
 				<#
 					.固化更新
 				#>
-				Write-Host "`n   $($lang.CuringUpdate)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.CuringUpdate)" -ForegroundColor Yellow
 				New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 				if ($GUIUpdateAddCuring.Enabled) {
 					if ($GUIUpdateAddCuring.Checked) {
-						Write-Host "   $($lang.Operable)" -ForegroundColor Green
+						Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
 						New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
 					} else {
-						Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+						Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 					}
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
 				<#
@@ -1443,14 +1443,14 @@ Function Cumulative_updates_Add_UI
 				#>
 				New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 				New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-				Write-Host "`n   $($lang.Superseded)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.Superseded)" -ForegroundColor Yellow
 				if ($UI_Main_Superseded_Rule.Enabled) {
 					if ($UI_Main_Superseded_Rule.Checked) {
-						Write-Host "   $($lang.Operable)" -ForegroundColor Green
+						Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
 						New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
 					} else {
-						Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+						Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 					}
 
 					if ($UI_Main_Superseded_Rule_Exclude.Enabled) {
@@ -1459,7 +1459,7 @@ Function Cumulative_updates_Add_UI
 						}
 					}
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 			}
 
@@ -1578,8 +1578,8 @@ Function Cumulative_updates_Add_UI
 	}
 
 	if ($Global:EventQueueMode) {
-		Write-Host "`n   $($lang.CUpdate): $($lang.AddTo)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.CUpdate): $($lang.AddTo)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 		$UI_Main.controls.AddRange((
@@ -1590,8 +1590,8 @@ Function Cumulative_updates_Add_UI
 	}
 
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-		Write-Host "`n   $($lang.CUpdate): $($lang.AddTo)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.CUpdate): $($lang.AddTo)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 
@@ -1639,7 +1639,7 @@ Function Cumulative_updates_Add_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		New-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
 
 		$Temp_Assign_Task_Select_Is = @()
@@ -1688,15 +1688,15 @@ Function Cumulative_updates_Add_UI
 				$UI_Main_Superseded_Rule_Exclude.Checked = $False
 			}
 
-		Write-Host "   $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
 		if (Autopilot_Cumulative_updates_Add_UI_Save) {
 			Write-Host $lang.Done -ForegroundColor Green
 
-			Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 			foreach ($item in $Temp_Assign_Task_Select) {
-				Write-Host "   $($item)" -ForegroundColor Green
+				Write-Host "  $($item)" -ForegroundColor Green
 			}
 		} else {
 			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
@@ -1749,11 +1749,11 @@ Function Autopilot_Cumulative_updates_Add_UI_Import
 		.测试完成后，检查配置文件里是否有事件
 	#>
 	if ([string]::IsNullOrEmpty($Tasks)) {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	} else {
 		switch ($Tasks.Schome) {
 			"Auto" {
-				Write-Host "   $($lang.Autopilot_Scheme): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.Autopilot_Scheme): " -NoNewline -ForegroundColor Yellow
 
 				<#
 					.从公共库里导入，顺序：
@@ -1773,9 +1773,9 @@ Function Autopilot_Cumulative_updates_Add_UI_Import
 							Write-Host "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid)"
 							$New_Tasks_Assign_Auto_Schome = $GetSelectVer
 
-							Write-Host "`n   $($lang.AddSources)" -ForegroundColor Yellow
+							Write-Host "`n  $($lang.AddSources)" -ForegroundColor Yellow
 							foreach ($item in $GetSelectVer) {
-								Write-Host "   $($item)" -ForegroundColor Green
+								Write-Host "  $($item)" -ForegroundColor Green
 							}
 						}
 					}
@@ -1789,9 +1789,9 @@ Function Autopilot_Cumulative_updates_Add_UI_Import
 							Write-Host $lang.Autopilot_Sync_To_Global
 							$New_Tasks_Assign_Auto_Schome = $GetSelectVer
 
-							Write-Host "`n   $($lang.AddSources)" -ForegroundColor Yellow
+							Write-Host "`n  $($lang.AddSources)" -ForegroundColor Yellow
 							foreach ($item in $GetSelectVer) {
-								Write-Host "   $($item)" -ForegroundColor Green
+								Write-Host "  $($item)" -ForegroundColor Green
 							}
 						}
 					}
@@ -1816,14 +1816,14 @@ Function Autopilot_Cumulative_updates_Add_UI_Import
 	
 						Cumulative_updates_Add_UI -Autopilot $New_Event
 					} else {
-						Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+						Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 			"Custom" {
-				Write-Host "`n   $($lang.RuleCustomize)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.RuleCustomize)" -ForegroundColor Yellow
 
 				<#
 					.转换配置文件变量
@@ -1848,7 +1848,7 @@ Function Autopilot_Cumulative_updates_Add_UI_Import
 
 					Cumulative_updates_Add_UI -Autopilot $New_Event
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 		}
@@ -1863,15 +1863,15 @@ Function Update_Add_Process
 {
 	$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Assign_Task_Select.count -gt 0) {
-		Write-Host "`n   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		ForEach ($item in $Temp_Assign_Task_Select) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			Write-Host "  $($item)" -ForegroundColor Green
 		}
 
-		Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Assign_Task_Select) {
 			Get-ChildItem $item -Recurse -Include $Global:Search_KB_File_Type -ErrorAction SilentlyContinue | ForEach-Object {
 				if (Test-Path -Path $_.FullName -PathType Leaf) {
@@ -1883,11 +1883,11 @@ Function Update_Add_Process
 					$UpdateTasksTime.Reset()
 					$UpdateTasksTime.Start()
 
-					Write-Host "   $($lang.TimeStart)" -NoNewline
+					Write-Host "  $($lang.TimeStart)" -NoNewline
 					Write-Host "$($UpdateTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
-					Write-Host "   $('-' * 80)"
+					Write-Host "  $('-' * 80)"
 
-					Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 					Write-Host $_.FullName -ForegroundColor Green
 
 					$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
@@ -1895,35 +1895,35 @@ Function Update_Add_Process
 					$CommandNewPrint = "Add-WindowsPackage -Path ""$($test_mount_folder_Current)"" -PackagePath ""$($_.FullName)"""
 
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-						Write-Host "`n   $($lang.Command): " -ForegroundColor Yellow
-						Write-Host "   $('-' * 80)"
-						Write-Host "   $($CommandNewPrint)`n" -ForegroundColor Green
+						Write-Host "`n  $($lang.Command): " -ForegroundColor Yellow
+						Write-Host "  $('-' * 80)"
+						Write-Host "  $($CommandNewPrint)`n" -ForegroundColor Green
 					}
 
-					Write-Host "   $($lang.AddTo)".PadRight(21) -NoNewline
+					Write-Host "  $($lang.AddTo)".PadRight(21) -NoNewline
 					try {
 						Invoke-Expression -Command $CommandNew
 						Write-Host $lang.Done -ForegroundColor Green
 					} catch {
 						Write-Host $_
-						Write-Host "   $($lang.Failed)" -ForegroundColor Red
+						Write-Host "  $($lang.Failed)" -ForegroundColor Red
 					}
 
 					$UpdateTasksTime.Stop()
-					Write-Host "`n   $($lang.TimeEnd)" -NoNewline
+					Write-Host "`n  $($lang.TimeEnd)" -NoNewline
 					Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
 
-					Write-Host "   $($lang.TimeEndAll)" -NoNewline
+					Write-Host "  $($lang.TimeEndAll)" -NoNewline
 					Write-Host $UpdateTasksTime.Elapsed -ForegroundColor Yellow
 
-					Write-Host "   $($lang.TimeEndAllseconds)" -NoNewline
+					Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 					Write-Host "$($UpdateTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
+					Write-Host "  $('-' * 80)"
 					Write-Host
 				}
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }

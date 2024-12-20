@@ -5,8 +5,8 @@
 		[String[]]$Custom
 	)
 
-	Write-Host "`n   $($lang.SpecialFunction): $($lang.Function_Unrestricted)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.SpecialFunction): $($lang.Function_Unrestricted)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
@@ -209,7 +209,7 @@
 		Text           = $lang.Cancel
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			$Global:Function_Unrestricted = @()
 
 			$UI_Main.Close()
@@ -359,8 +359,8 @@
 	}
 
 	if ($Custom) {
-		Write-Host "   $($lang.RuleCustomize)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.RuleCustomize)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
 		foreach ($item in $Custom) {
 			if ($PowerShell_Function_Tasks -contains $item) {
 				$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
@@ -395,51 +395,51 @@ Function Functions_Unrestricted_Process_Tasks
 {
 	$Host.UI.RawUI.WindowTitle = "$($lang.SpecialFunction): $($lang.Function_Unrestricted)"
 	if ($Global:Function_Unrestricted.Count -gt 0) {
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Global:Function_Unrestricted) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			Write-Host "  $($item)" -ForegroundColor Green
 		}
 
-		Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Global:Function_Unrestricted) {
 			$TasksFXTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 			$TasksFXTime = New-Object System.Diagnostics.Stopwatch
 			$TasksFXTime.Reset()
 			$TasksFXTime.Start()
 
-			Write-Host "   $($lang.TimeStart)" -NoNewline
+			Write-Host "  $($lang.TimeStart)" -NoNewline
 			Write-Host " $($TasksFXTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
-			Write-Host "   $('-' * 80)"
+			Write-Host "  $('-' * 80)"
 
 			Invoke-Expression -Command $item
 
 			$TasksFXTime.Stop()
-			Write-Host "`n   $($lang.Running): $($item), $($lang.Done)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.TimeStart)" -NoNewline
+			Write-Host "`n  $($lang.Running): $($item), $($lang.Done)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.TimeStart)" -NoNewline
 			Write-Host "$($TasksFXTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
 
-			Write-Host "   $($lang.TimeEnd)" -NoNewline
+			Write-Host "  $($lang.TimeEnd)" -NoNewline
 			Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
 
-			Write-Host "   $($lang.TimeEndAll)" -NoNewline
+			Write-Host "  $($lang.TimeEndAll)" -NoNewline
 			Write-Host "$($TasksFXTime.Elapsed)" -ForegroundColor Yellow
 
-			Write-Host "   $($lang.TimeEndAllseconds)" -NoNewline
+			Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 			Write-Host "$($TasksFXTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "  $('-' * 80)"
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }
 
 Function Functions_Tasks_List
 {
-	Write-Host "`n   $($lang.Functions_Wait_Assign)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Functions_Wait_Assign)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	$PowerShell_Function_Tasks = @()
 	Get-Command -CommandType Function | ForEach-Object {
@@ -450,19 +450,19 @@ Function Functions_Tasks_List
 
 	if ($PowerShell_Function_Tasks.Count -gt 0) {
 		foreach ($item in $PowerShell_Function_Tasks) {
-			Write-host "   $($lang.Short_Cmd): ".PadRight(22) -NoNewline
+			Write-Host "  $($lang.Short_Cmd): ".PadRight(22) -NoNewline
 			$NewType = $item.Remove(0, 12)
 			Write-host " FX $($NewType) " -BackgroundColor DarkMagenta -ForegroundColor White
 
-			Write-host "   $($lang.RuleName): ".PadRight(22) -NoNewline
+			Write-Host "  $($lang.RuleName): ".PadRight(22) -NoNewline
 			Write-host "Function $($item)" -ForegroundColor Yellow
 
-			Write-host "   $($lang.RuleDescription): ".PadRight(22) -NoNewline
+			Write-Host "  $($lang.RuleDescription): ".PadRight(22) -NoNewline
 			Write-host $($lang.$($item)) -ForegroundColor Yellow
 
 			Write-Host
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }

@@ -47,7 +47,7 @@
 	PleaseChoose              = 선택해주세요
 	FailedCreateFolder        = 디렉토리 생성 실패
 	Failed                    = 실패했습니다
-	ToMsg                     = \n   {0} 초 후에 자동으로 메인 메뉴로 돌아갑니다.
+	ToMsg                     = {0} 초 후에 자동으로 메인 메뉴로 돌아갑니다.
 	Restart                   = 다시 시작하여 적용
 	AdvOption                 = 선택적 기능
 

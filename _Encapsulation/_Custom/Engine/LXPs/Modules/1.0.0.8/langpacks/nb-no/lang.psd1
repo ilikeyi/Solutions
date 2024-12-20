@@ -22,7 +22,7 @@
 	RefreshModules            = Varm oppdater alle moduler
 	PleaseChoose              = Vennligst velg
 	FailedCreateFolder        = Kunne ikke opprette katalog
-	ToMsg                     = \n   {0} Gå automatisk tilbake til hovedmenyen etter sekunder.
+	ToMsg                     = {0} Gå automatisk tilbake til hovedmenyen etter sekunder.
 	UserCancel                = Brukeren har avbrutt operasjonen.
 	Detailed                  = Detaljert
 	FileName                  = Filnavn

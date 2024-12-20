@@ -18,7 +18,7 @@ Function Language_Cleanup_Components_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -199,7 +199,7 @@ Function Language_Cleanup_Components_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "20" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -301,17 +301,17 @@ Function Language_Cleanup_Components_UI
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_Select.count -gt 0) {
 					ForEach ($item in $Temp_Assign_Task_Select) {
-						Write-Host "   $($item)" -ForegroundColor Green
+						Write-Host "  $($item)" -ForegroundColor Green
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 
@@ -369,8 +369,8 @@ Function Language_Cleanup_Components_UI
 	}
 
 	if ($Global:EventQueueMode) {
-		Write-Host "`n   $($lang.OnlyLangCleanup)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.OnlyLangCleanup)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 		$UI_Main.controls.AddRange((
@@ -381,8 +381,8 @@ Function Language_Cleanup_Components_UI
 	}
 
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-		Write-Host "`n   $($lang.OnlyLangCleanup)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.OnlyLangCleanup)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 
@@ -430,9 +430,9 @@ Function Language_Cleanup_Components_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
 
 		New-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 		New-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
@@ -472,7 +472,7 @@ Function Cleanup_Components_Process
 
 	$Temp_Queue_Language_Components_Clean_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 	ForEach ($item in $Temp_Queue_Language_Components_Clean_Select) {
-		Write-Host "   $($item)" -ForegroundColor Green
+		Write-Host "  $($item)" -ForegroundColor Green
 	}
 
 	$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
@@ -480,10 +480,10 @@ Function Cleanup_Components_Process
 	ForEach ($item in $Temp_Queue_Language_Components_Clean_Select) {
 		try {
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-				Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				Write-Host "   Get-WindowsPackage -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
-				Write-Host "   $('-' * 80)`n"
+				Write-Host "  $('-' * 80)`n"
 			}
 
 			Get-WindowsPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Get.log" -Path $test_mount_folder_Current -ErrorAction SilentlyContinue | ForEach-Object {
@@ -492,30 +492,30 @@ Function Cleanup_Components_Process
 				}
 			}
 		} catch {
-			Write-Host "   $($_)" -ForegroundColor Yellow
-			Write-Host "   $($lang.SelectFromError)" -ForegroundColor Red
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($_)" -ForegroundColor Yellow
+			Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
+			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			return
 		}
 	}
 
-	Write-Host "`n   $($lang.OnlyLangCleanup)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.OnlyLangCleanup)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	if ($InitlClearLanguagePackage.count -gt 0) {
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 	
 		ForEach ($item in $InitlClearLanguagePackage | Sort-Object -Descending) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			Write-Host "  $($item)" -ForegroundColor Green
 
-			Write-Host "   $($lang.Del)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
 			if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
 				try {
 					Remove-AppxProvisionedPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove-AppxProvisionedPackage.log" -Path $test_mount_folder_Current -PackageName $item -ErrorAction SilentlyContinue | Out-Null
 					Write-Host $lang.Done -ForegroundColor Green
 				} catch {
 					Write-Host $_
-					Write-Host "   $($lang.Failed)" -ForegroundColor Red
+					Write-Host "  $($lang.Failed)" -ForegroundColor Red
 				}
 			} else {
 				Write-Host $lang.NotMounted -ForegroundColor Red
@@ -524,6 +524,6 @@ Function Cleanup_Components_Process
 			Write-Host
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }

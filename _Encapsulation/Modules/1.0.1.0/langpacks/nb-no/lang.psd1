@@ -41,7 +41,7 @@
 	Existed                         = Eksisterer allerede
 	FailedCreateFolder              = Kunne ikke opprette katalog
 	FailedCreateFile                = Kunne ikke opprette filen
-	ToMsg                           = \n   {0} Gå automatisk tilbake til hovedmenyen etter sekunder.
+	ToMsg                           = {0} Gå automatisk tilbake til hovedmenyen etter sekunder.
 	OnDemandPlanTask                = Egendefinert tilordning av kjente hendelser
 	Operable                        = Brukbar
 	Inoperable                      = Ubrukelig

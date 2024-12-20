@@ -37,6 +37,7 @@ $AvailableLanguages = @(
 		Language = @{
 			FontsUI              = "Segoe UI"
 			Usage                = "Usage: "
+			Learn                = "Learn"
 			Choose               = "Please choose"
 			Reset                = "Reset"
 			History              = "Clean up command-line records"
@@ -69,6 +70,7 @@ $AvailableLanguages = @(
 		Language = @{
 			FontsUI              = "Segoe UI"
 			Usage                = "الاستخدام:"
+			Learn                = "يذاكر"
 			Choose               = "اختر من فضلك"
 			Reset                = "إعادة ضبط"
 			History              = "مسح سجلات سطر الأوامر"
@@ -101,6 +103,7 @@ $AvailableLanguages = @(
 		Language = @{
 			FontsUI              = "Segoe UI"
 			Usage                = "Използване:"
+			Learn                = "Проучване"
 			Choose               = "Моля избери"
 			Reset                = "нулиране"
 			History              = "Изчистване на записите на командния ред"
@@ -128,75 +131,12 @@ $AvailableLanguages = @(
 		}
 	}
 	@{
-		Region   = "hr-HR"
-		Name     = "Croatian (Croatia)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "Upotreba:"
-			Choose               = "molim odaberite"
-			Reset                = "Resetirati"
-			History              = "Obrišite zapise naredbenog retka"
-			Add                  = "Dodaj funkciju usmjeravanja, varijablu sustava"
-			AddOK                = "Dodano"
-			AddDone              = "Dodaj u komplet"
-			Remove               = "izbrisati"
-			RemoveRoute          = "Izbriši funkciju usmjeravanja, varijablu sustava"
-			RemoveDone           = "Uspješno izbrisano"
-			SIP                  = "Skripta za pakiranje sustava"
-			VerifyAutopilot      = "Provjera: Profil autonomne vožnje"
-			VerifyUnattend       = "Provjera: trebala bi biti datoteka predloška odgovora"
-			Unpack               = "Bale"
-			ChkUpdate            = "Provjerite ima li ažuriranja"
-			CreateUP             = "Napravite paket nadogradnje"
-			CreateTemplate       = "Izradi predložak"
-			CEUP                 = "Stvorite paket za nadogradnju mehanizma za implementaciju"
-			zip                  = "Sav je softver pakiran u formatu kompresije ZIP -a"
-			Repair               = "popravak"
-			All                  = "svi"
-			HistoryClearDismSave = "Izbrišite zapise montiranja DISM-a spremljene u registru"
-			Clear_Bad_Mount      = "Izbrišite sve resurse povezane s oštećenom montiranom slikom"
-			CleanupLogs          = "Čišćenje: privremene datoteke, zapisnici rješenja, zapisnici DISM-a"
-			CleanupDisk          = "Očistite sve privremene diskovne datoteke"
-		}
-	}
-	@{
-		Region   = "cs-CZ"
-		Name     = "Czech (Czech Republic)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "Používání:"
-			Choose               = "Prosím vyber si"
-			Reset                = "Resetovat"
-			History              = "Vymažte záznamy příkazového řádku"
-			Add                  = "Přidejte funkci směrování, systémová proměnná"
-			AddOK                = "Přidal"
-			AddDone              = "Přidat k dokončení"
-			Remove               = "vymazat"
-			RemoveRoute          = "Smazat směrovací funkci, systémová proměnná"
-			RemoveDone           = "úspěšně smazáno"
-			SIP                  = "Skript balení systému"
-			VerifyAutopilot      = "Ověření: Profil autonomního řízení"
-			VerifyUnattend       = "Ověření: měl by předběžně odpovědět soubor šablony"
-			Unpack               = "Žok"
-			ChkUpdate            = "Kontrola aktualizací"
-			CreateUP             = "Vytvořte balíček upgradu"
-			CreateTemplate       = "Vytvořit šablonu"
-			CEUP                 = "Vytvořte balíček upgradu modulu nasazení"
-			zip                  = "Veškerý software je zabalen do formátu kompresního zipu"
-			Repair               = "opravit"
-			All                  = "Všechno"
-			HistoryClearDismSave = "Odstraňte záznamy o připojení DISM uložené v registru"
-			Clear_Bad_Mount      = "Odstraňte všechny prostředky spojené s poškozeným připojeným obrazem"
-			CleanupLogs          = "Vyčištění: Dočasné soubory, protokoly řešení, protokoly DISM"
-			CleanupDisk          = "Vyčistěte všechny dočasné soubory na disku"
-		}
-	}
-	@{
 		Region   = "da-DK"
 		Name     = "Danish (Denmark)"
 		Language = @{
 			FontsUI              = "Segoe UI"
 			Usage                = "Brug:"
+			Learn                = "Studere"
 			Choose               = "Vælg venligst"
 			Reset                = "Nulstil"
 			History              = "Ryd kommandolinjeposter"
@@ -224,35 +164,135 @@ $AvailableLanguages = @(
 		}
 	}
 	@{
-		Region   = "nl-NL"
-		Name     = "Dutch (Netherlands)"
+		Region   = "de-DE"
+		Name     = "German (Germany)"
 		Language = @{
 			FontsUI              = "Segoe UI"
-			Usage                = "gebruik:"
-			Choose               = "Gelieve te kiezen"
-			Reset                = "resetten"
-			History              = "Wis opdrachtregelrecords"
-			Add                  = "Routingfunctie toevoegen, systeemvariabele"
-			AddOK                = "toegevoegd"
-			AddDone              = "Toevoegen aan compleet"
-			Remove               = "verwijderen"
-			RemoveRoute          = "Verwijder de routeringsfunctie, systeemvariabele"
-			RemoveDone           = "met succes verwijderd"
-			SIP                  = "Systeemverpakkingsscript"
-			VerifyAutopilot      = "Verificatie: Autonoom Rijprofiel"
-			VerifyUnattend       = "Verificatie: moet het sjabloonbestand vooraf beantwoorden"
-			Unpack               = "Baal"
-			ChkUpdate            = "Controleer op updates"
-			CreateUP             = "Upgradepakket maken"
-			CreateTemplate       = "Sjabloon maken"
-			CEUP                 = "Maak een upgradepakket voor de implementatie-engine"
-			zip                  = "Alle software is verpakt in zip -compressieformaat"
-			Repair               = "reparatie"
+			Usage                = "Verwendungszweck:"
+			Learn                = "Studie"
+			Choose               = "bitte auswählen"
+			Reset                = "zurücksetzen"
+			History              = "Befehlszeilendatensätze löschen"
+			Add                  = "Routing -Funktion hinzufügen, Systemvariable"
+			AddOK                = "hinzugefügt"
+			AddDone              = "Hinzufügen zum Vervollständigen"
+			Remove               = "löschen"
+			RemoveRoute          = "Löschen Sie die Routing -Funktion, Systemvariable"
+			RemoveDone           = "erfolgreich gelöscht"
+			SIP                  = "Systemverpackungsskript"
+			VerifyAutopilot      = "Überprüfung: Autonomes Fahrprofil"
+			VerifyUnattend       = "Überprüfung: Es sollte eine Vorlagedatei vorab beantwortet werden"
+			Unpack               = "Ballen"
+			ChkUpdate            = "Auf Updates prüfen"
+			CreateUP             = "Upgrade-Paket erstellen"
+			CreateTemplate       = "Vorlage erstellen"
+			CEUP                 = "Erstellen Sie ein Upgradepaket für die Bereitstellungs-Engine"
+			zip                  = "Alle Software ist im ZIP -Komprimierungsformat verpackt"
+			Repair               = "Reparatur"
 			All                  = "alle"
-			HistoryClearDismSave = "Verwijder DISM-mountrecords die in het register zijn opgeslagen"
-			Clear_Bad_Mount      = "Verwijder alle bronnen die zijn gekoppeld aan de beschadigde gekoppelde afbeelding"
-			CleanupLogs          = "Opschonen: tijdelijke bestanden, oplossingslogboeken, DISM-logboeken"
-			CleanupDisk          = "Maak alle tijdelijke schijfbestanden schoon"
+			HistoryClearDismSave = "Löschen Sie in der Registrierung gespeicherte DISM-Mount-Einträge"
+			Clear_Bad_Mount      = "Löschen Sie alle Ressourcen, die mit dem beschädigten gemounteten Image verknüpft sind"
+			CleanupLogs          = "Bereinigung: Temporäre Dateien, Lösungsprotokolle, DISM-Protokolle"
+			CleanupDisk          = "Bereinigen Sie alle temporären Festplattendateien"
+		}
+	}
+	@{
+		Region   = "el-GR"
+		Name     = "Greek (Greece)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "χρήση:"
+			Learn                = "Μελέτη"
+			Choose               = "Παρακαλώ επιλέξτε"
+			Reset                = "επαναφορά"
+			History              = "Εκκαθάριση εγγραφών γραμμής εντολών"
+			Add                  = "Προσθήκη λειτουργίας δρομολόγησης, μεταβλητή συστήματος"
+			AddOK                = "Προστέθηκε"
+			AddDone              = "Προσθήκη στο πλήρες"
+			Remove               = "διαγράφω"
+			RemoveRoute          = "Διαγράψτε τη λειτουργία δρομολόγησης, μεταβλητή συστήματος"
+			RemoveDone           = "Διαγράφηκε με επιτυχία"
+			SIP                  = "Σενάριο συσκευασίας συστήματος"
+			VerifyAutopilot      = "Επαλήθευση: Προφίλ αυτόνομης οδήγησης"
+			VerifyUnattend       = "Επαλήθευση: θα πρέπει να απαντήσει εκ των προτέρων το αρχείο προτύπου"
+			Unpack               = "Μπάλλα"
+			ChkUpdate            = "Ελεγχος για ενημερώσεις"
+			CreateUP             = "Δημιουργήστε ένα πακέτο αναβάθμισης"
+			CreateTemplate       = "Δημιουργία προτύπου"
+			CEUP                 = "Δημιουργήστε ένα πακέτο αναβάθμισης κινητήρα ανάπτυξης"
+			zip                  = "Όλο το λογισμικό είναι συσκευασμένο σε μορφή συμπίεσης με φερμουάρ"
+			Repair               = "επισκευή"
+			All                  = "όλα"
+			HistoryClearDismSave = "Διαγράψτε τις εγγραφές προσάρτησης DISM που είναι αποθηκευμένες στο μητρώο"
+			Clear_Bad_Mount      = "Διαγράψτε όλους τους πόρους που σχετίζονται με την κατεστραμμένη προσαρτημένη εικόνα"
+			CleanupLogs          = "Εκκαθάριση: αρχεία Temp, αρχεία καταγραφής λύσεων, αρχεία καταγραφής DISM"
+			CleanupDisk          = "Καθαρίστε όλα τα προσωρινά αρχεία δίσκου"
+		}
+	}
+	@{
+		Region   = "es-es"
+		Name     = "Spanish (Spain)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "Uso: "
+			Learn                = "Estudiar"
+			Choose               = "Por favor seleccione"
+			Reset                = "Reiniciar"
+			History              = "Limpiar registros de línea de comando"
+			Add                  = "Agregar funciones de enrutamiento y variables del sistema"
+			AddOK                = "Agregado"
+			AddDone              = "Añadir completado"
+			Remove               = "Borrar"
+			RemoveRoute          = "Eliminar funciones de enrutamiento y variables del sistema."
+			RemoveDone           = "Eliminar con éxito"
+			SIP                  = "Script de empaquetado del sistema"
+			VerifyAutopilot      = "Verificación: Perfil de conducción autónoma"
+			VerifyUnattend       = "Verificación: debe responder previamente el archivo de plantilla"
+			Unpack               = "Embalar"
+			ChkUpdate            = "Buscar actualizaciones"
+			CreateUP             = "Crear paquete de actualización"
+			CreateTemplate       = "Crear plantilla"
+			CEUP                 = "Crear un paquete de actualización del motor de implementación"
+			zip                  = "Todo el software está empaquetado en formato comprimido zip."
+			Repair               = "Reparar"
+			All                  = "Todo"
+			HistoryClearDismSave = "Eliminar registros de montaje DISM guardados en el registro"
+			Clear_Bad_Mount      = "Elimine todos los recursos asociados con la imagen montada dañada"
+			CleanupLogs          = "Limpieza: archivos temporales, registros de soluciones, registros DISM"
+			CleanupDisk          = "Limpiar todos los archivos temporales del disco"
+		}
+	}
+	@{
+		Region   = "es-MX"
+		Name     = "Spanish (Mexico)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "Uso:"
+			Learn                = ""
+			Choose               = "por favor elige"
+			Reset                = "reiniciar"
+			History              = "Borrar registros de línea de comando"
+			Add                  = "Agregar función de enrutamiento, variable del sistema"
+			AddOK                = "adicional"
+			AddDone              = "Añadir a Complete"
+			Remove               = "borrar"
+			RemoveRoute          = "Eliminar la función de enrutamiento, variable del sistema"
+			RemoveDone           = "Eliminado con éxito"
+			SIP                  = "Script de empaque del sistema"
+			VerifyAutopilot      = "Verificación: Perfil de conducción autónoma"
+			VerifyUnattend       = "Verificación: debe responder previamente el archivo de plantilla"
+			Unpack               = "Bala"
+			ChkUpdate            = "Buscar actualizaciones"
+			CreateUP             = "Crear un paquete de actualización"
+			CreateTemplate       = "Ustvari predlogo"
+			CEUP                 = "Crear un paquete de actualización del motor de implementación"
+			zip                  = "Todo el software está empaquetado en formato de compresión zip"
+			Repair               = "reparar"
+			All                  = "todo"
+			HistoryClearDismSave = "Eliminar registros de montaje DISM guardados en el registro"
+			Clear_Bad_Mount      = "Elimine todos los recursos asociados con la imagen montada dañada"
+			CleanupLogs          = "Limpieza: archivos temporales, registros de soluciones, registros DISM"
+			CleanupDisk          = "Limpiar todos los archivos temporales del disco"
 		}
 	}
 	@{
@@ -261,6 +301,7 @@ $AvailableLanguages = @(
 		Language = @{
 			FontsUI              = "Segoe UI"
 			Usage                = "Kasutamine:"
+			Learn                = "Uuring"
 			Choose               = "palun vali"
 			Reset                = "lähtestada"
 			History              = "Tühjendage käsurea kirjed"
@@ -293,6 +334,7 @@ $AvailableLanguages = @(
 		Language = @{
 			FontsUI              = "Segoe UI"
 			Usage                = "käyttö:"
+			Learn                = "Opiskella"
 			Choose               = "Valitse"
 			Reset                = "nollaa"
 			History              = "Tyhjennä komentorivin tietueet"
@@ -325,6 +367,7 @@ $AvailableLanguages = @(
 		Language = @{
 			FontsUI              = "Segoe UI"
 			Usage                = "usage:"
+			Learn                = "Étude"
 			Choose               = "Choisissez s'il vous plaît"
 			Reset                = "réinitialiser"
 			History              = "Effacer les enregistrements de ligne de commande"
@@ -352,35 +395,36 @@ $AvailableLanguages = @(
 		}
 	}
 	@{
-		Region   = "el-GR"
-		Name     = "Greek (Greece)"
+		Region   = "fr-fr"
+		Name     = "French (France)"
 		Language = @{
 			FontsUI              = "Segoe UI"
-			Usage                = "χρήση:"
-			Choose               = "Παρακαλώ επιλέξτε"
-			Reset                = "επαναφορά"
-			History              = "Εκκαθάριση εγγραφών γραμμής εντολών"
-			Add                  = "Προσθήκη λειτουργίας δρομολόγησης, μεταβλητή συστήματος"
-			AddOK                = "Προστέθηκε"
-			AddDone              = "Προσθήκη στο πλήρες"
-			Remove               = "διαγράφω"
-			RemoveRoute          = "Διαγράψτε τη λειτουργία δρομολόγησης, μεταβλητή συστήματος"
-			RemoveDone           = "Διαγράφηκε με επιτυχία"
-			SIP                  = "Σενάριο συσκευασίας συστήματος"
-			VerifyAutopilot      = "Επαλήθευση: Προφίλ αυτόνομης οδήγησης"
-			VerifyUnattend       = "Επαλήθευση: θα πρέπει να απαντήσει εκ των προτέρων το αρχείο προτύπου"
-			Unpack               = "Μπάλλα"
-			ChkUpdate            = "Ελεγχος για ενημερώσεις"
-			CreateUP             = "Δημιουργήστε ένα πακέτο αναβάθμισης"
-			CreateTemplate       = "Δημιουργία προτύπου"
-			CEUP                 = "Δημιουργήστε ένα πακέτο αναβάθμισης κινητήρα ανάπτυξης"
-			zip                  = "Όλο το λογισμικό είναι συσκευασμένο σε μορφή συμπίεσης με φερμουάρ"
-			Repair               = "επισκευή"
-			All                  = "όλα"
-			HistoryClearDismSave = "Διαγράψτε τις εγγραφές προσάρτησης DISM που είναι αποθηκευμένες στο μητρώο"
-			Clear_Bad_Mount      = "Διαγράψτε όλους τους πόρους που σχετίζονται με την κατεστραμμένη προσαρτημένη εικόνα"
-			CleanupLogs          = "Εκκαθάριση: αρχεία Temp, αρχεία καταγραφής λύσεων, αρχεία καταγραφής DISM"
-			CleanupDisk          = "Καθαρίστε όλα τα προσωρινά αρχεία δίσκου"
+			Usage                = "Usage:"
+			Learn                = "Étude"
+			Choose               = "Veuillez sélectionner"
+			Reset                = "Réinitialiser"
+			History              = "Nettoyer les enregistrements de ligne de commande"
+			Add                  = "Ajouter des fonctions de routage et des variables système"
+			AddOK                = "Ajouté"
+			AddDone              = "Ajout terminé"
+			Remove               = "Supprimer"
+			RemoveRoute          = "Supprimer les fonctions de routage et les variables système"
+			RemoveDone           = "Supprimer avec succès"
+			SIP                  = "Script d'empaquetage du système"
+			VerifyAutopilot      = "Vérification: profil de conduite autonome"
+			VerifyUnattend       = "Vérification: doit pré-répondre le fichier modèle"
+			Unpack               = "Paquet"
+			ChkUpdate            = "Vérifier les mises à jour"
+			CreateUP             = "Créer un package de mise à niveau"
+			CreateTemplate       = "Créer un modèle"
+			CEUP                 = "Créer un package de mise à niveau du moteur de déploiement"
+			zip                  = "Tous les logiciels sont emballés au format compressé zip"
+			Repair               = "Réparation"
+			All                  = "Tous"
+			HistoryClearDismSave = "Supprimer les enregistrements de montage DISM enregistrés dans le registre"
+			Clear_Bad_Mount      = "Supprimez toutes les ressources associées à l'image montée corrompue"
+			CleanupLogs          = "Nettoyage: fichiers temporaires, journaux de solutions, journaux DISM"
+			CleanupDisk          = "Nettoyer tous les fichiers de disque temporaires"
 		}
 	}
 	@{
@@ -389,6 +433,7 @@ $AvailableLanguages = @(
 		Language = @{
 			FontsUI              = "Segoe UI"
 			Usage                = "נוֹהָג:"
+			Learn                = "לִלמוֹד"
 			Choose               = "בבקשה תבחר"
 			Reset                = "אִתחוּל"
 			History              = "נקה רשומות שורת הפקודה"
@@ -416,11 +461,45 @@ $AvailableLanguages = @(
 		}
 	}
 	@{
+		Region   = "hr-HR"
+		Name     = "Croatian (Croatia)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "Upotreba:"
+			Learn                = "Studija"
+			Choose               = "molim odaberite"
+			Reset                = "Resetirati"
+			History              = "Obrišite zapise naredbenog retka"
+			Add                  = "Dodaj funkciju usmjeravanja, varijablu sustava"
+			AddOK                = "Dodano"
+			AddDone              = "Dodaj u komplet"
+			Remove               = "izbrisati"
+			RemoveRoute          = "Izbriši funkciju usmjeravanja, varijablu sustava"
+			RemoveDone           = "Uspješno izbrisano"
+			SIP                  = "Skripta za pakiranje sustava"
+			VerifyAutopilot      = "Provjera: Profil autonomne vožnje"
+			VerifyUnattend       = "Provjera: trebala bi biti datoteka predloška odgovora"
+			Unpack               = "Bale"
+			ChkUpdate            = "Provjerite ima li ažuriranja"
+			CreateUP             = "Napravite paket nadogradnje"
+			CreateTemplate       = "Izradi predložak"
+			CEUP                 = "Stvorite paket za nadogradnju mehanizma za implementaciju"
+			zip                  = "Sav je softver pakiran u formatu kompresije ZIP -a"
+			Repair               = "popravak"
+			All                  = "svi"
+			HistoryClearDismSave = "Izbrišite zapise montiranja DISM-a spremljene u registru"
+			Clear_Bad_Mount      = "Izbrišite sve resurse povezane s oštećenom montiranom slikom"
+			CleanupLogs          = "Čišćenje: privremene datoteke, zapisnici rješenja, zapisnici DISM-a"
+			CleanupDisk          = "Očistite sve privremene diskovne datoteke"
+		}
+	}
+	@{
 		Region   = "hu-HU"
 		Name     = "Hungarian (Hungary)"
 		Language = @{
 			FontsUI              = "Segoe UI"
 			Usage                = "használat:"
+			Learn                = "Tanulmány"
 			Choose               = "kérlek válassz"
 			Reset                = "Visszaállítás"
 			History              = "Parancssori rekordok törlése"
@@ -453,6 +532,7 @@ $AvailableLanguages = @(
 		Language = @{
 			FontsUI              = "Segoe UI"
 			Usage                = "Utilizzo:"
+			Learn                = "Étude"
 			Choose               = "si prega di scegliere"
 			Reset                = "Ripristina"
 			History              = "Cancella i record della riga di comando"
@@ -480,619 +560,12 @@ $AvailableLanguages = @(
 		}
 	}
 	@{
-		Region   = "lv-LV"
-		Name     = "Latvian (Latvia)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "Lietojums:"
-			Choose               = "Lūdzu izvēlies"
-			Reset                = "atiestatīt"
-			History              = "Notīrīt komandrindas ierakstus"
-			Add                  = "Pievienojiet maršrutēšanas funkciju, sistēmas mainīgo"
-			AddOK                = "Pievienots"
-			AddDone              = "Pievienot, lai pabeigtu"
-			Remove               = "dzēst"
-			RemoveRoute          = "Izdzēsiet maršrutēšanas funkciju, sistēmas mainīgo"
-			RemoveDone           = "Veiksmīgi izdzēsti"
-			SIP                  = "Sistēmas iepakojuma skripts"
-			VerifyAutopilot      = "Verifikācija: autonomas braukšanas profils"
-			VerifyUnattend       = "Verifikācija: vajadzētu pirms atbildes veidnes faila"
-			Unpack               = "Bāle"
-			ChkUpdate            = "Meklēt atjauninājumus"
-			CreateUP             = "Izveidojiet jaunināšanas pakotni"
-			CreateTemplate       = "Izveidot veidni"
-			CEUP                 = "Izveidojiet izvietošanas programmas jaunināšanas pakotni"
-			zip                  = "Visa programmatūra ir iesaiņota pasta kompresijas formātā"
-			Repair               = "remonts"
-			All                  = "visi"
-			HistoryClearDismSave = "Dzēsiet reģistrā saglabātos DISM montāžas ierakstus"
-			Clear_Bad_Mount      = "Dzēsiet visus resursus, kas saistīti ar bojāto pievienoto attēlu"
-			CleanupLogs          = "Tīrīšana: pagaidu faili, risinājumu žurnāli, DISM žurnāli"
-			CleanupDisk          = "Notīriet visus pagaidu diska failus"
-		}
-	}
-	@{
-		Region   = "lt-LT"
-		Name     = "Lithuanian (Lithuania)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "Naudojimas:"
-			Choose               = "Prašome pasirinkti"
-			Reset                = "atstatyti"
-			History              = "Išvalyti komandinės eilutės įrašus"
-			Add                  = "Pridėti maršruto parinkimo funkciją, sistemos kintamąjį"
-			AddOK                = "Pridėta"
-			AddDone              = "Pridėti prie pilno"
-			Remove               = "ištrinti"
-			RemoveRoute          = "Ištrinkite maršruto parinkimo funkciją, sistemos kintamąjį"
-			RemoveDone           = "Sėkmingai ištrintas"
-			SIP                  = "Sistemos pakavimo scenarijus"
-			VerifyAutopilot      = "Patvirtinimas: savarankiško vairavimo profilis"
-			VerifyUnattend       = "Patvirtinimas: turėtų iš anksto atsakyti šablono failas"
-			Unpack               = "Bale"
-			ChkUpdate            = "Tikrinti, ar yra atnaujinimų"
-			CreateUP             = "Sukurkite atnaujinimo paketą"
-			CreateTemplate       = "Sukurti šabloną"
-			CEUP                 = "Sukurkite diegimo variklio naujinimo paketą"
-			zip                  = "Visa programinė įranga yra supakuota į ZIP suspaudimo formatą"
-			Repair               = "remontas"
-			All                  = "visi"
-			HistoryClearDismSave = "Ištrinkite registre išsaugotus DISM prijungimo įrašus"
-			Clear_Bad_Mount      = "Ištrinkite visus išteklius, susijusius su sugadintu prijungtu vaizdu"
-			CleanupLogs          = "Valymas: laikinieji failai, sprendimų žurnalai, DISM žurnalai"
-			CleanupDisk          = "Išvalykite visus laikinuosius disko failus"
-		}
-	}
-	@{
-		Region   = "nb-NO"
-		Name     = "Norwegian, Bokmål (Norway)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "Bruk:"
-			Choose               = "Vennligst velg"
-			Reset                = "nullstille"
-			History              = "Slett kommandolinjeposter"
-			Add                  = "Legg til rutingsfunksjon, systemvariabel"
-			AddOK                = "la til"
-			AddDone              = "Legg til i fullført"
-			Remove               = "slette"
-			RemoveRoute          = "Slett rutingsfunksjonen, systemvariabel"
-			RemoveDone           = "vellykket slettet"
-			SIP                  = "Systememballasjeskript"
-			VerifyAutopilot      = "Bekreftelse: Autonom kjøreprofil"
-			VerifyUnattend       = "Bekreftelse: skal forhåndsbesvare malfil"
-			Unpack               = "Bale"
-			ChkUpdate            = "Se etter oppdateringer"
-			CreateUP             = "Lag oppgraderingspakke"
-			CreateTemplate       = "Lag mal"
-			CEUP                 = "Opprett en oppgraderingspakke for distribusjonsmotoren"
-			zip                  = "All programvare er pakket i zip -komprimeringsformat"
-			Repair               = "reparere"
-			All                  = "alle"
-			HistoryClearDismSave = "Slett DISM-monteringsposter som er lagret i registret"
-			Clear_Bad_Mount      = "Slett alle ressurser knyttet til det ødelagte monterte bildet"
-			CleanupLogs          = "Opprydding: Temp-filer, løsningslogger, DISM-logger"
-			CleanupDisk          = "Rengjør alle midlertidige diskfiler"
-		}
-	}
-	@{
-		Region   = "pl-PL"
-		Name     = "Polish (Poland)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "stosowanie:"
-			Choose               = "proszę wybrać"
-			Reset                = "Resetowanie"
-			History              = "Wyczyść rekordy wiersza poleceń"
-			Add                  = "Dodaj funkcję routingu, zmienna systemowa"
-			AddOK                = "dodany"
-			AddDone              = "Dodaj do kompletnego"
-			Remove               = "usuwać"
-			RemoveRoute          = "Usuń funkcję routingu, zmienną systemową"
-			RemoveDone           = "Z powodzeniem usunięto"
-			SIP                  = "Skrypt pakowania systemu"
-			VerifyAutopilot      = "Weryfikacja: Profil jazdy autonomicznej"
-			VerifyUnattend       = "Weryfikacja: powinna wstępnie odpowiedzieć na plik szablonu"
-			Unpack               = "Bela"
-			ChkUpdate            = "Sprawdź aktualizacje"
-			CreateUP             = "Utwórz pakiet aktualizacji"
-			CreateTemplate       = "Utwórz szablon"
-			CEUP                 = "Utwórz pakiet aktualizacji mechanizmu wdrażania"
-			zip                  = "Wszystkie oprogramowanie jest pakowane w formacie kompresji zip"
-			Repair               = "naprawa"
-			All                  = "Wszystko"
-			HistoryClearDismSave = "Usuń rekordy podłączenia DISM zapisane w rejestrze"
-			Clear_Bad_Mount      = "Usuń wszystkie zasoby powiązane z uszkodzonym zamontowanym obrazem"
-			CleanupLogs          = "Oczyszczanie: pliki tymczasowe, dzienniki rozwiązań, dzienniki DISM"
-			CleanupDisk          = "Wyczyść wszystkie pliki tymczasowe na dysku"
-		}
-	}
-	@{
-		Region   = "pt-BR"
-		Name     = "Portuguese (Brazil)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "uso:"
-			Choose               = "por favor escolha"
-			Reset                = "reiniciar"
-			History              = "Limpar registros de linha de comando"
-			Add                  = "Adicionar função de roteamento, variável do sistema"
-			AddOK                = "Adicionado"
-			AddDone              = "Adicionar para completar"
-			Remove               = "excluir"
-			RemoveRoute          = "Exclua a função de roteamento, variável do sistema"
-			RemoveDone           = "Excluído com sucesso"
-			SIP                  = "Script de embalagem do sistema"
-			VerifyAutopilot      = "Verificação: Perfil de direção autônoma"
-			VerifyUnattend       = "Verificação: deve pré-responder arquivo de modelo"
-			Unpack               = "Fardo"
-			ChkUpdate            = "Verifique se há atualizações"
-			CreateUP             = "Criar pacote de atualização"
-			CreateTemplate       = "Utwórz szablon"
-			CEUP                 = "Criar um pacote de atualização do mecanismo de implantação"
-			zip                  = "Todo o software está embalado em formato de compressão ZIP"
-			Repair               = "reparar"
-			All                  = "todos"
-			HistoryClearDismSave = "Exclua os registros de montagem DISM salvos no registro"
-			Clear_Bad_Mount      = "Exclua todos os recursos associados à imagem montada corrompida"
-			CleanupLogs          = "Limpeza: arquivos temporários, logs de solução, logs DISM"
-			CleanupDisk          = "Limpe todos os arquivos temporários do disco"
-		}
-	}
-	@{
-		Region   = "ro-RO"
-		Name     = "Romanian (Romania)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "Utilizare:"
-			Choose               = "vă rugăm să alegeți"
-			Reset                = "resetare"
-			History              = "Ștergeți înregistrările din linia de comandă"
-			Add                  = "Adăugați funcția de rutare, variabilă de sistem"
-			AddOK                = "adăugat"
-			AddDone              = "Adăugați la finalizare"
-			Remove               = "şterge"
-			RemoveRoute          = "Ștergeți funcția de rutare, variabila de sistem"
-			RemoveDone           = "Șters cu succes"
-			SIP                  = "Script de ambalare a sistemului"
-			VerifyAutopilot      = "Verificare: Profil de conducere autonomă"
-			VerifyUnattend       = "Verificare: ar trebui să răspundă înainte de fișierul șablon"
-			Unpack               = "Balot"
-			ChkUpdate            = "Verifică pentru actualizări"
-			CreateUP             = "Creați un pachet de upgrade"
-			CreateTemplate       = "Creați șablon"
-			CEUP                 = "Creați un pachet de actualizare a motorului de implementare"
-			zip                  = "Toate software -ul este ambalat în format de compresie zip"
-			Repair               = "reparație"
-			All                  = "toate"
-			HistoryClearDismSave = "Ștergeți înregistrările de montare DISM salvate în registry"
-			Clear_Bad_Mount      = "Ștergeți toate resursele asociate cu imaginea montată coruptă"
-			CleanupLogs          = "Curățare: fișiere temporare, jurnale de soluții, jurnale DISM"
-			CleanupDisk          = "Curățați toate fișierele temporare de pe disc"
-		}
-	}
-	@{
-		Region   = "sk-SK"
-		Name     = "Slovak (Slovakia)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "Použitie:"
-			Choose               = "prosím vyber si"
-			Reset                = "resetovať"
-			History              = "Vymazať záznamy príkazového riadku"
-			Add                  = "Pridajte funkciu smerovania, systémovú premennú"
-			AddOK                = "Pridané"
-			AddDone              = "Pridať do dokončenia"
-			Remove               = "vymazať"
-			RemoveRoute          = "Odstráňte funkciu smerovania, systémovú premennú"
-			RemoveDone           = "Úspešne vymazané"
-			SIP                  = "Systémový obalový skript"
-			VerifyAutopilot      = "Overenie: Profil autonómnej jazdy"
-			VerifyUnattend       = "Overenie: mal by sa predpísať súbor šablóny odpovede"
-			Unpack               = "Bale"
-			ChkUpdate            = "Skontroluj aktualizácie"
-			CreateUP             = "Vytvorte inovačný balík"
-			CreateTemplate       = "Vytvorte šablónu"
-			CEUP                 = "Vytvorte balík inovácie nástroja nasadenia"
-			zip                  = "Celý softvér je zabalený vo formáte kompresie zipsov"
-			Repair               = "oprava"
-			All                  = "všetky"
-			HistoryClearDismSave = "Odstráňte záznamy pripojenia DISM uložené v registri"
-			Clear_Bad_Mount      = "Odstráňte všetky prostriedky spojené s poškodeným pripojeným obrazom"
-			CleanupLogs          = "Čistenie: dočasné súbory, protokoly riešení, protokoly DISM"
-			CleanupDisk          = "Vyčistite všetky dočasné súbory na disku"
-		}
-	}
-	@{
-		Region   = "sl-SI"
-		Name     = "Slovenian (Slovenia)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "Uporaba:"
-			Choose               = "prosim izberite"
-			Reset                = "ponastaviti"
-			History              = "Počisti zapise ukazne vrstice"
-			Add                  = "Dodajte funkcijo usmerjanja, sistemska spremenljivka"
-			AddOK                = "Dodano"
-			AddDone              = "Dodaj za dokončanje"
-			Remove               = "izbrisati"
-			RemoveRoute          = "Izbriši funkcijo usmerjanja, sistemska spremenljivka"
-			RemoveDone           = "Uspešno izbrisano"
-			SIP                  = "Script Scrip Packaging Script"
-			VerifyAutopilot      = "Preverjanje: Profil avtonomne vožnje"
-			VerifyUnattend       = "Preverjanje: datoteka predloge mora biti pred odgovorom"
-			Unpack               = "Bale"
-			ChkUpdate            = "Preveri za posodobitve"
-			CreateUP             = "Ustvari paket nadgradnje"
-			CreateTemplate       = "Ustvari predlogo"
-			CEUP                 = "Ustvarite paket nadgradnje motorja za uvajanje"
-			zip                  = "Vsa programska oprema je pakirana v obliki stiskanja zip"
-			Repair               = "popravilo"
-			All                  = "vse"
-			HistoryClearDismSave = "Izbrišite zapise namestitve DISM, shranjene v registru"
-			Clear_Bad_Mount      = "Izbrišite vse vire, povezane s poškodovano nameščeno sliko"
-			CleanupLogs          = "Čiščenje: začasne datoteke, dnevniki rešitev, dnevniki DISM"
-			CleanupDisk          = "Očistite vse začasne datoteke na disku"
-		}
-	}
-	@{
-		Region   = "es-MX"
-		Name     = "Spanish (Mexico)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "Uso:"
-			Choose               = "por favor elige"
-			Reset                = "reiniciar"
-			History              = "Borrar registros de línea de comando"
-			Add                  = "Agregar función de enrutamiento, variable del sistema"
-			AddOK                = "adicional"
-			AddDone              = "Añadir a Complete"
-			Remove               = "borrar"
-			RemoveRoute          = "Eliminar la función de enrutamiento, variable del sistema"
-			RemoveDone           = "Eliminado con éxito"
-			SIP                  = "Script de empaque del sistema"
-			VerifyAutopilot      = "Verificación: Perfil de conducción autónoma"
-			VerifyUnattend       = "Verificación: debe responder previamente el archivo de plantilla"
-			Unpack               = "Bala"
-			ChkUpdate            = "Buscar actualizaciones"
-			CreateUP             = "Crear un paquete de actualización"
-			CreateTemplate       = "Ustvari predlogo"
-			CEUP                 = "Crear un paquete de actualización del motor de implementación"
-			zip                  = "Todo el software está empaquetado en formato de compresión zip"
-			Repair               = "reparar"
-			All                  = "todo"
-			HistoryClearDismSave = "Eliminar registros de montaje DISM guardados en el registro"
-			Clear_Bad_Mount      = "Elimine todos los recursos asociados con la imagen montada dañada"
-			CleanupLogs          = "Limpieza: archivos temporales, registros de soluciones, registros DISM"
-			CleanupDisk          = "Limpiar todos los archivos temporales del disco"
-		}
-	}
-	@{
-		Region   = "th-TH"
-		Name     = "Thai (Thailand)"
-		Language = @{
-			FontsUI              = "Leelawadee UI"
-			Usage                = "การใช้งาน:"
-			Choose               = "โปรดเลือก"
-			Reset                = "รีเซ็ต"
-			History              = "ล้างบันทึกบรรทัดคำสั่ง"
-			Add                  = "เพิ่มฟังก์ชั่นการกำหนดเส้นทางตัวแปรระบบ"
-			AddOK                = "เพิ่ม"
-			AddDone              = "เพิ่มให้เสร็จสมบูรณ์"
-			Remove               = "ลบ"
-			RemoveRoute          = "ลบฟังก์ชั่นการกำหนดเส้นทางตัวแปรระบบ"
-			RemoveDone           = "ลบสำเร็จ"
-			SIP                  = "สคริปต์บรรจุภัณฑ์ของระบบ"
-			VerifyAutopilot      = "การยืนยัน: โปรไฟล์การขับขี่แบบอัตโนมัติ"
-			VerifyUnattend       = "การยืนยัน: ควรตอบไฟล์เทมเพลตล่วงหน้า"
-			Unpack               = "เบล"
-			ChkUpdate            = "ตรวจสอบสำหรับการอัพเดต"
-			CreateUP             = "สร้างแพ็คเกจอัพเกรด"
-			CreateTemplate       = "สร้างเทมเพลต"
-			CEUP                 = "สร้างแพ็คเกจการปรับรุ่นกลไกการปรับใช้"
-			zip                  = "ซอฟต์แวร์ทั้งหมดบรรจุในรูปแบบการบีบอัด zip"
-			Repair               = "ซ่อมแซม"
-			All                  = "ทั้งหมด"
-			HistoryClearDismSave = "ลบบันทึกการเมานต์ DISM ที่บันทึกไว้ในรีจิสทรี"
-			Clear_Bad_Mount      = "ลบทรัพยากรทั้งหมดที่เกี่ยวข้องกับอิมเมจที่เมาท์ที่เสียหาย"
-			CleanupLogs          = "การล้างข้อมูล: ไฟล์ชั่วคราว บันทึกโซลูชัน บันทึก DISM"
-			CleanupDisk          = "ทำความสะอาดไฟล์ดิสก์ชั่วคราวทั้งหมด"
-		}
-	}
-	@{
-		Region   = "tr-TR"
-		Name     = "Turkish (Turkey)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "Kullanım:"
-			Choose               = "lütfen seç"
-			Reset                = "Sıfırla"
-			History              = "Komut satırı kayıtlarını temizle"
-			Add                  = "Yönlendirme işlevi, sistem değişkeni ekle"
-			AddOK                = "katma"
-			AddDone              = "Tamamlamak için ekle"
-			Remove               = "silmek"
-			RemoveRoute          = "Yönlendirme işlevini sil, sistem değişkeni"
-			RemoveDone           = "Başarılı bir şekilde silindi"
-			SIP                  = "Sistem Ambalaj Komut Dosyası"
-			VerifyAutopilot      = "Doğrulama: Otonom Sürüş Profili"
-			VerifyUnattend       = "Doğrulama: şablon dosyasına önceden yanıt verilmelidir"
-			Unpack               = "Balya"
-			ChkUpdate            = "Güncellemeleri kontrol et"
-			CreateUP             = "Bir yükseltme paketi oluşturun"
-			CreateTemplate       = "Şablon oluştur"
-			CEUP                 = "Bir dağıtım altyapısı yükseltme paketi oluşturun"
-			zip                  = "Tüm yazılımlar zip sıkıştırma formatında paketlenmiştir"
-			Repair               = "tamirat"
-			All                  = "Tümü"
-			HistoryClearDismSave = "Kayıt defterinde kayıtlı DISM bağlama kayıtlarını silin"
-			Clear_Bad_Mount      = "Bozuk monte edilmiş görüntüyle ilişkili tüm kaynakları silin"
-			CleanupLogs          = "Temizleme: Geçici dosyalar, çözüm günlükleri, DISM günlükleri"
-			CleanupDisk          = "Tüm geçici disk dosyalarını temizleyin"
-		}
-	}
-	@{
-		Region   = "uk-UA"
-		Name     = "Ukrainian (Ukraine)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "Використання:"
-			Choose               = "будь-ласка оберіть"
-			Reset                = "скинути"
-			History              = "Очистити записи командного рядка"
-			Add                  = "Додайте функцію маршрутизації, системну змінну"
-			AddOK                = "Додав"
-			AddDone              = "Додати для завершення"
-			Remove               = "видалити"
-			RemoveRoute          = "Видаліть функцію маршрутизації, системна змінна"
-			RemoveDone           = "успішно видалено"
-			SIP                  = "Сценарій упаковки системи"
-			VerifyAutopilot      = "Перевірка: профіль автономного водіння"
-			VerifyUnattend       = "Перевірка: необхідно попередньо відповісти файл шаблону"
-			Unpack               = "Бейл"
-			ChkUpdate            = "Перевірити наявність оновлень"
-			CreateUP             = "Створіть пакет оновлення"
-			CreateTemplate       = "Створити шаблон"
-			CEUP                 = "Створіть пакет оновлення механізму розгортання"
-			zip                  = "Bce програмне забезпечення упаковано y форматі стиснення zip"
-			Repair               = "ремонт"
-			All                  = "все"
-			HistoryClearDismSave = "Видаліть записи монтування DISM, збережені в реєстрі"
-			Clear_Bad_Mount      = "Видаліть усі ресурси, пов'язані з пошкодженим підключеним образом"
-			CleanupLogs          = "Очищення: тимчасові файли, журнали рішень, журнали DISM"
-			CleanupDisk          = "Очистіть усі тимчасові файли диска"
-		}
-	}
-	@{
-		Region   = "eu-es"
-		Name     = "Basque (Basque)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "Erabilera:"
-			Choose               = "mesedez aukeratu"
-			Reset                = "berrezarri"
-			History              = "Garbitu komando-lerroko erregistroak"
-			Add                  = "Gehitu bideratze funtzioa, sistemaren aldagaia"
-			AddOK                = "Gehitu"
-			AddDone              = "Gehitu osatzeko"
-			Remove               = "ezabatu"
-			RemoveRoute          = "Ezabatu bideratze funtzioa, sistemaren aldagaia"
-			RemoveDone           = "ondo ezabatu"
-			SIP                  = "Sistema ontziratzeko gidoia"
-			VerifyAutopilot      = "Egiaztapena: Gidatze Autonomoko Profila"
-			VerifyUnattend       = "Egiaztapena: aurretiaz erantzun beharko luke txantiloi-fitxategia"
-			Unpack               = "Bale"
-			ChkUpdate            = "Egiaztatu eguneratzeak"
-			CreateUP             = "Sortu bertsio berritzeko paketea"
-			CreateTemplate       = "Sortu txantiloia"
-			CEUP                 = "Sortu hedapen-motorra eguneratzeko pakete bat"
-			zip                  = "Software guztia zip konpresio formatuan paketatuta dago"
-			Repair               = "konponketa"
-			All                  = "guztiak"
-			HistoryClearDismSave = "Ezabatu erregistroan gordetako DISM muntaketa-erregistroak"
-			Clear_Bad_Mount      = "Ezabatu hondatutako muntatutako irudiarekin lotutako baliabide guztiak"
-			CleanupLogs          = "Garbiketa: Tenperaturako fitxategiak, irtenbideen erregistroak, DISM erregistroak"
-			CleanupDisk          = "Garbitu aldi baterako diskoko fitxategi guztiak"
-		}
-	}
-	@{
-		Region   = "gl-es"
-		Name     = "Galician (Spain)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "Uso:"
-			Choose               = "por favor escolle"
-			Reset                = "restablecer"
-			History              = "Borrar rexistros da liña de comandos"
-			Add                  = "Engade a función de enrutamento, variable do sistema"
-			AddOK                = "engadido"
-			AddDone              = "Engadir a completar"
-			Remove               = "eliminar"
-			RemoveRoute          = "Eliminar a función de enrutamento, variable do sistema"
-			RemoveDone           = "Eliminado con éxito"
-			SIP                  = "Script de envasado do sistema"
-			VerifyAutopilot      = "Verificación: Perfil de condución autónoma"
-			VerifyUnattend       = "Verificación: debe responder previamente ao ficheiro modelo"
-			Unpack               = "Bale"
-			ChkUpdate            = "Comproba se hai actualizacións"
-			CreateUP             = "Crear paquete de actualización"
-			CreateTemplate       = "Crear modelo"
-			CEUP                 = "Crea un paquete de actualización do motor de implementación"
-			zip                  = "Todo o software está envasado en formato de compresión con cremalleira"
-			Repair               = "reparación"
-			All                  = "todos"
-			HistoryClearDismSave = "Elimina os rexistros de montaxe DISM gardados no rexistro"
-			Clear_Bad_Mount      = "Elimina todos os recursos asociados á imaxe montada danada"
-			CleanupLogs          = "Limpeza: ficheiros temporais, rexistros de solucións, rexistros DISM"
-			CleanupDisk          = "Limpar todos os ficheiros temporais do disco"
-		}
-	}
-	@{
-		Region   = "id-id"
-		Name     = "Indonesian (Indonesia)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "penggunaan:"
-			Choose               = "tolong pilih"
-			Reset                = "mengatur ulang"
-			History              = "Hapus catatan baris perintah"
-			Add                  = "Tambahkan fungsi routing, variabel sistem"
-			AddOK                = "Ditambahkan"
-			AddDone              = "Tambahkan ke Lengkapi"
-			Remove               = "menghapus"
-			RemoveRoute          = "Hapus fungsi routing, variabel sistem"
-			RemoveDone           = "berhasil dihapus"
-			SIP                  = "Skrip Kemasan Sistem"
-			VerifyAutopilot      = "Verifikasi: Profil Mengemudi Otonom"
-			VerifyUnattend       = "Verifikasi: harus menjawab file template terlebih dahulu"
-			Unpack               = "Bal"
-			ChkUpdate            = "Periksa pembaruan"
-			CreateUP             = "Buat paket peningkatan"
-			CreateTemplate       = "Buat templat"
-			CEUP                 = "Buat paket pemutakhiran mesin penerapan"
-			zip                  = "Semua perangkat lunak dikemas dalam format kompresi zip"
-			Repair               = "memperbaiki"
-			All                  = "semua"
-			HistoryClearDismSave = "Hapus catatan pemasangan DISM yang disimpan di registri"
-			Clear_Bad_Mount      = "Hapus semua sumber daya yang terkait dengan gambar terpasang yang rusak"
-			CleanupLogs          = "Pembersihan: File sementara, log solusi, log DISM"
-			CleanupDisk          = "Bersihkan semua file disk sementara"
-		}
-	}
-	@{
-		Region   = "vi-vn"
-		Name     = "Vietnamese (Vietnam)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "cách sử dụng:"
-			Choose               = "xin vui lòng chọn"
-			Reset                = "cài lại"
-			History              = "Xóa bản ghi dòng lệnh"
-			Add                  = "Thêm chức năng định tuyến, biến hệ thống"
-			AddOK                = "thêm"
-			AddDone              = "Thêm vào hoàn thành"
-			Remove               = "xóa bỏ"
-			RemoveRoute          = "Xóa chức năng định tuyến, biến hệ thống"
-			RemoveDone           = "Xóa thành công"
-			SIP                  = "Kịch bản bao bì hệ thống"
-			VerifyAutopilot      = "Xác minh: Hồ sơ lái xe tự động"
-			VerifyUnattend       = "Xác minh: nên trả lời trước file mẫu"
-			Unpack               = "Bale"
-			ChkUpdate            = "Kiểm tra cập nhật"
-			CreateUP             = "Tạo gói nâng cấp"
-			CreateTemplate       = "Tạo mẫu"
-			CEUP                 = "Tạo gói nâng cấp công cụ triển khai"
-			zip                  = "Tất cả các phần mềm được đóng gói ở định dạng nén zip"
-			Repair               = "Sửa chữa"
-			All                  = "tất cả"
-			HistoryClearDismSave = "Xóa bản ghi gắn DISM được lưu trong sổ đăng ký"
-			Clear_Bad_Mount      = "Xóa tất cả các tài nguyên liên quan đến hình ảnh được gắn bị hỏng"
-			CleanupLogs          = "Dọn dẹp: Tệp tạm thời, nhật ký giải pháp, nhật ký DISM"
-			CleanupDisk          = "Làm sạch tất cả các tập tin đĩa tạm thời"
-		}
-	}
-	@{
-		Region   = "sr-latn-rs"
-		Name     = "Serbian (Latin, Serbia)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "употреба:"
-			Choose               = "молимо изаберите"
-			Reset                = "ресетовати"
-			History              = "Обришите записе командне линије"
-			Add                  = "Додајте функцију усмеравања, системска променљива"
-			AddOK                = "додато"
-			AddDone              = "Додај за комплетну"
-			Remove               = "избрисати"
-			RemoveRoute          = "Избришите функцију усмеравања, системска променљива"
-			RemoveDone           = "Успешно избрисано"
-			SIP                  = "Скрипта за паковање система"
-			VerifyAutopilot      = "Верификација: профил аутономне вожње"
-			VerifyUnattend       = "Верификација: треба унапред одговорити на датотеку шаблона"
-			Unpack               = "Бале"
-			ChkUpdate            = "Провери ажурирања"
-			CreateUP             = "Креирајте пакет за надоградњу"
-			CreateTemplate       = "Креирајте шаблон"
-			CEUP                 = "Креирајте пакет за надоградњу машине за примену"
-			zip                  = "Сав софтвер је упакован у зип компресијски формат"
-			Repair               = "поправити"
-			All                  = "све"
-			HistoryClearDismSave = "Избришите ДИСМ моунт записе сачуване у регистратору"
-			Clear_Bad_Mount      = "Избришите све ресурсе повезане са оштећеном монтираном сликом"
-			CleanupLogs          = "Чишћење: Темп датотеке, евиденције решења, ДИСМ евиденције"
-			CleanupDisk          = "Очистите све привремене датотеке на диску"
-		}
-	}
-	@{
-		Region   = "de-DE"
-		Name     = "German (Germany)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "Verwendungszweck:"
-			Choose               = "bitte auswählen"
-			Reset                = "zurücksetzen"
-			History              = "Befehlszeilendatensätze löschen"
-			Add                  = "Routing -Funktion hinzufügen, Systemvariable"
-			AddOK                = "hinzugefügt"
-			AddDone              = "Hinzufügen zum Vervollständigen"
-			Remove               = "löschen"
-			RemoveRoute          = "Löschen Sie die Routing -Funktion, Systemvariable"
-			RemoveDone           = "erfolgreich gelöscht"
-			SIP                  = "Systemverpackungsskript"
-			VerifyAutopilot      = "Überprüfung: Autonomes Fahrprofil"
-			VerifyUnattend       = "Überprüfung: Es sollte eine Vorlagedatei vorab beantwortet werden"
-			Unpack               = "Ballen"
-			ChkUpdate            = "Auf Updates prüfen"
-			CreateUP             = "Upgrade-Paket erstellen"
-			CreateTemplate       = "Vorlage erstellen"
-			CEUP                 = "Erstellen Sie ein Upgradepaket für die Bereitstellungs-Engine"
-			zip                  = "Alle Software ist im ZIP -Komprimierungsformat verpackt"
-			Repair               = "Reparatur"
-			All                  = "alle"
-			HistoryClearDismSave = "Löschen Sie in der Registrierung gespeicherte DISM-Mount-Einträge"
-			Clear_Bad_Mount      = "Löschen Sie alle Ressourcen, die mit dem beschädigten gemounteten Image verknüpft sind"
-			CleanupLogs          = "Bereinigung: Temporäre Dateien, Lösungsprotokolle, DISM-Protokolle"
-			CleanupDisk          = "Bereinigen Sie alle temporären Festplattendateien"
-		}
-	}
-	@{
-		Region   = "ru-RU"
-		Name     = "Russian (Russia)"
-		Language = @{
-			FontsUI              = "Segoe UI"
-			Usage                = "Применение:"
-			Choose               = "пожалуйста, выберите"
-			Reset                = "перезагрузить"
-			History              = "Очистить записи командной строки"
-			Add                  = "Добавить функцию маршрутизации, системную переменную"
-			AddOK                = "добавлен"
-			AddDone              = "Добавить в комплект"
-			Remove               = "удалить"
-			RemoveRoute          = "Удалить функцию маршрутизации, системная переменная"
-			RemoveDone           = "Успешно удален"
-			SIP                  = "Системная упаковка сценарий"
-			VerifyAutopilot      = "Проверка: профиль автономного вождения"
-			VerifyUnattend       = "Проверка: необходимо предварительно ответить на файл шаблона"
-			Unpack               = "Бэйл"
-			ChkUpdate            = "Проверить наличие обновлений"
-			CreateUP             = "Создать пакет обновления"
-			CreateTemplate       = "Создать шаблон"
-			CEUP                 = "Создание пакета обновления механизма развертывания"
-			zip                  = "Bce программное обеспечение упаковано в формате сжатия Zip"
-			Repair               = "ремонт"
-			All                  = "все"
-			HistoryClearDismSave = "Удалить записи монтирования DISM, сохраненные в реестре"
-			Clear_Bad_Mount      = "Удалите все ресурсы, связанные с поврежденным смонтированным образом"
-			CleanupLogs          = "Очистка: временные файлы, журналы решений, журналы DISM."
-			CleanupDisk          = "Очистите все временные файлы на диске"
-		}
-	}
-	@{
 		Region   = "ja-JP"
 		Name     = "Japanese (Japan)"
 		Language = @{
 			FontsUI              = "Yu Gothic UI"
 			Usage                = "利用方法："
+			Learn                = "勉強"
 			Choose               = "選んでください"
 			Reset                = "リセット"
 			History              = "コマンドラインレコードをクリアする"
@@ -1125,6 +598,7 @@ $AvailableLanguages = @(
 		Language = @{
 			FontsUI              = "Malgun Gothic"
 			Usage                = "용법:"
+			Learn                = "공부하다"
 			Choose               = "선택해주세요"
 			Reset                = "초기화"
 			History              = "명령줄 레코드 지우기"
@@ -1152,11 +626,540 @@ $AvailableLanguages = @(
 		}
 	}
 	@{
+		Region   = "lt-LT"
+		Name     = "Lithuanian (Lithuania)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "Naudojimas:"
+			Learn                = "Studijuoti"
+			Choose               = "Prašome pasirinkti"
+			Reset                = "atstatyti"
+			History              = "Išvalyti komandinės eilutės įrašus"
+			Add                  = "Pridėti maršruto parinkimo funkciją, sistemos kintamąjį"
+			AddOK                = "Pridėta"
+			AddDone              = "Pridėti prie pilno"
+			Remove               = "ištrinti"
+			RemoveRoute          = "Ištrinkite maršruto parinkimo funkciją, sistemos kintamąjį"
+			RemoveDone           = "Sėkmingai ištrintas"
+			SIP                  = "Sistemos pakavimo scenarijus"
+			VerifyAutopilot      = "Patvirtinimas: savarankiško vairavimo profilis"
+			VerifyUnattend       = "Patvirtinimas: turėtų iš anksto atsakyti šablono failas"
+			Unpack               = "Bale"
+			ChkUpdate            = "Tikrinti, ar yra atnaujinimų"
+			CreateUP             = "Sukurkite atnaujinimo paketą"
+			CreateTemplate       = "Sukurti šabloną"
+			CEUP                 = "Sukurkite diegimo variklio naujinimo paketą"
+			zip                  = "Visa programinė įranga yra supakuota į ZIP suspaudimo formatą"
+			Repair               = "remontas"
+			All                  = "visi"
+			HistoryClearDismSave = "Ištrinkite registre išsaugotus DISM prijungimo įrašus"
+			Clear_Bad_Mount      = "Ištrinkite visus išteklius, susijusius su sugadintu prijungtu vaizdu"
+			CleanupLogs          = "Valymas: laikinieji failai, sprendimų žurnalai, DISM žurnalai"
+			CleanupDisk          = "Išvalykite visus laikinuosius disko failus"
+		}
+	}
+	@{
+		Region   = "lv-LV"
+		Name     = "Latvian (Latvia)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "Lietojums:"
+			Learn                = "Pētījums"
+			Choose               = "Lūdzu izvēlies"
+			Reset                = "atiestatīt"
+			History              = "Notīrīt komandrindas ierakstus"
+			Add                  = "Pievienojiet maršrutēšanas funkciju, sistēmas mainīgo"
+			AddOK                = "Pievienots"
+			AddDone              = "Pievienot, lai pabeigtu"
+			Remove               = "dzēst"
+			RemoveRoute          = "Izdzēsiet maršrutēšanas funkciju, sistēmas mainīgo"
+			RemoveDone           = "Veiksmīgi izdzēsti"
+			SIP                  = "Sistēmas iepakojuma skripts"
+			VerifyAutopilot      = "Verifikācija: autonomas braukšanas profils"
+			VerifyUnattend       = "Verifikācija: vajadzētu pirms atbildes veidnes faila"
+			Unpack               = "Bāle"
+			ChkUpdate            = "Meklēt atjauninājumus"
+			CreateUP             = "Izveidojiet jaunināšanas pakotni"
+			CreateTemplate       = "Izveidot veidni"
+			CEUP                 = "Izveidojiet izvietošanas programmas jaunināšanas pakotni"
+			zip                  = "Visa programmatūra ir iesaiņota pasta kompresijas formātā"
+			Repair               = "remonts"
+			All                  = "visi"
+			HistoryClearDismSave = "Dzēsiet reģistrā saglabātos DISM montāžas ierakstus"
+			Clear_Bad_Mount      = "Dzēsiet visus resursus, kas saistīti ar bojāto pievienoto attēlu"
+			CleanupLogs          = "Tīrīšana: pagaidu faili, risinājumu žurnāli, DISM žurnāli"
+			CleanupDisk          = "Notīriet visus pagaidu diska failus"
+		}
+	}
+	@{
+		Region   = "nb-NO"
+		Name     = "Norwegian, Bokmål (Norway)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "Bruk:"
+			Learn                = "Studere"
+			Choose               = "Vennligst velg"
+			Reset                = "nullstille"
+			History              = "Slett kommandolinjeposter"
+			Add                  = "Legg til rutingsfunksjon, systemvariabel"
+			AddOK                = "la til"
+			AddDone              = "Legg til i fullført"
+			Remove               = "slette"
+			RemoveRoute          = "Slett rutingsfunksjonen, systemvariabel"
+			RemoveDone           = "vellykket slettet"
+			SIP                  = "Systememballasjeskript"
+			VerifyAutopilot      = "Bekreftelse: Autonom kjøreprofil"
+			VerifyUnattend       = "Bekreftelse: skal forhåndsbesvare malfil"
+			Unpack               = "Bale"
+			ChkUpdate            = "Se etter oppdateringer"
+			CreateUP             = "Lag oppgraderingspakke"
+			CreateTemplate       = "Lag mal"
+			CEUP                 = "Opprett en oppgraderingspakke for distribusjonsmotoren"
+			zip                  = "All programvare er pakket i zip -komprimeringsformat"
+			Repair               = "reparere"
+			All                  = "alle"
+			HistoryClearDismSave = "Slett DISM-monteringsposter som er lagret i registret"
+			Clear_Bad_Mount      = "Slett alle ressurser knyttet til det ødelagte monterte bildet"
+			CleanupLogs          = "Opprydding: Temp-filer, løsningslogger, DISM-logger"
+			CleanupDisk          = "Rengjør alle midlertidige diskfiler"
+		}
+	}
+	@{
+		Region   = "nl-nl"
+		Name     = "Dutch (Netherlands)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "Gebruik:"
+			Learn                = "Studie"
+			Choose               = "Selecteer alstublieft"
+			Reset                = "Opnieuw instellen"
+			History              = "Opdrachtregelrecords opschonen"
+			Add                  = "Voeg routeringsfuncties en systeemvariabelen toe"
+			AddOK                = "Toegevoegd"
+			AddDone              = "Toevoegen voltooid"
+			Remove               = "Verwijderen"
+			RemoveRoute          = "Routeringsfuncties en systeemvariabelen verwijderen"
+			RemoveDone           = "Succesvol verwijderen"
+			SIP                  = "Systeemverpakkingsscript"
+			VerifyAutopilot      = "Verificatie: Autonoom Rijprofiel"
+			VerifyUnattend       = "Verificatie: moet het sjabloonbestand vooraf beantwoorden"
+			Unpack               = "Pak"
+			ChkUpdate            = "Controleer op updates"
+			CreateUP             = "Upgradepakket maken"
+			CreateTemplate       = "Sjabloon maken"
+			CEUP                 = "Maak een upgradepakket voor de implementatie-engine"
+			zip                  = "Alle software is verpakt in een gecomprimeerd zip-formaat"
+			Repair               = "Reparatie"
+			All                  = "Alle"
+			HistoryClearDismSave = "Verwijder DISM-mountrecords die in het register zijn opgeslagen"
+			Clear_Bad_Mount      = "Verwijder alle bronnen die zijn gekoppeld aan de beschadigde gekoppelde afbeelding"
+			CleanupLogs          = "Opschonen: tijdelijke bestanden, oplossingslogboeken, DISM-logboeken"
+			CleanupDisk          = "Maak alle tijdelijke schijfbestanden schoon"
+		}
+	}
+	@{
+		Region   = "pl-PL"
+		Name     = "Polish (Poland)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "stosowanie:"
+			Learn                = "Badanie"
+			Choose               = "proszę wybrać"
+			Reset                = "Resetowanie"
+			History              = "Wyczyść rekordy wiersza poleceń"
+			Add                  = "Dodaj funkcję routingu, zmienna systemowa"
+			AddOK                = "dodany"
+			AddDone              = "Dodaj do kompletnego"
+			Remove               = "usuwać"
+			RemoveRoute          = "Usuń funkcję routingu, zmienną systemową"
+			RemoveDone           = "Z powodzeniem usunięto"
+			SIP                  = "Skrypt pakowania systemu"
+			VerifyAutopilot      = "Weryfikacja: Profil jazdy autonomicznej"
+			VerifyUnattend       = "Weryfikacja: powinna wstępnie odpowiedzieć na plik szablonu"
+			Unpack               = "Bela"
+			ChkUpdate            = "Sprawdź aktualizacje"
+			CreateUP             = "Utwórz pakiet aktualizacji"
+			CreateTemplate       = "Utwórz szablon"
+			CEUP                 = "Utwórz pakiet aktualizacji mechanizmu wdrażania"
+			zip                  = "Wszystkie oprogramowanie jest pakowane w formacie kompresji zip"
+			Repair               = "naprawa"
+			All                  = "Wszystko"
+			HistoryClearDismSave = "Usuń rekordy podłączenia DISM zapisane w rejestrze"
+			Clear_Bad_Mount      = "Usuń wszystkie zasoby powiązane z uszkodzonym zamontowanym obrazem"
+			CleanupLogs          = "Oczyszczanie: pliki tymczasowe, dzienniki rozwiązań, dzienniki DISM"
+			CleanupDisk          = "Wyczyść wszystkie pliki tymczasowe na dysku"
+		}
+	}
+	@{
+		Region   = "pt-BR"
+		Name     = "Portuguese (Brazil)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "uso:"
+			Learn                = "Estudar"
+			Choose               = "por favor escolha"
+			Reset                = "reiniciar"
+			History              = "Limpar registros de linha de comando"
+			Add                  = "Adicionar função de roteamento, variável do sistema"
+			AddOK                = "Adicionado"
+			AddDone              = "Adicionar para completar"
+			Remove               = "excluir"
+			RemoveRoute          = "Exclua a função de roteamento, variável do sistema"
+			RemoveDone           = "Excluído com sucesso"
+			SIP                  = "Script de embalagem do sistema"
+			VerifyAutopilot      = "Verificação: Perfil de direção autônoma"
+			VerifyUnattend       = "Verificação: deve pré-responder arquivo de modelo"
+			Unpack               = "Fardo"
+			ChkUpdate            = "Verifique se há atualizações"
+			CreateUP             = "Criar pacote de atualização"
+			CreateTemplate       = "Utwórz szablon"
+			CEUP                 = "Criar um pacote de atualização do mecanismo de implantação"
+			zip                  = "Todo o software está embalado em formato de compressão ZIP"
+			Repair               = "reparar"
+			All                  = "todos"
+			HistoryClearDismSave = "Exclua os registros de montagem DISM salvos no registro"
+			Clear_Bad_Mount      = "Exclua todos os recursos associados à imagem montada corrompida"
+			CleanupLogs          = "Limpeza: arquivos temporários, logs de solução, logs DISM"
+			CleanupDisk          = "Limpe todos os arquivos temporários do disco"
+		}
+	}
+	@{
+		Region   = "pt-pt"
+		Name     = "Portuguese (Portugal)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "Utilização:"
+			Learn                = "Estudar"
+			Choose               = "Selecione"
+			Reset                = "Reiniciar"
+			History              = "Limpar registos de linha de comando"
+			Add                  = "Adicione funções de encaminhamento e variáveis de sistema"
+			AddOK                = "Adicionado"
+			AddDone              = "Adicionar concluído"
+			Remove               = "Excluir"
+			RemoveRoute          = "Remover funções de encaminhamento, variáveis do sistema"
+			RemoveDone           = "Apagar com sucesso"
+			SIP                  = "Script de empacotamento do sistema"
+			VerifyAutopilot      = "Verificação: Perfil de condução autónoma"
+			VerifyUnattend       = "Verificação: deve pré-responder ficheiro de modelo"
+			Unpack               = "Pacote"
+			ChkUpdate            = "Verifique se existem atualizações"
+			CreateUP             = "Criar pacote de atualização"
+			CreateTemplate       = "Criar modelo"
+			CEUP                 = "Crie um pacote de atualização do mecanismo de implementação"
+			zip                  = "Todo o software é empacotado em formato comprimido zip"
+			Repair               = "Reparar"
+			All                  = "Todos"
+			HistoryClearDismSave = "Apague os registos de montagem DISM guardados no registo"
+			Clear_Bad_Mount      = "Apague todos os recursos associados à imagem montada corrompida"
+			CleanupLogs          = "Limpeza: ficheiros temporários, registos de soluções, registos DISM"
+			CleanupDisk          = "Limpe todos os ficheiros temporários do disco"
+		}
+	}
+	@{
+		Region   = "ro-RO"
+		Name     = "Romanian (Romania)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "Utilizare:"
+			Learn                = "Studiu"
+			Choose               = "vă rugăm să alegeți"
+			Reset                = "resetare"
+			History              = "Ștergeți înregistrările din linia de comandă"
+			Add                  = "Adăugați funcția de rutare, variabilă de sistem"
+			AddOK                = "adăugat"
+			AddDone              = "Adăugați la finalizare"
+			Remove               = "şterge"
+			RemoveRoute          = "Ștergeți funcția de rutare, variabila de sistem"
+			RemoveDone           = "Șters cu succes"
+			SIP                  = "Script de ambalare a sistemului"
+			VerifyAutopilot      = "Verificare: Profil de conducere autonomă"
+			VerifyUnattend       = "Verificare: ar trebui să răspundă înainte de fișierul șablon"
+			Unpack               = "Balot"
+			ChkUpdate            = "Verifică pentru actualizări"
+			CreateUP             = "Creați un pachet de upgrade"
+			CreateTemplate       = "Creați șablon"
+			CEUP                 = "Creați un pachet de actualizare a motorului de implementare"
+			zip                  = "Toate software -ul este ambalat în format de compresie zip"
+			Repair               = "reparație"
+			All                  = "toate"
+			HistoryClearDismSave = "Ștergeți înregistrările de montare DISM salvate în registry"
+			Clear_Bad_Mount      = "Ștergeți toate resursele asociate cu imaginea montată coruptă"
+			CleanupLogs          = "Curățare: fișiere temporare, jurnale de soluții, jurnale DISM"
+			CleanupDisk          = "Curățați toate fișierele temporare de pe disc"
+		}
+	}
+	@{
+		Region   = "ru-RU"
+		Name     = "Russian (Russia)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "Применение:"
+			Learn                = "Изучать"
+			Choose               = "пожалуйста, выберите"
+			Reset                = "перезагрузить"
+			History              = "Очистить записи командной строки"
+			Add                  = "Добавить функцию маршрутизации, системную переменную"
+			AddOK                = "добавлен"
+			AddDone              = "Добавить в комплект"
+			Remove               = "удалить"
+			RemoveRoute          = "Удалить функцию маршрутизации, системная переменная"
+			RemoveDone           = "Успешно удален"
+			SIP                  = "Системная упаковка сценарий"
+			VerifyAutopilot      = "Проверка: профиль автономного вождения"
+			VerifyUnattend       = "Проверка: необходимо предварительно ответить на файл шаблона"
+			Unpack               = "Бэйл"
+			ChkUpdate            = "Проверить наличие обновлений"
+			CreateUP             = "Создать пакет обновления"
+			CreateTemplate       = "Создать шаблон"
+			CEUP                 = "Создание пакета обновления механизма развертывания"
+			zip                  = "Bce программное обеспечение упаковано в формате сжатия Zip"
+			Repair               = "ремонт"
+			All                  = "все"
+			HistoryClearDismSave = "Удалить записи монтирования DISM, сохраненные в реестре"
+			Clear_Bad_Mount      = "Удалите все ресурсы, связанные с поврежденным смонтированным образом"
+			CleanupLogs          = "Очистка: временные файлы, журналы решений, журналы DISM."
+			CleanupDisk          = "Очистите все временные файлы на диске"
+		}
+	}
+	@{
+		Region   = "sk-SK"
+		Name     = "Slovak (Slovakia)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "Použitie:"
+			Learn                = "Štúdium"
+			Choose               = "prosím vyber si"
+			Reset                = "resetovať"
+			History              = "Vymazať záznamy príkazového riadku"
+			Add                  = "Pridajte funkciu smerovania, systémovú premennú"
+			AddOK                = "Pridané"
+			AddDone              = "Pridať do dokončenia"
+			Remove               = "vymazať"
+			RemoveRoute          = "Odstráňte funkciu smerovania, systémovú premennú"
+			RemoveDone           = "Úspešne vymazané"
+			SIP                  = "Systémový obalový skript"
+			VerifyAutopilot      = "Overenie: Profil autonómnej jazdy"
+			VerifyUnattend       = "Overenie: mal by sa predpísať súbor šablóny odpovede"
+			Unpack               = "Bale"
+			ChkUpdate            = "Skontroluj aktualizácie"
+			CreateUP             = "Vytvorte inovačný balík"
+			CreateTemplate       = "Vytvorte šablónu"
+			CEUP                 = "Vytvorte balík inovácie nástroja nasadenia"
+			zip                  = "Celý softvér je zabalený vo formáte kompresie zipsov"
+			Repair               = "oprava"
+			All                  = "všetky"
+			HistoryClearDismSave = "Odstráňte záznamy pripojenia DISM uložené v registri"
+			Clear_Bad_Mount      = "Odstráňte všetky prostriedky spojené s poškodeným pripojeným obrazom"
+			CleanupLogs          = "Čistenie: dočasné súbory, protokoly riešení, protokoly DISM"
+			CleanupDisk          = "Vyčistite všetky dočasné súbory na disku"
+		}
+	}
+	@{
+		Region   = "sl-SI"
+		Name     = "Slovenian (Slovenia)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "Uporaba:"
+			Learn                = "Študija"
+			Choose               = "prosim izberite"
+			Reset                = "ponastaviti"
+			History              = "Počisti zapise ukazne vrstice"
+			Add                  = "Dodajte funkcijo usmerjanja, sistemska spremenljivka"
+			AddOK                = "Dodano"
+			AddDone              = "Dodaj za dokončanje"
+			Remove               = "izbrisati"
+			RemoveRoute          = "Izbriši funkcijo usmerjanja, sistemska spremenljivka"
+			RemoveDone           = "Uspešno izbrisano"
+			SIP                  = "Script Scrip Packaging Script"
+			VerifyAutopilot      = "Preverjanje: Profil avtonomne vožnje"
+			VerifyUnattend       = "Preverjanje: datoteka predloge mora biti pred odgovorom"
+			Unpack               = "Bale"
+			ChkUpdate            = "Preveri za posodobitve"
+			CreateUP             = "Ustvari paket nadgradnje"
+			CreateTemplate       = "Ustvari predlogo"
+			CEUP                 = "Ustvarite paket nadgradnje motorja za uvajanje"
+			zip                  = "Vsa programska oprema je pakirana v obliki stiskanja zip"
+			Repair               = "popravilo"
+			All                  = "vse"
+			HistoryClearDismSave = "Izbrišite zapise namestitve DISM, shranjene v registru"
+			Clear_Bad_Mount      = "Izbrišite vse vire, povezane s poškodovano nameščeno sliko"
+			CleanupLogs          = "Čiščenje: začasne datoteke, dnevniki rešitev, dnevniki DISM"
+			CleanupDisk          = "Očistite vse začasne datoteke na disku"
+		}
+	}
+	@{
+		Region   = "sr-latn-rs"
+		Name     = "Serbian (Latin, Serbia)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "употреба:"
+			Learn                = "Студија"
+			Choose               = "молимо изаберите"
+			Reset                = "ресетовати"
+			History              = "Обришите записе командне линије"
+			Add                  = "Додајте функцију усмеравања, системска променљива"
+			AddOK                = "додато"
+			AddDone              = "Додај за комплетну"
+			Remove               = "избрисати"
+			RemoveRoute          = "Избришите функцију усмеравања, системска променљива"
+			RemoveDone           = "Успешно избрисано"
+			SIP                  = "Скрипта за паковање система"
+			VerifyAutopilot      = "Верификација: профил аутономне вожње"
+			VerifyUnattend       = "Верификација: треба унапред одговорити на датотеку шаблона"
+			Unpack               = "Бале"
+			ChkUpdate            = "Провери ажурирања"
+			CreateUP             = "Креирајте пакет за надоградњу"
+			CreateTemplate       = "Креирајте шаблон"
+			CEUP                 = "Креирајте пакет за надоградњу машине за примену"
+			zip                  = "Сав софтвер је упакован у зип компресијски формат"
+			Repair               = "поправити"
+			All                  = "све"
+			HistoryClearDismSave = "Избришите ДИСМ моунт записе сачуване у регистратору"
+			Clear_Bad_Mount      = "Избришите све ресурсе повезане са оштећеном монтираном сликом"
+			CleanupLogs          = "Чишћење: Темп датотеке, евиденције решења, ДИСМ евиденције"
+			CleanupDisk          = "Очистите све привремене датотеке на диску"
+		}
+	}
+	@{
+		Region   = "sv-SE"
+		Name     = "Swedish (Sweden)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "Användande:"
+			Learn                = "Studera"
+			Choose               = "Vänligen välj"
+			Reset                = "Återställa"
+			History              = "Rengör kommandoradsposter"
+			Add                  = "Lägg till routingfunktioner och systemvariabler"
+			AddOK                = "Tillagd"
+			AddDone              = "Lägg till slutfört"
+			Remove               = "Radera"
+			RemoveRoute          = "Ta bort routingfunktioner, systemvariabler"
+			RemoveDone           = "Radera framgångsrikt"
+			SIP                  = "Systempaketeringsskript"
+			VerifyAutopilot      = "Verifiering: Autonom körprofil"
+			VerifyUnattend       = "Verifiering: ska förhandsbesvara mallfil"
+			Unpack               = "Packa"
+			ChkUpdate            = "Sök efter uppdateringar"
+			CreateUP             = "Skapa uppgraderingspaket"
+			CreateTemplate       = "Skapa mall"
+			CEUP                 = "Skapa ett uppgraderingspaket för distributionsmotorn"
+			zip                  = "All programvara är förpackad i zip-komprimerat format"
+			Repair               = "Reparera"
+			All                  = "Alla"
+			HistoryClearDismSave = "Ta bort DISM-monteringsposter som sparats i registret"
+			Clear_Bad_Mount      = "Ta bort alla resurser som är associerade med den skadade monterade bilden"
+			CleanupLogs          = "Rensning: Temp-filer, lösningsloggar, DISM-loggar"
+			CleanupDisk          = "Rensa alla temporära diskfiler"
+		}
+	}
+	@{
+		Region   = "th-TH"
+		Name     = "Thai (Thailand)"
+		Language = @{
+			FontsUI              = "Leelawadee UI"
+			Usage                = "การใช้งาน:"
+			Learn                = "ศึกษา"
+			Choose               = "โปรดเลือก"
+			Reset                = "รีเซ็ต"
+			History              = "ล้างบันทึกบรรทัดคำสั่ง"
+			Add                  = "เพิ่มฟังก์ชั่นการกำหนดเส้นทางตัวแปรระบบ"
+			AddOK                = "เพิ่ม"
+			AddDone              = "เพิ่มให้เสร็จสมบูรณ์"
+			Remove               = "ลบ"
+			RemoveRoute          = "ลบฟังก์ชั่นการกำหนดเส้นทางตัวแปรระบบ"
+			RemoveDone           = "ลบสำเร็จ"
+			SIP                  = "สคริปต์บรรจุภัณฑ์ของระบบ"
+			VerifyAutopilot      = "การยืนยัน: โปรไฟล์การขับขี่แบบอัตโนมัติ"
+			VerifyUnattend       = "การยืนยัน: ควรตอบไฟล์เทมเพลตล่วงหน้า"
+			Unpack               = "เบล"
+			ChkUpdate            = "ตรวจสอบสำหรับการอัพเดต"
+			CreateUP             = "สร้างแพ็คเกจอัพเกรด"
+			CreateTemplate       = "สร้างเทมเพลต"
+			CEUP                 = "สร้างแพ็คเกจการปรับรุ่นกลไกการปรับใช้"
+			zip                  = "ซอฟต์แวร์ทั้งหมดบรรจุในรูปแบบการบีบอัด zip"
+			Repair               = "ซ่อมแซม"
+			All                  = "ทั้งหมด"
+			HistoryClearDismSave = "ลบบันทึกการเมานต์ DISM ที่บันทึกไว้ในรีจิสทรี"
+			Clear_Bad_Mount      = "ลบทรัพยากรทั้งหมดที่เกี่ยวข้องกับอิมเมจที่เมาท์ที่เสียหาย"
+			CleanupLogs          = "การล้างข้อมูล: ไฟล์ชั่วคราว บันทึกโซลูชัน บันทึก DISM"
+			CleanupDisk          = "ทำความสะอาดไฟล์ดิสก์ชั่วคราวทั้งหมด"
+		}
+	}
+	@{
+		Region   = "tr-TR"
+		Name     = "Turkish (Turkey)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "Kullanım:"
+			Learn                = "Çalışmak"
+			Choose               = "lütfen seç"
+			Reset                = "Sıfırla"
+			History              = "Komut satırı kayıtlarını temizle"
+			Add                  = "Yönlendirme işlevi, sistem değişkeni ekle"
+			AddOK                = "katma"
+			AddDone              = "Tamamlamak için ekle"
+			Remove               = "silmek"
+			RemoveRoute          = "Yönlendirme işlevini sil, sistem değişkeni"
+			RemoveDone           = "Başarılı bir şekilde silindi"
+			SIP                  = "Sistem Ambalaj Komut Dosyası"
+			VerifyAutopilot      = "Doğrulama: Otonom Sürüş Profili"
+			VerifyUnattend       = "Doğrulama: şablon dosyasına önceden yanıt verilmelidir"
+			Unpack               = "Balya"
+			ChkUpdate            = "Güncellemeleri kontrol et"
+			CreateUP             = "Bir yükseltme paketi oluşturun"
+			CreateTemplate       = "Şablon oluştur"
+			CEUP                 = "Bir dağıtım altyapısı yükseltme paketi oluşturun"
+			zip                  = "Tüm yazılımlar zip sıkıştırma formatında paketlenmiştir"
+			Repair               = "tamirat"
+			All                  = "Tümü"
+			HistoryClearDismSave = "Kayıt defterinde kayıtlı DISM bağlama kayıtlarını silin"
+			Clear_Bad_Mount      = "Bozuk monte edilmiş görüntüyle ilişkili tüm kaynakları silin"
+			CleanupLogs          = "Temizleme: Geçici dosyalar, çözüm günlükleri, DISM günlükleri"
+			CleanupDisk          = "Tüm geçici disk dosyalarını temizleyin"
+		}
+	}
+	@{
+		Region   = "uk-UA"
+		Name     = "Ukrainian (Ukraine)"
+		Language = @{
+			FontsUI              = "Segoe UI"
+			Usage                = "Використання:"
+			Learn                = "Вивчення"
+			Choose               = "будь-ласка оберіть"
+			Reset                = "скинути"
+			History              = "Очистити записи командного рядка"
+			Add                  = "Додайте функцію маршрутизації, системну змінну"
+			AddOK                = "Додав"
+			AddDone              = "Додати для завершення"
+			Remove               = "видалити"
+			RemoveRoute          = "Видаліть функцію маршрутизації, системна змінна"
+			RemoveDone           = "успішно видалено"
+			SIP                  = "Сценарій упаковки системи"
+			VerifyAutopilot      = "Перевірка: профіль автономного водіння"
+			VerifyUnattend       = "Перевірка: необхідно попередньо відповісти файл шаблону"
+			Unpack               = "Бейл"
+			ChkUpdate            = "Перевірити наявність оновлень"
+			CreateUP             = "Створіть пакет оновлення"
+			CreateTemplate       = "Створити шаблон"
+			CEUP                 = "Створіть пакет оновлення механізму розгортання"
+			zip                  = "Bce програмне забезпечення упаковано y форматі стиснення zip"
+			Repair               = "ремонт"
+			All                  = "все"
+			HistoryClearDismSave = "Видаліть записи монтування DISM, збережені в реєстрі"
+			Clear_Bad_Mount      = "Видаліть усі ресурси, пов'язані з пошкодженим підключеним образом"
+			CleanupLogs          = "Очищення: тимчасові файли, журнали рішень, журнали DISM"
+			CleanupDisk          = "Очистіть усі тимчасові файли диска"
+		}
+	}
+	@{
 		Region   = "zh-CN"
 		Name     = "Chinese (Simplified, China)"
 		Language = @{
 			FontsUI              = "Microsoft YaHei UI"
 			Usage                = "用法："
+			Learn                = "学习"
 			Choose               = "请选择"
 			Reset                = "重置"
 			History              = "清理命令行记录"
@@ -1189,6 +1192,7 @@ $AvailableLanguages = @(
 		Language = @{
 			FontsUI              = "Microsoft JhengHei UI"
 			Usage                = "用法："
+			Learn                = "學習"
 			Choose               = "請選擇"
 			Reset                = "重置"
 			History              = "清理命令行記錄"
@@ -1249,45 +1253,45 @@ Function Language
 
 function Solutions_Reset
 {
-	Write-Host "`n   $($lang.Reset)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Reset)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	$Path = "HKCU:\SOFTWARE\Yi\Solutions"
 	Remove-Item -Path $Path -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 
-	Write-Host "   $($lang.RemoveDone)`n" -ForegroundColor Green
+	Write-Host "  $($lang.RemoveDone)`n" -ForegroundColor Green
 }
 
 function Mount_Fix_Bad
 {
-	Write-Host "`n   $($lang.Clear_Bad_Mount)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Clear_Bad_Mount)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	dism /cleanup-wim | Out-Null
 	Clear-WindowsCorruptMountPoint -ErrorAction SilentlyContinue | Out-Null
 
-	Write-Host "   $($lang.RemoveDone)`n" -ForegroundColor Green
+	Write-Host "  $($lang.RemoveDone)`n" -ForegroundColor Green
 }
 
 function Mount_Fix_Dism
 {
-	Write-Host "`n   $($lang.HistoryClearDismSave)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.HistoryClearDismSave)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\WIMMount\Mounted Images\*" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 
-	Write-Host "   $($lang.RemoveDone)`n" -ForegroundColor Green
+	Write-Host "  $($lang.RemoveDone)`n" -ForegroundColor Green
 }
 
 function Solutions_Clear_Hostiry
 {
-	Write-Host "`n   $($lang.History)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.History)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	Clear-History
 	Remove-Item  -Path (Get-PSReadlineOption).HistorySavePath -ErrorAction SilentlyContinue
 
-	Write-Host "   $($lang.RemoveDone)`n" -ForegroundColor Green
+	Write-Host "  $($lang.RemoveDone)`n" -ForegroundColor Green
 }
 
 function System_Env
@@ -1298,8 +1302,8 @@ function System_Env
 		[switch]$Remove
 	)
 
-	Write-Host "`n   $($lang.Add)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Add)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	$Current_Folder = Convert-Path -Path $PSScriptRoot -ErrorAction SilentlyContinue
 	$regLocation = "Registry::HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Session Manager\Environment"
@@ -1309,13 +1313,13 @@ function System_Env
 		$windows_path = $path -split ';'
 
 		if ($windows_path -Contains $Current_Folder) {
-			Write-Host "   $($lang.AddOK)`n" -ForegroundColor Green
+			Write-Host "  $($lang.AddOK)`n" -ForegroundColor Green
 		} else {
 			$path = "$($path);$($Current_Folder)"
 			Set-ItemProperty -Path $regLocation -Name PATH -Value $path
 			$Env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
 
-			Write-Host "   $($lang.AddDone)`n" -ForegroundColor Green
+			Write-Host "  $($lang.AddDone)`n" -ForegroundColor Green
 		}
     }
 
@@ -1324,14 +1328,14 @@ function System_Env
 		Set-ItemProperty -Path $regLocation -Name PATH -Value $path
 		$Env:Path = [System.Environment]::GetEnvironmentVariable("Path", "Machine")
 
-		Write-Host "   $($lang.RemoveDone)`n" -ForegroundColor Green
+		Write-Host "  $($lang.RemoveDone)`n" -ForegroundColor Green
     }
 }
 
 Function Cleanup_Logs
 {
-	Write-Host "`n   $($lang.CleanupLogs)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.CleanupLogs)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	$TempPaths = @(
 		$env:Temp
@@ -1343,7 +1347,7 @@ Function Cleanup_Logs
 	)
 
 	foreach ($TempPath in $TempPaths) {
-		Write-Host "   $($TempPath)" -ForegroundColor Green
+		Write-Host "  $($TempPath)" -ForegroundColor Green
 
 		if (Test-Path -Path $TempPath -PathType Container) {
 			Get-ChildItem -Path $TempPath -Recurse -Force | ForEach-Object {
@@ -1358,8 +1362,8 @@ Function Cleanup_Logs
 		}
 	}
 
-	Write-Host "`n   $('-' * 80)"
-	Write-Host "   $($lang.RemoveDone)`n" -ForegroundColor Green
+	Write-Host "`n  $('-' * 80)"
+	Write-Host "  $($lang.RemoveDone)`n" -ForegroundColor Green
 }
 
 <#
@@ -1368,8 +1372,8 @@ Function Cleanup_Logs
 #>
 Function Cleanup_Disk
 {
-	Write-Host "`n   $($lang.CleanupDisk)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.CleanupDisk)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	$SageSet = "StateFlags0099"
 	$Base = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\"
@@ -1428,7 +1432,7 @@ Function Cleanup_Disk
 		Remove-ItemProperty -Path $($Base+$item) -Name $SageSet -force -ErrorAction SilentlyContinue | Out-Null
 	}
 
-	Write-Host "   $($lang.RemoveDone)`n" -ForegroundColor Green
+	Write-Host "  $($lang.RemoveDone)`n" -ForegroundColor Green
 }
 
 function PSscript
@@ -1442,131 +1446,140 @@ Function Help
 	$Current_Folder = Convert-Path -Path "$($PSScriptRoot)\..\.." -ErrorAction SilentlyContinue
 	$PSscript = PSscript
 
+	Clear-Host
 	$Host.UI.RawUI.WindowTitle = "Yi's Solutions"
-	Write-Host "`n   Yi's Solutions, v1.0.0.6"
-	Write-Host "   https://fengyi.tel/solutions https://github.com/ilikeyi/solutions`n" -ForegroundColor Yellow
+	Write-Host
+	Write-Host "  " -NoNewline
+	Write-Host " Yi's Solutions " -NoNewline -BackgroundColor White -ForegroundColor Black
+	Write-Host " v1.0.0.6 " -NoNewline -BackgroundColor DarkGreen -ForegroundColor White
 
-	Write-Host "   $($lang.Usage)"
-	Write-Host "   $('-' * 80)"
-	Write-Host "      U    " -NoNewLine -ForegroundColor Green
+	Write-Host
+	Write-Host "  " -NoNewline
+	Write-Host " $($lang.Learn) " -NoNewline -BackgroundColor White -ForegroundColor Black
+	Write-Host " https://fengyi.tel/solutions https://github.com/ilikeyi/solutions " -BackgroundColor DarkBlue -ForegroundColor White
+
+	Write-Host
+	Write-Host "  $($lang.Usage)"
+	Write-Host "  $('-' * 80)"
+	Write-Host "    U   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -Update" -NoNewLine -ForegroundColor Green
 	Write-Host "  | " -NoNewLine
 	Write-Host $lang.ChkUpdate -ForegroundColor Yellow
 
-	Write-Host "      C    " -NoNewLine -ForegroundColor Green
+	Write-Host "    C   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -CU" -NoNewLine -ForegroundColor Green
 	Write-Host "      | " -NoNewLine
 	Write-Host $lang.CreateUP -ForegroundColor Yellow
 
-	Write-Host "      T    " -NoNewLine -ForegroundColor Green
+	Write-Host "    T   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -CT" -NoNewLine -ForegroundColor Green
 	Write-Host "      | " -NoNewLine
 	Write-Host $lang.CreateTemplate -ForegroundColor Yellow
 
 	Write-Host
 
-	Write-Host "      1    " -NoNewLine -ForegroundColor Green
+	Write-Host "    1   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -Add" -NoNewLine -ForegroundColor Green
 	Write-Host "     | " -NoNewLine
 	Write-Host $lang.Add -ForegroundColor Yellow
 
-	Write-Host "      2    " -NoNewLine -ForegroundColor Green
+	Write-Host "    2   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -Remove" -NoNewLine -ForegroundColor Green
 	Write-Host "  | " -NoNewLine
 	Write-Host $lang.RemoveRoute -ForegroundColor Yellow
 
-	Write-Host "      3    " -NoNewLine -ForegroundColor Green
+	Write-Host "    3   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -Reset" -NoNewLine -ForegroundColor Green
 	Write-Host "   | " -NoNewLine
 	Write-Host $lang.Reset -ForegroundColor Yellow
 
-	Write-Host "      4    " -NoNewLine -ForegroundColor Green
+	Write-Host "    4   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -History" -NoNewLine -ForegroundColor Green
 	Write-Host " | " -NoNewLine
 	Write-Host $lang.History -ForegroundColor Yellow
 
 	Write-Host
 
-	Write-Host "     11    " -NoNewLine -ForegroundColor Green
+	Write-Host "   11   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -SIP" -NoNewLine -ForegroundColor Green
 	Write-Host "     | " -NoNewLine
 	Write-Host $lang.SIP -ForegroundColor Yellow
 
-	Write-Host "     12    " -NoNewLine -ForegroundColor Green
+	Write-Host "   12   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -Unpack" -NoNewLine -ForegroundColor Green
 	Write-Host "  | " -NoNewLine
 	Write-Host $lang.Unpack -ForegroundColor Yellow
 
-	Write-Host "     13    " -NoNewLine -ForegroundColor Green
+	Write-Host "   13   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -CEUP" -NoNewLine -ForegroundColor Green
 	Write-Host "    | " -NoNewLine
 	Write-Host $lang.CEUP -ForegroundColor Yellow
 
-	Write-Host "     14    " -NoNewLine -ForegroundColor Green
+	Write-Host "   14   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -zip" -NoNewLine -ForegroundColor Green
 	Write-Host "     | " -NoNewLine
 	Write-Host $lang.zip -ForegroundColor Yellow
 
-	Write-Host "     15    " -NoNewLine -ForegroundColor Green
+	Write-Host "   15   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -VA" -NoNewLine -ForegroundColor Green
 	Write-Host "      | " -NoNewLine
 	Write-Host $lang.VerifyAutopilot -ForegroundColor Yellow
 
-	Write-Host "     16    " -NoNewLine -ForegroundColor Green
+	Write-Host "   16   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -VU" -NoNewLine -ForegroundColor Green
 	Write-Host "      | " -NoNewLine
 	Write-Host $lang.VerifyUnattend -ForegroundColor Yellow
 
-	Write-Host "`n   $($lang.Repair)" -ForegroundColor Yellow
+	Write-Host "`n  $($lang.Repair)" -ForegroundColor Yellow
 
-	Write-Host "     21    " -NoNewLine -ForegroundColor Green
+	Write-Host "   21   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -Fix" -NoNewLine -ForegroundColor Green
 	Write-Host "     | " -NoNewLine
 	Write-Host "$($lang.Repair), $($lang.All)" -ForegroundColor Yellow
 
-	Write-Host "     22    " -NoNewLine -ForegroundColor Green
+	Write-Host "   22   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -FixDism" -NoNewLine -ForegroundColor Green
 	Write-Host " | " -NoNewLine
 	Write-Host $lang.HistoryClearDismSave -ForegroundColor Yellow
 
-	Write-Host "     23    " -NoNewLine -ForegroundColor Green
+	Write-Host "   23   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -FixBad" -NoNewLine -ForegroundColor Green
 	Write-Host "  | " -NoNewLine
 	Write-Host $lang.Clear_Bad_Mount -ForegroundColor Yellow
 
-	Write-Host "`n   $($lang.Remove)" -ForegroundColor Yellow
+	Write-Host "`n  $($lang.Remove)" -ForegroundColor Yellow
 
-	Write-Host "     32    " -NoNewLine -ForegroundColor Green
+	Write-Host "   32   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -Logs" -NoNewLine -ForegroundColor Green
 	Write-Host "    | " -NoNewLine
 	Write-Host $lang.CleanupLogs -ForegroundColor Yellow
 
-	Write-Host "     33    " -NoNewLine -ForegroundColor Green
+	Write-Host "   33   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -Disk" -NoNewLine -ForegroundColor Green
 	Write-Host "    | " -NoNewLine
 	Write-Host $lang.CleanupDisk -ForegroundColor Yellow
 
-	Write-Host "`n   Engine" -ForegroundColor Yellow
+	Write-Host "`n  Engine" -ForegroundColor Yellow
 
-	Write-Host "     aa    " -NoNewLine -ForegroundColor Green
+	Write-Host "   aa   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -LXPs" -NoNewLine -ForegroundColor Green
 	Write-Host "    | " -NoNewLine
 	Write-Host "$($Current_Folder)\_Custom\Engine\LXPs\LXPs.ps1" -ForegroundColor Yellow
 
-	Write-Host "     ss    " -NoNewLine -ForegroundColor Green
+	Write-Host "   ss   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -Mul" -NoNewLine -ForegroundColor Green
 	Write-Host "     | " -NoNewLine
 	Write-Host "$($Current_Folder)\_Custom\Engine\Multilingual\Engine.ps1" -ForegroundColor Yellow
 
-	Write-Host "     dd    " -NoNewLine -ForegroundColor Green
+	Write-Host "   dd   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -Ys" -NoNewLine -ForegroundColor Green
 	Write-Host "      | " -NoNewLine
 	Write-Host "$($Current_Folder)\_Custom\Engine\Yi.Suite\Engine.ps1" -ForegroundColor Yellow
 
 	Write-Host
-	Write-Host
+	Write-Host "  $($lang.Choose): " -NoNewline
 
-	switch (Read-Host "   $($lang.Choose)")
+	switch -Wildcard (Read-Host)
 	{
 		"u" {
 			powershell -file "$($PSScriptRoot)\..\..\_Sip.ps1" -Function "Update"

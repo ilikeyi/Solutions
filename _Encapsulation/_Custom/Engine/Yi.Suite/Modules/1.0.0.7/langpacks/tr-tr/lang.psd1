@@ -47,7 +47,7 @@
 	PleaseChoose              = Lütfen seçin
 	FailedCreateFolder        = Dizin oluşturulamadı
 	Failed                    = Hata
-	ToMsg                     = \n   {0} Saniyeler sonra otomatik olarak ana menüye dönün.
+	ToMsg                     = {0} Saniyeler sonra otomatik olarak ana menüye dönün.
 	Restart                   = Yeniden başlatma etkili olur
 	AdvOption                 = Isteğe bağlı özellikler
 

@@ -41,7 +41,7 @@
 	Existed                         = Že obstaja
 	FailedCreateFolder              = Imenika ni bilo mogoče ustvariti
 	FailedCreateFile                = Datoteke ni bilo mogoče ustvariti
-	ToMsg                           = \n   {0} Samodejna vrnitev v glavni meni po nekaj sekundah.
+	ToMsg                           = {0} Samodejna vrnitev v glavni meni po nekaj sekundah.
 	OnDemandPlanTask                = Dodeljevanje znanih dogodkov po meri
 	Operable                        = Operabilno
 	Inoperable                      = Neoperabilen

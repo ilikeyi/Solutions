@@ -41,7 +41,7 @@
 	Existed                         = כבר קיים
 	FailedCreateFolder              = יצירת הספרייה נכשלה
 	FailedCreateFile                = יצירת הקובץ נכשלה
-	ToMsg                           = \n   {0} חזור אוטומטית לתפריט הראשי לאחר שניות.
+	ToMsg                           = {0} חזור אוטומטית לתפריט הראשי לאחר שניות.
 	OnDemandPlanTask                = הקצאה מותאמת אישית של אירועים ידועים
 	Operable                        = נָתִיחַ
 	Inoperable                      = בלתי ניתן להפעלה

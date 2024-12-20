@@ -12,8 +12,8 @@ Function Solutions_Help
 	Clear-Host
 	Logo -Title $lang.Help
 
-	Write-Host "   $($lang.Short_Cmd)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $($lang.Short_Cmd)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	if ($Full) {
 		Solutions_Help_Command -Name "View" -Silent
@@ -57,7 +57,7 @@ Function Solutions_Help
 	Write-Host "     Reset".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host $lang.EventManagerClear
 
-	Write-Host "`n   $($lang.SelectSettingImage)"
+	Write-Host "`n  $($lang.SelectSettingImage)"
 	Write-Host "     ISD".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host $lang.Del -NoNewline
 	Write-Host " { IW RW BW } { $($lang.MountedIndex) }" -ForegroundColor Green
@@ -69,7 +69,7 @@ Function Solutions_Help
 	Write-Host "     Remount".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host "$($lang.Mount), $($lang.PleaseChoose)"
 
-	Write-Host "`n   $($lang.Mounted_Status)"
+	Write-Host "`n  $($lang.Mounted_Status)"
 	Write-Host "     Esa".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host "$($lang.Image_Unmount_After): " -NoNewline
 	Write-Host $lang.Save -ForegroundColor Green
@@ -78,7 +78,7 @@ Function Solutions_Help
 	Write-Host "$($lang.Image_Unmount_After): " -NoNewline
 	Write-Host $lang.DoNotSave -ForegroundColor Green
 
-	Write-Host "`n   $($lang.RuleOther)"
+	Write-Host "`n  $($lang.RuleOther)"
 	Write-Host "     VA".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host "$($lang.Wim_Rule_Verify): $($lang.Autopilot_Select_Config)"
 
@@ -111,9 +111,9 @@ Function Solutions_Help
 	Write-Host "$($lang.ChkUpdate), $($lang.UpdateSilent)"
 
 	Write-Host
-	Write-host "   " -NoNewline
+	Write-Host $(' ' * 2) -NoNewline
 	Write-Host " API * " -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	Write-host "     " -NoNewline
 	Write-Host " Set API " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-host "      $($lang.Setting), $($lang.API)"
@@ -126,9 +126,9 @@ Function Solutions_Help
 	Write-host "     $($lang.ShowCommand)"
 
 	Write-Host
-	Write-host "   " -NoNewline
+	Write-Host $(' ' * 2) -NoNewline
 	Write-Host $lang.Help -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	Write-host "     " -NoNewline
 	Write-Host " Help All " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-host "     $($lang.Rule_Show_Full), $($lang.Help)"
@@ -155,17 +155,17 @@ Function Solutions_Help_Command
 	)
 
 	if (-not $Silent) {
-		Write-Host "`n   $($lang.Help) *" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Help) *" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 	}
 
 	switch ($Name) {
 		"LP" {
-			Write-Host "   $($lang.Command): " -NoNewline
+			Write-Host "  $($lang.Command): " -NoNewline
 			Write-host "lp *" -ForegroundColor Green
 
-			Write-Host "`n   $($lang.AssignNeedMount)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.AssignNeedMount)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Write-Host "     lp E".PadRight(20) -NoNewline -ForegroundColor Yellow
 			Write-Host $lang.LanguageExtract
 
@@ -181,11 +181,11 @@ Function Solutions_Help_Command
 			Get_Next
 		}
 		"lang" {
-			Write-Host "   $($lang.Command): " -NoNewline
+			Write-Host "  $($lang.Command): " -NoNewline
 			Write-host "Lang *" -ForegroundColor Green
 
-			Write-Host "`n   $($lang.User_Interaction)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.User_Interaction)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Write-Host "     Lang".PadRight(20) -NoNewline -ForegroundColor Yellow
 			Write-Host $lang.SwitchLanguage
 
@@ -202,7 +202,7 @@ Function Solutions_Help_Command
 			Get_Next
 		}
 		"Upd" {
-			Write-Host "   $($lang.Command): " -NoNewline
+			Write-Host "  $($lang.Command): " -NoNewline
 			Write-host "Upd *" -ForegroundColor Green
 
 			Write-Host
@@ -215,7 +215,7 @@ Function Solutions_Help_Command
 			Get_Next
 		}
 		"FX" {
-			Write-Host "   $($lang.Command): " -NoNewline
+			Write-Host "  $($lang.Command): " -NoNewline
 			Write-host "FX *" -ForegroundColor Green
 
 			Functions_Tasks_List
@@ -229,13 +229,13 @@ Function Solutions_Help_Command
 			Get_Next
 		}
 		"Save" {
-			Write-host "   " -NoNewline
+			Write-Host $(' ' * 2) -NoNewline
 			Write-Host " Help Save " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host " $($lang.Setting): $($lang.Event_Primary_Key)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "  $('-' * 80)"
 			ForEach ($item in $Global:Image_Rule) {
 				if ($item.Main.Suffix -eq "wim") {
-					Write-host "   " -NoNewline
+					Write-Host $(' ' * 7) -NoNewline
 					Write-Host " Save " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 					Write-host " " -NoNewline
 					Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
@@ -244,7 +244,7 @@ Function Solutions_Help_Command
 
 					$InitNewImageSources = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($item.Main.ImageFileName)\Mount"
 
-					Write-Host "    $($lang.Select_Path): " -NoNewline
+					Write-Host "        $($lang.Select_Path): " -NoNewline
 					Write-Host $InitNewImageSources -ForegroundColor Green
 					Write-Host
 				}
@@ -252,7 +252,7 @@ Function Solutions_Help_Command
 				if ($item.Expand.Count -gt 0) {
 					ForEach ($Expand in $item.Expand) {
 						if ($Expand.Suffix -eq "wim") {
-							Write-host "   " -NoNewline
+							Write-Host $(' ' * 7) -NoNewline
 							Write-Host " Save " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 							Write-host " " -NoNewline
 							Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
@@ -260,7 +260,7 @@ Function Solutions_Help_Command
 							Write-Host $Expand.Uid -ForegroundColor Green
 
 							$InitNewImageMountToRouteRecovery = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($Expand.ImageFileName)\Mount"
-							Write-Host "    $($lang.Select_Path): " -NoNewline
+							Write-Host "        $($lang.Select_Path): " -NoNewline
 							Write-Host $InitNewImageMountToRouteRecovery -ForegroundColor Green
 							Write-Host
 						}
@@ -273,13 +273,13 @@ Function Solutions_Help_Command
 			}
 		}
 		"Unmount" {
-			Write-host "   " -NoNewline
+			Write-Host $(' ' * 2) -NoNewline
 			Write-Host " Help Unmount " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host " $($lang.Setting): $($lang.Event_Primary_Key)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "  $('-' * 80)"
 			ForEach ($item in $Global:Image_Rule) {
 				if ($item.Main.Suffix -eq "wim") {
-					Write-host "   " -NoNewline
+					Write-Host $(' ' * 2) -NoNewline
 					Write-Host " Unmount " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 					Write-host " " -NoNewline
 					Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
@@ -296,7 +296,7 @@ Function Solutions_Help_Command
 				if ($item.Expand.Count -gt 0) {
 					ForEach ($Expand in $item.Expand) {
 						if ($Expand.Suffix -eq "wim") {
-							Write-host "   " -NoNewline
+							Write-Host $(' ' * 2) -NoNewline
 							Write-Host " Unmount " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 							Write-host " " -NoNewline
 							Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
@@ -315,27 +315,27 @@ Function Solutions_Help_Command
 			Get_Next
 		}
 		"Set" {
-			Write-Host "`n   $($lang.API)"
-			Write-Host "   $('-' * 80)"
-			write-host "   " -NoNewline
+			Write-Host "`n  $($lang.API)"
+			Write-Host "  $('-' * 80)"
+			Write-Host $(' ' * 2) -NoNewline
 			Write-host " Set API " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-host "     $($lang.Setting), $($lang.API)"
 
 			write-host
-			write-host "   " -NoNewline
+			Write-Host $(' ' * 2) -NoNewline
 			Write-host " Set ISO " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-host "     $($lang.Setting), $($lang.Iso_File)"
 
 			Get_Next
 		}
 		"Sel" {
-			Write-host "   " -NoNewline
+			Write-Host $(' ' * 2) -NoNewline
 			Write-Host " Help Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host " $($lang.Setting): $($lang.Event_Primary_Key)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "  $('-' * 80)"
 			ForEach ($item in $Global:Image_Rule) {
 				if ($item.Main.Suffix -eq "wim") {
-					Write-host "   " -NoNewline
+					Write-Host $(' ' * 7) -NoNewline
 					Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 					Write-host " " -NoNewline
 					Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
@@ -353,7 +353,7 @@ Function Solutions_Help_Command
 				if ($item.Expand.Count -gt 0) {
 					ForEach ($Expand in $item.Expand) {
 						if ($Expand.Suffix -eq "wim") {
-							Write-host "   " -NoNewline
+							Write-Host $(' ' * 7) -NoNewline
 							Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 							Write-host " " -NoNewline
 							Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
@@ -376,34 +376,34 @@ Function Solutions_Help_Command
 			}
 		}
 		"View" {
-			Write-host "   " -NoNewline
+			Write-Host $(' ' * 2) -NoNewline
 			Write-Host " Help View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host " $($lang.ViewWIMFileInfo)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "  $('-' * 80)"
 			ForEach ($item in $Global:Image_Rule) {
 				$TestWIMFile = Join-Path -Path $item.Main.Path -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)"
 				if ($IsVerify) {
 					if (Test-Path -Path $TestWIMFile -PathType leaf) {
-						Write-host "   " -NoNewline
+						Write-Host $(' ' * 7) -NoNewline
 						Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 						Write-host " " -NoNewline
 						Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 						Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 						Write-Host $item.Main.Uid -ForegroundColor Green
 
-						Write-Host "    $($lang.Select_Path): " -NoNewline
+						Write-Host "        $($lang.Select_Path): " -NoNewline
 						Write-Host $TestWIMFile -ForegroundColor Green
 						Write-Host
 					}
 				} else {
-					Write-host "   " -NoNewline
+					Write-Host $(' ' * 7) -NoNewline
 					Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 					Write-host " " -NoNewline
 					Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 					Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 					Write-Host $item.Main.Uid -ForegroundColor Green
 
-					Write-Host "    $($lang.Select_Path): " -NoNewline
+					Write-Host "        $($lang.Select_Path): " -NoNewline
 					if (Test-Path -Path $TestWIMFile -PathType leaf) {
 						Write-Host $TestWIMFile -ForegroundColor Green
 					} else {
@@ -417,26 +417,26 @@ Function Solutions_Help_Command
 						$TestWIMFileExpand = Join-Path -Path $Expand.Path -ChildPath "$($Expand.ImageFileName).$($Expand.Suffix)"
 						if ($IsVerify) {
 							if (Test-Path -Path $TestWIMFileExpand -PathType leaf) {
-								Write-host "   " -NoNewline
+								Write-Host $(' ' * 7) -NoNewline
 								Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 								Write-host " " -NoNewline
 								Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 								Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 								Write-Host $Expand.Uid -ForegroundColor Green
 
-								Write-Host "    $($lang.Select_Path): " -NoNewline
+								Write-Host "        $($lang.Select_Path): " -NoNewline
 								Write-Host $TestWIMFileExpand -ForegroundColor Green
 								Write-Host
 							}
 						} else {
-							Write-host "   " -NoNewline
+							Write-Host $(' ' * 7) -NoNewline
 							Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 							Write-host " " -NoNewline
 							Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 							Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 							Write-Host $Expand.Uid -ForegroundColor Green
 
-							Write-Host "    $($lang.Select_Path): " -NoNewline
+							Write-Host "        $($lang.Select_Path): " -NoNewline
 							if (Test-Path -Path $TestWIMFileExpand -PathType leaf) {
 								Write-Host $TestWIMFileExpand -ForegroundColor Green
 							} else {
@@ -460,7 +460,7 @@ Function Solutions_Help_Command
 			Solutions_API_Help
 		}
 		default {
-			Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+			Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 		}
 	}
 }

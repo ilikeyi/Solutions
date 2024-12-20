@@ -47,7 +47,7 @@
 	PleaseChoose              = 請選擇
 	FailedCreateFolder        = 創建目錄失敗
 	Failed                    = 失敗
-	ToMsg                     = \n   {0} 秒後自動返回到主菜單。
+	ToMsg                     = {0} 秒後自動返回到主菜單。
 	Restart                   = 重啟生效
 	AdvOption                 = 可選功能
 

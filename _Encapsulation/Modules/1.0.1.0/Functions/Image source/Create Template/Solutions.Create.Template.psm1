@@ -11,8 +11,8 @@ Function Create_Template_UI
 		[Switch]$NewDel
 	)
 
-	Write-Host "`n   $($lang.RuleNewTempate)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.RuleNewTempate)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
@@ -1096,7 +1096,7 @@ Function Create_Template_UI
 		Text           = $lang.Cancel
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}

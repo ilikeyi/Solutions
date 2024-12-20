@@ -11,8 +11,8 @@ Function Language_Extract_UI
 		[switch]$Del
 	)
 
-	Write-Host "`n   $($lang.LanguageExtract)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.LanguageExtract)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	$Search_Folder_Multistage_Rule = Join-Path -Path $Global:MainMasterFolder -ChildPath "$($Global:ImageType)\_Custom"
 
@@ -699,7 +699,7 @@ Function Language_Extract_UI
 						}
 					}
 				} else {
-					Write-Host "   $($lang.ZipStatus)`n" -ForegroundColor Green
+					Write-Host "  $($lang.ZipStatus)`n" -ForegroundColor Green
 				}
 				$UI_Main_View_Detailed_Show.Text += "`n"
 			
@@ -728,7 +728,7 @@ Function Language_Extract_UI
 
 			if ($d.count -gt 0) {
 				ForEach ($item in $d) {
-					Write-Host "   $($item.Path)"
+					Write-Host "  $($item.Path)"
 				}
 
 				ForEach ($item in $result) {
@@ -1551,7 +1551,7 @@ Function Language_Extract_UI
 		Location       = "620,635"
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}
@@ -2183,11 +2183,11 @@ Function Language_Extract_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "`n   $($lang.Language): $($lang.LanguageExtract)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.LanguageExtract)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "`n  $($lang.Language): $($lang.LanguageExtract)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.LanguageExtract)".PadRight(18) -NoNewline -ForegroundColor Yellow
 
 
 		<#

@@ -9,8 +9,8 @@ Function Image_Select_Del_UI
 		$AutoSelectIndex
 	)
 
-	Write-Host "`n   $($lang.SelectSettingImage) $($lang.Del)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.SelectSettingImage) $($lang.Del)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
@@ -40,15 +40,15 @@ Function Image_Select_Del_UI
 		if ($MarkSelectIndexin.Count -gt 0) {
 			$UI_Main.Hide()
 
-			Write-Host "`n   $($lang.LXPsWaitRemove)" -ForegroundColor Green
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LXPsWaitRemove)" -ForegroundColor Green
+			Write-Host "  $('-' * 80)"
 			ForEach ($item in $MarkSelectIndexin) {
 				ForEach ($itemDetail in $Global:Primary_Key_Image.Index) {
 					if ($item -eq $itemDetail.ImageIndex) {
-						Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+						Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 						Write-Host $itemDetail.ImageName -ForegroundColor Yellow
 
-						Write-Host "   $($lang.MountedIndex): " -NoNewline
+						Write-Host "  $($lang.MountedIndex): " -NoNewline
 						Write-Host $itemDetail.ImageIndex -ForegroundColor Yellow
 
 						Write-Host
@@ -56,35 +56,35 @@ Function Image_Select_Del_UI
 				}
 			}
 
-			Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			ForEach ($item in $MarkSelectIndexin | Sort-Object { [int]$_ } -Descending) {
 				ForEach ($itemDetail in $Global:Primary_Key_Image.Index) {
 					if ($item -eq $itemDetail.ImageIndex) {
-						Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+						Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 						Write-Host $itemDetail.ImageName -ForegroundColor Yellow
 
-						Write-Host "   $($lang.MountedIndex): " -NoNewline
+						Write-Host "  $($lang.MountedIndex): " -NoNewline
 						Write-Host $itemDetail.ImageIndex -ForegroundColor Yellow
 
 						if ($Global:Developers_Mode) {
-							Write-Host "`n   $($lang.Developers_Mode_Location): 86`n" -ForegroundColor Green
+							Write-Host "`n  $($lang.Developers_Mode_Location): 86`n" -ForegroundColor Green
 						}
 
 						if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-							Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-							Write-Host "   $('-' * 80)"
+							Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+							Write-Host "  $('-' * 80)"
 							Write-Host "   Remove-WindowsImage -ImagePath ""$($Global:Primary_Key_Image.FullPath)"" -Index ""$($item)"" -CheckIntegrity" -ForegroundColor Green
-							Write-Host "   $('-' * 80)`n"
+							Write-Host "  $('-' * 80)`n"
 						}
 
-						Write-Host "   $($lang.Del)".PadRight(28) -NoNewline
+						Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
 						try {
 							Remove-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove.log" -ImagePath "$($Global:Primary_Key_Image.FullPath)" -Index $item -CheckIntegrity -ErrorAction SilentlyContinue | Out-Null
 							Write-Host $lang.Done -ForegroundColor Green
 						} catch {
 							Write-Host $_
-							Write-Host "   $($lang.Failed)" -ForegroundColor Red
+							Write-Host "  $($lang.Failed)" -ForegroundColor Red
 						}
 
 						Write-Host
@@ -162,7 +162,7 @@ Function Image_Select_Del_UI
 		Width          = 280
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}

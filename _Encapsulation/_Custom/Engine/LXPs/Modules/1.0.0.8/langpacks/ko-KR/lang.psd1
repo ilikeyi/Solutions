@@ -22,7 +22,7 @@
 	RefreshModules            = 모든 모듈을 핫 리프레시
 	PleaseChoose              = 선택하세요
 	FailedCreateFolder        = 디렉터리 생성 실패
-	ToMsg                     = \n   {0} 몇 초 후 자동으로 주 메뉴로 돌아갑니다.
+	ToMsg                     = {0} 몇 초 후 자동으로 주 메뉴로 돌아갑니다.
 	UserCancel                = 사용자가 작업을 취소했습니다.
 	Detailed                  = 자세한 내용
 	FileName                  = 파일

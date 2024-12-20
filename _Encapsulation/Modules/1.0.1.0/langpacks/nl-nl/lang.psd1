@@ -41,7 +41,7 @@
 	Existed                         = Bestaat al
 	FailedCreateFolder              = Kan map niet maken
 	FailedCreateFile                = Kan bestand niet maken
-	ToMsg                           = \n   {0} Keer na enkele seconden automatisch terug naar het hoofdmenu.
+	ToMsg                           = {0} Keer na enkele seconden automatisch terug naar het hoofdmenu.
 	OnDemandPlanTask                = Aangepaste toewijzing van bekende gebeurtenissen
 	Operable                        = Bedienbaar
 	Inoperable                      = Onbruikbaar

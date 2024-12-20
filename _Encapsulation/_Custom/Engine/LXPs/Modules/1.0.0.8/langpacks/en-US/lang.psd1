@@ -22,7 +22,7 @@
 	RefreshModules            = Hot refresh all modules
 	PleaseChoose              = Please select
 	FailedCreateFolder        = Failed to create directory
-	ToMsg                     = \n   Automatically return to the main menu after {0} seconds.
+	ToMsg                     = Automatically return to the main menu after {0} seconds.
 	UserCancel                = The user has cancelled the operation.
 	Detailed                  = Detailed
 	FileName                  = File name

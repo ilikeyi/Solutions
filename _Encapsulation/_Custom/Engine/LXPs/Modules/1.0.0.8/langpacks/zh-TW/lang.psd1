@@ -22,7 +22,7 @@
 	RefreshModules            = 熱刷新所有模組
 	PleaseChoose              = 請選擇
 	FailedCreateFolder        = 創建目錄失敗
-	ToMsg                     = \n   {0} 秒後自動返回到主菜單。
+	ToMsg                     = {0} 秒後自動返回到主菜單。
 	UserCancel                = 用戶已取消操作。
 	Detailed                  = 詳細
 	FileName                  = 檔案名稱

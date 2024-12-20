@@ -4,8 +4,8 @@
 #>
 Function Setting_Export_To_UI
 {
-	Write-Host "`n   $($lang.Setting): $($lang.SaveTo)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Setting): $($lang.SaveTo)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	$SearchFolderRule = @(
 		Join-Path -Path $Global:Image_source -ChildPath "History\$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report"
@@ -70,10 +70,10 @@ Function Setting_Export_To_UI
 			$UI_Main_Menu.Controls | ForEach-Object {
 				if ($_ -is [System.Windows.Forms.RadioButton]) {
 					if ($_.Checked) {
-						Write-Host "   $($lang.Setting): $($lang.SaveTo)"
-						Write-Host "   $($_.Text)"
+						Write-Host "  $($lang.Setting): $($lang.SaveTo)"
+						Write-Host "  $($_.Text)"
 						New-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $_.Text -Force
-						Write-Host "   $($lang.Done)" -ForegroundColor Green
+						Write-Host "  $($lang.Done)" -ForegroundColor Green
 
 						$UI_Main.Close()
 					}

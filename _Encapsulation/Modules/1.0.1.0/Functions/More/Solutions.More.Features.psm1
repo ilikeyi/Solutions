@@ -7,12 +7,15 @@ Function Feature_More_Menu
 	Clear-Host
 	Logo -Title $lang.MoreFeature -ShowUpdate
 
-	Write-Host "   $($lang.Menu)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
-	Write-Host "       M   " -NoNewline -ForegroundColor Yellow
+	Write-Host "  $($lang.Menu)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
+	Write-Host "      M   " -NoNewline -ForegroundColor Yellow
 	Write-Host $lang.MoreFeature -ForegroundColor Green
 
-	Write-Host "    " -NoNewline
+	Write-Host "      A   " -NoNewline -ForegroundColor Yellow
+	Write-Host $lang.ViewMounted -ForegroundColor Green
+
+	Write-Host $(' ' * 3) -NoNewline
 	Write-Host " Dev " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  " -NoNewline
 	if ($Global:Developers_Mode) {
@@ -21,20 +24,17 @@ Function Feature_More_Menu
 		Write-Host $lang.Developers_Mode -ForegroundColor Red
 	}
 
-	Write-Host "       A   " -NoNewline -ForegroundColor Yellow
-	Write-Host $lang.ViewMounted -ForegroundColor Green
-
-	Write-Host "   " -NoNewline
+	Write-Host $(' ' * 2) -NoNewline
 	Write-Host " Unpk " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  " -NoNewline
 	Write-Host $lang.UpBackup -ForegroundColor Green
 
-	Write-Host "    " -NoNewline
+	Write-Host $(' ' * 3) -NoNewline
 	Write-Host " Zip " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  " -NoNewline
 	Write-Host $lang.ConvertToArchive -ForegroundColor Green
 
-	Write-Host "   " -NoNewline
+	Write-Host $(' ' * 2) -NoNewline
 	Write-Host " Ceup " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  " -NoNewline
 	Write-Host $lang.UpdateCreate -ForegroundColor Green
@@ -49,7 +49,7 @@ Function Feature_More_Menu
 	Solutions_Open_Command -Help -Silent
 
 	Write-Host
-	Write-Host "   " -NoNewline
+	Write-Host $(' ' * 2) -NoNewline
 	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " H'elp * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host " " -NoNewline
@@ -68,24 +68,24 @@ Function Feature_More_Menu
 			Feature_More_Menu
 		}
 		"m" {
-			Write-Host "`n   $($lang.MoreFeature)"
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.MoreFeature)"
+			Write-Host "  $('-' * 80)"
 			if (Image_Is_Select_IAB) {
-				Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 
 				if (Verify_Is_Current_Same) {
-					Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+					Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 					Feature_More_UI_Menu
 				} else {
-					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+					Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 				}
 			} else {
-				Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+				Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
-				Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+				Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
+				Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 				ToWait -wait 2
 				Image_Assign_Event_Master
@@ -93,32 +93,32 @@ Function Feature_More_Menu
 		}
 		"a" {
 			Clear-Host
-			Write-Host "`n   $($lang.ViewMounted)" -ForegroundColor Green
+			Write-Host "`n  $($lang.ViewMounted)" -ForegroundColor Green
 
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-				Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				Write-Host "   Get-WindowsImage -Mounted" -ForegroundColor Green
-				Write-Host "   $('-' * 80)`n"
+				Write-Host "  $('-' * 80)`n"
 			}
 	
 			Get-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Get.log" -Mounted | ForEach-Object {
-				Write-Host "   $('-' * 80)"
-				Write-Host "   $($lang.Select_Path)".PadRight(18) -NoNewline
+				Write-Host "  $('-' * 80)"
+				Write-Host "  $($lang.Select_Path)".PadRight(18) -NoNewline
 				Write-Host $_.Path -ForegroundColor Green
 
-				Write-Host "   $($lang.Image_Path)".PadRight(18) -NoNewline
+				Write-Host "  $($lang.Image_Path)".PadRight(18) -NoNewline
 				Write-Host $_.ImagePath -ForegroundColor Green
 
-				Write-Host "   $($lang.MountedIndex)".PadRight(18) -NoNewline
+				Write-Host "  $($lang.MountedIndex)".PadRight(18) -NoNewline
 				Write-Host $_.ImageIndex -ForegroundColor Green
 
-				Write-Host "   $($lang.Mounted_Mode)".PadRight(18) -NoNewline
+				Write-Host "  $($lang.Mounted_Mode)".PadRight(18) -NoNewline
 				Write-Host $_.MountMode -ForegroundColor Green
 
-				Write-Host "   $($lang.Mounted_Status)".PadRight(18) -NoNewline
+				Write-Host "  $($lang.Mounted_Status)".PadRight(18) -NoNewline
 				Write-Host $_.MountStatus -ForegroundColor Green
-				Write-Host "   $('-' * 80)`n"
+				Write-Host "  $('-' * 80)`n"
 			}
 
 			Get_Next
@@ -137,14 +137,14 @@ Function Feature_More_Menu
 			Feature_More_Menu
 		}
 		"View *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Image_Primary_Key_Shortcuts_File_View -Name $PSItem.Remove(0, 5).Replace(' ', '')
 			ToWait -wait 2
 			Feature_More_Menu
 		}
 
 		"Sel *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Image_Set_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 4).Replace(' ', '')
 			ToWait -wait 2
 			Feature_More_Menu
@@ -160,7 +160,7 @@ Function Feature_More_Menu
 			Feature_More_Menu
 		}
 		{ $_ -like "H'elp *" -or  $_ -like "Help *" -or $_ -like "H *" } {
-			Write-Host "`n   $($lang.Short_Cmd)`n" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)`n" -ForegroundColor Yellow
 			Menu_Shortcuts_Help -Command $PSItem
 			ToWait -wait 2
 			Feature_More_Menu
@@ -177,7 +177,7 @@ Function Feature_More_Menu
 			.快捷指令：挂载
 		#>
 		"mt" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Menu_Shortcuts_Mount
 			ToWait -wait 2
 			Feature_More_Menu
@@ -187,7 +187,7 @@ Function Feature_More_Menu
 			.快捷指令：挂载 + 索引号
 		#>
 		"mt *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Menu_Shortcuts_Mount_Index -Command $PSItem
 			ToWait -wait 2
 			Feature_More_Menu
@@ -197,13 +197,13 @@ Function Feature_More_Menu
 			.快捷指令：保存当前映像
 		#>
 		"Save" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Image_Eject_Save_Current
 			ToWait -wait 2
 			Feature_More_Menu
 		}
 		"Save *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Image_Save_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 5).Replace(' ', '')
 			ToWait -wait 2
 			Feature_More_Menu
@@ -213,13 +213,13 @@ Function Feature_More_Menu
 			.快捷指令：卸载，默认不保存
 		#>
 		"unmount" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Image_Eject_Dont_Save_Current
 			ToWait -wait 2
 			Feature_More_Menu
 		}
 		"unmount *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Image_Unmount_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 7).Replace(' ', '')
 			ToWait -wait 2
 			Feature_More_Menu
@@ -229,11 +229,11 @@ Function Feature_More_Menu
 			.快捷指令：强行卸载所有已挂载前：保存
 		#>
 		"ESA" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-			Write-Host "`n   $($lang.Image_Unmount_After): " -NoNewline
+			Write-Host "`n  $($lang.Image_Unmount_After): " -NoNewline
 			Write-Host $lang.Save -ForegroundColor Green
-			Write-Host "   $('-' * 80)"
+			Write-Host "  $('-' * 80)"
 			Eject_Forcibly_All -Save -DontSave
 
 			ToWait -wait 2
@@ -244,11 +244,11 @@ Function Feature_More_Menu
 			.快捷指令：强行卸载所有已挂载前：不保存
 		#>
 		"EDNS" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 
-			Write-Host "`n   $($lang.Image_Unmount_After): " -NoNewline
+			Write-Host "`n  $($lang.Image_Unmount_After): " -NoNewline
 			Write-Host $lang.DoNotSave -ForegroundColor Green
-			Write-Host "   $('-' * 80)"
+			Write-Host "  $('-' * 80)"
 			Eject_Forcibly_All -DontSave
 
 			ToWait -wait 2
@@ -260,7 +260,7 @@ Function Feature_More_Menu
 			Feature_More_Menu
 		}
 		{ $_ -like "O'D *" -or $_ -like "Od *" -or $_ -like "O *" } {
-			Write-Host "`n   $($lang.Short_Cmd)`n" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Short_Cmd)`n" -ForegroundColor Yellow
 			Menu_Shortcuts_OpenFolder -Command $PSItem
 			ToWait -wait 2
 			Feature_More_Menu
@@ -270,9 +270,9 @@ Function Feature_More_Menu
 			.开发者模式
 		#>
 		"Dev" {
-			Write-Host "`n   $($lang.Developers_Mode)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.Setting)".PadRight(28) -NoNewline
+			Write-Host "`n  $($lang.Developers_Mode)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.Setting)".PadRight(28) -NoNewline
 			if ($Global:Developers_Mode) {
 				$Global:Developers_Mode = $False
 				Write-Host $lang.Disable -ForegroundColor Green
@@ -302,7 +302,7 @@ Function Image_Get_Apps_Package
 	if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
 		$custom_array = @()
 		try {
-			Write-Host "   $($lang.Operable)" -ForegroundColor Green
+			Write-Host "  $($lang.Operable)" -ForegroundColor Green
 			Get-AppxProvisionedPackage -Path $test_mount_folder_Current | ForEach-Object {
 				$custom_array += [PSCustomObject]@{
 					DisplayName  = $_.DisplayName
@@ -314,8 +314,8 @@ Function Image_Get_Apps_Package
 				}
 			}
 		} catch {
-			Write-Host "   $($_)" -ForegroundColor Yellow
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($_)" -ForegroundColor Yellow
+			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			return
 		}
 
@@ -323,8 +323,8 @@ Function Image_Get_Apps_Package
 		Check_Folder -chkpath $Save
 		$TempSaveTo = "$($Save)\Index.$($Get_Index_Now).InBox.Apps.$(Get-Date -Format "yyyyMMddHHmmss").csv"
 
-		Write-Host "`n   $($lang.SaveTo)"
-		Write-Host "   $($TempSaveTo)" -ForegroundColor Green
+		Write-Host "`n  $($lang.SaveTo)"
+		Write-Host "  $($TempSaveTo)" -ForegroundColor Green
 		$custom_array | Export-CSV -NoType -Path $TempSaveTo
 
 @"
@@ -353,7 +353,7 @@ Function Image_Get_Apps_Package
 		}
 
 		if (`$FileBrowser.ShowDialog() -eq "OK") {
-			Write-Host "`n   Save To:"
+			Write-Host "`n  Save To:"
 			Write-Host "   `$(`$FileBrowser.FileName)" -ForegroundColor Green
 			`$custom_array_Export | Export-CSV -NoType -Path `$FileBrowser.FileName
 		} else {
@@ -366,9 +366,9 @@ Function Image_Get_Apps_Package
 			powershell -NoLogo -NonInteractive -file "$($TempSaveTo).ps1" -wait
 		}
 	} else {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.NotMounted)`n" -ForegroundColor Red
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.NotMounted)`n" -ForegroundColor Red
 	}
 }
 
@@ -380,17 +380,17 @@ Function Image_Get_Detailed
 		[Switch]$View
 	)
 
-	Write-Host "`n   $($lang.ViewWIMFileInfo)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
-	Write-Host "   $($Filename)`n" -ForegroundColor Green
+	Write-Host "`n  $($lang.ViewWIMFileInfo)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
+	Write-Host "  $($Filename)`n" -ForegroundColor Green
 
 	if (Test-Path -Path $Filename -PathType Leaf) {
 		$custom_array = @()
 
 		try {
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-				Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				Write-Host "   Get-WindowsImage -ImagePath ""$($Filename)""" -ForegroundColor Green
 			}
 	
@@ -398,8 +398,8 @@ Function Image_Get_Detailed
 				$SetCurreltIndex = $_.ImageIndex
 
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-					Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
+					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
 					Write-Host "   Get-WindowsImage -ImagePath ""$($Filename)"" -index ""$($SetCurreltIndex)""" -ForegroundColor Green
 				}
 		
@@ -429,8 +429,8 @@ Function Image_Get_Detailed
 				}
 			}
 		} catch {
-			Write-Host "   $($_)" -ForegroundColor Yellow
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($_)" -ForegroundColor Yellow
+			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			return
 		}
 
@@ -452,8 +452,8 @@ Function Image_Get_Detailed
 			$TempSaveTo = "$($test_create_report_folder_route)\Index.Image.$(Get-Date -Format "yyyyMMddHHmmss").csv"
 		}
 
-		Write-Host "`n   $($lang.SaveTo)"
-		Write-Host "   $($TempSaveTo)" -ForegroundColor Green
+		Write-Host "`n  $($lang.SaveTo)"
+		Write-Host "  $($TempSaveTo)" -ForegroundColor Green
 		$custom_array | Export-CSV -NoType -Path $TempSaveTo
 
 @"
@@ -496,7 +496,7 @@ Function Image_Get_Detailed
 		}
 
 		if (`$FileBrowser.ShowDialog() -eq "OK") {
-			Write-Host "`n   Save To:"
+			Write-Host "`n  Save To:"
 			Write-Host "   `$(`$FileBrowser.FileName)" -ForegroundColor Green
 			`$custom_array_Export | Export-CSV -NoType -Path `$FileBrowser.FileName
 		} else {
@@ -509,8 +509,8 @@ Function Image_Get_Detailed
 			powershell -NoLogo -NonInteractive -file "$($TempSaveTo).ps1" -wait
 		}
 	} else {
-		Write-Host "   $($lang.NoInstallImage)"
-		Write-Host "   $($Filename)" -ForegroundColor Red
+		Write-Host "  $($lang.NoInstallImage)"
+		Write-Host "  $($Filename)" -ForegroundColor Red
 	}
 }
 
@@ -536,10 +536,10 @@ Function Image_Get_Components_Package
 				}
 			}
 
-			Write-Host "   $($lang.Operable)" -ForegroundColor Green
+			Write-Host "  $($lang.Operable)" -ForegroundColor Green
 		} catch {
-			Write-Host "   $($_)" -ForegroundColor Yellow
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($_)" -ForegroundColor Yellow
+			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			return
 		}
 
@@ -547,8 +547,8 @@ Function Image_Get_Components_Package
 		Check_Folder -chkpath $Save
 		$TempSaveTo = "$($Save)\Index.$($Get_Index_Now).Components.$(Get-Date -Format "yyyyMMddHHmmss").csv"
 
-		Write-Host "`n   $($lang.SaveTo)"
-		Write-Host "   $($TempSaveTo)" -ForegroundColor Green
+		Write-Host "`n  $($lang.SaveTo)"
+		Write-Host "  $($TempSaveTo)" -ForegroundColor Green
 		$custom_array | Export-CSV -NoType -Path $TempSaveTo
 
 @"
@@ -575,7 +575,7 @@ Function Image_Get_Components_Package
 		}
 
 		if (`$FileBrowser.ShowDialog() -eq "OK") {
-			Write-Host "`n   Save To:"
+			Write-Host "`n  Save To:"
 			Write-Host "   `$(`$FileBrowser.FileName)" -ForegroundColor Green
 			`$custom_array_Export | Export-CSV -NoType -Path `$FileBrowser.FileName
 		} else {
@@ -588,9 +588,9 @@ Function Image_Get_Components_Package
 			powershell -NoLogo -NonInteractive -file "$($TempSaveTo).ps1" -wait
 		}
 	} else {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.NotMounted)`n" -ForegroundColor Red
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.NotMounted)`n" -ForegroundColor Red
 	}
 }
 
@@ -604,132 +604,132 @@ Function Solutions_Open_Command
 
 	if ($Help) {
 		Write-Host
-		Write-host "   " -NoNewline
-		Write-Host " Help OD " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-		Write-Host "  $($lang.OpenFolder)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host $(' ' * 2) -NoNewline
+		Write-Host " Help O'D " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+		Write-Host " $($lang.OpenFolder)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		$SaveToLogsPath = "$($Global:LogsSaveFolder)\$($Global:LogSaveTo)"
 
-		Write-host "   " -NoNewline
+		Write-Host $(' ' * 7) -NoNewline
 		if (Test-Path -Path $SaveToLogsPath -PathType Container) {
 			Write-Host " O'D Log " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host "  $($lang.Logging)" -ForegroundColor Yellow
-			Write-Host "    $($lang.Select_Path): " -NoNewline
+			Write-Host "        $($lang.Select_Path): " -NoNewline
 			Write-Host $SaveToLogsPath -ForegroundColor Green
 		} else {
 			Write-Host " O'D Log " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host "  $($lang.Logging)" -ForegroundColor Yellow
-			Write-Host "    $($lang.Select_Path): " -NoNewline
+			Write-Host "        $($lang.Select_Path): " -NoNewline
 			Write-Host $SaveToLogsPath -ForegroundColor Red
 		}
 
 		Write-Host
-		Write-host "   " -NoNewline
+		Write-Host $(' ' * 7) -NoNewline
 		if (Test-Path -Path $Global:Image_source -PathType Container) {
 			Write-Host " O'D MN " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-			Write-Host "   $($lang.MainImageFolder)" -ForegroundColor Yellow
-			Write-Host "    $($lang.Select_Path): " -NoNewline
+			Write-Host "  $($lang.MainImageFolder)" -ForegroundColor Yellow
+			Write-Host "        $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Image_source -ForegroundColor Green
 		} else {
 			Write-Host " O'D MN " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
-			Write-Host "   $($lang.MainImageFolder)" -ForegroundColor Yellow
-			Write-Host "    $($lang.Select_Path): " -NoNewline
+			Write-Host "  $($lang.MainImageFolder)" -ForegroundColor Yellow
+			Write-Host "        $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Image_source -ForegroundColor Red
 		}
 
 		Write-Host
-		Write-host "   " -NoNewline
+		Write-Host $(' ' * 7) -NoNewline
 		if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
 			Write-Host " O'D RT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-			Write-Host "   $($lang.MountImageTo), $($lang.MainImageFolder)" -ForegroundColor Yellow
-			Write-Host "    $($lang.Select_Path): " -NoNewline
+			Write-Host "  $($lang.MountImageTo), $($lang.MainImageFolder)" -ForegroundColor Yellow
+			Write-Host "        $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Mount_To_Route -ForegroundColor Green
 		} else {
 			Write-Host " O'D RT " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
-			Write-Host "   $($lang.MountImageTo), $($lang.MainImageFolder)" -ForegroundColor Yellow
-			Write-Host "    $($lang.Select_Path): " -NoNewline
+			Write-Host "  $($lang.MountImageTo), $($lang.MainImageFolder)" -ForegroundColor Yellow
+			Write-Host "        $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Mount_To_Route -ForegroundColor Red
 		}
 
 		Write-Host
-		Write-host "   " -NoNewline
+		Write-Host $(' ' * 7) -NoNewline
 		if (Test-Path -Path $Global:Mount_To_RouteTemp -PathType Container) {
 			Write-Host " O'D Temp " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host " $($lang.SettingImageTempFolder)" -ForegroundColor Yellow
-			Write-Host "    $($lang.Select_Path): " -NoNewline
+			Write-Host "        $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Mount_To_RouteTemp -ForegroundColor Green
 		} else {
 			Write-Host " O'D Temp " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host " $($lang.SettingImageTempFolder)" -ForegroundColor Yellow
-			Write-Host "    $($lang.Select_Path): " -NoNewline
+			Write-Host "        $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Mount_To_RouteTemp -ForegroundColor Red
 		}
 
 		return
 	}
 
-	Write-Host "`n   $($lang.OpenFolder) *" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.OpenFolder) *" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	switch ($Name) {
 		"Log" {
-			Write-host "   $($lang.Logging)" -ForegroundColor Green
+			Write-Host "  $($lang.Logging)" -ForegroundColor Green
 
-			Write-Host "`n   $($lang.Select_Path): " -NoNewline
+			Write-Host "`n  $($lang.Select_Path): " -NoNewline
 			$SaveToLogsPath = "$($Global:LogsSaveFolder)\$($Global:LogSaveTo)"
 			Write-Host $SaveToLogsPath -ForegroundColor Green
 
 			if (Test-Path -Path $SaveToLogsPath -PathType Container) {
-				Write-Host "   $($lang.OpenFolder)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.OpenFolder)".PadRight(28) -NoNewline
 				Start-Process $SaveToLogsPath
 				Write-Host $lang.Done -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+				Write-Host "  $($lang.NoInstallImage)" -ForegroundColor Red
 			}
 		}
 		"MN" {
-			Write-host "   $($lang.MainImageFolder)" -ForegroundColor Green
+			Write-Host "  $($lang.MainImageFolder)" -ForegroundColor Green
 
-			Write-Host "`n   $($lang.Select_Path): " -NoNewline
+			Write-Host "`n  $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Image_source -ForegroundColor Green
 
 			if (Test-Path -Path $Global:Image_source -PathType Container) {
-				Write-Host "   $($lang.OpenFolder)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.OpenFolder)".PadRight(28) -NoNewline
 				Start-Process $Global:Image_source
 				Write-Host $lang.Done -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+				Write-Host "  $($lang.NoInstallImage)" -ForegroundColor Red
 			}
 		}
 		"RT" {
-			Write-host "   $($lang.MountImageTo), $($lang.MainImageFolder)" -ForegroundColor Green
+			Write-Host "  $($lang.MountImageTo), $($lang.MainImageFolder)" -ForegroundColor Green
 
-			Write-Host "`n   $($lang.Select_Path): " -NoNewline
+			Write-Host "`n  $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Mount_To_Route -ForegroundColor Green
 
 			if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
-				Write-Host "   $($lang.OpenFolder)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.OpenFolder)".PadRight(28) -NoNewline
 				Start-Process $Global:Mount_To_Route
 				Write-Host $lang.Done -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+				Write-Host "  $($lang.NoInstallImage)" -ForegroundColor Red
 			}
 		}
 		"Temp" {
-			Write-host "   $($lang.SettingImageTempFolder)" -ForegroundColor Green
+			Write-Host "  $($lang.SettingImageTempFolder)" -ForegroundColor Green
 
-			Write-Host "`n   $($lang.Select_Path): " -NoNewline
+			Write-Host "`n  $($lang.Select_Path): " -NoNewline
 			Write-Host $Global:Mount_To_RouteTemp -ForegroundColor Green
 
 			if (Test-Path -Path $Global:Mount_To_RouteTemp -PathType Container) {
-				Write-Host "   $($lang.OpenFolder)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.OpenFolder)".PadRight(28) -NoNewline
 				Start-Process $Global:Mount_To_RouteTemp
 				Write-Host $lang.Done -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+				Write-Host "  $($lang.NoInstallImage)" -ForegroundColor Red
 			}
 		}
 		default {
-			Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+			Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 		}
 	}
 }

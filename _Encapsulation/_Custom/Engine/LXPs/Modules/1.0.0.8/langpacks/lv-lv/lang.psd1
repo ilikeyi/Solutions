@@ -22,7 +22,7 @@
 	RefreshModules            = Visu moduļu karstā atsvaidzināšana
 	PleaseChoose              = Lūdzu, atlasiet
 	FailedCreateFolder        = Neizdevās izveidot direktoriju
-	ToMsg                     = \n   {0} Pēc sekundēm automātiski atgriezieties galvenajā izvēlnē.
+	ToMsg                     = {0} Pēc sekundēm automātiski atgriezieties galvenajā izvēlnē.
 	UserCancel                = Lietotājs ir atcēlis darbību.
 	Detailed                  = Detalizēti
 	FileName                  = Faila nosaukums

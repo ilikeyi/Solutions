@@ -41,7 +41,7 @@
 	Existed                         = Existed
 	FailedCreateFolder              = Failed to create directory
 	FailedCreateFile                = Failed to create file
-	ToMsg                           = \n   Automatically return to the main menu after {0} seconds.
+	ToMsg                           = Automatically return to the main menu after {0} seconds.
 	OnDemandPlanTask                = Custom Assign Known Events
 	Operable                        = Operable
 	Inoperable                      = Inoperable

@@ -22,7 +22,7 @@
 	RefreshModules            = Päivitä kaikki moduulit kuumana
 	PleaseChoose              = Ole hyvä ja valitse
 	FailedCreateFolder        = Hakemiston luominen epäonnistui
-	ToMsg                     = \n   {0} Palaa automaattisesti päävalikkoon sekunnin kuluttua.
+	ToMsg                     = {0} Palaa automaattisesti päävalikkoon sekunnin kuluttua.
 	UserCancel                = Käyttäjä on peruuttanut toiminnon.
 	Detailed                  = yksityiskohtainen
 	FileName                  = tiedoston nimi

@@ -58,8 +58,8 @@ Function Event_Reset_Variable
 	)
 
 	if (-not $Silent) {
-		Write-Host "`n   $($lang.EventManagerClear)"
-		Write-Host "   $($lang.AllClear)".PadRight(28) -NoNewline
+		Write-Host "`n  $($lang.EventManagerClear)"
+		Write-Host "  $($lang.AllClear)".PadRight(28) -NoNewline
 	}
 
 
@@ -141,7 +141,7 @@ Function Event_Reset_Variable
 	Event_Reset_Specified_Variable -Init $init
 
 	if (-not $Silent) {
-		Write-Host "   $($lang.Done)" -ForegroundColor Green
+		Write-Host "  $($lang.Done)" -ForegroundColor Green
 	}
 }
 
@@ -225,7 +225,7 @@ Function Event_Need_Mount_Global_Variable
 	)
 
 	if ($Global:Developers_Mode) {
-		Write-Host "`n   $('-' * 80)`n   Event_Need_Mount_Global_Variable, $($Master)_$($ImageFileName), $($lang.Developers_Mode_Location): $($DevQueue)"
+		Write-Host "`n  $('-' * 80)`n   Event_Need_Mount_Global_Variable, $($Master)_$($ImageFileName), $($lang.Developers_Mode_Location): $($DevQueue)"
 	}
 
 	if ($IsNoRefresh -eq "Yes") {

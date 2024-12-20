@@ -8,7 +8,7 @@ Function Image_Select_Popup_UI
 		$ImageFileName
 	)
 
-	Write-Host "`n   $($lang.Index_Is_Event_Select)"
+	Write-Host "`n  $($lang.Index_Is_Event_Select)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
@@ -120,21 +120,21 @@ Function Image_Select_Popup_UI
 				}
 				New-Variable -Scope global -Name "Queue_Process_Image_Select_Popup_Pending_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $TempQueueProcessImageSelectPending -Force
 
-				Write-Host "`n   $($lang.Image_Popup_Default)"
+				Write-Host "`n  $($lang.Image_Popup_Default)"
 				if ($UI_Main_Index_Default.Checked) {
-					Write-Host "   $($lang.Operable)" -ForegroundColor Green
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 					New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $TempQueueProcessImageSelectPending -Force
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
-				Write-Host "`n   $($lang.Choose)" -ForegroundColor Green
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.Choose)" -ForegroundColor Green
+				Write-Host "  $('-' * 80)"
 				ForEach ($item in $TempQueueProcessImageSelectPending) {
-					Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+					Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 					Write-Host $item.Name -ForegroundColor Yellow
 
-					Write-Host "   $($lang.MountedIndex): " -NoNewline
+					Write-Host "  $($lang.MountedIndex): " -NoNewline
 					Write-Host $item.Index -ForegroundColor Yellow
 
 					Write-Host
@@ -153,7 +153,7 @@ Function Image_Select_Popup_UI
 		Width          = 280
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			New-Variable -Scope global -Name "Queue_Process_Image_Select_Popup_Pending_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
 			$UI_Main.Close()
 		}
@@ -171,14 +171,14 @@ Function Image_Select_Popup_UI
 	$Script:TempQueueProcessImageSelect = @()
 	if (Test-Path -Path $ImageFileName -PathType Leaf) {
 		if ($Global:Developers_Mode) {
-			Write-Host "`n   $($lang.Developers_Mode_Location): 88`n" -ForegroundColor Green
+			Write-Host "`n  $($lang.Developers_Mode_Location): 88`n" -ForegroundColor Green
 		}
 
 		if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-			Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Write-Host "   Get-WindowsImage -ImagePath ""$($ImageFileName)""" -ForegroundColor Green
-			Write-Host "   $('-' * 80)`n"
+			Write-Host "  $('-' * 80)`n"
 		}
 
 		try {
@@ -204,10 +204,10 @@ Function Image_Select_Popup_UI
 				$UI_Main_Menu.controls.AddRange($CheckBox)
 			}
 		} catch {
-			Write-Host "   $($lang.ConvertChk)"
-			Write-Host "   $($ImageFileName)"
-			Write-Host "   $($_)" -ForegroundColor Yellow
-			Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+			Write-Host "  $($lang.ConvertChk)"
+			Write-Host "  $($ImageFileName)"
+			Write-Host "  $($_)" -ForegroundColor Yellow
+			Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			return
 		}
 	}

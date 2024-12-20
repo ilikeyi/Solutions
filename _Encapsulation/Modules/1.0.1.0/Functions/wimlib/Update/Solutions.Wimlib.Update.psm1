@@ -16,8 +16,8 @@ Function Wimlib_Extract_And_Update
 	)
 	$Search_Folder_Multistage_Rule = $Search_Folder_Multistage_Rule | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
-	Write-Host "`n   $($lang.Wim_Rule_Update)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Wim_Rule_Update)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
@@ -503,23 +503,23 @@ Function Wimlib_Extract_And_Update
 
 				$WimLib_SplieNew_Rule_path = $Script:Wimlib_Select_Rules_Naming -split ';'
 
-				Write-Host "`n   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
+				Write-Host "`n  $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
 				Write-Host $Global:Primary_Key_Image.Group -ForegroundColor Green
 	
-				Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 				Write-Host $Global:Primary_Key_Image.Uid -ForegroundColor Green
 	
-				Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
 				Write-Host $WimLib_SplieNew_Rule_path[2] -ForegroundColor Green
 	
-				Write-Host "`n   $($lang.MountedIndexSelect)" -ForegroundColor Green
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.MountedIndexSelect)" -ForegroundColor Green
+				Write-Host "  $('-' * 80)"
 				ForEach ($item in $Global:Primary_Key_Image.Index) {
 					if ($Script:Wimlib_Select_Index -Contains $item.ImageIndex) {
-						Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+						Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 						Write-Host $item.ImageName -ForegroundColor Yellow
 						
-						Write-Host "   $($lang.MountedIndex): " -NoNewline
+						Write-Host "  $($lang.MountedIndex): " -NoNewline
 						Write-Host $item.ImageIndex -ForegroundColor Yellow
 	
 						$wimlib = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\wimlib")\wimlib-imagex.exe"
@@ -544,7 +544,7 @@ Function Wimlib_Extract_And_Update
 							#>
 							Wimlib_Image_Refresh_Sources_Rule -Guid $RandomGuid
 						} else {
-							Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+							Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 						}
 					}
 				}
@@ -654,30 +654,30 @@ Function Wimlib_Extract_And_Update
 		add_Click      = {
 			if (Wimlib_Extract_And_Update_Check_Customize -RuleNaming -ImageIndex -AddSources) {
 				$UI_Main.Hide()
-				Write-Host "`n   $($lang.Select_Path)"
-				Write-Host "   $($Script:Wimlib_Select_Rules_Naming)" -ForegroundColor Green
+				Write-Host "`n  $($lang.Select_Path)"
+				Write-Host "  $($Script:Wimlib_Select_Rules_Naming)" -ForegroundColor Green
 
-				Write-Host "`n   $($lang.SelFile)"
-				Write-Host "   $($Script:Wimlib_Select_File)" -ForegroundColor Green
+				Write-Host "`n  $($lang.SelFile)"
+				Write-Host "  $($Script:Wimlib_Select_File)" -ForegroundColor Green
 
-				Write-Host "`n   $($lang.MountedIndexSelect)"
+				Write-Host "`n  $($lang.MountedIndexSelect)"
 				ForEach ($item in $Global:Primary_Key_Image.Index) {
 					if ($Script:Wimlib_Select_Index -Contains $item.ImageIndex) {
-						Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+						Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 						Write-Host $item.ImageName -ForegroundColor Yellow
 
-						Write-Host "   $($lang.MountedIndex): " -NoNewline
+						Write-Host "  $($lang.MountedIndex): " -NoNewline
 						Write-Host $item.ImageIndex -ForegroundColor Yellow
 
 						$wimlib = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\wimlib")\wimlib-imagex.exe"
 						if (Test-Path -Path $wimlib -PathType Leaf) {
-							Write-Host "`n   $($wimlib)" -ForegroundColor Yellow
+							Write-Host "`n  $($wimlib)" -ForegroundColor Yellow
 
 							$WimLib_SplieNew_Rule_path = $Script:Wimlib_Select_Rules_Naming -split ';'
 							$Arguments = "update ""$($Global:Primary_Key_Image.FullPath)"" $($item.ImageIndex) --command=""add '$($Script:Wimlib_Select_File)' '$($WimLib_SplieNew_Rule_path[2])'"""
 							Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
 						} else {
-							Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+							Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 						}
 					}
 				}
@@ -693,7 +693,7 @@ Function Wimlib_Extract_And_Update
 		Text           = $lang.Cancel
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}
@@ -917,16 +917,16 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 	#region 开始处理更新任务，WimLib
 	$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_Rule_$($NewMaster)_$($NewImageFileName)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Expand_Rule.Count -gt 0) {
-		Write-Host "`n   $($lang.Event_Allow_Update_Rule): " -NoNewline -ForegroundColor Yellow
+		Write-Host "`n  $($lang.Event_Allow_Update_Rule): " -NoNewline -ForegroundColor Yellow
 		Write-Host "$($Temp_Expand_Rule.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $('-' * 80)"
 
 		$wimlib = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\wimlib")\wimlib-imagex.exe"
 		if (Test-Path -Path $wimlib -PathType Leaf) {
-			Write-Host "   $($lang.Operable)"
+			Write-Host "  $($lang.Operable)"
 		} else {
-			Write-Host "   $($lang.NoInstallImage)"
-			Write-Host "   $($wimlib)" -ForegroundColor Red
+			Write-Host "  $($lang.NoInstallImage)"
+			Write-Host "  $($wimlib)" -ForegroundColor Red
 			return
 		}
 
@@ -935,38 +935,38 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 		#>
 		$Temp_Queue_Is_Update_Rule = (Get-Variable -Scope global -Name "Queue_Is_Update_Rule_$($NewMaster)_$($NewImageFileName)" -ErrorAction SilentlyContinue).Value
 		if ($Temp_Queue_Is_Update_Rule) {
-			Write-Host "`n   $($lang.Event_Assign_Expand): " -NoNewline -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Event_Assign_Expand): " -NoNewline -ForegroundColor Yellow
 			Write-Host "$($Temp_Expand_Rule.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-			Write-Host "   $('-' * 80)"
+			Write-Host "  $('-' * 80)"
 
-			Write-Host "   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
 			Write-Host $Temp_Expand_Rule.Group -ForegroundColor Green
 
-			Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 			Write-Host $Temp_Expand_Rule.Uid -ForegroundColor Green
 
-			Write-Host "   $($lang.Setting_Pri_Key): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.Setting_Pri_Key): " -NoNewline -ForegroundColor Yellow
 			Write-Host $Temp_Expand_Rule.FileName -ForegroundColor Green
 
-			Write-Host "   $($lang.Pri_Key_Update_To): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.Pri_Key_Update_To): " -NoNewline -ForegroundColor Yellow
 			Write-Host $MasterFile -ForegroundColor Green
 
 			<#
 				.判断是否处理全部，重新读取
 			#>
-			Write-Host "`n   $($lang.Event_Allow_Update_Rule)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Event_Allow_Update_Rule)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Write-Host "   Queue_Is_Update_Rule_Expand_To_All_$($NewMaster)_$($NewImageFileName)"
 			if ((Get-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_To_All_$($NewMaster)_$($NewImageFileName)" -ErrorAction SilentlyContinue).Value) {
-				Write-Host "   $($lang.Event_Allow_Update_To_All)" -ForegroundColor Green
+				Write-Host "  $($lang.Event_Allow_Update_To_All)" -ForegroundColor Green
 
 				$TempQueueProcessImageSelect = @()
 				try {
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-						Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-						Write-Host "   $('-' * 80)"
+						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+						Write-Host "  $('-' * 80)"
 						Write-Host "   Get-WindowsImage -ImagePath ""$($MasterFile)""" -ForegroundColor Green
-						Write-Host "   $('-' * 80)`n"
+						Write-Host "  $('-' * 80)`n"
 					}
 
 					Get-WindowsImage -ImagePath $MasterFile -ErrorAction SilentlyContinue | ForEach-Object {
@@ -976,72 +976,72 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 						}
 					}
 				} catch {
-					Write-Host "   $($lang.SelectFromError)" -ForegroundColor Red
-					Write-Host "   $($_)" -ForegroundColor Yellow
-					Write-Host "   $($lang.Failed)" -ForegroundColor Red
+					Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
+					Write-Host "  $($_)" -ForegroundColor Yellow
+					Write-Host "  $($lang.Failed)" -ForegroundColor Red
 				}
 
 				if ($TempQueueProcessImageSelect.count -gt 0) {
-					Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
+					Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
 
 					ForEach ($item in $TempQueueProcessImageSelect) {
-						Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+						Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 						Write-Host $item.Name -ForegroundColor Yellow
 
-						Write-Host "   $($lang.MountedIndex): " -NoNewline
+						Write-Host "  $($lang.MountedIndex): " -NoNewline
 						Write-Host $item.Index -ForegroundColor Yellow
 
 						Write-Host
 					}
 
-					Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
+					Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
 					ForEach ($item in $TempQueueProcessImageSelect) {
-						Write-Host "`n   $($lang.LXPsWaitAddUpdate)" -ForegroundColor Green
-						Write-Host "   $('-' * 80)"
-						Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+						Write-Host "`n  $($lang.LXPsWaitAddUpdate)" -ForegroundColor Green
+						Write-Host "  $('-' * 80)"
+						Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 						Write-Host $item.Name -ForegroundColor Yellow
 
-						Write-Host "   $($lang.MountedIndex): " -NoNewline
+						Write-Host "  $($lang.MountedIndex): " -NoNewline
 						Write-Host $item.Index -ForegroundColor Yellow
 
-						Write-Host "   $('-' * 80)"
+						Write-Host "  $('-' * 80)"
 						$Arguments = "update ""$($MasterFile)"" $($item.Index) --command=""add '$($Temp_Expand_Rule.FileName)' '$($Temp_Expand_Rule.UpdatePath)'"""
 						Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
 
 						Write-Host
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			} else {
-				Write-Host "   $($lang.Event_Allow_Update_Rule_Only)" -ForegroundColor Green
+				Write-Host "  $($lang.Event_Allow_Update_Rule_Only)" -ForegroundColor Green
 
-				Write-Host "`n   $($lang.AddSources)" -ForegroundColor Yellow
-				Write-Host "   $($lang.Developers_Mode_Location)Queue_Process_Image_Select_Pending_$($NewMaster)_$($NewMaster)" -ForegroundColor Green
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.AddSources)" -ForegroundColor Yellow
+				Write-Host "  $($lang.Developers_Mode_Location)Queue_Process_Image_Select_Pending_$($NewMaster)_$($NewMaster)" -ForegroundColor Green
+				Write-Host "  $('-' * 80)"
 				ForEach ($wimlib_item_Mount in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($NewMaster)_$($NewMaster)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "   $($lang.Wim_Image_Name): " -noNewline
+					Write-Host "  $($lang.Wim_Image_Name): " -noNewline
 					Write-Host $wimlib_item_Mount.IName -ForegroundColor Yellow
 
-					Write-Host "   $($lang.MountedIndex): " -noNewline
+					Write-Host "  $($lang.MountedIndex): " -noNewline
 					Write-Host $wimlib_item_Mount.Index -ForegroundColor Yellow
 
 					Write-Host
 				}
 
-				Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				ForEach ($wimlib_item_Mount in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($NewMaster)_$($NewMaster)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "`n   $($lang.LXPsWaitAddUpdate)" -ForegroundColor Green
-					Write-Host "   $('-' * 80)"
-					Write-Host "   $($lang.Wim_Image_Name): " -noNewline
+					Write-Host "`n  $($lang.LXPsWaitAddUpdate)" -ForegroundColor Green
+					Write-Host "  $('-' * 80)"
+					Write-Host "  $($lang.Wim_Image_Name): " -noNewline
 					Write-Host $wimlib_item_Mount.IName -ForegroundColor Yellow
 
-					Write-Host "   $($lang.MountedIndex): " -noNewline
+					Write-Host "  $($lang.MountedIndex): " -noNewline
 					Write-Host $wimlib_item_Mount.Index -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
+					Write-Host "  $('-' * 80)"
 
 					$Arguments = "update ""$($MasterFile)"" $($wimlib_item_Mount.Index) --command=""add '$($Temp_Expand_Rule.FileName)' '$($Temp_Expand_Rule.UpdatePath)'"""
 					Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
@@ -1050,7 +1050,7 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 				}
 			}
 		} else {
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 		}
 
 		<#
@@ -1060,23 +1060,23 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 			$Global:Extension_Has_been_Run += $NewUid
 		}
 
-		Write-Host "`n   $($lang.DeDuplication)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($NewUid)`n" -ForegroundColor Red
+		Write-Host "`n  $($lang.DeDuplication)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($NewUid)`n" -ForegroundColor Red
 
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Global:Extension_Has_been_Run) {
-			Write-Host "   $($lang.Unique_Name): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.Unique_Name): " -NoNewline -ForegroundColor Yellow
 			Write-Host $item -ForegroundColor Green
 
 			Write-Host
 		}
 	} else {
-		Write-Host "`n   $($lang.Event_Allow_Update_Rule): " -NoNewline -ForegroundColor Yellow
+		Write-Host "`n  $($lang.Event_Allow_Update_Rule): " -NoNewline -ForegroundColor Yellow
 		Write-Host "$($Temp_Expand_Rule.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $('-' * 80)"
 
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }

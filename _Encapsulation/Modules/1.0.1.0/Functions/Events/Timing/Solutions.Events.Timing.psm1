@@ -40,7 +40,7 @@ Function Event_Completion_Start_Setting_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -204,7 +204,7 @@ Function Event_Completion_Start_Setting_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "5" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -349,8 +349,8 @@ Function Event_Completion_Start_Setting_UI
 	}
 
 	if ($Global:EventQueueMode) {
-		Write-Host "`n   $($lang.WaitTimeTitle)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.WaitTimeTitle)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 		$UI_Main.controls.AddRange((
@@ -361,8 +361,8 @@ Function Event_Completion_Start_Setting_UI
 	}
 
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-		Write-Host "`n   $($lang.WaitTimeTitle)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.WaitTimeTitle)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Image_Is_Select_IAB) {
 			$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
@@ -412,7 +412,7 @@ Function Event_Completion_Start_Setting_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 
 		switch ($Autopilot.Schome) {
 			"Instantly" {
@@ -461,16 +461,16 @@ Function Event_Completion_Start_Process
 	$NowTime       = Get-Date -format "yyyy/MM/dd HH:mm:ss tt"
 	$GUITimeOKTime = (Get-Date).AddSeconds($sum_all)
 
-	Write-Host "   $($lang.TimeWait)" -NoNewline
+	Write-Host "  $($lang.TimeWait)" -NoNewline
 	Write-Host "$($sum_all) $($lang.TimeSeconds)" -ForegroundColor Yellow
 
-	Write-Host "   $($lang.NowTime)" -NoNewline
+	Write-Host "  $($lang.NowTime)" -NoNewline
 	Write-Host $NowTime -ForegroundColor Yellow
 
-	Write-Host "   $($lang.TimeStart)" -NoNewline
+	Write-Host "  $($lang.TimeStart)" -NoNewline
 	Write-Host "$($GUITimeOKTime.ToString('yyyy/MM/dd HH:mm:ss'))" -ForegroundColor Yellow
 
-	Write-Host "`n   $($lang.TimeMsg)"
+	Write-Host "`n  $($lang.TimeMsg)"
 
 	if ($sum_all -gt 99999) {
 		Start-Sleep -s $sum_all

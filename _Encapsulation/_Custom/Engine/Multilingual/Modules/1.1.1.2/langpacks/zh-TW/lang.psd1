@@ -27,7 +27,7 @@
 	PleaseChoose              = 請選擇
 	FailedCreateFolder        = 創建目錄失敗
 	Failed                    = 失敗
-	ToMsg                     = \n   {0} 秒後自動返回到主菜單。
+	ToMsg                     = {0} 秒後自動返回到主菜單。
 	UserCancel                = 用戶已取消操作。
 	Help                      = 幫助
 	WorkDone                  = 完成，按任意鍵返回主界面...

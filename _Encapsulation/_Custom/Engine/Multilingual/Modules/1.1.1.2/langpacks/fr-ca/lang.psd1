@@ -27,7 +27,7 @@
 	PleaseChoose              = Veuillez choisir
 	FailedCreateFolder        = Échec de la création du répertoire
 	Failed                    = Échouer
-	ToMsg                     = \n   {0} Retour automatique au menu principal après quelques secondes.
+	ToMsg                     = {0} Retour automatique au menu principal après quelques secondes.
 	UserCancel                = L'utilisateur a annulé l'opération.
 	Help                      = Aide
 	WorkDone                  = Terminé, appuyez sur n'importe quelle touche pour retourner à l'interface principale...

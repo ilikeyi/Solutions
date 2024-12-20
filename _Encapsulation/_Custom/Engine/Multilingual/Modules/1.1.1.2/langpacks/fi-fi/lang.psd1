@@ -27,7 +27,7 @@
 	PleaseChoose              = Ole hyvä ja valitse
 	FailedCreateFolder        = Hakemiston luominen epäonnistui
 	Failed                    = Epäonnistua
-	ToMsg                     = \n   {0} Palaa automaattisesti päävalikkoon sekunnin kuluttua.
+	ToMsg                     = {0} Palaa automaattisesti päävalikkoon sekunnin kuluttua.
 	UserCancel                = Käyttäjä on peruuttanut toiminnon.
 	Help                      = Auttaa
 	WorkDone                  = Valmis, palaa pääliittymään painamalla mitä tahansa näppäintä...

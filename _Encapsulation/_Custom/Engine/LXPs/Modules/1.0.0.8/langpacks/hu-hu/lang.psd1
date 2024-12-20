@@ -22,7 +22,7 @@
 	RefreshModules            = Vruće osvježite sve module
 	PleaseChoose              = Odaberite
 	FailedCreateFolder        = Nije uspjelo stvaranje imenika
-	ToMsg                     = \n   {0} Automatski povratak na glavni izbornik nakon nekoliko sekundi.
+	ToMsg                     = {0} Automatski povratak na glavni izbornik nakon nekoliko sekundi.
 	UserCancel                = Korisnik je otkazao operaciju.
 	Detailed                  = Detaljan
 	FileName                  = Naziv datoteke

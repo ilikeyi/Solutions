@@ -137,7 +137,7 @@ Function InBox_Apps_Add_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -1181,7 +1181,7 @@ Function InBox_Apps_Add_UI
 		}
 
 		if (`$FileBrowser.ShowDialog() -eq "OK") {
-			Write-Host "`n   Save To:"
+			Write-Host "`n  Save To:"
 			Write-Host "   `$(`$FileBrowser.FileName)" -ForegroundColor Green
 			`$custom_array_Export | Export-CSV -NoType -Path `$FileBrowser.FileName
 		} else {
@@ -1241,7 +1241,7 @@ Function InBox_Apps_Add_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "13" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -1343,17 +1343,17 @@ Function InBox_Apps_Add_UI
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				$Temp_Queue_Is_InBox_Apps_Add_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Queue_Is_InBox_Apps_Add_Select.Count -gt 0) {
 					ForEach ($item in $Temp_Queue_Is_InBox_Apps_Add_Select) {
-						Write-Host "   $($item)"
+						Write-Host "  $($item)"
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 
@@ -1688,8 +1688,8 @@ Function InBox_Apps_Add_UI
 	}
 
 	if ($Global:EventQueueMode) {
-		Write-Host "`n   $($lang.InboxAppsManager): $($lang.AddTo)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.InboxAppsManager): $($lang.AddTo)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 		$UI_Main.controls.AddRange((
@@ -1700,8 +1700,8 @@ Function InBox_Apps_Add_UI
 	}
 
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-		Write-Host "`n   $($lang.InboxAppsManager): $($lang.AddTo)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.InboxAppsManager): $($lang.AddTo)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 
@@ -1749,9 +1749,9 @@ Function InBox_Apps_Add_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
 
 		switch ($Autopilot.Schome) {
 			"Custom" {
@@ -1871,20 +1871,20 @@ Function InBox_Apps_Add_Process
 {
 	$Temp_Queue_Is_InBox_Apps_Add_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Queue_Is_InBox_Apps_Add_Select.count -gt 0) {
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Queue_Is_InBox_Apps_Add_Select) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			Write-Host "  $($item)" -ForegroundColor Green
 		}
 
-		Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Queue_Is_InBox_Apps_Add_Select) {
-			Write-Host "   $($item)"
+			Write-Host "  $($item)"
 			InBox_Apps_Add_To_Process -InboxAppsSources $item
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }
 
@@ -1908,91 +1908,91 @@ Function InBox_Apps_Add_To_Process
 	<#
 		.获取当前离线版本：识别码
 	#>
-	Write-Host "`n   $($lang.Assign_Editions)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Assign_Editions)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Auto_Assign_Editions_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-		Write-Host "   $($lang.UpdateCurrent)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.UpdateCurrent)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 
 		try {
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-				Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				Write-Host "   Get-WindowsEdition -Path ""$($test_mount_folder_Current)"").Edition" -ForegroundColor Green
-				Write-Host "   $('-' * 80)`n"
+				Write-Host "  $('-' * 80)`n"
 			}
 
 			$Current_Edition_Version = (Get-WindowsEdition -Path $test_mount_folder_Current).Edition
-			Write-Host "   $($Current_Edition_Version)" -ForegroundColor Green
+			Write-Host "  $($Current_Edition_Version)" -ForegroundColor Green
 		} catch {
-			Write-Host "   $($lang.SelectFromError)" -ForegroundColor Red
-			Write-Host "   $($_)" -ForegroundColor Yellow
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
+			Write-Host "  $($_)" -ForegroundColor Yellow
+			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			return
 		}
 
 		<#
 			.匹配版本识别码，并分配任务
 		#>
-		Write-Host "`n   $($lang.LXPsWaitAssign)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.LXPsWaitAssign)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		$Temp_Assign_Task_Select_Rule = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 		if ($Temp_Assign_Task_Select_Rule.Count -gt 0) {
 			ForEach ($item in $Temp_Assign_Task_Select_Rule) {
 				if ($item.Name -eq $Current_Edition_Version) {
-					Write-Host "   $($Current_Edition_Version)" -ForegroundColor Green
+					Write-Host "  $($Current_Edition_Version)" -ForegroundColor Green
 
 					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Group_Install_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $item.Apps -Force
-					Write-Host "   $($lang.Done)" -ForegroundColor Green
+					Write-Host "  $($lang.Done)" -ForegroundColor Green
 					break
 				}
 			}
 		} else {
-			Write-Host "   $($lang.Failed)" -ForegroundColor Red
+			Write-Host "  $($lang.Failed)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.AfterFinishingNoProcess)" -ForegroundColor Green
+		Write-Host "  $($lang.AfterFinishingNoProcess)" -ForegroundColor Green
 
 		$Temp_Assign_Task_Select_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 		if ($Temp_Assign_Task_Select_Custom_Select.Count -gt 0) {
 			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Group_Install_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Assign_Task_Select_Custom_Select -Force
-			Write-Host "   $($lang.Done)" -ForegroundColor Green
+			Write-Host "  $($lang.Done)" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.Failed)" -ForegroundColor Red
+			Write-Host "  $($lang.Failed)" -ForegroundColor Red
 		}
 	}
 
-	Write-Host "`n   $($lang.LXPsWaitAdd)"
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.LXPsWaitAdd)"
+	Write-Host "  $('-' * 80)"
 	$Temp_Assign_Task_Select_Group = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Group_Install_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Assign_Task_Select_Group.Count -gt 0) {
 		ForEach ($item in $Temp_Assign_Task_Select_Group) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			Write-Host "  $($item)" -ForegroundColor Green
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 
 	<#
 		.开始添加 Appx
 	#>
-	Write-Host "`n   $($lang.InboxAppsManager)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.InboxAppsManager)" -ForegroundColor Green
+	Write-Host "  $('-' * 80)"
 	$Temp_Assign_Task_InBox_Apps = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_List_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Assign_Task_InBox_Apps.Count -gt 0) {
 		ForEach ($item in $Temp_Assign_Task_InBox_Apps) {
 			InBox_Apps_Add_Match_Process -Name $item.Name -SearchName $item.Search -AppxSource $item.InstallPacker -CertificateSource $item.Certificate -Region $item.Region -DependencyPackage $item.Depend
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 
 	<#
 		.自动从所有磁盘搜索缺少的软件包
 	#>
-	Write-Host "`n   $($lang.UWPAutoMissingPacker)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.UWPAutoMissingPacker)" -ForegroundColor Green
+	Write-Host "  $('-' * 80)"
 	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Missing_Packer_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
 		<#
 			.Windows 10 x64 删除所有 InBox Apps 预安装后，重新安装需要从 x86fre 里添加的依赖项
@@ -2007,21 +2007,21 @@ Function InBox_Apps_Add_To_Process
 					$SearchTempFile = Join-Path -Path $_.DeviceID -ChildPath $item
 
 					if (Test-Path -Path $SearchTempFile -PathType Leaf) {
-						Write-Host "   $($lang.NoLicense), $($SearchTempFile)"
+						Write-Host "  $($lang.NoLicense), $($SearchTempFile)"
 
 						try {
 							if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-								Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-								Write-Host "   $('-' * 80)"
+								Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+								Write-Host "  $('-' * 80)"
 								Write-Host "   Add-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackagePath ""$($SearchTempFile)"" -SkipLicense -Region ""$($Region)""" -ForegroundColor Green
-								Write-Host "   $('-' * 80)`n"
+								Write-Host "  $('-' * 80)`n"
 							}
 
 							Add-AppxProvisionedPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Add-AppxProvisionedPackage.log" -Path $test_mount_folder_Current -PackagePath $SearchTempFile -SkipLicense $CommandIsWaitInstallRegions -ErrorAction SilentlyContinue | Out-Null
-							Write-Host "   $($lang.Done)" -ForegroundColor Green
+							Write-Host "  $($lang.Done)" -ForegroundColor Green
 						} catch {
-							Write-Host "   $($_)" -ForegroundColor Yellow
-							Write-Host "   $($lang.AddTo), $($lang.Failed)" -ForegroundColor Red
+							Write-Host "  $($_)" -ForegroundColor Yellow
+							Write-Host "  $($lang.AddTo), $($lang.Failed)" -ForegroundColor Red
 						}
 
 						Write-Host
@@ -2030,7 +2030,7 @@ Function InBox_Apps_Add_To_Process
 			}
 		}
 	} else {
-		Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+		Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 	}
 }
 
@@ -2057,37 +2057,37 @@ Function InBox_Apps_Add_Match_Process
 	$InBoxAppsTasksTime.Reset()
 	$InBoxAppsTasksTime.Start()
 
-	Write-Host "   $($lang.TimeStart)" -NoNewline
+	Write-Host "  $($lang.TimeStart)" -NoNewline
 	Write-Host "$($InBoxAppsTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 
-	Write-Host "   $($lang.RuleFileType): ".PadRight(21) -NoNewline -ForegroundColor Yellow
+	Write-Host "  $($lang.RuleFileType): ".PadRight(21) -NoNewline -ForegroundColor Yellow
 	Write-Host $Name -ForegroundColor Green
 
 	$Temp_Assign_Task_Select_Group = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Group_Install_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Assign_Task_Select_Group -contains $Name) {
 		if (Test-Path -Path $AppxSource -PathType Leaf) {
-			Write-Host "   $($lang.LanguageCode): ".PadRight(21) -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.LanguageCode): ".PadRight(21) -NoNewline -ForegroundColor Yellow
 			Write-Host $Region -ForegroundColor Green
 
 			if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_DependencyPackage_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-				Write-Host "   $($lang.DependencyPackage): ".PadRight(21) -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.DependencyPackage): ".PadRight(21) -NoNewline -ForegroundColor Yellow
 
 				if ($DependencyPackage.count -gt 0) {
 					Write-Host "$($DependencyPackage.count) $($lang.EventManagerCount)" -ForegroundColor Green
-					Write-Host "   $('.' * 80)"
-					Write-Host "   $($lang.AddQueue)" -ForegroundColor Yellow
-					Write-Host "   $('.' * 80)"
+					Write-Host "  $('.' * 80)"
+					Write-Host "  $($lang.AddQueue)" -ForegroundColor Yellow
+					Write-Host "  $('.' * 80)"
 					foreach ($itemdp in $DependencyPackage) {
-						Write-Host "   $($itemdp)"
+						Write-Host "  $($itemdp)"
 					}
 
-					Write-Host "`n   $($lang.Instl_Dependency_Package_Match)" -ForegroundColor Yellow
-					Write-Host "   $('.' * 80)"
+					Write-Host "`n  $($lang.Instl_Dependency_Package_Match)" -ForegroundColor Yellow
+					Write-Host "  $('.' * 80)"
 					foreach ($itemdp in $DependencyPackage) {
-						Write-Host "   $($lang.RuleFileType): ".PadRight(21) -NoNewline -ForegroundColor Yellow
+						Write-Host "  $($lang.RuleFileType): ".PadRight(21) -NoNewline -ForegroundColor Yellow
 						Write-Host $itemdp -ForegroundColor Yellow
-						Write-Host "   $($lang.Instl_Dependency_Package_Group): ".PadRight(21) -NoNewline -ForegroundColor Yellow
+						Write-Host "  $($lang.Instl_Dependency_Package_Group): ".PadRight(21) -NoNewline -ForegroundColor Yellow
 
 						$FlagMatch = $True
 
@@ -2097,10 +2097,10 @@ Function InBox_Apps_Add_Match_Process
 								if ($item.name -eq $itemdp) {
 									Write-Host $lang.Done -ForegroundColor Green
 
-									Write-Host "   $($lang.FileName): ".PadRight(21) -NoNewline -ForegroundColor Yellow
+									Write-Host "  $($lang.FileName): ".PadRight(21) -NoNewline -ForegroundColor Yellow
 									Write-Host $item.InstallPacker -ForegroundColor Green
 
-									Write-Host "   $($lang.ConvertChk)".PadRight(21) -NoNewline -ForegroundColor Yellow
+									Write-Host "  $($lang.ConvertChk)".PadRight(21) -NoNewline -ForegroundColor Yellow
 									if (Test-Path -Path $item.InstallPacker -PathType Leaf) {
 										$IsWaitInstallDependencyPackage += $item.InstallPacker
 										$FlagMatch = $False
@@ -2123,8 +2123,8 @@ Function InBox_Apps_Add_Match_Process
 						}
 					}
 
-					Write-Host "   $($lang.Instl_Dependency_Package_Done)"
-					Write-Host "   $('.' * 80)"
+					Write-Host "  $($lang.Instl_Dependency_Package_Done)"
+					Write-Host "  $('.' * 80)"
 					Write-Host
 				} else {
 					Write-Host $lang.NoWork -ForegroundColor Red
@@ -2145,16 +2145,16 @@ Function InBox_Apps_Add_Match_Process
 				}
 			} else {
 				if ($DependencyPackage.count -gt 0) {
-					Write-Host "   $($lang.DependencyPackage): ".PadRight(21) -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.DependencyPackage): ".PadRight(21) -NoNewline -ForegroundColor Yellow
 					Write-Host $lang.UpdateNotExecuted -ForegroundColor Red
-					Write-Host "   $('.' * 80)"
+					Write-Host "  $('.' * 80)"
 					foreach ($itemdp in $DependencyPackage) {
-						Write-Host "   $($itemdp)"
+						Write-Host "  $($itemdp)"
 					}
 
 					Write-Host
 				} else {
-					Write-Host "   $($lang.DependencyPackage): ".PadRight(21) -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.DependencyPackage): ".PadRight(21) -NoNewline -ForegroundColor Yellow
 					Write-Host $lang.NoWork -ForegroundColor Red
 				}
 			}
@@ -2169,33 +2169,33 @@ Function InBox_Apps_Add_Match_Process
 				$CommandIsWaitInstallRegions = "-Regions ""$($Region)"""
 			}
 
-			Write-Host "   $($lang.FileName): ".PadRight(21) -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.FileName): ".PadRight(21) -NoNewline -ForegroundColor Yellow
 			Write-Host $AppxSource -ForegroundColor Green
 			$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 			if ([string]::IsNullOrEmpty($CertificateSource)) {
-				Write-Host "   $($lang.License): ".PadRight(21) -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.License): ".PadRight(21) -NoNewline -ForegroundColor Yellow
 				Write-Host $lang.NoLicense -ForegroundColor Red
 
 				$CommandNew = "Add-AppxProvisionedPackage -ScratchDirectory ""$(Get_Mount_To_Temp)"" -LogPath ""$(Get_Mount_To_Logs)\Add-AppxProvisionedPackage.log"" -Path ""$($test_mount_folder_Current)"" -PackagePath ""$($AppxSource)"" -SkipLicense $($CommandIsWaitInstallRegions) $($CommandIsWaitInstallDependencyPackage) -ErrorAction SilentlyContinue | Out-Null"
 				$CommandNewPrint = "Add-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackagePath ""$($AppxSource)"" -SkipLicense $($CommandIsWaitInstallDependencyPackage) $($CommandIsWaitInstallRegions)"
 
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-					Write-Host "`n   $($lang.Command): " -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
-					Write-Host "   $($CommandNewPrint)`n" -ForegroundColor Green
+					Write-Host "`n  $($lang.Command): " -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
+					Write-Host "  $($CommandNewPrint)`n" -ForegroundColor Green
 				}
 
-				Write-Host "   $($lang.AddTo)".PadRight(21) -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.AddTo)".PadRight(21) -NoNewline -ForegroundColor Yellow
 				try {
 					Invoke-Expression -Command $CommandNew
 					Write-Host $lang.Done -ForegroundColor Green
 				} catch {
 					Write-Host $_
-					Write-Host "   $($lang.Failed)" -ForegroundColor Red
+					Write-Host "  $($lang.Failed)" -ForegroundColor Red
 				}
 			} else {
-				Write-Host "   $($lang.License): ".PadRight(21) -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.License): ".PadRight(21) -NoNewline -ForegroundColor Yellow
 				if (Test-Path -Path $CertificateSource -PathType Leaf) {
 					Write-Host $CertificateSource -ForegroundColor Green
 
@@ -2203,18 +2203,18 @@ Function InBox_Apps_Add_Match_Process
 					$CommandNewPrint = "Add-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackagePath ""$($AppxSource)"" -LicensePath ""$($CertificateSource)"" $($CommandIsWaitInstallDependencyPackage) $($CommandIsWaitInstallRegions)"
 
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-						Write-Host "`n   $($lang.Command): " -ForegroundColor Yellow
-						Write-Host "   $('-' * 80)"
-						Write-Host "   $($CommandNewPrint)`n" -ForegroundColor Green
+						Write-Host "`n  $($lang.Command): " -ForegroundColor Yellow
+						Write-Host "  $('-' * 80)"
+						Write-Host "  $($CommandNewPrint)`n" -ForegroundColor Green
 					}
 
-					Write-Host "   $($lang.AddTo)".PadRight(21) -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.AddTo)".PadRight(21) -NoNewline -ForegroundColor Yellow
 					try {
 						Invoke-Expression -Command $CommandNew
 						Write-Host $lang.Done -ForegroundColor Green
 					} catch {
 						Write-Host $_
-						Write-Host "   $($lang.Failed)" -ForegroundColor Red
+						Write-Host "  $($lang.Failed)" -ForegroundColor Red
 					}
 				} else {
 					Write-Host $lang.NoLicense -ForegroundColor Red
@@ -2223,38 +2223,38 @@ Function InBox_Apps_Add_Match_Process
 					$CommandNewPrint = "Add-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackagePath ""$($AppxSource)"" -SkipLicense $($CommandIsWaitInstallDependencyPackage) $($CommandIsWaitInstallRegions)"
 
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-						Write-Host "`n   $($lang.Command): " -ForegroundColor Yellow
-						Write-Host "   $('-' * 80)"
-						Write-Host "   $($CommandNewPrint)`n" -ForegroundColor Green
+						Write-Host "`n  $($lang.Command): " -ForegroundColor Yellow
+						Write-Host "  $('-' * 80)"
+						Write-Host "  $($CommandNewPrint)`n" -ForegroundColor Green
 					}
 
-					Write-Host "   $($lang.AddTo)".PadRight(21) -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.AddTo)".PadRight(21) -NoNewline -ForegroundColor Yellow
 					try {
 						Invoke-Expression -Command $CommandNew
 						Write-Host $lang.Done -ForegroundColor Green
 					} catch {
 						Write-Host $_
-						Write-Host "   $($lang.Failed)" -ForegroundColor Red
+						Write-Host "  $($lang.Failed)" -ForegroundColor Red
 					}
 				}
 			}
 
 			$InBoxAppsTasksTime.Stop()
-			Write-Host "`n   $($lang.TimeEnd)" -NoNewline
+			Write-Host "`n  $($lang.TimeEnd)" -NoNewline
 			Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
 		
-			Write-Host "   $($lang.TimeEndAll)" -NoNewline
+			Write-Host "  $($lang.TimeEndAll)" -NoNewline
 			Write-Host $InBoxAppsTasksTime.Elapsed -ForegroundColor Yellow
 		
-			Write-Host "   $($lang.TimeEndAllseconds)" -NoNewline
+			Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 			Write-Host "$($InBoxAppsTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "  $('-' * 80)"
 			Write-Host
 		} else {
 			Write-Host "   Error: 01, $($lang.Inoperable)`n" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+		Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 	}
 }
 
@@ -2263,18 +2263,18 @@ Function Inbox_Apps_Hard_Links_Optimize
 	$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 	if ($Global:Developers_Mode) {
-		Write-Host "`n   $($lang.Developers_Mode_Location): 52`n" -ForegroundColor Green
+		Write-Host "`n  $($lang.Developers_Mode_Location): 52`n" -ForegroundColor Green
 	}
 
 	if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-		Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		Write-Host "   Dism.exe /Image:""$($test_mount_folder_Current)"" /Optimize-ProvisionedAppxPackages" -ForegroundColor Green
-		Write-Host "   $('-' * 80)`n"
+		Write-Host "  $('-' * 80)`n"
 	}
 
 	start-process "Dism.exe" -ArgumentList "/Image:""$($test_mount_folder_Current)"" /Optimize-ProvisionedAppxPackages" -wait -NoNewWindow
-	Write-Host "   $($lang.Done)" -ForegroundColor Green
+	Write-Host "  $($lang.Done)" -ForegroundColor Green
 }
 
 Function InBox_Apps_Check_Customize

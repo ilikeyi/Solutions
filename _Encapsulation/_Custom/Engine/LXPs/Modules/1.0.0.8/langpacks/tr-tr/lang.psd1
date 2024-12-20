@@ -22,7 +22,7 @@
 	RefreshModules            = Tüm modülleri sıcak yenileme
 	PleaseChoose              = Lütfen seçin
 	FailedCreateFolder        = Dizin oluşturulamadı
-	ToMsg                     = \n   {0} Saniyeler sonra otomatik olarak ana menüye dönün.
+	ToMsg                     = {0} Saniyeler sonra otomatik olarak ana menüye dönün.
 	UserCancel                = Kullanıcı işlemi iptal etti.
 	Detailed                  = Ayrıntılı
 	FileName                  = Dosya adı

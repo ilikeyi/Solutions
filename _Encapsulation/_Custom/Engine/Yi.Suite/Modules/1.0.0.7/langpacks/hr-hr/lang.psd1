@@ -47,7 +47,7 @@
 	PleaseChoose              = Odaberite
 	FailedCreateFolder        = Nije uspjelo stvaranje imenika
 	Failed                    = Uspjeti
-	ToMsg                     = \n   {0} Automatski povratak na glavni izbornik nakon nekoliko sekundi.
+	ToMsg                     = {0} Automatski povratak na glavni izbornik nakon nekoliko sekundi.
 	Restart                   = Ponovno pokretanje stupa na snagu
 	AdvOption                 = Izborne značajke
 

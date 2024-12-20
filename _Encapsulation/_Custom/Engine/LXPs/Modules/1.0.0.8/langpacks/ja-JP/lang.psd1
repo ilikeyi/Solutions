@@ -22,7 +22,7 @@
 	RefreshModules            = すべてのモジュールをホットリフレッシュします
 	PleaseChoose              = 選んでください
 	FailedCreateFolder        = ディレクトリの作成に失敗しました
-	ToMsg                     = \n   {0} 数秒後、自動的にメインメニューに戻ります。
+	ToMsg                     = {0} 数秒後、自動的にメインメニューに戻ります。
 	UserCancel                = ユーザーが操作をキャンセルしました。
 	Detailed                  = 詳細
 	FileName                  = ファイル名

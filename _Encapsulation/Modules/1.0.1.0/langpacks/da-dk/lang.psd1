@@ -41,7 +41,7 @@
 	Existed                         = Eksisterer allerede
 	FailedCreateFolder              = Det lykkedes ikke at oprette mappe
 	FailedCreateFile                = Filen kunne ikke oprettes
-	ToMsg                           = \n   {0} Vend automatisk tilbage til hovedmenuen efter sekunder.
+	ToMsg                           = {0} Vend automatisk tilbage til hovedmenuen efter sekunder.
 	OnDemandPlanTask                = Specialtildeling af kendte begivenheder
 	Operable                        = Kan betjenes
 	Inoperable                      = Ubrugelig

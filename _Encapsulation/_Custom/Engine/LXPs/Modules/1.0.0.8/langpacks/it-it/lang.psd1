@@ -22,7 +22,7 @@
 	RefreshModules            = Aggiornamento a caldo di tutti i moduli
 	PleaseChoose              = Seleziona
 	FailedCreateFolder        = Impossibile creare la directory
-	ToMsg                     = \n   {0} Ritorna automaticamente al menu principale dopo secondi.
+	ToMsg                     = {0} Ritorna automaticamente al menu principale dopo secondi.
 	UserCancel                = L'utente ha annullato l'operazione.
 	Detailed                  = Dettagliato
 	FileName                  = Nome del file

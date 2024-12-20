@@ -41,7 +41,7 @@
 	Existed                         = Există deja
 	FailedCreateFolder              = Nu s-a putut crea directorul
 	FailedCreateFile                = Nu s-a putut crea fișierul
-	ToMsg                           = \n   {0} Reveniți automat la meniul principal după câteva secunde.
+	ToMsg                           = {0} Reveniți automat la meniul principal după câteva secunde.
 	OnDemandPlanTask                = Atribuire personalizată a evenimentelor cunoscute
 	Operable                        = Operabil
 	Inoperable                      = Inoperabil

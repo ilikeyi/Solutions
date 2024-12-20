@@ -27,7 +27,7 @@
 	PleaseChoose              = Selecteer alstublieft
 	FailedCreateFolder        = Kan map niet maken
 	Failed                    = Mislukking
-	ToMsg                     = \n   {0} Keer na enkele seconden automatisch terug naar het hoofdmenu.
+	ToMsg                     = {0} Keer na enkele seconden automatisch terug naar het hoofdmenu.
 	UserCancel                = De gebruiker heeft de bewerking geannuleerd.
 	Help                      = Hulp
 	WorkDone                  = Voltooid, druk op een willekeurige toets om terug te keren naar de hoofdinterface...

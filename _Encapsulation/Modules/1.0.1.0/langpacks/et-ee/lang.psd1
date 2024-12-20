@@ -41,7 +41,7 @@
 	Existed                         = Juba olemas
 	FailedCreateFolder              = Kataloogi loomine ebaõnnestus
 	FailedCreateFile                = Faili loomine ebaõnnestus
-	ToMsg                           = \n   {0} Naaske sekundite pärast automaatselt peamenüüsse.
+	ToMsg                           = {0} Naaske sekundite pärast automaatselt peamenüüsse.
 	OnDemandPlanTask                = Teadaolevate sündmuste kohandatud määramine
 	Operable                        = Kasutatav
 	Inoperable                      = Kasutuskõlbmatu

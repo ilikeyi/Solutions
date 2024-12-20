@@ -47,7 +47,8 @@ Function ToMainpage
 		[int]$Wait
 	)
 
-	Write-Host "   $($lang.ToMsg -f $wait)" -ForegroundColor Red
+	Write-Host
+	Write-Host "  $($lang.ToMsg -f $wait)" -ForegroundColor Red
 	start-process "timeout.exe" -argumentlist "/t $($wait) /nobreak" -wait -nonewwindow
 }
 

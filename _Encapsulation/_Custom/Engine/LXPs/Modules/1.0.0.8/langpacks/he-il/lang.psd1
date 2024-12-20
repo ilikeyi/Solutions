@@ -22,7 +22,7 @@
 	RefreshModules            = רענון חם של כל המודולים
 	PleaseChoose              = נא לבחור
 	FailedCreateFolder        = יצירת הספרייה נכשלה
-	ToMsg                     = \n   {0} חזור אוטומטית לתפריט הראשי לאחר שניות.
+	ToMsg                     = {0} חזור אוטומטית לתפריט הראשי לאחר שניות.
 	UserCancel                = המשתמש ביטל את הפעולה.
 	Detailed                  = מְפוֹרָט
 	FileName                  = שם הקובץ

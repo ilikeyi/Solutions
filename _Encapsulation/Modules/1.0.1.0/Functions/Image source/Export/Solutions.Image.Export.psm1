@@ -91,15 +91,15 @@ Function Image_Select_Export_UI
 			}
 
 			if ($MarkSelectIndexin.Count -gt 0) {
-				Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				ForEach ($item in $MarkSelectIndexin) {
 					ForEach ($itemDetail in $Global:Primary_Key_Image.Index) {
 						if ($item -eq $itemDetail.ImageIndex) {
-							Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+							Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 							Write-Host $itemDetail.ImageName -ForegroundColor Yellow
 
-							Write-Host "   $($lang.MountedIndex): " -NoNewline
+							Write-Host "  $($lang.MountedIndex): " -NoNewline
 							Write-Host $itemDetail.ImageIndex -ForegroundColor Yellow
 
 							Write-Host
@@ -107,8 +107,8 @@ Function Image_Select_Export_UI
 					}
 				}
 
-				Write-Host "   $($lang.AddQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "  $($lang.AddQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				switch ($Global:Primary_Key_Image.Suffix) {
 					"swm" {
 						$FileBrowser = New-Object System.Windows.Forms.SaveFileDialog -Property @{
@@ -123,20 +123,20 @@ Function Image_Select_Export_UI
 							ForEach ($item in $MarkSelectIndexin) {
 								ForEach ($itemDetail in $Global:Primary_Key_Image.Index) {
 									if ($item -eq $itemDetail.ImageIndex) {
-										Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+										Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 										Write-Host $itemDetail.ImageName -ForegroundColor Yellow
 	
-										Write-Host "   $($lang.MountedIndex): " -NoNewline
+										Write-Host "  $($lang.MountedIndex): " -NoNewline
 										Write-Host $itemDetail.ImageIndex -ForegroundColor Yellow
 
-										Write-Host "   $($lang.AddTo)".PadRight(28) -NoNewline
+										Write-Host "  $($lang.AddTo)".PadRight(28) -NoNewline
 
 										try {
 											dism /ScratchDir:"""$(Get_Mount_To_Temp)""" /LogPath:"$(Get_Mount_To_Logs)\Export.log" /export-image /SourceImageFile:"""$($Global:Primary_Key_Image.FullPath)""" /swmfile:"""$($Global:Primary_Key_Image.Path)\$($Global:Primary_Key_Image.ImageFileName)*.$($Global:Primary_Key_Image.Suffix)""" /SourceIndex:"""$($itemDetail.ImageIndex)""" /DestinationImageFile:"""$($FileBrowser.FileName)""" /Compress:max /CheckIntegrity
 											Write-Host $lang.Done -ForegroundColor Green
 										} catch {
 											Write-Host $_
-											Write-Host "   $($lang.Failed)" -ForegroundColor Red
+											Write-Host "  $($lang.Failed)" -ForegroundColor Red
 										}
 
 										Write-Host
@@ -146,7 +146,7 @@ Function Image_Select_Export_UI
 
 							$UI_Main.Close()
 						} else {
-							Write-Host "   $($lang.UserCancel)"
+							Write-Host "  $($lang.UserCancel)"
 						}
 					}
 					"esd" {
@@ -162,26 +162,26 @@ Function Image_Select_Export_UI
 							ForEach ($item in $MarkSelectIndexin) {
 								ForEach ($itemDetail in $Global:Primary_Key_Image.Index) {
 									if ($item -eq $itemDetail.ImageIndex) {
-										Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+										Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 										Write-Host $itemDetail.ImageName -ForegroundColor Yellow
 
-										Write-Host "   $($lang.MountedIndex): " -NoNewline
+										Write-Host "  $($lang.MountedIndex): " -NoNewline
 										Write-Host $itemDetail.ImageIndex -ForegroundColor Yellow
 
 										if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-											Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-											Write-Host "   $('-' * 80)"
+											Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+											Write-Host "  $('-' * 80)"
 											Write-Host "   Export-WindowsImage -SourceImagePath ""$($Global:Primary_Key_Image.FullPath)"" -SourceIndex ""$($item)"" -DestinationImagePath ""$($FileBrowser.FileName)"" -CompressionType max -CheckIntegrity" -ForegroundColor Green
-											Write-Host "   $('-' * 80)`n"
+											Write-Host "  $('-' * 80)`n"
 										}
 
-										Write-Host "   $($lang.Export_Image)".PadRight(28) -NoNewline
+										Write-Host "  $($lang.Export_Image)".PadRight(28) -NoNewline
 										try {
 											Export-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Export.log" -SourceImagePath "$($Global:Primary_Key_Image.FullPath)" -SourceIndex $item -DestinationImagePath $FileBrowser.FileName -CompressionType max -CheckIntegrity -ErrorAction SilentlyContinue | Out-Null
 											Write-Host $lang.Done -ForegroundColor Green
 										} catch {
 											Write-Host $_
-											Write-Host "   $($lang.Failed)" -ForegroundColor Red
+											Write-Host "  $($lang.Failed)" -ForegroundColor Red
 										}
 
 										Write-Host
@@ -191,7 +191,7 @@ Function Image_Select_Export_UI
 	
 							$UI_Main.Close()
 						} else {
-							Write-Host "   $($lang.UserCancel)"
+							Write-Host "  $($lang.UserCancel)"
 						}
 					}
 					Default {
@@ -200,33 +200,33 @@ Function Image_Select_Export_UI
 						$TempReBuildWim = Join-Path -Path $Global:Image_source -ChildPath "Sources\ReBuild.wim"
 						Remove-Item -Path $TempReBuildWim -ErrorAction SilentlyContinue
 	
-						Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-						Write-Host "   $('-' * 80)"
+						Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+						Write-Host "  $('-' * 80)"
 						ForEach ($item in $MarkSelectIndexin) {
 							ForEach ($itemDetail in $Global:Primary_Key_Image.Index) {
 								if ($item -eq $itemDetail.ImageIndex) {
-									Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+									Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 									Write-Host $itemDetail.ImageName -ForegroundColor Yellow
 	
-									Write-Host "   $($lang.MountedIndex): " -NoNewline
+									Write-Host "  $($lang.MountedIndex): " -NoNewline
 									Write-Host $itemDetail.ImageIndex -ForegroundColor Yellow	
 
 									if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-										Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-										Write-Host "   $($lang.Developers_Mode_Location)86" -ForegroundColor Green
-										Write-Host "   $('-' * 80)"
+										Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+										Write-Host "  $($lang.Developers_Mode_Location)86" -ForegroundColor Green
+										Write-Host "  $('-' * 80)"
 	
 										Write-Host "   Export-WindowsImage -SourceImagePath ""$($Global:Primary_Key_Image.FullPath)"" -SourceIndex ""$($item)"" -DestinationImagePath ""$($TempReBuildWim)"" -CompressionType max -CheckIntegrity" -ForegroundColor Green
-										Write-Host "   $('-' * 80)`n"
+										Write-Host "  $('-' * 80)`n"
 									}
 	
-									Write-Host "   $($lang.Export_Image)".PadRight(28) -NoNewline
+									Write-Host "  $($lang.Export_Image)".PadRight(28) -NoNewline
 									try {
 										Export-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Export.log" -SourceImagePath $Global:Primary_Key_Image.FullPath -SourceIndex $item -DestinationImagePath $TempReBuildWim -CompressionType max -CheckIntegrity -ErrorAction SilentlyContinue | Out-Null
 										Write-Host $lang.Done -ForegroundColor Green
 									} catch {
 										Write-Host $_
-										Write-Host "   $($lang.Failed)" -ForegroundColor Red
+										Write-Host "  $($lang.Failed)" -ForegroundColor Red
 									}
 
 									Write-Host
@@ -241,9 +241,9 @@ Function Image_Select_Export_UI
 							Remove-Item -Path "$($Global:Primary_Key_Image.FullPath)" -ErrorAction SilentlyContinue
 							Rename-Item -Path $TempReBuildWim -NewName "$($Global:Primary_Key_Image.FullPath)" -ErrorAction SilentlyContinue
 	
-							Write-Host "   $($lang.Done)" -ForegroundColor Green
+							Write-Host "  $($lang.Done)" -ForegroundColor Green
 						} else {
-							Write-Host "   $($lang.AddTo), $($lang.Failed)" -ForegroundColor Red
+							Write-Host "  $($lang.AddTo), $($lang.Failed)" -ForegroundColor Red
 						}
 	
 						Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "04292024"
@@ -264,7 +264,7 @@ Function Image_Select_Export_UI
 		Width          = 280
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}

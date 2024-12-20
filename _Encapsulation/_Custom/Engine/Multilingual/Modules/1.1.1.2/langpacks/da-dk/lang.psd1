@@ -27,7 +27,7 @@
 	PleaseChoose              = Vælg venligst
 	FailedCreateFolder        = Kunne ikke oprette mappe
 	Failed                    = Svigte
-	ToMsg                     = \n   {0} Vend automatisk tilbage til hovedmenuen efter sekunder.
+	ToMsg                     = {0} Vend automatisk tilbage til hovedmenuen efter sekunder.
 	UserCancel                = Brugeren har annulleret handlingen.
 	Help                      = Hjælp
 	WorkDone                  = Fuldført, tryk på en vilkårlig tast for at vende tilbage til hovedgrænsefladen...

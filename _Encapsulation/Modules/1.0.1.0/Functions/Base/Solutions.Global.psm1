@@ -17,8 +17,8 @@ Function Check_Folder
 		if (Test-Path -Path $chkpath -PathType Container) {
 
 		} else {
-			Write-Host "`n   $($lang.FailedCreateFolder)"
-			Write-Host "   $($chkpath)" -ForegroundColor Red
+			Write-Host "`n  $($lang.FailedCreateFolder)"
+			Write-Host "  $($chkpath)" -ForegroundColor Red
 			return
 		}
 	}
@@ -232,13 +232,13 @@ Function Archive
 		$to = Convert-Path -Path $to -ErrorAction SilentlyContinue
 	}
 
-	Write-Host "   $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+	Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
 	Write-Host $filename -ForegroundColor Green
 
-	Write-Host "   $($lang.SaveTo): " -NoNewline -ForegroundColor Yellow
+	Write-Host "  $($lang.SaveTo): " -NoNewline -ForegroundColor Yellow
 	Write-Host $to -ForegroundColor Green
 
-	Write-Host "   $($lang.UpdateUnpacking)".PadRight(28) -NoNewline
+	Write-Host "  $($lang.UpdateUnpacking)".PadRight(28) -NoNewline
 
 	$Verify_Install_Path = Get_Zip -Run "7z.exe"
 	if (Test-Path -Path $Verify_Install_Path -PathType leaf) {
@@ -394,7 +394,7 @@ Function Get_Arch_Path
 #>
 Function Get_Next
 {
-	Write-Host "`n   $($lang.WorkDone)`n"
+	Write-Host "`n  $($lang.WorkDone)`n"
 	pause
 }
 

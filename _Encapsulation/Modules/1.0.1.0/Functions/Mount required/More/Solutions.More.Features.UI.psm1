@@ -6,23 +6,23 @@ Function Feature_More_UI_Menu
 {
 	if (-not $Global:EventQueueMode) {
 		Logo -Title $lang.MoreFeature
-		Write-Host "   $($lang.Dashboard)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Dashboard)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
-		Write-Host "   $($lang.MountImageTo): " -NoNewline
+		Write-Host "  $($lang.MountImageTo): " -NoNewline
 		if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
 			Write-Host $Global:Mount_To_Route -ForegroundColor Green
 		} else {
 			Write-Host $Global:Mount_To_Route -ForegroundColor Yellow
 		}
 
-		Write-Host "   $($lang.MainImageFolder): " -NoNewline
+		Write-Host "  $($lang.MainImageFolder): " -NoNewline
 		if (Test-Path -Path $Global:Image_source -PathType Container) {
 			Write-Host $Global:Image_source -ForegroundColor Green
 		} else {
 			Write-Host $Global:Image_source -ForegroundColor Red
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.NoInstallImage)" -ForegroundColor Red
 
 			ToWait -wait 2
 			Functions_Assign
@@ -368,7 +368,7 @@ Function Feature_More_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -665,7 +665,7 @@ Function Feature_More_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "12" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -767,109 +767,109 @@ Function Feature_More_UI
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
 				<#
 					.固化更新
 				#>
-				Write-Host "`n   $($lang.CuringUpdate)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.CuringUpdate)" -ForegroundColor Yellow
 				if ((Get-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "   $($lang.Operable)" -ForegroundColor Green
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
 				<#
 					.清理取代的
 				#>
-				Write-Host "`n   $($lang.Superseded)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.Superseded)" -ForegroundColor Yellow
 				if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "   $($lang.Operable)" -ForegroundColor Green
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
-					Write-Host "`n   $($lang.ExcludeItem)" -ForegroundColor Yellow
+					Write-Host "`n  $($lang.ExcludeItem)" -ForegroundColor Yellow
 					if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-						Write-Host "   $($lang.Operable)" -ForegroundColor Green
+						Write-Host "  $($lang.Operable)" -ForegroundColor Green
 					} else {
-						Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+						Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 					}
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
 				<#
 					.健康
 				#>
-				Write-Host "`n   $($lang.Healthy)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.Healthy)" -ForegroundColor Yellow
 				if ((Get-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "   $($lang.Operable)" -ForegroundColor Green
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
 				<#
 					.获取预安装应用 UWP
 				#>
-				Write-Host "`n   $($lang.GetInBoxApps)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
-				Write-Host "   $($lang.ExportToLogs)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.GetInBoxApps)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
+				Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Yellow
 				if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "   $($lang.Operable)" -ForegroundColor Green
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
-				Write-Host "`n   $($lang.ExportShow)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.ExportShow)" -ForegroundColor Yellow
 				if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "   $($lang.Operable)" -ForegroundColor Green
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
 				<#
 					.查看安装的所有软件包的列表
 				#>
-				Write-Host "`n   $($lang.GetImagePackage)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
-				Write-Host "   $($lang.ExportToLogs)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.GetImagePackage)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
+				Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Yellow
 				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "   $($lang.Operable)" -ForegroundColor Green
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
-				Write-Host "`n   $($lang.ExportShow)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.ExportShow)" -ForegroundColor Yellow
 				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "   $($lang.Operable)" -ForegroundColor Green
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
 				<#
 					.查看已安装的驱动列表
 				#>
-				Write-Host "`n   $($lang.ViewDrive)"
-				Write-Host "   $($lang.ExportToLogs)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.ViewDrive)"
+				Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Yellow
 				if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "   $($lang.Operable)" -ForegroundColor Green
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
-				Write-Host "`n   $($lang.ExportShow)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.ExportShow)" -ForegroundColor Yellow
 				if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "   $($lang.Operable)" -ForegroundColor Green
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
 				<#
 					.映像语言
 				#>
-				Write-Host "`n   $($lang.ImageLanguage)"
+				Write-Host "`n  $($lang.ImageLanguage)"
 				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Report_Image_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "   $($lang.Operable)" -ForegroundColor Green
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 			}
 
@@ -1072,8 +1072,8 @@ Function Feature_More_UI
 	}
 
 	if ($Global:EventQueueMode) {
-		Write-Host "`n   $($lang.MoreFeature)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.MoreFeature)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main_UWP_To_Log.Enabled = $True
 		$UI_Main_Package_To_Log.Enabled = $True
@@ -1091,8 +1091,8 @@ Function Feature_More_UI
 	$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-		Write-Host "`n   $($lang.MoreFeature)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.MoreFeature)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Image_Is_Select_IAB) {
 			$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
@@ -1157,9 +1157,9 @@ Function Feature_More_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
 
 		<#
 			.固化更新
@@ -1271,43 +1271,43 @@ Function Image_Clear_Superseded
 		<#
 			.输出当前所有排除规则
 		#>
-		Write-Host "`n   $($lang.ExcludeItem)" -ForegroundColor Yellow
+		Write-Host "`n  $($lang.ExcludeItem)" -ForegroundColor Yellow
 		if ($InitlClearSupersededDelete.count -gt 0) {
 			ForEach ($item in $InitlClearSupersededDelete) {
-				Write-Host "   $($item)" -ForegroundColor Green
+				Write-Host "  $($item)" -ForegroundColor Green
 			}
 		} else {
-			Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+			Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 		}
 
 		<#
 			.获取所有已安装的应用，并输出到数组
 		#>
-		Write-Host "`n   $($lang.Superseded)" -ForegroundColor Yellow
+		Write-Host "`n  $($lang.Superseded)" -ForegroundColor Yellow
 		try {
 			Get-WindowsPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Get.log" -Path $test_mount_folder_Current -ErrorAction SilentlyContinue | ForEach-Object {
 				if ($_.PackageState -eq "Superseded") {
 					$InitlClearSuperseded += $_.PackageName
-					Write-Host "   $($_.PackageName)" -ForegroundColor Green
+					Write-Host "  $($_.PackageName)" -ForegroundColor Green
 				}
 			}
 		} catch {
-			Write-Host "   $($_)" -ForegroundColor Yellow
-			Write-Host "   $($lang.SelectFromError)" -ForegroundColor Red
-			Write-Host "   $($lang.Superseded), $($lang.Inoperable) ( Superseded )" -ForegroundColor Red
+			Write-Host "  $($_)" -ForegroundColor Yellow
+			Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
+			Write-Host "  $($lang.Superseded), $($lang.Inoperable) ( Superseded )" -ForegroundColor Red
 		}
 
 		try {
 			Get-WindowsPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Get.log" -Path $test_mount_folder_Current -ErrorAction SilentlyContinue | ForEach-Object {
 				if ($_.PackageState -eq "UninstallPending") {
 					$InitlClearSuperseded += $_.PackageName
-					Write-Host "   $($_.PackageName)" -ForegroundColor Green
+					Write-Host "  $($_.PackageName)" -ForegroundColor Green
 				}
 			}
 		} catch {
-			Write-Host "   $($_)" -ForegroundColor Yellow
-			Write-Host "   $($lang.SelectFromError)" -ForegroundColor Red
-			Write-Host "   $($lang.Superseded), $($lang.Inoperable) ( UninstallPending )" -ForegroundColor Red
+			Write-Host "  $($_)" -ForegroundColor Yellow
+			Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
+			Write-Host "  $($lang.Superseded), $($lang.Inoperable) ( UninstallPending )" -ForegroundColor Red
 		}
 
 		<#
@@ -1322,38 +1322,38 @@ Function Image_Clear_Superseded
 				}
 			}
 
-			Write-Host "`n   $($lang.LXPsWaitRemove)" -ForegroundColor Green
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LXPsWaitRemove)" -ForegroundColor Green
+			Write-Host "  $('-' * 80)"
 			ForEach ($item in $InitlClearSuperseded) {
 				if ($InitlClearSupersededExclude -notContains $item) {
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-						Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-						Write-Host "   $('-' * 80)"
+						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+						Write-Host "  $('-' * 80)"
 						Write-Host "   Remove-WindowsPackage -Path ""$($test_mount_folder_Current)"" -PackageName ""$($item)""" -ForegroundColor Green
-						Write-Host "   $('-' * 80)`n"
+						Write-Host "  $('-' * 80)`n"
 					}
 
-					Write-Host "   $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
 					Write-Host $item -ForegroundColor Red
 
-					Write-Host "   $($lang.Del)".PadRight(28) -NoNewline
+					Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
 					try {
 						Remove-WindowsPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove.log" -Path $test_mount_folder_Current -PackageName $item -ErrorAction SilentlyContinue | Out-Null
 						Write-Host $lang.Done -ForegroundColor Green
 					} catch {
 						Write-Host $_
-						Write-Host "   $($lang.Failed)" -ForegroundColor Red
+						Write-Host "  $($lang.Failed)" -ForegroundColor Red
 					}
 
 					Write-Host
 				}
 			}
 		} else {
-			Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+			Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 	}
 }

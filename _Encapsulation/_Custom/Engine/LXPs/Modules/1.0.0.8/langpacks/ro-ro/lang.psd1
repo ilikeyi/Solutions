@@ -22,7 +22,7 @@
 	RefreshModules            = Actualizează la cald toate modulele
 	PleaseChoose              = Vă rugăm să selectați
 	FailedCreateFolder        = Nu s-a putut crea directorul
-	ToMsg                     = \n   {0} Reveniți automat la meniul principal după câteva secunde.
+	ToMsg                     = {0} Reveniți automat la meniul principal după câteva secunde.
 	UserCancel                = Utilizatorul a anulat operația.
 	Detailed                  = Detaliat
 	FileName                  = Nume de fișier

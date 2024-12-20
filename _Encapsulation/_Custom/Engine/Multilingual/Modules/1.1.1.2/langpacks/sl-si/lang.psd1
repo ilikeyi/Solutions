@@ -27,7 +27,7 @@
 	PleaseChoose              = Prosim izberite
 	FailedCreateFolder        = Imenika ni bilo mogoče ustvariti
 	Failed                    = Spodleteti
-	ToMsg                     = \n   {0} Samodejna vrnitev v glavni meni po nekaj sekundah.
+	ToMsg                     = {0} Samodejna vrnitev v glavni meni po nekaj sekundah.
 	UserCancel                = Uporabnik je preklical operacijo.
 	Help                      = Pomoč
 	WorkDone                  = Končano, pritisnite katero koli tipko za vrnitev v glavni vmesnik ...

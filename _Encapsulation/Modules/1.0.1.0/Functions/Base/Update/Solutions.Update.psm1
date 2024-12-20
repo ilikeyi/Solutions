@@ -28,8 +28,8 @@ Function Update
 	}
 
 	Logo -Title $lang.ChkUpdate
-	Write-Host "   $($lang.ChkUpdate)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $($lang.ChkUpdate)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	if ($Auto) {
 		ForEach ($item in (Get-Module -Name Solutions).PrivateData.PSData.UpdateServer | Sort-Object { Get-Random } ) {
@@ -175,7 +175,7 @@ Function Update_Setting_UI
 		Text           = $lang.Cancel
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}
@@ -258,8 +258,8 @@ Function Update_Process
 	#>
 	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Internet Explorer\Main" -Name "DisableFirstRunCustomize" -Value 2 -ErrorAction SilentlyContinue
 
-	Write-Host "   $($lang.UpdateCheckServerStatus -f $Script:ServerList.Count)"
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $($lang.UpdateCheckServerStatus -f $Script:ServerList.Count)"
+	Write-Host "  $('-' * 80)"
 
 	ForEach ($item in $Script:ServerList) {
 		Write-Host "   * $($lang.UpdateServerAddress): " -NoNewline -ForegroundColor Yellow
@@ -268,31 +268,31 @@ Function Update_Process
 		if (Test_URI $item) {
 			$PreServerVersion = $item
 			$ServerTest = $true
-			Write-Host "     $($lang.UpdateServeravailable)" -ForegroundColor Green
+			Write-Host "    $($lang.UpdateServeravailable)" -ForegroundColor Green
 			break
 		} else {
-			Write-Host "     $($lang.UpdateServerUnavailable)`n" -ForegroundColor Red
+			Write-Host "    $($lang.UpdateServerUnavailable)`n" -ForegroundColor Red
 		}
 	}
 
 	if ($ServerTest) {
-		Write-Host "   $('-' * 80)"
-		Write-Host "     $($lang.UpdatePriority)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
+		Write-Host "    $($lang.UpdatePriority)" -ForegroundColor Green
 	} else {
-		Write-Host "     $($lang.UpdateServerTestFailed)" -ForegroundColor Red
-		Write-Host "   $('-' * 80)"
+		Write-Host "    $($lang.UpdateServerTestFailed)" -ForegroundColor Red
+		Write-Host "  $('-' * 80)"
 		return
 	}
 
-	Write-Host "`n   $($lang.UpdateQueryingUpdate)"
+	Write-Host "`n  $($lang.UpdateQueryingUpdate)"
 
 	$error.Clear()
 	$time = Measure-Command { Invoke-WebRequest -Uri $PreServerVersion -TimeoutSec 15 -ErrorAction stop }
 
 	if ($error.Count -eq 0) {
-		Write-Host "`n   $($lang.UpdateQueryingTime -f $time.TotalMilliseconds)"
+		Write-Host "`n  $($lang.UpdateQueryingTime -f $time.TotalMilliseconds)"
 	} else {
-		Write-Host "`n   $($lang.UpdateConnectFailed)"
+		Write-Host "`n  $($lang.UpdateConnectFailed)"
 		return
 	}
 
@@ -311,7 +311,7 @@ Function Update_Process
 	}
 
 	if ($IsCorrectAuVer) {
-		Write-Host "`n   $($lang.UpdateMinimumVersion -f $((Get-Module -Name Solutions).PrivateData.PSData.MinimumVersion))"
+		Write-Host "`n  $($lang.UpdateMinimumVersion -f $((Get-Module -Name Solutions).PrivateData.PSData.MinimumVersion))"
 		$IsUpdateAvailable = $false
 
 		if ($getSerVer.version.version.Replace('.', '') -gt (Get-Module -Name Solutions).Version.ToString().Replace('.', '')) {
@@ -321,23 +321,23 @@ Function Update_Process
 		}
 
 		if ($IsUpdateAvailable) {
-			Write-Host "`n   $($lang.UpdateVerifyAvailable)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.UpdateVerifyAvailable)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Write-Host "   * $($lang.UpdateDownloadAddress): " -NoNewline -ForegroundColor Yellow
 			Write-Host $url -ForegroundColor Green
 
 			if (Test_URI $url) {
-				Write-Host "     $($lang.UpdateAvailable)" -ForegroundColor Green
-				Write-Host "   $('-' * 80)"
+				Write-Host "    $($lang.UpdateAvailable)" -ForegroundColor Green
+				Write-Host "  $('-' * 80)"
 
-				Write-Host "`n   $($lang.UpdateCurrent): $((Get-Module -Name Solutions).Version.ToString())
+				Write-Host "`n  $($lang.UpdateCurrent): $((Get-Module -Name Solutions).Version.ToString())
    $($lang.UpdateLatest): $($getSerVer.version.version)
 
    $($getSerVer.changelog.title)
    $('-' * ($getSerVer.changelog.title).Length)
 $($getSerVer.changelog.log)`n"
 
-				Write-Host "   $($lang.UpdateNewLatest)`n" -ForegroundColor Green
+				Write-Host "  $($lang.UpdateNewLatest)`n" -ForegroundColor Green
 
 				$FlagsCheckForceUpdate = $False
 				if ($Force) {
@@ -367,37 +367,37 @@ $($getSerVer.changelog.log)`n"
 							Update_And_Download -url $url
 						}
 						1 {
-							Write-Host "`n   $($lang.UserCancel)"
+							Write-Host "`n  $($lang.UserCancel)"
 						}
 					}
 				}
 			} else {
-				Write-Host "     $($lang.UpdateUnavailable)" -ForegroundColor Red
-				Write-Host "   $('-' * 80)"
+				Write-Host "    $($lang.UpdateUnavailable)" -ForegroundColor Red
+				Write-Host "  $('-' * 80)"
 				return
 			}
 		} else {
 			if ($UI_Main_Reset.Checked) {
-				Write-Host "`n   $($lang.UpdateVerifyAvailable)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.UpdateVerifyAvailable)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				Write-Host "   * $($lang.UpdateDownloadAddress): " -NoNewline -ForegroundColor Yellow
 				Write-Host $url -ForegroundColor Green
 
 				if (Test_URI $url) {
-					Write-Host "     $($lang.UpdateAvailable)" -ForegroundColor Green
-					Write-Host "   $('-' * 80)"
+					Write-Host "    $($lang.UpdateAvailable)" -ForegroundColor Green
+					Write-Host "  $('-' * 80)"
 					Update_And_Download -url $url
 				} else {
-					Write-Host "     $($lang.UpdateUnavailable)" -ForegroundColor Red
-					Write-Host "   $('-' * 80)"
+					Write-Host "    $($lang.UpdateUnavailable)" -ForegroundColor Red
+					Write-Host "  $('-' * 80)"
 					return
 				}
 			} else {
-				Write-Host "   $($lang.UpdateNoUpdateAvailable -f $((Get-Module -Name Solutions).Author))"
+				Write-Host "  $($lang.UpdateNoUpdateAvailable -f $((Get-Module -Name Solutions).Author))"
 			}
 		}
 	} else {
-		Write-Host "   $($lang.UpdateNotSatisfied -f $((Get-Module -Name Solutions).PrivateData.PSData.MinimumVersion), $((Get-Module -Name Solutions).Author))"
+		Write-Host "  $($lang.UpdateNotSatisfied -f $((Get-Module -Name Solutions).PrivateData.PSData.MinimumVersion), $((Get-Module -Name Solutions).Author))"
 	}
 }
 
@@ -413,7 +413,7 @@ Function Update_And_Download
 	$start_time = Get-Date
 	remove-item -path $output -force -ErrorAction SilentlyContinue
 	Invoke-WebRequest -Uri $url -OutFile $output -TimeoutSec 30 -DisableKeepAlive -ErrorAction SilentlyContinue | Out-Null
-	Write-Host "`n   $($lang.UpdateTimeUsed): $((Get-Date).Subtract($start_time).Seconds) (s)`n"
+	Write-Host "`n  $($lang.UpdateTimeUsed): $((Get-Date).Subtract($start_time).Seconds) (s)`n"
 
 	if (Test-Path -Path $output -PathType Leaf) {
 		Archive -filename $output -to "$($PSScriptRoot)\..\..\..\..\..\.."
@@ -426,20 +426,20 @@ Function Update_And_Download
 
 		$SaveNewVersion = (Get-Module -Name Solutions).Version.ToString().Replace('.', '')
 
-		Write-Host "`n   $($lang.UpdateClean)" -ForegroundColor Yellow
+		Write-Host "`n  $($lang.UpdateClean)" -ForegroundColor Yellow
 		if ($UI_Main_Clean.Checked) {
 			if ($SaveOldVersionShort -eq $SaveNewVersion) {
-				Write-Host "   $($lang.UpdateNotExecuted)"
+				Write-Host "  $($lang.UpdateNotExecuted)"
 			} else {
-				Write-host "   $($lang.AddTo)".PadRight(22) -NoNewline -ForegroundColor Green
+				Write-Host "  $($lang.AddTo)".PadRight(22) -NoNewline -ForegroundColor Green
 				Save_Dynamic -regkey "Solutions\Update" -name "IsUpdate_Clean" -value $SaveOldVersion -String
 				Write-host $lang.Done
 			}
 		} else {
-			Write-Host "   $($lang.Inoperable)"
+			Write-Host "  $($lang.Inoperable)"
 		}
 	} else {
-		Write-Host "`n   $($lang.UpdateUpdateStop)"
+		Write-Host "`n  $($lang.UpdateUpdateStop)"
 	}
 }
 
@@ -530,29 +530,29 @@ Function Unzip_Done_Refresh_Process
 	#>
 	Update_Done_Refresh_Process
 
-	Write-Host "`n   * $($lang.UpdatePostProc)"
+	Write-Host "`n  * $($lang.UpdatePostProc)"
 	if ($Script:IsProcess) {
-		Write-Host "   $($lang.UpdateNotExecuted)" -ForegroundColor red
+		Write-Host "  $($lang.UpdateNotExecuted)" -ForegroundColor red
 	} else {
-		Write-Host "`n   $($PPocess)"
+		Write-Host "`n  $($PPocess)"
 		if (Test-Path -Path $PPocess -PathType Leaf) {
 			Start-Process -FilePath $PPocess -wait -WindowStyle Minimized
 			remove-item -path $PPocess -force
-			Write-Host "   $($lang.Done)" -ForegroundColor Green
+			Write-Host "  $($lang.Done)" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.UpdateNoPost)" -ForegroundColor red
+			Write-Host "  $($lang.UpdateNoPost)" -ForegroundColor red
 		}
 
-		Write-Host "`n   $($PsPocess)"
+		Write-Host "`n  $($PsPocess)"
 		if (Test-Path -Path $PsPocess -PathType Leaf) {
 			Start-Process powershell -ArgumentList "-file $($PsPocess)" -Wait -WindowStyle Minimized
 			remove-item -path $PsPocess -force
-			Write-Host "   $($lang.Done)" -ForegroundColor Green
+			Write-Host "  $($lang.Done)" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.UpdateNoPost)" -ForegroundColor red
+			Write-Host "  $($lang.UpdateNoPost)" -ForegroundColor red
 		}
 
-		Write-Host "`n   $((Get-Module -Name Solutions).Author)'s Solutions $($lang.UpdateDone)`n"
+		Write-Host "`n  $((Get-Module -Name Solutions).Author)'s Solutions $($lang.UpdateDone)`n"
 	}
 }
 
@@ -562,11 +562,11 @@ Function Unzip_Done_Refresh_Process
 #>
 Function Update_Done_Refresh_Process
 {
-	Write-Host "`n   $($lang.UpdateDoneRefresh)"
+	Write-Host "`n  $($lang.UpdateDoneRefresh)"
 	<#
 		.Add code from here
 		.从此处添加代码
 	#>
 
-	Write-Host "   $($lang.Done)" -ForegroundColor Green
+	Write-Host "  $($lang.Done)" -ForegroundColor Green
 }

@@ -41,7 +41,7 @@
 	Existed                         = Existierte
 	FailedCreateFolder              = Verzeichnis konnte nicht erstellt werden
 	FailedCreateFile                = Erstellen der Datei fehlgeschlagen
-	ToMsg                           = \n   {0} Kehrt nach Sekunden automatisch zum Hauptmenü zurück.
+	ToMsg                           = {0} Kehrt nach Sekunden automatisch zum Hauptmenü zurück.
 	OnDemandPlanTask                = Bekannte Ereignisse benutzerdefiniert zuweisen
 	Operable                        = Betriebsbereit
 	Inoperable                      = Funktionsunfähig

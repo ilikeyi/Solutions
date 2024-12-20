@@ -9,8 +9,8 @@ Function Image_Select_Index_UI
 		$AutoSelectIndex
 	)
 
-	Write-Host "`n   $($lang.SelectSettingImage): $($lang.MountedIndexSelect)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.SelectSettingImage): $($lang.MountedIndexSelect)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
@@ -29,24 +29,24 @@ Function Image_Select_Index_UI
 
 						ForEach ($item in $Global:Primary_Key_Image.Index) {
 							if ($item.ImageIndex -eq $_.Tag) {
-								Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+								Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 								Write-Host $item.ImageName -ForegroundColor Yellow
 
-								Write-Host "   $($lang.MountedIndex): " -NoNewline
+								Write-Host "  $($lang.MountedIndex): " -NoNewline
 								Write-Host $item.ImageIndex -ForegroundColor Yellow
 
 								if ($Global:Developers_Mode) {
-									Write-Host "`n   $($lang.Developers_Mode_Location): 90`n" -ForegroundColor Green
+									Write-Host "`n  $($lang.Developers_Mode_Location): 90`n" -ForegroundColor Green
 								}
 
 								$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 								if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
 									if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-										Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-										Write-Host "   $('-' * 80)"
+										Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+										Write-Host "  $('-' * 80)"
 										Write-Host "   Repair-WindowsImage -Path ""$($test_mount_folder_Current)"" -RestoreHealth" -ForegroundColor Green
-										Write-Host "   $('-' * 80)`n"
+										Write-Host "  $('-' * 80)`n"
 									}
 
 									Repair-WindowsImage -Path $test_mount_folder_Current -RestoreHealth -ErrorAction SilentlyContinue | Out-Null
@@ -58,25 +58,25 @@ Function Image_Select_Index_UI
 								Check_Folder -chkpath $test_mount_folder_Current
 
 								if ($Global:Developers_Mode) {
-									Write-Host "`n   $($lang.Developers_Mode_Location): 91`n" -ForegroundColor Green
+									Write-Host "`n  $($lang.Developers_Mode_Location): 91`n" -ForegroundColor Green
 								}
 
 								$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 								if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-									Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-									Write-Host "   $('-' * 80)"
+									Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+									Write-Host "  $('-' * 80)"
 									Write-Host "   Mount-WindowsImage -ImagePath ""$($Global:Primary_Key_Image.FullPath)"" -Index ""$($_.Tag)"" -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
-									Write-Host "   $('-' * 80)`n"
+									Write-Host "  $('-' * 80)`n"
 								}
 
-								Write-Host "   $($lang.Mount)".PadRight(28) -NoNewline
+								Write-Host "  $($lang.Mount)".PadRight(28) -NoNewline
 								try {
 									Mount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Mount.log" -ImagePath $Global:Primary_Key_Image.FullPath -Index $_.Tag -Path $test_mount_folder_Current
 									Write-Host $lang.Done -ForegroundColor Green
 								} catch {
 									Write-Host $_
-									Write-Host "   $($lang.Failed)" -ForegroundColor Red
+									Write-Host "  $($lang.Failed)" -ForegroundColor Red
 								}
 							}
 						}
@@ -813,38 +813,38 @@ Function Image_Select_Index_UI
 					"""$($UI_Main_Apply_Image_Index_Name.Tag)"""
 				)
 
-				Write-Host "`n   $($lang.SelectSettingImage)" -ForegroundColor Yellow
-				Write-Host "   $($UIUnzipPanel_To_Path.Text)" -ForegroundColor Green
+				Write-Host "`n  $($lang.SelectSettingImage)" -ForegroundColor Yellow
+				Write-Host "  $($UIUnzipPanel_To_Path.Text)" -ForegroundColor Green
 				
-				Write-Host "`n   $($lang.MountedIndex)" -ForegroundColor Yellow
-				Write-Host "   $($UI_Main_Apply_Image_Index_Name.Tag)" -ForegroundColor Green
+				Write-Host "`n  $($lang.MountedIndex)" -ForegroundColor Yellow
+				Write-Host "  $($UI_Main_Apply_Image_Index_Name.Tag)" -ForegroundColor Green
 
-				Write-Host "`n   $($lang.Destination)" -ForegroundColor Yellow
-				Write-Host "   $($GUIImageSourceISOCustomizePath.Text)" -ForegroundColor Green
+				Write-Host "`n  $($lang.Destination)" -ForegroundColor Yellow
+				Write-Host "  $($GUIImageSourceISOCustomizePath.Text)" -ForegroundColor Green
 
-				Write-Host "`n   $($lang.Wim_Rule_Verify)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.Wim_Rule_Verify)" -ForegroundColor Yellow
 				if ($UI_Main_Apply_Verify.Checked) {
-					Write-Host "   $($lang.Operable)" -ForegroundColor Green
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 					$Arguments += "-Verify"
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
-				Write-Host "`n   $($lang.Wim_Rule_Check)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.Wim_Rule_Check)" -ForegroundColor Yellow
 				if ($UI_Main_Apply_Check.Checked) {
-					Write-Host "   $($lang.Operable)" -ForegroundColor Green
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 					$Arguments += "-CheckIntegrity"
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
-				Write-Host "`n   $($lang.apply)".PadRight(28) -NoNewline -ForegroundColor Yellow
+				Write-Host "`n  $($lang.apply)".PadRight(28) -NoNewline -ForegroundColor Yellow
 				try {
 					Invoke-Expression -Command "Expand-WindowsImage $($Arguments)"
 					Write-Host $lang.Done -ForegroundColor Green
 				} catch {
 					Write-Host $_
-					Write-Host "   $($lang.Failed)" -ForegroundColor Red
+					Write-Host "  $($lang.Failed)" -ForegroundColor Red
 				}
 
 				$UI_Main.Close()
@@ -1281,7 +1281,7 @@ Function Image_Select_Index_UI
 		Width          = 280
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}
@@ -1373,7 +1373,7 @@ Function Image_Select_Index_UI
 		$UI_Main_Rebuild_All.Enabled = $False
 		$UI_Main_Image_WIM_Update.Enabled = $False      # 提取，更新映像内文件
 
-		Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+		Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 		$UI_Main_Mount.Enabled = $False
 		$UI_Main_Mask_Rule_Detailed_Ok.Enabled = $False
 	}
@@ -1454,8 +1454,8 @@ Function Image_Select_Mul_UI
 		$ImageFileName
 	)
 
-	Write-Host "`n   $($lang.SelectSettingImage): $($lang.MountedIndexSelect)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.SelectSettingImage): $($lang.MountedIndexSelect)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
@@ -1466,7 +1466,7 @@ Function Image_Select_Mul_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -1522,7 +1522,7 @@ Function Image_Select_Mul_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "24" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -1636,10 +1636,10 @@ Function Image_Select_Mul_UI
 				New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $TempQueueProcessImageSelectPending -Force
 
 				ForEach ($item in $TempQueueProcessImageSelectPending) {
-					Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+					Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 					Write-Host $item.Name -ForegroundColor Yellow
 
-					Write-Host "   $($lang.MountedIndex): " -NoNewline
+					Write-Host "  $($lang.MountedIndex): " -NoNewline
 					Write-Host $item.Index -ForegroundColor Yellow
 
 					Write-Host
@@ -1662,7 +1662,7 @@ Function Image_Select_Mul_UI
 		Width          = 280
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
 
 			if ($UI_Main_Suggestion_Not.Checked) {
@@ -1683,14 +1683,14 @@ Function Image_Select_Mul_UI
 	$TempQueueProcessImageSelect = @()
 	if (Test-Path -Path $ImageFileName -PathType Leaf) {
 		if ($Global:Developers_Mode) {
-			Write-Host "`n   $($lang.Developers_Mode_Location): 92`n" -ForegroundColor Green
+			Write-Host "`n  $($lang.Developers_Mode_Location): 92`n" -ForegroundColor Green
 		}
 
 		if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-			Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Write-Host "   Get-WindowsImage -ImagePath ""$($ImageFileName)""" -ForegroundColor Green
-			Write-Host "   $('-' * 80)`n"
+			Write-Host "  $('-' * 80)`n"
 		}
 
 		try {
@@ -1719,10 +1719,10 @@ Function Image_Select_Mul_UI
 				$UI_Main_Menu.controls.AddRange($CheckBox)
 			}
 		} catch {
-			Write-Host "   $($lang.ConvertChk)"
-			Write-Host "   $($ImageFileName)"
-			Write-Host "   $($_)" -ForegroundColor Yellow
-			Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+			Write-Host "  $($lang.ConvertChk)"
+			Write-Host "  $($ImageFileName)"
+			Write-Host "  $($_)" -ForegroundColor Yellow
+			Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			return
 		}
 	}

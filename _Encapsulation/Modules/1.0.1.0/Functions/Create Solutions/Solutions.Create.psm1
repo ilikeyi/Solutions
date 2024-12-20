@@ -202,23 +202,23 @@ Function Solutions
 {
 	if (-not $Global:EventQueueMode) {
 		Logo -Title $lang.Solution
-		Write-Host "   $($lang.Dashboard)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Dashboard)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
-		Write-Host "   $($lang.MountImageTo): " -NoNewline
+		Write-Host "  $($lang.MountImageTo): " -NoNewline
 		if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
 			Write-Host $Global:Mount_To_Route -ForegroundColor Green
 		} else {
 			Write-Host $Global:Image_source -ForegroundColor Yellow
 		}
 
-		Write-Host "   $($lang.MainImageFolder): " -NoNewline
+		Write-Host "  $($lang.MainImageFolder): " -NoNewline
 		if (Test-Path -Path $Global:Image_source -PathType Container) {
 			Write-Host $Global:Image_source -ForegroundColor Green
 		} else {
 			Write-Host $Global:Image_source -ForegroundColor Red
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.NoInstallImage)" -ForegroundColor Red
 			ToWait -wait 2
 		}
 
@@ -368,7 +368,7 @@ Function Solutions_Create_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -4799,7 +4799,7 @@ volume
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "6" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -4911,7 +4911,7 @@ volume
 				Init_Canel_Event
 			}
 
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}
@@ -5256,8 +5256,8 @@ volume
 		}
 
 		if ($Global:EventQueueMode) {
-			Write-Host "`n   $($lang.Solution): $($lang.IsCreate)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Solution): $($lang.IsCreate)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 
 			$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 			$UI_Main.controls.AddRange((
@@ -5273,8 +5273,8 @@ volume
 		}
 
 		if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-			Write-Host "`n   $($lang.Solution): $($lang.IsCreate)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Solution): $($lang.IsCreate)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 
 			if (Image_Is_Select_IAB) {
 				$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
@@ -6073,9 +6073,9 @@ volume
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
 
 		<#
 			.部署到
@@ -6962,9 +6962,9 @@ Function Autopilot_Solutions_Create_Import
 		.测试完成后，检查配置文件里是否有事件
 	#>
 	if ([string]::IsNullOrEmpty($Tasks)) {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	} else {
-		Write-Host "   $($lang.YesWork)" -ForegroundColor Yellow
+		Write-Host "  $($lang.YesWork)" -ForegroundColor Yellow
 
 		if ($ISO) {
 			Solutions_Create_UI -Autopilot $Tasks -ISO
@@ -7002,8 +7002,8 @@ Function Solutions_Copy_Prerequisite
 				if (Test-Path -Path "$($path)\x86" -PathType Container) {
 					Solutions_Copy_Files_To_Prerequisite -From "$($path)\x86" -ShortPath $ShortPath -To $Script:CopySolutionsToRoot
 				} else {
-					Write-Host "   $($lang.NoInstallImage)"
-					Write-Host "   $($path)\x86" -ForegroundColor Red
+					Write-Host "  $($lang.NoInstallImage)"
+					Write-Host "  $($path)\x86" -ForegroundColor Red
 				}
 			}
 		}
@@ -7020,8 +7020,8 @@ Function Solutions_Copy_Prerequisite
 			if (Test-Path -Path "$($path)\x86" -PathType Container) {
 				Solutions_Copy_Files_To_Prerequisite -From "$($path)\x86" -ShortPath $ShortPath -To $Script:CopySolutionsToRoot
 			} else {
-				Write-Host "   $($lang.NoInstallImage)"
-				Write-Host "   $($path)\x86" -ForegroundColor Red
+				Write-Host "  $($lang.NoInstallImage)"
+				Write-Host "  $($path)\x86" -ForegroundColor Red
 			}
 		}
 	}
@@ -7034,8 +7034,8 @@ Function Solutions_Copy_Prerequisite
 		if (Test-Path -Path "$($path)\x86" -PathType Container) {
 			Solutions_Copy_Files_To_Prerequisite -From "$($path)\x86" -ShortPath $ShortPath -To $Script:CopySolutionsToRoot
 		} else {
-			Write-Host "   $($lang.NoInstallImage)"
-			Write-Host "   $($path)\x86" -ForegroundColor Red
+			Write-Host "  $($lang.NoInstallImage)"
+			Write-Host "  $($path)\x86" -ForegroundColor Red
 		}
 	}
 }
@@ -7062,20 +7062,20 @@ Function Solutions_Copy_Files_To_Prerequisite
 
 			if (Test-Path -Path "$($From)\$($OSDefaultSolutionsLangDefault)" -PathType Container) {
 				Check_Folder -chkpath $NewPathTo
-				Write-Host "   $($lang.SaveTo): " -noNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.SaveTo): " -noNewline -ForegroundColor Yellow
 				Write-Host $NewPathTo -ForegroundColor Green
 
 				Copy-Item -Path "$($From)\$($OSDefaultSolutionsLangDefault)\*" -Destination $NewPathTo -Recurse -Force -ErrorAction SilentlyContinue
 			} else {
 				if (Test-Path -Path "$($From)\en-US" -PathType Container) {
 					Check_Folder -chkpath $NewPathTo
-					Write-Host "   $($lang.SaveTo): " -noNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.SaveTo): " -noNewline -ForegroundColor Yellow
 					Write-Host $NewPathTo -ForegroundColor Green
 
 					Copy-Item -Path "$($From)\en-US\*" -Destination $NewPathTo -Recurse -Force -ErrorAction SilentlyContinue
 				} else {
 					Check_Folder -chkpath $NewPathTo
-					Write-Host "   $($lang.SaveTo): " -noNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.SaveTo): " -noNewline -ForegroundColor Yellow
 					Write-Host $NewPathTo -ForegroundColor Green
 
 					Copy-Item -Path "$($From)\*" -Destination $NewPathTo -Recurse -Force -ErrorAction SilentlyContinue
@@ -7088,7 +7088,7 @@ Function Solutions_Copy_Files_To_Prerequisite
 				Check_Folder -chkpath $NewPathTo
 
 				if (Test-Path -Path "$($From)\$($item)" -PathType Container) {
-					Write-Host "   $($lang.SaveTo): " -noNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.SaveTo): " -noNewline -ForegroundColor Yellow
 					Write-Host $NewPathTo -ForegroundColor Green
 
 					Copy-Item -Path "$($From)\$($item)" -Destination $NewPathTo -Recurse -Force -ErrorAction SilentlyContinue
@@ -7103,12 +7103,12 @@ Function Solutions_Copy_Fonts_Prerequisite
 	$OSDefaultUser = (Get-Variable -Scope global -Name "Name_Engine_$($Script:init_To_GPS)" -ErrorAction SilentlyContinue).Value
 
 	ForEach ($item in (Get-Variable -Scope global -Name "QueueFontsSelect_$($Script:init_To_GPS)" -ErrorAction SilentlyContinue).Value) {
-		Write-Host "   $($item.Name)" -ForegroundColor Green
+		Write-Host "  $($item.Name)" -ForegroundColor Green
 
 		$NewPathTo = Join-Path -Path $Script:CopySolutionsToRoot -ChildPath "$($OSDefaultUser)\Fonts"
 		Check_Folder -chkpath $NewPathTo
 
-		Write-Host "   $($lang.SaveTo): " -noNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.SaveTo): " -noNewline -ForegroundColor Yellow
 		Write-Host $NewPathTo -ForegroundColor Green
 
 		Copy-Item -Path $item.Path -Destination $NewPathTo -Force -ErrorAction SilentlyContinue
@@ -7130,8 +7130,8 @@ Function Solutions_Office_Copy
             if (Test-Path -Path "$($PSScriptRoot)\..\..\..\..\_Custom\Office\$($OSDeployOfficeVersion)\x86\Office\Data\v32.cab" -PathType Leaf) {
                 Solutions_Office_Copy_Prerequisite -From "$($PSScriptRoot)\..\..\..\..\_Custom\Office\$($OSDeployOfficeVersion)\x86\Office"
             } else {
-                Write-Host "   $($lang.NoInstallImage)"
-				Write-Host "   $($PSScriptRoot)\..\..\..\..\..\_Custom\Office\$($OSDeployOfficeVersion)\x86\Office" -ForegroundColor Red
+                Write-Host "  $($lang.NoInstallImage)"
+				Write-Host "  $($PSScriptRoot)\..\..\..\..\..\_Custom\Office\$($OSDeployOfficeVersion)\x86\Office" -ForegroundColor Red
             }
         }
 	}
@@ -7144,8 +7144,8 @@ Function Solutions_Office_Copy
         if (Test-Path -Path "$($PSScriptRoot)\..\..\..\..\_Custom\Office\$($OSDeployOfficeVersion)\x86\Office\Data\v32.cab" -PathType Leaf) {
             Solutions_Office_Copy_Prerequisite -From "$($PSScriptRoot)\..\..\..\..\_Custom\Office\$($OSDeployOfficeVersion)\x86\Office"
         } else {
-            Write-Host "   $($lang.NoInstallImage)"
-			Write-Host "   $($PSScriptRoot)\..\..\..\..\..\_Custom\Office\$($OSDeployOfficeVersion)\x86\Office" -ForegroundColor Red
+            Write-Host "  $($lang.NoInstallImage)"
+			Write-Host "  $($PSScriptRoot)\..\..\..\..\..\_Custom\Office\$($OSDeployOfficeVersion)\x86\Office" -ForegroundColor Red
         }
 	}
 }
@@ -7171,7 +7171,7 @@ Function Solutions_Office_Match
 		}
 	}
 
-	Write-Host "`n   $($lang.Del)"
+	Write-Host "`n  $($lang.Del)"
 	ForEach ($item in $DataFileAll) {
 		$SaveToName = [IO.Path]::GetFileName($item)
 		$SaveToName = $SaveToName.replace('i640','').replace('i64','').replace('s640','').replace('s64','').replace('sp64','').replace('i320','').replace('i32','').replace('s320','').replace('s32','').replace('sp32','')
@@ -7194,7 +7194,7 @@ Function Solutions_Office_Match
 
 	ForEach ($item in $DataLanguage) {
 		$SaveToName = [IO.Path]::GetFileName($item)
-		Write-Host "   $($SaveToName)" -ForegroundColor Green
+		Write-Host "  $($SaveToName)" -ForegroundColor Green
 		Remove-Item -Path $item -ErrorAction SilentlyContinue
 	}
 }
@@ -7216,10 +7216,10 @@ Function Solutions_Office_Copy_Prerequisite
 
 	switch ((Get-Variable -Scope global -Name "DeployOfficeTo_$($Script:init_To_GPS)" -ErrorAction SilentlyContinue).Value) {
 		1 {
-			Write-Host "`n   $($lang.SolutionsDeployOfficeTo)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.SolutionsDeployOfficeTo)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			$NewPathTo = Join-Path -Path $Script:CopySolutionsToRoot -ChildPath "Users\Public\Desktop\Office"
-			Write-Host "   $($NewPathTo)" -ForegroundColor Green
+			Write-Host "  $($NewPathTo)" -ForegroundColor Green
 
 			Remove_Tree $NewPathTo
 			Check_Folder -chkpath $NewPathTo
@@ -7227,19 +7227,19 @@ Function Solutions_Office_Copy_Prerequisite
 			Solutions_Office_Match -Source $NewPathTo
 			Copy-Item -Path "$($PSScriptRoot)\..\..\..\..\_Custom\Office\setup.exe" -Destination $NewPathTo -ErrorAction SilentlyContinue
 
-			Write-Host "`n   $($lang.SolutionsDeployOfficeSync)"
+			Write-Host "`n  $($lang.SolutionsDeployOfficeSync)"
 			if ($OSDefaultQueueDeployDeployOfficeSyncConfig) {
-				Write-Host "   $($lang.Operable)" -ForegroundColor Green
+				Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				Solutions_Office_Copy_Config_Prerequisite -To $NewPathTo
 			} else {
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 		}
 		2 {
-			Write-Host "   $($lang.SolutionsDeployOfficeTo)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "  $($lang.SolutionsDeployOfficeTo)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			$NewPathTo = Join-Path -Path $Script:CopySolutionsToRoot -ChildPath "$($OSDefaultUser)\Office"
-			Write-Host "   $($NewPathTo)" -ForegroundColor Green
+			Write-Host "  $($NewPathTo)" -ForegroundColor Green
 
 			Remove_Tree $NewPathTo
 			Check_Folder -chkpath $NewPathTo
@@ -7247,12 +7247,12 @@ Function Solutions_Office_Copy_Prerequisite
 			Solutions_Office_Match -Source $NewPathTo
 			Copy-Item -Path "$($PSScriptRoot)\..\..\..\..\_Custom\Office\setup.exe" -Destination $NewPathTo -ErrorAction SilentlyContinue
 
-			Write-Host "`n   $($lang.SolutionsDeployOfficeSync)"
+			Write-Host "`n  $($lang.SolutionsDeployOfficeSync)"
 			if ($OSDefaultQueueDeployDeployOfficeSyncConfig) {
-				Write-Host "   $($lang.Operable)" -ForegroundColor Green
+				Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				Solutions_Office_Copy_Config_Prerequisite -To $NewPathTo
 			} else {
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 		}
 	}
@@ -7422,14 +7422,14 @@ Function Solutions_Index_UI
 	$Install_wim = Join-Path -Path $Global:Image_source -ChildPath "Sources\install.wim"
 	if (Test-Path -Path $Install_wim -PathType Leaf) {
 		if ($Global:Developers_Mode) {
-			Write-Host "`n   $($lang.Developers_Mode_Location): 8`n" -ForegroundColor Green
+			Write-Host "`n  $($lang.Developers_Mode_Location): 8`n" -ForegroundColor Green
 		}
 
 		if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-			Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Write-Host "   Get-WindowsImage -ImagePath ""$($Install_wim)""" -ForegroundColor Green
-			Write-Host "   $('-' * 80)`n"
+			Write-Host "  $('-' * 80)`n"
 		}
 
 		try {
@@ -7451,24 +7451,24 @@ Function Solutions_Index_UI
 				$UI_Main_Menu.controls.AddRange($CheckBox)
 			}
 		} catch {
-			Write-Host "   $($lang.ConvertChk)"
-			Write-Host "   $($Install_wim)"
-			Write-Host "   $($_)" -ForegroundColor Yellow
-			Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+			Write-Host "  $($lang.ConvertChk)"
+			Write-Host "  $($Install_wim)"
+			Write-Host "  $($_)" -ForegroundColor Yellow
+			Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 		}
 	}
 
 	$Install_ESD = Join-Path -Path $Global:Image_source -ChildPath "Sources\install.esd"
 	if (Test-Path -Path $Install_ESD -PathType Leaf) {
 		if ($Global:Developers_Mode) {
-			Write-Host "`n   $($lang.Developers_Mode_Location): 9`n" -ForegroundColor Green
+			Write-Host "`n  $($lang.Developers_Mode_Location): 9`n" -ForegroundColor Green
 		}
 
 		if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-			Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Write-Host "   Get-WindowsImage -ImagePath ""$($Install_ESD)""" -ForegroundColor Green
-			Write-Host "   $('-' * 80)`n"
+			Write-Host "  $('-' * 80)`n"
 		}
 
 		try {
@@ -7490,24 +7490,24 @@ Function Solutions_Index_UI
 				$UI_Main_Menu.controls.AddRange($CheckBox)
 			}
 		} catch {
-			Write-Host "   $($lang.ConvertChk)"
-			Write-Host "   $($Install_ESD)"
-			Write-Host "   $($_)" -ForegroundColor Yellow
-			Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+			Write-Host "  $($lang.ConvertChk)"
+			Write-Host "  $($Install_ESD)"
+			Write-Host "  $($_)" -ForegroundColor Yellow
+			Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 		}
 	}
 
 	$Install_SWM = Join-Path -Path $Global:Image_source -ChildPath "Sources\install.swm"
 	if (Test-Path -Path $Install_SWM -PathType Leaf) {
 		if ($Global:Developers_Mode) {
-			Write-Host "`n   $($lang.Developers_Mode_Location): 10`n" -ForegroundColor Green
+			Write-Host "`n  $($lang.Developers_Mode_Location): 10`n" -ForegroundColor Green
 		}
 
 		if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-			Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Write-Host "   Get-WindowsImage -ImagePath ""$($Install_SWM)""" -ForegroundColor Green
-			Write-Host "   $('-' * 80)`n"
+			Write-Host "  $('-' * 80)`n"
 		}
 
 		try {
@@ -7529,10 +7529,10 @@ Function Solutions_Index_UI
 				$UI_Main_Menu.controls.AddRange($CheckBox)
 			}
 		} catch {
-			Write-Host "   $($lang.ConvertChk)"
-			Write-Host "   $($Install_SWM)"
-			Write-Host "   $($_)" -ForegroundColor Yellow
-			Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+			Write-Host "  $($lang.ConvertChk)"
+			Write-Host "  $($Install_SWM)"
+			Write-Host "  $($_)" -ForegroundColor Yellow
+			Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 		}
 	}
 
@@ -7547,7 +7547,7 @@ Function Solutions_Index_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 
 		$UI_Main_Menu.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.RadioButton]) {
@@ -7635,7 +7635,7 @@ Function KMSkeys
 			$UI_Main_Error_Icon.Image = $null
 			
 			$OpenWebsiteLink1 = "https://learn.microsoft.com/en-us/windows-server/get-started/kms-client-activation-keys"
-			Write-Host "   $($OpenWebsiteLink1)"
+			Write-Host "  $($OpenWebsiteLink1)"
 			Start-Process $OpenWebsiteLink1
 		}
 	}
@@ -7859,10 +7859,10 @@ Function Solutions_Create_Deploy_Report
 }
 "@ | Out-File -FilePath $Save_engine_to_new_path_json -Encoding Ascii -ErrorAction SilentlyContinue
 
-	Write-Host "`n   $($lang.Wim_Rule_Check)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
-	Write-Host "   $($Save_engine_to_new_path_json)"
-	Write-Host "   $($lang.Wim_Rule_Verify)".PadRight(28) -NoNewline
+	Write-Host "`n  $($lang.Wim_Rule_Check)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
+	Write-Host "  $($Save_engine_to_new_path_json)"
+	Write-Host "  $($lang.Wim_Rule_Verify)".PadRight(28) -NoNewline
 
 	try {
 		$Autopilot = Get-Content -Raw -Path $Save_engine_to_new_path_json | ConvertFrom-Json
@@ -7891,12 +7891,12 @@ Function Solutions_Replace_Unattend
 	$RandomUniqueGUID = [guid]::NewGuid()
 
 	$FullFilename = Join-Path -Path $SaveTo -ChildPath $FileName
-	Write-Host "   $($lang.SaveTo): " -NoNewline
+	Write-Host "  $($lang.SaveTo): " -NoNewline
 	Write-Host $FullFilename -ForegroundColor Green
 
 	if (-not (Test-Path -Path $From -PathType Leaf)) {
-		Write-Host "`n   $($lang.NoInstallImage)"
-		Write-Host "   $($From)" -ForegroundColor Red
+		Write-Host "`n  $($lang.NoInstallImage)"
+		Write-Host "  $($From)" -ForegroundColor Red
 		return
 	}
 
@@ -8156,7 +8156,7 @@ $($Save_Microsoft_Windows_PE)
 		   -replace "{WindowsShellSetupFirstLogonCommands}", $Print_Save_Microsoft_Windows_Setup
 	} | Set-Content -Path $FullFilename -ErrorAction SilentlyContinue
 
-	Write-Host "   $($lang.Done)" -ForegroundColor Green
+	Write-Host "  $($lang.Done)" -ForegroundColor Green
 }
 
 <#
@@ -8179,7 +8179,7 @@ Function Solutions_Generate_Prerequisite
 		$Script:CopySolutionsToRoot    = Join-Path -Path $Global:Image_source -ChildPath "Sources\`$OEM$\`$1"
 		$Script:CopySolutionsToWindows = Join-Path -Path $Global:Image_source -ChildPath "Sources\`$OEM$\`$$"
 
-		Write-Host "`n   $($lang.ClearOld), ISO"
+		Write-Host "`n  $($lang.ClearOld), ISO"
 		$GroupCleanISO = @(
 			"autounattend.xml"
 			"_Unattend"
@@ -8191,11 +8191,11 @@ Function Solutions_Generate_Prerequisite
 		ForEach ($item in $GroupCleanISO) {
 			$WaitCleanFolder = Join-Path -Path $Global:Image_source -ChildPath $item
 
-			Write-Host "   $($WaitCleanFolder)" -ForegroundColor Green
+			Write-Host "  $($WaitCleanFolder)" -ForegroundColor Green
 			Remove_Tree $WaitCleanFolder
 
 			if (Test-Path -Path $WaitCleanFolder -PathType Container) {
-				Write-Host "   $($lang.Del), $($lang.Failed): $($WaitCleanFolder)" -ForegroundColor Red
+				Write-Host "  $($lang.Del), $($lang.Failed): $($WaitCleanFolder)" -ForegroundColor Red
 			}
 		}
 	}
@@ -8207,7 +8207,7 @@ Function Solutions_Generate_Prerequisite
 			$Script:CopySolutionsToWindows = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\Windows"
 
 			if (Test-Path -Path $Script:CopySolutionsToRoot -PathType Container) {
-				Write-Host "`n   $($lang.ClearOld), Mount"
+				Write-Host "`n  $($lang.ClearOld), Mount"
 
 				$OSDefaultUserMount = (Get-Variable -Scope global -Name "Name_Engine_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 
@@ -8220,86 +8220,86 @@ Function Solutions_Generate_Prerequisite
 				ForEach ($item in $GroupCleanMountTo) {
 					$TestNewItem = Join-Path -Path $Script:CopySolutionsToRoot -ChildPath $item
 
-					Write-Host "   $($TestNewItem)" -ForegroundColor Green
+					Write-Host "  $($TestNewItem)" -ForegroundColor Green
 					Remove_Tree $TestNewItem
 
 					if (Test-Path -Path $TestNewItem -PathType Container) {
-						Write-Host "   $($lang.Del), $($lang.Failed): $($TestNewItem)" -ForegroundColor Red
+						Write-Host "  $($lang.Del), $($lang.Failed): $($TestNewItem)" -ForegroundColor Red
 					}
 				}
 			} else {
-				Write-Host "   $($lang.SolutionsSkip)" -ForegroundColor Red
+				Write-Host "  $($lang.SolutionsSkip)" -ForegroundColor Red
 				return
 			}
 		} else {
-			Write-Host "   $($lang.SolutionsSkip)" -ForegroundColor Red
+			Write-Host "  $($lang.SolutionsSkip)" -ForegroundColor Red
 			return
 		}
 	}
 
 	if ((Get-Variable -Scope global -Name "SolutionsSoftwarePacker_$($Script:init_To_GPS)" -ErrorAction SilentlyContinue).Value) {
-		Write-Host "`n   $($lang.RuleFileType)" -ForegroundColor Green
-		Write-Host "`n   $($lang.SolutionsDeployOfficeOnly)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.RuleFileType)" -ForegroundColor Green
+		Write-Host "`n  $($lang.SolutionsDeployOfficeOnly)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in (Get-Variable -Scope global -Name "DeployCollectionLanguageOnly_$($Script:init_To_GPS)" -ErrorAction SilentlyContinue).Value) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			Write-Host "  $($item)" -ForegroundColor Green
 		}
 
 		$PrintQueueSoftwareSelect = (Get-Variable -Scope global -Name "QueueSoftwareSelect_$($Script:init_To_GPS)" -ErrorAction SilentlyContinue).Value
 
-		Write-Host "`n   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $PrintQueueSoftwareSelect) {
-			Write-Host "   $($lang.RuleFileType): " -noNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.RuleFileType): " -noNewline -ForegroundColor Yellow
 			Write-Host $item.Name -ForegroundColor Green
 		}
 
-		Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$Temp_New_Software_Path = Join-Path -Path $(Convert-Path "$($PSScriptRoot)\..\..\..\..") -ChildPath "_Custom\Software"
 		ForEach ($item in $PrintQueueSoftwareSelect) {
 			$Latest_Temp_New_Software_Path = Join-Path -Path $Temp_New_Software_Path -ChildPath $item.Path
 
-			Write-Host "   $($lang.RuleFileType): " -noNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.RuleFileType): " -noNewline -ForegroundColor Yellow
 			Write-Host $item.Name -ForegroundColor Green
 
-			Write-Host "   $($lang.AddSources): " -noNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.AddSources): " -noNewline -ForegroundColor Yellow
 			Write-Host $item.Path -ForegroundColor Green
 
 			Solutions_Copy_Prerequisite -Path $Latest_Temp_New_Software_Path -ShortPath $item.Path
 		}
 
-		Write-Host "`n   $($lang.Fonts)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Fonts)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		if ((Get-Variable -Scope global -Name "DeployFonts_$($Script:init_To_GPS)" -ErrorAction SilentlyContinue).Value) {
 			Solutions_Copy_Fonts_Prerequisite
 		} else {
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 		}
 
 		<#
 			.部署 Microsoft Office 安装包
 		#>
-		Write-Host "`n   $($lang.SolutionsDeployOfficeInstall)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.SolutionsDeployOfficeInstall)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		if ((Get-Variable -Scope global -Name "SolutionsDeployOfficeInstall_$($Script:init_To_GPS)" -ErrorAction SilentlyContinue).Value) {
-			Write-Host "   $($lang.Operable)" -ForegroundColor Green
+			Write-Host "  $($lang.Operable)" -ForegroundColor Green
 			Solutions_Office_Copy
 		} else {
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 		}
 
 		<#
 			.部署 合集
 		#>
-		Write-Host "`n   $($lang.DeployPackage)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.DeployPackage)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		if ((Get-Variable -Scope global -Name "SolutionsDeployPackageInstall_$($Script:init_To_GPS)" -ErrorAction SilentlyContinue).Value) {
-			Write-Host "   $($lang.Operable)" -ForegroundColor Green
+			Write-Host "  $($lang.Operable)" -ForegroundColor Green
 			Solutions_Copy_Package_Prerequisite
 		} else {
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 		}
 
 		<#
@@ -8330,43 +8330,43 @@ Function Solutions_Generate_Prerequisite
 			}
 		}
 	} else {
-		Write-Host "`n   $($lang.EnabledSoftwarePacker)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.UserCancel)`n" -ForegroundColor Red
+		Write-Host "`n  $($lang.EnabledSoftwarePacker)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.UserCancel)`n" -ForegroundColor Red
 	}
 
 	<#
 		.创建应预答
 	#>
-	Write-Host "`n   $($lang.EnabledUnattend)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.EnabledUnattend)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	if ((Get-Variable -Scope global -Name "SolutionsUnattend_$($Script:init_To_GPS)" -ErrorAction SilentlyContinue).Value) {
-		Write-Host "   $($lang.CreateUnattendISO)" -ForegroundColor Green
+		Write-Host "  $($lang.CreateUnattendISO)" -ForegroundColor Green
 		if ((Get-Variable -Scope global -Name "SolutionsCreateUnattendISO_$($Script:init_To_GPS)" -ErrorAction SilentlyContinue).Value) {
 			Solutions_Copy_Unattend_Files_To_Prerequisite -SaveTo $Global:Image_source -NewFileName "Autounattend.xml"
 		} else {
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 		}
 
-		Write-Host "`n   $($lang.CreateUnattendISOSources)" -ForegroundColor Green
+		Write-Host "`n  $($lang.CreateUnattendISOSources)" -ForegroundColor Green
 		if ((Get-Variable -Scope global -Name "SolutionsCreateUnattendISOSources_$($Script:init_To_GPS)" -ErrorAction SilentlyContinue).Value) {
 			$TempGetFolder = Join-Path -Path $Global:Image_source -ChildPath "Sources"
 
 			Solutions_Copy_Unattend_Files_To_Prerequisite -SaveTo $TempGetFolder -NewFileName "Unattend.xml"
 		} else {
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 		}
 
-		Write-Host "`n   $($lang.CreateUnattendISOSourcesOEM)" -ForegroundColor Green
+		Write-Host "`n  $($lang.CreateUnattendISOSourcesOEM)" -ForegroundColor Green
 		if ((Get-Variable -Scope global -Name "SolutionsCreateUnattendISOSourcesOEM_$($Script:init_To_GPS)" -ErrorAction SilentlyContinue).Value) {
 			$TempGetFolder = Join-Path -Path $Global:Image_source -ChildPath "Sources\`$OEM$\`$$\Panther"
 
 			Solutions_Copy_Unattend_Files_To_Prerequisite -SaveTo $TempGetFolder -NewFileName "Unattend.xml"
 		} else {
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 		}
 
-		Write-Host "`n   $($lang.CreateUnattendPanther)" -ForegroundColor Green
+		Write-Host "`n  $($lang.CreateUnattendPanther)" -ForegroundColor Green
 		if ((Get-Variable -Scope global -Name "SolutionsCreateUnattendPanther_$($Script:init_To_GPS)" -ErrorAction SilentlyContinue).Value) {
 			if (Image_Is_Select_IAB) {
 				$TempGetFolder = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
@@ -8376,21 +8376,21 @@ Function Solutions_Generate_Prerequisite
 
 					Solutions_Copy_Unattend_Files_To_Prerequisite -SaveTo $TempGetFolderPanther -NewFileName "Unattend.xml"
 				} else {
-					Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+					Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 				}
 			} else {
-				Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+				Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 			}
 		} else {
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+		Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 	}
 
 	if ((Get-Variable -Scope global -Name "Queue_Is_Solutions_Engine_$($Script:init_To_GPS)" -ErrorAction SilentlyContinue).Value) {
-		Write-Host "`n   $($lang.EnabledEnglish)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.EnabledEnglish)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$Save_engine_to_new_path = Join-Path -Path $Script:CopySolutionsToRoot -ChildPath "$($OSDefaultUser)\Engine"
 		Check_Folder -chkpath $Save_engine_to_new_path
@@ -8407,9 +8407,9 @@ Function Solutions_Generate_Prerequisite
 			Join-Path -Path $Script:CopySolutionsToRoot -ChildPath "$($OSDefaultUser)\Engine\AIO"
 		)
 		ForEach ($item in $ClearArchSoftware) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			Write-Host "  $($item)" -ForegroundColor Green
 			Get-ChildItem $item -directory -ErrorAction SilentlyContinue | ForEach-Object {
-				Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 				Write-Host $_.FullName -ForegroundColor Green
 
 				Clear_Arch_Path -Path $_.FullName
@@ -8431,49 +8431,49 @@ Function Solutions_Generate_Prerequisite
 		$Create_Mark_Deploy_Region = Join-Path -Path $Script:CopySolutionsToRoot -ChildPath "$($OSDefaultUser)\Engine\Deploy\Region"
 		Check_Folder -chkpath $Create_Mark_Deploy_Allow
 
-		Write-Host "`n   $($lang.Deploy_Tags), $($lang.SaveTo)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($Create_Mark_Deploy_Allow)" -ForegroundColor Green
+		Write-Host "`n  $($lang.Deploy_Tags), $($lang.SaveTo)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($Create_Mark_Deploy_Allow)" -ForegroundColor Green
 
-		Write-Host "`n   $($lang.LXPsWaitAdd)"
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.LXPsWaitAdd)"
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $OSDefaultQueueDeploySelect) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			Write-Host "  $($item)" -ForegroundColor Green
 			Out-File -FilePath "$($Create_Mark_Deploy_Allow)\$($item)" -Encoding utf8 -ErrorAction SilentlyContinue
 		}
 
-		Write-Host "`n   $($lang.SolutionsEngineRegional)"
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.SolutionsEngineRegional)"
+		Write-Host "  $('-' * 80)"
 		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Create\Mark" -Name "$($Script:init_To_GPS)_Is_Region" -ErrorAction SilentlyContinue) {
 			switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Create\Mark" -Name "$($Script:init_To_GPS)_Is_Region" -ErrorAction SilentlyContinue) {
 				"True"  {
-					Write-Host "   $($lang.LXPsWaitAdd)"
+					Write-Host "  $($lang.LXPsWaitAdd)"
 					if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Create\Mark" -Name "$($Script:init_To_GPS)_Region_Preferred" -ErrorAction SilentlyContinue) {
 						$GetNewSaveLanguage = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Create\Mark" -Name "$($Script:init_To_GPS)_Region_Preferred" -ErrorAction SilentlyContinue
 						$TempSaveLangToNew = "$($Create_Mark_Deploy_Region)\$($GetNewSaveLanguage)"
 
-						Write-Host "   $($lang.SaveTo): " -NoNewline
+						Write-Host "  $($lang.SaveTo): " -NoNewline
 						Write-Host $Create_Mark_Deploy_Region -ForegroundColor Green
 				
-						Write-Host "   $($lang.LanguageCode): " -NoNewline
+						Write-Host "  $($lang.LanguageCode): " -NoNewline
 						Write-Host $GetNewSaveLanguage -ForegroundColor Green
 
 						Out-File -FilePath $TempSaveLangToNew -Encoding utf8 -ErrorAction SilentlyContinue
 						if (Test-Path -Path $TempSaveLangToNew -PathType Leaf) {
-							Write-Host "   $($lang.Done)" -ForegroundColor Green
+							Write-Host "  $($lang.Done)" -ForegroundColor Green
 						} else {
-							Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+							Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 						}
 					} else {
-						Write-Host "   $($lang.SelectFromError)" -ForegroundColor Red
+						Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
 					}
 				}
 				"False" {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 			}
 		} else {
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 		}
 
 		<#
@@ -8494,9 +8494,9 @@ Function Solutions_Generate_Prerequisite
 			Remove_Tree $DelNewItem
 		}
 	} else {
-		Write-Host "`n   $($lang.EnabledEnglish)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.UserCancel)`n" -ForegroundColor Red
+		Write-Host "`n  $($lang.EnabledEnglish)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.UserCancel)`n" -ForegroundColor Red
 	}
 }
 
@@ -8569,9 +8569,9 @@ Function Solutions_Quick_Copy_Process_To_ISO
 		<#
 			.[主目录]:\Sources\$OEM$
 		#>
-		Write-Host "`n   $($lang.Solution)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.Operable)" -ForegroundColor Green
+		Write-Host "`n  $($lang.Solution)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Operable)" -ForegroundColor Green
 		Solutions_Generate_Prerequisite -ISO
 
 		New-Variable -Scope global -Name "Queue_Is_Solutions_ISO" -Value $False -Force

@@ -1043,11 +1043,11 @@ Function Autopilot_Drive_Delete_UI_Import
 		.测试完成后，检查配置文件里是否有事件
 	#>
 	if ([string]::IsNullOrEmpty($Tasks)) {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	} else {
 		switch ($Tasks.Schome) {
 			"Auto" {
-				Write-Host "   $($lang.Autopilot_Scheme): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.Autopilot_Scheme): " -NoNewline -ForegroundColor Yellow
 
 				<#
 					.从公共库里导入，顺序：
@@ -1067,9 +1067,9 @@ Function Autopilot_Drive_Delete_UI_Import
 							Write-Host "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid)"
 							$New_Tasks_Assign_Auto_Schome = $GetSelectVer
 
-							Write-Host "`n   $($lang.AddSources)" -ForegroundColor Yellow
+							Write-Host "`n  $($lang.AddSources)" -ForegroundColor Yellow
 							foreach ($item in $GetSelectVer) {
-								Write-Host "   $($item)" -ForegroundColor Green
+								Write-Host "  $($item)" -ForegroundColor Green
 							}
 						}
 					}
@@ -1083,9 +1083,9 @@ Function Autopilot_Drive_Delete_UI_Import
 							Write-Host $lang.Autopilot_Sync_To_Global
 							$New_Tasks_Assign_Auto_Schome = $GetSelectVer
 
-							Write-Host "`n   $($lang.AddSources)" -ForegroundColor Yellow
+							Write-Host "`n  $($lang.AddSources)" -ForegroundColor Yellow
 							foreach ($item in $GetSelectVer) {
-								Write-Host "   $($item)" -ForegroundColor Green
+								Write-Host "  $($item)" -ForegroundColor Green
 							}
 						}
 					}
@@ -1105,14 +1105,14 @@ Function Autopilot_Drive_Delete_UI_Import
 					if ($Is_Valid_New_Custom_Path.count -gt 0) {
 						Drive_Delete_UI -Autopilot $Is_Valid_New_Custom_Path
 					} else {
-						Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+						Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 			"Custom" {
-				Write-Host "`n   $($lang.RuleCustomize)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.RuleCustomize)" -ForegroundColor Yellow
 
 				<#
 					.转换配置文件变量
@@ -1132,7 +1132,7 @@ Function Autopilot_Drive_Delete_UI_Import
 				if ($Is_Valid_New_Custom_Path.count -gt 0) {
 					Drive_Delete_UI -Autopilot $Is_Valid_New_Custom_Path
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 		}

@@ -27,7 +27,7 @@
 	PleaseChoose              = 선택하세요
 	FailedCreateFolder        = 디렉터리 생성 실패
 	Failed                    = 실패했습니다
-	ToMsg                     = \n   {0} 몇 초 후 자동으로 주 메뉴로 돌아갑니다.
+	ToMsg                     = {0} 몇 초 후 자동으로 주 메뉴로 돌아갑니다.
 	UserCancel                = 사용자가 작업을 취소했습니다.
 	Help                      = 돕다
 	WorkDone                  = 완료, 기본 인터페이스로 돌아가려면 아무 키나 누르십시오...

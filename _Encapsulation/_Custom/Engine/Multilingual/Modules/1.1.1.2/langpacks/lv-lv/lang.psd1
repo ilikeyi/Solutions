@@ -27,7 +27,7 @@
 	PleaseChoose              = Lūdzu, atlasiet
 	FailedCreateFolder        = Neizdevās izveidot direktoriju
 	Failed                    = Neizdoties
-	ToMsg                     = \n   {0} Pēc sekundēm automātiski atgriezieties galvenajā izvēlnē.
+	ToMsg                     = {0} Pēc sekundēm automātiski atgriezieties galvenajā izvēlnē.
 	UserCancel                = Lietotājs ir atcēlis darbību.
 	Help                      = Palīdzēt
 	WorkDone                  = Pabeigts, nospiediet jebkuru taustiņu, lai atgrieztos galvenajā saskarnē...

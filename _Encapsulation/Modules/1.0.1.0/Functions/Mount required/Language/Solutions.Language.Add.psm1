@@ -82,7 +82,7 @@ Function Language_Add_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -1471,7 +1471,7 @@ Function Language_Add_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "18" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -1575,17 +1575,17 @@ Function Language_Add_UI
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				$Temp_Language_Add_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Language_Add_Custom_Select.count -gt 0) {
 					ForEach ($item in $Temp_Language_Add_Custom_Select) {
-						Write-Host "   $($item)" -ForegroundColor Green
+						Write-Host "  $($item)" -ForegroundColor Green
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 
@@ -1851,8 +1851,8 @@ Function Language_Add_UI
 	}
 
 	if ($Global:EventQueueMode) {
-		Write-Host "`n   $($lang.Language): $($lang.AddTo)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Language): $($lang.AddTo)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 		$UI_Main.controls.AddRange((
@@ -1863,8 +1863,8 @@ Function Language_Add_UI
 	}
 
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-		Write-Host "`n   $($lang.Language): $($lang.AddTo)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Language): $($lang.AddTo)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 
@@ -1912,9 +1912,9 @@ Function Language_Add_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
 
 		<#
 			.按预规则顺序安装语言包
@@ -2032,14 +2032,14 @@ Function Language_Add_Process
 {
 	$Temp_Language_Add_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Language_Add_Custom_Select.count -gt 0) {
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Language_Add_Custom_Select) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			Write-Host "  $($item)" -ForegroundColor Green
 		}
 
-		Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		<#
 			.按预规则顺序安装语言包
 		#>
@@ -2077,7 +2077,7 @@ Function Language_Add_Process
 			ForEach ($item in $Temp_Language_Add_Custom_Select) {
 				Get-ChildItem -Path $item -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | ForEach-Object {
 					if (Test-Path -Path $_.FullName -PathType Leaf) {
-						Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+						Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 						Write-Host $_.FullName -ForegroundColor Green
 
 						Language_Add_File_Type_Process -FileName $_.FullName
@@ -2086,7 +2086,7 @@ Function Language_Add_Process
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }
 
@@ -2098,10 +2098,10 @@ Function Language_Add_File_Type_Process
 	)
 
 	if ($Script:Init_Exclude_File -contains $FileName) {
-		Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 		Write-Host $FileName -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.ExcludeItem)`n" -ForegroundColor Red
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.ExcludeItem)`n" -ForegroundColor Red
 	} else {
 		<#
 			.初始化每任务运行时间
@@ -2111,11 +2111,11 @@ Function Language_Add_File_Type_Process
 		$UpdateTasksTime.Reset()
 		$UpdateTasksTime.Start()
 
-		Write-Host "   $($lang.TimeStart)" -NoNewline
+		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($UpdateTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $('-' * 80)"
 
-		Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 		Write-Host $FileName -ForegroundColor Green
 
 		$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
@@ -2123,31 +2123,31 @@ Function Language_Add_File_Type_Process
 		$CommandNewPrint = "Add-WindowsPackage -Path ""$($test_mount_folder_Current)"" -PackagePath ""$($FileName)"""
 
 		if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-			Write-Host "`n   $($lang.Command): " -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($CommandNewPrint)`n" -ForegroundColor Green
+			Write-Host "`n  $($lang.Command): " -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($CommandNewPrint)`n" -ForegroundColor Green
 		}
 
-		Write-Host "   $($lang.AddTo)".PadRight(21) -NoNewline
+		Write-Host "  $($lang.AddTo)".PadRight(21) -NoNewline
 		try {
 			Invoke-Expression -Command $CommandNew
 			Write-Host $lang.Done -ForegroundColor Green
 		}
 		catch {
 			Write-Host $_
-			Write-Host "   $($lang.Failed)" -ForegroundColor Red
+			Write-Host "  $($lang.Failed)" -ForegroundColor Red
 		}
 
 		$UpdateTasksTime.Stop()
-		Write-Host "`n   $($lang.TimeEnd)" -NoNewline
+		Write-Host "`n  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
 
-		Write-Host "   $($lang.TimeEndAll)" -NoNewline
+		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host $UpdateTasksTime.Elapsed -ForegroundColor Yellow
 
-		Write-Host "   $($lang.TimeEndAllseconds)" -NoNewline
+		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($UpdateTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $('-' * 80)"
 		Write-Host
 	}
 }
@@ -2228,23 +2228,23 @@ Function Language_Add_Rule_Process
 	#>
 	$Script:Init_File_Type_Other_Region_Specific = @()
 
-	Write-Host "   $($lang.LanguageCode): " -NoNewline
+	Write-Host "  $($lang.LanguageCode): " -NoNewline
 	Write-Host $NewLang -ForegroundColor Green
 
-	Write-Host "`n   $($lang.AddSources)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
-	Write-Host "   $($Sources)" -ForegroundColor Green
+	Write-Host "`n  $($lang.AddSources)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
+	Write-Host "  $($Sources)" -ForegroundColor Green
 
 	if ($Script:Init_Folder_All_File.Count -gt 0) {
-		Write-Host "`n   $($lang.LXPsWaitAdd): " -NoNewline -ForegroundColor Yellow
+		Write-Host "`n  $($lang.LXPsWaitAdd): " -NoNewline -ForegroundColor Yellow
 		Write-Host "$($Script:Init_Folder_All_File.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Script:Init_Folder_All_File) {
-			Write-Host "   $([IO.Path]::GetFileName($item))" -ForegroundColor Green
+			Write-Host "  $([IO.Path]::GetFileName($item))" -ForegroundColor Green
 		}
 
-		Write-Host "`n   $($lang.InCategory)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.InCategory)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Global:Search_File_Order) {
 			<#
 				.1 = 字体
@@ -2390,7 +2390,7 @@ Function Language_Add_Rule_Process
 				}
 			}
 		}
-		Write-Host "   $($lang.Done)" -ForegroundColor Green
+		Write-Host "  $($lang.Done)" -ForegroundColor Green
 
 		<#
 			.获取当前组件状态
@@ -2400,21 +2400,21 @@ Function Language_Add_Rule_Process
 		<#
 			.初始化复选框：安装语言包时，从已安装列表里通配
 		#>
-		Write-Host "`n   $($lang.Match_installed_List)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Match_installed_List)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		if ((Get-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-			Write-Host "   $($lang.UpdateAvailable)`n" -ForegroundColor Green
+			Write-Host "  $($lang.UpdateAvailable)`n" -ForegroundColor Green
 
 			Language_Rule_Add_group
 		} else {
-			Write-Host "   $($lang.UpdateUnavailable)`n" -ForegroundColor Red
+			Write-Host "  $($lang.UpdateUnavailable)`n" -ForegroundColor Red
 		}
 
 		Language_Rule_Add_View_And_Process
 
 		Language_Rule_Add_View_And_Process -install
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }
 
@@ -2429,287 +2429,287 @@ Function Language_Rule_Add_group
 		Get-WindowsPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Get.log" -Path $test_mount_folder_Current | ForEach-Object {
 			$Initl_install_Language_Component += $_.PackageName
 		}
-		Write-Host "   $($lang.Operable)" -ForegroundColor Green
+		Write-Host "  $($lang.Operable)" -ForegroundColor Green
 	} catch {
-		Write-Host "   $($_)" -ForegroundColor Yellow
-		Write-Host "   $($lang.SelectFromError)" -ForegroundColor Red
-		Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+		Write-Host "  $($_)" -ForegroundColor Yellow
+		Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
+		Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 		return
 	}
 
-	Write-Host "`n   $($lang.GetImagePackage)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.GetImagePackage)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	foreach ($item in $Initl_install_Language_Component) {
-		Write-Host "   $($item)" -ForegroundColor Green
+		Write-Host "  $($item)" -ForegroundColor Green
 	}
 
-	Write-Host "`n   $($lang.InCategory)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.InCategory)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	<#
 		.OCR
 	#>
-	Write-Host "   $($lang.OCR): " -NoNewline -ForegroundColor Yellow
+	Write-Host "  $($lang.OCR): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($Script:Init_File_Type_OCR.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if ($Script:Init_File_Type_OCR.Count -gt 0) {
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($Fonts in $Script:Init_File_Type_OCR) {
-			Write-Host "   $($lang.RuleName): " -NoNewline
+			Write-Host "  $($lang.RuleName): " -NoNewline
 			Write-Host $Fonts.Match -ForegroundColor Green
 
-			Write-Host "   $($lang.LXPsWaitAdd): " -NoNewline
+			Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 			Write-Host $Fonts.FileName -ForegroundColor Green
 
 			Write-Host
 		}
 
-		Write-Host "   $($lang.LanguageExtractSearch)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.LanguageExtractSearch)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
 		ForEach ($Fonts in $Script:Init_File_Type_OCR) {
 			$Mark_Is_Match = $True
 
-			Write-Host "   $($lang.RuleName): " -NoNewline
+			Write-Host "  $($lang.RuleName): " -NoNewline
 			Write-Host $Fonts.Match -ForegroundColor Green
 
 			ForEach ($WildCard in $Initl_install_Language_Component) {
 				if ($WildCard -like $Fonts.Match) {
 					$Mark_Is_Match = $false
-					Write-Host "   $($lang.Matched_Component_Names)" -NoNewline
+					Write-Host "  $($lang.Matched_Component_Names)" -NoNewline
 					Write-Host $WildCard -ForegroundColor Green
 
-					Write-Host "   $($lang.LXPsWaitAdd): " -NoNewline
+					Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 					Write-Host $Fonts.FileName -ForegroundColor Green
-					Write-Host "   $($lang.AddTo), $($lang.Done)`n" -ForegroundColor Green
+					Write-Host "  $($lang.AddTo), $($lang.Done)`n" -ForegroundColor Green
 
 					break
 				}
 			}
 
 			if ($Mark_Is_Match) {
-				Write-Host "   $($lang.LXPsWaitAdd): " -NoNewline
+				Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 				Write-Host $Fonts.FileName -ForegroundColor Red
-				Write-Host "   $($lang.MatchMode), $($lang.Failed)`n" -ForegroundColor Red
+				Write-Host "  $($lang.MatchMode), $($lang.Failed)`n" -ForegroundColor Red
 				$Script:Init_Exclude_File += $Fonts.FileName
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 
 	<#
 		.Handwriting
 	#>
-	Write-Host "`n   $($lang.Handwriting): " -NoNewline -ForegroundColor Yellow
+	Write-Host "`n  $($lang.Handwriting): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($Script:Init_File_Type_Handwriting.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if ($Script:Init_File_Type_Handwriting.Count -gt 0) {
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($Fonts in $Script:Init_File_Type_Handwriting) {
-			Write-Host "   $($lang.RuleName): " -NoNewline
+			Write-Host "  $($lang.RuleName): " -NoNewline
 			Write-Host $Fonts.Match -ForegroundColor Green
 
-			Write-Host "   $($lang.LXPsWaitAdd): " -NoNewline
+			Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 			Write-Host $Fonts.FileName -ForegroundColor Green
 
 			Write-Host
 		}
 
-		Write-Host "   $($lang.LanguageExtractSearch)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.LanguageExtractSearch)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
 		ForEach ($Fonts in $Script:Init_File_Type_Handwriting) {
 			$Mark_Is_Match = $True
 
-			Write-Host "   $($lang.RuleName): " -NoNewline
+			Write-Host "  $($lang.RuleName): " -NoNewline
 			Write-Host $Fonts.Match -ForegroundColor Green
 
 			ForEach ($WildCard in $Initl_install_Language_Component) {
 				if ($WildCard -like $Fonts.Match) {
 					$Mark_Is_Match = $false
-					Write-Host "   $($lang.Matched_Component_Names)" -NoNewline
+					Write-Host "  $($lang.Matched_Component_Names)" -NoNewline
 					Write-Host $WildCard -ForegroundColor Green
 
-					Write-Host "   $($lang.LXPsWaitAdd): " -NoNewline
+					Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 					Write-Host $Fonts.FileName -ForegroundColor Green
-					Write-Host "   $($lang.AddTo), $($lang.Done)`n" -ForegroundColor Green
+					Write-Host "  $($lang.AddTo), $($lang.Done)`n" -ForegroundColor Green
 					break
 				}
 			}
 
 			if ($Mark_Is_Match) {
-				Write-Host "   $($lang.LXPsWaitAdd): " -NoNewline
+				Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 				Write-Host $Fonts.FileName -ForegroundColor Red
-				Write-Host "   $($lang.MatchMode), $($lang.Failed)`n" -ForegroundColor Red
+				Write-Host "  $($lang.MatchMode), $($lang.Failed)`n" -ForegroundColor Red
 				$Script:Init_Exclude_File += $Fonts.FileName
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 
 	<#
 		.TextToSpeech
 	#>
-	Write-Host "`n   $($lang.TextToSpeech): " -NoNewline -ForegroundColor Yellow
+	Write-Host "`n  $($lang.TextToSpeech): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($Script:Init_File_Type_TextToSpeech.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if ($Script:Init_File_Type_TextToSpeech.Count -gt 0) {
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($Fonts in $Script:Init_File_Type_TextToSpeech) {
-			Write-Host "   $($lang.RuleName): " -NoNewline
+			Write-Host "  $($lang.RuleName): " -NoNewline
 			Write-Host $Fonts.Match -ForegroundColor Green
 
-			Write-Host "   $($lang.LXPsWaitAdd): " -NoNewline
+			Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 			Write-Host $Fonts.FileName -ForegroundColor Green
 
 			Write-Host
 		}
 
-		Write-Host "   $($lang.LanguageExtractSearch)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.LanguageExtractSearch)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
 		ForEach ($Fonts in $Script:Init_File_Type_TextToSpeech) {
 			$Mark_Is_Match = $True
 
-			Write-Host "   $($lang.RuleName): " -NoNewline
+			Write-Host "  $($lang.RuleName): " -NoNewline
 			Write-Host $Fonts.Match -ForegroundColor Green
 
 			ForEach ($WildCard in $Initl_install_Language_Component) {
 				if ($WildCard -like $Fonts.Match) {
 					$Mark_Is_Match = $false
-					Write-Host "   $($lang.Matched_Component_Names)" -NoNewline
+					Write-Host "  $($lang.Matched_Component_Names)" -NoNewline
 					Write-Host $WildCard -ForegroundColor Green
 
-					Write-Host "   $($lang.LXPsWaitAdd): " -NoNewline
+					Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 					Write-Host $Fonts.FileName -ForegroundColor Green
-					Write-Host "   $($lang.AddTo), $($lang.Done)`n" -ForegroundColor Green
+					Write-Host "  $($lang.AddTo), $($lang.Done)`n" -ForegroundColor Green
 					break
 				}
 			}
 
 			if ($Mark_Is_Match) {
-				Write-Host "   $($lang.LXPsWaitAdd): " -NoNewline
+				Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 				Write-Host $Fonts.FileName -ForegroundColor Red
-				Write-Host "   $($lang.MatchMode), $($lang.Failed)`n" -ForegroundColor Red
+				Write-Host "  $($lang.MatchMode), $($lang.Failed)`n" -ForegroundColor Red
 				$Script:Init_Exclude_File += $Fonts.FileName
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 
 	<#
 		.Speech
 	#>
-	Write-Host "`n   $($lang.Speech): " -NoNewline -ForegroundColor Yellow
+	Write-Host "`n  $($lang.Speech): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($Script:Init_File_Type_Speech.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if ($Script:Init_File_Type_Speech.Count -gt 0) {
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($Fonts in $Script:Init_File_Type_Speech) {
-			Write-Host "   $($lang.RuleName): " -NoNewline
+			Write-Host "  $($lang.RuleName): " -NoNewline
 			Write-Host $Fonts.Match -ForegroundColor Green
 
-			Write-Host "   $($lang.LXPsWaitAdd): " -NoNewline
+			Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 			Write-Host $Fonts.FileName -ForegroundColor Green
 
 			Write-Host
 		}
 
-		Write-Host "   $($lang.LanguageExtractSearch)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.LanguageExtractSearch)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
 		ForEach ($Fonts in $Script:Init_File_Type_Speech) {
 			$Mark_Is_Match = $True
 
-			Write-Host "   $($lang.RuleName): " -NoNewline
+			Write-Host "  $($lang.RuleName): " -NoNewline
 			Write-Host $Fonts.Match -ForegroundColor Green
 
 			ForEach ($WildCard in $Initl_install_Language_Component) {
 				if ($WildCard -like $Fonts.Match) {
 					$Mark_Is_Match = $false
-					Write-Host "   $($lang.Matched_Component_Names)" -NoNewline
+					Write-Host "  $($lang.Matched_Component_Names)" -NoNewline
 					Write-Host $WildCard -ForegroundColor Green
 
-					Write-Host "   $($lang.LXPsWaitAdd): " -NoNewline
+					Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 					Write-Host $Fonts.FileName -ForegroundColor Green
-					Write-Host "   $($lang.AddTo), $($lang.Done)`n" -ForegroundColor Green
+					Write-Host "  $($lang.AddTo), $($lang.Done)`n" -ForegroundColor Green
 					break
 				}
 			}
 
 			if ($Mark_Is_Match) {
-				Write-Host "   $($lang.LXPsWaitAdd): " -NoNewline
+				Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 				Write-Host $Fonts.FileName -ForegroundColor Red
-				Write-Host "   $($lang.MatchMode), $($lang.Failed)`n" -ForegroundColor Red
+				Write-Host "  $($lang.MatchMode), $($lang.Failed)`n" -ForegroundColor Red
 				$Script:Init_Exclude_File += $Fonts.FileName
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 
 	<#
 		.Features_On_Demand
 	#>
-	Write-Host "`n   $($lang.Features_On_Demand): " -NoNewline -ForegroundColor Yellow
+	Write-Host "`n  $($lang.Features_On_Demand): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($Script:Init_File_Type_Features_On_Demand.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if ($Script:Init_File_Type_Features_On_Demand.Count -gt 0) {
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($Fonts in $Script:Init_File_Type_Features_On_Demand) {
-			Write-Host "   $($lang.RuleName): " -NoNewline
+			Write-Host "  $($lang.RuleName): " -NoNewline
 			Write-Host $Fonts.Match -ForegroundColor Green
 
-			Write-Host "   $($lang.LXPsWaitAdd): " -NoNewline
+			Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 			Write-Host $Fonts.FileName -ForegroundColor Green
 
 			Write-Host
 		}
 
-		Write-Host "   $($lang.LanguageExtractSearch)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.LanguageExtractSearch)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
 		ForEach ($Fonts in $Script:Init_File_Type_Features_On_Demand) {
 			$Mark_Is_Match = $True
 
-			Write-Host "   $($lang.RuleName): " -NoNewline
+			Write-Host "  $($lang.RuleName): " -NoNewline
 			Write-Host $Fonts.Match -ForegroundColor Green
 
 			ForEach ($WildCard in $Initl_install_Language_Component) {
 				if ($WildCard -like $Fonts.Match) {
 					$Mark_Is_Match = $false
-					Write-Host "   $($lang.Matched_Component_Names)" -NoNewline
+					Write-Host "  $($lang.Matched_Component_Names)" -NoNewline
 					Write-Host $WildCard -ForegroundColor Green
 
-					Write-Host "   $($lang.LXPsWaitAdd): " -NoNewline
+					Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 					Write-Host $Fonts.FileName -ForegroundColor Green
-					Write-Host "   $($lang.AddTo), $($lang.Done)`n" -ForegroundColor Green
+					Write-Host "  $($lang.AddTo), $($lang.Done)`n" -ForegroundColor Green
 					break
 				}
 			}
 
 			if ($Mark_Is_Match) {
-				Write-Host "   $($lang.LXPsWaitAdd): " -NoNewline
+				Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 				Write-Host $Fonts.FileName -ForegroundColor Red
-				Write-Host "   $($lang.MatchMode), $($lang.Failed)`n" -ForegroundColor Red
+				Write-Host "  $($lang.MatchMode), $($lang.Failed)`n" -ForegroundColor Red
 				$Script:Init_Exclude_File += $Fonts.FileName
 			}
 		}
 
-		Write-Host "`n   $($lang.ExcludeItem): " -NoNewline -ForegroundColor Yellow
+		Write-Host "`n  $($lang.ExcludeItem): " -NoNewline -ForegroundColor Yellow
 		Write-Host "$($Script:Init_Exclude_File.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $('-' * 80)"
 		if ($Script:Init_Exclude_File.Count -gt 0) {
 			foreach ($item in $Script:Init_Exclude_File) {
-				Write-Host "   $($item)" -ForegroundColor Green
+				Write-Host "  $($item)" -ForegroundColor Green
 			}
 		} else {
-			Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+			Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }
 
@@ -2723,191 +2723,191 @@ Function Language_Rule_Add_View_And_Process
 	<#
 		.1 = 字体
 	#>
-	Write-Host "`n   $($lang.Fonts): " -NoNewline -ForegroundColor Yellow
+	Write-Host "`n  $($lang.Fonts): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($Script:Init_File_Type_Fonts.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if ($Script:Init_File_Type_Fonts.Count -gt 0) {
 		ForEach ($item in $Script:Init_File_Type_Fonts) {
 			if ($Install) {
 				Language_Add_File_Type_Process -FileName $item.FileName
 			} else {
-				Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 				Write-Host $item.FileName -ForegroundColor Green
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 
 	<#
 		.2 = 基本
 	#>
-	Write-Host "`n   $($lang.Basic): " -NoNewline -ForegroundColor Yellow
+	Write-Host "`n  $($lang.Basic): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($Script:Init_File_Type_Basic.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if ($Script:Init_File_Type_Basic.Count -gt 0) {
 		ForEach ($item in $Script:Init_File_Type_Basic) {
 			if ($Install) {
 				Language_Add_File_Type_Process -FileName $item.FileName
 			} else {
-				Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 				Write-Host $item.FileName -ForegroundColor Green
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 	
 	<#
 		.3 = OCR
 	#>
-	Write-Host "`n   $($lang.OCR): " -NoNewline -ForegroundColor Yellow
+	Write-Host "`n  $($lang.OCR): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($Script:Init_File_Type_OCR.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if ($Script:Init_File_Type_OCR.Count -gt 0) {
 		ForEach ($item in $Script:Init_File_Type_OCR) {
 			if ($Install) {
 				Language_Add_File_Type_Process -FileName $item.FileName
 			} else {
-				Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 				Write-Host $item.FileName -ForegroundColor Green
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 
 	<#
 		.4 = 手写内容识别
 	#>
-	Write-Host "`n   $($lang.Handwriting): " -NoNewline -ForegroundColor Yellow
+	Write-Host "`n  $($lang.Handwriting): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($Script:Init_File_Type_Handwriting.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if ($Script:Init_File_Type_Handwriting.Count -gt 0) {
 		ForEach ($item in $Script:Init_File_Type_Handwriting) {
 			if ($Install) {
 				Language_Add_File_Type_Process -FileName $item.FileName
 			} else {
-				Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 				Write-Host $item.FileName -ForegroundColor Green
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 
 	<#
 		.5 = 文本转语音
 	#>
-	Write-Host "`n   $($lang.TextToSpeech): " -NoNewline -ForegroundColor Yellow
+	Write-Host "`n  $($lang.TextToSpeech): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($Script:Init_File_Type_TextToSpeech.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if ($Script:Init_File_Type_TextToSpeech.Count -gt 0) {
 		ForEach ($item in $Script:Init_File_Type_TextToSpeech) {
 			if ($Install) {
 				Language_Add_File_Type_Process -FileName $item.FileName
 			} else {
-				Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 				Write-Host $item.FileName -ForegroundColor Green
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 
 	<#
 		.6 = 语音识别
 	#>
-	Write-Host "`n   $($lang.Speech): " -NoNewline -ForegroundColor Yellow
+	Write-Host "`n  $($lang.Speech): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($Script:Init_File_Type_Speech.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if ($Script:Init_File_Type_Speech.Count -gt 0) {
 		ForEach ($item in $Script:Init_File_Type_Speech) {
 			if ($Install) {
 				Language_Add_File_Type_Process -FileName $item.FileName
 			} else {
-				Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 				Write-Host $item.FileName -ForegroundColor Green
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 
 	<#
 		.7 = 零售演示体验
 	#>
-	Write-Host "`n   $($lang.Retail): " -NoNewline -ForegroundColor Yellow
+	Write-Host "`n  $($lang.Retail): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($Script:Init_File_Type_Retail.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if ($Script:Init_File_Type_Retail.Count -gt 0) {
 		ForEach ($item in $Script:Init_File_Type_Retail) {
 			if ($Install) {
 				Language_Add_File_Type_Process -FileName $item.FileName
 			} else {
-				Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 				Write-Host $item.FileName -ForegroundColor Green
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 
 	<#
 		.8 = 按需功能
 	#>
-	Write-Host "`n   $($lang.Features_On_Demand): " -NoNewline -ForegroundColor Yellow
+	Write-Host "`n  $($lang.Features_On_Demand): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($Script:Init_File_Type_Features_On_Demand.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if ($Script:Init_File_Type_Features_On_Demand.Count -gt 0) {
 		ForEach ($item in $Script:Init_File_Type_Features_On_Demand) {
 
 			if ($Install) {
 				Language_Add_File_Type_Process -FileName $item.FileName
 			} else {
-				Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 				Write-Host $item.FileName -ForegroundColor Green
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 
 	<#
 		.9 = 特定包
 	#>
-	Write-Host "`n   $($lang.RegionSpecific): " -NoNewline -ForegroundColor Yellow
+	Write-Host "`n  $($lang.RegionSpecific): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($Script:Init_File_Type_Other_Region_Specific.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if ($Script:Init_File_Type_Other_Region_Specific.Count -gt 0) {
 		ForEach ($item in $Script:Init_File_Type_Other_Region_Specific) {
 			if ($Install) {
 				Language_Add_File_Type_Process -FileName $item.FileName
 			} else {
-				Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 				Write-Host $item.FileName -ForegroundColor Green
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 
 	<#
 		.10 = 语言包其它
 	#>
-	Write-Host "`n   $($lang.UnassignedLangFiles): " -NoNewline -ForegroundColor Yellow
+	Write-Host "`n  $($lang.UnassignedLangFiles): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($Script:Init_Folder_All_File_Exclude.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 	if ($Script:Init_Folder_All_File_Exclude.Count -gt 0) {
 		ForEach ($item in $Script:Init_Folder_All_File_Exclude) {
 			if ($Install) {
 				Language_Add_File_Type_Process -FileName $item
 			} else {
-				Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 				Write-Host $item -ForegroundColor Green
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }

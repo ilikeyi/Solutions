@@ -18,7 +18,7 @@ Function Language_Change_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -178,7 +178,7 @@ Function Language_Change_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "20" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -280,20 +280,20 @@ Function Language_Change_UI
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
 					$Temp_Queue_Language_Change_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 					if ([string]::IsNullOrEmpty($Temp_Queue_Language_Change_Select)) {
-						Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+						Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 					} else {
-						Write-Host "   $($lang.Change), $($lang.SwitchLanguage): " -NoNewline
+						Write-Host "  $($lang.Change), $($lang.SwitchLanguage): " -NoNewline
 						Write-Host $Temp_Queue_Language_Change_Select -ForegroundColor Green
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 
@@ -358,8 +358,8 @@ Function Language_Change_UI
 	}
 
 	if ($Global:EventQueueMode) {
-		Write-Host "`n   $($lang.SwitchLanguage)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.SwitchLanguage)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 		$UI_Main.controls.AddRange((
@@ -370,8 +370,8 @@ Function Language_Change_UI
 	}
 
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-		Write-Host "`n   $($lang.SwitchLanguage)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.SwitchLanguage)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 
@@ -419,9 +419,9 @@ Function Language_Change_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
 
 		New-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 		New-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value "" -Force
@@ -458,9 +458,9 @@ Function Language_Change_Process
 	$NewLanguage = (Get-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 
 	if ([string]::IsNullOrEmpty($NewLanguage)) {
-		Write-Host "   $($lang.MatchMode), $($lang.Language), $($lang.Failed)`n" -ForegroundColor Red
+		Write-Host "  $($lang.MatchMode), $($lang.Language), $($lang.Failed)`n" -ForegroundColor Red
 	} else {
-		Write-Host "   $($lang.SwitchLanguageAfter -f $NewLanguage)" -ForegroundColor Green
+		Write-Host "  $($lang.SwitchLanguageAfter -f $NewLanguage)" -ForegroundColor Green
 		if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
 			start-process "Dism.exe" -ArgumentList "/Image:""$($test_mount_folder_Current)"" /Set-SetupUILang:""$($NewLanguage)""" -wait -WindowStyle Hidden
 			start-process "Dism.exe" -ArgumentList "/Image:""$($test_mount_folder_Current)"" /Set-SKUIntlDefaults:""$($NewLanguage)""" -wait -WindowStyle Hidden
@@ -473,9 +473,9 @@ Function Language_Change_Process
 
 			start-process "Dism.exe" -ArgumentList "/Image:""$($test_mount_folder_Current)"" /Get-Intl" -wait -nonewwindow
 		} else {
-			Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.NotMounted)`n" -ForegroundColor Red
+			Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.NotMounted)`n" -ForegroundColor Red
 		}
 	}
 }

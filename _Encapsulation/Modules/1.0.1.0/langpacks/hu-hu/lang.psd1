@@ -41,7 +41,7 @@
 	Existed                         = Már létezik
 	FailedCreateFolder              = Nem sikerült létrehozni a könyvtárat
 	FailedCreateFile                = Nem sikerült létrehozni a fájlt
-	ToMsg                           = \n   {0} Másodpercek után automatikusan visszatér a főmenübe.
+	ToMsg                           = {0} Másodpercek után automatikusan visszatér a főmenübe.
 	OnDemandPlanTask                = Ismert események egyedi hozzárendelése
 	Operable                        = Működtethető
 	Inoperable                      = Működésképtelen

@@ -285,7 +285,7 @@ Function InBox_Apps_Match_Delete_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -454,7 +454,7 @@ Function InBox_Apps_Match_Delete_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "14" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -559,17 +559,17 @@ Function InBox_Apps_Match_Delete_UI
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 				
-				Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_Select.count -gt 0) {
 					ForEach ($item in $Temp_Assign_Task_Select) {
-						Write-Host "   $($item.Name)" -ForegroundColor Green
+						Write-Host "  $($item.Name)" -ForegroundColor Green
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 
@@ -838,8 +838,8 @@ Function InBox_Apps_Match_Delete_UI
 	}
 
 	if ($Global:EventQueueMode) {
-		Write-Host "`n   $($lang.InboxAppsMatchDel)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.InboxAppsMatchDel)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 		$UI_Main.controls.AddRange((
@@ -850,8 +850,8 @@ Function InBox_Apps_Match_Delete_UI
 	}
 
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-		Write-Host "`n   $($lang.InboxAppsMatchDel)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.InboxAppsMatchDel)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 
@@ -899,9 +899,9 @@ Function InBox_Apps_Match_Delete_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
 
 		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
 
@@ -1044,40 +1044,40 @@ Function InBox_Apps_Match_Delete_Process
 	$InitlUWPPreDeleteSelectPakcageDelete = @()
 
 	ForEach ($item in $Script:QueueInboxAppsDeleteSelect) {
-		Write-Host "   $($lang.RuleName): " -NoNewline
+		Write-Host "  $($lang.RuleName): " -NoNewline
 		Write-Host $item.Name -ForegroundColor Green
 		
-		Write-Host "   $($lang.RuleFileFind): " -NoNewline
+		Write-Host "  $($lang.RuleFileFind): " -NoNewline
 		Write-Host $item.Rule -ForegroundColor Green
 
 		Write-Host
 	}
 
-	Write-Host "   $($lang.GetInBoxApps)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $($lang.GetInBoxApps)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 	try {
 		if ($Global:Developers_Mode) {
-			Write-Host "`n   $($lang.Developers_Mode_Location): 53`n" -ForegroundColor Green
+			Write-Host "`n  $($lang.Developers_Mode_Location): 53`n" -ForegroundColor Green
 		}
 
 		if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-			Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Write-Host "   Get-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
-			Write-Host "   $('-' * 80)`n"
+			Write-Host "  $('-' * 80)`n"
 		}
 
 		Get-AppxProvisionedPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Get.log" -Path $test_mount_folder_Current -ErrorAction SilentlyContinue | ForEach-Object {
     		$InitlUWPPreDeleteSelectPakcage += $_.PackageName
-			Write-Host "   $($_.PackageName)"
+			Write-Host "  $($_.PackageName)"
 		}
 	} catch {
-		Write-Host "   $($lang.SelectFromError)" -ForegroundColor Red
-		Write-Host "   $($_)" -ForegroundColor Yellow
-		Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+		Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
+		Write-Host "  $($_)" -ForegroundColor Yellow
+		Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 		return
 	}
 
@@ -1089,37 +1089,37 @@ Function InBox_Apps_Match_Delete_Process
 		}
 	}
 
-	Write-Host "`n   $($lang.LXPsWaitRemove)" -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.LXPsWaitRemove)" -ForegroundColor Green
+	Write-Host "  $('-' * 80)"
 	if ($InitlUWPPreDeleteSelectPakcageDelete.count -gt 0) {
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		ForEach ($item in $InitlUWPPreDeleteSelectPakcageDelete) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			Write-Host "  $($item)" -ForegroundColor Green
 		}
 
-		Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $InitlUWPPreDeleteSelectPakcageDelete) {
-			Write-Host "   $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
 			Write-Host $item -ForegroundColor Yellow
 			
 			if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-					Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
+					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
 					Write-Host "   Remove-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackageName ""$($item)""" -ForegroundColor Green
-					Write-Host "   $('-' * 80)`n"
+					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "   $($lang.Del)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
 				try {
 					Remove-AppxProvisionedPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove-AppxProvisionedPackage.log" -Path $test_mount_folder_Current -PackageName $item -ErrorAction SilentlyContinue | Out-Null
 					Write-Host $lang.Done -ForegroundColor Green
 				} catch {
 					Write-Host $_
-					Write-Host "   $($lang.Failed)" -ForegroundColor Red
+					Write-Host "  $($lang.Failed)" -ForegroundColor Red
 				}
 			} else {
 				Write-Host $lang.NotMounted -ForegroundColor Red
@@ -1128,6 +1128,6 @@ Function InBox_Apps_Match_Delete_Process
 			Write-Host
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }

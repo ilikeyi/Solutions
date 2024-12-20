@@ -39,7 +39,7 @@ Function Drive_Add_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -824,7 +824,7 @@ Function Drive_Add_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "8" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -926,17 +926,17 @@ Function Drive_Add_UI
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_Select.count -gt 0) {
 					ForEach ($item in $Temp_Assign_Task_Select) {
-						Write-Host "   $($item)" -ForegroundColor Green
+						Write-Host "  $($item)" -ForegroundColor Green
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 
@@ -1004,8 +1004,8 @@ Function Drive_Add_UI
 	}
 
 	if ($Global:EventQueueMode) {
-		Write-Host "`n   $($lang.Drive): $($lang.AddTo)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Drive): $($lang.AddTo)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 		$UI_Main.controls.AddRange((
@@ -1016,8 +1016,8 @@ Function Drive_Add_UI
 	}
 
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-		Write-Host "`n   $($lang.Drive): $($lang.AddTo)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Drive): $($lang.AddTo)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 
@@ -1065,7 +1065,7 @@ Function Drive_Add_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		New-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
 
 		$Temp_Assign_Task_Select_Is = @()
@@ -1093,15 +1093,15 @@ Function Drive_Add_UI
 			}
 		}
 
-		Write-Host "   $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
 		if (Autopilot_Drive_Add_UI_Save) {
 			Write-Host $lang.Done -ForegroundColor Green
 
-			Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 			foreach ($item in $Temp_Assign_Task_Select) {
-				Write-Host "   $($item)" -ForegroundColor Green
+				Write-Host "  $($item)" -ForegroundColor Green
 			}
 		} else {
 			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
@@ -1151,14 +1151,14 @@ Function Drive_Add_Process
 {
 	$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Assign_Task_Select.count -gt 0) {
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Assign_Task_Select) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			Write-Host "  $($item)" -ForegroundColor Green
 		}
 
-		Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 		ForEach ($item in $Temp_Assign_Task_Select) {
@@ -1166,14 +1166,14 @@ Function Drive_Add_Process
 				Get-ChildItem -Path $item -Recurse -include "*.inf" | Where-Object {
 					if (Test-Path -Path $_.FullName -PathType Leaf) {
 						if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-							Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-							Write-Host "   $('-' * 80)"
+							Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+							Write-Host "  $('-' * 80)"
 							Write-Host "   Add-WindowsDriver -Path ""$($test_mount_folder_Current)"" -Driver ""$($_.FullName)"" -Recurse -ForceUnsigned" -ForegroundColor Green
-							Write-Host "   $('-' * 80)`n"
+							Write-Host "  $('-' * 80)`n"
 						}
 
-						Write-Host "   $($_.FullName)" -ForegroundColor Green
-						Write-Host "   $($lang.AddTo)".PadRight(28) -NoNewline
+						Write-Host "  $($_.FullName)" -ForegroundColor Green
+						Write-Host "  $($lang.AddTo)".PadRight(28) -NoNewline
 						Add-WindowsDriver -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Add.log" -Path $test_mount_folder_Current -Driver $_.FullName -Recurse -ForceUnsigned -ErrorAction SilentlyContinue | Out-Null
 						Write-Host $lang.Done -ForegroundColor Green
 
@@ -1183,7 +1183,7 @@ Function Drive_Add_Process
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }
 
@@ -1202,10 +1202,10 @@ Function Image_Get_Installed_Drive
 		$custom_array = @()
 		try {
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-				Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 77)"
+				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 77)"
 				Write-Host "   Get-WindowsDriver -Path ""$($test_mount_folder_Current)"" -All" -ForegroundColor Green
-				Write-Host "   $('-' * 77)`n"
+				Write-Host "  $('-' * 77)`n"
 			}
 
 			Get-WindowsDriver -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Get.log" -Path $test_mount_folder_Current -All | ForEach-Object {
@@ -1224,10 +1224,10 @@ Function Image_Get_Installed_Drive
 					Version             = $_.Version
 				}
 			}
-			Write-Host "   $($lang.Operable)" -ForegroundColor Green
+			Write-Host "  $($lang.Operable)" -ForegroundColor Green
 		} catch {
-			Write-Host "   $($_)" -ForegroundColor Yellow
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($_)" -ForegroundColor Yellow
+			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			return
 		}
 
@@ -1235,8 +1235,8 @@ Function Image_Get_Installed_Drive
 		Check_Folder -chkpath $Save
 		$TempSaveTo = "$($Save)\Index.$($Get_Index_Now).Drive.$(Get-Date -Format "yyyyMMddHHmmss").csv"
 
-		Write-Host "`n   $($lang.SaveTo)"
-		Write-Host "   $($TempSaveTo)" -ForegroundColor Green
+		Write-Host "`n  $($lang.SaveTo)"
+		Write-Host "  $($TempSaveTo)" -ForegroundColor Green
 		$custom_array | Export-CSV -NoType -Path $TempSaveTo
 
 @"
@@ -1271,7 +1271,7 @@ Function Image_Get_Installed_Drive
 		}
 
 		if (`$FileBrowser.ShowDialog() -eq "OK") {
-			Write-Host "`n   Save To:"
+			Write-Host "`n  Save To:"
 			Write-Host "   `$(`$FileBrowser.FileName)" -ForegroundColor Green
 			`$custom_array_Export | Export-CSV -NoType -Path `$FileBrowser.FileName
 		} else {
@@ -1284,8 +1284,8 @@ Function Image_Get_Installed_Drive
 			powershell -NoLogo -NonInteractive -file "$($TempSaveTo).ps1" -wait
 		}
 	} else {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 	}
 }

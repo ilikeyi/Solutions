@@ -41,7 +41,7 @@
 	Existed                         = Jau egzistuoja
 	FailedCreateFolder              = Nepavyko sukurti katalogo
 	FailedCreateFile                = Nepavyko sukurti failo
-	ToMsg                           = \n   {0} Po sekundžių automatiškai grįžkite į pagrindinį meniu.
+	ToMsg                           = {0} Po sekundžių automatiškai grįžkite į pagrindinį meniu.
 	OnDemandPlanTask                = Pasirinktinis žinomų įvykių priskyrimas
 	Operable                        = Veikiantis
 	Inoperable                      = Neveikiantis

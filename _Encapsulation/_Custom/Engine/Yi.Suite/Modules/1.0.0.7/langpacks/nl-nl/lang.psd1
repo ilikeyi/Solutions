@@ -47,7 +47,7 @@
 	PleaseChoose              = Selecteer alstublieft
 	FailedCreateFolder        = Kan map niet maken
 	Failed                    = Mislukking
-	ToMsg                     = \n   {0} Keer na enkele seconden automatisch terug naar het hoofdmenu.
+	ToMsg                     = {0} Keer na enkele seconden automatisch terug naar het hoofdmenu.
 	Restart                   = De herstart wordt van kracht
 	AdvOption                 = Optionele functies
 

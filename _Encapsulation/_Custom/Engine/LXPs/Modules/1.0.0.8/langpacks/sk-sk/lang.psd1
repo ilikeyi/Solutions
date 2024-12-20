@@ -22,7 +22,7 @@
 	RefreshModules            = Horúca obnova všetkých modulov
 	PleaseChoose              = Vyberte
 	FailedCreateFolder        = Nepodarilo sa vytvoriť adresár
-	ToMsg                     = \n   {0} Po niekoľkých sekundách sa automaticky vráti do hlavnej ponuky.
+	ToMsg                     = {0} Po niekoľkých sekundách sa automaticky vráti do hlavnej ponuky.
 	UserCancel                = Používateľ zrušil operáciu.
 	Detailed                  = Podrobne
 	FileName                  = Názov súboru

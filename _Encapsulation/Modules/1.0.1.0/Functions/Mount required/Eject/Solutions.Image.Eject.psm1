@@ -6,23 +6,23 @@ Function Image_Eject
 {
 	if (-not $Global:EventQueueMode) {
 		Logo -Title "$($lang.Mounted_Status): $($lang.Mount), $($lang.Unmount)"
-		Write-Host "   $($lang.Dashboard)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Dashboard)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
-		Write-Host "   $($lang.MountImageTo): " -NoNewline
+		Write-Host "  $($lang.MountImageTo): " -NoNewline
 		if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
 			Write-Host $Global:Mount_To_Route -ForegroundColor Green
 		} else {
 			Write-Host $Global:Mount_To_Route -ForegroundColor Yellow
 		}
 
-		Write-Host "   $($lang.MainImageFolder): " -NoNewline
+		Write-Host "  $($lang.MainImageFolder): " -NoNewline
 		if (Test-Path -Path $Global:Image_source -PathType Container) {
 			Write-Host $Global:Image_source -ForegroundColor Green
 		} else {
 			Write-Host $Global:Image_source -ForegroundColor Red
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.NoInstallImage)" -ForegroundColor Red
 
 			ToWait -wait 2
 			Mainpage
@@ -38,23 +38,23 @@ Function Image_Eject
 		#>
 		if (Image_Is_Select_IAB) {
 		} else {
-			Write-Host "`n   $($lang.Mounted_Status): $($lang.Mount), $($lang.Unmount)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+			Write-Host "`n  $($lang.Mounted_Status): $($lang.Mount), $($lang.Unmount)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 			return
 		}
 
 		<#
 			.判断挂载合法性
 		#>
-		Write-Host "`n   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 		if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+			Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 
 			return
 		}
@@ -73,8 +73,8 @@ Function Image_Eject
 #>
 Function Image_Eject_UI
 {
-	Write-Host "`n   $($lang.Mounted_Status): $($lang.Mount), $($lang.Unmount)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Mounted_Status): $($lang.Mount), $($lang.Unmount)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
@@ -386,7 +386,7 @@ Function Image_Eject_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -936,7 +936,7 @@ Function Image_Eject_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "10" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -1022,84 +1022,84 @@ Function Image_Eject_UI
 			#>
 			New-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 
-			Write-Host "   $($lang.Healthy)" -ForegroundColor Yellow
+			Write-Host "  $($lang.Healthy)" -ForegroundColor Yellow
 			if ($UI_Main_Healthy.Enabled) {
 				if ($UI_Main_Healthy.Checked) {
-					Write-Host "   $($lang.Operable)" -ForegroundColor Green
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 					New-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 			} else {
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 
-			Write-Host "`n   $($lang.Healthy_Save)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Healthy_Save)" -ForegroundColor Yellow
 			if ($UI_Main_Healthy_Save.Enabled) {
 				if ($UI_Main_Healthy_Save.Checked) {
 					New-Variable -Scope global -Name "Queue_Healthy_Dont_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-					Write-Host "   $($lang.Operable)" -ForegroundColor Green
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
 					New-Variable -Scope global -Name "Queue_Healthy_Dont_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 			} else {
 				New-Variable -Scope global -Name "Queue_Healthy_Dont_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 
-			Write-Host "`n   $($lang.Mounted_Status)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Mounted_Status)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			if ($UI_Main_Is_Save_And_Unmount.Enabled) {
 				if ($UI_Main_Is_Save_And_Unmount.Checked) {
 					<#
 						.保存
 					#>
-					Write-Host "   $($lang.SaveTo)" -ForegroundColor Yellow
+					Write-Host "  $($lang.SaveTo)" -ForegroundColor Yellow
 					if ($UI_Main_Mount_Save.Checked) {
-						Write-Host "   $($lang.Operable)" -ForegroundColor Green
+						Write-Host "  $($lang.Operable)" -ForegroundColor Green
 						New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
 
-						Write-Host "`n   $($lang.UnmountAndSave)" -ForegroundColor Green
-						Write-Host "   $('-' * 80)"
+						Write-Host "`n  $($lang.UnmountAndSave)" -ForegroundColor Green
+						Write-Host "  $('-' * 80)"
 						if ($UI_Main_Mount_Save_End_Eject.Enabled) {
 							if ($UI_Main_Mount_Save_End_Eject.Checked) {
 								New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-								Write-Host "   $($lang.Operable)" -ForegroundColor Green
+								Write-Host "  $($lang.Operable)" -ForegroundColor Green
 							} else {
-								Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+								Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 							}
 						} else {
-							Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+							Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 						}
 					} else {
-						Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+						Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 					}
 
 					<#
 						.不保存
 					#>
-					Write-Host "`n   $($lang.DoNotSave)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
+					Write-Host "`n  $($lang.DoNotSave)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
 					if ($UI_Main_Mount_Dot_Save.Checked) {
 						New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-						Write-Host "   $($lang.Operable)" -ForegroundColor Green
+						Write-Host "  $($lang.Operable)" -ForegroundColor Green
 					} else {
-						Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+						Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 					}
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 			} else {
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.Save)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.Save)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				if ($UI_Main_Mount_Save.Checked) {
-					Write-Host "   $($lang.Operable)" -ForegroundColor Green
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 					New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
 				} else {
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
 				<#
@@ -1124,31 +1124,31 @@ Function Image_Eject_UI
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.Mounted_Status)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.Mounted_Status)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 
 				<#
 					.保存
 				#>
 				New-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force   # 保存
-				Write-Host "   $($lang.SaveTo)" -ForegroundColor Yellow
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host "  $($lang.SaveTo)" -ForegroundColor Yellow
+				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 
 				<#
 					.不保存
 				#>
-				Write-Host "`n   $($lang.DoNotSave)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.DoNotSave)" -ForegroundColor Yellow
 				New-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force # 不保存
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 
 				<#
 					.健康
 				#>
-				Write-Host "`n   $($lang.Healthy)" -ForegroundColor Yellow
+				Write-Host "`n  $($lang.Healthy)" -ForegroundColor Yellow
 				New-Variable -Scope global -Name "Queue_Expand_Healthy_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 
 			if ($UI_Main_Suggestion_Not.Checked) {
@@ -1406,31 +1406,31 @@ Function Image_Select_Eject_Disable_Expand_Item
 #>
 Function Image_Eject_Save_Current
 {
-	Write-Host "`n   $($lang.Save)"
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Save)"
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Verify_Is_Current_Same) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 
 			$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-				Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
-				Write-Host "   Save-WindowsImage -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
-				Write-Host "   $('-' * 80)`n"
+				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
+				Write-Host "  Save-WindowsImage -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
+				Write-Host "  $('-' * 80)`n"
 			}
 
 			Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $test_mount_folder_Current | Out-Null
-			Write-Host "   $($lang.Done)" -ForegroundColor Green
+			Write-Host "  $($lang.Done)" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+			Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 	}
 }
 
@@ -1441,44 +1441,44 @@ Function Image_Save_Primary_Key_Shortcuts
 		$Name
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host "Save" -ForegroundColor Green
 
-	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-Host "  $($lang.RuleName): " -NoNewline
 	Write-host $Name -ForegroundColor Green
 
-	Write-Host "`n   $($lang.Event_Primary_Key) *" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Event_Primary_Key) *" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	ForEach ($item in $Global:Image_Rule) {
 		if ($item.Main.Shortcuts -eq $Name) {
-			Write-Host "   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
 			Write-Host $item.Main.Group -ForegroundColor Green
 
-			Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 			Write-Host $item.Main.Uid -ForegroundColor Green
 
 			$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($item.Main.ImageFileName)\Mount"
-			Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
 			Write-Host $test_mount_folder_Current -ForegroundColor Green
 
-			Write-Host "`n   $($lang.Mounted_Status)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Mounted_Status)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 
 			if (Image_Is_Mount_Specified -Master $item.Main.ImageFileName -ImageFileName $item.Main.ImageFileName) {
-				Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+				Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-					Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
-					Write-Host "   Save-WindowsImage -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
-					Write-Host "   $('-' * 80)`n"
+					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
+					Write-Host "  Save-WindowsImage -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
+					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "   $($lang.Save)".PadRight(22) -NoNewline
+				Write-Host "  $($lang.Save)".PadRight(22) -NoNewline
 				Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $test_mount_folder_Current | Out-Null
 				Write-Host $lang.Done -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+				Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 			}
 
 			return
@@ -1487,34 +1487,34 @@ Function Image_Save_Primary_Key_Shortcuts
 		if ($item.Expand.Count -gt 0) {
 			ForEach ($Expand in $item.Expand) {
 				if ($Expand.Shortcuts -eq $Name) {
-					Write-Host "   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
 					Write-Host $Expand.Group -ForegroundColor Green
 
-					Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 					Write-Host $Expand.Uid -ForegroundColor Green
 
 					$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($Expand.ImageFileName)\Mount"
-					Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
 					Write-Host $test_mount_folder_Current -ForegroundColor Green
 
-					Write-Host "`n   $($lang.Mounted_Status)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
+					Write-Host "`n  $($lang.Mounted_Status)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
 
 					if (Image_Is_Mount_Specified -Master $item.Main.ImageFileName -ImageFileName $Expand.ImageFileName) {
-						Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+						Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 
 						if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-							Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-							Write-Host "   $('-' * 80)"
-							Write-Host "   Save-WindowsImage -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
-							Write-Host "   $('-' * 80)`n"
+							Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+							Write-Host "  $('-' * 80)"
+							Write-Host "  Save-WindowsImage -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
+							Write-Host "  $('-' * 80)`n"
 						}
 
-						Write-Host "   $($lang.Save)".PadRight(22) -NoNewline
+						Write-Host "  $($lang.Save)".PadRight(22) -NoNewline
 						Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $test_mount_folder_Current | Out-Null
 						Write-Host $lang.Done -ForegroundColor Green
 					} else {
-						Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+						Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 					}
 
 					return
@@ -1523,7 +1523,7 @@ Function Image_Save_Primary_Key_Shortcuts
 		}
 	}
 
-	Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+	Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 }
 
 <#
@@ -1531,36 +1531,36 @@ Function Image_Save_Primary_Key_Shortcuts
 #>
 Function Image_Eject_Dont_Save_Current
 {
-	Write-Host "`n   $($lang.Unmount)"
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Unmount)"
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Verify_Is_Current_Same) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 
 			$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 			if ($Global:Developers_Mode) {
-				Write-Host "`n   $($lang.Developers_Mode_Location): 60`n" -ForegroundColor Green
+				Write-Host "`n  $($lang.Developers_Mode_Location): 60`n" -ForegroundColor Green
 			}
 
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-				Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				Write-Host "   Dismount-WindowsImage -Path ""$($test_mount_folder_Current)"" -Discard" -ForegroundColor Green
-				Write-Host "   $('-' * 80)`n"
+				Write-Host "  $('-' * 80)`n"
 			}
 
 			Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path $test_mount_folder_Current -Discard -ErrorAction SilentlyContinue | Out-Null
 			Image_Mount_Force_Del -NewPath $test_mount_folder_Current
-			Write-Host "   $($lang.Done)" -ForegroundColor Green
+			Write-Host "  $($lang.Done)" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+			Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 	}
 }
 
@@ -1572,28 +1572,28 @@ Function Image_Unmount_Primary_Key_Shortcuts
 		$Name
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host "Unmount" -ForegroundColor Green
 
-	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-Host "  $($lang.RuleName): " -NoNewline
 	Write-host $Name -ForegroundColor Green
 
-	Write-Host "`n   $($lang.Event_Primary_Key) *" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Event_Primary_Key) *" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	ForEach ($item in $Global:Image_Rule) {
 		if ($item.Main.Shortcuts -eq $Name) {
-			Write-Host "   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
 			Write-Host $item.Main.Group -ForegroundColor Green
 
-			Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 			Write-Host $item.Main.Uid -ForegroundColor Green
 
 			$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($item.Main.ImageFileName)\Mount"
-			Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
 			Write-Host $test_mount_folder_Current -ForegroundColor Green
 
-			Write-Host "`n   $($lang.Mounted_Status)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Mounted_Status)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 
 			<#
 				.搜索扩展项是否已挂载
@@ -1608,11 +1608,11 @@ Function Image_Unmount_Primary_Key_Shortcuts
 
 				if ($WaitUnmountError.count -gt 0) {
 					ForEach ($itemError in $WaitUnmountError) {
-						Write-host "   $($lang.Mounted): " -NoNewline
+						Write-Host "  $($lang.Mounted): " -NoNewline
 						Write-Host $itemError -ForegroundColor Green
 					}
 
-					Write-host "`n   $($lang.ImageEjectSpecification -f $item.Main.Uid)" -ForegroundColor Red
+					Write-Host "`n  $($lang.ImageEjectSpecification -f $item.Main.Uid)" -ForegroundColor Red
 
 					Get_Next
 					return
@@ -1623,21 +1623,21 @@ Function Image_Unmount_Primary_Key_Shortcuts
 				.弹出主要项
 			#>
 			if (Image_Is_Mount_Specified -Master $item.Main.ImageFileName -ImageFileName $item.Main.ImageFileName) {
-				Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+				Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-					Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
+					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
 					Write-Host "   Dismount-WindowsImage -Path ""$($test_mount_folder_Current)"" -Discard" -ForegroundColor Green
-					Write-Host "   $('-' * 80)`n"
+					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "   $($lang.Unmount)".PadRight(22) -NoNewline
+				Write-Host "  $($lang.Unmount)".PadRight(22) -NoNewline
 				Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path $test_mount_folder_Current -Discard -ErrorAction SilentlyContinue | Out-Null
 				Image_Mount_Force_Del -NewPath $test_mount_folder_Current
 				Write-Host $lang.Done -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+				Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 			}
 
 			return
@@ -1646,35 +1646,35 @@ Function Image_Unmount_Primary_Key_Shortcuts
 		if ($item.Expand.Count -gt 0) {
 			ForEach ($Expand in $item.Expand) {
 				if ($Expand.Shortcuts -eq $Name) {
-					Write-Host "   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
 					Write-Host $Expand.Group -ForegroundColor Green
 
-					Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 					Write-Host $Expand.Uid -ForegroundColor Green
 
 					$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($Expand.ImageFileName)\Mount"
-					Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
 					Write-Host $test_mount_folder_Current -ForegroundColor Green
 
-					Write-Host "`n   $($lang.Mounted_Status)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
+					Write-Host "`n  $($lang.Mounted_Status)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
 
 					if (Image_Is_Mount_Specified -Master $item.Main.ImageFileName -ImageFileName $Expand.ImageFileName) {
-						Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+						Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 
 						if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-							Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-							Write-Host "   $('-' * 80)"
+							Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+							Write-Host "  $('-' * 80)"
 							Write-Host "   Dismount-WindowsImage -Path ""$($test_mount_folder_Current)"" -Discard" -ForegroundColor Green
-							Write-Host "   $('-' * 80)`n"
+							Write-Host "  $('-' * 80)`n"
 						}
 
-						Write-Host "   $($lang.Unmount)".PadRight(22) -NoNewline
+						Write-Host "  $($lang.Unmount)".PadRight(22) -NoNewline
 						Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path $test_mount_folder_Current -Discard -ErrorAction SilentlyContinue | Out-Null
 						Image_Mount_Force_Del -NewPath $test_mount_folder_Current
 						Write-Host $lang.Done -ForegroundColor Green
 					} else {
-						Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+						Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 					}
 
 					return
@@ -1683,5 +1683,5 @@ Function Image_Unmount_Primary_Key_Shortcuts
 		}
 	}
 
-	Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+	Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 }

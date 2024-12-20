@@ -1808,8 +1808,8 @@ Function Language_Select_GUI
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 	
 	Clear-Host
-	Write-Host "`n   Choose your country or region." -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  Choose your country or region." -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	
 	$UI_Main           = New-Object system.Windows.Forms.Form -Property @{
 		autoScaleMode  = 2
@@ -1984,9 +1984,9 @@ Function Modules_Refresh
 		[string[]]$Functions
 	)
 
-	Write-Host "`n   $($lang.RefreshModules)" -ForegroundColor Yellow
+	Write-Host "`n  $($lang.RefreshModules)" -ForegroundColor Yellow
 	Language -Auto
-	Write-Host "   $($lang.Done)" -ForegroundColor Green
+	Write-Host "  $($lang.Done)" -ForegroundColor Green
 
 	if ($Functions) {
 		ForEach ($Function in $Functions) {

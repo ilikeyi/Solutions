@@ -22,7 +22,7 @@
 	RefreshModules            = Hot opdater alle moduler
 	PleaseChoose              = Vælg venligst
 	FailedCreateFolder        = Kunne ikke oprette mappe
-	ToMsg                     = \n   {0} Vend automatisk tilbage til hovedmenuen efter sekunder.
+	ToMsg                     = {0} Vend automatisk tilbage til hovedmenuen efter sekunder.
 	UserCancel                = Brugeren har annulleret handlingen.
 	Detailed                  = Detaljeret
 	FileName                  = Filnavn

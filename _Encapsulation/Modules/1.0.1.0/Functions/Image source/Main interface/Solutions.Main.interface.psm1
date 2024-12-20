@@ -425,16 +425,16 @@ Function Image_Select
 
 	} else {
 		Logo -Title $lang.SelectSettingImage
-		Write-Host "   $($lang.Dashboard)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Dashboard)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
-		Write-Host "   $($lang.Logging): " -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Logging): " -NoNewline -ForegroundColor Yellow
 		Write-Host "$($Global:LogsSaveFolder)\$($Global:LogSaveTo)" -ForegroundColor Green
 
 		$GetCurrentDiskTo = Get-ItemPropertyValue -Path $Path -Name "DiskTo" -ErrorAction SilentlyContinue
-		Write-Host "`n   $($lang.SelectSettingImage)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($GetCurrentDiskTo)" -ForegroundColor Green
+		Write-Host "`n  $($lang.SelectSettingImage)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($GetCurrentDiskTo)" -ForegroundColor Green
 	}
 
 	<#
@@ -2026,7 +2026,7 @@ Write-Host "Test"
 	Function Image_Select_Refresh_Mount_Disk
 	{
 		if ($Global:Developers_Mode) {
-			Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)E0x006000"
+			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x006000"
 		}
 
 		$GUIImageSourceGroupMountChangeDiSKPane1.controls.Clear()
@@ -8040,10 +8040,10 @@ Write-Host "Test"
 					)
 
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-						Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-						Write-Host "   $('-' * 80)"
-						Write-Host "   Start-Process -FilePath '$($Verify_Install_Path)' -ArgumentList '$($Arguments)'" -ForegroundColor Green
-						Write-Host "   $('-' * 80)`n"
+						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+						Write-Host "  $('-' * 80)"
+						Write-Host "  Start-Process -FilePath '$($Verify_Install_Path)' -ArgumentList '$($Arguments)'" -ForegroundColor Green
+						Write-Host "  $('-' * 80)`n"
 					}
 
 					Start-Process -FilePath $Verify_Install_Path -ArgumentList $Arguments -WindowStyle Minimized
@@ -8819,16 +8819,16 @@ Write-Host "Test"
 						$Global:MainImage = $_.Tag
 
 						$Global:Mount_To_Route = $GUIImageSourceGroupMountToShow.Text
-						Write-Host "`n   $($lang.MountImageTo), $($lang.MainImageFolder)"
-						Write-Host "   $($Global:Mount_To_Route)" -ForegroundColor Yellow
+						Write-Host "`n  $($lang.MountImageTo), $($lang.MainImageFolder)"
+						Write-Host "  $($Global:Mount_To_Route)" -ForegroundColor Yellow
 
 						<#
 							.刷新全局规则
 						#>
 						Image_Refresh_Init_GLobal_Rule
 
-						Write-Host "`n   $($lang.MainImageFolder)"
-						Write-Host "   $($Global:Image_source)" -ForegroundColor Yellow
+						Write-Host "`n  $($lang.MainImageFolder)"
+						Write-Host "  $($Global:Image_source)" -ForegroundColor Yellow
 
 						$Verify_Select_Key_New = ""
 						if ($UI_Primary_Key_Name.Checked) {
@@ -8857,18 +8857,18 @@ Write-Host "Test"
 						Image_Get_Mount_Status
 
 						$Global:Mount_To_RouteTemp = $GUIImageSourceGroupMountToTempShow.Text
-						Write-Host "`n   $($lang.SettingImageTempFolder): " -NoNewline -ForegroundColor Yellow
+						Write-Host "`n  $($lang.SettingImageTempFolder): " -NoNewline -ForegroundColor Yellow
 						Write-Host $Global:Mount_To_RouteTemp -ForegroundColor Green
 
 						Write-Host 
-						Write-Host "   $($lang.Detailed)" -ForegroundColor Yellow
-						Write-Host "   $('-' * 80)"
+						Write-Host "  $($lang.Detailed)" -ForegroundColor Yellow
+						Write-Host "  $('-' * 80)"
 
 						Save_Dynamic -regkey "Solutions\ImageSources\$($_.Tag)" -name "language" -value $Global:MainImageLang -String
-						Write-Host "   $($lang.Language): ".PadRight(20) -NoNewline -ForegroundColor Yellow
+						Write-Host "  $($lang.Language): ".PadRight(20) -NoNewline -ForegroundColor Yellow
 						Write-Host $Global:MainImageLang -ForegroundColor Green
 
-						Write-Host "   $($lang.SelLabel): ".PadRight(20) -NoNewline -ForegroundColor Yellow
+						Write-Host "  $($lang.SelLabel): ".PadRight(20) -NoNewline -ForegroundColor Yellow
 						if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($_.Tag)\MVS" -Name "Kernel" -ErrorAction SilentlyContinue) {
 							$Get_Version_MVS = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($_.Tag)\MVS" -Name "Kernel" -ErrorAction SilentlyContinue
 
@@ -8877,7 +8877,7 @@ Write-Host "Test"
 							Write-Host $lang.ImageCodenameNo -ForegroundColor Green
 						}
 
-						Write-Host "   $($lang.ImageLevel): ".PadRight(20) -NoNewline -ForegroundColor Yellow
+						Write-Host "  $($lang.ImageLevel): ".PadRight(20) -NoNewline -ForegroundColor Yellow
 						if ($GUISelectTypeDesktop.Checked) {
 							$Global:ImageType = "Desktop"
 							Write-Host $GUISelectTypeDesktop.Text -ForegroundColor Green
@@ -8893,7 +8893,7 @@ Write-Host "Test"
 						if ($GUIImageSourceArchitectureX86.Checked)   { $Global:Architecture  = "x86" }
 						Save_Dynamic -regkey "Solutions\ImageSources\$($_.Tag)" -name "Architecture" -value $Global:Architecture -String
 
-						Write-Host "   $($lang.Architecture): ".PadRight(20) -NoNewline -ForegroundColor Yellow
+						Write-Host "  $($lang.Architecture): ".PadRight(20) -NoNewline -ForegroundColor Yellow
 						Write-Host $Global:Architecture -ForegroundColor Green
 
 						Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)" -name "MountToRouting" -value $Global:Mount_To_Route -String
@@ -8903,12 +8903,12 @@ Write-Host "Test"
 
 						$UI_Main.Close()
 
-						Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-						Write-Host "   $('-' * 80)"
+						Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+						Write-Host "  $('-' * 80)"
 						if ([string]::IsNullOrEmpty($UI_Main_To.SelectedItem.Path)) {
-							Write-Host "   $($lang.Ok_Go_To_No)" -ForegroundColor Red
+							Write-Host "  $($lang.Ok_Go_To_No)" -ForegroundColor Red
 						} else {
-							Write-Host "   $($UI_Main_To.SelectedItem.Lang)" -ForegroundColor Green
+							Write-Host "  $($UI_Main_To.SelectedItem.Lang)" -ForegroundColor Green
 
 							Foreach ($item in $UI_Main_To.SelectedItem.Path) {
 								Invoke-Expression -Command $item
@@ -8934,7 +8934,7 @@ Write-Host "Test"
 		Width          = 280
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Stop-Process $PID
 			$UI_Main.Close()
 		}
@@ -9475,8 +9475,8 @@ Write-Host "Test"
 		}
 		"API" {
 			$UI_Main.Text = $lang.API
-			Write-Host "`n   $($lang.API)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.API)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Refresh_Rule_Shortcuts
 
 			$GUIImageSourceGroupAPI.visible = $True              # 蒙板：设置 API
@@ -9758,8 +9758,8 @@ Function Image_Select_Page_Shortcuts
 		$Name
 	)
 
-	Write-Host "`n   $($lang.SelectSettingImage) *" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.SelectSettingImage) *" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	switch ($Name) {
 		"ISO" {
 			Image_Select -Page $Name
@@ -9768,7 +9768,7 @@ Function Image_Select_Page_Shortcuts
 			Image_Select -Page $Name
 		}
 		default {
-			Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+			Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 		}
 	}
 }

@@ -27,7 +27,7 @@
 	PleaseChoose              = Bitte auswählen
 	FailedCreateFolder        = Verzeichnis konnte nicht erstellt werden
 	Failed                    = scheitern
-	ToMsg                     = \n   {0} Automatische Rückkehr zum Hauptmenü nach Sekunden.
+	ToMsg                     = {0} Automatische Rückkehr zum Hauptmenü nach Sekunden.
 	UserCancel                = Der Benutzer hat den Vorgang abgebrochen.
 	Help                      = helfen
 	WorkDone                  = Wenn Sie fertig sind, drücken Sie eine beliebige Taste, um zur Hauptoberfläche zurückzukehren ...

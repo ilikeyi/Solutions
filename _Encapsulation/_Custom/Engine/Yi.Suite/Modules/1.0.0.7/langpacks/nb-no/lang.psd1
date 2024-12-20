@@ -47,7 +47,7 @@
 	PleaseChoose              = Vennligst velg
 	FailedCreateFolder        = Kunne ikke opprette katalog
 	Failed                    = Mislykkes
-	ToMsg                     = \n   {0} Gå automatisk tilbake til hovedmenyen etter sekunder.
+	ToMsg                     = {0} Gå automatisk tilbake til hovedmenyen etter sekunder.
 	Restart                   = Omstart trer i kraft
 	AdvOption                 = Valgfrie funksjoner
 

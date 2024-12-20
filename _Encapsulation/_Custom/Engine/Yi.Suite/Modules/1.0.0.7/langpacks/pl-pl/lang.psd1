@@ -47,7 +47,7 @@
 	PleaseChoose              = Proszę wybrać
 	FailedCreateFolder        = Nie udało się utworzyć katalogu
 	Failed                    = Ponieść porażkę
-	ToMsg                     = \n   {0} Automatycznie powróć do menu głównego po sekundach.
+	ToMsg                     = {0} Automatycznie powróć do menu głównego po sekundach.
 	Restart                   = Ponowne uruchomienie zaczyna obowiązywać
 	AdvOption                 = Funkcje opcjonalne
 

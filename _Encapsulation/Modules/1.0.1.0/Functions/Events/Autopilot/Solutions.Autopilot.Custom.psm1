@@ -16,31 +16,31 @@ Function Image_Assign_Autopilot_Master
 	$Script:Prerequisite_Is_Satisfy = @()
 
 	Logo -Title $lang.Autopilot
-	Write-Host "   $($lang.Dashboard)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $($lang.Dashboard)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
-	Write-Host "   $($lang.MountImageTo): " -NoNewline
+	Write-Host "  $($lang.MountImageTo): " -NoNewline
 	if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
 		Write-Host $Global:Mount_To_Route -ForegroundColor Green
 	} else {
 		Write-Host $Global:Mount_To_Route -ForegroundColor Yellow
 	}
 
-	Write-Host "   $($lang.MainImageFolder): " -NoNewline
+	Write-Host "  $($lang.MainImageFolder): " -NoNewline
 	if (Test-Path -Path $Global:Image_source -PathType Container) {
 		Write-Host $Global:Image_source -ForegroundColor Green
 	} else {
 		Write-Host $Global:Image_source -ForegroundColor Red
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.NoInstallImage)" -ForegroundColor Red
 
 		ToWait -wait 2
 	}
 
 	Image_Get_Mount_Status
 
-	Write-Host "`n   $($lang.Autopilot)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Autopilot)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
@@ -1232,7 +1232,7 @@ Function Image_Assign_Autopilot_Master
 			#region boot;boot;wim;
 			"boot;boot;wim;" {
 				if ($Global:Developers_Mode) {
-					Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)Assign.0x2 ]`n   Start"
+					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)Assign.0x2 ]`n   Start"
 				}
 
 				$Group_Image_Sources_Console.controls.AddRange((
@@ -1319,7 +1319,7 @@ Function Image_Assign_Autopilot_Master
 				}
 
 				if ($Global:Developers_Mode) {
-					Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)Assign.0x2 ]`n   End"
+					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)Assign.0x2 ]`n   End"
 				}
 			}
 			#endregion
@@ -1327,7 +1327,7 @@ Function Image_Assign_Autopilot_Master
 			#region Install;Install;wim;
 			"Install;Install;wim;" {
 				if ($Global:Developers_Mode) {
-					Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)Assign.0x6 ]`n   Start"
+					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)Assign.0x6 ]`n   Start"
 				}
 
 				$Group_Image_Sources_Console.controls.AddRange((
@@ -1415,7 +1415,7 @@ Function Image_Assign_Autopilot_Master
 				}
 
 				if ($Global:Developers_Mode) {
-					Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)Assign.0x6 ]`n   End"
+					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)Assign.0x6 ]`n   End"
 				}
 			}
 			#endregion
@@ -1423,7 +1423,7 @@ Function Image_Assign_Autopilot_Master
 				#region Install;WinRE;wim
 				"Install;WinRE;wim;" {
 					if ($Global:Developers_Mode) {
-						Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)Assign.0x5 ]`n   Start"
+						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)Assign.0x5 ]`n   Start"
 					}
 
 					$Group_Image_Sources_Console.controls.AddRange((
@@ -1535,7 +1535,7 @@ Function Image_Assign_Autopilot_Master
 					$GUIImage_Select_Expand_Rule_To_All.Checked = $True
 
 					if ($Global:Developers_Mode) {
-						Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)Assign.0x5 ]`n   End"
+						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)Assign.0x5 ]`n   End"
 					}
 				}
 				#endregion
@@ -1562,10 +1562,10 @@ Function Image_Assign_Autopilot_Master
 		}
 
 		if ($Global:Developers_Mode) {
-			Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)Assign.009x2 ]`n   Start"
-			Write-Host "`n   $($lang.Choose)"
+			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)Assign.009x2 ]`n   Start"
+			Write-Host "`n  $($lang.Choose)"
 			ForEach ($item in $Wait_Sync_Some_Select) {
-				Write-Host "   $($item)"
+				Write-Host "  $($item)"
 			}
 		}
 
@@ -1581,10 +1581,10 @@ Function Image_Assign_Autopilot_Master
 		}
 
 		if ($Global:Developers_Mode) {
-			Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)Assign.009x99 ]`n   Start"
-			Write-Host "`n   $($lang.Event_Primary_Key)"
+			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)Assign.009x99 ]`n   Start"
+			Write-Host "`n  $($lang.Event_Primary_Key)"
 			ForEach ($item in $Wait_Match_Expand_Item) {
-				Write-Host "   $($item)"
+				Write-Host "  $($item)"
 			}
 		}
 
@@ -1605,14 +1605,14 @@ Function Image_Assign_Autopilot_Master
 											
 												if ($Wait_Sync_Some_Select -Contains $_.Name) {
 													if ($Global:Developers_Mode) {
-														Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)EjectMain.001x1 ]`n   Start"
-														Write-Host "   $($lang.Disable)".PadRight(28) -NoNewline
+														Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)EjectMain.001x1 ]`n   Start"
+														Write-Host "  $($lang.Disable)".PadRight(28) -NoNewline
 														Write-Host $_.Name -ForegroundColor Green
 													}
 												} else {
 													if ($Global:Developers_Mode) {
-														Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)EjectMain.002x2 ]`n   Start"
-														Write-Host "   $($lang.Enable)".PadRight(28) -NoNewline
+														Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)EjectMain.002x2 ]`n   Start"
+														Write-Host "  $($lang.Enable)".PadRight(28) -NoNewline
 														Write-Host $_.Name -ForegroundColor Red
 													}
 												
@@ -2063,19 +2063,19 @@ Function Image_Assign_Autopilot_Master
 		}
 
 		if ($Global:Developers_Mode) {
-			Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)Assign.9x99 ]`n   Start"
-			Write-Host "   $($lang.Event_Assign_Main)"
-			Write-Host "   $($MainItem)"
+			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)Assign.9x99 ]`n   Start"
+			Write-Host "  $($lang.Event_Assign_Main)"
+			Write-Host "  $($MainItem)"
 
-			Write-Host "`n   $($lang.Event_Assign_Expand)"
-			Write-Host "   $($disable)"
+			Write-Host "`n  $($lang.Event_Assign_Expand)"
+			Write-Host "  $($disable)"
 		}
 
 		$UI_Main_Select_Assign_Multitasking.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
 				if ($Wait_Sync_Some_Select -contains $_.Name) {
 					if ($Global:Developers_Mode) {
-						Write-Host "`n   $($lang.Developers_Mode_Location)Assign.9x0000001 ]`n   Start"
+						Write-Host "`n  $($lang.Developers_Mode_Location)Assign.9x0000001 ]`n   Start"
 					}
 
 					$_.Enabled = $True
@@ -2090,7 +2090,7 @@ Function Image_Assign_Autopilot_Master
 					#>
 					if ($MainItem -contains $_.Name) {
 						if ($Global:Developers_Mode) {
-							Write-Host "`n   $($lang.Developers_Mode_Location)Assign.9x1111111 ]`n   Start"
+							Write-Host "`n  $($lang.Developers_Mode_Location)Assign.9x1111111 ]`n   Start"
 						}
 
 						<#
@@ -2105,7 +2105,7 @@ Function Image_Assign_Autopilot_Master
 					} else {
 						if ($disable -contains $_.Name) {
 							if ($Global:Developers_Mode) {
-								Write-Host "`n   $($lang.Developers_Mode_Location)Assign.9x22222222 ]`n   Start"
+								Write-Host "`n  $($lang.Developers_Mode_Location)Assign.9x22222222 ]`n   Start"
 							}
 
 							$_.Enabled = $True
@@ -2116,7 +2116,7 @@ Function Image_Assign_Autopilot_Master
 							}
 						} else {
 							if ($Global:Developers_Mode) {
-								Write-Host "`n   $($lang.Developers_Mode_Location)Assign.9x3333333333333 ]`n   Start"
+								Write-Host "`n  $($lang.Developers_Mode_Location)Assign.9x3333333333333 ]`n   Start"
 							}
 
 							$_.Enabled = $False
@@ -4599,8 +4599,8 @@ Function Image_Assign_Autopilot_Master
 					.导入：转换
 				#>
 				if ($Select -contains "Image_Convert_UI") {
-					Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm), $($lang.Done)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
+					Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm), $($lang.Done)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
 					Image_Convert_UI -Autopilot $Autopilot.Deploy.ImageSource.Tasks.Convert
 				}
 
@@ -4608,8 +4608,8 @@ Function Image_Assign_Autopilot_Master
 					.导入：解决方案：生成
 				#>
 				if ($Select -contains "Solutions_Create_UI") {
-					Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.Solution): $($lang.IsCreate)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
+					Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.Solution): $($lang.IsCreate)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
 					Autopilot_Solutions_Create_Import -Tasks $Autopilot.Deploy.ImageSource.Tasks.Solutions -ISO
 				}
 
@@ -4712,10 +4712,10 @@ Function Image_Assign_Autopilot_Master
 			<#
 				.什么时候开始
 			#>
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.WaitTimeTitle)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.WaitTimeTitle)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			if ([string]::IsNullOrEmpty($Autopilot.Deploy.IsEvent.Scheduled)) {
-				Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+				Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 			} else {
 				Event_Completion_Start_Setting_UI -Autopilot $Autopilot.Deploy.IsEvent.Scheduled
 			}
@@ -4723,10 +4723,10 @@ Function Image_Assign_Autopilot_Master
 			<#
 				.队列中有任务
 			#>
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.AfterFinishingNotExecuted)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.AfterFinishingNotExecuted)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			if ([string]::IsNullOrEmpty($Autopilot.Deploy.IsEvent.Finish)) {
-				Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+				Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 			} else {
 				Event_Completion_Setting_UI -Autopilot $Autopilot.Deploy.IsEvent.Finish
 			}
@@ -5740,7 +5740,7 @@ Function Image_Assign_Autopilot_Master
 		Text           = $lang.Cancel
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 	
 			<#
 				.重置变量
@@ -5910,7 +5910,7 @@ Function Image_Assign_Autopilot_Master
 		Text           = $lang.Cancel
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 	
 			<#
 				.重置变量
@@ -6076,7 +6076,7 @@ Function Image_Assign_Autopilot_Master
 		Text           = $lang.Cancel
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
 			<#
 				.重置变量
@@ -6391,7 +6391,7 @@ Function Image_Assign_Autopilot_Master
 		Text           = $lang.Cancel
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
 			<#
 				.重置变量
@@ -6557,7 +6557,7 @@ Function Image_Assign_Autopilot_Master
 																	New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
 																
 																	if ($Global:Developers_Mode) {
-																		Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)EjectMain.101x1 ]`n   Start"
+																		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)EjectMain.101x1 ]`n   Start"
 																		Write-Host "$($lang.Event_Assign_Main), " -NoNewline
 																		Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
 																		Write-Host "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
@@ -6568,7 +6568,7 @@ Function Image_Assign_Autopilot_Master
 																	New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
 																
 																	if ($Global:Developers_Mode) {
-																		Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)EjectMain.200x1 ]`n   Start"
+																		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)EjectMain.200x1 ]`n   Start"
 																		Write-Host "$($lang.Event_Assign_Main), " -NoNewline
 																		Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
 																		Write-Host "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
@@ -6678,7 +6678,7 @@ Function Image_Assign_Autopilot_Master
 																			New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
 
 																			if ($Global:Developers_Mode) {
-																				Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)EjectMain.11200x1 ]`n   Start"
+																				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)EjectMain.11200x1 ]`n   Start"
 																				Write-Host "$($lang.Event_Assign_Main), " -NoNewline
 																				Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
 																				Write-Host "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
@@ -6689,7 +6689,7 @@ Function Image_Assign_Autopilot_Master
 																			New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
 
 																			if ($Global:Developers_Mode) {
-																				Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)EjectMain.21200x1 ]`n   Start"
+																				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)EjectMain.21200x1 ]`n   Start"
 																				Write-Host "$($lang.Event_Assign_Main), " -NoNewline
 																				Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
 																				Write-Host "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
@@ -6715,7 +6715,7 @@ Function Image_Assign_Autopilot_Master
 																			New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
 
 																			if ($Global:Developers_Mode) {
-																				Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)EjectExpand.200x1 ]`n   Start"
+																				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)EjectExpand.200x1 ]`n   Start"
 																				Write-Host "$($lang.Event_Assign_Expand), " -NoNewline
 																				Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
 																				Write-Host "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
@@ -6726,7 +6726,7 @@ Function Image_Assign_Autopilot_Master
 																			New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
 
 																			if ($Global:Developers_Mode) {
-																				Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)EjectExpand.222x1 ]`n   Start"
+																				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)EjectExpand.222x1 ]`n   Start"
 																				Write-Host "$($lang.Event_Assign_Expand), " -NoNewline
 																				Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
 																				Write-Host "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
@@ -6781,67 +6781,67 @@ Function Image_Assign_Autopilot_Master
 
 			#region 验证保存和不保存事件
 			if ($Global:Developers_Mode) {
-				Write-Host "`n   $('-' * 80)`n   $($lang.Developers_Mode_Location)Developers_Mode.0x009200x1 ]`n   Start"
-				Write-Host "`n   $($lang.Verify_Save_And_DonSave)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)Developers_Mode.0x009200x1 ]`n   Start"
+				Write-Host "`n  $($lang.Verify_Save_And_DonSave)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				ForEach ($item in $Global:Image_Rule) {
 					if ($item.Main.Suffix -eq "wim") {
-						Write-Host "   $($item.Main.Uid)"
-						Write-Host "   $('-' * 80)"
-						Write-Host "   $($lang.Event_Assign_Main)"
-						Write-Host "   $($lang.SaveTo)"
+						Write-Host "  $($item.Main.Uid)"
+						Write-Host "  $('-' * 80)"
+						Write-Host "  $($lang.Event_Assign_Main)"
+						Write-Host "  $($lang.SaveTo)"
 						if ((Get-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-							Write-Host "   $($lang.Enable), Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ForegroundColor Green
+							Write-Host "  $($lang.Enable), Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ForegroundColor Green
 						} else {
-							Write-Host "   $($lang.Disable), Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
+							Write-Host "  $($lang.Disable), Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
 						}
 						if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-							Write-Host "   $($lang.Enable), Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ForegroundColor Green
+							Write-Host "  $($lang.Enable), Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ForegroundColor Green
 						} else {
-							Write-Host "   $($lang.Disable), Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
+							Write-Host "  $($lang.Disable), Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
 						}
 
-						Write-Host "`n   $($lang.DoNotSave)"
+						Write-Host "`n  $($lang.DoNotSave)"
 						if ((Get-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-							Write-Host "   $($lang.Enable), Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ForegroundColor Green
+							Write-Host "  $($lang.Enable), Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ForegroundColor Green
 						} else {
-							Write-Host "   $($lang.Disable), Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
+							Write-Host "  $($lang.Disable), Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
 						}
 						if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-							Write-Host "   $($lang.Enable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ForegroundColor Green
+							Write-Host "  $($lang.Enable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ForegroundColor Green
 						} else {
-							Write-Host "   $($lang.Disable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
+							Write-Host "  $($lang.Disable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
 						}
 
-						Write-Host "`n   $($lang.Event_Assign_Expand)"
+						Write-Host "`n  $($lang.Event_Assign_Expand)"
 						if ($item.Expand.Count -gt 0) {
 							ForEach ($itemExpand in $item.Expand) {
-								Write-Host "   $($lang.SaveTo)"
+								Write-Host "  $($lang.SaveTo)"
 								if ((Get-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-									Write-Host "   $($lang.Enable), Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ForegroundColor Green
+									Write-Host "  $($lang.Enable), Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ForegroundColor Green
 								} else {
-									Write-Host "   $($lang.Disable), Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
+									Write-Host "  $($lang.Disable), Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
 								}
 								if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-									Write-Host "   $($lang.Enable), Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ForegroundColor Green
+									Write-Host "  $($lang.Enable), Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ForegroundColor Green
 								} else {
-									Write-Host "   $($lang.Disable), Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
+									Write-Host "  $($lang.Disable), Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
 								}
 
-								Write-Host "`n   $($lang.DoNotSave)"
+								Write-Host "`n  $($lang.DoNotSave)"
 								if ((Get-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-									Write-Host "   $($lang.Enable), Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ForegroundColor Green
+									Write-Host "  $($lang.Enable), Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ForegroundColor Green
 								} else {
-									Write-Host "   $($lang.Disable), Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
+									Write-Host "  $($lang.Disable), Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
 								}
 								if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-									Write-Host "   $($lang.Enable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ForegroundColor Green
+									Write-Host "  $($lang.Enable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ForegroundColor Green
 								} else {
-									Write-Host "   $($lang.Disable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
+									Write-Host "  $($lang.Disable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
 								}
 							}
 						} else {
-							Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+							Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 						}
 
 						Write-Host
@@ -7144,8 +7144,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 		.导入：解决方案：生成
 	#>
 	if ($SelectEvent -contains "Solutions_Create_UI") {
-		Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.Solution): $($lang.IsCreate)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.Solution): $($lang.IsCreate)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		Autopilot_Solutions_Create_Import -Tasks $NewTasks.Tasks.Solutions -Mount
 	}
 
@@ -7156,8 +7156,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			.添加
 		#>
 		if ($SelectEvent -contains "Language_Add_UI") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.Language): $($lang.AddTo)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.Language): $($lang.AddTo)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Language_Add_UI -Autopilot $NewTasks.Tasks.Language.Add
 		}
 
@@ -7165,8 +7165,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			.删除
 		#>
 		if ($SelectEvent -contains "Language_Delete_UI") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.Language): $($lang.Del)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.Language): $($lang.Del)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Language_Delete_UI -Autopilot $NewTasks.Tasks.Language.Del
 		}
 
@@ -7174,8 +7174,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			.更改
 		#>
 		if ($SelectEvent -contains "Language_Change_UI") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.SwitchLanguage)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.SwitchLanguage)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Language_Change_UI -Autopilot $NewTasks.Tasks.Language.Change
 		}
 
@@ -7183,8 +7183,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			.清理组件
 		#>
 		if ($SelectEvent -contains "Language_Cleanup_Components_UI") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.OnlyLangCleanup)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.OnlyLangCleanup)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Language_Cleanup_Components_UI -Autopilot $NewTasks.Tasks.Language.Cleanup
 		}
 
@@ -7195,8 +7195,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			.本地语言体验（LXPs）：标记
 		#>
 		if ($SelectEvent -contains "LXPs_Region_Add") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.LocalExperiencePack): $($lang.AddTo)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.LocalExperiencePack): $($lang.AddTo)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			LXPs_Region_Add -Autopilot $NewTasks.Tasks.InBoxApps.Mark
 		}
 
@@ -7204,8 +7204,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			.InBox Apps：添加
 		#>
 		if ($SelectEvent -contains "InBox_Apps_Add_UI") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.InboxAppsManager): $($lang.AddTo)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.InboxAppsManager): $($lang.AddTo)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			InBox_Apps_Add_UI -Autopilot $NewTasks.Tasks.InBoxApps.Add
 		}
 
@@ -7213,8 +7213,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			.本地语言体验（LXPs）：更新
 		#>
 		if ($SelectEvent -contains "LXPs_Update_UI") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.LocalExperiencePack): $($lang.Update)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.LocalExperiencePack): $($lang.Update)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			LXPs_Update_UI -Autopilot $NewTasks.Tasks.InBoxApps.Update
 		}
 
@@ -7222,8 +7222,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			.本地语言体验（LXPs）：删除
 		#>
 		if ($SelectEvent -contains "LXPs_Remove_UI") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.LocalExperiencePack): $($lang.Del)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.LocalExperiencePack): $($lang.Del)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			LXPs_Remove_UI -Autopilot $NewTasks.Tasks.InBoxApps.Remove
 		}
 
@@ -7231,8 +7231,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			.匹配删除
 		#>
 		if ($SelectEvent -contains "InBox_Apps_Match_Delete_UI") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.InboxAppsMatchDel)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.InboxAppsMatchDel)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			InBox_Apps_Match_Delete_UI -Autopilot $NewTasks.Tasks.InBoxApps.MatchRemove
 		}
 
@@ -7243,8 +7243,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			.添加
 		#>
 		if ($SelectEvent -contains "Cumulative_updates_Add_UI") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.Update): $($lang.AddTo)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.Update): $($lang.AddTo)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Autopilot_Cumulative_updates_Add_UI_Import -Tasks $NewTasks.Tasks.CumulativeUpdate.Add
 		}
 
@@ -7252,8 +7252,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			.删除
 		#>
 		if ($SelectEvent -contains "Cumulative_updates_Delete_UI") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.Update): $($lang.Del)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.Update): $($lang.Del)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Autopilot_Cumulative_updates_Delete_UI_Import -Tasks $NewTasks.Tasks.CumulativeUpdate.Del
 		}
 
@@ -7264,8 +7264,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			.添加
 		#>
 		if ($SelectEvent -contains "Drive_Add_UI") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.Drive): $($lang.AddTo)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.Drive): $($lang.AddTo)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Autopilot_Drive_Add_UI_Import -Tasks $NewTasks.Tasks.Drive.Add
 		}
 
@@ -7273,8 +7273,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			.删除
 		#>
 		if ($SelectEvent -contains "Drive_Delete_UI") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.Drive): $($lang.Del)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.Drive): $($lang.Del)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Autopilot_Drive_Delete_UI_Import -Tasks $NewTasks.Tasks.Drive.Del
 		}
 
@@ -7285,8 +7285,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			.启用
 		#>
 		if ($SelectEvent -contains "Feature_Enabled_Match_UI") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.WindowsFeature): $($lang.Enable), $($lang.MatchMode)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.WindowsFeature): $($lang.Enable), $($lang.MatchMode)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Autopilot_Feature_Enabled_Match_UI_Import -Tasks $NewTasks.Tasks.WindowsFeatures.Enable
 		}
 
@@ -7294,8 +7294,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			.禁用
 		#>
 		if ($SelectEvent -contains "Feature_Disable_Match_UI") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.WindowsFeature): $($lang.Disable), $($lang.MatchMode)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.WindowsFeature): $($lang.Disable), $($lang.MatchMode)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Autopilot_Feature_Disable_Match_UI_Import -Tasks $NewTasks.Tasks.WindowsFeatures.Disable
 		}
 
@@ -7306,16 +7306,16 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			.运行前
 		#>
 		if ($SelectEvent -contains "Functions_Before_UI") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.SpecialFunction): $($lang.Functions_Before)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.SpecialFunction): $($lang.Functions_Before)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Functions_Before_UI -Autopilot $NewTasks.Tasks.PSFunctions.Before
 		}
 		<#
 			.运行后
 		#>
 		if ($SelectEvent -contains "Functions_Rear_UI") {
-			Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.SpecialFunction): $($lang.Functions_Rear)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.SpecialFunction): $($lang.Functions_Rear)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Functions_Rear_UI -Autopilot $NewTasks.Tasks.PSFunctions.After
 		}
 
@@ -7323,8 +7323,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 		.导入：更多
 	#>
 	if ($SelectEvent -contains "Feature_More_UI") {
-		Write-Host "`n   $($lang.LanguageExtractAddTo): $($lang.MoreFeature)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.MoreFeature)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		Feature_More_UI -Autopilot $NewTasks.Tasks.More
 	}
 }

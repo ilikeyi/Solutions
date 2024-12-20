@@ -27,7 +27,7 @@
 	PleaseChoose              = Please select
 	FailedCreateFolder        = Failed to create directory
 	Failed                    = Failed
-	ToMsg                     = \n   Automatically return to the main menu after {0} seconds.
+	ToMsg                     = Automatically return to the main menu after {0} seconds.
 	UserCancel                = The user has cancelled the operation.
 	Help                      = Help
 	WorkDone                  = Finish, press any key to return to the main interface...

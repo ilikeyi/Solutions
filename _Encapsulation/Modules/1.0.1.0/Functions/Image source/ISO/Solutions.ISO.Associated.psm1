@@ -13,7 +13,7 @@ Function ISO_Associated_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -375,12 +375,12 @@ function Autopilot_ISO_Associated_Process
 
 				Autopilot_iso_Import -FileName $itemrule
 
-				Write-Host "`n   $($lang.UnpackISO)"
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.UnpackISO)"
+				Write-Host "  $('-' * 80)"
 				ISO_Create_Process
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }

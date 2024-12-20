@@ -78,7 +78,7 @@ Function Language_Delete_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -1375,7 +1375,7 @@ Function Language_Delete_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "21" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -1479,17 +1479,17 @@ Function Language_Delete_UI
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				$Temp_Language_Del_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Language_Del_Custom_Select.count -gt 0) {
 					ForEach ($item in $Temp_Language_Del_Custom_Select) {
-						Write-Host "   $($item)" -ForegroundColor Green
+						Write-Host "  $($item)" -ForegroundColor Green
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 
@@ -1730,8 +1730,8 @@ Function Language_Delete_UI
 	}
 
 	if ($Global:EventQueueMode) {
-		Write-Host "`n   $($lang.Language): $($lang.Del)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Language): $($lang.Del)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 		$UI_Main.controls.AddRange((
@@ -1742,8 +1742,8 @@ Function Language_Delete_UI
 	}
 
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-		Write-Host "`n   $($lang.Language): $($lang.Del)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Language): $($lang.Del)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 
@@ -1791,9 +1791,9 @@ Function Language_Delete_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
 
 		<#
 			.按相反的顺序删除语言包
@@ -1893,18 +1893,18 @@ Function Language_Delete_Process
 
 	$Temp_Language_Del_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Language_Del_Custom_Select.count -gt 0) {
-		Write-Host "   $($lang.YesWork)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.YesWork)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		ForEach ($item in $Temp_Language_Del_Custom_Select) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			Write-Host "  $($item)" -ForegroundColor Green
 		}
 
-		Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Language_Del_Custom_Select) {
 			<#
 				.Set the sort order to reverse when fetching files
@@ -1912,42 +1912,42 @@ Function Language_Delete_Process
 
 				Sort-Object -Descending
 			#>
-			Write-Host "   $($lang.DescendingRuleLang)" -ForegroundColor Yellow
+			Write-Host "  $($lang.DescendingRuleLang)" -ForegroundColor Yellow
 			if ((Get-Variable -Scope global -Name "Queue_Is_Language_Del_Reverse_Order_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-				Write-Host "   $($lang.UpdateAvailable)`n" -ForegroundColor Green
+				Write-Host "  $($lang.UpdateAvailable)`n" -ForegroundColor Green
 
 				Get-ChildItem $item -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | Sort-Object -Descending | ForEach-Object {
 					if (Test-Path -Path $_.FullName -PathType Leaf) {
-						Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+						Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 						Write-Host $_.FullName -ForegroundColor Green
 
-						Write-Host "   $($lang.Del)".PadRight(28) -NoNewline
+						Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
 						try {
 							Remove-WindowsPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove.log" -Path $test_mount_folder_Current -PackagePath $_.FullName -ErrorAction SilentlyContinue | Out-Null
 							Write-Host $lang.Done -ForegroundColor Green
 						} catch {
 							Write-Host $_
-							Write-Host "   $($lang.Failed)" -ForegroundColor Red
+							Write-Host "  $($lang.Failed)" -ForegroundColor Red
 						}
 
 						Write-Host
 					}
 				}
 			} else {
-				Write-Host "   $($lang.UpdateUnavailable)`n" -ForegroundColor Red
+				Write-Host "  $($lang.UpdateUnavailable)`n" -ForegroundColor Red
 
 				Get-ChildItem $item -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | ForEach-Object {
 					if (Test-Path -Path $_.FullName -PathType Leaf) {
-						Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+						Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 						Write-Host $_.FullName -ForegroundColor Green
 
-						Write-Host "   $($lang.Del)".PadRight(28) -NoNewline
+						Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
 						try {
 							Remove-WindowsPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove.log" -Path $test_mount_folder_Current -PackagePath $_.FullName -ErrorAction SilentlyContinue | Out-Null
 							Write-Host $lang.Done -ForegroundColor Green
 						} catch {
 							Write-Host $_
-							Write-Host "   $($lang.Failed)" -ForegroundColor Red
+							Write-Host "  $($lang.Failed)" -ForegroundColor Red
 						}
 
 						Write-Host
@@ -1956,6 +1956,6 @@ Function Language_Delete_Process
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }

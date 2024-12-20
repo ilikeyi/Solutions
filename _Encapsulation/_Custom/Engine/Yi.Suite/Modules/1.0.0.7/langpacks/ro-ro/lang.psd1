@@ -47,7 +47,7 @@
 	PleaseChoose              = Vă rugăm să selectați
 	FailedCreateFolder        = Nu s-a putut crea directorul
 	Failed                    = Eșuează
-	ToMsg                     = \n   {0} Reveniți automat la meniul principal după câteva secunde.
+	ToMsg                     = {0} Reveniți automat la meniul principal după câteva secunde.
 	Restart                   = Repornirea are efect
 	AdvOption                 = caracteristici opționale
 

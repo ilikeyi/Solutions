@@ -48,9 +48,9 @@ Function InBox_Apps_Offline_Delete_UI
 			$UI_Main_Refresh_Sources.Enabled = $False
 			$UI_Main_Save.Enabled = $False
 
-			Write-Host "   $($_)" -ForegroundColor Yellow
-			Write-Host "   $($lang.SelectFromError)" -ForegroundColor Red
-			Write-Host "   $($lang.GetInBoxApps), $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($_)" -ForegroundColor Yellow
+			Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
+			Write-Host "  $($lang.GetInBoxApps), $($lang.Inoperable)" -ForegroundColor Red
 			
 			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			$UI_Main_Error.Text = "$($lang.GetInBoxApps), $($lang.Inoperable)"
@@ -62,7 +62,7 @@ Function InBox_Apps_Offline_Delete_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -196,7 +196,7 @@ Function InBox_Apps_Offline_Delete_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "8" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -329,17 +329,17 @@ Function InBox_Apps_Offline_Delete_UI
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Mount_Rule_Delete_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_Select.count -gt 0) {
 					ForEach ($item in $Temp_Assign_Task_Select) {
-						Write-Host "   $($item)" -ForegroundColor Green
+						Write-Host "  $($item)" -ForegroundColor Green
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 
@@ -461,40 +461,40 @@ Function InBox_Apps_Offline_Delete_UI
 #>
 Function InBox_Apps_Offline_Delete_Process
 {
-	Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Mount_Rule_Delete_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 	$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 	if ($Temp_Assign_Task_Select.count -gt 0) {
-		Write-Host "   $($lang.LXPsWaitRemove)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.LXPsWaitRemove)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		ForEach ($item in $Temp_Assign_Task_Select) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			Write-Host "  $($item)" -ForegroundColor Green
 		}
 
-		Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Assign_Task_Select) {
-			Write-Host "   $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
 			Write-Host $item -ForegroundColor Red
 
 			if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-					Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
+					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
 					Write-Host "   Remove-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackageName ""$($item)""" -ForegroundColor Green
-					Write-Host "   $('-' * 80)`n"
+					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "   $($lang.Del)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
 				try {
 					Remove-AppxProvisionedPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove-AppxProvisionedPackage.log" -Path $test_mount_folder_Current -PackageName $item -ErrorAction SilentlyContinue | Out-Null
 					Write-Host $lang.Done -ForegroundColor Green
 				} catch {
 					Write-Host $_
-					Write-Host "   $($lang.Failed)" -ForegroundColor Red
+					Write-Host "  $($lang.Failed)" -ForegroundColor Red
 				}
 			} else {
 				Write-Host $lang.NotMounted -ForegroundColor Red
@@ -503,6 +503,6 @@ Function InBox_Apps_Offline_Delete_Process
 			Write-Host
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }

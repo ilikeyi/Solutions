@@ -47,7 +47,7 @@
 	PleaseChoose              = 请选择
 	FailedCreateFolder        = 创建目录失败
 	Failed                    = 失败
-	ToMsg                     = \n   {0} 秒后自动返回到主菜单。
+	ToMsg                     = {0} 秒后自动返回到主菜单。
 	Restart                   = 重启生效
 	AdvOption                 = 可选功能
 

@@ -22,10 +22,10 @@ Function Image_Convert_Create_Info_Process
 }
 "@ | Out-File -FilePath "$($SaveTo)\install.json" -Encoding Ascii -ErrorAction SilentlyContinue
 
-	Write-Host "`n   $($lang.Wim_Rule_Check)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
-	Write-Host "   $($SaveTo)\install.json"
-	Write-Host "   $($lang.Wim_Rule_Verify)".PadRight(28) -NoNewline
+	Write-Host "`n  $($lang.Wim_Rule_Check)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
+	Write-Host "  $($SaveTo)\install.json"
+	Write-Host "  $($lang.Wim_Rule_Verify)".PadRight(28) -NoNewline
 
 	try {
 		$Autopilot = Get-Content -Raw -Path "$($SaveTo)\install.json" | ConvertFrom-Json
@@ -41,8 +41,8 @@ Function Image_Convert_Create_Info_Process
 #>
 Function Covert_Software_Package_Unpack
 {
-	Write-Host "`n   $($lang.ConvertToArchive)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.ConvertToArchive)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	$Script:CompressedPackage = @()
 	$ExcludeCompressedPackageSoftware = @(
@@ -62,17 +62,17 @@ Function Covert_Software_Package_Unpack
 			$SaveToName = [IO.Path]::GetDirectoryName($_.FullName)
 
 			if ($ExcludeCompressedPackageSoftware -Contains $_.BaseName) {
-#				Write-Host "   $($lang.ExcludeItem) ( $($_.BaseName) )"
+#				Write-Host "  $($lang.ExcludeItem) ( $($_.BaseName) )"
 			} else {
 				ForEach ($item in $SearchArch) {
 					ForEach ($itemRegion in $Region) {
 						if (Test-Path -Path "$($SaveToName)\$($_.BaseName)\$($item)\$($itemRegion.Region)" -PathType Container) {
-							Write-Host "   $($SaveToName)\$($_.BaseName)\$($item)\$($itemRegion.Region)\$($_.BaseName).zip"
+							Write-Host "  $($SaveToName)\$($_.BaseName)\$($item)\$($itemRegion.Region)\$($_.BaseName).zip"
 
 							if (Test-Path -Path "$($SaveToName)\$($_.BaseName)\$($item)\$($itemRegion.Region)\$($_.BaseName).zip" -PathType Leaf) {
-								Write-Host "   $($lang.Existed)`n"
+								Write-Host "  $($lang.Existed)`n"
 							} else {
-								Write-Host "   $($lang.AddQueue)".PadRight(28) -NoNewline
+								Write-Host "  $($lang.AddQueue)".PadRight(28) -NoNewline
 								$Script:CompressedPackage += @{
 									Name   = $_.BaseName
 									Folder = "$($_.FullName)\$($item)\$($itemRegion.Region)"
@@ -90,7 +90,7 @@ Function Covert_Software_Package_Unpack
 
 	$Verify_Install_Path = Get_Zip -Run "7z.exe"
 	if (Test-Path -Path $Verify_Install_Path -PathType leaf) {
-		Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Green
+		Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Green
 		ForEach ($item in $Script:CompressedPackage) {
 			$fullnewpathsha256 = "$($item.Folder)\$($item.Name).zip.sha256"
 
@@ -101,18 +101,18 @@ Function Covert_Software_Package_Unpack
 			Push-Location $item.Folder
 
 			Write-Host "   * $($item.Folder)\$($item.Name).zip"
-			Write-Host "   $($lang.Uping)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Uping)".PadRight(28) -NoNewline
 
 			$arguments = "a", "-tzip", """$($TempFolderUpdate)\$($item.Name).zip""", "*.*", "-mcu=on", "-r", "-mx9";
 			Start-Process $Verify_Install_Path $arguments -Wait -WindowStyle Minimized
 
-			Write-Host "   $fullnewpathsha256"
-			Write-Host "   $($lang.Uping)".PadRight(28) -NoNewline
+			Write-Host "  $fullnewpathsha256"
+			Write-Host "  $($lang.Uping)".PadRight(28) -NoNewline
 			Remove-Item -Path $fullnewpathsha256 -Force -ErrorAction SilentlyContinue
 
 			$calchash = (Get-FileHash "$($TempFolderUpdate)\$($item.Name).zip" -Algorithm SHA256)
 			"$($calchash.Hash)  $($item.Name).zip" | Out-File -FilePath "$($TempFolderUpdate)\$($item.Name).zip.sha256" -Encoding ASCII -ErrorAction SilentlyContinue
-			Write-Host "   $($lang.Done)" -ForegroundColor Green
+			Write-Host "  $($lang.Done)" -ForegroundColor Green
 
 			Remove_Tree "$($item.Folder)"
 
@@ -120,9 +120,9 @@ Function Covert_Software_Package_Unpack
 
 			Remove_Tree $TempFolderUpdate
 
-			Write-Host "   $($lang.Done)" -ForegroundColor Green
+			Write-Host "  $($lang.Done)" -ForegroundColor Green
 		}
 	} else {
-		Write-Host "   $($lang.ZipStatus)" -ForegroundColor Green
+		Write-Host "  $($lang.ZipStatus)" -ForegroundColor Green
 	}
 }

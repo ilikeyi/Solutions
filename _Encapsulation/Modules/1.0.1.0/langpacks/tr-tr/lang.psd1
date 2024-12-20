@@ -41,7 +41,7 @@
 	Existed                         = Zaten var
 	FailedCreateFolder              = Dizin oluşturulamadı
 	FailedCreateFile                = Dosya oluşturulamadı
-	ToMsg                           = \n   {0} Saniyeler sonra otomatik olarak ana menüye dönün.
+	ToMsg                           = {0} Saniyeler sonra otomatik olarak ana menüye dönün.
 	OnDemandPlanTask                = Bilinen olayların özel atanması
 	Operable                        = Çalıştırılabilir
 	Inoperable                      = Ameliyat edilemez

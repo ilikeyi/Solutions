@@ -47,7 +47,7 @@
 	PleaseChoose              = Kérem válasszon
 	FailedCreateFolder        = Nem sikerült létrehozni a könyvtárat
 	Failed                    = Uspjeti
-	ToMsg                     = \n   {0} Másodpercek után automatikusan visszatér a főmenübe.
+	ToMsg                     = {0} Másodpercek után automatikusan visszatér a főmenübe.
 	Restart                   = Az újraindítás életbe lép
 	AdvOption                 = Választható funkciók
 

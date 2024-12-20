@@ -41,7 +41,7 @@
 	Existed                         = 存在した
 	FailedCreateFolder              = ディレクトリの作成に失敗しました
 	FailedCreateFile                = ファイルの作成に失敗しました
-	ToMsg                           = \n   {0} 秒後に自動的にメインメニューに戻ります。
+	ToMsg                           = {0} 秒後に自動的にメインメニューに戻ります。
 	OnDemandPlanTask                = 既知のイベントのカスタム割り当て
 	Operable                        = 運用
 	Inoperable                      = 動作不能

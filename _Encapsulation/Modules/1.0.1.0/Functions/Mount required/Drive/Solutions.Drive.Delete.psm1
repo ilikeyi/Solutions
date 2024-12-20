@@ -39,7 +39,7 @@ Function Drive_Delete_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -823,7 +823,7 @@ Function Drive_Delete_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "9" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -925,17 +925,17 @@ Function Drive_Delete_UI
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Delete_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_Select.count -gt 0) {
 					ForEach ($item in $Temp_Assign_Task_Select) {
-						Write-Host "   $($item)" -ForegroundColor Green
+						Write-Host "  $($item)" -ForegroundColor Green
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 
@@ -1004,8 +1004,8 @@ Function Drive_Delete_UI
 	}
 
 	if ($Global:EventQueueMode) {
-		Write-Host "`n   $($lang.Drive): $($lang.Del)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Drive): $($lang.Del)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 		$UI_Main.controls.AddRange((
@@ -1016,8 +1016,8 @@ Function Drive_Delete_UI
 	}
 
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-		Write-Host "`n   $($lang.Drive): $($lang.Del)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Drive): $($lang.Del)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 
@@ -1065,7 +1065,7 @@ Function Drive_Delete_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		New-Variable -Scope global -Name "Queue_Is_Drive_Delete_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
 
 		$Temp_Assign_Task_Select_Is = @()
@@ -1093,15 +1093,15 @@ Function Drive_Delete_UI
 			}
 		}
 
-		Write-Host "   $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
 		if (Autopilot_Drive_Del_UI_Save) {
 			Write-Host $lang.Done -ForegroundColor Green
 
-			Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Delete_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 			foreach ($item in $Temp_Assign_Task_Select) {
-				Write-Host "   $($item)" -ForegroundColor Green
+				Write-Host "  $($item)" -ForegroundColor Green
 			}
 		} else {
 			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
@@ -1153,27 +1153,27 @@ Function Drive_Delete_Process
 
 	$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Delete_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Assign_Task_Select.count -gt 0) {
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Assign_Task_Select) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			Write-Host "  $($item)" -ForegroundColor Green
 		}
 
-		Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Assign_Task_Select) {
 			if (Test-Path -Path $item -PathType Container) {
 				Get-ChildItem -Path $item -Recurse -include "*.inf" | Where-Object {
 					if (Test-Path -Path $_.FullName -PathType Leaf) {
 						if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-							Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-							Write-Host "   $('-' * 80)"
+							Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+							Write-Host "  $('-' * 80)"
 							Write-Host "   Remove-WindowsDriver -Path ""$($test_mount_folder_Current)"" -Driver ""$($_.FullName)""" -ForegroundColor Green
-							Write-Host "   $('-' * 80)`n"
+							Write-Host "  $('-' * 80)`n"
 						}
 
-						Write-Host "   $($_.FullName)" -ForegroundColor Green
-						Write-Host "   $($lang.Del)".PadRight(28) -NoNewline
+						Write-Host "  $($_.FullName)" -ForegroundColor Green
+						Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
 						Remove-WindowsDriver -Path $test_mount_folder_Current -Driver $_.FullName -ErrorAction SilentlyContinue | Out-Null
 						Write-Host $lang.Done -ForegroundColor Green
 
@@ -1183,6 +1183,6 @@ Function Drive_Delete_Process
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }

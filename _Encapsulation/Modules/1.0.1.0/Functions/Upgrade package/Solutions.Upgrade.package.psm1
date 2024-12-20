@@ -6,8 +6,8 @@ Function Update_Create_UI
 {
 	Logo -Title $lang.UpdateCreate
 
-	Write-Host "   $($lang.UpdateCreate)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $($lang.UpdateCreate)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
@@ -212,13 +212,13 @@ Function Update_Create_UI
 				Remove_Tree $NewConfig
 
 				ForEach ($item in $Script:QueueUpdatePackerSelect) {
-					Write-Host "   $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
 					Write-Host $item.Name -ForegroundColor Green
 
-					Write-Host "   $($lang.SaveTo): " -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.SaveTo): " -NoNewline -ForegroundColor Yellow
 					Write-Host "$($NewConfig)\$($item.Name)" -ForegroundColor Green
 
-					Write-Host "   $($lang.AddTo)".PadRight(28) -NoNewline
+					Write-Host "  $($lang.AddTo)".PadRight(28) -NoNewline
 
 					Start-Process powershell -ArgumentList "-File ""$($item.PSFile)"" $($MarkNewRunAction) -SaveTo ""$($NewConfig)\$($item.Name)""" -Wait -WindowStyle Minimized
 					Write-Host $lang.Done -ForegroundColor Green
@@ -240,7 +240,7 @@ Function Update_Create_UI
 		Location       = "268,635"
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}

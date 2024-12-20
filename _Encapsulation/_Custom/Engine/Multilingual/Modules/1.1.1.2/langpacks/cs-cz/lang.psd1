@@ -27,7 +27,7 @@
 	PleaseChoose              = Vyberte prosím
 	FailedCreateFolder        = Nepodařilo se vytvořit adresář
 	Failed                    = Selhat
-	ToMsg                     = \n   {0} Po několika sekundách se automaticky vrátí do hlavní nabídky.
+	ToMsg                     = {0} Po několika sekundách se automaticky vrátí do hlavní nabídky.
 	UserCancel                = Uživatel operaci zrušil.
 	Help                      = Pomoc
 	WorkDone                  = Dokončeno, stisknutím libovolné klávesy se vraťte do hlavního rozhraní...

@@ -562,7 +562,7 @@ Function LXPs_Region_Add
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -1193,7 +1193,7 @@ Function LXPs_Region_Add
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "15" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -1679,17 +1679,17 @@ Function LXPs_Region_Add
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_Select.count -gt 0) {
 					ForEach ($item in $Temp_Assign_Task_Select) {
-						Write-Host "   $($item.Language)" -ForegroundColor Green
+						Write-Host "  $($item.Language)" -ForegroundColor Green
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 
@@ -1850,8 +1850,8 @@ Function LXPs_Region_Add
 	}
 
 	if ($Global:EventQueueMode) {
-		Write-Host "`n   $($lang.LocalExperiencePack): $($lang.AddTo)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.LocalExperiencePack): $($lang.AddTo)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 		$UI_Main.controls.AddRange((
@@ -1862,8 +1862,8 @@ Function LXPs_Region_Add
 	}
 
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-		Write-Host "`n   $($lang.LocalExperiencePack): $($lang.AddTo)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.LocalExperiencePack): $($lang.AddTo)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 
@@ -1920,9 +1920,9 @@ Function LXPs_Region_Add
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
 
 		switch ($Autopilot.Schome) {
 			"Skip" {
@@ -2023,11 +2023,11 @@ Function InBox_Apps_LIPs_Clean_Process
 		.判断挂载目录是否存在
 	#>
 	if (Image_Is_Select_IAB) {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Verify_Is_Current_Same) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 
 			if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
 				<#
@@ -2042,30 +2042,30 @@ Function InBox_Apps_LIPs_Clean_Process
 				<#
 					.输出当前所有排除规则
 				#>
-				Write-Host "`n   $($lang.ExcludeItem)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.ExcludeItem)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				if ($InitlUWPPrePakcageDelete.count -gt 0) {
 					ForEach ($item in $InitlUWPPrePakcageDelete) {
-						Write-Host "   $($item)" -ForegroundColor Green
+						Write-Host "  $($item)" -ForegroundColor Green
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 
 				<#
 					.获取所有已安装的 InBox Apps 应用，并输出到数组
 				#>
-				Write-Host "`n   $($lang.GetInBoxApps)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.GetInBoxApps)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				try {
 					Get-AppXProvisionedPackage -path $test_mount_folder_Current -ErrorAction SilentlyContinue | ForEach-Object {
 						$InitlUWPPrePakcage += $_.PackageName
-						Write-Host "   $($_.PackageName)" -ForegroundColor Green
+						Write-Host "  $($_.PackageName)" -ForegroundColor Green
 					}
 				} catch {
-					Write-Host "   $($_)" -ForegroundColor Yellow
-					Write-Host "   $($lang.SelectFromError)" -ForegroundColor Red
-					Write-Host "   $($lang.GetInBoxApps), $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($_)" -ForegroundColor Yellow
+					Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
+					Write-Host "  $($lang.GetInBoxApps), $($lang.Inoperable)" -ForegroundColor Red
 					return
 				}
 
@@ -2081,19 +2081,19 @@ Function InBox_Apps_LIPs_Clean_Process
 						}
 					}
 
-					Write-Host "`n   $($lang.ExcludeItem): " -NoNewline -ForegroundColor Yellow
+					Write-Host "`n  $($lang.ExcludeItem): " -NoNewline -ForegroundColor Yellow
 					Write-Host "$($InitlUWPPrePakcageExclude.count) $($lang.EventManagerCount)" -ForegroundColor Green
-					Write-Host "   $('-' * 80)"
+					Write-Host "  $('-' * 80)"
 					if ($InitlUWPPrePakcageExclude.count -gt 0) {
 						ForEach ($item in $InitlUWPPrePakcageExclude) {
-							Write-Host "   $($item)" -ForegroundColor Green
+							Write-Host "  $($item)" -ForegroundColor Green
 						}
 					} else {
-						Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+						Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 					}
 
-					Write-Host "`n   $($lang.LXPsWaitRemove)" -ForegroundColor Green
-					Write-Host "   $('-' * 80)"
+					Write-Host "`n  $($lang.LXPsWaitRemove)" -ForegroundColor Green
+					Write-Host "  $('-' * 80)"
 					ForEach ($item in $InitlUWPPrePakcage) {
 						if ($InitlUWPPrePakcageExclude -notContains $item) {
 							<#
@@ -2104,52 +2104,52 @@ Function InBox_Apps_LIPs_Clean_Process
 							$InBoxAppsTasksTime.Reset()
 							$InBoxAppsTasksTime.Start()
 
-							Write-Host "   $($lang.TimeStart)" -NoNewline
+							Write-Host "  $($lang.TimeStart)" -NoNewline
 							Write-Host "$($InBoxAppsTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
-							Write-Host "   $('-' * 80)"
+							Write-Host "  $('-' * 80)"
 
-							Write-Host "   $($lang.RuleFileType): ".PadRight(21) -NoNewline -ForegroundColor Yellow
+							Write-Host "  $($lang.RuleFileType): ".PadRight(21) -NoNewline -ForegroundColor Yellow
 							Write-Host $item -ForegroundColor Green
 
 							if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-								Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-								Write-Host "   $('-' * 80)"
+								Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+								Write-Host "  $('-' * 80)"
 								Write-Host "   Remove-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackageName ""$($item)""`n" -ForegroundColor Green
 							}
 
-							Write-Host "   $($lang.Del)".PadRight(21) -NoNewline
+							Write-Host "  $($lang.Del)".PadRight(21) -NoNewline
 							try {
 								Remove-AppxProvisionedPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove-AppxProvisionedPackage.log" -Path $test_mount_folder_Current -PackageName $item -ErrorAction SilentlyContinue | Out-Null
 								Write-Host $lang.Done -ForegroundColor Green
 							} catch {
 								Write-Host $_
-								Write-Host "   $($lang.Failed)" -ForegroundColor Red
+								Write-Host "  $($lang.Failed)" -ForegroundColor Red
 							}
 
 							$InBoxAppsTasksTime.Stop()
-							Write-Host "`n   $($lang.TimeEnd)" -NoNewline
+							Write-Host "`n  $($lang.TimeEnd)" -NoNewline
 							Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
 
-							Write-Host "   $($lang.TimeEndAll)" -NoNewline
+							Write-Host "  $($lang.TimeEndAll)" -NoNewline
 							Write-Host $InBoxAppsTasksTime.Elapsed -ForegroundColor Yellow
 
-							Write-Host "   $($lang.TimeEndAllseconds)" -NoNewline
+							Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 							Write-Host "$($InBoxAppsTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
-							Write-Host "   $('-' * 80)"
+							Write-Host "  $('-' * 80)"
 							Write-Host
 						}
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			} else {
-				Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+				Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 			}
 		} else {
-			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+			Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 	}
 }
 
@@ -2157,21 +2157,21 @@ Function InBox_Apps_LIPs_Add_Mark_Process
 {
 	$Temp_Select_Queue_LXPs_Add_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Select_Queue_LXPs_Add_Custom_Select.count -gt 0) {
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Select_Queue_LXPs_Add_Custom_Select) {
-			Write-Host "   $($item.Language)".PadRight(20) -NoNewline
+			Write-Host "  $($item.Language)".PadRight(20) -NoNewline
 			Write-Host $item.Path -ForegroundColor Green
 		}
 
-		Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Select_Queue_LXPs_Add_Custom_Select) {
-			Write-Host "   $($item.Path)"
+			Write-Host "  $($item.Path)"
 			if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_English_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
 				$shortname = [IO.Path]::GetFileName($item.Path)
 				if ($shortname -eq "en-US") {
-					Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 				} else {
 					InBox_Apps_Add_Mark_Process -Path $($item.Path)
 				}
@@ -2180,7 +2180,7 @@ Function InBox_Apps_LIPs_Add_Mark_Process
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }
 
@@ -2198,39 +2198,39 @@ Function InBox_Apps_Add_Mark_Process
 	$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 	if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-		Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		Write-Host "   Get-ChildItem ""$($Path)\LanguageExperiencePack.*.appx""" -ForegroundColor Green
-		Write-Host "   $('-' * 80)`n"
+		Write-Host "  $('-' * 80)`n"
 	}
 
 	Get-ChildItem "$($Path)\LanguageExperiencePack.*.appx" -ErrorAction SilentlyContinue | ForEach-Object {
-		Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 		Write-Host $_.FullName -ForegroundColor Green
 
 		if (Test-Path -Path "$($Path)\License.xml" -PathType Leaf) {
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-				Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				Write-Host "   Add-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackagePath ""$($_.FullName)"" -LicensePath ""$($Path)\License.xml""" -ForegroundColor Green
-				Write-Host "   $('-' * 80)`n"
+				Write-Host "  $('-' * 80)`n"
 			}
 
-			Write-Host "   $($Path)\License.xml" -ForegroundColor Yellow
-			Write-Host "   $($lang.IsLicense)".PadRight(28) -NoNewline
+			Write-Host "  $($Path)\License.xml" -ForegroundColor Yellow
+			Write-Host "  $($lang.IsLicense)".PadRight(28) -NoNewline
 			Add-AppxProvisionedPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\AppxProvisionedPackage.log" -Path $test_mount_folder_Current -PackagePath $_.FullName -LicensePath "$($Path)\License.xml" -Regions "All" -ErrorAction SilentlyContinue | Out-Null
 			Write-Host $lang.Done -ForegroundColor Green
 
 			Write-Host
 		} else {
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-				Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				Write-Host "   Add-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackagePath ""$($_.FullName)"" -SkipLicense" -ForegroundColor Green
-				Write-Host "   $('-' * 80)`n"
+				Write-Host "  $('-' * 80)`n"
 			}
 
-			Write-Host "   $($lang.NoLicense)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.NoLicense)".PadRight(28) -NoNewline
 			Add-AppxProvisionedPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Add-AppxProvisionedPackage.log" -Path $test_mount_folder_Current -PackagePath $_.FullName -SkipLicense -Regions "All" -ErrorAction SilentlyContinue | Out-Null
 			Write-Host $lang.Done -ForegroundColor Green
 
@@ -2253,7 +2253,7 @@ Function LXPs_Save_Report_Process
 		$FolderDirect = (Join_MainFolder -Path $Path)
 	}
 
-	Write-Host "`n   $($lang.AdvAppsDetailed)"
+	Write-Host "`n  $($lang.AdvAppsDetailed)"
 	$QueueSelectLXPsReport = @()
 	$RandomGuid = [guid]::NewGuid()
 	$ISOTestFolderMain = "$($env:userprofile)\AppData\Local\Temp\$($RandomGuid)"

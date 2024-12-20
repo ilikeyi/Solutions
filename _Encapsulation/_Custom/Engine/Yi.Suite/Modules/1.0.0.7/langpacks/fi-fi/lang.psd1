@@ -47,7 +47,7 @@
 	PleaseChoose              = Ole hyvä ja valitse
 	FailedCreateFolder        = Hakemiston luominen epäonnistui
 	Failed                    = Epäonnistua
-	ToMsg                     = \n   {0} Palaa automaattisesti päävalikkoon sekunnin kuluttua.
+	ToMsg                     = {0} Palaa automaattisesti päävalikkoon sekunnin kuluttua.
 	Restart                   = Uudelleenkäynnistys astuu voimaan
 	AdvOption                 = Valinnaisia ominaisuuksia
 

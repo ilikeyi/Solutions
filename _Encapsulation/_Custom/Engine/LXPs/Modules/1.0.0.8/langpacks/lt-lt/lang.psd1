@@ -22,7 +22,7 @@
 	RefreshModules            = Karštas visų modulių atnaujinimas
 	PleaseChoose              = Prašome pasirinkti
 	FailedCreateFolder        = Nepavyko sukurti katalogo
-	ToMsg                     = \n   {0} Po sekundžių automatiškai grįžkite į pagrindinį meniu.
+	ToMsg                     = {0} Po sekundžių automatiškai grįžkite į pagrindinį meniu.
 	UserCancel                = Vartotojas atšaukė operaciją.
 	Detailed                  = Išsamiai
 	FileName                  = Failo pavadinimas

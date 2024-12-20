@@ -27,7 +27,7 @@
 	PleaseChoose              = Seleziona
 	FailedCreateFolder        = Impossibile creare la directory
 	Failed                    = Fallire
-	ToMsg                     = \n   {0} Ritorna automaticamente al menu principale dopo secondi.
+	ToMsg                     = {0} Ritorna automaticamente al menu principale dopo secondi.
 	UserCancel                = L'utente ha annullato l'operazione.
 	Help                      = Aiuto
 	WorkDone                  = Completato, premere un tasto qualsiasi per tornare all'interfaccia principale...

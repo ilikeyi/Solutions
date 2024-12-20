@@ -9,41 +9,41 @@ Function Prerequisite
 
 	Clear-Host
 	$Host.UI.RawUI.WindowTitle = "$((Get-Module -Name Solutions).Author)'s Solutions | $($lang.Prerequisites)"
-	Write-Host "`n   $($lang.Prerequisites)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Prerequisites)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
-	Write-Host "   $($lang.Check_PSVersion): " -NoNewline
+	Write-Host "  $($lang.Check_PSVersion): " -NoNewline
 	if ($PSVersionTable.PSVersion.major -ge "5") {
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 	} else {
 		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 
-		Write-Host "`n   $($lang.How_solve): " -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "     1. $($lang.UpdatePSVersion)`n"
+		Write-Host "`n  $($lang.How_solve): " -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "    1. $($lang.UpdatePSVersion)`n"
 		pause
 		exit
 	}
 
-	Write-Host "   $($lang.Check_OSVersion): " -NoNewline
+	Write-Host "  $($lang.Check_OSVersion): " -NoNewline
 	$OSVer = [System.Environment]::OSVersion.Version;
 	if (($OSVer.Major -eq 10 -and $OSVer.Minor -eq 0 -and $OSVer.Build -ge 16299)) {
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 	} else {
 		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 
-		Write-Host "`n   $($lang.How_solve): " -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.How_solve): " -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		Write-Host "    $($lang.UpdateOSVersion)`n"
 		pause
 		exit
 	}
 
-	Write-Host "   $($lang.Check_Higher_elevated): " -NoNewline
+	Write-Host "  $($lang.Check_Higher_elevated): " -NoNewline
 	if (([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544") {
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 
-		Write-Host "   $($lang.Check_execution_strategy): " -NoNewline
+		Write-Host "  $($lang.Check_execution_strategy): " -NoNewline
 		switch (Get-ExecutionPolicy) {
 			"Bypass" {
 				Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -57,8 +57,8 @@ Function Prerequisite
 			default {
 				Write-Host " $($lang.Check_Did_not_pass) " -BackgroundColor DarkRed -ForegroundColor White
 
-				Write-Host "`n   $($lang.How_solve): " -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.How_solve): " -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				Write-Host "    $($lang.HigherTermail)`n"
 				pause
 				exit
@@ -67,21 +67,21 @@ Function Prerequisite
 	} else {
 		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 
-		Write-Host "`n   $($lang.How_solve): " -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "     $($lang.HigherTermailAdmin)`n"
+		Write-Host "`n  $($lang.How_solve): " -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "    $($lang.HigherTermailAdmin)`n"
 		pause
 		exit
 	}
 
-	Write-Host "   $($lang.UpdateClean): " -NoNewline
+	Write-Host "  $($lang.UpdateClean): " -NoNewline
 	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Update" -Name "IsUpdate_Clean" -ErrorAction SilentlyContinue) {
 		$GetOldVersion = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Update" -Name "IsUpdate_Clean" -ErrorAction SilentlyContinue
 		$SaveCurrentVersion = (Get-Module -Name Solutions).Version.ToString()
 
 		if ($GetOldVersion -eq $SaveCurrentVersion) {
 			Write-Host " $($lang.UpdateNotExecuted) " -BackgroundColor DarkGreen -ForegroundColor White
-			Write-host "   $($lang.Del)".PadRight(22) -NoNewline -ForegroundColor Green
+			Write-Host "  $($lang.Del)".PadRight(22) -NoNewline -ForegroundColor Green
 			Remove-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Update" -Name "IsUpdate_Clean" -Force -ErrorAction SilentlyContinue | out-null
 			Write-host $lang.Done
 		} else {
@@ -89,7 +89,7 @@ Function Prerequisite
 
 			$Wait_Clean_Folder_Full = Join-Path -Path "$($PSScriptRoot)\..\..\..\.." -ChildPath $GetOldVersion
 
-			Write-host "   $($lang.Del): $($GetOldVersion): " -NoNewline -ForegroundColor Green
+			Write-Host "  $($lang.Del): $($GetOldVersion): " -NoNewline -ForegroundColor Green
 			remove-item -path $Wait_Clean_Folder_Full -Recurse -force -ErrorAction SilentlyContinue
 
 			if (Test-Path -Path $Wait_Clean_Folder_Full -PathType Container) {
@@ -103,9 +103,9 @@ Function Prerequisite
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 	}
 
-	Write-Host "`n   $($lang.Check_OSEnv)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
-	Write-Host "   $($lang.Check_Image_Bad): " -NoNewline
+	Write-Host "`n  $($lang.Check_OSEnv)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
+	Write-Host "  $($lang.Check_Image_Bad): " -NoNewline
 	$MarkErrorMounted = @()
 	try {
 		<#
@@ -138,25 +138,25 @@ Function Prerequisite
 
 	if ($MarkErrorMounted.count -gt 0) {
 		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $('-' * 80)"
 
-		Write-Host "      $($lang.Check_Need_Fix): $($MarkErrorMounted.count)" -ForegroundColor Green
+		Write-Host "  $($lang.Check_Need_Fix): $($MarkErrorMounted.count)" -ForegroundColor Green
 
 		foreach ($item in $MarkErrorMounted) {
-			Write-Host "      $('-' * 77)"
-			Write-Host "      $($lang.Select_Path): " -NoNewline
+			Write-Host "    $('-' * 77)"
+			Write-Host "    $($lang.Select_Path): " -NoNewline
 			Write-Host $item.Path -ForegroundColor Yellow
 
-			Write-Host "      $($lang.Image_Path): " -NoNewline
+			Write-Host "    $($lang.Image_Path): " -NoNewline
 			Write-Host $item.ImagePath -ForegroundColor Yellow
 
-			Write-Host "      $($lang.MountedIndex): " -NoNewline
+			Write-Host "    $($lang.MountedIndex): " -NoNewline
 			Write-Host $item.ImageIndex -ForegroundColor Yellow
 
-			Write-Host "      $($lang.Image_Mount_Mode): " -NoNewline
+			Write-Host "    $($lang.Image_Mount_Mode): " -NoNewline
 			Write-Host $item.MountMode -ForegroundColor Yellow
 
-			Write-Host "      $($lang.Image_Mount_Status): " -NoNewline
+			Write-Host "    $($lang.Image_Mount_Status): " -NoNewline
 			Write-Host $item.MountStatus -ForegroundColor Red
 		}
 	} else {
@@ -174,10 +174,10 @@ Function Prerequisite
 		}
 	)
 
-	Write-Host "`n   $($lang.RuleCustomize)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.RuleCustomize)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	ForEach	 ($item in $ExpansionModule) {
-		Write-Host "   $($item.name).psd1: " -NoNewline -ForegroundColor Green
+		Write-Host "  $($item.name).psd1: " -NoNewline -ForegroundColor Green
 
 		$MarkFindModule = $False
 		$MarkFindModuleVersion = ""
@@ -192,15 +192,15 @@ Function Prerequisite
 		if ($MarkFindModule) {
 			Write-Host " $($lang.UpdateAvailable) " -BackgroundColor DarkGreen -ForegroundColor White
 
-			Write-Host "     $($lang.LowAndCurrentError -f $item.Version, $MarkFindModuleVersion)"
-			Write-Host "     $($lang.Check_Eligible): " -NoNewline -ForegroundColor Green
+			Write-Host "    $($lang.LowAndCurrentError -f $item.Version, $MarkFindModuleVersion)"
+			Write-Host "    $($lang.Check_Eligible): " -NoNewline -ForegroundColor Green
 
 			if ($item.Version -eq $MarkFindModuleVersion) {
 				Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
 				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 
-				Write-Host "`n   $($lang.Check_Version_PSM_Error -f $item.Name)" -ForegroundColor Red
+				Write-Host "`n  $($lang.Check_Version_PSM_Error -f $item.Name)" -ForegroundColor Red
 				start-process "timeout.exe" -argumentlist "/t 6 /nobreak" -wait -nonewwindow
 				Modules_Import
 				Stop-Process $PID
@@ -213,10 +213,10 @@ Function Prerequisite
 		}
 	}
 
-	Write-Host "`n   $($lang.Check_Compatibility)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
-	Write-Host "   $($lang.Check_Duplicate_rule)" -ForegroundColor Yellow
-	Write-Host "      $($lang.RuleGUID): " -NoNewline
+	Write-Host "`n  $($lang.Check_Compatibility)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
+	Write-Host "  $($lang.Check_Duplicate_rule)" -ForegroundColor Yellow
+	Write-Host "    $($lang.RuleGUID): " -NoNewline
 
 	$Duplicate_Rule_GUID = @()
 	$Duplicate_Rule_GUID_seen = @{}
@@ -247,10 +247,10 @@ Function Prerequisite
 
 	if ($Duplicate_Rule_GUID_duplicates.Count -gt 0) {
 		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
-		Write-Host "         $($Duplicate_Rule_GUID_duplicates.count) $($lang.Duplicates)" -ForegroundColor Green
-		Write-Host "         $('-' * 74)"
+		Write-Host "        $($Duplicate_Rule_GUID_duplicates.count) $($lang.Duplicates)" -ForegroundColor Green
+		Write-Host "        $('-' * 74)"
 		foreach ($item in $Duplicate_Rule_GUID_duplicates) {
-			Write-Host "         $($item)" -ForegroundColor Red
+			Write-Host "        $($item)" -ForegroundColor Red
 		}
 
 		Write-Host
@@ -258,7 +258,7 @@ Function Prerequisite
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 	}
 
-	Write-Host "      $($lang.ISO_File): " -NoNewline
+	Write-Host "    $($lang.ISO_File): " -NoNewline
 	$Duplicate_Rule_ISO = @()
 	$Duplicate_Rule_ISO_seen = @{}
 	$Duplicate_Rule_ISO_duplicates = @()
@@ -295,10 +295,10 @@ Function Prerequisite
 
 	if ($Duplicate_Rule_ISO_duplicates.Count -gt 0) {
 		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
-		Write-Host "         $($Duplicate_Rule_ISO_duplicates.count) $($lang.Duplicates)" -ForegroundColor Green
-		Write-Host "         $('-' * 74)"
+		Write-Host "        $($Duplicate_Rule_ISO_duplicates.count) $($lang.Duplicates)" -ForegroundColor Green
+		Write-Host "        $('-' * 74)"
 		foreach ($item in $Duplicate_Rule_ISO_duplicates) {
-			Write-Host "         $($item)" -ForegroundColor Red
+			Write-Host "        $($item)" -ForegroundColor Red
 		}
 
 		Write-Host
@@ -306,7 +306,7 @@ Function Prerequisite
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 	}
 
-	Write-Host "      $($lang.ISO_Langpack): " -NoNewline
+	Write-Host "    $($lang.ISO_Langpack): " -NoNewline
 	$Duplicate_Rule_Language = @()
 	$Duplicate_Rule_Language_seen = @{}
 	$Duplicate_Rule_Language_duplicates = @()
@@ -343,10 +343,10 @@ Function Prerequisite
 
 	if ($Duplicate_Rule_Language_duplicates.Count -gt 0) {
 		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
-		Write-Host "         $($Duplicate_Rule_Language_duplicates.count) $($lang.Duplicates)" -ForegroundColor Green
-		Write-Host "         $('-' * 74)"
+		Write-Host "        $($Duplicate_Rule_Language_duplicates.count) $($lang.Duplicates)" -ForegroundColor Green
+		Write-Host "        $('-' * 74)"
 		foreach ($item in $Duplicate_Rule_Language_duplicates) {
-			Write-Host "         $($item)" -ForegroundColor Red
+			Write-Host "        $($item)" -ForegroundColor Red
 		}
 
 		Write-Host
@@ -354,7 +354,7 @@ Function Prerequisite
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 	}
 
-	Write-Host "      InBox Apps ISO: " -NoNewline
+	Write-Host "     InBox Apps ISO: " -NoNewline
 	$Duplicate_Rule_InBox_Apps = @()
 	$Duplicate_Rule_InBox_Apps_seen = @{}
 	$Duplicate_Rule_InBox_Apps_duplicates = @()
@@ -390,10 +390,10 @@ Function Prerequisite
 
 	if ($Duplicate_Rule_InBox_Apps_duplicates.Count -gt 0) {
 		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
-		Write-Host "         $($Duplicate_Rule_InBox_Apps_duplicates.count) $($lang.Duplicates)" -ForegroundColor Yellow
-		Write-Host "         $('-' * 74)"
+		Write-Host "        $($Duplicate_Rule_InBox_Apps_duplicates.count) $($lang.Duplicates)" -ForegroundColor Yellow
+		Write-Host "        $('-' * 74)"
 		foreach ($item in $Duplicate_Rule_InBox_Apps_duplicates) {
-			Write-Host "         $($item)" -ForegroundColor Red
+			Write-Host "        $($item)" -ForegroundColor Red
 		}
 
 		Write-Host
@@ -401,6 +401,6 @@ Function Prerequisite
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 	}
 
-	Write-Host "`n   $($lang.Check_Pass_Done)" -ForegroundColor Green
+	Write-Host "`n  $($lang.Check_Pass_Done)" -ForegroundColor Green
 	Start-Sleep -s 2
 }

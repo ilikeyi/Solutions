@@ -786,23 +786,23 @@ Function Event_Assign_Task
 		<#
 			.处理扩展项任务，更新映像内的文件
 		#>
-		Write-Host "`n   $($lang.Event_Allow_Update_Rule)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Event_Allow_Update_Rule)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		Image_Get_Mount_Status -Silent
 
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)").Value) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+			Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 
 			ForEach ($item in $Global:Image_Rule) {
 				if ($item.Main.Suffix -eq "wim") {
 					if ($item.Main.Uid -eq $Global:Primary_Key_Image.Uid) {
 						if ($item.Expand.Count -gt 0) {
 							ForEach ($itemExpandNew in $item.Expand) {
-								Write-Host "`n   $($lang.Unique_Name): " -NoNewline -ForegroundColor Yellow
+								Write-Host "`n  $($lang.Unique_Name): " -NoNewline -ForegroundColor Yellow
 								Write-Host "$($item.Main.ImageFileName);$($itemExpandNew.ImageFileName);" -ForegroundColor Green
 
 								Image_Queue_Wimlib_Process_Wim_Main -NewUid $itemExpandNew.Uid -NewMaster $item.Main.ImageFileName -NewImageFileName $itemExpandNew.ImageFileName -MasterFile "$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)"  -DevCode "1"
@@ -817,15 +817,15 @@ Function Event_Assign_Task
 			<#
 				.完成所有后，重建
 			#>
-			Write-Host "`n   $($lang.Rebuilding)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Rebuilding)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			if ((Get-Variable -Scope global -Name "Queue_Rebuild_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-				Write-Host "   $($lang.Operable)" -ForegroundColor Green
+				Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
 				Rebuild_Image_File -Filename $Global:Primary_Key_Image.FullPath
 				New-Variable -Scope global -Name "Queue_Rebuild_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 			} else {
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 		}
 	}
@@ -836,22 +836,22 @@ Function Event_Assign_Task
 	#>
 	Event_Process_Task_Sustainable
 
-	Write-Host "`n   $($lang.SpecialFunction): $($lang.Function_Unrestricted)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.SpecialFunction): $($lang.Function_Unrestricted)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	if ($Global:Function_Unrestricted.Count -gt 0) {
-		Write-Host "   $($lang.Choose)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Choose)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Global:Function_Unrestricted) {
-			Write-Host "   $($item)"
+			Write-Host "  $($item)"
 		}
 
-		Write-Host "`n   $($lang.LXPsWaitAdd)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.LXPsWaitAdd)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Global:Function_Unrestricted) {
 			Invoke-Expression -Command $item
 		}
 	} else {
-		Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+		Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 	}
 
 	<#

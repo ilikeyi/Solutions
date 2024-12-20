@@ -27,7 +27,7 @@
 	PleaseChoose              = Lütfen seçin
 	FailedCreateFolder        = Dizin oluşturulamadı
 	Failed                    = Hata
-	ToMsg                     = \n   {0} Saniyeler sonra otomatik olarak ana menüye dönün.
+	ToMsg                     = {0} Saniyeler sonra otomatik olarak ana menüye dönün.
 	UserCancel                = Kullanıcı işlemi iptal etti.
 	Help                      = Yardım
 	WorkDone                  = Tamamlandı, ana arayüze dönmek için herhangi bir tuşa basın...

@@ -41,7 +41,7 @@
 	Existed                         = 존재했다
 	FailedCreateFolder              = 디렉토리 생성 실패
 	FailedCreateFile                = 파일 생성 실패
-	ToMsg                           = \n   {0} 몇 초 후에 자동으로 기본 메뉴로 돌아갑니다.
+	ToMsg                           = {0} 몇 초 후에 자동으로 기본 메뉴로 돌아갑니다.
 	OnDemandPlanTask                = 사용자 지정 알려진 이벤트 할당
 	Operable                        = 운영
 	Inoperable                      = 작동 불능

@@ -22,7 +22,7 @@
 	RefreshModules            = Kõigi moodulite kuumvärskendus
 	PleaseChoose              = Palun valige
 	FailedCreateFolder        = Kataloogi loomine ebaõnnestus
-	ToMsg                     = \n   {0} Naaske sekundite pärast automaatselt peamenüüsse.
+	ToMsg                     = {0} Naaske sekundite pärast automaatselt peamenüüsse.
 	UserCancel                = Kasutaja on toimingu tühistanud.
 	Detailed                  = Üksikasjalik
 	FileName                  = Faili nimi

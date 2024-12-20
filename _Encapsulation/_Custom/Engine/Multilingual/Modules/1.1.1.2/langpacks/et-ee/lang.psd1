@@ -27,7 +27,7 @@
 	PleaseChoose              = Palun valige
 	FailedCreateFolder        = Kataloogi loomine ebaõnnestus
 	Failed                    = Ebaõnnestuda
-	ToMsg                     = \n   {0} Naaske sekundite pärast automaatselt peamenüüsse.
+	ToMsg                     = {0} Naaske sekundite pärast automaatselt peamenüüsse.
 	UserCancel                = Kasutaja on toimingu tühistanud.
 	Help                      = Abi
 	WorkDone                  = Lõpetatud, vajutage põhiliidesele naasmiseks suvalist klahvi...

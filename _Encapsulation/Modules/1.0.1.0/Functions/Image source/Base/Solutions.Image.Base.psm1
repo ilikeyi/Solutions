@@ -66,13 +66,13 @@ Function Image_Mount_Check
 		$Index
 	)
 
-	Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	$test_mount_folder = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 	if (Test-Path -Path $test_mount_folder -PathType Container) {
-		Write-Host "   $($lang.Mounted)"
+		Write-Host "  $($lang.Mounted)"
 	} else {
-		Write-Host "   $($lang.NotMounted)"
+		Write-Host "  $($lang.NotMounted)"
 
 		if (Test-Path -Path $test_mount_folder -PathType Container) {
 			<#
@@ -80,45 +80,45 @@ Function Image_Mount_Check
 				.Forcibly uninstall, do not save
 			#>
 			if ($Global:Developers_Mode) {
-				Write-Host "`n   $($lang.Developers_Mode_Location): 80`n" -ForegroundColor Green
+				Write-Host "`n  $($lang.Developers_Mode_Location): 80`n" -ForegroundColor Green
 			}
 
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-				Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				Write-Host "   Dismount-WindowsImage -Path ""$($test_mount_folder)"" -Discard" -ForegroundColor Green
-				Write-Host "   $('-' * 80)`n"
+				Write-Host "  $('-' * 80)`n"
 			}
 
 			Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path $test_mount_folder -Discard -ErrorAction SilentlyContinue | Out-Null
 			Image_Mount_Force_Del -NewPath $test_mount_folder
-			Write-Host "   $($lang.Done)" -ForegroundColor Green
+			Write-Host "  $($lang.Done)" -ForegroundColor Green
 		}
 		Check_Folder -chkpath $test_mount_folder
 
 		if (Test-Path -Path $MountFileName -PathType Leaf) {
 			if ($Global:Developers_Mode) {
-				Write-Host "`n   $($lang.Developers_Mode_Location): 81`n" -ForegroundColor Green
+				Write-Host "`n  $($lang.Developers_Mode_Location): 81`n" -ForegroundColor Green
 			}
 
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-				Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				Write-Host "   Mount-WindowsImage -ImagePath ""$($MountFileName)"" -Index ""$($Index)"" -Path "$test_mount_folder"" -ForegroundColor Green
-				Write-Host "   $('-' * 80)`n"
+				Write-Host "  $('-' * 80)`n"
 			}
 
-			Write-Host "   $($lang.Mount)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Mount)".PadRight(28) -NoNewline
 			try {
 				Mount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Mount.log" -ImagePath "$($MountFileName)" -Index $Index -Path $test_mount_folder | Out-Null
 				Write-Host $lang.Done -ForegroundColor Green
 			} catch {
 				Write-Host $_
-				Write-Host "   $($lang.Failed)" -ForegroundColor Red
+				Write-Host "  $($lang.Failed)" -ForegroundColor Red
 			}
 		} else {
-			Write-Host "   $($lang.NoInstallImage)"
-			Write-Host "   $($MountFileName)" -ForegroundColor Red
+			Write-Host "  $($lang.NoInstallImage)"
+			Write-Host "  $($MountFileName)" -ForegroundColor Red
 		}
 	}
 }
@@ -215,7 +215,7 @@ Function Image_Mount_Force_Del
 				TakeownFolder -path $NewPath
 				Remove-Item -Path $NewPath -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
 			} else {
-				Write-Host "`n   $($lang.UnmountFailed)" -ForegroundColor Red
+				Write-Host "`n  $($lang.UnmountFailed)" -ForegroundColor Red
 				start-process "timeout.exe" -argumentlist "/t 6 /nobreak" -wait -nonewwindow
 			}
 		}
@@ -235,38 +235,43 @@ Function Image_Get_Mount_Status
 		[switch]$Silent
 	)
 
-	Write-host "   " -NoNewline
-	if ($IsHotkeyShort) {
-		Write-host "$($lang.Short_Cmd): " -NoNewline
-		Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-		Write-host " " -NoNewline
-		Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-		Write-host ", " -NoNewline
-	}
+	if ($Silent) {
 
-	if ($IsHotkey) {
-		Write-host "$($lang.Short_Cmd): " -NoNewline
-
-		if (Image_Is_Mount) {
-			Write-Host " Esa " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	} else {
+		Write-host "  " -NoNewline
+		if ($IsHotkeyShort) {
+			Write-host "$($lang.Short_Cmd): " -NoNewline
+			Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-host " " -NoNewline
-			Write-Host " Edns " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-			Write-host " " -NoNewline
+			Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-host ", " -NoNewline
 		}
 
-		Write-Host " MT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-		Write-host " " -NoNewline
-		Write-Host " Save " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-		Write-host " " -NoNewline
-		Write-Host " Unmount " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-		Write-host " " -NoNewline
-		Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-		Write-host " " -NoNewline
-		Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-		Write-host ", " -NoNewline
+		if ($IsHotkey) {
+			Write-host "$($lang.Short_Cmd): " -NoNewline
+
+			if (Image_Is_Mount) {
+				Write-Host " Esa " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+				Write-host " " -NoNewline
+				Write-Host " Edns " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+				Write-host " " -NoNewline
+			}
+
+			Write-Host " MT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-host " " -NoNewline
+			Write-Host " Save " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-host " " -NoNewline
+			Write-Host " Unmount " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-host " " -NoNewline
+			Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-host " " -NoNewline
+			Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-host ", " -NoNewline
+		}
+
+		Write-host "$($lang.Event_Primary_Key): "
 	}
 
-	Write-host "$($lang.Event_Primary_Key): "
 	ForEach ($item in $Global:Image_Rule) {
 		if ($item.Main.Suffix -eq "wim") {
 			Image_Get_Mount_Status_New -ImageMaster $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -ImageFile "$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)" -Shortcuts $item.Main.Shortcuts -Silent $Silent
@@ -311,9 +316,9 @@ Function Image_Get_Mount_Status_New
 				.自动选择主键
 			#>
 			if ($Global:Primary_Key_Image.ImageFileName -eq $ImageName) {
-				Write-Host "   [*]" -NoNewline -ForegroundColor Green
+				Write-Host "  [*]" -NoNewline -ForegroundColor Green
 			} else {
-				Write-Host "      " -NoNewline
+				Write-Host "     " -NoNewline
 			}
 
 			If (([String]::IsNullOrEmpty($Shortcuts))) {
@@ -417,7 +422,7 @@ Function Image_Get_Mount_Status_New
 			}
 		} catch {
 			if (-not $Silent) {
-				Write-Host "   $($lang.MountedIndexError)" -ForegroundColor Green
+				Write-Host "  $($lang.MountedIndexError)" -ForegroundColor Green
 			}
 		}
 
@@ -519,24 +524,24 @@ function Get-RandomHexNumber
 
 Function Image_Select_Mount_Shortcuts
 {
-	Write-Host "`n   $($lang.Mount)"
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Mount)"
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Verify_Is_Current_Same) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Red
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Red
 		} else {
 			Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "1026"
 			Image_Select_Index_UI
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 
-		Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+		Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 		ToWait -wait 2
 		Image_Assign_Event_Master
@@ -550,33 +555,33 @@ Function Image_Set_Primary_Key_Shortcuts
 		$Name
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host "Sel" -ForegroundColor Green
 
-	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-Host "  $($lang.RuleName): " -NoNewline
 	Write-host $Name -ForegroundColor Green
 
-	Write-Host "`n   $($lang.Event_Primary_Key) *" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Event_Primary_Key) *" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	ForEach ($item in $Global:Image_Rule) {
 		if ($item.Main.Suffix -eq "wim") {
 			if ($item.Main.Shortcuts -eq $Name) {
-				Write-Host "   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
 				Write-Host $item.Main.Group -ForegroundColor Green
 
-				Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 				Write-Host $item.Main.Uid -ForegroundColor Green
 
 				$TestWimFile = Join-Path -Path $item.Main.Path -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)"
 
-				Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
 				Write-Host $TestWimFile -ForegroundColor Green
 
 				if (Test-Path -Path $TestWimFile -PathType Leaf) {
 					Image_Set_Global_Primary_Key -Uid $item.Main.Uid -Detailed -DevCode "0406"
 				} else {
-					Write-Host "`n   $($lang.NoInstallImage)"
-					Write-Host "   $($TestWimFile)" -ForegroundColor Red
+					Write-Host "`n  $($lang.NoInstallImage)"
+					Write-Host "  $($TestWimFile)" -ForegroundColor Red
 				}
 
 				return
@@ -585,21 +590,21 @@ Function Image_Set_Primary_Key_Shortcuts
 			if ($item.Expand.Count -gt 0) {
 				ForEach ($Expand in $item.Expand) {
 					if ($Expand.Shortcuts -eq $Name) {
-						Write-Host "   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
+						Write-Host "  $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
 						Write-Host $Expand.Group -ForegroundColor Green
 
-						Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+						Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 						Write-Host $Expand.Uid -ForegroundColor Green
 						$NewFileFullPathExpand = "$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)"
 
-						Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
+						Write-Host "  $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
 						Write-Host $NewFileFullPathExpand -ForegroundColor Green
 
 						if (Test-Path -Path $NewFileFullPathExpand -PathType Leaf) {
 							Image_Set_Global_Primary_Key -Uid $Expand.Uid -Detailed -DevCode "1208"
 						} else {
-							Write-Host "`n   $($lang.NoInstallImage)"
-							Write-Host "   $($NewFileFullPathExpand)" -ForegroundColor Red
+							Write-Host "`n  $($lang.NoInstallImage)"
+							Write-Host "  $($NewFileFullPathExpand)" -ForegroundColor Red
 						}
 
 						return
@@ -609,7 +614,7 @@ Function Image_Set_Primary_Key_Shortcuts
 		}
 	}
 
-	Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+	Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 }
 
 Function Image_Primary_Key_Shortcuts_File_View
@@ -619,32 +624,32 @@ Function Image_Primary_Key_Shortcuts_File_View
 		$Name
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host "View" -ForegroundColor Green
 
-	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-Host "  $($lang.RuleName): " -NoNewline
 	Write-host $Name -ForegroundColor Green
 
-	Write-Host "`n   $($lang.ViewWIMFileInfo) *" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.ViewWIMFileInfo) *" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 	ForEach ($item in $Global:Image_Rule) {
 		if ($item.Main.Shortcuts -eq $Name) {
-			Write-Host "   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
 			Write-Host $item.Main.Group -ForegroundColor Green
 
-			Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 			Write-Host $item.Main.Uid -ForegroundColor Green
 
 			$TestWimFile = Join-Path -Path $item.Main.Path -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)"
 
-			Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
 			Write-Host $TestWimFile -ForegroundColor Green
 
 			if (Test-Path -Path $TestWimFile -PathType Leaf) {
 				Image_Get_Detailed -Filename $TestWimFile -View
 			} else {
-				Write-Host "`n   $($lang.NoInstallImage)"
-				Write-Host "   $($TestWimFile)" -ForegroundColor Red
+				Write-Host "`n  $($lang.NoInstallImage)"
+				Write-Host "  $($TestWimFile)" -ForegroundColor Red
 			}
 
 			return
@@ -653,21 +658,21 @@ Function Image_Primary_Key_Shortcuts_File_View
 		if ($item.Expand.Count -gt 0) {
 			ForEach ($Expand in $item.Expand) {
 				if ($Expand.Shortcuts -eq $Name) {
-					Write-Host "   $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.Event_Group): " -NoNewline -ForegroundColor Yellow
 					Write-Host $Expand.Group -ForegroundColor Green
 
-					Write-Host "   $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 					Write-Host $Expand.Uid -ForegroundColor Green
 					$NewFileFullPathExpand = "$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)"
 
-					Write-Host "   $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
 					Write-Host $NewFileFullPathExpand -ForegroundColor Green
 
 					if (Test-Path -Path $NewFileFullPathExpand -PathType Leaf) {
 						Image_Get_Detailed -Filename $NewFileFullPathExpand -View
 					} else {
-						Write-Host "`n   $($lang.NoInstallImage)"
-						Write-Host "   $($NewFileFullPathExpand)" -ForegroundColor Red
+						Write-Host "`n  $($lang.NoInstallImage)"
+						Write-Host "  $($NewFileFullPathExpand)" -ForegroundColor Red
 					}
 
 					return
@@ -676,7 +681,7 @@ Function Image_Primary_Key_Shortcuts_File_View
 		}
 	}
 
-	Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+	Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 }
 
 <#
@@ -684,25 +689,25 @@ Function Image_Primary_Key_Shortcuts_File_View
 #>
 Function Menu_Shortcuts_Image_Sources_Add
 {
-	Write-Host "`n   $($lang.AddTo)"
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.AddTo)"
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Verify_Is_Current_Same) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Red
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Red
 		} else {
 			Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "0429"
 			Image_Select_Add_UI
 			Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "0429e"
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 
-		Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+		Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 		ToWait -wait 2
 		Image_Assign_Event_Master
@@ -719,10 +724,10 @@ Function Menu_Shortcuts_Image_Sources_Add_IAB
 		$Command
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host $Command -ForegroundColor Green
 
-	Write-Host "   $($lang.Event_Primary_Key): " -NoNewline
+	Write-Host "  $($lang.Event_Primary_Key): " -NoNewline
 	$NewRuleName = $Command.Remove(0, 4).split(" ").ToLower()
 	$NewImageIndex = ""
 	$Scope = @()
@@ -758,22 +763,22 @@ Function Menu_Shortcuts_Image_Sources_Add_IAB
 	}
 
 	if (Image_Is_Select_IAB) {
-		Write-Host "`n   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Verify_Is_Current_Same) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Red
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Red
 		} else {
 			Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "0818"
 			Image_Select_Add_UI
 			Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "0818e"
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 
-		Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+		Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 		ToWait -wait 2
 		Image_Assign_Event_Master
@@ -785,25 +790,25 @@ Function Menu_Shortcuts_Image_Sources_Add_IAB
 #>
 Function Menu_Shortcuts_Remove
 {
-	Write-Host "`n   $($lang.Del)"
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Del)"
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Verify_Is_Current_Same) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Red
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Red
 		} else {
 			Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "0818"
 			Image_Select_Del_UI
 			Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "0818e"
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 
-		Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+		Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 		ToWait -wait 2
 		Image_Assign_Event_Master
@@ -820,10 +825,10 @@ Function Menu_Shortcuts_Remove_Index
 		$Command
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host $Command -ForegroundColor Green
 
-	Write-Host "   $($lang.Event_Primary_Key): " -NoNewline
+	Write-Host "  $($lang.Event_Primary_Key): " -NoNewline
 	$NewRuleName = $Command.Remove(0, 4).split(" ").ToLower()
 	$NewImageIndex = ""
 	$Scope = @()
@@ -860,40 +865,40 @@ Function Menu_Shortcuts_Remove_Index
 	<#
 		.判断主键范围
 	#>
-	Write-Host "`n   $($lang.MountedIndexSelect): " -NoNewline
+	Write-Host "`n  $($lang.MountedIndexSelect): " -NoNewline
 	Write-Host $NewRuleName -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 
 	$IsNumber = [int]::TryParse($NewRuleName, [ref]$null)
 	if ($IsNumber) {
 		if (Image_Is_Select_IAB) {
-			Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 
 			if (Verify_Is_Current_Same) {
-				Write-Host "   $($lang.Mounted)" -ForegroundColor Red
+				Write-Host "  $($lang.Mounted)" -ForegroundColor Red
 			} else {
 				Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "0818"
 				Image_Select_Del_UI -AutoSelectIndex $NewRuleName
 				Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "0818e"
 			}
 		} else {
-			Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+			Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 
-			Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+			Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 			ToWait -wait 2
 			Image_Assign_Event_Master
 		}
 	} else {
-		Write-Host "   $($lang.VerifyNumberFailed)" -ForegroundColor Red
+		Write-Host "  $($lang.VerifyNumberFailed)" -ForegroundColor Red
 		
 		if (Image_Is_Select_IAB) {
-			Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.SelectSettingImage): $($lang.Del)" -ForegroundColor Green
+			Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.SelectSettingImage): $($lang.Del)" -ForegroundColor Green
 
 			ToWait -wait 2
 			Image_Select_Del_UI
@@ -906,24 +911,24 @@ Function Menu_Shortcuts_Remove_Index
 #>
 Function Menu_Shortcuts_Mount
 {
-	Write-Host "`n   $($lang.Mount)"
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Mount)"
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Verify_Is_Current_Same) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Red
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Red
 		} else {
 			Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "1026"
 			Image_Select_Index_UI
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 
-		Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+		Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 		ToWait -wait 2
 		Image_Assign_Event_Master
@@ -940,10 +945,10 @@ Function Menu_Shortcuts_Mount_Index
 		$Command
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host $Command -ForegroundColor Green
 
-	Write-Host "   $($lang.Event_Primary_Key): " -NoNewline
+	Write-Host "  $($lang.Event_Primary_Key): " -NoNewline
 	$NewRuleName = $Command.Remove(0, 3).split(" ").ToLower()
 	$NewImageIndex = ""
 	$Scope = @()
@@ -980,39 +985,39 @@ Function Menu_Shortcuts_Mount_Index
 	<#
 		.判断主键范围
 	#>
-	Write-Host "`n   $($lang.MountedIndexSelect): " -NoNewline
+	Write-Host "`n  $($lang.MountedIndexSelect): " -NoNewline
 	Write-Host $NewRuleName -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	Write-Host "  $('-' * 80)"
 
 	$IsNumber = [int]::TryParse($NewRuleName, [ref]$null)
 	if ($IsNumber) {
 		if (Image_Is_Select_IAB) {
-			Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 
 			if (Verify_Is_Current_Same) {
-				Write-Host "   $($lang.Mounted)" -ForegroundColor Red
+				Write-Host "  $($lang.Mounted)" -ForegroundColor Red
 			} else {
 				Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "1026"
 				Image_Select_Index_UI -AutoSelectIndex $NewRuleName
 			}
 		} else {
-			Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+			Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 
-			Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+			Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 			ToWait -wait 2
 			Image_Assign_Event_Master
 		}
 	} else {
-		Write-Host "   $($lang.VerifyNumberFailed)" -ForegroundColor Red
+		Write-Host "  $($lang.VerifyNumberFailed)" -ForegroundColor Red
 
 		if (Image_Is_Select_IAB) {
-			Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.SelectSettingImage): $($lang.MountedIndexSelect)" -ForegroundColor Green
+			Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.SelectSettingImage): $($lang.MountedIndexSelect)" -ForegroundColor Green
 
 			ToWait -wait 2
 			Image_Select_Index_UI
@@ -1025,20 +1030,20 @@ Function Menu_Shortcuts_Mount_Index
 #>
 Function Menu_Shortcuts_Euwl
 {
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host "euwl" -ForegroundColor Green
 
-	Write-Host "`n   $($lang.Wim_Rule_Update)"
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Wim_Rule_Update)"
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
 		Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "9846"
 		Wimlib_Extract_And_Update
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 
-		Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+		Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 		ToWait -wait 2
 		Image_Assign_Event_Master
@@ -1050,14 +1055,14 @@ Function Menu_Shortcuts_Euwl
 #>
 Function Menu_Shortcuts_Export
 {
-	Write-Host "`n   $($lang.Export_Image)"
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Export_Image)"
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Verify_Is_Current_Same) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Red
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Red
 		} else {
 			Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "eq1"
 			Image_Select_Export_UI
@@ -1065,11 +1070,11 @@ Function Menu_Shortcuts_Export
 			Get_Next
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 
-		Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+		Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 		ToWait -wait 2
 		Image_Assign_Event_Master
@@ -1086,10 +1091,10 @@ Function Menu_Shortcuts_Export_Key
 		$Command
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host $Command -ForegroundColor Green
 
-	Write-Host "   $($lang.Event_Primary_Key): " -NoNewline
+	Write-Host "  $($lang.Event_Primary_Key): " -NoNewline
 	$NewRuleName = $Command.Remove(0, 4).split(" ").ToLower()
 	$NewImageIndex = ""
 	$Scope = @()
@@ -1120,11 +1125,11 @@ Function Menu_Shortcuts_Export_Key
 	}
 
 	if (Image_Is_Select_IAB) {
-		Write-Host "`n   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Verify_Is_Current_Same) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Red
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Red
 		} else {
 			Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "e1"
 			Image_Select_Export_UI
@@ -1132,11 +1137,11 @@ Function Menu_Shortcuts_Export_Key
 			Get_Next
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 
-		Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+		Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 		ToWait -wait 2
 		Image_Assign_Event_Master
@@ -1148,23 +1153,23 @@ Function Menu_Shortcuts_Export_Key
 #>
 Function Menu_Shortcuts_Rebuild
 {
-	Write-Host "`n   $($lang.Rebuild)"
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Rebuild)"
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Verify_Is_Current_Same) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Red
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Red
 		} else {
 			Rebuild_Image_File -Filename $Global:Primary_Key_Image.FullPath
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 
-		Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+		Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 		ToWait -wait 2
 		Image_Assign_Event_Master
@@ -1181,10 +1186,10 @@ Function Menu_Shortcuts_Rebuild_Key
 		$Command
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host $Command -ForegroundColor Green
 
-	Write-Host "   $($lang.Event_Primary_Key): " -NoNewline
+	Write-Host "  $($lang.Event_Primary_Key): " -NoNewline
 	$NewRuleName = $Command.Remove(0, 4).split(" ").ToLower()
 	$NewImageIndex = ""
 	$Scope = @()
@@ -1219,23 +1224,23 @@ Function Menu_Shortcuts_Rebuild_Key
 		Image_Set_Primary_Key_Shortcuts -Name $NewImageIndex
 	}
 
-	Write-Host "`n   $($lang.Rebuild)"
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Rebuild)"
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Verify_Is_Current_Same) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Red
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Red
 		} else {
 			Rebuild_Image_File -Filename $Global:Primary_Key_Image.FullPath
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 
-		Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+		Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 		ToWait -wait 2
 		Image_Assign_Event_Master
@@ -1247,20 +1252,20 @@ Function Menu_Shortcuts_Rebuild_Key
 #>
 Function Menu_Shortcuts_Apply
 {
-	Write-Host "`n   $($lang.Apply)"
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Apply)"
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		Image_Select_Index_UI
 		Get_Next
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 
-		Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+		Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 		ToWait -wait 2
 		Image_Assign_Event_Master
@@ -1277,10 +1282,10 @@ Function Menu_Shortcuts_Apply_Key
 		$Command
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host $Command -ForegroundColor Green
 
-	Write-Host "   $($lang.Event_Primary_Key): " -NoNewline
+	Write-Host "  $($lang.Event_Primary_Key): " -NoNewline
 	$NewRuleName = $Command.Remove(0, 4).split(" ").ToLower()
 	$NewImageIndex = ""
 	$Scope = @()
@@ -1310,20 +1315,20 @@ Function Menu_Shortcuts_Apply_Key
 		Image_Set_Primary_Key_Shortcuts -Name $NewImageIndex
 	}
 
-	Write-Host "`n   $($lang.Apply)"
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Apply)"
+	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		Image_Select_Index_UI
 		Get_Next
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 
-		Write-Host "`n   $($lang.Ok_Go_To)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.OnDemandPlanTask)" -ForegroundColor Green
+		Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 		ToWait -wait 2
 		Image_Assign_Event_Master
@@ -1340,11 +1345,11 @@ Function Menu_Shortcuts_InBox_Apps_IA
 		$Command
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host "IA" -ForegroundColor Green
 
 	$NewRuleName = $Command.Remove(0, 3).Replace(' ', '')
-	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-Host "  $($lang.RuleName): " -NoNewline
 	Write-host $NewRuleName -ForegroundColor Green
 
 	switch ($NewRuleName) {
@@ -1355,7 +1360,7 @@ Function Menu_Shortcuts_InBox_Apps_IA
 			InBox_Apps_Menu_Shortcuts_Delete
 		}
 		default {
-			Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+			Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 		}
 	}
 }
@@ -1370,11 +1375,11 @@ Function Menu_Shortcuts_LXPs_EP
 		$Command
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host "EP" -ForegroundColor Green
 
 	$NewRuleName = $Command.Remove(0, 3).Replace(' ', '')
-	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-Host "  $($lang.RuleName): " -NoNewline
 	Write-host $NewRuleName -ForegroundColor Green
 
 	switch ($NewRuleName) {
@@ -1388,7 +1393,7 @@ Function Menu_Shortcuts_LXPs_EP
 			InBox_Apps_Menu_Shortcuts_LXPs_Update
 		}
 		default {
-			Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+			Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 		}
 	}
 }
@@ -1403,11 +1408,11 @@ Function Menu_Shortcuts_Cumulative_updates_CU
 		$Command
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host "CU" -ForegroundColor Green
 
 	$NewRuleName = $Command.Remove(0, 3).Replace(' ', '')
-	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-Host "  $($lang.RuleName): " -NoNewline
 	Write-host $NewRuleName -ForegroundColor Green
 
 	switch ($NewRuleName) {
@@ -1421,7 +1426,7 @@ Function Menu_Shortcuts_Cumulative_updates_CU
 			Update_Menu_Shortcuts_Delete
 		}
 		default {
-			Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+			Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 		}
 	}
 }
@@ -1436,11 +1441,11 @@ Function Menu_Shortcuts_Drive
 		$Command
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host "DD" -ForegroundColor Green
 
 	$NewRuleName = $Command.Remove(0, 3).Replace(' ', '')
-	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-Host "  $($lang.RuleName): " -NoNewline
 	Write-host $NewRuleName -ForegroundColor Green
 
 	switch ($NewRuleName) {
@@ -1451,7 +1456,7 @@ Function Menu_Shortcuts_Drive
 			Drive_Menu_Shortcuts_Delete
 		}
 		default {
-			Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+			Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 		}
 	}
 }
@@ -1466,11 +1471,11 @@ Function Menu_Shortcuts_Image_version
 		$Command
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host "IV" -ForegroundColor Green
 
 	$NewRuleName = $Command.Remove(0, 3).Replace(' ', '')
-	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-Host "  $($lang.RuleName): " -NoNewline
 	Write-host $NewRuleName -ForegroundColor Green
 
 	switch ($NewRuleName) {
@@ -1481,7 +1486,7 @@ Function Menu_Shortcuts_Image_version
 			Editions_GUI
 		}
 		default {
-			Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+			Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 		}
 	}
 }
@@ -1496,11 +1501,11 @@ Function Menu_Shortcuts_Windows_features
 		$Command
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host "WF" -ForegroundColor Green
 
 	$NewRuleName = $Command.Remove(0, 3).Replace(' ', '')
-	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-Host "  $($lang.RuleName): " -NoNewline
 	Write-host $NewRuleName -ForegroundColor Green
 
 	switch ($NewRuleName) {
@@ -1511,7 +1516,7 @@ Function Menu_Shortcuts_Windows_features
 			Feature_Menu_Shortcuts_Disabled
 		}
 		default {
-			Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+			Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 		}
 	}
 }
@@ -1526,11 +1531,11 @@ Function Menu_Shortcuts_PowerShell_functions
 		$Command
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host "PF" -ForegroundColor Green
 
 	$NewRuleName = $Command.Remove(0, 3).Replace(' ', '')
-	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-Host "  $($lang.RuleName): " -NoNewline
 	Write-host $NewRuleName -ForegroundColor Green
 
 	switch ($NewRuleName) {
@@ -1541,7 +1546,7 @@ Function Menu_Shortcuts_PowerShell_functions
 			Functions_Menu_Shortcuts_PFA
 		}
 		default {
-			Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+			Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 		}
 	}
 }
@@ -1557,11 +1562,11 @@ Function Menu_Shortcuts_PowerShell_functions_Unrestricted
 	)
 
 	$Global:Function_Unrestricted = @()
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host "FX" -ForegroundColor Green
 
 	$NewRuleName = $Command.Remove(0, 3).Replace(' ', '')
-	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-Host "  $($lang.RuleName): " -NoNewline
 	Write-host $NewRuleName -ForegroundColor Green
 
 	switch ($NewRuleName) {
@@ -1589,11 +1594,11 @@ Function Menu_Shortcuts_Update
 		$Command
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host "Upd" -ForegroundColor Green
 
 	$NewRuleName = $Command.Remove(0, 4).Replace(' ', '')
-	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-Host "  $($lang.RuleName): " -NoNewline
 	Write-host $NewRuleName -ForegroundColor Green
 
 	switch ($NewRuleName) {
@@ -1611,25 +1616,25 @@ Function Menu_Shortcuts_Update
 #>
 Function Menu_Shortcuts_Fix
 {
-	Write-Host "`n   $($lang.Repair)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Repair)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	Write-Host "   * $($lang.HistoryClearDismSave)" -ForegroundColor Green
 	if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-		Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		Write-Host "   Remove-Item -Path ""HKLM:\SOFTWARE\Microsoft\WIMMount\Mounted Images\*"" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null" -ForegroundColor Green
-		Write-Host "   $('-' * 80)`n"
+		Write-Host "  $('-' * 80)`n"
 	}
 	Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\WIMMount\Mounted Images\*" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 
 	Write-Host "   * $($lang.Clear_Bad_Mount)" -ForegroundColor Green
 	if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-		Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		Write-Host "   dism /cleanup-wim" -ForegroundColor Green
 		Write-Host "   Clear-WindowsCorruptMountPoint" -ForegroundColor Green
-		Write-Host "   $('-' * 80)`n"
+		Write-Host "  $('-' * 80)`n"
 	}
 
 	dism /cleanup-wim | Out-Null
@@ -1646,11 +1651,11 @@ Function Menu_Shortcuts_Image_Language
 		$Command
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host "LP" -ForegroundColor Green
 
 	$NewRuleName = $Command.Remove(0, 3).Replace(' ', '')
-	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-Host "  $($lang.RuleName): " -NoNewline
 	Write-host $NewRuleName -ForegroundColor Green
 
 	switch ($NewRuleName) {
@@ -1667,7 +1672,7 @@ Function Menu_Shortcuts_Image_Language
 			Language_Menu_Shortcuts_LS
 		}
 		default {
-			Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+			Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 		}
 	}
 }
@@ -1682,18 +1687,18 @@ Function Menu_Shortcuts_Lang
 		$Command
 	)
 
-	Write-Host "`n   $($lang.Command): " -NoNewline
+	Write-Host "`n  $($lang.Command): " -NoNewline
 	Write-host "lang" -ForegroundColor Green
 
 	$NewRuleName = $Command.Remove(0, 5).Replace(' ', '')
-	Write-Host "   $($lang.RuleName): " -NoNewline
+	Write-Host "  $($lang.RuleName): " -NoNewline
 	Write-host $NewRuleName -ForegroundColor Green
 
 	$Langpacks_Sources = "$($PSScriptRoot)\..\..\..\langpacks"
 	switch ($NewRuleName) {
 		"list" {
-			Write-Host "`n   $($lang.AvailableLanguages)"
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.AvailableLanguages)"
+			Write-Host "  $('-' * 80)"
 
 			$Match_Available_Languages = @()
 			Get-ChildItem -Path $Langpacks_Sources -Directory -ErrorAction SilentlyContinue | ForEach-Object {
@@ -1705,7 +1710,7 @@ Function Menu_Shortcuts_Lang
 			if ($Match_Available_Languages.count -gt 0) {
 				ForEach ($item in $Global:Languages_Available) {
 					if ($Match_Available_Languages -contains $item.Region) {
-						Write-Host "   $($item.Region)".PadRight(20) -NoNewline -ForegroundColor Green
+						Write-Host "  $($item.Region)".PadRight(20) -NoNewline -ForegroundColor Green
 						Write-Host $item.Name -ForegroundColor Yellow
 					}
 				}
@@ -1716,23 +1721,23 @@ Function Menu_Shortcuts_Lang
 			}
 		}
 		"auto" {
-			Write-Host "`n   $($lang.SwitchLanguage): "
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.SwitchLanguage): "
+			Write-Host "  $('-' * 80)"
 			Remove-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -Name "Language" -ErrorAction SilentlyContinue
-			Write-Host "   $($lang.Done)" -ForegroundColor Green
+			Write-Host "  $($lang.Done)" -ForegroundColor Green
 			Modules_Refresh -Function "ToWait -wait 2", "Mainpage"
 		}
 		default {
-			Write-Host "`n   $($lang.SwitchLanguage): " -NoNewline
+			Write-Host "`n  $($lang.SwitchLanguage): " -NoNewline
 			Write-Host $NewRuleName -ForegroundColor Green
-			Write-Host "   $('-' * 80)"
+			Write-Host "  $('-' * 80)"
 
 			if (Test-Path "$($Langpacks_Sources)\$($NewRuleName)\Lang.psd1" -PathType Leaf) {
-				Write-Host "   $($lang.Done)" -ForegroundColor Green
+				Write-Host "  $($lang.Done)" -ForegroundColor Green
 				Save_Dynamic -regkey "Solutions" -name "Language" -value $NewRuleName -String
 				Modules_Refresh -Function "ToWait -wait 2", "Mainpage"
 			} else {
-				Write-Host "   $($lang.UpdateUnavailable)" -ForegroundColor Red
+				Write-Host "  $($lang.UpdateUnavailable)" -ForegroundColor Red
 			}
 		}
 	}
@@ -1749,31 +1754,31 @@ Function Menu_Shortcuts_OpenFolder
 	)
 
 	if ($Command -like "O'D *") {
-		Write-Host "   $($lang.Command): " -NoNewline
+		Write-Host "  $($lang.Command): " -NoNewline
 		Write-host "O'D" -ForegroundColor Green
 
 		$NewRuleName = $Command.Remove(0, 4).Replace(' ', '')
-		Write-Host "   $($lang.RuleName): " -NoNewline
+		Write-Host "  $($lang.RuleName): " -NoNewline
 		Write-host $NewRuleName -ForegroundColor Green
 		Solutions_Open_Command -Name $NewRuleName
 	}
 
 	if ($Command -like "OD *") {
-		Write-Host "   $($lang.Command): " -NoNewline
+		Write-Host "  $($lang.Command): " -NoNewline
 		Write-host "OD" -ForegroundColor Green
 
 		$NewRuleName = $Command.Remove(0, 3).Replace(' ', '')
-		Write-Host "   $($lang.RuleName): " -NoNewline
+		Write-Host "  $($lang.RuleName): " -NoNewline
 		Write-host $NewRuleName -ForegroundColor Green
 		Solutions_Open_Command -Name $NewRuleName
 	}
 
 	if ($Command -like "O *") {
-		Write-Host "   $($lang.Command): " -NoNewline
+		Write-Host "  $($lang.Command): " -NoNewline
 		Write-host "O" -ForegroundColor Green
 
 		$NewRuleName = $Command.Remove(0, 2).Replace(' ', '')
-		Write-Host "   $($lang.RuleName): " -NoNewline
+		Write-Host "  $($lang.RuleName): " -NoNewline
 		Write-host $NewRuleName -ForegroundColor Green
 		Solutions_Open_Command -Name $NewRuleName
 	}
@@ -1791,31 +1796,31 @@ Function Menu_Shortcuts_Setting
 	)
 
 	if ($Command -like "s'et *") {
-		Write-Host "   $($lang.Command): " -NoNewline
+		Write-Host "  $($lang.Command): " -NoNewline
 		Write-host "S'et" -ForegroundColor Green
 
 		$NewRuleName = $Command.Remove(0, 5).Replace(' ', '')
-		Write-Host "   $($lang.RuleName): " -NoNewline
+		Write-Host "  $($lang.RuleName): " -NoNewline
 		Write-host $NewRuleName -ForegroundColor Green
 		Image_Select_Page_Shortcuts -Name $NewRuleName
 	}
 
 	if ($Command -like "set *") {
-		Write-Host "   $($lang.Command): " -NoNewline
+		Write-Host "  $($lang.Command): " -NoNewline
 		Write-host "Set" -ForegroundColor Green
 
 		$NewRuleName = $Command.Remove(0, 4).Replace(' ', '')
-		Write-Host "   $($lang.RuleName): " -NoNewline
+		Write-Host "  $($lang.RuleName): " -NoNewline
 		Write-host $NewRuleName -ForegroundColor Green
 		Image_Select_Page_Shortcuts -Name $NewRuleName
 	}
 
 	if ($Command -like "s *") {
-		Write-Host "   $($lang.Command): " -NoNewline
+		Write-Host "  $($lang.Command): " -NoNewline
 		Write-host "S" -ForegroundColor Green
 
 		$NewRuleName = $Command.Remove(0, 2).Replace(' ', '')
-		Write-Host "   $($lang.RuleName): " -NoNewline
+		Write-Host "  $($lang.RuleName): " -NoNewline
 		Write-host $NewRuleName -ForegroundColor Green
 		Image_Select_Page_Shortcuts -Name $NewRuleName
 	}
@@ -1832,31 +1837,31 @@ Function Menu_Shortcuts_Help
 	)
 
 	if ($Command -like "H'elp *") {
-		Write-Host "   $($lang.Command): " -NoNewline
+		Write-Host "  $($lang.Command): " -NoNewline
 		Write-host "H'elp" -ForegroundColor Green
 
 		$NewRuleName = $Command.Remove(0, 6).Replace(' ', '')
-		Write-Host "   $($lang.RuleName): " -NoNewline
+		Write-Host "  $($lang.RuleName): " -NoNewline
 		Write-host $NewRuleName -ForegroundColor Green
 		Solutions_Help_Command -Name $NewRuleName
 	}
 
 	if ($Command -like "Help *") {
-		Write-Host "   $($lang.Command): " -NoNewline
+		Write-Host "  $($lang.Command): " -NoNewline
 		Write-host "Help" -ForegroundColor Green
 
 		$NewRuleName = $Command.Remove(0, 5).Replace(' ', '')
-		Write-Host "   $($lang.RuleName): " -NoNewline
+		Write-Host "  $($lang.RuleName): " -NoNewline
 		Write-host $NewRuleName -ForegroundColor Green
 		Solutions_Help_Command -Name $NewRuleName
 	}
 
 	if ($Command -like "H *") {
-		Write-Host "   $($lang.Command): " -NoNewline
+		Write-Host "  $($lang.Command): " -NoNewline
 		Write-host "H" -ForegroundColor Green
 
 		$NewRuleName = $Command.Remove(0, 2).Replace(' ', '')
-		Write-Host "   $($lang.RuleName): " -NoNewline
+		Write-Host "  $($lang.RuleName): " -NoNewline
 		Write-host $NewRuleName -ForegroundColor Green
 		Solutions_Help_Command -Name $NewRuleName
 	}

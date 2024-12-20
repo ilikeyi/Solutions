@@ -47,7 +47,7 @@
 	PleaseChoose              = 選択してください
 	FailedCreateFolder        = ディレクトリの作成に失敗しました
 	Failed                    = 失敗
-	ToMsg                     = \n   {0} 秒後に自動的にメインメニューに戻ります。
+	ToMsg                     = {0} 秒後に自動的にメインメニューに戻ります。
 	Restart                   = 再起動して有効にします
 	AdvOption                 = オプション機能
 

@@ -47,7 +47,7 @@
 	PleaseChoose              = Bitte wählen
 	FailedCreateFolder        = Fehler beim Erstellen des Verzeichnisses
 	Failed                    = scheitern
-	ToMsg                     = \n   Nach {0} Sekunden automatisch zum Hauptmenü zurückkehren.
+	ToMsg                     = Nach {0} Sekunden automatisch zum Hauptmenü zurückkehren.
 	Restart                   = Neustart, um wirksam zu werden
 	AdvOption                 = Optionale Funktion
 

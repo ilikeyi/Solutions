@@ -11,58 +11,58 @@ Function Rebuild_Image_File
 
 	$RandomGuid = [guid]::NewGuid()
 
-	Write-Host "`n   $($lang.Rebuilding)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Rebuilding)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
-	Write-Host "   $($Filename)" -ForegroundColor Green
+	Write-Host "  $($Filename)" -ForegroundColor Green
 	if (Test-Path -Path $Filename -PathType Leaf) {
 		if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-			Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			Write-Host "   Get-WindowsImage -ImagePath ""$($Filename)""" -ForegroundColor Green
-			Write-Host "   $('-' * 80)`n"
+			Write-Host "  $('-' * 80)`n"
 		}
 
-		Write-Host "`n   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		Get-WindowsImage -ImagePath $Filename -ErrorAction SilentlyContinue | ForEach-Object {
-			Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+			Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 			Write-Host $_.ImageName -ForegroundColor Yellow
 
-			Write-Host "   $($lang.MountedIndex): " -NoNewline
+			Write-Host "  $($lang.MountedIndex): " -NoNewline
 			Write-Host $_.ImageIndex -ForegroundColor Yellow
 
 			Write-Host
 		}
 		
-		Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		$Save_To_Temp_Folder_Path = Get_Mount_To_Temp
 
 		Get-WindowsImage -ImagePath $Filename -ErrorAction SilentlyContinue | ForEach-Object {
-			Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+			Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 			Write-Host $_.ImageName -ForegroundColor Yellow
 
-			Write-Host "   $($lang.MountedIndex): " -NoNewline
+			Write-Host "  $($lang.MountedIndex): " -NoNewline
 			Write-Host $_.ImageIndex -ForegroundColor Yellow
 
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-				Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				Write-Host "   Export-WindowsImage -SourceImagePath ""$($Filename)"" -SourceIndex ""$($_.ImageIndex)"" -DestinationImagePath ""$($Save_To_Temp_Folder_Path)\$($RandomGuid).wim"" -CompressionType max" -ForegroundColor Green
-				Write-Host "   $('-' * 80)`n"
+				Write-Host "  $('-' * 80)`n"
 			}
 
-			Write-Host "   $($lang.Rebuilding)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Rebuilding)".PadRight(28) -NoNewline
 			try {
 				Export-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Export.log" -SourceImagePath "$($Filename)" -SourceIndex "$($_.ImageIndex)" -DestinationImagePath "$($Save_To_Temp_Folder_Path)\$($RandomGuid).wim" -CompressionType max -ErrorAction SilentlyContinue | Out-Null	
 				Write-Host $lang.Done -ForegroundColor Green
 			} catch {
 				Write-Host $lang.ConvertChk
-				Write-Host "   $($Filename)"
-				Write-Host "   $($_)" -ForegroundColor Yellow
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				Write-Host "  $($Filename)"
+				Write-Host "  $($_)" -ForegroundColor Yellow
+				Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
 			Write-Host
@@ -73,15 +73,15 @@ Function Rebuild_Image_File
 			Move-Item -Path "$($Save_To_Temp_Folder_Path)\$($RandomGuid).wim" -Destination $Filename -ErrorAction SilentlyContinue
 
 			if (Test-Path -Path $Filename -PathType Leaf) {
-				Write-Host "   $($lang.Done)" -ForegroundColor Green
+				Write-Host "  $($lang.Done)" -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 		} else {
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.NoInstallImage)"
-		Write-Host "   $($Filename)" -ForegroundColor Red
+		Write-Host "  $($lang.NoInstallImage)"
+		Write-Host "  $($Filename)" -ForegroundColor Red
 	}
 }

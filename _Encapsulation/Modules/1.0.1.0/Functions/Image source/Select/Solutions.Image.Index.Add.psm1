@@ -4,8 +4,8 @@
 #>
 Function Image_Select_Add_UI
 {
-	Write-Host "`n   $($lang.SelectSettingImage)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.SelectSettingImage)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	$Script:TempSourcesFile = ""
 
@@ -57,14 +57,14 @@ Function Image_Select_Add_UI
 				$UI_Main_Select_Custom_File.Text = "$($lang.SelFile): `n`n$($FileBrowser.FileName)"
 
 				if ($Global:Developers_Mode) {
-					Write-Host "`n   $($lang.Developers_Mode_Location): 82" -ForegroundColor Green
+					Write-Host "`n  $($lang.Developers_Mode_Location): 82" -ForegroundColor Green
 				}
 
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-					Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
+					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
 					Write-Host "   Get-WindowsImage -ImagePath ""$($FileBrowser.FileName)""" -ForegroundColor Green
-					Write-Host "   $('-' * 80)`n"
+					Write-Host "  $('-' * 80)`n"
 				}
 
 				Get-WindowsImage -ImagePath $FileBrowser.FileName | Foreach-Object {
@@ -189,38 +189,38 @@ Function Image_Select_Add_UI
 			if ($SelectTempTag.Count -gt 0) {
 				$UI_Main.Hide()
 
-				Write-Host "`n   $($lang.AddTo)" -ForegroundColor Green
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.AddTo)" -ForegroundColor Green
+				Write-Host "  $('-' * 80)"
 				foreach ($item in $Script:Temp_Save_Select_WIMFile) {
 					if ($SelectTempTag -contains $item.ImageIndex) {
-						Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+						Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 						Write-Host $item.ImageName -ForegroundColor Yellow
 
-						Write-Host "   $($lang.MountedIndex): " -NoNewline
+						Write-Host "  $($lang.MountedIndex): " -NoNewline
 						Write-Host $item.ImageIndex -ForegroundColor Yellow
 
 						Write-Host
 					}
 				}
 
-				Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				foreach ($item in $Script:Temp_Save_Select_WIMFile) {
 					if ($SelectTempTag -contains $item.ImageIndex) {
-						Write-Host "   $($lang.Wim_Image_Name): " -NoNewline
+						Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 						Write-Host $item.ImageName -ForegroundColor Yellow
 
-						Write-Host "   $($lang.MountedIndex): " -NoNewline
+						Write-Host "  $($lang.MountedIndex): " -NoNewline
 						Write-Host $item.ImageIndex -ForegroundColor Yellow
 
-						Write-Host "   $($lang.Export_Image)".PadRight(28) -NoNewline
+						Write-Host "  $($lang.Export_Image)".PadRight(28) -NoNewline
 
 						try {
 							Export-WindowsImage -SourceImagePath $Script:TempSourcesFile -SourceIndex $item.ImageIndex -DestinationImagePath $Global:Primary_Key_Image.FullPath -CompressionType max -CheckIntegrity -ErrorAction SilentlyContinue | Out-Null
 							Write-Host $lang.Done -ForegroundColor Green	
 						} catch {
 							Write-Host $_
-							Write-Host "   $($lang.Failed)" -ForegroundColor Red
+							Write-Host "  $($lang.Failed)" -ForegroundColor Red
 						}
 
 						Write-Host
@@ -241,7 +241,7 @@ Function Image_Select_Add_UI
 		Width          = 280
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}

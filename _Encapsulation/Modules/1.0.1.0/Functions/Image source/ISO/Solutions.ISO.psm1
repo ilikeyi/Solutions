@@ -38,23 +38,23 @@ Function ISO_Create
 {
 	if (-not $Global:EventQueueMode) {
 		Logo -Title $lang.UnpackISO
-		Write-Host "   $($lang.Dashboard)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Dashboard)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
-		Write-Host "   $($lang.MountImageTo): " -NoNewline
+		Write-Host "  $($lang.MountImageTo): " -NoNewline
 		if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
 			Write-Host $Global:Mount_To_Route -ForegroundColor Green
 		} else {
 			Write-Host $Global:Mount_To_Route -ForegroundColor Yellow
 		}
 
-		Write-Host "   $($lang.MainImageFolder): " -NoNewline
+		Write-Host "  $($lang.MainImageFolder): " -NoNewline
 		if (Test-Path -Path $Global:Image_source -PathType Container) {
 			Write-Host $Global:Image_source -ForegroundColor Green
 		} else {
 			Write-Host $Global:Image_source -ForegroundColor Red
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.NoInstallImage)" -ForegroundColor Red
 		}
 	}
 
@@ -93,7 +93,7 @@ Function ISO_Create_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -1261,10 +1261,10 @@ Function ISO_Create_UI
 						$MarkInitVer++
 					}
 				} catch {
-					Write-Host "   $($lang.ConvertChk)"
-					Write-Host "   $($Install_wim)"
-					Write-Host "   $($_)" -ForegroundColor Yellow
-					Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+					Write-Host "  $($lang.ConvertChk)"
+					Write-Host "  $($Install_wim)"
+					Write-Host "  $($_)" -ForegroundColor Yellow
+					Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 				}
 			}
 
@@ -1275,10 +1275,10 @@ Function ISO_Create_UI
 						$MarkInitVer++
 					}
 				} catch {
-					Write-Host "   $($lang.ConvertChk)"
-					Write-Host "   $($Install_ESD)"
-					Write-Host "   $($_)" -ForegroundColor Yellow
-					Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+					Write-Host "  $($lang.ConvertChk)"
+					Write-Host "  $($Install_ESD)"
+					Write-Host "  $($_)" -ForegroundColor Yellow
+					Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 				}
 			}
 
@@ -1289,10 +1289,10 @@ Function ISO_Create_UI
 						$MarkInitVer++
 					}
 				} catch {
-					Write-Host "   $($lang.ConvertChk)"
-					Write-Host "   $($Install_SWM)"
-					Write-Host "   $($_)" -ForegroundColor Yellow
-					Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+					Write-Host "  $($lang.ConvertChk)"
+					Write-Host "  $($Install_SWM)"
+					Write-Host "  $($_)" -ForegroundColor Yellow
+					Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 				}
 			}
 
@@ -2033,7 +2033,7 @@ Function ISO_Create_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor RED
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor RED
 			$Global:Queue_Assign_Not_Monuted_Expand_Select = @()
 			$UI_Main.Close()
 		}
@@ -2506,10 +2506,10 @@ Function ISO_Create_UI
 						)
 
 						if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-							Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-							Write-Host "   $('-' * 80)"
-							Write-Host "   Start-Process -FilePath '$($OscdimgArch)' -ArgumentList '$($Arguments)'" -ForegroundColor Green
-							Write-Host "   $('-' * 80)`n"
+							Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+							Write-Host "  $('-' * 80)"
+							Write-Host "  Start-Process -FilePath '$($OscdimgArch)' -ArgumentList '$($Arguments)'" -ForegroundColor Green
+							Write-Host "  $('-' * 80)`n"
 						}
 
 						Start-Process -FilePath $OscdimgArch -ArgumentList $Arguments -Wait -WindowStyle Minimized
@@ -2629,9 +2629,9 @@ Function ISO_Create_UI
 			}
 		} else {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UnpackISO)"
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.NextDoOperate)" -ForegroundColor Red
+			Write-Host "  $($lang.UnpackISO)"
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.NextDoOperate)" -ForegroundColor Red
 			$UI_Main.Close()
 
 			return $True
@@ -2665,7 +2665,7 @@ Function ISO_Create_UI
 		Width          = 158
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
 			<#
 				.Rebuild: boot.wim
@@ -2674,7 +2674,7 @@ Function ISO_Create_UI
 			if ($GUIISORebuldBoot.Enabled) {
 				if ($GUIISORebuldBoot.Checked) {
 					$Global:ActionRebuldBoot = $True
-					Write-Host "   $($lang.Reconstruction -f "boot")`n" -ForegroundColor Green
+					Write-Host "  $($lang.Reconstruction -f "boot")`n" -ForegroundColor Green
 				} else {
 					$Global:ActionRebuldBoot = $False
 				}
@@ -2689,7 +2689,7 @@ Function ISO_Create_UI
 			if ($GUIISORebuldInstall.Enabled) {
 				if ($GUIISORebuldInstall.Checked) {
 					$Global:ActionRebuldBoot = $True
-					Write-Host "   $($lang.Reconstruction -f "install")`n" -ForegroundColor Green
+					Write-Host "  $($lang.Reconstruction -f "install")`n" -ForegroundColor Green
 				} else {
 					$Global:ActionRebuldBoot = $False
 				}
@@ -3032,10 +3032,10 @@ Function ISO_Create_UI
 					$MarkInitVer++
 				}
 			} catch {
-				Write-Host "   $($lang.ConvertChk)"
-				Write-Host "   $($Install_SWM)"
-				Write-Host "   $($_)" -ForegroundColor Yellow
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				Write-Host "  $($lang.ConvertChk)"
+				Write-Host "  $($Install_SWM)"
+				Write-Host "  $($_)" -ForegroundColor Yellow
+				Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 		}
 
@@ -3046,10 +3046,10 @@ Function ISO_Create_UI
 					$MarkInitVer++
 				}
 			} catch {
-				Write-Host "   $($lang.ConvertChk)"
-				Write-Host "   $($Install_ESD)"
-				Write-Host "   $($_)" -ForegroundColor Yellow
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				Write-Host "  $($lang.ConvertChk)"
+				Write-Host "  $($Install_ESD)"
+				Write-Host "  $($_)" -ForegroundColor Yellow
+				Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 		}
 
@@ -3060,10 +3060,10 @@ Function ISO_Create_UI
 					$MarkInitVer++
 				}
 			} catch {
-				Write-Host "   $($lang.ConvertChk)"
-				Write-Host "   $($Install_SWM)"
-				Write-Host "   $($_)" -ForegroundColor Yellow
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				Write-Host "  $($lang.ConvertChk)"
+				Write-Host "  $($Install_SWM)"
+				Write-Host "  $($_)" -ForegroundColor Yellow
+				Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 		}
 
@@ -3356,8 +3356,8 @@ Function ISO_Create_UI
 	}
 
 	if ($Global:EventQueueMode) {
-		Write-Host "`n   $($lang.UnpackISO)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.UnpackISO)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 	
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask) ]"
 		$UI_Main.controls.AddRange((
@@ -3368,8 +3368,8 @@ Function ISO_Create_UI
 	}
 	
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-		Write-Host "`n   $($lang.UnpackISO)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.UnpackISO)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		<#
 			.初始化复选框：不再建议
@@ -3415,9 +3415,9 @@ Function ISO_Create_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
 
 		<#
 			.选择发行日期：年
@@ -3715,9 +3715,9 @@ Function Autopilot_ISO_Import
 		$FileName
 	)
 
-	Write-Host "`n   $($FileName)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
-	Write-Host "   $($lang.CRCSHA)".PadRight(28) -NoNewline
+	Write-Host "`n  $($FileName)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
+	Write-Host "  $($lang.CRCSHA)".PadRight(28) -NoNewline
 
 	<#
 		.判断配置文件是否存在
@@ -3730,12 +3730,12 @@ Function Autopilot_ISO_Import
 			$Autopilot = Get-Content -Raw -Path $FileName | ConvertFrom-Json
 			Write-Host $lang.Done -ForegroundColor Green
 
-			Write-Host "`n   $($lang.Solution): $($lang.IsCreate)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Solution): $($lang.IsCreate)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			if ([string]::IsNullOrEmpty($Autopilot.Deploy.ImageSource.Tasks.Solutions)) {
-				Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+				Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 			} else {
-				Write-Host "   $($lang.YesWork)" -ForegroundColor Yellow
+				Write-Host "  $($lang.YesWork)" -ForegroundColor Yellow
 
 				Solutions_Create_UI -Autopilot $Autopilot.Deploy.ImageSource.Tasks.Solutions -ISO
 				Solutions_Generate_Prerequisite -ISO
@@ -3744,20 +3744,20 @@ Function Autopilot_ISO_Import
 			<#
 				.测试完成后，检查配置文件里是否有 生成 ISO 事件
 			#>
-			Write-Host "`n   $($lang.UnpackISO)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.UnpackISO)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			if ([string]::IsNullOrEmpty($Autopilot.Deploy.ImageSource.Tasks.ISO)) {
-				Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+				Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 			} else {
-				Write-Host "   $($lang.YesWork)" -ForegroundColor Yellow
+				Write-Host "  $($lang.YesWork)" -ForegroundColor Yellow
 
 				ISO_Create_UI -Autopilot $Autopilot.Deploy.ImageSource.Tasks.ISO -ISO
 			}
 		} catch {
-			Write-Host "   $($lang.Failed)" -ForegroundColor Red
+			Write-Host "  $($lang.Failed)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.NoInstallImage)" -ForegroundColor Red
+		Write-Host "  $($lang.NoInstallImage)" -ForegroundColor Red
 	}
 }
 
@@ -3792,7 +3792,7 @@ Function ISO_Local_Language_Calc
 				$TestFolderRegionNewItem = Join-Path -Path $Global:Image_source -ChildPath "Sources\$($itemRegion.Region)\$($NewSearchItem)"
 
 				if (Test-Path -Path $TestFolderRegionNewItem -PathType leaf) {
-#					Write-Host "   $($TestFolderRegionNewItem), $($NewSearchFileCalc)" -ForegroundColor Yellow
+#					Write-Host "  $($TestFolderRegionNewItem), $($NewSearchFileCalc)" -ForegroundColor Yellow
 					$NewSearchFileCalc++
 				}
 			}
@@ -3888,7 +3888,7 @@ Function ISO_Create_Process
 		.Process to generate ISO
 	#>
 	if ($Global:Queue_ISO) {
-		Write-Host "   $($lang.Operable)`n" -ForegroundColor Green
+		Write-Host "  $($lang.Operable)`n" -ForegroundColor Green
 
 		<#
 			.Clean up old files
@@ -3898,9 +3898,9 @@ Function ISO_Create_Process
 		Remove-Item "$($Global:ISOSaveToFullName).asc" -force -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item "$($Global:ISOSaveToFullName).sha256" -force -ErrorAction SilentlyContinue | Out-Null
 
-		Write-Host "   $($lang.SaveTo)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($Global:ISOSaveToFullName)" -ForegroundColor Green
+		Write-Host "  $($lang.SaveTo)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($Global:ISOSaveToFullName)" -ForegroundColor Green
 
 		<#
 			.Create the corresponding directory
@@ -3909,7 +3909,7 @@ Function ISO_Create_Process
 		Check_Folder -chkpath $Global:ISOSaveToFolder
 		if (Test-Path -Path $Global:ISOSaveToFolder -PathType Container) {
 			if (Test-Path -Path $Global:ISOSaveToFullName -PathType Leaf) {
-				Write-Host "   $($lang.FailedCreateFile)" -ForegroundColor Red
+				Write-Host "  $($lang.FailedCreateFile)" -ForegroundColor Red
 				return
 			}
 
@@ -3919,10 +3919,10 @@ Function ISO_Create_Process
 			#>
 			$OscdimgArch = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\Oscdimg")\oscdimg.exe"
 
-			Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			if (Test-Path -Path $OscdimgArch -PathType Leaf) {
-				Write-Host "   $($OscdimgArch)"
+				Write-Host "  $($OscdimgArch)"
 				$ISOBootetfsboot = Join-Path -Path $Global:Image_source -ChildPath "boot\etfsboot.com"
 				$ISOBootefisys = Join-Path -Path $Global:Image_source -ChildPath "efi\microsoft\boot\efisys.bin"
 
@@ -3938,20 +3938,20 @@ Function ISO_Create_Process
 				)
 
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-					Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
-					Write-Host "   Start-Process -FilePath '$($OscdimgArch)' -ArgumentList '$($Arguments)'" -ForegroundColor Green
-					Write-Host "   $('-' * 80)`n"
+					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
+					Write-Host "  Start-Process -FilePath '$($OscdimgArch)' -ArgumentList '$($Arguments)'" -ForegroundColor Green
+					Write-Host "  $('-' * 80)`n"
 				}
 
 				Start-Process -FilePath $OscdimgArch -ArgumentList $Arguments -Wait -NoNewWindow
 			}
 
-			Write-Host "   $($lang.Uping)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Uping)".PadRight(28) -NoNewline
 			if (Test-Path -Path $Global:ISOSaveToFullName -PathType Leaf) {
-				Write-Host "   $($lang.Done)" -ForegroundColor Green
+				Write-Host "  $($lang.Done)" -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.FailedCreateFile)" -ForegroundColor Red
+				Write-Host "  $($lang.FailedCreateFile)" -ForegroundColor Red
 				return
 			}
 
@@ -3961,38 +3961,38 @@ Function ISO_Create_Process
 			#>
 			$BypassTPMCmd = Join-Path -Path $(Convert-Path "$($PSScriptRoot)\..\..\..\..") -ChildPath "AIO\bypass11\Quick_11_iso_esd_wim_TPM_toggle.bat"
 
-			Write-Host "`n   $($lang.Bypass_TPM)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.Bypass_TPM)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			if ($Global:BypassTPM) {
-				Write-Host "   $($lang.Operable)" -ForegroundColor Green
-				Write-Host "   $($lang.LXPsWaitAddUpdate)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.Operable)" -ForegroundColor Green
+				Write-Host "  $($lang.LXPsWaitAddUpdate)".PadRight(28) -NoNewline
 
 				$arguments = @(
 					"""$(Join-Path -Path $Global:ISOSaveToFolder -ChildPath $Global:ISOSaveToFileName)"""
 				)
 
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-					Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-					Write-Host "   $('-' * 80)"
-					Write-Host "   Start-Process -FilePath '$($BypassTPMCmd)' -ArgumentList '$($Arguments)'" -ForegroundColor Green
-					Write-Host "   $('-' * 80)`n"
+					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
+					Write-Host "  Start-Process -FilePath '$($BypassTPMCmd)' -ArgumentList '$($Arguments)'" -ForegroundColor Green
+					Write-Host "  $('-' * 80)`n"
 				}
 
 				Start-Process -FilePath $BypassTPMCmd -ArgumentList $Arguments -wait -WindowStyle Minimized
 
-				Write-Host "   $($lang.Done)" -ForegroundColor Green
+				Write-Host "  $($lang.Done)" -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 
 			<#
 				.Processing: Generate ASC
 				.处理：生成 ASC
 			#>
-			Write-Host "`n   $($lang.CreateASC)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.CreateASC)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			if ($Global:CreateASC) {
-				Write-Host "   $($lang.Operable)" -ForegroundColor Green
+				Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
 				$Verify_Install_Path = Get_ASC -Run "gpg.exe"
 				if (Test-Path -Path $Verify_Install_Path -PathType leaf) {
@@ -4035,26 +4035,26 @@ Function ISO_Create_Process
 							Write-Host $lang.Inoperable -ForegroundColor Red
 						}
 					} else {
-						Write-Host "   $($lang.FailedCreateFile)"
+						Write-Host "  $($lang.FailedCreateFile)"
 					}
 				} else {
-					Write-Host "   $($lang.ASCStatus)" -ForegroundColor Red
+					Write-Host "  $($lang.ASCStatus)" -ForegroundColor Red
 				}
 
 			} else {
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 
 			<#
 				.Processing: Generate SHA256
 				.处理：生成 SHA256
 			#>
-			Write-Host "`n   $($lang.CreateSHA256)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.CreateSHA256)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			if ($Global:CreateSHA256) {
-				Write-Host "   $($Global:ISOSaveToFullName).sha256" -ForegroundColor Green
+				Write-Host "  $($Global:ISOSaveToFullName).sha256" -ForegroundColor Green
 
-				Write-Host "   $($lang.Uping)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.Uping)".PadRight(28) -NoNewline
 
 				<#
 					.删除旧文件 .sha256
@@ -4073,29 +4073,29 @@ Function ISO_Create_Process
 					Write-Host "$($lang.FailedCreateFile): $($Global:ISOSaveToFullName).sha256" -ForegroundColor Red
 				}
 			} else {
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 
 			<#
 				.Processing: Empty the main directory
 				.处理：清空主目录
 			#>
-			Write-Host "`n   $($lang.EmptyDirectory)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.EmptyDirectory)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
 			if ($Global:EmptyDirectory) {
-				Write-Host "   $($lang.Operable)" -ForegroundColor Green
+				Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				Remove_Tree $Global:Image_source
-				Write-Host "   $($lang.Done)" -ForegroundColor Green
+				Write-Host "  $($lang.Done)" -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 		} else {
-			Write-Host "   $($lang.FailedCreateFolder)"
-			Write-Host "   $($Global:ISOSaveToFolder)" -ForegroundColor Red
+			Write-Host "  $($lang.FailedCreateFolder)"
+			Write-Host "  $($Global:ISOSaveToFolder)" -ForegroundColor Red
 			return
 		}
 	} else {
-		Write-Host "   $($lang.UserCanel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCanel)" -ForegroundColor Red
 	}
 }
 

@@ -1,7 +1,7 @@
 ﻿Function Feature_Enabled_UI
 {
-	Write-Host "`n   $($lang.WindowsFeature): $($lang.Enable)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.WindowsFeature): $($lang.Enable)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	<#
 		.所有文件
@@ -324,7 +324,7 @@
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -476,7 +476,7 @@
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "11" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -658,17 +658,17 @@
 			$UI_Main.Hide()
 
 			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 
-				Write-Host "`n   $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
 				$Temp_Queue_Is_Feature_Enable_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Queue_Is_Feature_Enable_Custom_Select.count -gt 0) {
 					ForEach ($item in $Temp_Queue_Is_Feature_Enable_Custom_Select) {
-						Write-Host "   $($item)" -ForegroundColor Green
+						Write-Host "  $($item)" -ForegroundColor Green
 					}
 				} else {
-					Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 				}
 			}
 
@@ -811,20 +811,20 @@ Function Feature_Enabled_Process
 {
 	$Temp_Queue_Is_Feature_Enable_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Queue_Is_Feature_Enable_Custom_Select.count -gt 0) {
-		Write-Host "   $($lang.YesWork)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.YesWork)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
-		Write-Host "   $($lang.AddSources)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Queue_Is_Feature_Enable_Custom_Select) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			Write-Host "  $($item)" -ForegroundColor Green
 		}
 
-		Write-Host "`n   $($lang.AddQueue)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		ForEach ($item in $Temp_Queue_Is_Feature_Enable_Custom_Select) {
-			Write-Host "   $($item)"
+			Write-Host "  $($item)"
 
 			$TestFolderMountRoute = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\Windows"
 			$TestFolderMountCurrent = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
@@ -833,35 +833,35 @@ Function Feature_Enabled_Process
 			try {
 				if (Test-Path -Path $TestFolderMountRoute -PathType Container) {
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-						Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-						Write-Host "   $('-' * 80)"
+						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+						Write-Host "  $('-' * 80)"
 						Write-Host "   Enable-WindowsOptionalFeature -Path ""$($TestFolderMountCurrent)"" -FeatureName ""$($item)"" -Source ""$($TestFolderMountSxs)"", ""$($TestFolderMountRoute)"" -All -LimitAccess" -ForegroundColor Green
-						Write-Host "   $('-' * 80)`n"
+						Write-Host "  $('-' * 80)`n"
 					}
 
-					Write-Host "   $($lang.Enable)".PadRight(28) -NoNewline
+					Write-Host "  $($lang.Enable)".PadRight(28) -NoNewline
 					Enable-WindowsOptionalFeature -Path $TestFolderMountCurrent -FeatureName $item -Source $TestFolderMountSxs, $TestFolderMountRoute -All -LimitAccess | Out-Null
 				} else {
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-						Write-Host "`n   $($lang.Command)" -ForegroundColor Yellow
-						Write-Host "   $('-' * 80)"
+						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+						Write-Host "  $('-' * 80)"
 						Write-Host "   Enable-WindowsOptionalFeature -Path ""$($TestFolderMountCurrent)"" -FeatureName ""$($item)"" -Source ""$($TestFolderMountSxs)"" -All -LimitAccess" -ForegroundColor Green
-						Write-Host "   $('-' * 80)`n"
+						Write-Host "  $('-' * 80)`n"
 					}
 	
-					Write-Host "   $($lang.Enable)".PadRight(28) -NoNewline
+					Write-Host "  $($lang.Enable)".PadRight(28) -NoNewline
 					Enable-WindowsOptionalFeature -Path $TestFolderMountCurrent -FeatureName $item -Source $TestFolderMountSxs -All -LimitAccess | Out-Null
 				}
 				Write-Host $lang.Done -ForegroundColor Green
 			} catch {
-				Write-Host "   $($lang.Enable)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.Enable)".PadRight(28) -NoNewline
 				Write-Host $_
-				Write-Host "   $($lang.Failed)" -ForegroundColor Red
+				Write-Host "  $($lang.Failed)" -ForegroundColor Red
 			}
 
 			Write-Host
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }

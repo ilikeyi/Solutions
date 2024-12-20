@@ -47,7 +47,7 @@
 	PleaseChoose              = Lūdzu, atlasiet
 	FailedCreateFolder        = Neizdevās izveidot direktoriju
 	Failed                    = Neizdoties
-	ToMsg                     = \n   {0} Pēc sekundēm automātiski atgriezieties galvenajā izvēlnē.
+	ToMsg                     = {0} Pēc sekundēm automātiski atgriezieties galvenajā izvēlnē.
 	Restart                   = Restartēšana stājas spēkā
 	AdvOption                 = Izvēles funkcijas
 

@@ -27,7 +27,7 @@
 	PleaseChoose              = Prašome pasirinkti
 	FailedCreateFolder        = Nepavyko sukurti katalogo
 	Failed                    = Nepavyks
-	ToMsg                     = \n   {0} Po sekundžių automatiškai grįžkite į pagrindinį meniu.
+	ToMsg                     = {0} Po sekundžių automatiškai grįžkite į pagrindinį meniu.
 	UserCancel                = Vartotojas atšaukė operaciją.
 	Help                      = Padėti
 	WorkDone                  = Baigta, paspauskite bet kurį klavišą, kad grįžtumėte į pagrindinę sąsają...

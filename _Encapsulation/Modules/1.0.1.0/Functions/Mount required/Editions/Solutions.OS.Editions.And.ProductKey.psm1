@@ -4,21 +4,21 @@
 #>
 Function Editions_GUI
 {
-	Write-Host "`n   $($lang.Editions): $($lang.Change), $($lang.EditionsProductKey)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Editions): $($lang.Change), $($lang.EditionsProductKey)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	if (Image_Is_Select_IAB) {
-		Write-Host "   $($lang.Mounted_Status)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Verify_Is_Current_Same) {
-			Write-Host "   $($lang.Mounted)" -ForegroundColor Green
+			Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.NotMounted)" -ForegroundColor Red
+			Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 			return
 		}
 	} else {
-		Write-Host "   $($lang.IABSelectNo)" -ForegroundColor Red
+		Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
 		return
 	}
 
@@ -124,7 +124,7 @@ Function Editions_GUI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$OpenWebsiteLink1 = "https://learn.microsoft.com/en-us/windows-server/get-started/kms-client-activation-keys"
-			Write-Host "   $($OpenWebsiteLink1)"
+			Write-Host "  $($OpenWebsiteLink1)"
 			Start-Process $OpenWebsiteLink1
 		}
 	}
@@ -269,35 +269,35 @@ Function Editions_GUI
 			$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 			$UI_Main.Hide()
-			Write-Host "   $($lang.Editions): $($lang.Change), $($lang.EditionsProductKey)"
+			Write-Host "  $($lang.Editions): $($lang.Change), $($lang.EditionsProductKey)"
 			if ($MarkVerifyVersion) {
-				Write-Host "   $($MarkVerifyVersionSelect)" -ForegroundColor Yellow
+				Write-Host "  $($MarkVerifyVersionSelect)" -ForegroundColor Yellow
 				try {
 					Set-WindowsEdition  -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Set.log" -Path $test_mount_folder_Current -Edition $MarkVerifyVersionSelect
-					Write-Host "   $($lang.Done)" -ForegroundColor Green
+					Write-Host "  $($lang.Done)" -ForegroundColor Green
 				} catch {
-					Write-Host "   $($_)" -ForegroundColor Yellow
-					Write-Host "   $($lang.SelectFromError)" -ForegroundColor Red
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($_)" -ForegroundColor Yellow
+					Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 			} else {
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 
-			Write-Host "`n   $($lang.EditionsProductKey)"
+			Write-Host "`n  $($lang.EditionsProductKey)"
 			if ($MarkVerifyKey) {
-				Write-Host "   $($UI_Main_Change_Key_Custom.Text)" -ForegroundColor Yellow
+				Write-Host "  $($UI_Main_Change_Key_Custom.Text)" -ForegroundColor Yellow
 
 				try {
 					Set-WindowsProductKey -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Set.log" -Path $test_mount_folder_Current -ProductKey $UI_Main_Change_Key_Custom.Text
-					Write-Host "   $($lang.Done)" -ForegroundColor Green
+					Write-Host "  $($lang.Done)" -ForegroundColor Green
 				} catch {
-					Write-Host "   $($_)" -ForegroundColor Yellow
-					Write-Host "   $($lang.SelectFromError)" -ForegroundColor Red
-					Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+					Write-Host "  $($_)" -ForegroundColor Yellow
+					Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 			} else {
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 			$UI_Main.Close()
 		}
@@ -309,7 +309,7 @@ Function Editions_GUI
 		Width          = 202
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}

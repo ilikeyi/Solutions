@@ -27,7 +27,7 @@
 	PleaseChoose              = Vänligen välj
 	FailedCreateFolder        = Det gick inte att skapa katalogen
 	Failed                    = Misslyckas
-	ToMsg                     = \n   {0} Återgå automatiskt till huvudmenyn efter några sekunder.
+	ToMsg                     = {0} Återgå automatiskt till huvudmenyn efter några sekunder.
 	UserCancel                = Användaren har avbrutit åtgärden.
 	Help                      = Hjälp
 	WorkDone                  = Slutfört, tryck på valfri tangent för att återgå till huvudgränssnittet...

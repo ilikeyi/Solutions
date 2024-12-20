@@ -41,7 +41,7 @@
 	Existed                         = Ya existe
 	FailedCreateFolder              = No se pudo crear el directorio
 	FailedCreateFile                = No se pudo crear el archivo
-	ToMsg                           = \n   {0} Regresa automáticamente al menú principal después de unos segundos.
+	ToMsg                           = {0} Regresa automáticamente al menú principal después de unos segundos.
 	OnDemandPlanTask                = Asignación personalizada de eventos conocidos
 	Operable                        = Operable
 	Inoperable                      = Inoperable

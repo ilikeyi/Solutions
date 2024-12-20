@@ -22,7 +22,7 @@
 	RefreshModules            = Heet vernieuw alle modules
 	PleaseChoose              = Selecteer alstublieft
 	FailedCreateFolder        = Kan map niet maken
-	ToMsg                     = \n   {0} Keer na enkele seconden automatisch terug naar het hoofdmenu.
+	ToMsg                     = {0} Keer na enkele seconden automatisch terug naar het hoofdmenu.
 	UserCancel                = De gebruiker heeft de bewerking geannuleerd.
 	Detailed                  = Gedetailleerd
 	FileName                  = Bestandsnaam

@@ -51,7 +51,7 @@ Function Event_Completion_Setting_UI
 	#>
 	$UI_Main_Suggestion_Stop_Click = {
 		$UI_Main.Hide()
-		Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 		Event_Reset_Variable
 		$UI_Main.Close()
 	}
@@ -154,7 +154,7 @@ Function Event_Completion_Setting_UI
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
 			Event_Need_Mount_Global_Variable -DevQueue "2" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
@@ -287,8 +287,8 @@ Function Event_Completion_Setting_UI
 	if ($Global:EventQueueMode) {
 		$EventMaps = "Queue"
 
-		Write-Host "`n   $($lang.AfterFinishingNotExecuted)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AfterFinishingNotExecuted)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 		$UI_Main.controls.AddRange((
@@ -301,8 +301,8 @@ Function Event_Completion_Setting_UI
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
 		$EventMaps = "Assign"
 
-		Write-Host "`n   $($lang.AfterFinishingNotExecuted)" -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
+		Write-Host "`n  $($lang.AfterFinishingNotExecuted)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
 
 		if (Image_Is_Select_IAB) {
 			$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
@@ -366,9 +366,9 @@ Function Event_Completion_Setting_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "   $($lang.Autopilot)" -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
 
 		switch ($Autopilot) {
 			"NoProcess" { $UI_Main_After_Finishing_NoProcess.Checked = $True }
@@ -398,8 +398,8 @@ Function Event_Completion_Setting_UI
 #>
 Function Event_Completion_Process
 {
-	Write-Host "`n   $($lang.AfterFinishingNotExecuted)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.AfterFinishingNotExecuted)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
 
 	if ($Global:AutopilotMode) {
 		$EventMaps = "Queue"
@@ -416,35 +416,35 @@ Function Event_Completion_Process
 	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -Name "AfterFinishing" -ErrorAction SilentlyContinue) {
 		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -Name "AfterFinishing" -ErrorAction SilentlyContinue) {
 			"NoProcess" {
-				Write-Host "   $($lang.AfterFinishingNoProcess)" -ForegroundColor Green
-				Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+				Write-Host "  $($lang.AfterFinishingNoProcess)" -ForegroundColor Green
+				Write-Host "  $($lang.Done)`n" -ForegroundColor Green
 			}
 			"Pause" {
-				Write-Host "   $($lang.AfterFinishingPause)" -ForegroundColor Green
+				Write-Host "  $($lang.AfterFinishingPause)" -ForegroundColor Green
 				Get_Next
-				Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+				Write-Host "  $($lang.Done)`n" -ForegroundColor Green
 			}
 			"Reboot" {
-				Write-Host "   $($lang.AfterFinishingReboot)" -ForegroundColor Green
+				Write-Host "  $($lang.AfterFinishingReboot)" -ForegroundColor Green
 				start-process "timeout.exe" -argumentlist "/t 10 /nobreak" -wait -nonewwindow
 				Restart-Computer -Force -ErrorAction SilentlyContinue
-				Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+				Write-Host "  $($lang.Done)`n" -ForegroundColor Green
 			}
 			"Shutdown" {
-				Write-Host "   $($lang.AfterFinishingShutdown)" -ForegroundColor Green
+				Write-Host "  $($lang.AfterFinishingShutdown)" -ForegroundColor Green
 				start-process "timeout.exe" -argumentlist "/t 10 /nobreak" -wait -nonewwindow
 				Stop-Computer -Force -ErrorAction SilentlyContinue
-				Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+				Write-Host "  $($lang.Done)`n" -ForegroundColor Green
 			}
 			default {
-				Write-Host "   $($lang.AfterFinishingPause)" -ForegroundColor Green
+				Write-Host "  $($lang.AfterFinishingPause)" -ForegroundColor Green
 				Get_Next
-				Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+				Write-Host "  $($lang.Done)`n" -ForegroundColor Green
 			}
 		}
 	} else {
-		Write-Host "   $($lang.AfterFinishingPause)" -ForegroundColor Green
+		Write-Host "  $($lang.AfterFinishingPause)" -ForegroundColor Green
 		Get_Next
-		Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+		Write-Host "  $($lang.Done)`n" -ForegroundColor Green
 	}
 }
