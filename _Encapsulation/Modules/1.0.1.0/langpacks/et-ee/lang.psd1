@@ -195,6 +195,7 @@
 	ExportShow                      = Kuva aruanded koheselt
 	MoreFeature                     = Rohkem funktsioone
 	OpenFolder                      = Ava kataloog
+	OpenFile                        = Ava fail
 	Running                         = Jooksma
 	Paste                           = Kopeeri tee
 	Clipboard_Copy                  = Kopeeriti lõikelauale

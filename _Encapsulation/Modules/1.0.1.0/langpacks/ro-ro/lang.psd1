@@ -195,6 +195,7 @@
 	ExportShow                      = Afișează rapoarte instantaneu
 	MoreFeature                     = Mai multe caracteristici
 	OpenFolder                      = Deschide directorul
+	OpenFile                        = Deschide fișierul
 	Running                         = Alerga
 	Paste                           = Copiați calea
 	Clipboard_Copy                  = Copiat în clipboard

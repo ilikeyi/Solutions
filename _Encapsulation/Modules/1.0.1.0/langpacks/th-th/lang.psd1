@@ -195,6 +195,7 @@
 	ExportShow                      = แสดงรายงานได้ทันที
 	MoreFeature                     = คุณสมบัติเพิ่มเติม
 	OpenFolder                      = เปิดไดเรกทอรี
+	OpenFile                        = เปิดไฟล์
 	Running                         = วิ่ง
 	Paste                           = คัดลอกเส้นทาง
 	Clipboard_Copy                  = คัดลอกไปยังคลิปบอร์ดแล้ว

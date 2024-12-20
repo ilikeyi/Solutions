@@ -195,6 +195,7 @@
 	ExportShow                      = Visa rapporter direkt
 	MoreFeature                     = Fler funktioner
 	OpenFolder                      = Öppna katalogen
+	OpenFile                        = Öppna filen
 	Running                         = Sikt
 	Paste                           = Kopieringsväg
 	Clipboard_Copy                  = Kopierade till urklipp

@@ -195,6 +195,7 @@
 	ExportShow                      = Відображати звіти миттєво
 	MoreFeature                     = Більше можливостей
 	OpenFolder                      = Відкрити каталог
+	OpenFile                        = Відкрити файл
 	Running                         = Бігти
 	Paste                           = Копіювати шлях
 	Clipboard_Copy                  = Скопійовано в буфер обміну

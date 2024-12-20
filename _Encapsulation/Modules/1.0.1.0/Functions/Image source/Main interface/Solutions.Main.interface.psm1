@@ -3926,6 +3926,35 @@ Write-Host "Test"
 		Text           = $lang.DropFile
 	}
 
+	$GUIImageSourceGroupAPI_New_Path_OpenFile = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 45
+		Width          = 428
+		margin         = "22,5,0,0"
+		Text           = $lang.OpenFile
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$GUIImageSourceGroupAPIErrorMsg.Text = ""
+			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = $null
+
+			if ([string]::IsNullOrEmpty($GUIImageSourceGroupAPI_New_Path.Text)) {
+				$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.OpenFile), $($lang.Inoperable)"
+			} else {
+				if (Test-Path -Path $GUIImageSourceGroupAPI_New_Path.Text -PathType Leaf) {
+					Start-Process -FilePath $GUIImageSourceGroupAPI_New_Path.Text
+
+					$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+					$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.OpenFile): $($UI_Main_Save_To.Text), $($lang.Done)"
+				} else {
+					$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+					$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.OpenFile): $($UI_Main_Save_To.Text), $($lang.Inoperable)"
+				}
+			}
+		}
+	}
+
 	$GUIImageSourceGroupAPI_New_Path_Paste = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 45
 		Width          = 428
@@ -9031,6 +9060,7 @@ Write-Host "Test"
 		$GUIImageSourceGroupAPI_New_Path_Tips,
 		$GUIImageSourceGroupAPI_New_Path_Select,
 		$GUIImageSourceGroupAPI_New_Path_Select_Tips,
+		$GUIImageSourceGroupAPI_New_Path_OpenFile,
 		$GUIImageSourceGroupAPI_New_Path_Paste
 	))
 

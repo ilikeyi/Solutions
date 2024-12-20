@@ -195,6 +195,7 @@
 	ExportShow                      = Näytä raportit välittömästi
 	MoreFeature                     = Lisää ominaisuuksia
 	OpenFolder                      = Avaa hakemisto
+	OpenFile                        = Avaa tiedosto
 	Running                         = Juosta
 	Paste                           = Kopioi polku
 	Clipboard_Copy                  = Kopioitu leikepöydälle

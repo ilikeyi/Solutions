@@ -195,6 +195,7 @@
 	ExportShow                      = Natychmiast wyświetlaj raporty
 	MoreFeature                     = Więcej funkcji
 	OpenFolder                      = Otwórz katalog
+	OpenFile                        = Otwórz plik
 	Running                         = Uruchomić
 	Paste                           = Skopiuj ścieżkę
 	Clipboard_Copy                  = Skopiowano do schowka

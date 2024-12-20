@@ -195,6 +195,7 @@
 	ExportShow                      = 顯示報表
 	MoreFeature                     = 更多功能
 	OpenFolder                      = 打開目錄
+	OpenFile                        = 開啟文件
 	Running                         = 运行
 	Paste                           = 複製路徑
 	Clipboard_Copy                  = 已複製到剪貼板

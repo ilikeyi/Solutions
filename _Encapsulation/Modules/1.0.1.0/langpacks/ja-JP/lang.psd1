@@ -195,6 +195,7 @@
 	ExportShow                      = レポートを即座に表示
 	MoreFeature                     = その他の機能
 	OpenFolder                      = 開けるコンテンツ
+	OpenFile                        = ファイルを開く
 	Running                         = 走る
 	Paste                           = コピーパス
 	Clipboard_Copy                  = クリップボードにコピーされました

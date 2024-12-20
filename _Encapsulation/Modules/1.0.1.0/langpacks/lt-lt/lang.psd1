@@ -195,6 +195,7 @@
 	ExportShow                      = Rodyti ataskaitas akimirksniu
 	MoreFeature                     = Daugiau funkcijų
 	OpenFolder                      = Atidaryti katalogą
+	OpenFile                        = Atidaryti failą
 	Running                         = Paleisti
 	Paste                           = Kopijuoti kelią
 	Clipboard_Copy                  = Nukopijuota į mainų sritį

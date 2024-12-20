@@ -195,6 +195,7 @@
 	ExportShow                      = Visualizza i report istantaneamente
 	MoreFeature                     = Più funzionalità
 	OpenFolder                      = Apri la rubrica
+	OpenFile                        = Aprire il file
 	Running                         = Correre
 	Paste                           = Percorso di copia
 	Clipboard_Copy                  = Copiato negli appunti

@@ -195,6 +195,7 @@
 	ExportShow                      = Raporları anında görüntüleyin
 	MoreFeature                     = Daha fazla özellik
 	OpenFolder                      = Dizini aç
+	OpenFile                        = Dosyayı aç
 	Running                         = Koşmak
 	Paste                           = Yolu kopyala
 	Clipboard_Copy                  = Panoya kopyalandı

@@ -195,6 +195,7 @@
 	ExportShow                      = Takojšen prikaz poročil
 	MoreFeature                     = Več funkcij
 	OpenFolder                      = Odpri imenik
+	OpenFile                        = Odprta datoteka
 	Running                         = Teči
 	Paste                           = Kopirajte pot
 	Clipboard_Copy                  = Kopirano v odložišče

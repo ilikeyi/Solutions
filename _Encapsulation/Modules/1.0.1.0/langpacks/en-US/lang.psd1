@@ -195,6 +195,7 @@
 	ExportShow                      = Show report
 	MoreFeature                     = More features
 	OpenFolder                      = Open Directory
+	OpenFile                        = Opening a file
 	Running                         = Run
 	Paste                           = Copy path
 	Clipboard_Copy                  = Copied to clipboard

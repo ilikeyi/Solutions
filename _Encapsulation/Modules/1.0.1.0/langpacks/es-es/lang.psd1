@@ -195,6 +195,7 @@
 	ExportShow                      = Mostrar informes al instante
 	MoreFeature                     = Más características
 	OpenFolder                      = Abrir directorio
+	OpenFile                        = Abrir archivo
 	Running                         = Correr
 	Paste                           = Copiar ruta
 	Clipboard_Copy                  = Copiado al portapapeles

@@ -195,6 +195,7 @@
 	ExportShow                      = عرض التقارير على الفور
 	MoreFeature                     = المزيد من الميزات
 	OpenFolder                      = افتح الدليل
+	OpenFile                        = ملف مفتوح
 	Running                         = يجري
 	Paste                           = مسار النسخ
 	Clipboard_Copy                  = تم النسخ إلى الحافظة

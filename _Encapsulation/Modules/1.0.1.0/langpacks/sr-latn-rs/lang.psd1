@@ -195,6 +195,7 @@
 	ExportShow                      = Прикажите извештаје одмах
 	MoreFeature                     = Више функција
 	OpenFolder                      = Отворите директоријум
+	OpenFile                        = Отвори датотеку
 	Running                         = Трчи
 	Paste                           = Путања за копирање
 	Clipboard_Copy                  = Копирано у међуспремник

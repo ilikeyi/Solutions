@@ -195,6 +195,7 @@
 	ExportShow                      = 보고서를 보여주다
 	MoreFeature                     = 더 많은 기능
 	OpenFolder                      = 디렉토리 열기
+	OpenFile                        = 파일 열기
 	Running                         = 달리다
 	Paste                           = 복사 경로
 	Clipboard_Copy                  = 클립보드에 복사됨

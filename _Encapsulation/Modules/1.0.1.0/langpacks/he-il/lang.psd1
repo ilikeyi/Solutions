@@ -195,6 +195,7 @@
 	ExportShow                      = הצג דוחות באופן מיידי
 	MoreFeature                     = תכונות נוספות
 	OpenFolder                      = פתח את הספרייה
+	OpenFile                        = לפתוח קובץ
 	Running                         = לָרוּץ
 	Paste                           = העתק נתיב
 	Clipboard_Copy                  = הועתק ללוח

@@ -195,6 +195,7 @@
 	ExportShow                      = Bericht zeigen
 	MoreFeature                     = Mehr Funktionen
 	OpenFolder                      = Verzeichnis öffnen
+	OpenFile                        = Datei öffnen
 	Running                         = Laufen
 	Paste                           = Pfad kopieren
 	Clipboard_Copy                  = In die Zwischenablage kopiert

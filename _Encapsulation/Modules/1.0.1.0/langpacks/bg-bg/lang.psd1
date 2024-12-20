@@ -195,6 +195,7 @@
 	ExportShow                      = Незабавно показване на отчети
 	MoreFeature                     = Още функции
 	OpenFolder                      = Отворете директорията
+	OpenFile                        = Отворен файл
 	Running                         = Тичам
 	Paste                           = Път за копиране
 	Clipboard_Copy                  = Копирано в клипборда

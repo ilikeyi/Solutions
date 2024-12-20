@@ -195,6 +195,7 @@
 	ExportShow                      = Jelentések azonnali megjelenítése
 	MoreFeature                     = További funkciók
 	OpenFolder                      = Nyissa meg a könyvtárat
+	OpenFile                        = Fájl megnyitása
 	Running                         = Fut
 	Paste                           = Útvonal másolása
 	Clipboard_Copy                  = Vágólapra másolva

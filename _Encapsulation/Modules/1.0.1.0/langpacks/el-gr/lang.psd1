@@ -195,6 +195,7 @@
 	ExportShow                      = Εμφάνιση αναφορών άμεσα
 	MoreFeature                     = Περισσότερα χαρακτηριστικά
 	OpenFolder                      = Άνοιγμα καταλόγου
+	OpenFile                        = Ανοιχτό αρχείο
 	Running                         = Τρέξιμο
 	Paste                           = Διαδρομή αντιγραφής
 	Clipboard_Copy                  = Αντιγράφηκε στο πρόχειρο

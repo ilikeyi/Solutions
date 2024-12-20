@@ -195,6 +195,7 @@
 	ExportShow                      = Vis rapporter med det samme
 	MoreFeature                     = Flere funktioner
 	OpenFolder                      = Åbn mappe
+	OpenFile                        = Åbne fil
 	Running                         = Løbe
 	Paste                           = Kopisti
 	Clipboard_Copy                  = Kopieret til udklipsholder

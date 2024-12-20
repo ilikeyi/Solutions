@@ -195,6 +195,7 @@
 	ExportShow                      = Exibir relatórios instantaneamente
 	MoreFeature                     = Mais recursos
 	OpenFolder                      = Abrir diretório
+	OpenFile                        = Abrir ficheiro
 	Running                         = Correr
 	Paste                           = Copiar caminho
 	Clipboard_Copy                  = Copiado para a área de transferência

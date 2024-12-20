@@ -195,6 +195,7 @@
 	ExportShow                      = Tūlītēji parādiet pārskatus
 	MoreFeature                     = Vairāk funkciju
 	OpenFolder                      = Atvērt direktoriju
+	OpenFile                        = Atvērt failu
 	Running                         = Palaist
 	Paste                           = Kopēt ceļu
 	Clipboard_Copy                  = Kopēts starpliktuvē

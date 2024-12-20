@@ -195,6 +195,7 @@
 	ExportShow                      = Okamžité zobrazenie prehľadov
 	MoreFeature                     = Viac funkcií
 	OpenFolder                      = Otvorte adresár
+	OpenFile                        = Otvoriť súbor
 	Running                         = Behať
 	Paste                           = Kopírovať cestu
 	Clipboard_Copy                  = Skopírované do schránky

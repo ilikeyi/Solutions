@@ -195,6 +195,7 @@
 	ExportShow                      = Отображение отчетов мгновенно
 	MoreFeature                     = Дополнительные возможности
 	OpenFolder                      = Открыть каталог
+	OpenFile                        = Открыть файл
 	Running                         = Бегать
 	Paste                           = Копировать путь
 	Clipboard_Copy                  = Скопировано в буфер обмена

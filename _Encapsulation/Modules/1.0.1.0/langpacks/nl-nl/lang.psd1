@@ -195,6 +195,7 @@
 	ExportShow                      = Rapporten direct weergeven
 	MoreFeature                     = Meer functies
 	OpenFolder                      = Map openen
+	OpenFile                        = Bestand openen
 	Running                         = Loop
 	Paste                           = Kopieer pad
 	Clipboard_Copy                  = Gekopieerd naar klembord
