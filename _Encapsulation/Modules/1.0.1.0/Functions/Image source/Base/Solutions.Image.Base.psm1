@@ -751,6 +751,7 @@ Function Menu_Shortcuts_Image_Sources_Add_IAB
 
 	if ([string]::IsNullOrEmpty($NewImageIndex)) {
 		Write-host $lang.NoChoose -ForegroundColor Red
+		$Global:Primary_Key_Image = @()
 	} else {
 		Write-Host $NewImageIndex -ForegroundColor Green
 		Image_Set_Primary_Key_Shortcuts -Name $NewImageIndex
@@ -1212,6 +1213,7 @@ Function Menu_Shortcuts_Rebuild_Key
 
 	if ([string]::IsNullOrEmpty($NewImageIndex)) {
 		Write-host $lang.NoChoose -ForegroundColor Red
+		$Global:Primary_Key_Image = @()
 	} else {
 		Write-Host $NewImageIndex -ForegroundColor Green
 		Image_Set_Primary_Key_Shortcuts -Name $NewImageIndex
