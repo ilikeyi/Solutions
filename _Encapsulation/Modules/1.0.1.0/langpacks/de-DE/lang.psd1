@@ -30,6 +30,12 @@
 	Logging                         = Protokolle speichern unter
 	AvailableLanguages              = Verfügbare Sprachen
 	SwitchLanguage                  = Sprache wechseln
+	LanguageSelRegion               = Wählen Sie Ihr Land oder Ihre Region aus
+	LanguageRemember                = Ausgewählte Sprache merken
+	LanguageSearchNo                = Keine verfügbaren Sprachen gefunden
+	LanguageNoPack                  = Wenn lokal kein Sprachpaket vorhanden ist, wird es automatisch beendet.
+	LanguageNoSel                   = Bitte wählen Sie eine Region aus
+	Search                          = Suchen
 	PleaseChoose                    = Bitte auswählen
 	Options                         = Optionen
 	Choose                          = Gewählt

@@ -30,6 +30,12 @@
 	Logging                         = 다음 위치에 로그 저장
 	AvailableLanguages              = 사용 가능한 언어
 	SwitchLanguage                  = 언어를 바꾸다
+	LanguageSelRegion               = 국가 또는 지역을 선택하세요.
+	LanguageRemember                = 선택한 언어 기억
+	LanguageSearchNo                = 사용 가능한 언어가 없습니다
+	LanguageNoPack                  = 로컬에 언어 팩이 없으면 자동으로 종료됩니다.
+	LanguageNoSel                   = 지역을 선택해주세요
+	Search                          = 찾다
 	PleaseChoose                    = 선택해주세요
 	Options                         = 옵션
 	Choose                          = 선택된

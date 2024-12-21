@@ -30,6 +30,12 @@
 	Logging                         = Salvați jurnalul în
 	AvailableLanguages              = Limbi disponibile
 	SwitchLanguage                  = Schimba limba
+	LanguageSelRegion               = Selectați țara sau regiunea dvs
+	LanguageRemember                = Amintiți-vă limba selectată
+	LanguageSearchNo                = Nu s-au găsit limbi disponibile
+	LanguageNoPack                  = Dacă nu există un pachet de limbă local, acesta va ieși automat.
+	LanguageNoSel                   = Vă rugăm să selectați o regiune
+	Search                          = Căutare
 	PleaseChoose                    = Vă rugăm să selectați
 	Options                         = Opțiuni
 	Choose                          = Selectat

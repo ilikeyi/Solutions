@@ -30,6 +30,12 @@
 	Logging                         = ログを保存する
 	AvailableLanguages              = 利用可能な言語
 	SwitchLanguage                  = 言語を切り替える
+	LanguageSelRegion               = 国または地域を選択してください
+	LanguageRemember                = 選択した言語を記憶する
+	LanguageSearchNo                = 利用可能な言語が見つかりません
+	LanguageNoPack                  = ローカルに言語パックがない場合は、自動的に終了します。
+	LanguageNoSel                   = 地域を選択してください
+	Search                          = 検索
 	PleaseChoose                    = 選んでください
 	Options                         = オプション
 	Choose                          = 選ばれた

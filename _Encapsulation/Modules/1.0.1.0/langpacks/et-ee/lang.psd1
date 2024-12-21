@@ -30,6 +30,12 @@
 	Logging                         = Salvesta logi asukohta
 	AvailableLanguages              = Saadaolevad keeled
 	SwitchLanguage                  = Keelt vahetada
+	LanguageSelRegion               = Valige oma riik või piirkond
+	LanguageRemember                = Jäta valitud keel meelde
+	LanguageSearchNo                = Saadaolevaid keeli ei leitud
+	LanguageNoPack                  = Kui kohalikku keelepaketti pole, suletakse see automaatselt.
+	LanguageNoSel                   = Valige piirkond
+	Search                          = Otsida
 	PleaseChoose                    = Palun valige
 	Options                         = Valikud
 	Choose                          = Valitud

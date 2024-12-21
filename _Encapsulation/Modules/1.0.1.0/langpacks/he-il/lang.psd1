@@ -30,6 +30,12 @@
 	Logging                         = שמור יומן ב
 	AvailableLanguages              = שפות זמינות
 	SwitchLanguage                  = להחליף שפה
+	LanguageSelRegion               = בחר את המדינה או האזור שלך
+	LanguageRemember                = זכור את השפה שנבחרה
+	LanguageSearchNo                = לא נמצאו שפות זמינות
+	LanguageNoPack                  = אם אין ערכת שפה מקומית, היא תצא אוטומטית.
+	LanguageNoSel                   = אנא בחר אזור
+	Search                          = לְחַפֵּשׂ
 	PleaseChoose                    = נא לבחור
 	Options                         = אפשרויות
 	Choose                          = נִבחָר

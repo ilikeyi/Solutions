@@ -30,6 +30,12 @@
 	Logging                         = Сачувај дневник у
 	AvailableLanguages              = Доступни језици
 	SwitchLanguage                  = Промени језик
+	LanguageSelRegion               = Изаберите своју земљу или регион
+	LanguageRemember                = Запамтите изабрани језик
+	LanguageSearchNo                = Није пронађен ниједан доступан језик
+	LanguageNoPack                  = Ако локално не постоји језички пакет, аутоматски ће ce затворити.
+	LanguageNoSel                   = Изаберите регион
+	Search                          = Тражи
 	PleaseChoose                    = Молимо изаберите
 	Options                         = Опције
 	Choose                          = Изабрано

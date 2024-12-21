@@ -30,6 +30,12 @@
 	Logging                         = Napló mentése ide
 	AvailableLanguages              = Elérhető nyelvek
 	SwitchLanguage                  = Nyelvet váltani
+	LanguageSelRegion               = Válassza ki országát vagy régióját
+	LanguageRemember                = Emlékezzen a kiválasztott nyelvre
+	LanguageSearchNo                = Nem található elérhető nyelv
+	LanguageNoPack                  = Ha nincs helyi nyelvi csomag, akkor az automatikusan kilép.
+	LanguageNoSel                   = Kérjük, válasszon régiót
+	Search                          = Keresés
 	PleaseChoose                    = Kérem válasszon
 	Options                         = Opciók
 	Choose                          = Kiválasztott

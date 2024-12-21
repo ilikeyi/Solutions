@@ -30,6 +30,12 @@
 	Logging                         = Zapisz dziennik w
 	AvailableLanguages              = Dostępne języki
 	SwitchLanguage                  = Zmień język
+	LanguageSelRegion               = Wybierz swój kraj lub region
+	LanguageRemember                = Zapamiętaj wybrany język
+	LanguageSearchNo                = Nie znaleziono dostępnych języków
+	LanguageNoPack                  = Jeśli lokalnie nie ma pakietu językowego, zostanie on zamknięty automatycznie.
+	LanguageNoSel                   = Wybierz region
+	Search                          = Szukaj
 	PleaseChoose                    = Proszę wybrać
 	Options                         = Opcje
 	Choose                          = Wybrany

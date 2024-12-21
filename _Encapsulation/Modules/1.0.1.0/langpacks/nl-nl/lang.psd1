@@ -30,6 +30,12 @@
 	Logging                         = Logboek opslaan in
 	AvailableLanguages              = Beschikbare talen
 	SwitchLanguage                  = Van taal wisselen
+	LanguageSelRegion               = Selecteer uw land of regio
+	LanguageRemember                = Onthoud de geselecteerde taal
+	LanguageSearchNo                = Geen beschikbare talen gevonden
+	LanguageNoPack                  = Als er lokaal geen taalpakket is, wordt het automatisch afgesloten.
+	LanguageNoSel                   = Selecteer een regio
+	Search                          = Zoekopdracht
 	PleaseChoose                    = Selecteer alstublieft
 	Options                         = Opties
 	Choose                          = Gekozen

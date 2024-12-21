@@ -30,6 +30,12 @@
 	Logging                         = Αποθήκευση αρχείου καταγραφής σε
 	AvailableLanguages              = Διαθέσιμες γλώσσες
 	SwitchLanguage                  = Αλλαγή γλώσσας
+	LanguageSelRegion               = Επιλέξτε τη χώρα ή την περιοχή σας
+	LanguageRemember                = Θυμηθείτε την επιλεγμένη γλώσσα
+	LanguageSearchNo                = Δεν βρέθηκαν διαθέσιμες γλώσσες
+	LanguageNoPack                  = Εάν δεν υπάρχει πακέτο γλώσσας τοπικά, θα βγει αυτόματα.
+	LanguageNoSel                   = Επιλέξτε μια περιοχή
+	Search                          = Έρευνα
 	PleaseChoose                    = Επιλέξτε
 	Options                         = Επιλογές
 	Choose                          = Επιλεγμένο

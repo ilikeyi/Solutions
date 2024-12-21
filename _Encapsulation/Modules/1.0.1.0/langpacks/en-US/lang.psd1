@@ -30,6 +30,12 @@
 	Logging                         = Save the log to
 	AvailableLanguages              = Available languages
 	SwitchLanguage                  = Switch language
+	LanguageSelRegion               = Select your country or region
+	LanguageRemember                = Remember the selected language
+	LanguageSearchNo                = No available languages found
+	LanguageNoPack                  = No local language pack, will exit automatically.
+	LanguageNoSel                   = Please select region
+	Search                          = Search
 	PleaseChoose                    = Please choose
 	Options                         = Options
 	Choose                          = Chosen

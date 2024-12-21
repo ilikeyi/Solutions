@@ -29,6 +29,12 @@
 	Logging                         = Uložit protokol do
 	AvailableLanguages              = Dostupné jazyky
 	SwitchLanguage                  = Přepnout jazyk
+	LanguageSelRegion               = Vyberte svou zemi nebo oblast
+	LanguageRemember                = Zapamatovat vybraný jazyk
+	LanguageSearchNo                = Nebyly nalezeny žádné dostupné jazyky
+	LanguageNoPack                  = Pokud místně žádný jazykový balíček neexistuje, automaticky se ukončí.
+	LanguageNoSel                   = Vyberte prosím region
+	Search                          = Vyhledávání
 	PleaseChoose                    = Vyberte prosím
 	Options                         = Možnosti
 	Choose                          = Vybraný

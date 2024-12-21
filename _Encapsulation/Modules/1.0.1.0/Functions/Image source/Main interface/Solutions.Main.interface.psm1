@@ -612,7 +612,6 @@ Function Image_Select
 	#>
 	Function Refresh_Rule_Shortcuts
 	{
-
 		$GUIImageSourceGroupAPI_Shortcut_Panel.controls.Clear()
 		$GUIImageSourceGroupAPI_Rule_Path.BackColor = "#FFFFFF"
 		$GUIImageSourceGroupAPI_New_Path.BackColor = "#FFFFFF"

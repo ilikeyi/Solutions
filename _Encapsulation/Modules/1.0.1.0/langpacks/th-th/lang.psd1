@@ -30,6 +30,12 @@
 	Logging                         = บันทึกบันทึกไปที่
 	AvailableLanguages              = ภาษาที่ใช้ได้
 	SwitchLanguage                  = เปลี่ยนภาษา
+	LanguageSelRegion               = เลือกประเทศหรือภูมิภาคของคุณ
+	LanguageRemember                = จำภาษาที่เลือก
+	LanguageSearchNo                = ไม่พบภาษาที่ใช้ได้
+	LanguageNoPack                  = หากไม่มีชุดภาษาในเครื่อง ระบบจะออกโดยอัตโนมัติ
+	LanguageNoSel                   = โปรดเลือกภูมิภาค
+	Search                          = ค้นหา
 	PleaseChoose                    = กรุณาเลือก
 	Options                         = ตัวเลือก
 	Choose                          = เลือกแล้ว

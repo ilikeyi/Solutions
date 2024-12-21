@@ -30,6 +30,12 @@
 	Logging                         = 保存日誌到
 	AvailableLanguages              = 可用語言
 	SwitchLanguage                  = 切換語言
+	LanguageSelRegion               = 選擇您的國家或地區
+	LanguageRemember                = 記住所選語言
+	LanguageSearchNo                = 未搜尋到可用的語言
+	LanguageNoPack                  = 本地沒有語言包，將自動退出。
+	LanguageNoSel                   = 請選擇區域
+	Search                          = 搜尋
 	PleaseChoose                    = 請選擇
 	Options                         = 選項
 	Choose                          = 已選擇

@@ -30,6 +30,12 @@
 	Logging                         = Зберегти журнал у
 	AvailableLanguages              = Доступні мови
 	SwitchLanguage                  = Змінити мову
+	LanguageSelRegion               = Виберіть свою країну або регіон
+	LanguageRemember                = Запам'ятати вибрану мову
+	LanguageSearchNo                = Доступні мови не знайдено
+	LanguageNoPack                  = Якщо локально немає мовного пакета, він автоматично закриється.
+	LanguageNoSel                   = Виберіть регіон
+	Search                          = Пошук
 	PleaseChoose                    = Будь ласка, виберіть
 	Options                         = Опції
 	Choose                          = Вибране

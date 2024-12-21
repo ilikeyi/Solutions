@@ -30,6 +30,12 @@
 	Logging                         = Tallenna loki kohteeseen
 	AvailableLanguages              = Saatavilla olevat kielet
 	SwitchLanguage                  = Vaihtaa kieltä
+	LanguageSelRegion               = Valitse maasi tai alueesi
+	LanguageRemember                = Muista valittu kieli
+	LanguageSearchNo                = Saatavilla olevia kieliä ei löytynyt
+	LanguageNoPack                  = Jos paikallista kielipakettia ei ole, se poistuu automaattisesti.
+	LanguageNoSel                   = Valitse alue
+	Search                          = Haku
 	PleaseChoose                    = Ole hyvä ja valitse
 	Options                         = Vaihtoehdot
 	Choose                          = Valittu

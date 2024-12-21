@@ -30,6 +30,12 @@
 	Logging                         = Uložiť denník do
 	AvailableLanguages              = Dostupné jazyky
 	SwitchLanguage                  = Prepnúť jazyk
+	LanguageSelRegion               = Vyberte svoju krajinu alebo región
+	LanguageRemember                = Zapamätať si vybraný jazyk
+	LanguageSearchNo                = Nenašli sa žiadne dostupné jazyky
+	LanguageNoPack                  = Ak lokálny jazykový balík neexistuje, automaticky sa ukončí.
+	LanguageNoSel                   = Vyberte región
+	Search                          = Hľadať
 	PleaseChoose                    = Vyberte
 	Options                         = Možnosti
 	Choose                          = Vybrané

@@ -30,6 +30,12 @@
 	Logging                         = Išsaugoti žurnalą į
 	AvailableLanguages              = Galimos kalbos
 	SwitchLanguage                  = Pakeisti kalbą
+	LanguageSelRegion               = Pasirinkite savo šalį arba regioną
+	LanguageRemember                = Prisiminti pasirinktą kalbą
+	LanguageSearchNo                = Galimų kalbų nerasta
+	LanguageNoPack                  = Jei vietoje kalbos paketo nėra, jis automatiškai išeis.
+	LanguageNoSel                   = Pasirinkite regioną
+	Search                          = Paieška
 	PleaseChoose                    = Prašome pasirinkti
 	Options                         = Parinktys
 	Choose                          = Pasirinkta

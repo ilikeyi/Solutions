@@ -30,6 +30,12 @@
 	Logging                         = Enregistrer le journal dans
 	AvailableLanguages              = Langues disponibles
 	SwitchLanguage                  = Changer de langue
+	LanguageSelRegion               = Sélectionnez votre pays ou région
+	LanguageRemember                = Mémoriser la langue sélectionnée
+	LanguageSearchNo                = Aucune langue disponible trouvée
+	LanguageNoPack                  = S'il n'y a pas de module linguistique localement, il se fermera automatiquement.
+	LanguageNoSel                   = Veuillez sélectionner une région
+	Search                          = Recherche
 	PleaseChoose                    = Veuillez sélectionner
 	Options                         = Possibilités
 	Choose                          = Choisi

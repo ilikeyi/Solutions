@@ -30,6 +30,12 @@
 	Logging                         = حفظ السجل ل
 	AvailableLanguages              = اللغات المتاحة
 	SwitchLanguage                  = تبديل اللغة
+	LanguageSelRegion               = اختر بلدك أو منطقتك
+	LanguageRemember                = تذكر اللغة المحددة
+	LanguageSearchNo                = لم يتم العثور على اللغات المتاحة
+	LanguageNoPack                  = إذا لم تكن هناك حزمة لغة محلية، فسيتم الخروج تلقائيًا.
+	LanguageNoSel                   = الرجاء تحديد المنطقة
+	Search                          = يبحث
 	PleaseChoose                    = الرجاء التحديد
 	Options                         = خيارات
 	Choose                          = مختارة

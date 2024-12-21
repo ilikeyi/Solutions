@@ -30,6 +30,12 @@
 	Logging                         = Gem log til
 	AvailableLanguages              = Tilgængelige sprog
 	SwitchLanguage                  = Skifte sprog
+	LanguageSelRegion               = Vælg dit land eller område
+	LanguageRemember                = Husk det valgte sprog
+	LanguageSearchNo                = Ingen tilgængelige sprog fundet
+	LanguageNoPack                  = Hvis der ikke er nogen sprogpakke lokalt, afsluttes den automatisk.
+	LanguageNoSel                   = Vælg venligst en region
+	Search                          = Søge
 	PleaseChoose                    = Vælg venligst
 	Options                         = Valgmuligheder
 	Choose                          = Valgt

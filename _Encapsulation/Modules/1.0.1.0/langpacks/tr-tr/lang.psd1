@@ -30,6 +30,12 @@
 	Logging                         = Günlüğü şuraya kaydet:
 	AvailableLanguages              = Mevcut diller
 	SwitchLanguage                  = Dili değiştir
+	LanguageSelRegion               = Ülkenizi veya bölgenizi seçin
+	LanguageRemember                = Seçilen dili hatırla
+	LanguageSearchNo                = Kullanılabilir dil bulunamadı
+	LanguageNoPack                  = Yerel olarak dil paketi yoksa otomatik olarak çıkılacaktır.
+	LanguageNoSel                   = Lütfen bir bölge seçin
+	Search                          = Aramak
 	PleaseChoose                    = Lütfen seçin
 	Options                         = Seçenekler
 	Choose                          = Seçildi

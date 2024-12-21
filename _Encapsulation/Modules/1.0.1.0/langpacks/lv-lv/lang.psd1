@@ -30,6 +30,12 @@
 	Logging                         = Saglabāt žurnālu uz
 	AvailableLanguages              = Pieejamās valodas
 	SwitchLanguage                  = Mainīt valodu
+	LanguageSelRegion               = Izvēlieties savu valsti vai reģionu
+	LanguageRemember                = Atcerieties izvēlēto valodu
+	LanguageSearchNo                = Nav atrasta neviena pieejama valoda
+	LanguageNoPack                  = Ja lokāli nav valodas pakotnes, tā tiks automātiski aizvērta.
+	LanguageNoSel                   = Lūdzu, atlasiet reģionu
+	Search                          = Meklēt
 	PleaseChoose                    = Lūdzu, atlasiet
 	Options                         = Iespējas
 	Choose                          = Atlasīts

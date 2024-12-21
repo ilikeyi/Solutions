@@ -30,6 +30,12 @@
 	Logging                         = Guardar registro en
 	AvailableLanguages              = Idiomas disponibles
 	SwitchLanguage                  = Cambiar de idioma
+	LanguageSelRegion               = Seleccione su país o región
+	LanguageRemember                = Recordar idioma seleccionado
+	LanguageSearchNo                = No se encontraron idiomas disponibles
+	LanguageNoPack                  = Si no hay ningún paquete de idioma localmente, se cerrará automáticamente.
+	LanguageNoSel                   = Por favor seleccione una región
+	Search                          = Buscar
 	PleaseChoose                    = Por favor seleccione
 	Options                         = Opciones
 	Choose                          = Seleccionado
