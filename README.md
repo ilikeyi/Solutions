@@ -220,14 +220,14 @@ Detailed introduction
 <br>
   <p>2.&nbsp;&nbsp;Command Line</p>
   <dl>
-    <dd>2.1.&nbsp;&nbsp;You can choose "Terminal" or "PowerShell ISE". If "Terminal" is not installed, please go to https://github.com/microsoft/terminal/releases to download;</dd>
-    <dd>2.2.&nbsp;&nbsp;Open "Terminal" or "PowerShell ISE" as an administrator, set PowerShell execution policy: Bypass, PS command line:
+    <p>2.1.&nbsp;&nbsp;You can choose "Terminal" or "PowerShell ISE". If "Terminal" is not installed, please go to https://github.com/microsoft/terminal/releases to download;</p>
+    <p>2.2.&nbsp;&nbsp;Open "Terminal" or "PowerShell ISE" as an administrator, set PowerShell execution policy: Bypass, PS command line:
 
 ```
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
 ```
 
-</dd>
+</p>
     <dd>2.3.&nbsp;&nbsp;In this article, the green part belongs to the PS command line. Please copy it, paste it into the "Terminal" dialog box, and press Enter to start running;</dd>
     <dd>2.4.&nbsp;&nbsp;When there is .ps1, right-click the file and select Run as PowerShell, or copy the path and paste it into "Terminal" or "PowerShell ISE" to run. For the path with a colon, add the & character in the command line, example: <code>& "D:\YiSolutions\_Encapsulation\_SIP.ps1"</code></dd>
 
@@ -292,6 +292,7 @@ D:\Yi.Solutions\_Encapsulation\_SIP.ps1
       </dl>
     </dd>
   </dl>
+  </ul>
 </details>
 </ul>
 
