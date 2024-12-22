@@ -2114,7 +2114,7 @@ Function InBox_Apps_LIPs_Clean_Process
 							if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 								Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 								Write-Host "  $('-' * 80)"
-								Write-Host "   Remove-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackageName ""$($item)""`n" -ForegroundColor Green
+								Write-Host "  Remove-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackageName ""$($item)""`n" -ForegroundColor Green
 							}
 
 							Write-Host "  $($lang.Del)".PadRight(21) -NoNewline
@@ -2200,7 +2200,7 @@ Function InBox_Apps_Add_Mark_Process
 	if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 		Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
-		Write-Host "   Get-ChildItem ""$($Path)\LanguageExperiencePack.*.appx""" -ForegroundColor Green
+		Write-Host "  Get-ChildItem ""$($Path)\LanguageExperiencePack.*.appx""" -ForegroundColor Green
 		Write-Host "  $('-' * 80)`n"
 	}
 
@@ -2212,7 +2212,7 @@ Function InBox_Apps_Add_Mark_Process
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				Write-Host "   Add-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackagePath ""$($_.FullName)"" -LicensePath ""$($Path)\License.xml""" -ForegroundColor Green
+				Write-Host "  Add-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackagePath ""$($_.FullName)"" -LicensePath ""$($Path)\License.xml""" -ForegroundColor Green
 				Write-Host "  $('-' * 80)`n"
 			}
 
@@ -2226,7 +2226,7 @@ Function InBox_Apps_Add_Mark_Process
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				Write-Host "   Add-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackagePath ""$($_.FullName)"" -SkipLicense" -ForegroundColor Green
+				Write-Host "  Add-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackagePath ""$($_.FullName)"" -SkipLicense" -ForegroundColor Green
 				Write-Host "  $('-' * 80)`n"
 			}
 

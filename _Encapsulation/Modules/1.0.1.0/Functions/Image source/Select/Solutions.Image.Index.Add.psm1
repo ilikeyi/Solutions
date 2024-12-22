@@ -63,7 +63,7 @@ Function Image_Select_Add_UI
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 					Write-Host "  $('-' * 80)"
-					Write-Host "   Get-WindowsImage -ImagePath ""$($FileBrowser.FileName)""" -ForegroundColor Green
+					Write-Host "  Get-WindowsImage -ImagePath ""$($FileBrowser.FileName)""" -ForegroundColor Green
 					Write-Host "  $('-' * 80)`n"
 				}
 

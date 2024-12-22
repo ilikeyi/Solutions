@@ -98,7 +98,7 @@ Function Feature_More_Menu
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				Write-Host "   Get-WindowsImage -Mounted" -ForegroundColor Green
+				Write-Host "  Get-WindowsImage -Mounted" -ForegroundColor Green
 				Write-Host "  $('-' * 80)`n"
 			}
 	
@@ -332,7 +332,7 @@ Function Image_Get_Apps_Package
 	`$multiple_output = Import-Csv "`$(`$PSScriptRoot)\$([IO.Path]::GetFileName($TempSaveTo))" | Out-GridView -Title "$($lang.GetInBoxApps)" -passthru
 
 	if (`$null -eq `$multiple_output) {
-		Write-Host "   User Cancel" -ForegroundColor Red
+		Write-Host "  User Cancel" -ForegroundColor Red
 	} else {
 		ForEach (`$item in `$multiple_output) {
 			`$custom_array_Export += [PSCustomObject]@{
@@ -354,10 +354,10 @@ Function Image_Get_Apps_Package
 
 		if (`$FileBrowser.ShowDialog() -eq "OK") {
 			Write-Host "`n  Save To:"
-			Write-Host "   `$(`$FileBrowser.FileName)" -ForegroundColor Green
+			Write-Host "  `$(`$FileBrowser.FileName)" -ForegroundColor Green
 			`$custom_array_Export | Export-CSV -NoType -Path `$FileBrowser.FileName
 		} else {
-			Write-Host "   User Cancel" -ForegroundColor Red
+			Write-Host "  User Cancel" -ForegroundColor Red
 		}
 	}
 "@ | Out-File -FilePath "$($TempSaveTo).ps1" -Encoding UTF8 -ErrorAction SilentlyContinue
@@ -391,7 +391,7 @@ Function Image_Get_Detailed
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				Write-Host "   Get-WindowsImage -ImagePath ""$($Filename)""" -ForegroundColor Green
+				Write-Host "  Get-WindowsImage -ImagePath ""$($Filename)""" -ForegroundColor Green
 			}
 	
 			Get-WindowsImage -ImagePath $Filename -ErrorAction SilentlyContinue | ForEach-Object {
@@ -400,7 +400,7 @@ Function Image_Get_Detailed
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 					Write-Host "  $('-' * 80)"
-					Write-Host "   Get-WindowsImage -ImagePath ""$($Filename)"" -index ""$($SetCurreltIndex)""" -ForegroundColor Green
+					Write-Host "  Get-WindowsImage -ImagePath ""$($Filename)"" -index ""$($SetCurreltIndex)""" -ForegroundColor Green
 				}
 		
 				Get-WindowsImage -ImagePath $Filename -index $SetCurreltIndex -ErrorAction SilentlyContinue | ForEach-Object {
@@ -461,7 +461,7 @@ Function Image_Get_Detailed
 	`$multiple_output = Import-Csv "`$(`$PSScriptRoot)\$([IO.Path]::GetFileName($TempSaveTo))" | Out-GridView -Title "$($lang.ViewWIMFileInfo): $($Filename)" -passthru
 
 	if (`$null -eq `$multiple_output) {
-		Write-Host "   User Cancel" -ForegroundColor Red
+		Write-Host "  User Cancel" -ForegroundColor Red
 	} else {
 		ForEach (`$item in `$multiple_output) {
 			`$custom_array_Export += [PSCustomObject]@{
@@ -497,10 +497,10 @@ Function Image_Get_Detailed
 
 		if (`$FileBrowser.ShowDialog() -eq "OK") {
 			Write-Host "`n  Save To:"
-			Write-Host "   `$(`$FileBrowser.FileName)" -ForegroundColor Green
+			Write-Host "  `$(`$FileBrowser.FileName)" -ForegroundColor Green
 			`$custom_array_Export | Export-CSV -NoType -Path `$FileBrowser.FileName
 		} else {
-			Write-Host "   User Cancel" -ForegroundColor Red
+			Write-Host "  User Cancel" -ForegroundColor Red
 		}
 	}
 "@ | Out-File -FilePath "$($TempSaveTo).ps1" -Encoding UTF8 -ErrorAction SilentlyContinue
@@ -556,7 +556,7 @@ Function Image_Get_Components_Package
 	`$multiple_output = Import-Csv "`$(`$PSScriptRoot)\$([IO.Path]::GetFileName($TempSaveTo))" | Out-GridView -Title "$($lang.GetImagePackage)" -passthru
 
 	if (`$null -eq `$multiple_output) {
-		Write-Host "   User Cancel" -ForegroundColor Red
+		Write-Host "  User Cancel" -ForegroundColor Red
 	} else {
 		ForEach (`$item in `$multiple_output) {
 			`$custom_array_Export += [PSCustomObject]@{
@@ -576,10 +576,10 @@ Function Image_Get_Components_Package
 
 		if (`$FileBrowser.ShowDialog() -eq "OK") {
 			Write-Host "`n  Save To:"
-			Write-Host "   `$(`$FileBrowser.FileName)" -ForegroundColor Green
+			Write-Host "  `$(`$FileBrowser.FileName)" -ForegroundColor Green
 			`$custom_array_Export | Export-CSV -NoType -Path `$FileBrowser.FileName
 		} else {
-			Write-Host "   User Cancel" -ForegroundColor Red
+			Write-Host "  User Cancel" -ForegroundColor Red
 		}
 	}
 "@ | Out-File -FilePath "$($TempSaveTo).ps1" -Encoding UTF8 -ErrorAction SilentlyContinue

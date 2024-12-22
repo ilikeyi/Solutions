@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-	Server
-	multilingual
-	Business.Legacy.xml
+	   Created by: Yi's Solutions
+			Learn: https://fengyi.tel/solutions
+				   https://github.com/ilikeyi/solutions
+
+	 Architecture: Arm64, x64, x86
+	Applicable to: Server
+	Language type: Multilingual
+	     Solution: Business.Legacy.xml
 
 	Template GUID: 60be0df9-2301-45e7-b756-c2c5350ff6e6
 	GUID: {GUID}

@@ -471,7 +471,7 @@ Function Language_Menu
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 						Write-Host "  $('-' * 80)"
-						Write-Host "   Dism.exe /Image:""$($test_mount_folder_Current)"" /Get-Intl" -ForegroundColor Green
+						Write-Host "  Dism.exe /Image:""$($test_mount_folder_Current)"" /Get-Intl" -ForegroundColor Green
 						Write-Host "  $('-' * 80)`n"
 					}
 			
@@ -735,8 +735,8 @@ Function Language_Sync_To_ISO_Process
 
 		if (Test-Path -Path $TestFolderRegion -PathType Container) {
 			Write-Host "  $($lang.Paste)"
-			Write-Host "   > $($TestFolderRegion)"
-			Write-Host "   + $($SearchImageSources)\$($itemRegion.Region)"
+			Write-Host "  > $($TestFolderRegion)"
+			Write-Host "  + $($SearchImageSources)\$($itemRegion.Region)"
 
 			Copy-Item -Path $TestFolderRegion -Destination $SearchImageSources -Recurse -Force -ErrorAction SilentlyContinue
 
@@ -774,7 +774,7 @@ Function Language_Repair_Cli
 			ForEach ($itemCheckRepir in $Language_Repair_FileList) {
 				$NewRepairFullPath = "$($LanguageRepair_Path)\$($itemCheckRepir)"
 
-				Write-Host "     $($itemCheckRepir.PadRight(22))" -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($itemCheckRepir.PadRight(22))" -NoNewline -ForegroundColor Yellow
 				if (Test-Path -Path $NewRepairFullPath -PathType leaf) {
 					Write-Host "  $($lang.Paste)".PadRight(18) -NoNewline
 						Check_Folder -chkpath $Offline_Mount_Path_Sources

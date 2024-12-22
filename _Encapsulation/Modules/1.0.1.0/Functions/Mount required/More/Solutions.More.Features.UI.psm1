@@ -1329,7 +1329,7 @@ Function Image_Clear_Superseded
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 						Write-Host "  $('-' * 80)"
-						Write-Host "   Remove-WindowsPackage -Path ""$($test_mount_folder_Current)"" -PackageName ""$($item)""" -ForegroundColor Green
+						Write-Host "  Remove-WindowsPackage -Path ""$($test_mount_folder_Current)"" -PackageName ""$($item)""" -ForegroundColor Green
 						Write-Host "  $('-' * 80)`n"
 					}
 

@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-	Desktop
-	Single
-	Consumer.UEFI.xml
+	   Created by: Yi's Solutions
+			Learn: https://fengyi.tel/solutions
+				   https://github.com/ilikeyi/solutions
+
+	 Architecture: Arm64
+	Applicable to: Desktop
+	Language type: Single
+	     Solution: Consumer.UEFI.xml
 
 	Template GUID: c83b7cfe-9daa-45ea-9d06-085e5c298ab0
 	GUID: {GUID}

@@ -86,7 +86,7 @@ Function Image_Mount_Check
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				Write-Host "   Dismount-WindowsImage -Path ""$($test_mount_folder)"" -Discard" -ForegroundColor Green
+				Write-Host "  Dismount-WindowsImage -Path ""$($test_mount_folder)"" -Discard" -ForegroundColor Green
 				Write-Host "  $('-' * 80)`n"
 			}
 
@@ -104,7 +104,7 @@ Function Image_Mount_Check
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				Write-Host "   Mount-WindowsImage -ImagePath ""$($MountFileName)"" -Index ""$($Index)"" -Path "$test_mount_folder"" -ForegroundColor Green
+				Write-Host "  Mount-WindowsImage -ImagePath ""$($MountFileName)"" -Index ""$($Index)"" -Path "$test_mount_folder"" -ForegroundColor Green
 				Write-Host "  $('-' * 80)`n"
 			}
 
@@ -1619,21 +1619,21 @@ Function Menu_Shortcuts_Fix
 	Write-Host "`n  $($lang.Repair)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 
-	Write-Host "   * $($lang.HistoryClearDismSave)" -ForegroundColor Green
+	Write-Host "  * $($lang.HistoryClearDismSave)" -ForegroundColor Green
 	if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 		Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
-		Write-Host "   Remove-Item -Path ""HKLM:\SOFTWARE\Microsoft\WIMMount\Mounted Images\*"" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null" -ForegroundColor Green
+		Write-Host "  Remove-Item -Path ""HKLM:\SOFTWARE\Microsoft\WIMMount\Mounted Images\*"" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null" -ForegroundColor Green
 		Write-Host "  $('-' * 80)`n"
 	}
 	Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\WIMMount\Mounted Images\*" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 
-	Write-Host "   * $($lang.Clear_Bad_Mount)" -ForegroundColor Green
+	Write-Host "  * $($lang.Clear_Bad_Mount)" -ForegroundColor Green
 	if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 		Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
-		Write-Host "   dism /cleanup-wim" -ForegroundColor Green
-		Write-Host "   Clear-WindowsCorruptMountPoint" -ForegroundColor Green
+		Write-Host "  dism /cleanup-wim" -ForegroundColor Green
+		Write-Host "  Clear-WindowsCorruptMountPoint" -ForegroundColor Green
 		Write-Host "  $('-' * 80)`n"
 	}
 

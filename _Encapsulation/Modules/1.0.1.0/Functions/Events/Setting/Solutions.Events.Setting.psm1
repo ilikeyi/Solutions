@@ -965,7 +965,7 @@ Function Image_Set_Global_Primary_Key
 						if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 							Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 							Write-Host "  $('-' * 80)"
-							Write-Host "   Get-WindowsImage -ImagePath ""$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)""" -ForegroundColor Green
+							Write-Host "  Get-WindowsImage -ImagePath ""$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)""" -ForegroundColor Green
 							Write-Host "  $('-' * 80)`n"
 						}
 
@@ -979,7 +979,7 @@ Function Image_Set_Global_Primary_Key
 								if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 									Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 									Write-Host "  $('-' * 80)"
-									Write-Host "   Get-WindowsImage -ImagePath ""$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)"" -index ""$($_.ImageIndex)""" -ForegroundColor Green
+									Write-Host "  Get-WindowsImage -ImagePath ""$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)"" -index ""$($_.ImageIndex)""" -ForegroundColor Green
 									Write-Host "  $('-' * 80)`n"
 								}
 
@@ -1055,7 +1055,7 @@ Function Image_Set_Global_Primary_Key
 							if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 								Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 								Write-Host "  $('-' * 80)"
-								Write-Host "   Get-WindowsImage -ImagePath ""$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)""" -ForegroundColor Green
+								Write-Host "  Get-WindowsImage -ImagePath ""$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)""" -ForegroundColor Green
 								Write-Host "  $('-' * 80)`n"
 							}
 

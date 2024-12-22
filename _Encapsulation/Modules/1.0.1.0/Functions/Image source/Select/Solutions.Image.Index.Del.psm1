@@ -74,7 +74,7 @@ Function Image_Select_Del_UI
 						if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 							Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 							Write-Host "  $('-' * 80)"
-							Write-Host "   Remove-WindowsImage -ImagePath ""$($Global:Primary_Key_Image.FullPath)"" -Index ""$($item)"" -CheckIntegrity" -ForegroundColor Green
+							Write-Host "  Remove-WindowsImage -ImagePath ""$($Global:Primary_Key_Image.FullPath)"" -Index ""$($item)"" -CheckIntegrity" -ForegroundColor Green
 							Write-Host "  $('-' * 80)`n"
 						}
 

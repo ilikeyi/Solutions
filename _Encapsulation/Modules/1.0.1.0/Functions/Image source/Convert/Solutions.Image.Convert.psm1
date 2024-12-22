@@ -1132,7 +1132,7 @@ Function Image_Convert_Process
 				Write-Host "`n  $($lang.ConvertBackup)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
 				Write-Host "  $($Install_ESD)"
-				Write-Host "   >> "
+				Write-Host "  >> "
 				Write-Host "  $($SaveFileToEsd)"
 
 				$SaveFileToEsdTemp = Join-Path -Path $Global:MainMasterFolder -ChildPath "Backup\Install.wim\$($RandomGuid)"
@@ -1156,7 +1156,7 @@ Function Image_Convert_Process
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				Write-Host "   Get-WindowsImage -ImagePath ""$($Install_ESD)""" -ForegroundColor Green
+				Write-Host "  Get-WindowsImage -ImagePath ""$($Install_ESD)""" -ForegroundColor Green
 				Write-Host "  $('-' * 80)`n"
 			}
 
@@ -1277,7 +1277,7 @@ Function Image_Convert_Process
 				Write-Host "`n  $($lang.ConvertBackup)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
 				Write-Host "  $($Install_wim)"
-				Write-Host "   >> "
+				Write-Host "  >> "
 				Write-Host "  $($SaveFileToWim)"
 
 				$SaveFileToWimTemp = Join-Path -Path $Global:MainMasterFolder -ChildPath "Backup\Install.wim\$($RandomGuid)"
@@ -1310,7 +1310,7 @@ Function Image_Convert_Process
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				Write-Host "   Get-WindowsImage -ImagePath ""$($Install_wim)""" -ForegroundColor Green
+				Write-Host "  Get-WindowsImage -ImagePath ""$($Install_wim)""" -ForegroundColor Green
 				Write-Host "  $('-' * 80)`n"
 			}
 
@@ -1376,7 +1376,7 @@ Function Image_Convert_Process
 				Write-Host "`n  $($lang.ConvertBackup)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
 				Write-Host "  $($Install_wim)"
-				Write-Host "   >> "
+				Write-Host "  >> "
 				Write-Host "  $($SaveFileToWim)"
 
 				$SaveFileToWimTemp = Join-Path -Path $Global:MainMasterFolder -ChildPath "Backup\Install.wim\$($RandomGuid)"
@@ -1468,7 +1468,7 @@ Function Image_Convert_Process
 				Write-Host "`n  $($lang.ConvertBackup)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
 				Write-Host "  $($SaveFileToSwmMatch)"
-				Write-Host "   >> "
+				Write-Host "  >> "
 				Write-Host "  $($SaveFileToSwm)"
 
 				Check_Folder -chkpath $SaveBackToGuid

@@ -3999,8 +3999,8 @@ Function ISO_Create_Process
 					if (Test-Path -Path $Global:ISOSaveToFullName -PathType Leaf) {
 						Remove-Item -path "$($Global:ISOSaveToFullName).asc" -Force -ErrorAction SilentlyContinue
 
-						Write-Host "   * $($Global:ISOSaveToFullName).asc"
-						Write-Host "     $($lang.Uping)".PadRight(28) -NoNewline
+						Write-Host "  * $($Global:ISOSaveToFullName).asc"
+						Write-Host "    $($lang.Uping)".PadRight(28) -NoNewline
 						if ([string]::IsNullOrEmpty($Global:secure_password)) {
 							$arguments = @(
 								"--local-user",

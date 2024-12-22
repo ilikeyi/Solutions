@@ -945,7 +945,7 @@ Function Run_Expand
 						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 						Write-Host "  $($lang.Developers_Mode_Location)28" -ForegroundColor Yellow
 						Write-Host "  $('-' * 80)"
-						Write-Host "   Get-WindowsImage -ImagePath ""$($NewExpand.Path)\$($NewExpand.ImageFileName).$($NewExpand.Suffix)""" -ForegroundColor Green
+						Write-Host "  Get-WindowsImage -ImagePath ""$($NewExpand.Path)\$($NewExpand.ImageFileName).$($NewExpand.Suffix)""" -ForegroundColor Green
 						Write-Host "  $('-' * 80)`n"
 					}
 

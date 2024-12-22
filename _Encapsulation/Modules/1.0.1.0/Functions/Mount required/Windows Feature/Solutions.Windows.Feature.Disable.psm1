@@ -831,7 +831,7 @@ Function Feature_Disable_Process
 					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 					Write-Host "`n  $($lang.Developers_Mode_Location)1136" -ForegroundColor Green
 					Write-Host "  $('-' * 80)"
-					Write-Host "   Disable-WindowsOptionalFeature -Path ""$($test_mount_folder_Current)"" -FeatureName ""$($item)""" -ForegroundColor Green
+					Write-Host "  Disable-WindowsOptionalFeature -Path ""$($test_mount_folder_Current)"" -FeatureName ""$($item)""" -ForegroundColor Green
 					Write-Host "  $('-' * 80)`n"
 				}
 
@@ -842,7 +842,7 @@ Function Feature_Disable_Process
 					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 					Write-Host "  $($lang.Developers_Mode_Location)1137" -ForegroundColor Green
 					Write-Host "  $('-' * 80)"
-					Write-Host "   Disable-WindowsOptionalFeature -Path ""$($test_mount_folder_Current)"" -FeatureName ""$($item)""" -ForegroundColor Green
+					Write-Host "  Disable-WindowsOptionalFeature -Path ""$($test_mount_folder_Current)"" -FeatureName ""$($item)""" -ForegroundColor Green
 					Write-Host "  $('-' * 80)`n"
 				}
 

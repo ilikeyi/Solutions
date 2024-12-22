@@ -1549,7 +1549,7 @@ Function Image_Eject_Dont_Save_Current
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				Write-Host "   Dismount-WindowsImage -Path ""$($test_mount_folder_Current)"" -Discard" -ForegroundColor Green
+				Write-Host "  Dismount-WindowsImage -Path ""$($test_mount_folder_Current)"" -Discard" -ForegroundColor Green
 				Write-Host "  $('-' * 80)`n"
 			}
 
@@ -1628,7 +1628,7 @@ Function Image_Unmount_Primary_Key_Shortcuts
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 					Write-Host "  $('-' * 80)"
-					Write-Host "   Dismount-WindowsImage -Path ""$($test_mount_folder_Current)"" -Discard" -ForegroundColor Green
+					Write-Host "  Dismount-WindowsImage -Path ""$($test_mount_folder_Current)"" -Discard" -ForegroundColor Green
 					Write-Host "  $('-' * 80)`n"
 				}
 
@@ -1665,7 +1665,7 @@ Function Image_Unmount_Primary_Key_Shortcuts
 						if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 							Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 							Write-Host "  $('-' * 80)"
-							Write-Host "   Dismount-WindowsImage -Path ""$($test_mount_folder_Current)"" -Discard" -ForegroundColor Green
+							Write-Host "  Dismount-WindowsImage -Path ""$($test_mount_folder_Current)"" -Discard" -ForegroundColor Green
 							Write-Host "  $('-' * 80)`n"
 						}
 

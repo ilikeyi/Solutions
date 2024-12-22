@@ -1168,7 +1168,7 @@ Function Drive_Add_Process
 						if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 							Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 							Write-Host "  $('-' * 80)"
-							Write-Host "   Add-WindowsDriver -Path ""$($test_mount_folder_Current)"" -Driver ""$($_.FullName)"" -Recurse -ForceUnsigned" -ForegroundColor Green
+							Write-Host "  Add-WindowsDriver -Path ""$($test_mount_folder_Current)"" -Driver ""$($_.FullName)"" -Recurse -ForceUnsigned" -ForegroundColor Green
 							Write-Host "  $('-' * 80)`n"
 						}
 
@@ -1204,7 +1204,7 @@ Function Image_Get_Installed_Drive
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 77)"
-				Write-Host "   Get-WindowsDriver -Path ""$($test_mount_folder_Current)"" -All" -ForegroundColor Green
+				Write-Host "  Get-WindowsDriver -Path ""$($test_mount_folder_Current)"" -All" -ForegroundColor Green
 				Write-Host "  $('-' * 77)`n"
 			}
 
@@ -1244,7 +1244,7 @@ Function Image_Get_Installed_Drive
 	`$multiple_output = Import-Csv "`$(`$PSScriptRoot)\$([IO.Path]::GetFileName($TempSaveTo))" | Out-GridView -Title "$($lang.ViewDrive)" -passthru
 
 	if (`$null -eq `$multiple_output) {
-		Write-Host "   User Cancel" -ForegroundColor Red
+		Write-Host "  User Cancel" -ForegroundColor Red
 	} else {
 		ForEach (`$item in `$multiple_output) {
 			`$custom_array_Export += [PSCustomObject]@{
@@ -1272,10 +1272,10 @@ Function Image_Get_Installed_Drive
 
 		if (`$FileBrowser.ShowDialog() -eq "OK") {
 			Write-Host "`n  Save To:"
-			Write-Host "   `$(`$FileBrowser.FileName)" -ForegroundColor Green
+			Write-Host "  `$(`$FileBrowser.FileName)" -ForegroundColor Green
 			`$custom_array_Export | Export-CSV -NoType -Path `$FileBrowser.FileName
 		} else {
-			Write-Host "   User Cancel" -ForegroundColor Red
+			Write-Host "  User Cancel" -ForegroundColor Red
 		}
 	}
 "@ | Out-File -FilePath "$($TempSaveTo).ps1" -Encoding UTF8 -ErrorAction SilentlyContinue

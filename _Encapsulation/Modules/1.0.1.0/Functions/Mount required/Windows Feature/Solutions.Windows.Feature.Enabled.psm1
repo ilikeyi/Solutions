@@ -835,7 +835,7 @@ Function Feature_Enabled_Process
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 						Write-Host "  $('-' * 80)"
-						Write-Host "   Enable-WindowsOptionalFeature -Path ""$($TestFolderMountCurrent)"" -FeatureName ""$($item)"" -Source ""$($TestFolderMountSxs)"", ""$($TestFolderMountRoute)"" -All -LimitAccess" -ForegroundColor Green
+						Write-Host "  Enable-WindowsOptionalFeature -Path ""$($TestFolderMountCurrent)"" -FeatureName ""$($item)"" -Source ""$($TestFolderMountSxs)"", ""$($TestFolderMountRoute)"" -All -LimitAccess" -ForegroundColor Green
 						Write-Host "  $('-' * 80)`n"
 					}
 
@@ -845,7 +845,7 @@ Function Feature_Enabled_Process
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 						Write-Host "  $('-' * 80)"
-						Write-Host "   Enable-WindowsOptionalFeature -Path ""$($TestFolderMountCurrent)"" -FeatureName ""$($item)"" -Source ""$($TestFolderMountSxs)"" -All -LimitAccess" -ForegroundColor Green
+						Write-Host "  Enable-WindowsOptionalFeature -Path ""$($TestFolderMountCurrent)"" -FeatureName ""$($item)"" -Source ""$($TestFolderMountSxs)"" -All -LimitAccess" -ForegroundColor Green
 						Write-Host "  $('-' * 80)`n"
 					}
 	

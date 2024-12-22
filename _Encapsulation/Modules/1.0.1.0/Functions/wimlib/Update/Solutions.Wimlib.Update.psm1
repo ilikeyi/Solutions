@@ -956,7 +956,7 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 			#>
 			Write-Host "`n  $($lang.Event_Allow_Update_Rule)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "   Queue_Is_Update_Rule_Expand_To_All_$($NewMaster)_$($NewImageFileName)"
+			Write-Host "  Queue_Is_Update_Rule_Expand_To_All_$($NewMaster)_$($NewImageFileName)"
 			if ((Get-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_To_All_$($NewMaster)_$($NewImageFileName)" -ErrorAction SilentlyContinue).Value) {
 				Write-Host "  $($lang.Event_Allow_Update_To_All)" -ForegroundColor Green
 
@@ -965,7 +965,7 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 						Write-Host "  $('-' * 80)"
-						Write-Host "   Get-WindowsImage -ImagePath ""$($MasterFile)""" -ForegroundColor Green
+						Write-Host "  Get-WindowsImage -ImagePath ""$($MasterFile)""" -ForegroundColor Green
 						Write-Host "  $('-' * 80)`n"
 					}
 

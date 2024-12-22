@@ -495,7 +495,7 @@ Function Feature_Enabled_Match_Process
 					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 					Write-Host "`n  $($lang.Developers_Mode_Location)2236" -ForegroundColor Green
 					Write-Host "  $('-' * 80)"
-					Write-Host "   Enable-WindowsOptionalFeature -Path ""$($TestFolderMountCurrent)"" -FeatureName ""$($item)"" -Source ""$($TestFolderMountSxs)"", ""$($TestFolderMountRoute)"" -All -LimitAccess" -ForegroundColor Green
+					Write-Host "  Enable-WindowsOptionalFeature -Path ""$($TestFolderMountCurrent)"" -FeatureName ""$($item)"" -Source ""$($TestFolderMountSxs)"", ""$($TestFolderMountRoute)"" -All -LimitAccess" -ForegroundColor Green
 					Write-Host "  $('-' * 80)`n"
 				}
 
@@ -505,7 +505,7 @@ Function Feature_Enabled_Match_Process
 					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 					Write-Host "  $($lang.Developers_Mode_Location)2237" -ForegroundColor Green
 					Write-Host "  $('-' * 80)"
-					Write-Host "   Enable-WindowsOptionalFeature -Path ""$($TestFolderMountCurrent)"" -FeatureName ""$($item)"" -Source ""$($TestFolderMountSxs)"" -All -LimitAccess" -ForegroundColor Green
+					Write-Host "  Enable-WindowsOptionalFeature -Path ""$($TestFolderMountCurrent)"" -FeatureName ""$($item)"" -Source ""$($TestFolderMountSxs)"" -All -LimitAccess" -ForegroundColor Green
 					Write-Host "  $('-' * 80)`n"
 				}
 

@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-	Server
-	Single
-	Business.Semi.xml
+	   Created by: Yi's Solutions
+			Learn: https://fengyi.tel/solutions
+				   https://github.com/ilikeyi/solutions
+
+	 Architecture: Arm64
+	Applicable to: Server
+	Language type: Single
+	     Solution: Business.Semi.xml
 
 	Template GUID: 9d307984-ea52-4e67-9197-1b59d128a9b4
 	GUID: {GUID}

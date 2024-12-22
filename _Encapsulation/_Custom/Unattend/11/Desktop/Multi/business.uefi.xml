@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-	Desktop
-	multilingual
-	Business.UEFI.xml
+	   Created by: Yi's Solutions
+			Learn: https://fengyi.tel/solutions
+				   https://github.com/ilikeyi/solutions
+
+	 Architecture: Arm64, x64, x86
+	Applicable to: Desktop
+	Language type: Multilingual
+	     Solution: Business.UEFI.xml
 
 	Template GUID: c017acd8-5831-477f-8dab-e0ffbe6ba239
 	GUID: {GUID}

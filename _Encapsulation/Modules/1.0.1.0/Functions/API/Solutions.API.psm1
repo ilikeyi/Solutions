@@ -111,7 +111,7 @@ Function Solutions_API_Help
 	Write-Host "  $('-' * 80)"
 	write-host "  " -NoNewline
 	Write-host " API Set " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-host "   $($lang.Setting), $($lang.API)"
+	Write-host "  $($lang.Setting), $($lang.API)"
 
 	write-host
 	write-host "  " -NoNewline
@@ -121,8 +121,8 @@ Function Solutions_API_Help
 	write-host
 	write-host "  " -NoNewline
 	Write-host " API * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-host "     $($lang.Running), $($lang.RuleName)"
-	Write-host "              API Yi" -ForegroundColor Green
+	Write-host "    $($lang.Running), $($lang.RuleName)"
+	Write-host "             API Yi" -ForegroundColor Green
 
 	Get_Next
 }

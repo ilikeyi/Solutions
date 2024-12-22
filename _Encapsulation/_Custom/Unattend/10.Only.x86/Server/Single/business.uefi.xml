@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-	Server
-	Single
-	Business.UEFI.xml
+	   Created by: Yi's Solutions
+			Learn: https://fengyi.tel/solutions
+				   https://github.com/ilikeyi/solutions
+
+	 Architecture: x86
+	Applicable to: Server
+	Language type: Single
+	     Solution: Business.UEFI.xml
 
 	Template GUID: a18fc327-2903-4b1b-aa34-55cac40a1909
 	GUID: {GUID}

@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-	Desktop
-	multilingual
-	Consumer.Semi.xml
+	   Created by: Yi's Solutions
+			Learn: https://fengyi.tel/solutions
+				   https://github.com/ilikeyi/solutions
+
+	 Architecture: Arm64, x64, x86
+	Applicable to: Desktop
+	Language type: Multilingual
+	     Solution: Consumer.Semi.xml
 
 	Template GUID: d0879941-0153-4700-ab1e-426ab2ebaddf
 	GUID: {GUID}

@@ -482,7 +482,7 @@ Function Cleanup_Components_Process
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				Write-Host "   Get-WindowsPackage -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
+				Write-Host "  Get-WindowsPackage -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
 				Write-Host "  $('-' * 80)`n"
 			}
 

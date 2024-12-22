@@ -45,7 +45,7 @@ Function Image_Select_Index_UI
 									if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 										Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 										Write-Host "  $('-' * 80)"
-										Write-Host "   Repair-WindowsImage -Path ""$($test_mount_folder_Current)"" -RestoreHealth" -ForegroundColor Green
+										Write-Host "  Repair-WindowsImage -Path ""$($test_mount_folder_Current)"" -RestoreHealth" -ForegroundColor Green
 										Write-Host "  $('-' * 80)`n"
 									}
 
@@ -66,7 +66,7 @@ Function Image_Select_Index_UI
 								if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 									Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 									Write-Host "  $('-' * 80)"
-									Write-Host "   Mount-WindowsImage -ImagePath ""$($Global:Primary_Key_Image.FullPath)"" -Index ""$($_.Tag)"" -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
+									Write-Host "  Mount-WindowsImage -ImagePath ""$($Global:Primary_Key_Image.FullPath)"" -Index ""$($_.Tag)"" -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
 									Write-Host "  $('-' * 80)`n"
 								}
 
@@ -1689,7 +1689,7 @@ Function Image_Select_Mul_UI
 		if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 			Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "   Get-WindowsImage -ImagePath ""$($ImageFileName)""" -ForegroundColor Green
+			Write-Host "  Get-WindowsImage -ImagePath ""$($ImageFileName)""" -ForegroundColor Green
 			Write-Host "  $('-' * 80)`n"
 		}
 

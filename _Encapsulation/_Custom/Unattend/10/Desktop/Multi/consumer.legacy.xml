@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-	Desktop
-	multilingual
-	Consumer.Legacy.xml
+	   Created by: Yi's Solutions
+			Learn: https://fengyi.tel/solutions
+				   https://github.com/ilikeyi/solutions
+
+	 Architecture: Arm64, x64, x86
+	Applicable to: Desktop
+	Language type: Multilingual
+	     Solution: Consumer.Legacy.xml
 
 	Template GUID: b4772b7a-dad5-41f9-afb4-db634ceaa6a6
 	GUID: {GUID}

@@ -957,7 +957,7 @@ Function Event_Process_Task_Need_Mount
 		if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 			Write-Host "  $($lang.Command)" -ForegroundColor Green
 			Write-Host "  $('-' * 80)"
-			Write-Host "   Dism /Image:""$($test_mount_Sources)"" /cleanup-image /StartComponentCleanup /ResetBase" -ForegroundColor Green
+			Write-Host "  Dism /Image:""$($test_mount_Sources)"" /cleanup-image /StartComponentCleanup /ResetBase" -ForegroundColor Green
 			Write-Host "  $('-' * 80)`n"
 		}
 
@@ -1107,7 +1107,7 @@ Function Event_Process_Task_Need_Mount
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 77)"
-				Write-Host "   Dism.exe /Image:""$($test_mount_Sources)"" /Get-Intl" -ForegroundColor Green
+				Write-Host "  Dism.exe /Image:""$($test_mount_Sources)"" /Get-Intl" -ForegroundColor Green
 				Write-Host "  $('-' * 77)`n"
 			}
 
@@ -1359,7 +1359,7 @@ Function Event_Process_Task_Need_Mount
 								if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 									Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 									Write-Host "  $('-' * 80)"
-									Write-Host "   Dismount-WindowsImage -Path ""$($Temp_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
+									Write-Host "  Dismount-WindowsImage -Path ""$($Temp_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
 									Write-Host "  $('-' * 80)`n"
 								}
 
@@ -1377,7 +1377,7 @@ Function Event_Process_Task_Need_Mount
 									if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 										Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 										Write-Host "  $('-' * 80)"
-										Write-Host "   Dismount-WindowsImage -Path ""$($Temp_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
+										Write-Host "  Dismount-WindowsImage -Path ""$($Temp_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
 										Write-Host "  $('-' * 80)`n"
 									}
 
@@ -1526,7 +1526,7 @@ Function Event_Process_Task_Need_Mount
 								if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 									Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 									Write-Host "  $('-' * 80)"
-									Write-Host "   Dismount-WindowsImage -Path ""$($Temp_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
+									Write-Host "  Dismount-WindowsImage -Path ""$($Temp_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
 									Write-Host "  $('-' * 80)`n"
 								}
 
@@ -1542,7 +1542,7 @@ Function Event_Process_Task_Need_Mount
 								if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 									Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 									Write-Host "  $('-' * 80)"
-									Write-Host "   Dismount-WindowsImage -Path ""$($Temp_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
+									Write-Host "  Dismount-WindowsImage -Path ""$($Temp_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
 									Write-Host "  $('-' * 80)`n"
 								}
 
@@ -1589,7 +1589,7 @@ Function Event_Process_Task_Need_Mount
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				Write-Host "   Dismount-WindowsImage -Path ""$($Temp_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
+				Write-Host "  Dismount-WindowsImage -Path ""$($Temp_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
 				Write-Host "  $('-' * 80)`n"
 			}
 
@@ -1608,7 +1608,7 @@ Function Event_Process_Task_Need_Mount
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				Write-Host "   Dismount-WindowsImage -Path ""$($Temp_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
+				Write-Host "  Dismount-WindowsImage -Path ""$($Temp_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
 				Write-Host "  $('-' * 80)`n"
 			}
 
@@ -1973,7 +1973,7 @@ Function Healthy_Check_Process
 		if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 			Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "   Repair-WindowsImage -Path ""$($NewPath)"" -ScanHealth).ImageHealthState" -ForegroundColor Green
+			Write-Host "  Repair-WindowsImage -Path ""$($NewPath)"" -ScanHealth).ImageHealthState" -ForegroundColor Green
 			Write-Host "  $('-' * 80)`n"
 		}
 
@@ -2003,7 +2003,7 @@ Function Healthy_Check_Process
 					return $False
 				}
 				default {
-					Write-Host "   Error" -ForegroundColor Red
+					Write-Host "  Error" -ForegroundColor Red
 					Logs_Write -Main -Verbose "[Onekey] index: $($Script:MarkNowItem), Mount: $($NewPath)" -Level Error -Tag "Check Damage"
 
 					return $False
@@ -2094,7 +2094,7 @@ Function Eject_Forcibly_All
 							if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 								Write-Host "  $($lang.Command)" -ForegroundColor Yellow
 								Write-Host "  $('-' * 80)"
-								Write-Host "   Dismount-WindowsImage -Path ""$($Eject_Expand_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
+								Write-Host "  Dismount-WindowsImage -Path ""$($Eject_Expand_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
 								Write-Host "  $('-' * 80)`n"
 							}
 
@@ -2158,7 +2158,7 @@ Function Eject_Forcibly_All
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 						Write-Host "  $($lang.Command)" -ForegroundColor Yellow
 						Write-Host "  $('-' * 80)"
-						Write-Host "   Dismount-WindowsImage -Path ""$($Eject_Main_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
+						Write-Host "  Dismount-WindowsImage -Path ""$($Eject_Main_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
 						Write-Host "  $('-' * 80)`n"
 					}
 
