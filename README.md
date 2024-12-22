@@ -112,7 +112,7 @@ Detailed introduction
 
 <h4><pre>B.&nbsp;&nbsp;Encapsulation Script</pre></h4>
 <ol>Developed using the PowerShell language, it follows an open source license and can be distributed arbitrarily without copyright restrictions.</ol>
-
+<ul>
 <details>
   <summary>Function Introduction</summary>
 <ul>
@@ -188,9 +188,11 @@ Detailed introduction
   </dl>
 </ul>
 </details>
+</ul>
 
 <br>
 
+<ul>
 <details>
   <summary>Prerequisites</summary>
 
@@ -232,9 +234,11 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
 
 </ul>
 </details>
+</ul>
 
 <br>
 
+<ul>
 <details>
   <summary>Get the package script</summary>
 <p>   After using the quick download guide</p>
@@ -288,8 +292,8 @@ D:\Yi.Solutions\_Encapsulation\_SIP.ps1
       </dl>
     </dd>
   </dl>
-</ul>
 </details>
+</ul>
 
 <br>
 
