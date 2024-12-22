@@ -112,11 +112,11 @@ Detailed introduction
 
 <h4><pre>B.&nbsp;&nbsp;Encapsulation Script</pre></h4>
 <ol>Developed using the PowerShell language, it follows an open source license and can be distributed arbitrarily without copyright restrictions.</ol>
+
 <ul>
 <details>
   <summary>Function Introduction</summary>
-<ul>
-  <dl>
+  <ul>
     <dd>
       <p>1.&nbsp;&nbsp;The main functions of the encapsulated script</p>
       <dl>
@@ -132,7 +132,7 @@ Detailed introduction
         <dd>1.10.&nbsp;&nbsp;Mount points</dd>
       </dl>
     </dd>
-
+  
 <br>
     <dd>
       <p>2.&nbsp;&nbsp;For the main functions of the image source</p>
@@ -186,7 +186,7 @@ Detailed introduction
       </dl>
     </dd>
   </dl>
-</ul>
+  </ul>
 </details>
 </ul>
 
@@ -195,10 +195,9 @@ Detailed introduction
 <ul>
 <details>
   <summary>Prerequisites</summary>
-
-<ul>
-  <p>1.&nbsp;&nbsp;Require</p>
+  <ul>
   <dl>
+    <p>1.&nbsp;&nbsp;Require</p>
     <dd>
       <p>PowerShell Version</p>
       <dl>
@@ -241,6 +240,7 @@ Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
 <ul>
 <details>
   <summary>Get the package script</summary>
+ <ul>
 <p>   After using the quick download guide</p>
 
 <br>
