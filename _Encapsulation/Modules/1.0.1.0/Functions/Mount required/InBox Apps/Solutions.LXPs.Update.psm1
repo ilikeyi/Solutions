@@ -258,7 +258,6 @@ Function LXPs_Update_UI
 				$GetSelectLXPsLanguage = $Temp_Queue_Is_InBox_Apps_Update
 			} else {
 				if (-not (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\InBox" -Name "$(Get_GPS_Location)_SelectLXPsLanguage" -ErrorAction SilentlyContinue)) {
-					$DeployinboxGetSources = $False
 					$DeployinboxGetSourcesOnly = @()
 	
 					$Region = Language_Region
@@ -267,13 +266,12 @@ Function LXPs_Update_UI
 
 						if (Test-Path -Path $TestFolderRegion -PathType Container) {
 							if((Get-ChildItem $TestFolderRegion -Recurse -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) {
-								$DeployinboxGetSources = $True
 								$DeployinboxGetSourcesOnly += $itemRegion.Region
 							}
 						}
 					}
 	
-					if ($DeployinboxGetSources) {
+					if ($DeployinboxGetSourcesOnly.count -gt 0) {
 						Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\InBox" -name "$(Get_GPS_Location)_SelectLXPsLanguage" -value $DeployinboxGetSourcesOnly -Multi
 					} else {
 						Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\InBox" -name "$(Get_GPS_Location)_SelectLXPsLanguage" -value "" -Multi
@@ -663,13 +661,11 @@ Function LXPs_Update_UI
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 
 		if (Test-Path -Path $Autopilot.Sources -PathType Container) {
 			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_Select_Sources_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Autopilot.Sources -Force
 			Refresh_Add_InBox_Apps_New_Sources
-
-			Write-Host $Autopilot.Region
 
 			$UI_Main_Is_Wait_Add.Controls | ForEach-Object {
 				if ($_ -is [System.Windows.Forms.CheckBox]) {
@@ -683,9 +679,9 @@ Function LXPs_Update_UI
 		}
 
 		if (Autopilot_LXPs_Update_UI_Save) {
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}

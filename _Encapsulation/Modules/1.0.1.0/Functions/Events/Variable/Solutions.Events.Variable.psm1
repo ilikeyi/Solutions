@@ -59,7 +59,7 @@ Function Event_Reset_Variable
 
 	if (-not $Silent) {
 		Write-Host "`n  $($lang.EventManagerClear)"
-		Write-Host "  $($lang.AllClear)".PadRight(28) -NoNewline
+		Write-Host "  $($lang.AllClear): " -NoNewline
 	}
 
 
@@ -141,7 +141,7 @@ Function Event_Reset_Variable
 	Event_Reset_Specified_Variable -Init $init
 
 	if (-not $Silent) {
-		Write-Host "  $($lang.Done)" -ForegroundColor Green
+		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 	}
 }
 

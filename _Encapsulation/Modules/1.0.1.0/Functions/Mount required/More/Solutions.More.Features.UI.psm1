@@ -1159,7 +1159,7 @@ Function Feature_More_UI
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 
 		<#
 			.固化更新
@@ -1230,9 +1230,9 @@ Function Feature_More_UI
 		}
 
 		if (Autopilot_Feature_More_UI_Save) {
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}
@@ -1336,10 +1336,10 @@ Function Image_Clear_Superseded
 					Write-Host "  $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
 					Write-Host $item -ForegroundColor Red
 
-					Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+					Write-Host "  $($lang.Del): " -NoNewline
 					try {
 						Remove-WindowsPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove.log" -Path $test_mount_folder_Current -PackageName $item -ErrorAction SilentlyContinue | Out-Null
-						Write-Host $lang.Done -ForegroundColor Green
+						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 					} catch {
 						Write-Host $_
 						Write-Host "  $($lang.Failed)" -ForegroundColor Red

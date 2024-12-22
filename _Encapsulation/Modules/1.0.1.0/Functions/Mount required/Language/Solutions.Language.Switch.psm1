@@ -421,7 +421,7 @@ Function Language_Change_UI
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 
 		New-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 		New-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value "" -Force
@@ -437,9 +437,9 @@ Function Language_Change_UI
 		}
 
 		if (Autopilot_Language_Change_UI_Save) {
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}

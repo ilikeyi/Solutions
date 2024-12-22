@@ -368,7 +368,7 @@ Function Event_Completion_Setting_UI
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 
 		switch ($Autopilot) {
 			"NoProcess" { $UI_Main_After_Finishing_NoProcess.Checked = $True }
@@ -381,9 +381,9 @@ Function Event_Completion_Setting_UI
 		}
 
 		if (Autopilot_Event_Completion_Setting_UI_Save) {
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}

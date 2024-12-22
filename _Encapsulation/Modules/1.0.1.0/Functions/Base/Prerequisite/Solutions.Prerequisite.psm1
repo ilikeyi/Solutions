@@ -81,9 +81,9 @@ Function Prerequisite
 
 		if ($GetOldVersion -eq $SaveCurrentVersion) {
 			Write-Host " $($lang.UpdateNotExecuted) " -BackgroundColor DarkGreen -ForegroundColor White
-			Write-Host "  $($lang.Del)".PadRight(22) -NoNewline -ForegroundColor Green
+			Write-Host "  $($lang.Del): " -NoNewline -ForegroundColor Green
 			Remove-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Update" -Name "IsUpdate_Clean" -Force -ErrorAction SilentlyContinue | out-null
-			Write-host $lang.Done
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
 			Write-Host " $($lang.Del) " -BackgroundColor DarkRed -ForegroundColor White
 

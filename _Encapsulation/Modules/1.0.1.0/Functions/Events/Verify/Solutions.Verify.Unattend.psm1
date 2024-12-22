@@ -13,12 +13,11 @@
 			Write-Host $MainFolderFullname -ForegroundColor Green
 
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Wim_Rule_Verify)".PadRight(28) -NoNewline
-
+			Write-Host "  $($lang.Wim_Rule_Verify): " -NoNewline
 			if (TestXMLFile -path $MainFolderFullname) {
 				Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host $lang.Failed -ForegroundColor Red
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 				$Error_Autopilot_File += $MainFolderFullname
 			}
 

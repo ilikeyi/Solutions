@@ -1683,9 +1683,9 @@ Function Cumulative_updates_Delete_UI
 				$UI_Main_Superseded_Rule_Exclude.Checked = $False
 			}
 
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 		if (Autopilot_Cumulative_updates_Delete_UI_Save) {
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
 			Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
@@ -1694,7 +1694,7 @@ Function Cumulative_updates_Delete_UI
 				Write-Host "  $($item)" -ForegroundColor Green
 			}
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}
@@ -1882,10 +1882,10 @@ Function Update_Del_Process
 					Write-Host "  $($lang.FullName): " -NoNewline -ForegroundColor Yellow
 					Write-Host $_.FullName -ForegroundColor Green
 
-					Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+					Write-Host "  $($lang.Del): " -NoNewline
 					try {
 						Remove-WindowsPackage -Path $test_mount_folder_Current -PackagePath $_.FullName -ErrorAction SilentlyContinue | Out-Null
-						Write-Host $lang.Done -ForegroundColor Green
+						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 					} catch {
 						Write-Host $_
 						Write-Host "  $($lang.Failed)" -ForegroundColor Red

@@ -839,8 +839,9 @@ Function Feature_Enabled_Process
 						Write-Host "  $('-' * 80)`n"
 					}
 
-					Write-Host "  $($lang.Enable)".PadRight(28) -NoNewline
+					Write-Host "  $($lang.Enable): " -NoNewline
 					Enable-WindowsOptionalFeature -Path $TestFolderMountCurrent -FeatureName $item -Source $TestFolderMountSxs, $TestFolderMountRoute -All -LimitAccess | Out-Null
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 				} else {
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
@@ -848,15 +849,15 @@ Function Feature_Enabled_Process
 						Write-Host "  Enable-WindowsOptionalFeature -Path ""$($TestFolderMountCurrent)"" -FeatureName ""$($item)"" -Source ""$($TestFolderMountSxs)"" -All -LimitAccess" -ForegroundColor Green
 						Write-Host "  $('-' * 80)`n"
 					}
-	
-					Write-Host "  $($lang.Enable)".PadRight(28) -NoNewline
+
+					Write-Host "  $($lang.Enable): " -NoNewline
 					Enable-WindowsOptionalFeature -Path $TestFolderMountCurrent -FeatureName $item -Source $TestFolderMountSxs -All -LimitAccess | Out-Null
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 				}
-				Write-Host $lang.Done -ForegroundColor Green
 			} catch {
-				Write-Host "  $($lang.Enable)".PadRight(28) -NoNewline
 				Write-Host $_
-				Write-Host "  $($lang.Failed)" -ForegroundColor Red
+				Write-Host "  $($lang.Enable): " -NoNewline
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
 
 			Write-Host

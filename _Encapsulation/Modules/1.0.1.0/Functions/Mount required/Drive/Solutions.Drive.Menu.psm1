@@ -339,13 +339,13 @@ Function Drive_Menu
 		"Dev" {
 			Write-Host "`n  $($lang.Developers_Mode)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Setting)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Setting): " -NoNewline
 			if ($Global:Developers_Mode) {
 				$Global:Developers_Mode = $False
-				Write-Host $lang.Disable -ForegroundColor Green
+				Write-Host " $($lang.Disable) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
 				$Global:Developers_Mode = $True
-				Write-Host $lang.Enable -ForegroundColor Green
+				Write-Host " $($lang.Enable) " -BackgroundColor DarkGreen -ForegroundColor White
 			}
 
 			ToWait -wait 2

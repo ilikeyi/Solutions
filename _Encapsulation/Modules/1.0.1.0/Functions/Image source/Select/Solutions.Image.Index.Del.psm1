@@ -78,10 +78,10 @@ Function Image_Select_Del_UI
 							Write-Host "  $('-' * 80)`n"
 						}
 
-						Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+						Write-Host "  $($lang.Del): " -NoNewline
 						try {
 							Remove-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove.log" -ImagePath "$($Global:Primary_Key_Image.FullPath)" -Index $item -CheckIntegrity -ErrorAction SilentlyContinue | Out-Null
-							Write-Host $lang.Done -ForegroundColor Green
+							Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 						} catch {
 							Write-Host $_
 							Write-Host "  $($lang.Failed)" -ForegroundColor Red

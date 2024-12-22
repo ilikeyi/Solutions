@@ -835,8 +835,9 @@ Function Feature_Disable_Process
 					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "  $($lang.Disable)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.Disable): " -NoNewline
 				Disable-WindowsOptionalFeature -Path $test_mount_folder_Current -FeatureName $item | Out-Null
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
@@ -846,10 +847,10 @@ Function Feature_Disable_Process
 					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "  $($lang.Disable)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.Disable): " -NoNewline
 				Disable-WindowsOptionalFeature -Path $test_mount_folder_Current -FeatureName $item | Out-Null
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			}
-			Write-Host "  $($lang.Done)" -ForegroundColor Green
 
 			Write-Host
 		}

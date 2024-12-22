@@ -1424,8 +1424,9 @@ Function Image_Eject_Save_Current
 				Write-Host "  $('-' * 80)`n"
 			}
 
+			Write-Host "  $($lang.Save): " -NoNewline
 			Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $test_mount_folder_Current | Out-Null
-			Write-Host "  $($lang.Done)" -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
 			Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 		}
@@ -1474,9 +1475,9 @@ Function Image_Save_Primary_Key_Shortcuts
 					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "  $($lang.Save)".PadRight(22) -NoNewline
+				Write-Host "  $($lang.Save): " -NoNewline
 				Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $test_mount_folder_Current | Out-Null
-				Write-Host $lang.Done -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
 				Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 			}
@@ -1510,9 +1511,9 @@ Function Image_Save_Primary_Key_Shortcuts
 							Write-Host "  $('-' * 80)`n"
 						}
 
-						Write-Host "  $($lang.Save)".PadRight(22) -NoNewline
+						Write-Host "  $($lang.Save): " -NoNewline
 						Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $test_mount_folder_Current | Out-Null
-						Write-Host $lang.Done -ForegroundColor Green
+						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 					} else {
 						Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 					}
@@ -1553,9 +1554,10 @@ Function Image_Eject_Dont_Save_Current
 				Write-Host "  $('-' * 80)`n"
 			}
 
+			Write-Host "  $($lang.Unmount): " -NoNewline
 			Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path $test_mount_folder_Current -Discard -ErrorAction SilentlyContinue | Out-Null
 			Image_Mount_Force_Del -NewPath $test_mount_folder_Current
-			Write-Host "  $($lang.Done)" -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
 			Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 		}
@@ -1632,10 +1634,10 @@ Function Image_Unmount_Primary_Key_Shortcuts
 					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "  $($lang.Unmount)".PadRight(22) -NoNewline
+				Write-Host "  $($lang.Unmount): " -NoNewline
 				Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path $test_mount_folder_Current -Discard -ErrorAction SilentlyContinue | Out-Null
 				Image_Mount_Force_Del -NewPath $test_mount_folder_Current
-				Write-Host $lang.Done -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
 				Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 			}
@@ -1669,10 +1671,10 @@ Function Image_Unmount_Primary_Key_Shortcuts
 							Write-Host "  $('-' * 80)`n"
 						}
 
-						Write-Host "  $($lang.Unmount)".PadRight(22) -NoNewline
+						Write-Host "  $($lang.Unmount): " -NoNewline
 						Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path $test_mount_folder_Current -Discard -ErrorAction SilentlyContinue | Out-Null
 						Image_Mount_Force_Del -NewPath $test_mount_folder_Current
-						Write-Host $lang.Done -ForegroundColor Green
+						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 					} else {
 						Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 					}

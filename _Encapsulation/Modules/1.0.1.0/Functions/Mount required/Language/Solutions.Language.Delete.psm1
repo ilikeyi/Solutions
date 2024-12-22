@@ -1793,7 +1793,7 @@ Function Language_Delete_UI
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 
 		<#
 			.按相反的顺序删除语言包
@@ -1858,9 +1858,9 @@ Function Language_Delete_UI
 		}
 
 		if (Autopilot_Language_Delete_UI_Save) {
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}
@@ -1921,10 +1921,10 @@ Function Language_Delete_Process
 						Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 						Write-Host $_.FullName -ForegroundColor Green
 
-						Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+						Write-Host "  $($lang.Del): " -NoNewline
 						try {
 							Remove-WindowsPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove.log" -Path $test_mount_folder_Current -PackagePath $_.FullName -ErrorAction SilentlyContinue | Out-Null
-							Write-Host $lang.Done -ForegroundColor Green
+							Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 						} catch {
 							Write-Host $_
 							Write-Host "  $($lang.Failed)" -ForegroundColor Red
@@ -1941,10 +1941,10 @@ Function Language_Delete_Process
 						Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 						Write-Host $_.FullName -ForegroundColor Green
 
-						Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+						Write-Host "  $($lang.Del): " -NoNewline
 						try {
 							Remove-WindowsPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove.log" -Path $test_mount_folder_Current -PackagePath $_.FullName -ErrorAction SilentlyContinue | Out-Null
-							Write-Host $lang.Done -ForegroundColor Green
+							Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 						} catch {
 							Write-Host $_
 							Write-Host "  $($lang.Failed)" -ForegroundColor Red

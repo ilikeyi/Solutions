@@ -3417,7 +3417,7 @@ Function ISO_Create_UI
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 
 		<#
 			.选择发行日期：年
@@ -3694,9 +3694,9 @@ Function ISO_Create_UI
 		Refres_Event_Tasks_ISO_Create
 
 		if (Autopilot_ISO_Save) {
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}
@@ -3717,7 +3717,7 @@ Function Autopilot_ISO_Import
 
 	Write-Host "`n  $($FileName)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	Write-Host "  $($lang.CRCSHA)".PadRight(28) -NoNewline
+	Write-Host "  $($lang.CRCSHA): " -NoNewline
 
 	<#
 		.判断配置文件是否存在
@@ -3728,7 +3728,7 @@ Function Autopilot_ISO_Import
 		#>
 		try {
 			$Autopilot = Get-Content -Raw -Path $FileName | ConvertFrom-Json
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
 			Write-Host "`n  $($lang.Solution): $($lang.IsCreate)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
@@ -3754,10 +3754,10 @@ Function Autopilot_ISO_Import
 				ISO_Create_UI -Autopilot $Autopilot.Deploy.ImageSource.Tasks.ISO -ISO
 			}
 		} catch {
-			Write-Host "  $($lang.Failed)" -ForegroundColor Red
+			Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 		}
 	} else {
-		Write-Host "  $($lang.NoInstallImage)" -ForegroundColor Red
+		Write-Host " $($lang.NoInstallImage) " -BackgroundColor DarkRed -ForegroundColor White
 	}
 }
 
@@ -3776,29 +3776,28 @@ Function ISO_Local_Language_Calc
 		.ISO 目录里已有语言
 	#>
 	$Region = Language_Region
-	ForEach ($itemRegion in $Region) {
-		[int]$NewSearchFileCalc = 0
+	$Search_Language_File_Custom = @(
+		"*Windows-Server-Language-Pack*"
+		"*Windows-Client-Language-Pack*"
+	)
 
+	$NewSearchFileRule = @(
+		"setup.exe.mui"
+		"dism.exe.mui"
+		"winsetup.dll.mui"
+	)
+
+	ForEach ($itemRegion in $Region) {
 		$TestFolderRegion = Join-Path -Path $Global:Image_source -ChildPath "Sources\$($itemRegion.Region)"
 
 		if (Test-Path -Path $TestFolderRegion -PathType Container) {
-			$NewSearchFileRule = @(
-				"setup.exe.mui"
-				"dism.exe.mui"
-				"winsetup.dll.mui"
-			)
-
 			foreach ($NewSearchItem in $NewSearchFileRule) {
-				$TestFolderRegionNewItem = Join-Path -Path $Global:Image_source -ChildPath "Sources\$($itemRegion.Region)\$($NewSearchItem)"
+				$TestFolderRegionNewItem = Join-Path -Path $TestFolderRegion -ChildPath $NewSearchItem
 
 				if (Test-Path -Path $TestFolderRegionNewItem -PathType leaf) {
-#					Write-Host "  $($TestFolderRegionNewItem), $($NewSearchFileCalc)" -ForegroundColor Yellow
-					$NewSearchFileCalc++
+					$Language_Sources_ISO += $itemRegion.Region
+					break
 				}
-			}
-
-			if ($NewSearchFileCalc -ge 2) {
-				$Language_Sources_ISO += $itemRegion.Region
 			}
 		}
 	}
@@ -3819,8 +3818,17 @@ Function ISO_Local_Language_Calc
 			ForEach ($itemRegion in $Region) {
 				ForEach ($ItemSearchMain in $SearchMainPath) {
 					if (Test-Path -Path "$($ItemSearchMain)\$($itemRegion.Region)" -PathType Container) {
-						if((Get-ChildItem "$($ItemSearchMain)\$($itemRegion.Region)" -Recurse -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) {
-							$Language_Sources_ISO += $itemRegion.Region
+						$Init_Folder_All_File = @()
+						Get-ChildItem -Path "$($ItemSearchMain)\$($itemRegion.Region)" -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | ForEach-Object {
+							$Init_Folder_All_File += $_.FullName
+						}
+
+						ForEach ($Basic in $Search_Language_File_Custom) {
+							ForEach ($WildCard in $Init_Folder_All_File) {
+								if ([IO.Path]::GetFileName($WildCard) -like $Basic) {
+									$Language_Sources_ISO += $itemRegion.Region
+								}
+							}
 						}
 					}
 				}
@@ -3838,8 +3846,17 @@ Function ISO_Local_Language_Calc
 					ForEach ($itemRegion in $Region) {
 						ForEach ($ItemSearchExpand in $SearchExpandPath) {
 							if (Test-Path -Path "$($ItemSearchExpand)\$($itemRegion.Region)" -PathType Container) {
-								if((Get-ChildItem "$($ItemSearchExpand)\$($itemRegion.Region)" -Recurse -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) {
-									$Language_Sources_ISO += $itemRegion.Region
+								$Init_Folder_All_File = @()
+								Get-ChildItem -Path "$($ItemSearchExpand)\$($itemRegion.Region)" -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | ForEach-Object {
+									$Init_Folder_All_File += $_.FullName
+								}
+
+								ForEach ($Basic in $Search_Language_File_Custom) {
+									ForEach ($WildCard in $Init_Folder_All_File) {
+										if ([IO.Path]::GetFileName($WildCard) -like $Basic) {
+											$Language_Sources_ISO += $itemRegion.Region
+										}
+									}
 								}
 							}
 						}
@@ -3850,6 +3867,21 @@ Function ISO_Local_Language_Calc
 	}
 
 	$Calc_All_Language_Group = $Language_Sources_ISO | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
+
+	if ($Global:Developers_Mode) {
+		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)ISO_Dev_1"
+
+		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		if ($Calc_All_Language_Group.Count -gt 0) {
+			ForEach ($item in $Calc_All_Language_Group) {
+				Write-Host "  $($lang.LanguageCode): " -NoNewline
+				Write-Host $item -ForegroundColor Green
+			}
+		} else {
+			Write-Host "  $($lang.NoWork)" -ForegroundColor Red
+		}
+	}
 
 	return @{
 		Lang  = $Calc_All_Language_Group
@@ -3947,11 +3979,11 @@ Function ISO_Create_Process
 				Start-Process -FilePath $OscdimgArch -ArgumentList $Arguments -Wait -NoNewWindow
 			}
 
-			Write-Host "  $($lang.Uping)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Uping): " -NoNewline
 			if (Test-Path -Path $Global:ISOSaveToFullName -PathType Leaf) {
-				Write-Host "  $($lang.Done)" -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host "  $($lang.FailedCreateFile)" -ForegroundColor Red
+				Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 				return
 			}
 
@@ -3965,7 +3997,7 @@ Function ISO_Create_Process
 			Write-Host "  $('-' * 80)"
 			if ($Global:BypassTPM) {
 				Write-Host "  $($lang.Operable)" -ForegroundColor Green
-				Write-Host "  $($lang.LXPsWaitAddUpdate)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.LXPsWaitAddUpdate): " -NoNewline
 
 				$arguments = @(
 					"""$(Join-Path -Path $Global:ISOSaveToFolder -ChildPath $Global:ISOSaveToFileName)"""
@@ -3980,9 +4012,9 @@ Function ISO_Create_Process
 
 				Start-Process -FilePath $BypassTPMCmd -ArgumentList $Arguments -wait -WindowStyle Minimized
 
-				Write-Host "  $($lang.Done)" -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
 
 			<#
@@ -4000,7 +4032,7 @@ Function ISO_Create_Process
 						Remove-Item -path "$($Global:ISOSaveToFullName).asc" -Force -ErrorAction SilentlyContinue
 
 						Write-Host "  * $($Global:ISOSaveToFullName).asc"
-						Write-Host "    $($lang.Uping)".PadRight(28) -NoNewline
+						Write-Host "    $($lang.Uping): " -NoNewline
 						if ([string]::IsNullOrEmpty($Global:secure_password)) {
 							$arguments = @(
 								"--local-user",
@@ -4030,9 +4062,9 @@ Function ISO_Create_Process
 						}
 
 						if (Test-Path -Path "$($Global:ISOSaveToFullName).asc" -PathType Leaf) {
-							Write-Host $lang.Done -ForegroundColor Green
+							Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 						} else {
-							Write-Host $lang.Inoperable -ForegroundColor Red
+							Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 						}
 					} else {
 						Write-Host "  $($lang.FailedCreateFile)"
@@ -4054,7 +4086,7 @@ Function ISO_Create_Process
 			if ($Global:CreateSHA256) {
 				Write-Host "  $($Global:ISOSaveToFullName).sha256" -ForegroundColor Green
 
-				Write-Host "  $($lang.Uping)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.Uping): " -NoNewline
 
 				<#
 					.删除旧文件 .sha256
@@ -4068,7 +4100,7 @@ Function ISO_Create_Process
 				"$($calchash.Hash)  $($Global:ISOSaveToFileName)" | Out-File -FilePath "$($Global:ISOSaveToFullName).sha256" -Encoding ASCII -ErrorAction SilentlyContinue | Out-Null
 
 				if (Test-Path -Path "$($Global:ISOSaveToFullName).sha256" -PathType Leaf) {
-					Write-Host $lang.Done -ForegroundColor Green
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 				} else {
 					Write-Host "$($lang.FailedCreateFile): $($Global:ISOSaveToFullName).sha256" -ForegroundColor Red
 				}

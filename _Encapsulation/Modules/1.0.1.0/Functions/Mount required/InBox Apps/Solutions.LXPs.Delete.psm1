@@ -447,7 +447,7 @@ Function LXPs_Remove_UI
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 
 		$UI_Main_Is_Wait_Del.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.CheckBox]) {
@@ -460,9 +460,9 @@ Function LXPs_Remove_UI
 		}
 
 		if (Autopilot_LXPs_Remove_UI_Save) {
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}
@@ -514,7 +514,7 @@ Function InBox_Apps_LIPs_Delete_Process
 					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.Del): " -NoNewline
 				try {
 					Get-appxprovisionedpackage -Path $test_mount_folder_Current | where-object {
 						if ($_.packagename –like "*LanguageExperiencePack*$($item)*") {
@@ -523,13 +523,15 @@ Function InBox_Apps_LIPs_Delete_Process
 					}
 
 					if ($New_wait_delete_match.count -gt 0) {
-						Write-Host "`n  $($lang.YesWork)" -ForegroundColor Yellow
+						Write-Host " $($lang.YesWork) " -BackgroundColor DarkGreen -ForegroundColor White
+
+						Write-Host "`n  $($lang.LXPsWaitRemove)" -ForegroundColor Yellow
 						Write-Host "  $('-' * 80)"
 						foreach ($itemnew in $New_wait_delete_match) {
 							InBox_Apps_LIPs_Delete_Process_add -packnewname $itemnew
 						}
 					} else {
-						Write-Host $lang.NoWork -ForegroundColor Red
+						Write-Host " $($lang.NoWork) " -BackgroundColor DarkRed -ForegroundColor White
 					}
 				} catch {
 					Write-Host $_
@@ -561,11 +563,11 @@ Function InBox_Apps_LIPs_Delete_Process_add
 	$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
 	Write-Host "  $($packnewname)"
-	Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+	Write-Host "  $($lang.Del): " -NoNewline
 
 	try {
 		Remove-AppxProvisionedPackage -Path $test_mount_folder_Current -PackageName $packnewname -ErrorAction SilentlyContinue | Out-Null
-		Write-Host $lang.Done -ForegroundColor Green
+		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 	} catch {
 		Write-Host $_
 		Write-Host "  $($lang.Failed)" -ForegroundColor Red

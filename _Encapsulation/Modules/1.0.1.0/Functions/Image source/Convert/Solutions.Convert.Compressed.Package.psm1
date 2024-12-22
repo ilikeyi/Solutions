@@ -25,13 +25,13 @@ Function Image_Convert_Create_Info_Process
 	Write-Host "`n  $($lang.Wim_Rule_Check)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 	Write-Host "  $($SaveTo)\install.json"
-	Write-Host "  $($lang.Wim_Rule_Verify)".PadRight(28) -NoNewline
+	Write-Host "  $($lang.Wim_Rule_Verify): " -NoNewline
 
 	try {
 		$Autopilot = Get-Content -Raw -Path "$($SaveTo)\install.json" | ConvertFrom-Json
-		Write-Host $lang.Done -ForegroundColor Green
+		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 	} catch {
-		Write-Host $lang.Failed -ForegroundColor Red
+		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 	}
 }
 
@@ -72,13 +72,13 @@ Function Covert_Software_Package_Unpack
 							if (Test-Path -Path "$($SaveToName)\$($_.BaseName)\$($item)\$($itemRegion.Region)\$($_.BaseName).zip" -PathType Leaf) {
 								Write-Host "  $($lang.Existed)`n"
 							} else {
-								Write-Host "  $($lang.AddQueue)".PadRight(28) -NoNewline
+								Write-Host "  $($lang.AddQueue): " -NoNewline
 								$Script:CompressedPackage += @{
 									Name   = $_.BaseName
 									Folder = "$($_.FullName)\$($item)\$($itemRegion.Region)"
 								}
 
-								Write-Host $lang.Done -ForegroundColor Green
+								Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 								Write-Host
 							}
 						}
@@ -101,20 +101,21 @@ Function Covert_Software_Package_Unpack
 			Push-Location $item.Folder
 
 			Write-Host "   * $($item.Folder)\$($item.Name).zip"
-			Write-Host "  $($lang.Uping)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Uping): " -NoNewline
 
 			$arguments = "a", "-tzip", """$($TempFolderUpdate)\$($item.Name).zip""", "*.*", "-mcu=on", "-r", "-mx9";
 			Start-Process $Verify_Install_Path $arguments -Wait -WindowStyle Minimized
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
-			Write-Host "  $fullnewpathsha256"
-			Write-Host "  $($lang.Uping)".PadRight(28) -NoNewline
+			Write-Host "`n  $($fullnewpathsha256)"
+			Write-Host "  $($lang.Uping): " -NoNewline
 			Remove-Item -Path $fullnewpathsha256 -Force -ErrorAction SilentlyContinue
 
 			$calchash = (Get-FileHash "$($TempFolderUpdate)\$($item.Name).zip" -Algorithm SHA256)
 			"$($calchash.Hash)  $($item.Name).zip" | Out-File -FilePath "$($TempFolderUpdate)\$($item.Name).zip.sha256" -Encoding ASCII -ErrorAction SilentlyContinue
-			Write-Host "  $($lang.Done)" -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
-			Remove_Tree "$($item.Folder)"
+			Remove_Tree $item.Folder
 
 			Copy-Item -Path "$($TempFolderUpdate)\*" -Destination $item.Folder -Recurse -Force -ErrorAction SilentlyContinue
 

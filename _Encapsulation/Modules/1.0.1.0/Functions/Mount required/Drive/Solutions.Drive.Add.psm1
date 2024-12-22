@@ -1093,9 +1093,9 @@ Function Drive_Add_UI
 			}
 		}
 
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 		if (Autopilot_Drive_Add_UI_Save) {
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
 			Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
@@ -1104,7 +1104,7 @@ Function Drive_Add_UI
 				Write-Host "  $($item)" -ForegroundColor Green
 			}
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}
@@ -1173,9 +1173,9 @@ Function Drive_Add_Process
 						}
 
 						Write-Host "  $($_.FullName)" -ForegroundColor Green
-						Write-Host "  $($lang.AddTo)".PadRight(28) -NoNewline
+						Write-Host "  $($lang.AddTo): " -NoNewline
 						Add-WindowsDriver -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Add.log" -Path $test_mount_folder_Current -Driver $_.FullName -Recurse -ForceUnsigned -ErrorAction SilentlyContinue | Out-Null
-						Write-Host $lang.Done -ForegroundColor Green
+						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
 						Write-Host
 					}

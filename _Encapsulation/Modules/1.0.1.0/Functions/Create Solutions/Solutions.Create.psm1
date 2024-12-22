@@ -6075,7 +6075,7 @@ volume
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 
 		<#
 			.部署到
@@ -6936,10 +6936,10 @@ volume
 		Refres_Event_Tasks_Solutions_Add
 
 		if (Autopilot_Solutions_Save) {
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
-			
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
+
 			$UI_Main.ShowDialog() | Out-Null
 		}
 	} else {
@@ -7319,6 +7319,19 @@ Function Solutions_Office_Copy_Config_Prerequisite
 		(Get-Content $_.FullName) | ForEach-Object {
 			$_ -replace "{ImageLanguage}", $TempOfficeLanguage
 		} | Set-Content -Path $_.FullName -ErrorAction SilentlyContinue
+
+		Write-Host "`n  $($lang.Wim_Rule_Verify)"
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+		Write-Host $_.FullName -ForegroundColor Green
+
+		Write-Host
+		Write-Host "  $($lang.Wim_Rule_Verify): " -NoNewline
+		if (TestXMLFile -path $_.FullName) {
+			Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
+		} else {
+			Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+		}
 	}
 }
 
@@ -7862,13 +7875,12 @@ Function Solutions_Create_Deploy_Report
 	Write-Host "`n  $($lang.Wim_Rule_Check)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 	Write-Host "  $($Save_engine_to_new_path_json)"
-	Write-Host "  $($lang.Wim_Rule_Verify)".PadRight(28) -NoNewline
-
+	Write-Host "  $($lang.Wim_Rule_Verify): " -NoNewline
 	try {
 		$Autopilot = Get-Content -Raw -Path $Save_engine_to_new_path_json | ConvertFrom-Json
-		Write-Host $lang.Done -ForegroundColor Green
+		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 	} catch {
-		Write-Host $lang.Failed -ForegroundColor Red
+		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 	}
 }
 
@@ -8156,7 +8168,18 @@ $($Save_Microsoft_Windows_PE)
 		   -replace "{WindowsShellSetupFirstLogonCommands}", $Print_Save_Microsoft_Windows_Setup
 	} | Set-Content -Path $FullFilename -ErrorAction SilentlyContinue
 
-	Write-Host "  $($lang.Done)" -ForegroundColor Green
+	Write-Host "`n  $($lang.Wim_Rule_Verify)"
+	Write-Host "  $('-' * 80)"
+	Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+	Write-Host $FullFilename -ForegroundColor Green
+
+	Write-Host
+	Write-Host "  $($lang.Wim_Rule_Verify): " -NoNewline
+	if (TestXMLFile -path $FullFilename) {
+		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
+	} else {
+		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+	}
 }
 
 <#

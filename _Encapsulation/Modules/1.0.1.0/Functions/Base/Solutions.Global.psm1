@@ -238,7 +238,7 @@ Function Archive
 	Write-Host "  $($lang.SaveTo): " -NoNewline -ForegroundColor Yellow
 	Write-Host $to -ForegroundColor Green
 
-	Write-Host "  $($lang.UpdateUnpacking)".PadRight(28) -NoNewline
+	Write-Host "  $($lang.UpdateUnpacking): " -NoNewline
 
 	$Verify_Install_Path = Get_Zip -Run "7z.exe"
 	if (Test-Path -Path $Verify_Install_Path -PathType leaf) {
@@ -267,11 +267,11 @@ Function Archive
 			Start-Process -FilePath $Verify_Install_Path -ArgumentList $Arguments -Wait -WindowStyle Minimized
 		}
 
-		Write-Host $lang.Done -ForegroundColor Green
+		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 	} else {
 		Add-Type -AssemblyName System.IO.Compression.FileSystem
 		Expand-Archive -LiteralPath $filename -DestinationPath $to -force
-		Write-Host $lang.Done -ForegroundColor Green
+		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 	}
 
 	Write-Host

@@ -135,6 +135,7 @@ Function Language_Extract_UI
 			}
 
 			if ($Script:TempSelectLXPsLanguage.Count -gt 0) {
+				$Script:TempSelectLXPsLanguage = $Script:TempSelectLXPsLanguage | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -name "$(Get_GPS_Location)_Add_List" -value $Script:TempSelectLXPsLanguage -Multi
 			} else {
 				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
@@ -1791,21 +1792,30 @@ Function Language_Extract_UI
 	#>
 	$Region = Language_Region
 	if (-not (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -Name "$(Get_GPS_Location)_Add_List" -ErrorAction SilentlyContinue)) {
-		$DeployinboxGetSources = $False
 		$DeployinboxGetSourcesOnly = @()
+		$NewSearchFileRule = @(
+			"setup.exe.mui"
+			"dism.exe.mui"
+			"winsetup.dll.mui"
+		)
 
 		ForEach ($itemRegion in $Region) {
 			$TestFolderRegion = Join-Path -Path $Global:Image_source -ChildPath "Sources\$($itemRegion.Region)"
 
 			if (Test-Path -Path $TestFolderRegion -PathType Container) {
-				if((Get-ChildItem $TestFolderRegion -Recurse -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) {
-					$DeployinboxGetSources = $True
-					$DeployinboxGetSourcesOnly += $itemRegion.Region
+				foreach ($NewSearchItem in $NewSearchFileRule) {
+					$TestFolderRegionNewItem = Join-Path -Path $TestFolderRegion -ChildPath $NewSearchItem
+
+					if (Test-Path -Path $TestFolderRegionNewItem -PathType leaf) {
+						$DeployinboxGetSourcesOnly += $itemRegion.Region
+						break
+					}
 				}
 			}
 		}
 
-		if ($DeployinboxGetSources) {
+		if ($DeployinboxGetSourcesOnly.Count -gt 0) {
+			$DeployinboxGetSourcesOnly = $DeployinboxGetSourcesOnly | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 			Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -name "$(Get_GPS_Location)_Add_List" -value $DeployinboxGetSourcesOnly -Multi
 		} else {
 			Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -name "$(Get_GPS_Location)_Add_List" -value "" -Multi
@@ -2187,8 +2197,7 @@ Function Language_Extract_UI
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.LanguageExtract)".PadRight(18) -NoNewline -ForegroundColor Yellow
-
+		Write-Host "  $($lang.LanguageExtract): " -NoNewline -ForegroundColor Yellow
 
 		<#
 			.提取：仅提取已选语言
@@ -2327,9 +2336,9 @@ Function Language_Extract_UI
 
 			}
 
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}

@@ -213,11 +213,10 @@ Function Image_Select_Add_UI
 						Write-Host "  $($lang.MountedIndex): " -NoNewline
 						Write-Host $item.ImageIndex -ForegroundColor Yellow
 
-						Write-Host "  $($lang.Export_Image)".PadRight(28) -NoNewline
-
+						Write-Host "  $($lang.Export_Image): " -NoNewline
 						try {
 							Export-WindowsImage -SourceImagePath $Script:TempSourcesFile -SourceIndex $item.ImageIndex -DestinationImagePath $Global:Primary_Key_Image.FullPath -CompressionType max -CheckIntegrity -ErrorAction SilentlyContinue | Out-Null
-							Write-Host $lang.Done -ForegroundColor Green	
+							Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 						} catch {
 							Write-Host $_
 							Write-Host "  $($lang.Failed)" -ForegroundColor Red

@@ -70,10 +70,10 @@ Function Image_Select_Index_UI
 									Write-Host "  $('-' * 80)`n"
 								}
 
-								Write-Host "  $($lang.Mount)".PadRight(28) -NoNewline
+								Write-Host "  $($lang.Mount): " -NoNewline
 								try {
 									Mount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Mount.log" -ImagePath $Global:Primary_Key_Image.FullPath -Index $_.Tag -Path $test_mount_folder_Current
-									Write-Host $lang.Done -ForegroundColor Green
+									Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 								} catch {
 									Write-Host $_
 									Write-Host "  $($lang.Failed)" -ForegroundColor Red
@@ -838,10 +838,10 @@ Function Image_Select_Index_UI
 					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
-				Write-Host "`n  $($lang.apply)".PadRight(28) -NoNewline -ForegroundColor Yellow
+				Write-Host "`n  $($lang.apply): " -NoNewline -ForegroundColor Yellow
 				try {
 					Invoke-Expression -Command "Expand-WindowsImage $($Arguments)"
-					Write-Host $lang.Done -ForegroundColor Green
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 				} catch {
 					Write-Host $_
 					Write-Host "  $($lang.Failed)" -ForegroundColor Red

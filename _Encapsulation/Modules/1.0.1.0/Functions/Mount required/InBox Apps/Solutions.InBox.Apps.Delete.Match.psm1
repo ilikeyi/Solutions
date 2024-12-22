@@ -901,7 +901,7 @@ Function InBox_Apps_Match_Delete_UI
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 
 		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
 
@@ -940,9 +940,9 @@ Function InBox_Apps_Match_Delete_UI
 		if (InBox_Apps_Delete_Check_Match_Customize -RuleNaming -SelectApps -Save) {
 			Refres_Event_Tasks_InBox_Apps_Delete_Match
 
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}
@@ -1113,10 +1113,10 @@ Function InBox_Apps_Match_Delete_Process
 					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.Del): " -NoNewline
 				try {
 					Remove-AppxProvisionedPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove-AppxProvisionedPackage.log" -Path $test_mount_folder_Current -PackageName $item -ErrorAction SilentlyContinue | Out-Null
-					Write-Host $lang.Done -ForegroundColor Green
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 				} catch {
 					Write-Host $_
 					Write-Host "  $($lang.Failed)" -ForegroundColor Red

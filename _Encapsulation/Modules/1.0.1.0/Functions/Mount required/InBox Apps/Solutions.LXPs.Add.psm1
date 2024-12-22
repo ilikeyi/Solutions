@@ -1922,7 +1922,7 @@ Function LXPs_Region_Add
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 
 		switch ($Autopilot.Schome) {
 			"Skip" {
@@ -1992,9 +1992,9 @@ Function LXPs_Region_Add
 		}
 
 		if (Autopilot_LXPs_Region_Add_Save) {
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}
@@ -2108,7 +2108,7 @@ Function InBox_Apps_LIPs_Clean_Process
 							Write-Host "$($InBoxAppsTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 							Write-Host "  $('-' * 80)"
 
-							Write-Host "  $($lang.RuleFileType): ".PadRight(21) -NoNewline -ForegroundColor Yellow
+							Write-Host "  $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
 							Write-Host $item -ForegroundColor Green
 
 							if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
@@ -2117,10 +2117,10 @@ Function InBox_Apps_LIPs_Clean_Process
 								Write-Host "  Remove-AppxProvisionedPackage -Path ""$($test_mount_folder_Current)"" -PackageName ""$($item)""`n" -ForegroundColor Green
 							}
 
-							Write-Host "  $($lang.Del)".PadRight(21) -NoNewline
+							Write-Host "  $($lang.Del): " -NoNewline
 							try {
 								Remove-AppxProvisionedPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove-AppxProvisionedPackage.log" -Path $test_mount_folder_Current -PackageName $item -ErrorAction SilentlyContinue | Out-Null
-								Write-Host $lang.Done -ForegroundColor Green
+								Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 							} catch {
 								Write-Host $_
 								Write-Host "  $($lang.Failed)" -ForegroundColor Red
@@ -2160,7 +2160,7 @@ Function InBox_Apps_LIPs_Add_Mark_Process
 		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Select_Queue_LXPs_Add_Custom_Select) {
-			Write-Host "  $($item.Language)".PadRight(20) -NoNewline
+			Write-Host "  $($item.Language): " -NoNewline
 			Write-Host $item.Path -ForegroundColor Green
 		}
 
@@ -2217,10 +2217,9 @@ Function InBox_Apps_Add_Mark_Process
 			}
 
 			Write-Host "  $($Path)\License.xml" -ForegroundColor Yellow
-			Write-Host "  $($lang.IsLicense)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.IsLicense): " -NoNewline
 			Add-AppxProvisionedPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\AppxProvisionedPackage.log" -Path $test_mount_folder_Current -PackagePath $_.FullName -LicensePath "$($Path)\License.xml" -Regions "All" -ErrorAction SilentlyContinue | Out-Null
-			Write-Host $lang.Done -ForegroundColor Green
-
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			Write-Host
 		} else {
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
@@ -2230,10 +2229,9 @@ Function InBox_Apps_Add_Mark_Process
 				Write-Host "  $('-' * 80)`n"
 			}
 
-			Write-Host "  $($lang.NoLicense)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.NoLicense): " -NoNewline
 			Add-AppxProvisionedPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Add-AppxProvisionedPackage.log" -Path $test_mount_folder_Current -PackagePath $_.FullName -SkipLicense -Regions "All" -ErrorAction SilentlyContinue | Out-Null
-			Write-Host $lang.Done -ForegroundColor Green
-
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			Write-Host
 		}
 	}

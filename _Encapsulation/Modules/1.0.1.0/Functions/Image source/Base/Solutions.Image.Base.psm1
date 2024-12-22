@@ -108,10 +108,10 @@ Function Image_Mount_Check
 				Write-Host "  $('-' * 80)`n"
 			}
 
-			Write-Host "  $($lang.Mount)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Mount): " -NoNewline
 			try {
 				Mount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Mount.log" -ImagePath "$($MountFileName)" -Index $Index -Path $test_mount_folder | Out-Null
-				Write-Host $lang.Done -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} catch {
 				Write-Host $_
 				Write-Host "  $($lang.Failed)" -ForegroundColor Red

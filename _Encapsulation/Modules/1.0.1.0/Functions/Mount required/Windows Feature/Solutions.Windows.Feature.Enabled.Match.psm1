@@ -440,7 +440,7 @@ Function Feature_Enabled_Match_UI
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 
 		$UI_Main_Rule.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.CheckBox]) {
@@ -453,9 +453,9 @@ Function Feature_Enabled_Match_UI
 		}
 
 		if (Autopilot_Feature_Enabled_Match_UI_Save) {
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}
@@ -484,7 +484,6 @@ Function Feature_Enabled_Match_Process
 		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Queue_Is_Feature_Enable_Match_Custom_Select) {
 			Write-Host "  $($item)"
-			Write-Host "  $($lang.Enable)".PadRight(28) -NoNewline
 
 			$TestFolderMountRoute = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\Windows"
 			$TestFolderMountCurrent = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
@@ -499,7 +498,9 @@ Function Feature_Enabled_Match_Process
 					Write-Host "  $('-' * 80)`n"
 				}
 
+				Write-Host "  $($lang.Enable): " -NoNewline
 				Enable-WindowsOptionalFeature -Path $TestFolderMountCurrent -FeatureName $item -Source $TestFolderMountSxs, $TestFolderMountRoute -All -LimitAccess | Out-Null
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
@@ -509,9 +510,10 @@ Function Feature_Enabled_Match_Process
 					Write-Host "  $('-' * 80)`n"
 				}
 
+				Write-Host "  $($lang.Enable): " -NoNewline
 				Enable-WindowsOptionalFeature -Path $TestFolderMountCurrent -FeatureName $item -Source $TestFolderMountSxs -All -LimitAccess | Out-Null
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			}
-			Write-Host "  $($lang.Done)" -ForegroundColor Green
 
 			Write-Host
 		}

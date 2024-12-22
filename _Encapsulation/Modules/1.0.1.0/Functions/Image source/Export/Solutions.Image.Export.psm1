@@ -129,11 +129,10 @@ Function Image_Select_Export_UI
 										Write-Host "  $($lang.MountedIndex): " -NoNewline
 										Write-Host $itemDetail.ImageIndex -ForegroundColor Yellow
 
-										Write-Host "  $($lang.AddTo)".PadRight(28) -NoNewline
-
+										Write-Host "  $($lang.AddTo): " -NoNewline
 										try {
 											dism /ScratchDir:"""$(Get_Mount_To_Temp)""" /LogPath:"$(Get_Mount_To_Logs)\Export.log" /export-image /SourceImageFile:"""$($Global:Primary_Key_Image.FullPath)""" /swmfile:"""$($Global:Primary_Key_Image.Path)\$($Global:Primary_Key_Image.ImageFileName)*.$($Global:Primary_Key_Image.Suffix)""" /SourceIndex:"""$($itemDetail.ImageIndex)""" /DestinationImageFile:"""$($FileBrowser.FileName)""" /Compress:max /CheckIntegrity
-											Write-Host $lang.Done -ForegroundColor Green
+											Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 										} catch {
 											Write-Host $_
 											Write-Host "  $($lang.Failed)" -ForegroundColor Red
@@ -175,10 +174,10 @@ Function Image_Select_Export_UI
 											Write-Host "  $('-' * 80)`n"
 										}
 
-										Write-Host "  $($lang.Export_Image)".PadRight(28) -NoNewline
+										Write-Host "  $($lang.Export_Image): " -NoNewline
 										try {
 											Export-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Export.log" -SourceImagePath "$($Global:Primary_Key_Image.FullPath)" -SourceIndex $item -DestinationImagePath $FileBrowser.FileName -CompressionType max -CheckIntegrity -ErrorAction SilentlyContinue | Out-Null
-											Write-Host $lang.Done -ForegroundColor Green
+											Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 										} catch {
 											Write-Host $_
 											Write-Host "  $($lang.Failed)" -ForegroundColor Red
@@ -220,10 +219,10 @@ Function Image_Select_Export_UI
 										Write-Host "  $('-' * 80)`n"
 									}
 	
-									Write-Host "  $($lang.Export_Image)".PadRight(28) -NoNewline
+									Write-Host "  $($lang.Export_Image): " -NoNewline
 									try {
 										Export-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Export.log" -SourceImagePath $Global:Primary_Key_Image.FullPath -SourceIndex $item -DestinationImagePath $TempReBuildWim -CompressionType max -CheckIntegrity -ErrorAction SilentlyContinue | Out-Null
-										Write-Host $lang.Done -ForegroundColor Green
+										Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 									} catch {
 										Write-Host $_
 										Write-Host "  $($lang.Failed)" -ForegroundColor Red
@@ -237,13 +236,20 @@ Function Image_Select_Export_UI
 						<#
 							.导出，检查是否成功
 						#>
+						Write-Host "`n  $($lang.Wim_Rule_Verify)"
+						Write-Host "  $('-' * 80)"
+						Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+						Write-Host $TempReBuildWim -ForegroundColor Green
+
+						Write-Host
+						Write-Host "  $($lang.Wim_Rule_Verify): " -NoNewline
 						if (Test-Path -Path $TempReBuildWim -PathType Leaf) {
-							Remove-Item -Path "$($Global:Primary_Key_Image.FullPath)" -ErrorAction SilentlyContinue
-							Rename-Item -Path $TempReBuildWim -NewName "$($Global:Primary_Key_Image.FullPath)" -ErrorAction SilentlyContinue
+							Remove-Item -Path $Global:Primary_Key_Image.FullPath -ErrorAction SilentlyContinue
+							Rename-Item -Path $TempReBuildWim -NewName $Global:Primary_Key_Image.FullPath -ErrorAction SilentlyContinue
 	
-							Write-Host "  $($lang.Done)" -ForegroundColor Green
+							Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 						} else {
-							Write-Host "  $($lang.AddTo), $($lang.Failed)" -ForegroundColor Red
+							Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 						}
 	
 						Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "04292024"

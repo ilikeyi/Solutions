@@ -147,13 +147,14 @@ Function Solutions_Menu
 
 			Write-Host "`n  $($File_Path)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Del): " -NoNewline
 			if (Test-Path -Path $File_Path -PathType Container) {
 				Remove_Tree $File_Path
-				Write-Host $lang.Done -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host $lang.Failed -ForegroundColor Red
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
+			write-host
 
 			ToWait -wait 2
 			Solutions_Menu
@@ -163,13 +164,14 @@ Function Solutions_Menu
 
 			Write-Host "`n  $($File_Path)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Del): " -NoNewline
 			if (Test-Path -Path $File_Path -PathType leaf) {
 				Remove_Tree $File_Path
-				Write-Host $lang.Done -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host $lang.Failed -ForegroundColor Red
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
+			write-host
 
 			ToWait -wait 2
 			Solutions_Menu
@@ -179,13 +181,14 @@ Function Solutions_Menu
 
 			Write-Host "`n  $($File_Path)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Del): " -NoNewline
 			if (Test-Path -Path $File_Path -PathType leaf) {
 				Remove_Tree $File_Path
-				Write-Host $lang.Done -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host $lang.Failed -ForegroundColor Red
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
+			write-host
 
 			ToWait -wait 2
 			Solutions_Menu
@@ -195,37 +198,38 @@ Function Solutions_Menu
 
 			Write-Host "`n  $($File_Path)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Del): " -NoNewline
 			if (Test-Path -Path $File_Path -PathType Container) {
 				Remove_Tree $File_Path
-				Write-Host $lang.Done -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host $lang.Failed -ForegroundColor Red
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
+			write-host
 
 			$File_Path = Join-Path -Path $Global:Image_source -ChildPath "Sources\Unattend.xml"
-
 			Write-Host "`n  $($File_Path)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Del): " -NoNewline
 			if (Test-Path -Path $File_Path -PathType leaf) {
 				Remove_Tree $File_Path
-				Write-Host $lang.Done -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host $lang.Failed -ForegroundColor Red
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
+			write-host
 
 			$File_Path = Join-Path -Path $Global:Image_source -ChildPath "Autounattend.xml"
-
 			Write-Host "`n  $($File_Path)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Del): " -NoNewline
 			if (Test-Path -Path $File_Path -PathType leaf) {
 				Remove_Tree $File_Path
-				Write-Host $lang.Done -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host $lang.Failed -ForegroundColor Red
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
+			write-host
 
 			ToWait -wait 2
 			Solutions_Menu
@@ -235,12 +239,12 @@ Function Solutions_Menu
 
 			Write-Host "`n  $($File_Path_MainFolder)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Del): " -NoNewline
 			if (Test-Path -Path $File_Path_MainFolder -PathType Container) {
 				Remove_Tree $File_Path_MainFolder
-				Write-Host $lang.Done -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host $lang.Failed -ForegroundColor Red
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
 
 			ToWait -wait 2
@@ -251,12 +255,12 @@ Function Solutions_Menu
 
 			Write-Host "`n  $($File_Path_Unattend)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Del): " -NoNewline
 			if (Test-Path -Path $File_Path_Unattend -PathType Leaf) {
 				Remove_Tree $File_Path_Unattend
-				Write-Host $lang.Done -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host $lang.Failed -ForegroundColor Red
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
 
 			ToWait -wait 2
@@ -267,12 +271,12 @@ Function Solutions_Menu
 
 			Write-Host "`n  $($File_Path_Office)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Del): " -NoNewline
 			if (Test-Path -Path $File_Path_Office -PathType Container) {
 				Remove_Tree $File_Path_Office
-				Write-Host $lang.Done -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host $lang.Failed -ForegroundColor Red
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
 
 			ToWait -wait 2
@@ -283,36 +287,36 @@ Function Solutions_Menu
 
 			Write-Host "`n  $($File_Path_MainFolder)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Del): " -NoNewline
 			if (Test-Path -Path $File_Path_MainFolder -PathType Container) {
 				Remove_Tree $File_Path_MainFolder
-				Write-Host $lang.Done -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host $lang.Failed -ForegroundColor Red
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
 
 			$File_Path_Unattend = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\Windows\Panther\Unattend.xml"
 
 			Write-Host "`n  $($File_Path_Unattend)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Del): " -NoNewline
 			if (Test-Path -Path $File_Path_Unattend -PathType Leaf) {
 				Remove_Tree $File_Path_Unattend
-				Write-Host $lang.Done -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host $lang.Failed -ForegroundColor Red
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
 
 			$File_Path_Office = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\Users\Public\Desktop\Office"
 
 			Write-Host "`n  $($File_Path_Office)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Del): " -NoNewline
 			if (Test-Path -Path $File_Path_Office -PathType Container) {
 				Remove_Tree $File_Path_Office
-				Write-Host $lang.Done -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host $lang.Failed -ForegroundColor Red
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
 
 			ToWait -wait 2
@@ -448,13 +452,13 @@ Function Solutions_Menu
 		"Dev" {
 			Write-Host "`n  $($lang.Developers_Mode)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Setting)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Setting): " -NoNewline
 			if ($Global:Developers_Mode) {
 				$Global:Developers_Mode = $False
-				Write-Host $lang.Disable -ForegroundColor Green
+				Write-Host " $($lang.Disable) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
 				$Global:Developers_Mode = $True
-				Write-Host $lang.Enable -ForegroundColor Green
+				Write-Host " $($lang.Enable) " -BackgroundColor DarkGreen -ForegroundColor White
 			}
 
 			ToWait -wait 2

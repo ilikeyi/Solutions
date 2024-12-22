@@ -29,17 +29,17 @@ Function Other_Tasks_Clear
 		if (Verify_Is_Current_Same) {
 			$Local_Regedit_File_System = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\$((Get-Module -Name Solutions).Author)"
 			Write-Host "  $($Local_Regedit_File_System)" -ForegroundColor Green
-			Write-Host "  $($lang.Del)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Del): " -NoNewline
 			if (Test-Path -Path $Local_Regedit_File_System -PathType Container) {
 				Remove_Tree -Path $Local_Regedit_File_System
 
 				if (Test-Path -Path $Local_Regedit_File_System -PathType Container) {
-					Write-Host $lang.Failed -ForegroundColor Red
+					Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 				} else {
-					Write-Host $lang.Done -ForegroundColor Green
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 				}
 			} else {
-				Write-Host "  $($lang.NoInstallImage)" -ForegroundColor Red
+				Write-Host " $($lang.NoInstallImage) " -BackgroundColor DarkRed -ForegroundColor White
 			}
 		} else {
 			Write-Host "  $($lang.NotMounted)" -ForegroundColor Red

@@ -919,7 +919,7 @@ Function Image_Set_Global_Primary_Key
 								Write-Host "  $('-' * 80)`n"
 							}
 
-							Write-Host "  $($lang.Refresh)".PadRight(28) -NoNewline
+							Write-Host "  $($lang.Refresh): " -NoNewline
 						}
 						Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
 
@@ -946,11 +946,11 @@ Function Image_Set_Global_Primary_Key
 							Remove-Item -Path $Export_To_New_Xml
 
 							if (-not $Silent) {
-								Write-Host $lang.Done -ForegroundColor Green
+								Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 							}
 						} else {
 							if (-not $Silent) {
-								Write-Host $lang.SelectFromError -ForegroundColor Red
+								Write-Host " $($lang.SelectFromError) " -BackgroundColor DarkRed -ForegroundColor White
 								Write-Host "  $($lang.ConvertChk)"
 								Write-Host "  $($Export_To_New_Xml)" -ForegroundColor Red
 							}
@@ -971,7 +971,7 @@ Function Image_Set_Global_Primary_Key
 
 						
 						if (-not $Silent) {
-							Write-Host "  $($lang.Refresh)".PadRight(28) -NoNewline
+							Write-Host "  $($lang.Refresh): " -NoNewline
 						}
 
 						try {
@@ -1000,7 +1000,7 @@ Function Image_Set_Global_Primary_Key
 							}
 
 							if (-not $Silent) {
-								Write-Host $lang.Done -ForegroundColor Green
+								Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 							}
 						} catch {
 							if (-not $Silent) {
@@ -1011,8 +1011,8 @@ Function Image_Set_Global_Primary_Key
 					}
 				} else {
 					if (-not $Silent) {
-						Write-Host "  $($lang.Refresh)".PadRight(28) -NoNewline
-						Write-Host $lang.SelectFromError -ForegroundColor Red
+						Write-Host "  $($lang.Refresh): " -NoNewline
+						Write-Host " $($lang.SelectFromError) " -BackgroundColor DarkRed -ForegroundColor White
 						Write-Host "  $($lang.NoInstallImage)"
 						Write-Host "  $($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)" -ForegroundColor Red
 					}
@@ -1020,7 +1020,7 @@ Function Image_Set_Global_Primary_Key
 			}
 
 			if (-not $Silent) {
-				Write-Host "  $($lang.Setting)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.Setting): " -NoNewline
 			}
 
 			$Global:Primary_Key_Image = @{
@@ -1036,7 +1036,7 @@ Function Image_Set_Global_Primary_Key
 			}
 
 			if (-not $Silent) {
-				Write-Host $lang.Done -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			}
 			return
 		}
@@ -1060,7 +1060,7 @@ Function Image_Set_Global_Primary_Key
 							}
 
 							if (-not $Silent) {
-								Write-Host "  $($lang.Refresh)".PadRight(28) -NoNewline
+								Write-Host "  $($lang.Refresh): " -NoNewline
 							}
 							try {
 								Get-WindowsImage -ImagePath "$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)" -ErrorAction SilentlyContinue | ForEach-Object {
@@ -1075,7 +1075,7 @@ Function Image_Set_Global_Primary_Key
 								}
 
 								if (-not $Silent) {
-									Write-Host $lang.Done -ForegroundColor Green
+									Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 								}
 							} catch {
 								if (-not $Silent) {
@@ -1089,7 +1089,7 @@ Function Image_Set_Global_Primary_Key
 					}
 
 					if (-not $Silent) {
-						Write-Host "  $($lang.Setting)".PadRight(28) -NoNewline
+						Write-Host "  $($lang.Setting): " -NoNewline
 					}
 
 					$Global:Primary_Key_Image = @{
@@ -1105,7 +1105,7 @@ Function Image_Set_Global_Primary_Key
 					}
 
 					if (-not $Silent) {
-						Write-Host $lang.Done -ForegroundColor Green
+						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 					}
 					return
 				}

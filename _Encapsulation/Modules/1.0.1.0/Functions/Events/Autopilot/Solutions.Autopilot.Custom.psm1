@@ -1602,20 +1602,20 @@ Function Image_Assign_Autopilot_Master
 										if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
 											if ($_.Tag -eq "EjectMain") {
 												$_.Enabled = $False
-											
+
 												if ($Wait_Sync_Some_Select -Contains $_.Name) {
 													if ($Global:Developers_Mode) {
 														Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)EjectMain.001x1 ]`n   Start"
-														Write-Host "  $($lang.Disable)".PadRight(28) -NoNewline
+														Write-Host "  $($lang.Disable): " -NoNewline
 														Write-Host $_.Name -ForegroundColor Green
 													}
 												} else {
 													if ($Global:Developers_Mode) {
 														Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)EjectMain.002x2 ]`n   Start"
-														Write-Host "  $($lang.Enable)".PadRight(28) -NoNewline
+														Write-Host "  $($lang.Enable): " -NoNewline
 														Write-Host $_.Name -ForegroundColor Red
 													}
-												
+
 													$_.Enabled = $True
 												}
 											}

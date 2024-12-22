@@ -917,7 +917,7 @@ Function Image_Convert_UI
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 
 		switch ($Autopilot.Schome) {
 			"ESDtoWIM" {
@@ -998,7 +998,7 @@ Function Image_Convert_UI
 			}
 
 		if (Autopilot_Image_Convert_Save) {
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
 			Write-Host "$($lang.SelectFromError): $($lang.NoChoose)" -ForegroundColor Red
 
@@ -1172,15 +1172,12 @@ Function Image_Convert_Process
 					Write-Host "  $($lang.MountedIndex): " -NoNewline
 					Write-Host $_.ImageIndex -ForegroundColor Yellow
 
-					Write-Host "  $($lang.Rebuilding)".PadRight(28) -NoNewline
-
+					Write-Host "  $($lang.Rebuilding): " -NoNewline
 					try {
 						Export-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Export.log" -SourceImagePath $Install_ESD -SourceIndex $_.ImageIndex -DestinationImagePath $Install_wim -CompressionType $Global:Queue_Convert_Tasks.Compression -CheckIntegrity -ErrorAction SilentlyContinue | Out-Null
-						Write-Host $lang.Done -ForegroundColor Green
+						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 					} catch {
-						Write-Host $lang.ConvertChk
-						Write-Host "  $($Filename)"
-						Write-Host "  $($_)" -ForegroundColor Yellow
+						Write-Host $_ -ForegroundColor Yellow
 						Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 					}
 
@@ -1326,11 +1323,12 @@ Function Image_Convert_Process
 					Write-Host "  $($lang.MountedIndex): " -NoNewline
 					Write-Host $_.ImageIndex -ForegroundColor Yellow
 
-					Write-Host "  $($lang.Rebuilding)".PadRight(28) -NoNewline
+					Write-Host "  $($lang.Rebuilding): " -NoNewline
 
 					dism /ScratchDir:"""$(Get_Mount_To_Temp)""" /LogPath:"$(Get_Mount_To_Logs)\Get.log" /export-image /SourceImageFile:"""$($Install_wim)""" /SourceIndex:"""$($_.ImageIndex)""" /DestinationImageFile:""$($Install_ESD)"" /Compress:recovery /CheckIntegrity
 
-					Write-Host "  $($lang.Done)" -ForegroundColor Green
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+					Write-host
 				}
 			} catch {
 				Write-Host "  $($lang.ConvertChk)"
@@ -1494,12 +1492,13 @@ Function Image_Convert_Process
 					Write-Host "  $($lang.MountedIndex): " -NoNewline
 					Write-Host $_.ImageIndex -ForegroundColor Yellow
 
-					Write-Host "  $($lang.Rebuilding)".PadRight(28) -NoNewline
+					Write-Host "  $($lang.Rebuilding): " -NoNewline
 					$SaveFileToSwmFull = Join-Path -Path $Global:Image_source -ChildPath "Sources\install*.swm"
 
 					dism /ScratchDir:"""$(Get_Mount_To_Temp)""" /LogPath:"$(Get_Mount_To_Logs)\Export.log" /export-image /SourceImageFile:"""$($Install_SWM)""" /swmfile:"""$($SaveFileToSwmFull)""" /SourceIndex:"""$($_.ImageIndex)""" /DestinationImageFile:"""$($Install_wim)""" /Compress:"""$($Global:Queue_Convert_Tasks.Compression)""" /CheckIntegrity
 
-					Write-Host "  $($lang.Done)`n" -ForegroundColor Green
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+					Write-host
 				}
 			} catch {
 				Write-Host "  $($lang.ConvertChk)"

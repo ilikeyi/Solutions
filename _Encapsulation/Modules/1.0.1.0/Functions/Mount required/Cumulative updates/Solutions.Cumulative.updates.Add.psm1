@@ -1688,9 +1688,9 @@ Function Cumulative_updates_Add_UI
 				$UI_Main_Superseded_Rule_Exclude.Checked = $False
 			}
 
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 		if (Autopilot_Cumulative_updates_Add_UI_Save) {
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
 			Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
@@ -1699,7 +1699,7 @@ Function Cumulative_updates_Add_UI
 				Write-Host "  $($item)" -ForegroundColor Green
 			}
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}
@@ -1900,10 +1900,10 @@ Function Update_Add_Process
 						Write-Host "  $($CommandNewPrint)`n" -ForegroundColor Green
 					}
 
-					Write-Host "  $($lang.AddTo)".PadRight(21) -NoNewline
+					Write-Host "  $($lang.AddTo): " -NoNewline
 					try {
 						Invoke-Expression -Command $CommandNew
-						Write-Host $lang.Done -ForegroundColor Green
+						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 					} catch {
 						Write-Host $_
 						Write-Host "  $($lang.Failed)" -ForegroundColor Red

@@ -441,7 +441,7 @@ Function Feature_Disable_Match_UI
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 
 		$UI_Main_Rule.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.CheckBox]) {
@@ -454,9 +454,9 @@ Function Feature_Disable_Match_UI
 		}
 
 		if (Autopilot_Feature_Disable_Match_UI_Save) {
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}
@@ -497,8 +497,9 @@ Function Feature_Disable_Match_Process
 					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "  $($lang.Disable)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.Disable): " -NoNewline
 				Disable-WindowsOptionalFeature -Path $test_mount_folder_Current -FeatureName $item | Out-Null
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
 				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
@@ -507,10 +508,10 @@ Function Feature_Disable_Match_Process
 					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "  $($lang.Disable)".PadRight(28) -NoNewline
+				Write-Host "  $($lang.Disable): " -NoNewline
 				Disable-WindowsOptionalFeature -Path $test_mount_folder_Current -FeatureName $item | Out-Null
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			}
-			Write-Host "  $($lang.Done)" -ForegroundColor Green
 
 			Write-Host
 		}

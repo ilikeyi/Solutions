@@ -700,13 +700,13 @@ Function Language_Menu
 		"Dev" {
 			Write-Host "`n  $($lang.Developers_Mode)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Setting)".PadRight(28) -NoNewline
+			Write-Host "  $($lang.Setting): " -NoNewline
 			if ($Global:Developers_Mode) {
 				$Global:Developers_Mode = $False
-				Write-Host $lang.Disable -ForegroundColor Green
+				Write-Host " $($lang.Disable) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
 				$Global:Developers_Mode = $True
-				Write-Host $lang.Enable -ForegroundColor Green
+				Write-Host " $($lang.Enable) " -BackgroundColor DarkGreen -ForegroundColor White
 			}
 
 			ToWait -wait 2
@@ -774,17 +774,17 @@ Function Language_Repair_Cli
 			ForEach ($itemCheckRepir in $Language_Repair_FileList) {
 				$NewRepairFullPath = "$($LanguageRepair_Path)\$($itemCheckRepir)"
 
-				Write-Host "  $($itemCheckRepir.PadRight(22))" -NoNewline -ForegroundColor Yellow
+				Write-Host "  $($itemCheckRepir): " -NoNewline -ForegroundColor Yellow
 				if (Test-Path -Path $NewRepairFullPath -PathType leaf) {
-					Write-Host "  $($lang.Paste)".PadRight(18) -NoNewline
-						Check_Folder -chkpath $Offline_Mount_Path_Sources
-						Copy-Item -Path $NewRepairFullPath -Destination $Offline_Mount_Path_Sources -Force -ErrorAction SilentlyContinue
+					Write-Host " $($lang.Paste): " -NoNewline
+					Check_Folder -chkpath $Offline_Mount_Path_Sources
+					Copy-Item -Path $NewRepairFullPath -Destination $Offline_Mount_Path_Sources -Force -ErrorAction SilentlyContinue
 
-						if (Test-Path -Path "$($Offline_Mount_Path_Sources)\$($itemCheckRepir)" -PathType leaf) {
-							Write-Host $lang.Done -ForegroundColor Green
-						} else {
-							Write-Host "$($lang.AddTo), $($lang.Failed)" -ForegroundColor Red
-						}
+					if (Test-Path -Path "$($Offline_Mount_Path_Sources)\$($itemCheckRepir)" -PathType leaf) {
+						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+					} else {
+						Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+					}
 				} else {
 					Write-Host "$($lang.MatchMode), $($lang.Failed)" -ForegroundColor Red
 				}
@@ -802,10 +802,10 @@ Function Language_Refresh_Ini
 {
 	$TestFolderMount_To_Route = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
-	Write-Host "  $($lang.Rebuilding)".PadRight(28) -NoNewline
+	Write-Host "  $($lang.Rebuilding): " -NoNewline
 	dism /image:"$($TestFolderMount_To_Route)" /gen-langini /distribution:"$($TestFolderMount_To_Route)"
 	dism /image:"$($TestFolderMount_To_Route)" /gen-langini /distribution:"$($Global:Image_source)"
-	Write-Host "  $($lang.Done)" -ForegroundColor Green
+	Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 }
 
 

@@ -8864,26 +8864,25 @@ Write-Host "Test"
 						Write-Host "  $('-' * 80)"
 
 						Save_Dynamic -regkey "Solutions\ImageSources\$($_.Tag)" -name "language" -value $Global:MainImageLang -String
-						Write-Host "  $($lang.Language): ".PadRight(20) -NoNewline -ForegroundColor Yellow
-						Write-Host $Global:MainImageLang -ForegroundColor Green
+						Write-Host "  $($lang.Language): " -NoNewline -ForegroundColor Yellow
+						Write-Host " $($Global:MainImageLang) " -BackgroundColor DarkGreen -ForegroundColor White
 
-						Write-Host "  $($lang.SelLabel): ".PadRight(20) -NoNewline -ForegroundColor Yellow
+						Write-Host "  $($lang.SelLabel): " -NoNewline -ForegroundColor Yellow
 						if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($_.Tag)\MVS" -Name "Kernel" -ErrorAction SilentlyContinue) {
 							$Get_Version_MVS = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($_.Tag)\MVS" -Name "Kernel" -ErrorAction SilentlyContinue
-
-							Write-Host $Get_Version_MVS -ForegroundColor Green
+							Write-Host " $($Get_Version_MVS) " -BackgroundColor DarkGreen -ForegroundColor White
 						} else {
-							Write-Host $lang.ImageCodenameNo -ForegroundColor Green
+							Write-Host " $($lang.ImageCodenameNo) " -BackgroundColor DarkRed -ForegroundColor White
 						}
 
-						Write-Host "  $($lang.ImageLevel): ".PadRight(20) -NoNewline -ForegroundColor Yellow
+						Write-Host "  $($lang.ImageLevel): " -NoNewline -ForegroundColor Yellow
 						if ($GUISelectTypeDesktop.Checked) {
 							$Global:ImageType = "Desktop"
-							Write-Host $GUISelectTypeDesktop.Text -ForegroundColor Green
+							Write-Host " $($GUISelectTypeDesktop.Text) " -BackgroundColor DarkGreen -ForegroundColor White
 						}
 						if ($GUISelectTypeServer.Checked) {
 							$Global:ImageType  = "Server"
-							Write-Host $GUISelectTypeServer.Text -ForegroundColor Green
+							Write-Host " $($GUISelectTypeServer.Text) " -BackgroundColor DarkGreen -ForegroundColor White
 						}
 						Save_Dynamic -regkey "Solutions\ImageSources\$($_.Tag)" -name "ImageType" -value $Global:ImageType -String
 
@@ -8892,8 +8891,8 @@ Write-Host "Test"
 						if ($GUIImageSourceArchitectureX86.Checked)   { $Global:Architecture  = "x86" }
 						Save_Dynamic -regkey "Solutions\ImageSources\$($_.Tag)" -name "Architecture" -value $Global:Architecture -String
 
-						Write-Host "  $($lang.Architecture): ".PadRight(20) -NoNewline -ForegroundColor Yellow
-						Write-Host $Global:Architecture -ForegroundColor Green
+						Write-Host "  $($lang.Architecture): " -NoNewline -ForegroundColor Yellow
+						Write-Host " $($Global:Architecture) " -BackgroundColor DarkGreen -ForegroundColor White
 
 						Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)" -name "MountToRouting" -value $Global:Mount_To_Route -String
 						Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)" -name "MountToRoutingTemp" -value $Global:Mount_To_RouteTemp -String

@@ -1655,7 +1655,7 @@ Function Language_Add_UI
 		#>
 		$UI_Main_Mask_Tips_Results.Text += "`n   $($lang.Basic): $($item.Basic.Count) $($lang.EventManagerCount)`n"
 		ForEach ($Basic in $item.Basic) {
-            $UI_Main_Mask_Tips_Results.Text += "      $($Basic)`n"
+			$UI_Main_Mask_Tips_Results.Text += "      $($Basic)`n"
 		}
 
 		<#
@@ -1663,7 +1663,7 @@ Function Language_Add_UI
 		#>
 		$UI_Main_Mask_Tips_Results.Text += "`n   $($lang.Fonts): $($item.Fonts.Count) $($lang.EventManagerCount)`n"
 		ForEach ($Fonts in $item.Fonts) {
-            $UI_Main_Mask_Tips_Results.Text += "      $($Fonts)`n"
+			$UI_Main_Mask_Tips_Results.Text += "      $($Fonts)`n"
 		}
 
 		<#
@@ -1671,7 +1671,7 @@ Function Language_Add_UI
 		#>
 		$UI_Main_Mask_Tips_Results.Text += "`n   $($lang.OCR): $($item.OCR.Count) $($lang.EventManagerCount)`n"
 		ForEach ($OCR in $item.OCR) {
-            $UI_Main_Mask_Tips_Results.Text += "      $($OCR)`n"
+			$UI_Main_Mask_Tips_Results.Text += "      $($OCR)`n"
 		}
 
 		<#
@@ -1679,7 +1679,7 @@ Function Language_Add_UI
 		#>
 		$UI_Main_Mask_Tips_Results.Text += "`n   $($lang.Handwriting): $($item.Basic.Count) $($lang.EventManagerCount)`n"
 		ForEach ($Handwriting in $item.Handwriting) {
-            $UI_Main_Mask_Tips_Results.Text += "      $($Handwriting)`n"
+			$UI_Main_Mask_Tips_Results.Text += "      $($Handwriting)`n"
 		}
 
 		<#
@@ -1687,7 +1687,7 @@ Function Language_Add_UI
 		#>
 		$UI_Main_Mask_Tips_Results.Text += "`n   $($lang.TextToSpeech): $($item.TextToSpeech.Count) $($lang.EventManagerCount)`n"
 		ForEach ($TextToSpeech in $item.TextToSpeech) {
-            $UI_Main_Mask_Tips_Results.Text += "      $($TextToSpeech)`n"
+			$UI_Main_Mask_Tips_Results.Text += "      $($TextToSpeech)`n"
 		}
 
 		<#
@@ -1695,7 +1695,7 @@ Function Language_Add_UI
 		#>
 		$UI_Main_Mask_Tips_Results.Text += "`n   $($lang.Speech): $($item.Speech.Count) $($lang.EventManagerCount)`n"
 		ForEach ($Speech in $item.Speech) {
-            $UI_Main_Mask_Tips_Results.Text += "      $($Speech)`n"
+			$UI_Main_Mask_Tips_Results.Text += "      $($Speech)`n"
 		}
 
 		<#
@@ -1914,7 +1914,7 @@ Function Language_Add_UI
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.Save)".PadRight(18) -NoNewline -ForegroundColor Yellow
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 
 		<#
 			.按预规则顺序安装语言包
@@ -1999,9 +1999,9 @@ Function Language_Add_UI
 		}
 
 		if (Autopilot_Language_Add_UI_Save) {
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
-			Write-Host $lang.ISOCreateFailed -ForegroundColor Red
+			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}
@@ -2128,10 +2128,10 @@ Function Language_Add_File_Type_Process
 			Write-Host "  $($CommandNewPrint)`n" -ForegroundColor Green
 		}
 
-		Write-Host "  $($lang.AddTo)".PadRight(21) -NoNewline
+		Write-Host "  $($lang.AddTo): " -NoNewline
 		try {
 			Invoke-Expression -Command $CommandNew
-			Write-Host $lang.Done -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		}
 		catch {
 			Write-Host $_
