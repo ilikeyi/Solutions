@@ -44,7 +44,8 @@ Function Prerequisite
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 
 		Write-Host "  $($lang.Check_execution_strategy): " -NoNewline
-		switch (Get-ExecutionPolicy) {
+		$GetCurrentExecutionPolicy = Get-ExecutionPolicy
+		switch ($GetCurrentExecutionPolicy) {
 			"Bypass" {
 				Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 			}

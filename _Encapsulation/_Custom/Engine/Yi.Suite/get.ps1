@@ -2380,7 +2380,7 @@ Function Prerequisite
 
 		Write-Host "`n  $($lang.How_solve): " -ForegroundColor Yellow
 		write-host "  $('-' * 80)"
-		write-host "    1. $($lang.UpdatePSVersion)`n"
+		write-host "  1. $($lang.UpdatePSVersion)`n"
 		pause
 		exit
 	}
@@ -2394,7 +2394,7 @@ Function Prerequisite
 
 		Write-Host "`n  $($lang.How_solve): " -ForegroundColor Yellow
 		write-host "  $('-' * 80)"
-		write-host "   $($lang.UpdateOSVersion)`n"
+		write-host "  $($lang.UpdateOSVersion)`n"
 		pause
 		exit
 	}
@@ -2404,7 +2404,8 @@ Function Prerequisite
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 
 		write-host "  $($lang.Check_execution_strategy): " -NoNewline
-		switch (Get-ExecutionPolicy) {
+		$GetCurrentExecutionPolicy = Get-ExecutionPolicy
+		switch ($GetCurrentExecutionPolicy) {
 			"Bypass" {
 				Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 			}
@@ -2419,7 +2420,7 @@ Function Prerequisite
 	
 				Write-Host "`n  $($lang.How_solve): " -ForegroundColor Yellow
 				write-host "  $('-' * 80)"
-				write-host "   $($lang.HigherTermail)`n"
+				write-host "  $($lang.HigherTermail)`n"
 				pause
 				exit
 			}
@@ -2429,7 +2430,7 @@ Function Prerequisite
 
 		Write-Host "`n  $($lang.How_solve): " -ForegroundColor Yellow
 		write-host "  $('-' * 80)"
-		write-host "    $($lang.HigherTermailAdmin)`n"
+		write-host "  $($lang.HigherTermailAdmin)`n"
 		pause
 		exit
 	}

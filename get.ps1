@@ -2750,42 +2750,43 @@ Function Prerequisite
 {
 	Clear-Host
 	$Host.UI.RawUI.WindowTitle = "$($lang.Get) | $($lang.Prerequisites)"
-	Write-Host "`n   $($lang.Prerequisites)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Prerequisites)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 
-	Write-Host "   $($lang.Check_PSVersion): " -NoNewline
+	write-host "  $($lang.Check_PSVersion): " -NoNewline
 	if ($PSVersionTable.PSVersion.major -ge "5") {
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 	} else {
 		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 
-		Write-Host "`n   $($lang.How_solve): " -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "     1. $($lang.UpdatePSVersion)`n"
+		Write-Host "`n  $($lang.How_solve): " -ForegroundColor Yellow
+		write-host "  $('-' * 80)"
+		write-host "  1. $($lang.UpdatePSVersion)`n"
 		pause
 		exit
 	}
 
-	Write-Host "   $($lang.Check_OSVersion): " -NoNewline
+	write-host "  $($lang.Check_OSVersion): " -NoNewline
 	$OSVer = [System.Environment]::OSVersion.Version;
 	if (($OSVer.Major -eq 10 -and $OSVer.Minor -eq 0 -and $OSVer.Build -ge 16299)) {
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 	} else {
 		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 
-		Write-Host "`n   $($lang.How_solve): " -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "    $($lang.UpdateOSVersion)`n"
+		Write-Host "`n  $($lang.How_solve): " -ForegroundColor Yellow
+		write-host "  $('-' * 80)"
+		write-host "  $($lang.UpdateOSVersion)`n"
 		pause
 		exit
 	}
 
-	Write-Host "   $($lang.Check_Higher_elevated): " -NoNewline
+	write-host "  $($lang.Check_Higher_elevated): " -NoNewline
 	if (([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544") {
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 
-		Write-Host "   $($lang.Check_execution_strategy): " -NoNewline
-		switch (Get-ExecutionPolicy) {
+		write-host "  $($lang.Check_execution_strategy): " -NoNewline
+		$GetCurrentExecutionPolicy = Get-ExecutionPolicy
+		switch ($GetCurrentExecutionPolicy) {
 			"Bypass" {
 				Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 			}
@@ -2798,9 +2799,9 @@ Function Prerequisite
 			default {
 				Write-Host " $($lang.Check_Did_not_pass) " -BackgroundColor DarkRed -ForegroundColor White
 
-				Write-Host "`n   $($lang.How_solve): " -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
-				Write-Host "    $($lang.HigherTermail)`n"
+				Write-Host "`n  $($lang.How_solve): " -ForegroundColor Yellow
+				write-host "  $('-' * 80)"
+				write-host "  $($lang.HigherTermail)`n"
 				pause
 				exit
 			}
@@ -2808,14 +2809,14 @@ Function Prerequisite
 	} else {
 		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 
-		Write-Host "`n   $($lang.How_solve): " -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "     $($lang.HigherTermailAdmin)`n"
+		Write-Host "`n  $($lang.How_solve): " -ForegroundColor Yellow
+		write-host "  $('-' * 80)"
+		write-host "  $($lang.HigherTermailAdmin)`n"
 		pause
 		exit
 	}
 
-	Write-Host "`n   $($lang.Check_Pass_Done)" -ForegroundColor Green
+	Write-Host "`n  $($lang.Check_Pass_Done)" -ForegroundColor Green
 	Start-Sleep -s 2
 }
 
@@ -2832,7 +2833,7 @@ Function Take_Ownership
 	)
 
 	if ($Remove) {
-		Write-Host "   $($lang.Del)".PadRight(22) -NoNewline
+		write-host "  $($lang.Del)".PadRight(22) -NoNewline
 		Remove-Item -LiteralPath "HKLM:\SOFTWARE\Classes\*\shell\TakeOwnership" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -LiteralPath "HKLM:\SOFTWARE\Classes\*\shell\runas" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -LiteralPath "HKLM:\SOFTWARE\Classes\Directory\shell\TakeOwnership" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
@@ -2841,7 +2842,7 @@ Function Take_Ownership
 	}
 
 	if ($Add) {
-		Write-Host "   $($lang.AddTo)".PadRight(22) -NoNewline
+		write-host "  $($lang.AddTo)".PadRight(22) -NoNewline
 		Remove-Item -LiteralPath "HKLM:\SOFTWARE\Classes\*\shell\TakeOwnership" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -LiteralPath "HKLM:\SOFTWARE\Classes\*\shell\runas" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		if((Test-Path -LiteralPath "HKLM:\SOFTWARE\Classes\*\shell\TakeOwnership") -ne $true) { New-Item "HKLM:\SOFTWARE\Classes\*\shell\TakeOwnership" -force -ErrorAction SilentlyContinue | Out-Null };
@@ -2982,13 +2983,13 @@ Function Archive
 		$to = Convert-Path $to -ErrorAction SilentlyContinue
 	}
 
-	Write-Host "   $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+	write-host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
 	Write-Host $filename -ForegroundColor Green
 
-	Write-Host "   $($lang.SaveTo): " -NoNewline -ForegroundColor Yellow
+	write-host "  $($lang.SaveTo): " -NoNewline -ForegroundColor Yellow
 	Write-Host $to -ForegroundColor Green
 
-	Write-Host "   $($lang.Unpacking)".PadRight(28) -NoNewline
+	write-host "  $($lang.Unpacking)".PadRight(28) -NoNewline
 
 	$Verify_Install_Path = Get_Zip -Run "7z.exe"
 	if (Test-Path -Path $Verify_Install_Path -PathType leaf) {
@@ -3191,8 +3192,8 @@ Function Installation_interface_UI
 	Add-Type -AssemblyName System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
-	Write-Host "`n   $($lang.Get)"
-	Write-Host "   $('-' * 80)"
+	Write-Host "`n  $($lang.Get)"
+	write-host "  $('-' * 80)"
 
 	Function Install_Init_Disk_To
 	{
@@ -3500,8 +3501,8 @@ Function Installation_interface_UI
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 
-			Write-Host "`n   $($lang.TakeOwnership)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.TakeOwnership)" -ForegroundColor Yellow
+			write-host "  $('-' * 80)"
 			Take_Ownership -Add
 		}
 	}
@@ -3517,8 +3518,8 @@ Function Installation_interface_UI
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 
-			Write-Host "`n   $($lang.TakeOwnership)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.TakeOwnership)" -ForegroundColor Yellow
+			write-host "  $('-' * 80)"
 			Take_Ownership -Remove
 		}
 	}
@@ -3618,7 +3619,7 @@ Function Installation_interface_UI
 		Text           = $lang.Cancel
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			write-host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}
@@ -3892,33 +3893,33 @@ Function Download_UI_Save
 #>
 Function Download_Process
 {
-	Write-Host "   $($lang.UpdateCheckServerStatus -f $Script:ServerList.Count)
+	write-host "  $($lang.UpdateCheckServerStatus -f $Script:ServerList.Count)
    $('-' * 80)"
 
 	ForEach ($item in $Script:ServerList) {
-		Write-Host "   * $($lang.UpdateServerAddress): " -NoNewline -ForegroundColor Yellow
+		write-host "  * $($lang.UpdateServerAddress): " -NoNewline -ForegroundColor Yellow
 		Write-Host $item -ForegroundColor Green
 
 		if (Test_URI $item) {
 			$PreServerVersion = $item
 			$ServerTest = $true
-			Write-Host "     $($lang.UpdateServeravailable)" -ForegroundColor Green
+			write-host "    $($lang.UpdateServeravailable)" -ForegroundColor Green
 			break
 		} else {
-			Write-Host "     $($lang.UpdateServerUnavailable)`n" -ForegroundColor Red
+			write-host "    $($lang.UpdateServerUnavailable)`n" -ForegroundColor Red
 		}
 	}
 
 	if ($ServerTest) {
-		Write-Host "   $('-' * 80)"
-		Write-Host "     $($lang.UpdatePriority)" -ForegroundColor Green
+		write-host "  $('-' * 80)"
+		write-host "    $($lang.UpdatePriority)" -ForegroundColor Green
 	} else {
-		Write-Host "     $($lang.UpdateServerTestFailed)" -ForegroundColor Red
-		Write-Host "   $('-' * 80)"
+		write-host "    $($lang.UpdateServerTestFailed)" -ForegroundColor Red
+		write-host "  $('-' * 80)"
 		return
 	}
 
-	Write-Host "`n   $($lang.UpdateQueryingUpdate)"
+	Write-Host "`n  $($lang.UpdateQueryingUpdate)"
 
 	$RandomGuid = [guid]::NewGuid()
 	$Temp_Main_Path = Join-Path -Path $env:TEMP -ChildPath $RandomGuid
@@ -3931,32 +3932,32 @@ Function Download_Process
 	$time = Measure-Command { Invoke-WebRequest -Uri $PreServerVersion -OutFile $NewFilePath -TimeoutSec 15 -ErrorAction stop }
 
 	if ($error.Count -eq 0) {
-		Write-Host "`n   $($lang.UpdateQueryingTime -f $time.TotalMilliseconds)"
+		Write-Host "`n  $($lang.UpdateQueryingTime -f $time.TotalMilliseconds)"
 	} else {
-		Write-Host "`n   $($lang.UpdateConnectFailed)"
+		Write-Host "`n  $($lang.UpdateConnectFailed)"
 		return
 	}
 
-	Write-Host "`n   $($lang.InstlTo): " -NoNewline -ForegroundColor Yellow
+	Write-Host "`n  $($lang.InstlTo): " -NoNewline -ForegroundColor Yellow
 	Write-Host $UI_Main_Save_To_Path.Text -ForegroundColor Green
-	Write-Host "   $('-' * 80)"
+	write-host "  $('-' * 80)"
 	if (Test-Path -Path $NewFilePath -PathType leaf) {
 		if (TestArchive -Path $NewFilePath) {
 			Archive -filename $NewFilePath -to $UI_Main_Save_To_Path.Text
 			remove-item -path $Temp_Main_Path -force -Recurse | Out-Null
 
-			Write-Host "`n   $($lang.TakeOwnership)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.TakeOwnership)" -ForegroundColor Yellow
+			write-host "  $('-' * 80)"
 			if ($TakeOwnership.Checked) {
 				Take_Ownership -Add
 			} else {
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				write-host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 
-			Write-Host "`n   $($lang.AddEnv)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			Write-Host "`n  $($lang.AddEnv)" -ForegroundColor Yellow
+			write-host "  $('-' * 80)"
 			if ($UI_Main_Adv_Env.Checked) {
-				Write-Host "   $($lang.AddTo)".PadRight(22) -NoNewline
+				write-host "  $($lang.AddTo)".PadRight(22) -NoNewline
 
 				$Route_PS = Join-Path -Path $UI_Main_Save_To_Path.Text -ChildPath "_Encapsulation\Modules\Router\Yi.ps1"
 				if (Test-Path -Path $Route_PS -PathType leaf) {
@@ -3974,26 +3975,26 @@ Function Download_Process
 					Write-Host $lang.Inoperable -ForegroundColor Red
 				}
 			} else {
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				write-host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 
 			if ([string]::IsNullOrEmpty($UI_Main_To.SelectedItem.Path)) {
-				Write-Host "`n   $($lang.Ok_Go_To): " -NoNewline -ForegroundColor Yellow
+				Write-Host "`n  $($lang.Ok_Go_To): " -NoNewline -ForegroundColor Yellow
 				Write-Host $lang.Ok_Go_To_No -ForegroundColor Red
 			} else {
-				Write-Host "`n   $($lang.Ok_Go_To): " -NoNewline -ForegroundColor Yellow
+				Write-Host "`n  $($lang.Ok_Go_To): " -NoNewline -ForegroundColor Yellow
 
 				switch ($UI_Main_To.SelectedItem.Path) {
 					"SIP" {
 						Write-Host $lang.OK_Go_To_Sip -ForegroundColor Green
-						Write-Host "   $('-' * 80)"
+						write-host "  $('-' * 80)"
 
 						$test_new_File = Join-Path -Path $UI_Main_Save_To_Path.Text -ChildPath "_Encapsulation\_Sip.ps1"
 						if (Test-Path -Path $test_new_File -PathType leaf) {
-							Write-Host "   $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+							write-host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
 							Write-Host $test_new_File -ForegroundColor Green
 
-							Write-Host "   $($lang.Running)".PadRight(22) -NoNewline -ForegroundColor Yellow
+							write-host "  $($lang.Running)".PadRight(22) -NoNewline -ForegroundColor Yellow
 							$arguments = @(
 								"-ExecutionPolicy",
 								"ByPass",
@@ -4004,22 +4005,22 @@ Function Download_Process
 							Start-Process "powershell" -ArgumentList $arguments
 							Write-Host $lang.Done -ForegroundColor Green
 
-							Write-Host "`n   $('-' * 80)"
-							Write-Host "   $($lang.Ok_Go_To): $($lang.OK_Go_To_Sip), $($lang.Done)" -ForegroundColor Green
+							Write-Host "`n  $('-' * 80)"
+							write-host "  $($lang.Ok_Go_To): $($lang.OK_Go_To_Sip), $($lang.Done)" -ForegroundColor Green
 						} else {
-							Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+							write-host "  $($lang.Inoperable)" -ForegroundColor Red
 						}
 					}
 					"Tempate" {
 						Write-Host $lang.OK_Go_To_Tempate -ForegroundColor Green
-						Write-Host "   $('-' * 80)"
+						write-host "  $('-' * 80)"
 
 						$test_new_File = Join-Path -Path $UI_Main_Save_To_Path.Text -ChildPath "_Encapsulation\_Create.Template.ps1"
 						if (Test-Path -Path $test_new_File -PathType leaf) {
-							Write-Host "   $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+							write-host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
 							Write-Host $test_new_File -ForegroundColor Green
 
-							Write-Host "   $($lang.Running)".PadRight(22) -NoNewline -ForegroundColor Yellow
+							write-host "  $($lang.Running)".PadRight(22) -NoNewline -ForegroundColor Yellow
 							$arguments = @(
 								"-ExecutionPolicy",
 								"ByPass",
@@ -4030,22 +4031,22 @@ Function Download_Process
 							Start-Process "powershell" -ArgumentList $arguments
 							Write-Host $lang.Done -ForegroundColor Green
 
-							Write-Host "`n   $('-' * 80)"
-							Write-Host "   $($lang.Ok_Go_To): $($lang.OK_Go_To_Tempate), $($lang.Done)" -ForegroundColor Green
+							Write-Host "`n  $('-' * 80)"
+							write-host "  $($lang.Ok_Go_To): $($lang.OK_Go_To_Tempate), $($lang.Done)" -ForegroundColor Green
 						} else {
-							Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+							write-host "  $($lang.Inoperable)" -ForegroundColor Red
 						}
 					}
 					"EUpdate" {
 						Write-Host $lang.OK_Go_To_Engline_Update -ForegroundColor Green
-						Write-Host "   $('-' * 80)"
+						write-host "  $('-' * 80)"
 
 						$test_new_File = Join-Path -Path $UI_Main_Save_To_Path.Text -ChildPath "_Encapsulation\_Create.Custom.Engine.upgrade.package.ps1"
 						if (Test-Path -Path $test_new_File -PathType leaf) {
-							Write-Host "   $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+							write-host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
 							Write-Host $test_new_File -ForegroundColor Green
 
-							Write-Host "   $($lang.Running)".PadRight(22) -NoNewline -ForegroundColor Yellow
+							write-host "  $($lang.Running)".PadRight(22) -NoNewline -ForegroundColor Yellow
 							$arguments = @(
 								"-ExecutionPolicy",
 								"ByPass",
@@ -4056,22 +4057,22 @@ Function Download_Process
 							Start-Process "powershell" -ArgumentList $arguments
 							Write-Host $lang.Done -ForegroundColor Green
 
-							Write-Host "`n   $('-' * 80)"
-							Write-Host "   $($lang.Ok_Go_To): $($lang.OK_Go_To_Engline_Update), $($lang.Done)" -ForegroundColor Green
+							Write-Host "`n  $('-' * 80)"
+							write-host "  $($lang.Ok_Go_To): $($lang.OK_Go_To_Engline_Update), $($lang.Done)" -ForegroundColor Green
 						} else {
-							Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+							write-host "  $($lang.Inoperable)" -ForegroundColor Red
 						}
 					}
 					"Unpack" {
 						Write-Host $lang.OK_Go_To_Unpack -ForegroundColor Green
-						Write-Host "   $('-' * 80)"
+						write-host "  $('-' * 80)"
 
 						$test_new_File = Join-Path -Path $UI_Main_Save_To_Path.Text -ChildPath "_Encapsulation\_Unpack.ps1"
 						if (Test-Path -Path $test_new_File -PathType leaf) {
-							Write-Host "   $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+							write-host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
 							Write-Host $test_new_File -ForegroundColor Green
 
-							Write-Host "   $($lang.Running)".PadRight(22) -NoNewline -ForegroundColor Yellow
+							write-host "  $($lang.Running)".PadRight(22) -NoNewline -ForegroundColor Yellow
 							$arguments = @(
 								"-ExecutionPolicy",
 								"ByPass",
@@ -4082,10 +4083,10 @@ Function Download_Process
 							Start-Process "powershell" -ArgumentList $arguments
 							Write-Host $lang.Done -ForegroundColor Green
 
-							Write-Host "`n   $('-' * 80)"
-							Write-Host "   $($lang.Ok_Go_To): $($lang.OK_Go_To_Unpack), $($lang.Done)" -ForegroundColor Green
+							Write-Host "`n  $('-' * 80)"
+							write-host "  $($lang.Ok_Go_To): $($lang.OK_Go_To_Unpack), $($lang.Done)" -ForegroundColor Green
 						} else {
-							Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+							write-host "  $($lang.Inoperable)" -ForegroundColor Red
 						}
 					}
 					default {
@@ -4094,11 +4095,11 @@ Function Download_Process
 				}
 			}
 		} else {
-			Write-Host "   $($lang.FileFormatError)"
+			write-host "  $($lang.FileFormatError)"
 			remove-item -path $Temp_Main_Path -force -Recurse -ErrorAction silentlycontinue | Out-Null
 		}
 	} else {
-		Write-Host "   $($lang.UpdateConnectFailed)"
+		write-host "  $($lang.UpdateConnectFailed)"
 		remove-item -path $Temp_Main_Path -force -Recurse -ErrorAction silentlycontinue | Out-Null
 	}
 }
