@@ -75,8 +75,8 @@ Function Image_Select_Index_UI
 									Mount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Mount.log" -ImagePath $Global:Primary_Key_Image.FullPath -Index $_.Tag -Path $test_mount_folder_Current
 									Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 								} catch {
-									Write-Host $_
-									Write-Host "  $($lang.Failed)" -ForegroundColor Red
+									Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+									Write-Host "  $($_)" -ForegroundColor Red
 								}
 							}
 						}
@@ -843,8 +843,8 @@ Function Image_Select_Index_UI
 					Invoke-Expression -Command "Expand-WindowsImage $($Arguments)"
 					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 				} catch {
-					Write-Host $_
-					Write-Host "  $($lang.Failed)" -ForegroundColor Red
+					Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+					Write-Host "  $($_)" -ForegroundColor Red
 				}
 
 				$UI_Main.Close()

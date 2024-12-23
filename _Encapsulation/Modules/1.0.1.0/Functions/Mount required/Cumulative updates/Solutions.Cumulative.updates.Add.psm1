@@ -1905,8 +1905,8 @@ Function Update_Add_Process
 						Invoke-Expression -Command $CommandNew
 						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 					} catch {
-						Write-Host $_
-						Write-Host "  $($lang.Failed)" -ForegroundColor Red
+						Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+						Write-Host "  $($_)" -ForegroundColor Red
 					}
 
 					$UpdateTasksTime.Stop()

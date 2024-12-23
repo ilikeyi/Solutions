@@ -3869,7 +3869,7 @@ Function ISO_Local_Language_Calc
 	$Calc_All_Language_Group = $Language_Sources_ISO | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 	if ($Global:Developers_Mode) {
-		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)ISO_Dev_1"
+		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): ISO_Dev_1"
 
 		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"

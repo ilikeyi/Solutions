@@ -1926,8 +1926,8 @@ Function Language_Delete_Process
 							Remove-WindowsPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove.log" -Path $test_mount_folder_Current -PackagePath $_.FullName -ErrorAction SilentlyContinue | Out-Null
 							Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 						} catch {
-							Write-Host $_
-							Write-Host "  $($lang.Failed)" -ForegroundColor Red
+							Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+							Write-Host "  $($_)" -ForegroundColor Red
 						}
 
 						Write-Host
@@ -1946,8 +1946,8 @@ Function Language_Delete_Process
 							Remove-WindowsPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove.log" -Path $test_mount_folder_Current -PackagePath $_.FullName -ErrorAction SilentlyContinue | Out-Null
 							Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 						} catch {
-							Write-Host $_
-							Write-Host "  $($lang.Failed)" -ForegroundColor Red
+							Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+							Write-Host "  $($_)" -ForegroundColor Red
 						}
 
 						Write-Host

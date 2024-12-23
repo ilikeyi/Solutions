@@ -2025,7 +2025,7 @@ Write-Host "Test"
 	Function Image_Select_Refresh_Mount_Disk
 	{
 		if ($Global:Developers_Mode) {
-			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x006000"
+			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x006000"
 		}
 
 		$GUIImageSourceGroupMountChangeDiSKPane1.controls.Clear()

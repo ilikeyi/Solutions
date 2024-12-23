@@ -2191,8 +2191,8 @@ Function InBox_Apps_Add_Match_Process
 					Invoke-Expression -Command $CommandNew
 					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 				} catch {
-					Write-Host $_
-					Write-Host "  $($lang.Failed)" -ForegroundColor Red
+					Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+					Write-Host "  $($_)" -ForegroundColor Red
 				}
 			} else {
 				Write-Host "  $($lang.License): ".PadRight(21) -NoNewline -ForegroundColor Yellow
@@ -2213,8 +2213,8 @@ Function InBox_Apps_Add_Match_Process
 						Invoke-Expression -Command $CommandNew
 						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 					} catch {
-						Write-Host $_
-						Write-Host "  $($lang.Failed)" -ForegroundColor Red
+						Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+						Write-Host "  $($_)" -ForegroundColor Red
 					}
 				} else {
 					Write-Host " $($lang.NoLicense) " -BackgroundColor DarkRed -ForegroundColor White
@@ -2233,8 +2233,8 @@ Function InBox_Apps_Add_Match_Process
 						Invoke-Expression -Command $CommandNew
 						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 					} catch {
-						Write-Host $_
-						Write-Host "  $($lang.Failed)" -ForegroundColor Red
+						Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+						Write-Host "  $($_)" -ForegroundColor Red
 					}
 				}
 			}

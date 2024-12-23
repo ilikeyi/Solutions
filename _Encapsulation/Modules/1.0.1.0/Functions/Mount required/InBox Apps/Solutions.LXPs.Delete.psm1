@@ -534,8 +534,8 @@ Function InBox_Apps_LIPs_Delete_Process
 						Write-Host " $($lang.NoWork) " -BackgroundColor DarkRed -ForegroundColor White
 					}
 				} catch {
-					Write-Host $_
-					Write-Host "  $($lang.Failed)" -ForegroundColor Red
+					Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+					Write-Host "  $($_)" -ForegroundColor Red
 				}
 
 				Write-Host
@@ -569,7 +569,7 @@ Function InBox_Apps_LIPs_Delete_Process_add
 		Remove-AppxProvisionedPackage -Path $test_mount_folder_Current -PackageName $packnewname -ErrorAction SilentlyContinue | Out-Null
 		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 	} catch {
-		Write-Host $_
-		Write-Host "  $($lang.Failed)" -ForegroundColor Red
+		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host "  $($_)" -ForegroundColor Red
 	}
 }

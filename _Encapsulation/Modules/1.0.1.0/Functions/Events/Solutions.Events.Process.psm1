@@ -21,18 +21,18 @@ Function Event_Process_Task_Need_Mount
 		$IsEjectAfterSaveNot = $True
 
 		if ($Global:Developers_Mode) {
-			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x009000 ]`n   Start"
+			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x009000 ]`n   Start"
 			Write-Host "Queue_Eject_Do_Not_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)"
-			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x009000 ]`n   End"
+			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x009000 ]`n   End"
 		}
 	}
 	if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
 		$IsEjectAfterSaveNot = $True
 
 		if ($Global:Developers_Mode) {
-			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x009010 ]`n   Start"
+			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x009010 ]`n   Start"
 			Write-Host "Queue_Expand_Eject_Do_Not_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)"
-			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x009010 ]`n   End"
+			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x009010 ]`n   End"
 		}
 	}
 
@@ -949,7 +949,7 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 
 		if ($Global:Developers_Mode) {
-			Write-Host "`n  $($lang.Developers_Mode_Location)11`n" -ForegroundColor Green
+			Write-Host "`n  $($lang.Developers_Mode_Location): 11`n" -ForegroundColor Green
 		}
 
 		$test_mount_Sources = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
@@ -1666,7 +1666,7 @@ Function Event_Process_Task_Need_Mount
 Function Event_Processing_Requires_Mounting
 {
 	if ($Global:Developers_Mode) {
-		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003100 ]`n   Start"
+		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003100 ]`n   Start"
 	}
 
 	<#
@@ -1679,7 +1679,7 @@ Function Event_Processing_Requires_Mounting
 	}
 
 	if ($Global:Developers_Mode) {
-		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003190 ]`n   Start"
+		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003190 ]`n   Start"
 	}
 
 	$Temp_Assign_Task = (Get-Variable -Scope global -Name "Queue_Is_Mounted_Primary_Assign_Task_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))}
@@ -1692,7 +1692,7 @@ Function Event_Processing_Requires_Mounting
 		}
 
 		if ($Global:Developers_Mode) {
-			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003111 ]`n   Start"
+			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003111 ]`n   Start"
 		}
 
 		ForEach ($item in $Temp_Assign_Task) {
@@ -1700,7 +1700,7 @@ Function Event_Processing_Requires_Mounting
 
 			if ($Temp_Assign_Task_Select -Contains $item) {
 				if ($Global:Developers_Mode) {
-					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003150 ]`n   Start"
+					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003150 ]`n   Start"
 				}
 
 				$Temp_Save_Has_Been_Run += $item
@@ -1709,18 +1709,18 @@ Function Event_Processing_Requires_Mounting
 				Invoke-Expression -Command $item
 
 				if ($Global:Developers_Mode) {
-					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003150 ]`n   End"
+					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003150 ]`n   End"
 				}
 			}
 		}
 
 		if ($Global:Developers_Mode) {
-			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003111 ]`n   End"
+			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003111 ]`n   End"
 		}
 	}
 
 	if ($Global:Developers_Mode) {
-		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003190 ]`n   End"
+		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003190 ]`n   End"
 	}
 
 	<#
@@ -1732,7 +1732,7 @@ Function Event_Processing_Requires_Mounting
 	Write-Host "  $('-' * 80)"
 	if ($Temp_Assign_Task.Count -gt 0) {
 		if ($Global:Developers_Mode) {
-			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003200 ]`n   Start"
+			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003200 ]`n   Start"
 		}
 
 		ForEach ($item in $Temp_Assign_Task) {
@@ -1750,14 +1750,14 @@ Function Event_Processing_Requires_Mounting
 		}
 
 		if ($Global:Developers_Mode) {
-			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003200 ]`n   End"
+			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003200 ]`n   End"
 		}
 	} else {
 		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 	
 	if ($Global:Developers_Mode) {
-		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003100 ]`n   End"
+		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003100 ]`n   End"
 	}
 }
 
@@ -2036,40 +2036,40 @@ Function Eject_Forcibly_All
 	ForEach ($item in $Global:Image_Rule) {
 		if ($item.Main.Suffix -eq "wim") {
 			if ($item.Expand.Count -gt 0) {
-				Write-Host "      $($lang.Event_Assign_Expand)" -ForegroundColor Yellow
-				Write-Host "      $('-' * 76)"
+				Write-Host "    $($lang.Event_Assign_Expand)" -ForegroundColor Yellow
+				Write-Host "    $('-' * 78)"
 
 				ForEach ($Expand in $item.Expand) {
 					$Eject_Expand_Do_Not_Save_Path = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($Expand.ImageFileName)\Mount"
 
-					Write-Host "      $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+					Write-Host "    $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 					Write-Host $Expand.Uid -ForegroundColor Green
 
-					Write-Host "      $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
+					Write-Host "    $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
 					Write-Host $Eject_Expand_Do_Not_Save_Path -ForegroundColor Green
-					Write-Host "      $('-' * 76)"
+					Write-Host "    $('-' * 78)"
 
 					Image_Get_Mount_Status_New -ImageMaster $item.Main.ImageFileName -ImageName $Expand.ImageFileName -ImageFile "$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)" -Silent $True
 
 					if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.ImageFileName)_$($Expand.ImageFileName)").Value) {
-						Write-Host "      $($lang.Mounted)`n"
+						Write-Host "    $($lang.Mounted)`n"
 
 						<#
 							.初始化变量
 						#>
 						$Eject_Expand_Do_Not_Save_Path = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($Expand.ImageFileName)\Mount"
 
-						Write-Host "      $($lang.YesWork)" -ForegroundColor Yellow
-						Write-Host "      $('-' * 76)"
+						Write-Host "    $($lang.YesWork)" -ForegroundColor Yellow
+						Write-Host "    $('-' * 78)"
 
-						Write-Host "      $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+						Write-Host "    $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 						Write-Host $Expand.Uid -ForegroundColor Green
 
-						Write-Host "      $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
+						Write-Host "    $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
 						Write-Host $Eject_Expand_Do_Not_Save_Path -ForegroundColor Green
 
-						Write-Host "`n      $($lang.Save)" -ForegroundColor Yellow
-						Write-Host "      $('-' * 76)"
+						Write-Host "`n    $($lang.Save)" -ForegroundColor Yellow
+						Write-Host "    $('-' * 78)"
 						if ($Save) {
 							if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 								Write-Host "  $($lang.Command)" -ForegroundColor Yellow
@@ -2079,13 +2079,13 @@ Function Eject_Forcibly_All
 							}
 
 							Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $Eject_Expand_Do_Not_Save_Path | Out-Null
-							Write-Host "      $($lang.Done)" -ForegroundColor Green
+							Write-Host "    $($lang.Done)" -ForegroundColor Green
 						} else {
-							Write-Host "      $($lang.Inoperable)" -ForegroundColor Red
+							Write-Host "    $($lang.Inoperable)" -ForegroundColor Red
 						}
 		
-						Write-Host "`n      $($lang.DoNotSave)" -ForegroundColor Yellow
-						Write-Host "      $('-' * 76)"
+						Write-Host "`n    $($lang.DoNotSave)" -ForegroundColor Yellow
+						Write-Host "    $('-' * 78)"
 						if ($DontSave) {
 							if ($Global:Developers_Mode) {
 								Write-Host "`n  $($lang.Developers_Mode_Location): 90`n" -ForegroundColor Green
@@ -2109,10 +2109,10 @@ Function Eject_Forcibly_All
 								Image_Mount_Force_Del -NewPath "$($Eject_Expand_Do_Not_Save_Path)"
 							}
 		
-							Write-Host "      $($lang.Done)" -ForegroundColor Green
+							Write-Host "    $($lang.Done)" -ForegroundColor Green
 						}
 					} else {
-						Write-Host "      $($lang.NotMounted)" -ForegroundColor Red
+						Write-Host "    $($lang.NotMounted)" -ForegroundColor Red
 					}
 				}
 			}

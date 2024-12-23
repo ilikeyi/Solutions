@@ -1354,7 +1354,7 @@ Function Cleanup_Logs
 				try {
 					Remove-Item -Path $_.FullName -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 				} catch {
-					Write-Host $_
+					Write-Host $_ -ForegroundColor Red
 				}
 			}
 

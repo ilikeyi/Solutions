@@ -1004,8 +1004,8 @@ Function Image_Set_Global_Primary_Key
 							}
 						} catch {
 							if (-not $Silent) {
-								Write-Host $_
-								Write-Host "  $($lang.Failed)" -ForegroundColor Red
+								Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+								Write-Host "  $($_)" -ForegroundColor Red
 							}
 						}
 					}
@@ -1079,7 +1079,7 @@ Function Image_Set_Global_Primary_Key
 								}
 							} catch {
 								if (-not $Silent) {
-									Write-Host $_
+									Write-Host $_ -ForegroundColor Red
 									Write-Host "  $($lang.Failed)" -ForegroundColor Red
 								}
 

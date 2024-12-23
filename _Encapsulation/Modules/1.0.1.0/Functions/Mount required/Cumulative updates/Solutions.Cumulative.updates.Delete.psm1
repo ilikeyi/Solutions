@@ -1887,8 +1887,8 @@ Function Update_Del_Process
 						Remove-WindowsPackage -Path $test_mount_folder_Current -PackagePath $_.FullName -ErrorAction SilentlyContinue | Out-Null
 						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 					} catch {
-						Write-Host $_
-						Write-Host "  $($lang.Failed)" -ForegroundColor Red
+						Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+						Write-Host "  $($_)" -ForegroundColor Red
 					}
 
 					Write-Host

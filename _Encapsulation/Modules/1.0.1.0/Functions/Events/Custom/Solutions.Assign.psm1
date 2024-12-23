@@ -31,14 +31,14 @@ Function Event_Assign_Task_Customize
 
 		if ($Global:Queue_Assign_Full.Count -gt 0) {
 			if ($Global:Developers_Mode) {
-				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003000 ]`n   Start"
+				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003000 ]`n   Start"
 			}
 
 			Write-Host "`n  $($lang.Event_Assign_Main)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
 			if ($WildCard.Main.UI.Count -gt 0) {
 				if ($Global:Developers_Mode) {
-					Write-Host "  $($lang.Developers_Mode_Location)E0x003030 ]`n   Start"
+					Write-Host "  $($lang.Developers_Mode_Location): E0x003030 ]`n   Start"
 				}
 
 				<#
@@ -66,7 +66,7 @@ Function Event_Assign_Task_Customize
 
 				if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($WildCard.Main.ImageFileName)_$($WildCard.Main.ImageFileName)").Value) {
 					if ($Global:Developers_Mode) {
-						Write-Host "  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003020 ]`n   Start"
+						Write-Host "  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003020 ]`n   Start"
 					}
 
 					Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
@@ -81,11 +81,11 @@ Function Event_Assign_Task_Customize
 					Event_Processing_Requires_Mounting
 
 					if ($Global:Developers_Mode) {
-						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003020 ]`n   End"
+						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003020 ]`n   End"
 					}
 				} else {
 					if ($Global:Developers_Mode) {
-						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003010 ]`n   Start"
+						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003010 ]`n   Start"
 					}
 
 					<#
@@ -110,12 +110,12 @@ Function Event_Assign_Task_Customize
 					}
 
 					if ($Global:Developers_Mode) {
-						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003010 ]`n   End"
+						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003010 ]`n   End"
 					}
 				}
 
 				if ($Global:Developers_Mode) {
-					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003030 ]`n   End"
+					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003030 ]`n   End"
 				}
 			} else {
 				Write-Host "  $($lang.NoWork)" -ForegroundColor Red
@@ -125,7 +125,7 @@ Function Event_Assign_Task_Customize
 			#>
 
 			if ($Global:Developers_Mode) {
-				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x003000 ]`n   End"
+				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003000 ]`n   End"
 			}
 		}
 
@@ -138,7 +138,7 @@ Function Event_Assign_Task_Customize
 			Write-Host "  $('-' * 80)"
 			if ($WildCard.Expand.UI.Count -gt 0) {
 				if ($Global:Developers_Mode) {
-					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002850 ]`n   Start"
+					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002850 ]`n   Start"
 				}
 
 				Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
@@ -187,23 +187,23 @@ Function Event_Assign_Task_Customize
 					if (Test-Path -Path "$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)" -PathType Leaf) {
 						#region 文件存在
 						if ($Global:Developers_Mode) {
-							Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002700 ]`n   Start"
+							Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002700 ]`n   Start"
 						}
 
 						if (Verify_Is_Current_Same) {
 							if ($Global:Developers_Mode) {
-								Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002750 ]`n   Start"
+								Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002750 ]`n   Start"
 							}
 
 							Event_Assign_Task_Queue_Add_New -Uid $Expand.Uid -IsMountedExpand $Expand.UI
 							Event_Processing_Requires_Mounting
 
 							if ($Global:Developers_Mode) {
-								Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002750 ]`n   End"
+								Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002750 ]`n   End"
 							}
 						} else {
 							if ($Global:Developers_Mode) {
-								Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002780 ]`n   Start"
+								Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002780 ]`n   Start"
 							}
 
 #							Image_Select_Mul_UI -ImageFileName "$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)"
@@ -225,18 +225,18 @@ Function Event_Assign_Task_Customize
 							}
 
 							if ($Global:Developers_Mode) {
-								Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002780 ]`n   End"
+								Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002780 ]`n   End"
 							}
 						}
 
 						if ($Global:Developers_Mode) {
-							Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002700 ]`n   End"
+							Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002700 ]`n   End"
 						}
 						#endregion 文件存在
 					} else {
 						#region 文件不存在
 						if ($Global:Developers_Mode) {
-							Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002600 ]`n   Start"
+							Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002600 ]`n   Start"
 						}
 
 						<#
@@ -291,7 +291,7 @@ Function Event_Assign_Task_Customize
 								"Auto" {
 									#region Auto
 									if ($Global:Developers_Mode) {
-										Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002900 ]`n   Start"
+										Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002900 ]`n   Start"
 									}
 
 									<#
@@ -310,14 +310,14 @@ Function Event_Assign_Task_Customize
 									Event_Processing_Requires_Mounting
 
 									if ($Global:Developers_Mode) {
-										Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002900 ]`n   End"
+										Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002900 ]`n   End"
 									}
 									#endregion Auto
 								}
 								"Popup" {
 									#region Popup
 									if ($Global:Developers_Mode) {
-										Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002200 ]`n   Start"
+										Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002200 ]`n   Start"
 									}
 
 									<#
@@ -336,14 +336,14 @@ Function Event_Assign_Task_Customize
 									Event_Processing_Requires_Mounting
 
 									if ($Global:Developers_Mode) {
-										Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002200 ]`n   End"
+										Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002200 ]`n   End"
 									}
 									#endregion Popup
 								}
 								"Pre" {
 									#region Pre
 									if ($Global:Developers_Mode) {
-										Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002350 ]`n   Start"
+										Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002350 ]`n   Start"
 									}
 
 									<#
@@ -366,13 +366,13 @@ Function Event_Assign_Task_Customize
 									}
 
 									if ($Global:Developers_Mode) {
-										Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002350 ]`n   End"
+										Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002350 ]`n   End"
 									}
 									#endregion Pre
 								}
 								Default {
 									if ($Global:Developers_Mode) {
-										Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002400"
+										Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002400"
 									}
 
 									Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
@@ -383,7 +383,7 @@ Function Event_Assign_Task_Customize
 						}
 
 						if ($Global:Developers_Mode) {
-							Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002600 ]`n   End"
+							Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002600 ]`n   End"
 						}
 					}
 					#endregion 文件不存在
@@ -391,7 +391,7 @@ Function Event_Assign_Task_Customize
 				#endregion 遍历扩展项任务
 
 				if ($Global:Developers_Mode) {
-					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002850 ]`n   End"
+					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002850 ]`n   End"
 				}
 
 			} else {
@@ -471,7 +471,7 @@ Function Event_Assign_Task_Customize
 	if ($Global:Queue_Assign_Full.Count -gt 0) {
 		ForEach ($WildCard in $Global:Queue_Assign_Full) {
 			if ($Global:Developers_Mode) {
-				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x000300"
+				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x000300"
 			}
 
 			$Global:Extension_Has_been_Run = @()
@@ -516,13 +516,13 @@ Function Event_Assign_Task_Customize
 
 				#region 未挂载
 				if ($Global:Developers_Mode) {
-					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x000330 ]`n   Start" -ForegroundColor Green
+					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x000330 ]`n   Start" -ForegroundColor Green
 				}
 
 				$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($WildCard.Main.ImageFileName)_$($WildCard.Main.ImageFileName)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
 					if ($Global:Developers_Mode) {
-						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002680 ]`n   Start" -ForegroundColor Green
+						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002680 ]`n   Start" -ForegroundColor Green
 					}
 
 					Write-Host "`n  $($lang.AddSources)" -ForegroundColor Yellow
@@ -564,7 +564,7 @@ Function Event_Assign_Task_Customize
 					Image_Set_Global_Primary_Key -Uid $WildCard.Main.Uid -DevCode "20"
 					if ($Temp_Allow_Is_Work) {
 						if ($Global:Developers_Mode) {
-							Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002800 ]`n   Start" -ForegroundColor Green
+							Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002800 ]`n   Start" -ForegroundColor Green
 						}
 
 						Write-Host "`n  $($lang.YesWork)" -ForegroundColor Yellow
@@ -612,7 +612,7 @@ Function Event_Assign_Task_Customize
 							Write-Host "  $('-' * 80)"
 							if ($WildCard.Expand.Count -gt 0) {
 								if ($Global:Developers_Mode) {
-									Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x006030 ]`n   Start"
+									Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x006030 ]`n   Start"
 								}
 
 								Write-Host "`n  $($lang.YesWork)" -ForegroundColor Yellow
@@ -626,7 +626,7 @@ Function Event_Assign_Task_Customize
 										Write-Host "  $($lang.Pri_key_Running)" -ForegroundColor Yellow
 									} else {
 										if ($Global:Developers_Mode) {
-											Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x006050 ]`n   Start"
+											Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x006050 ]`n   Start"
 										}
 
 										Write-Host "`n  $($lang.Mounted_Status): $($lang.Unmount)" -ForegroundColor Yellow
@@ -642,13 +642,13 @@ Function Event_Assign_Task_Customize
 										Run_Expand -NewUid $ExpandWildcard.UID -NewMain $WildCard.Main -NewExpand $ExpandWildcard
 
 										if ($Global:Developers_Mode) {
-											Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x006050 ]`n   End"
+											Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x006050 ]`n   End"
 										}
 									}
 								}
 
 								if ($Global:Developers_Mode) {
-									Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x006030 ]`n   End"
+									Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x006030 ]`n   End"
 								}
 							} else {
 								Write-Host "  $($lang.NoWork)" -ForegroundColor Red
@@ -663,7 +663,7 @@ Function Event_Assign_Task_Customize
 						}
 
 						if ($Global:Developers_Mode) {
-							Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x002800 ]`n   End" -ForegroundColor Green
+							Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002800 ]`n   End" -ForegroundColor Green
 						}
 					} else {
 						Write-Host "  $($lang.NoWork)" -ForegroundColor Red
@@ -673,7 +673,7 @@ Function Event_Assign_Task_Customize
 				}
 
 				if ($Global:Developers_Mode) {
-					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x000330 ]`n   End" -ForegroundColor Green
+					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x000330 ]`n   End" -ForegroundColor Green
 				}
 				#endregion 未挂载
 			}
@@ -693,7 +693,7 @@ Function Event_Assign_Task_Customize
 				Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 
 				if ($Global:Developers_Mode) {
-					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x000350 ]`n   Start" -ForegroundColor Green
+					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x000350 ]`n   Start" -ForegroundColor Green
 				}
 
 				Write-Host "`n  $($lang.Event_Assign_Expand)" -ForegroundColor Yellow
@@ -728,7 +728,7 @@ Function Event_Assign_Task_Customize
 				}
 
 				if ($Global:Developers_Mode) {
-					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x000350 ]`n   End" -ForegroundColor Green
+					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x000350 ]`n   End" -ForegroundColor Green
 				}
 			}
 		}
@@ -835,7 +835,7 @@ Function Expand_Process_abc
 		Write-Host "  $($Local_Wim_Update_Full_Path)" -ForegroundColor Green
 		if (Test-Path -Path $Local_Wim_Update_Full_Path -PathType Leaf) {
 			if ($Global:Developers_Mode) {
-				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x006020 ]`n   Start"
+				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x006020 ]`n   Start"
 			}
 
 			Write-Host "  $($lang.Done)" -ForegroundColor Green
@@ -882,7 +882,7 @@ Function Expand_Process_abc
 			}
 
 			if ($Global:Developers_Mode) {
-				Write-Host "  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x006020 ]`n   End"
+				Write-Host "  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x006020 ]`n   End"
 			}
 		} else {
 			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -917,17 +917,17 @@ Function Run_Expand
 			Write-Host "  $($WildCard.Main.Uid)" -ForegroundColor Green
 
 			if ($Global:Developers_Mode) {
-				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x006010 ]`n   Start"
+				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x006010 ]`n   Start"
 			}
 
 			Expand_Process_abc -NewUid $NewUid -MainUid $NewMain.ImageFileName -ExpandUid $NewExpand.ImageFileName -NewUpdatePath $NewExpand.UpdatePath -ImageFileMount "$($NewExpand.Path)\$($NewExpand.ImageFileName).$($NewExpand.Suffix)"
 
 			if ($Global:Developers_Mode) {
-				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x006010 ]`n   End"
+				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x006010 ]`n   End"
 			}
 		} else {
 			if ($Global:Developers_Mode) {
-				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x006000 ]`n   Start"
+				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x006000 ]`n   Start"
 			}
 
 			#region 检查到主映像文件后，并挂载
@@ -943,7 +943,6 @@ Function Run_Expand
 				try {
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
-						Write-Host "  $($lang.Developers_Mode_Location)28" -ForegroundColor Yellow
 						Write-Host "  $('-' * 80)"
 						Write-Host "  Get-WindowsImage -ImagePath ""$($NewExpand.Path)\$($NewExpand.ImageFileName).$($NewExpand.Suffix)""" -ForegroundColor Green
 						Write-Host "  $('-' * 80)`n"
@@ -1228,7 +1227,7 @@ Function Run_Expand
 			#endregion 检查到主映像文件后，并挂载
 
 			if ($Global:Developers_Mode) {
-				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location)E0x006000 ]`n   End"
+				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x006000 ]`n   End"
 			}
 		}
 	} else {

@@ -113,8 +113,8 @@ Function Image_Mount_Check
 				Mount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Mount.log" -ImagePath "$($MountFileName)" -Index $Index -Path $test_mount_folder | Out-Null
 				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} catch {
-				Write-Host $_
-				Write-Host "  $($lang.Failed)" -ForegroundColor Red
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+				Write-Host "  $($_)" -ForegroundColor Red
 			}
 		} else {
 			Write-Host "  $($lang.NoInstallImage)"

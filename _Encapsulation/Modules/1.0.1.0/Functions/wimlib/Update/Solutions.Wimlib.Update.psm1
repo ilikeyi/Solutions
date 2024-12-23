@@ -1019,7 +1019,7 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 				Write-Host "  $($lang.Event_Allow_Update_Rule_Only)" -ForegroundColor Green
 
 				Write-Host "`n  $($lang.AddSources)" -ForegroundColor Yellow
-				Write-Host "  $($lang.Developers_Mode_Location)Queue_Process_Image_Select_Pending_$($NewMaster)_$($NewMaster)" -ForegroundColor Green
+				Write-Host "  $($lang.Developers_Mode_Location): Queue_Process_Image_Select_Pending_$($NewMaster)_$($NewMaster)" -ForegroundColor Green
 				Write-Host "  $('-' * 80)"
 				ForEach ($wimlib_item_Mount in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($NewMaster)_$($NewMaster)" -ErrorAction SilentlyContinue).Value) {
 					Write-Host "  $($lang.Wim_Image_Name): " -noNewline

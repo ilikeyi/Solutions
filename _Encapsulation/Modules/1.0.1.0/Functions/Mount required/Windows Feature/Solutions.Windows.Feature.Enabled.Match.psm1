@@ -483,36 +483,40 @@ Function Feature_Enabled_Match_Process
 		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Queue_Is_Feature_Enable_Match_Custom_Select) {
-			Write-Host "  $($item)"
+			Write-Host "  $($lang.RuleFileType): " -NoNewline
+			Write-Host $item -ForegroundColor Green
 
 			$TestFolderMountRoute = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\Windows"
 			$TestFolderMountCurrent = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 			$TestFolderMountSxs = Join-Path -Path $Global:Image_source -ChildPath "Sources\sxs"
 
-			if (Test-Path -Path $TestFolderMountRoute -PathType Container) {
-				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
-					Write-Host "`n  $($lang.Developers_Mode_Location)2236" -ForegroundColor Green
-					Write-Host "  $('-' * 80)"
-					Write-Host "  Enable-WindowsOptionalFeature -Path ""$($TestFolderMountCurrent)"" -FeatureName ""$($item)"" -Source ""$($TestFolderMountSxs)"", ""$($TestFolderMountRoute)"" -All -LimitAccess" -ForegroundColor Green
-					Write-Host "  $('-' * 80)`n"
-				}
+			try {
+				if (Test-Path -Path $TestFolderMountRoute -PathType Container) {
+					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
+						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+						Write-Host "  $('-' * 80)"
+						Write-Host "  Enable-WindowsOptionalFeature -Path ""$($TestFolderMountCurrent)"" -FeatureName ""$($item)"" -Source ""$($TestFolderMountSxs)"", ""$($TestFolderMountRoute)"" -All -LimitAccess" -ForegroundColor Green
+						Write-Host "  $('-' * 80)`n"
+					}
 
-				Write-Host "  $($lang.Enable): " -NoNewline
-				Enable-WindowsOptionalFeature -Path $TestFolderMountCurrent -FeatureName $item -Source $TestFolderMountSxs, $TestFolderMountRoute -All -LimitAccess | Out-Null
-				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
-			} else {
-				if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
-					Write-Host "  $($lang.Developers_Mode_Location)2237" -ForegroundColor Green
-					Write-Host "  $('-' * 80)"
-					Write-Host "  Enable-WindowsOptionalFeature -Path ""$($TestFolderMountCurrent)"" -FeatureName ""$($item)"" -Source ""$($TestFolderMountSxs)"" -All -LimitAccess" -ForegroundColor Green
-					Write-Host "  $('-' * 80)`n"
-				}
+					Write-Host "  $($lang.Enable): " -NoNewline
+					Enable-WindowsOptionalFeature -Path $TestFolderMountCurrent -FeatureName $item -Source $TestFolderMountSxs, $TestFolderMountRoute -All -LimitAccess | Out-Null
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+				} else {
+					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
+						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+						Write-Host "  $('-' * 80)"
+						Write-Host "  Enable-WindowsOptionalFeature -Path ""$($TestFolderMountCurrent)"" -FeatureName ""$($item)"" -Source ""$($TestFolderMountSxs)"" -All -LimitAccess" -ForegroundColor Green
+						Write-Host "  $('-' * 80)`n"
+					}
 
-				Write-Host "  $($lang.Enable): " -NoNewline
-				Enable-WindowsOptionalFeature -Path $TestFolderMountCurrent -FeatureName $item -Source $TestFolderMountSxs -All -LimitAccess | Out-Null
-				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+					Write-Host "  $($lang.Enable): " -NoNewline
+					Enable-WindowsOptionalFeature -Path $TestFolderMountCurrent -FeatureName $item -Source $TestFolderMountSxs -All -LimitAccess | Out-Null
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+				}
+			} catch {
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+				Write-Host "  $($_)" -ForegroundColor Red
 			}
 
 			Write-Host

@@ -824,7 +824,8 @@ Function Feature_Enabled_Process
 		Write-Host "  $('-' * 80)"
 
 		ForEach ($item in $Temp_Queue_Is_Feature_Enable_Custom_Select) {
-			Write-Host "  $($item)"
+			Write-Host "  $($lang.RuleFileType): " -NoNewline
+			Write-Host $item -ForegroundColor Green
 
 			$TestFolderMountRoute = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\Windows"
 			$TestFolderMountCurrent = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
@@ -855,9 +856,8 @@ Function Feature_Enabled_Process
 					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 				}
 			} catch {
-				Write-Host $_
-				Write-Host "  $($lang.Enable): " -NoNewline
 				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+				Write-Host "  $($_)" -ForegroundColor Red
 			}
 
 			Write-Host
