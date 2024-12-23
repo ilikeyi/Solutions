@@ -2404,8 +2404,7 @@ Function Prerequisite
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 
 		write-host "  $($lang.Check_execution_strategy): " -NoNewline
-		$GetCurrentExecutionPolicy = Get-ExecutionPolicy
-		switch ($GetCurrentExecutionPolicy) {
+		switch (Get-ExecutionPolicy) {
 			"Bypass" {
 				Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 			}
@@ -3387,7 +3386,7 @@ Function Download_Process
 								"""$($test_new_File)"""
 							)
 
-							Start-Process "powershell" -ArgumentList $arguments
+							Start-Process "powershell" -ArgumentList $arguments -Verb RunAs
 							Write-Host $lang.Done -ForegroundColor Green
 
 							write-host "`n  $('-' * 80)"
@@ -3413,7 +3412,7 @@ Function Download_Process
 								"""$($test_new_File)"""
 							)
 
-							Start-Process "powershell" -ArgumentList $arguments
+							Start-Process "powershell" -ArgumentList $arguments -Verb RunAs
 							Write-Host $lang.Done -ForegroundColor Green
 
 							write-host "`n  $('-' * 80)"
