@@ -70,6 +70,11 @@ Function Functions_Menu
 	Write-Host " $($lang.Function_Unrestricted) " -ForegroundColor Green
 
 	Write-Host
+	Write-Host "  " -NoNewline
+	Write-Host " R'R " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " $($lang.RefreshModules)"
+
+	Write-Host
 	Write-host "  " -NoNewline
 	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " H'elp * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
@@ -235,6 +240,25 @@ Function Functions_Menu
 			Menu_Shortcuts_Developers_Mode
 			ToWait -wait 2
 			Functions_Menu
+		}
+
+		<#
+			热刷新：快速
+		#>
+		"r" {
+			Modules_Refresh -Function "ToWait -wait 2", "Functions_Menu"
+		}
+
+		<#
+			热刷新：先决条件
+		#>
+		{ "RR", "r'r" -eq $_ } {
+			Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.RefreshModules): " -NoNewline
+			Write-host $lang.Prerequisites -ForegroundColor Yellow
+
+			Modules_Refresh -Function "ToWait -wait 2", "Prerequisite", "Functions_Menu"
 		}
 
 		default {

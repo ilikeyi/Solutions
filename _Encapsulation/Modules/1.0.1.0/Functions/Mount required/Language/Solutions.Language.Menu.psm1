@@ -160,7 +160,7 @@ Function Language_Menu
 		Write-Host $lang.OnlyLangCleanup -ForegroundColor Red
 	}
 
-	Write-Host "     R   " -NoNewline -ForegroundColor Yellow
+	Write-Host "     L   " -NoNewline -ForegroundColor Yellow
 	if (Verify_Is_Current_Same) {
 		if (Image_Is_Select_Boot) {
 			Write-Host $lang.LangIni -ForegroundColor Green
@@ -213,6 +213,11 @@ Function Language_Menu
 			Write-Host $Temp_Expand_Rule -ForegroundColor Green
 		}
 	}
+
+	Write-Host
+	Write-Host "  " -NoNewline
+	Write-Host " R'R " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " $($lang.RefreshModules)"
 
 	Write-Host
 	Write-host "  " -NoNewline
@@ -430,7 +435,7 @@ Function Language_Menu
 			ToWait -wait 2
 			Language_Menu
 		}
-		"r" {
+		"l" {
 			Write-Host "`n  $($lang.LangIni)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
 
@@ -701,6 +706,25 @@ Function Language_Menu
 			Menu_Shortcuts_Developers_Mode
 			ToWait -wait 2
 			Language_Menu
+		}
+
+		<#
+			热刷新：快速
+		#>
+		"r" {
+			Modules_Refresh -Function "ToWait -wait 2", "Language_Menu"
+		}
+
+		<#
+			热刷新：先决条件
+		#>
+		{ "RR", "r'r" -eq $_ } {
+			Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.RefreshModules): " -NoNewline
+			Write-host $lang.Prerequisites -ForegroundColor Yellow
+
+			Modules_Refresh -Function "ToWait -wait 2", "Prerequisite", "Language_Menu"
 		}
 
 		default {

@@ -345,7 +345,7 @@ Function Mainpage
 		Write-Host " EP U " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
-	Write-Host "   15  " -NoNewline -ForegroundColor Green
+	Write-Host "   22  " -NoNewline -ForegroundColor Green
 	Write-Host " $($lang.CUpdate): " -ForegroundColor Yellow -NoNewline
 	Write-Host "$($lang.RuleNewTempate) " -NoNewline -ForegroundColor Green
 	Write-Host " CU C " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
@@ -376,7 +376,7 @@ Function Mainpage
 		Write-Host " CU D " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
-	Write-Host "   16  " -NoNewline -ForegroundColor Green
+	Write-Host "   23  " -NoNewline -ForegroundColor Green
 	Write-Host " $($lang.Drive): " -ForegroundColor Yellow -NoNewline
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
@@ -403,7 +403,7 @@ Function Mainpage
 		Write-Host " DD D " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
-	Write-Host "   17  " -NoNewline -ForegroundColor Green
+	Write-Host "   24  " -NoNewline -ForegroundColor Green
 	Write-Host " $($lang.Editions): " -ForegroundColor Yellow -NoNewline
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
@@ -430,7 +430,7 @@ Function Mainpage
 		Write-Host " IV K " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
-	Write-Host "   18  " -NoNewline -ForegroundColor Green
+	Write-Host "   33  " -NoNewline -ForegroundColor Green
 	Write-Host " $($lang.WindowsFeature): " -ForegroundColor Yellow -NoNewline
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
@@ -457,7 +457,7 @@ Function Mainpage
 		Write-Host " WF D " -BackgroundColor DarkRed -ForegroundColor White
 	}
 
-	Write-Host "   19  " -NoNewline -ForegroundColor Green
+	Write-Host "   34  " -NoNewline -ForegroundColor Green
 	Write-Host " $($lang.SpecialFunction): " -ForegroundColor Yellow -NoNewline
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
@@ -558,27 +558,27 @@ Function Mainpage
 			ToWait -wait 2
 			Mainpage
 		}
-		"15" {
+		"22" {
 			Update_Menu
 			ToWait -wait 2
 			Mainpage
 		}
-		"16" {
+		"23" {
 			Drive_Menu
 			ToWait -wait 2
 			Mainpage
 		}
-		"17" {
+		"24" {
 			Editions_GUI
 			ToWait -wait 2
 			Mainpage
 		}
-		"18" {
+		"33" {
 			Feature_Menu
 			ToWait -wait 2
 			Mainpage
 		}
-		"19" {
+		"34" {
 			Functions_Menu
 			ToWait -wait 2
 			Mainpage
