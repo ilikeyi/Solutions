@@ -38,6 +38,6 @@
 	UpdateUpdateStop          = Beim Herunterladen des Updates ist ein Fehler aufgetreten und der Update-Vorgang wurde abgebrochen.
 	UpdateInstall             = Möchten Sie dieses Update installieren?
 	UpdateInstallSel          = Ja, das obige Update wird installiert.\nNein, das Update wird nicht installiert
-	UpdateNoUpdateAvailable   = \n   Keine Updates verfügbar.\n\n   Du rennst {0}'s Solutions Die neueste verfügbare Version.\n
-	UpdateNotSatisfied        = \n   Die Mindestanforderungen an die Version des Aktualisierungsprogramms werden nicht erfüllt, \n\n   Mindestens erforderliche Version: {0}\n\n   Bitte laden Sie es erneut herunter {1}'s Solutions eine Kopie des Tools, um es zu aktualisieren.\n\n   Die Suche nach Updates wurde abgebrochen.\n
+	UpdateNoUpdateAvailable   = \n  Keine Updates verfügbar.\n\n  Du rennst {0}'s Solutions Die neueste verfügbare Version.\n
+	UpdateNotSatisfied        = \n  Die Mindestanforderungen an die Version des Aktualisierungsprogramms werden nicht erfüllt, \n\n  Mindestens erforderliche Version: {0}\n\n  Bitte laden Sie es erneut herunter {1}'s Solutions eine Kopie des Tools, um es zu aktualisieren.\n\n  Die Suche nach Updates wurde abgebrochen.\n
 '@

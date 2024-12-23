@@ -38,6 +38,6 @@
 	UpdateUpdateStop          = Det oppstod en feil under nedlasting av oppdateringen, og oppdateringsprosessen ble avbrutt.
 	UpdateInstall             = Vil du installere denne oppdateringen?
 	UpdateInstallSel          = Ja, oppdateringen ovenfor vil bli installert\nNei, oppdateringen vil ikke bli installert
-	UpdateNoUpdateAvailable   = \n   Ingen tilgjengelige oppdateringer.\n\n   du løper {0}'s Solutions Den siste tilgjengelige versjonen.\n
-	UpdateNotSatisfied        = \n   Minimumskravene for oppdateringsprogramversjon er ikke oppfylt,\n\n   Minimum nødvendig versjon: {0}\n\n   Last ned igjen {1}'s Solutions en kopi av verktøyet for å oppdatere det.\n\n   Se etter oppdateringer har blitt avbrutt.\n
+	UpdateNoUpdateAvailable   = \n  Ingen tilgjengelige oppdateringer.\n\n  du løper {0}'s Solutions Den siste tilgjengelige versjonen.\n
+	UpdateNotSatisfied        = \n  Minimumskravene for oppdateringsprogramversjon er ikke oppfylt,\n\n  Minimum nødvendig versjon: {0}\n\n  Last ned igjen {1}'s Solutions en kopi av verktøyet for å oppdatere det.\n\n  Se etter oppdateringer har blitt avbrutt.\n
 '@

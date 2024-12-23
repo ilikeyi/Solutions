@@ -13,7 +13,7 @@
 	Check_Pass_Done                 = Συγχαρητήρια, πέρασε.
 	How_solve                       = Πώς να λύσετε
 	UpdatePSVersion                 = Εγκαταστήστε την πιο πρόσφατη έκδοση PowerShell
-	UpdateOSVersion                 = 1. Μεταβείτε στον επίσημο ιστότοπο της Microsoft για λήψη της πιο πρόσφατης έκδοσης του λειτουργικού συστήματος\n    2. Εγκαταστήστε την πιο πρόσφατη έκδοση του λειτουργικού συστήματος και δοκιμάστε ξανά
-	HigherTermail                   = 1. Ανοίξτε το Terminal ή το PowerShell ISE ως διαχειριστής, \n       Ορισμός πολιτικής εκτέλεσης PowerShell: Παράκαμψη, γραμμή εντολών PS: \n\n       Set-ExecutionPolicy -ExecutionPolicy Bypass -Force\n\n    2. Μόλις επιλυθεί, εκτελέστε ξανά την εντολή.
-	HigherTermailAdmin              = 1. Ανοίξτε το Terminal ή το PowerShell ISE ως διαχειριστής. \n     2. Μόλις επιλυθεί, εκτελέστε ξανά την εντολή.
+	UpdateOSVersion                 = 1. Μεταβείτε στον επίσημο ιστότοπο της Microsoft για λήψη της πιο πρόσφατης έκδοσης του λειτουργικού συστήματος\n   2. Εγκαταστήστε την πιο πρόσφατη έκδοση του λειτουργικού συστήματος και δοκιμάστε ξανά
+	HigherTermail                   = 1. Ανοίξτε το Terminal ή το PowerShell ISE ως διαχειριστής, \n      Ορισμός πολιτικής εκτέλεσης PowerShell: Παράκαμψη, γραμμή εντολών PS: \n\n      Set-ExecutionPolicy -ExecutionPolicy Bypass -Force\n\n   2. Μόλις επιλυθεί, εκτελέστε ξανά την εντολή.
+	HigherTermailAdmin              = 1. Ανοίξτε το Terminal ή το PowerShell ISE ως διαχειριστής. \n    2. Μόλις επιλυθεί, εκτελέστε ξανά την εντολή.
 '@

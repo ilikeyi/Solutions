@@ -38,6 +38,6 @@
 	UpdateUpdateStop          = Une erreur s'est produite lors du téléchargement de la mise à jour et le processus de mise à jour a été interrompu.
 	UpdateInstall             = Voulez-vous installer cette mise à jour ?
 	UpdateInstallSel          = Oui, la mise à jour ci-dessus sera installée\nNon, la mise à jour ne sera pas installée
-	UpdateNoUpdateAvailable   = \n   Aucune mise à jour disponible.\n\n   tu cours {0}'s Solutions La dernière version disponible.\n
-	UpdateNotSatisfied        = \n   Les exigences minimales de version du programme de mise à jour ne sont pas remplies,\n\n   Version minimale requise: {0}\n\n   Veuillez télécharger à nouveau {1}'s Solutions une copie de l'outil pour le mettre à jour.\n\n   La vérification des mises à jour a été interrompue.\n
+	UpdateNoUpdateAvailable   = \n  Aucune mise à jour disponible.\n\n  tu cours {0}'s Solutions La dernière version disponible.\n
+	UpdateNotSatisfied        = \n  Les exigences minimales de version du programme de mise à jour ne sont pas remplies,\n\n  Version minimale requise: {0}\n\n  Veuillez télécharger à nouveau {1}'s Solutions une copie de l'outil pour le mettre à jour.\n\n  La vérification des mises à jour a été interrompue.\n
 '@

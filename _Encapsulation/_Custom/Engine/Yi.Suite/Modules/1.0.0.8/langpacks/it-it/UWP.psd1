@@ -8,4 +8,5 @@
 	PreventsApps              = Impedire la reinstallazione dell'applicazione
 	CloseStoreAuto            = Disattiva i download automatici di Microsoft Store
 	PreventsSuggestApps       = Impedisci l'installazione delle "App consigliate"
+	DelAllUser                = Elimina tutti gli utenti
 '@

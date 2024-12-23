@@ -8,4 +8,5 @@
 	PreventsApps              = Vältige rakenduse uuesti installimist
 	CloseStoreAuto            = Lülitage Microsoft Store'i automaatsed allalaadimised välja
 	PreventsSuggestApps       = "Soovitatud rakenduste" installimise takistamine
+	DelAllUser                = Kustuta kõik kasutajad
 '@

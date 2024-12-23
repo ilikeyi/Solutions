@@ -32,8 +32,8 @@ $Services = @(
 Function Optimization_Service_UI
 {
 	Logo -Title "$($lang.Optimize) $($lang.Service)"
-	Write-Host "   $($lang.Optimize) $($lang.Service)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	write-host "  $($lang.Optimize) $($lang.Service)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
@@ -79,14 +79,14 @@ Function Optimization_Service_UI
 			$UI_Main_Menu.Controls | ForEach-Object {
 				if ($_ -is [System.Windows.Forms.CheckBox]) {
 					if ($_.Checked) {
-						Write-Host "   $($_.Text)"
-						Write-Host "   $($lang.SettingTo -f $lang.Auto)" -ForegroundColor Green
+						write-host "  $($_.Text)"
+						write-host "  $($lang.SettingTo -f $lang.Auto)" -ForegroundColor Green
 						Get-Service -Name $_.Tag | Set-Service -StartupType Automatic -ErrorAction SilentlyContinue | Out-Null
 						if ($GUIServerStatus.Checked) {
-							Write-Host "   $($lang.Enable)" -ForegroundColor Green
+							write-host "  $($lang.Enable)" -ForegroundColor Green
 							Start-Service $_.Tag -ErrorAction SilentlyContinue | Out-Null
 						}
-						Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+						write-host "  $($lang.Done)`n" -ForegroundColor Green
 					}
 				}
 			}
@@ -104,14 +104,14 @@ Function Optimization_Service_UI
 			$UI_Main_Menu.Controls | ForEach-Object {
 				if ($_ -is [System.Windows.Forms.CheckBox]) {
 					if ($_.Checked) {
-						Write-Host "   $($_.Text)"
-						Write-Host "   $($lang.SettingTo -f $lang.Disable)" -ForegroundColor Green
+						write-host "  $($_.Text)"
+						write-host "  $($lang.SettingTo -f $lang.Disable)" -ForegroundColor Green
 						Get-Service -Name $_.Tag | Set-Service -StartupType Disabled -ErrorAction SilentlyContinue | Out-Null
 						if ($GUIServerStatus.Checked) {
-							Write-Host "   $($lang.Close)" -ForegroundColor Green
+							write-host "  $($lang.Close)" -ForegroundColor Green
 							Stop-Service $_.Tag -Force -NoWait -ErrorAction SilentlyContinue | Out-Null
 						}
-						Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+						write-host "  $($lang.Done)`n" -ForegroundColor Green
 					}
 				}
 			}
@@ -125,7 +125,7 @@ Function Optimization_Service_UI
 		Width          = 168
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			write-host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}

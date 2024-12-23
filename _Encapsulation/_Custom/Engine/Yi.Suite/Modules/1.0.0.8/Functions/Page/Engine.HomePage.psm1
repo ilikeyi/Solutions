@@ -13,7 +13,7 @@ Function Logo
 	$Host.UI.RawUI.WindowTitle = "$((Get-Module -Name Engine).Author)'s Solutions | $($Title)"
 
 	Write-Host
-	Write-Host "   " -NoNewline
+	write-host "  " -NoNewline
 	Write-Host " $((Get-Module -Name Engine).Author)'s Solutions " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " v$((Get-Module -Name Engine).Version.ToString()) " -NoNewline -BackgroundColor DarkGreen -ForegroundColor White
 
@@ -29,7 +29,7 @@ Function Logo
 	}
 
 	Write-Host
-	Write-Host "   " -NoNewline
+	write-host "  " -NoNewline
 	Write-Host " $($lang.Learn) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " $((Get-Module -Name Engine).PrivateData.PSData.ProjectUri) " -BackgroundColor DarkBlue -ForegroundColor White
 
@@ -61,11 +61,11 @@ Function Instl_Custom_Software_Config
 		if (Test-Path $NewConfig -PathType Leaf) {
 			Start-Process powershell -ArgumentList "-File $($DynamicInstl) -Config ""$($NewConfig)"" -Lang ""$($Global:IsLang)""" -NoNewWindow -Wait
 		} else {
-			Write-Host "     $($lang.UpdateUnavailable)" -ForegroundColor Yellow
-			Write-Host "     $($NewConfig)" -ForegroundColor Red
+			write-host "    $($lang.UpdateUnavailable)" -ForegroundColor Yellow
+			write-host "    $($NewConfig)" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "`n   $($lang.InstlNo)$DynamicInstl" -ForegroundColor Red
+		write-host "`n  $($lang.InstlNo)$DynamicInstl" -ForegroundColor Red
 	}
 }
 
@@ -76,7 +76,7 @@ Function Instl_Custom_Software
 	if (Test-Path $DynamicInstl -PathType Leaf) {
 		Start-Process powershell -ArgumentList "-File $($DynamicInstl) -Lang ""$($Global:IsLang)""" -NoNewWindow -Wait
 	} else {
-		Write-Host "`n   $($lang.InstlNo)$DynamicInstl" -ForegroundColor Red
+		write-host "`n  $($lang.InstlNo)$DynamicInstl" -ForegroundColor Red
 	}
 }
 
@@ -87,73 +87,73 @@ Function Instl_Custom_Software
 Function Mainpage
 {
 	Logo -Title $lang.Mainname -ShowUpdate
-	Write-Host "   $($lang.Mainname)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	write-host "  $($lang.Mainname)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 
-	Write-Host "      " -NoNewline
+	write-host "     " -NoNewline
 	Write-Host " 1 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.ChkUpdate)" -ForegroundColor Green
 
-	Write-Host "      " -NoNewline
+	write-host "     " -NoNewline
 	Write-Host " 2 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.FirstDeployment)" -ForegroundColor Green
 
-	Write-Host "      " -NoNewline
+	write-host "     " -NoNewline
 	Write-Host " 3 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.Del) $($lang.Mainname)" -ForegroundColor Green
 
 	Write-Host
 
-	Write-Host "      " -NoNewline
+	write-host "     " -NoNewline
 	Write-Host " 4 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.RestorePoint)" -ForegroundColor Green
 
-	Write-Host "      " -NoNewline
+	write-host "     " -NoNewline
 	Write-Host " 5 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.LocationUserFolder)" -ForegroundColor Green
 
-	Write-Host "      " -NoNewline
+	write-host "     " -NoNewline
 	Write-Host " 6 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.DeskIcon)" -ForegroundColor Green
 
-	Write-Host "      " -NoNewline
+	write-host "     " -NoNewline
 	Write-Host " 7 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.Optimize) $($lang.System)" -ForegroundColor Green
 
-	Write-Host "      " -NoNewline
+	write-host "     " -NoNewline
 	Write-Host " 8 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.Optimize) $($lang.Service)" -ForegroundColor Green
 
-	Write-Host "      " -NoNewline
+	write-host "     " -NoNewline
 	Write-Host " 9 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.Del) $($lang.UninstallUWP)" -ForegroundColor Green
 
-	Write-Host "     " -NoNewline
+	write-host "    " -NoNewline
 	Write-Host " 10 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.Instl) $($lang.Necessary)" -ForegroundColor Green
 
-	Write-Host "     " -NoNewline
+	write-host "    " -NoNewline
 	Write-Host " 11 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.Instl) $($lang.MostUsedSoftware)" -ForegroundColor Green
 
 	Write-Host
 
-	Write-Host "      " -NoNewline
+	write-host "     " -NoNewline
 	Write-Host " C " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 	Write-Host
 	Write-Host
-	Write-Host "   " -NoNewline
+	write-host "  " -NoNewline
 	Write-Host " lang " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.SwitchLanguage) " -ForegroundColor Green
 
-	Write-Host "      " -NoNewline
+	write-host "     " -NoNewline
 	Write-Host " R " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.RefreshModules) " -ForegroundColor Green
 
 	Write-Host
-	Write-Host "   " -NoNewline
+	write-host "  " -NoNewline
 	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " H'elp * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host " " -NoNewline
@@ -167,9 +167,9 @@ Function Mainpage
 	switch -Wildcard (Read-Host)
 	{
 		"Dev" {
-			Write-Host "`n   $($lang.Developers_Mode)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.Setting)".PadRight(28) -NoNewline
+			write-host "`n  $($lang.Developers_Mode)" -ForegroundColor Yellow
+			write-host "  $('-' * 80)"
+			write-host "  $($lang.Setting)".PadRight(28) -NoNewline
 			if ($Global:Developers_Mode) {
 				$Global:Developers_Mode = $False
 				Write-Host $lang.Disable -ForegroundColor Green
@@ -186,7 +186,7 @@ Function Mainpage
 			Modules_Refresh -Function "ToMainpage -wait 2", "Mainpage"
 		}
 		"Upd *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			write-host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 
 			$NewType = $PSItem.Remove(0, 4).Replace(' ', '')
 			switch ($NewType) {
@@ -269,14 +269,14 @@ Function Mainpage
 			Mainpage
 		}
 		"lang *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			write-host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 
 			$NewLanguage = $PSItem.Remove(0, 5).Replace(' ', '')
 			$Langpacks_Sources = "$($PSScriptRoot)\..\..\langpacks"
 			switch ($NewLanguage) {
 				"list" {
-					Write-Host "`n   $($lang.AvailableLanguages)"
-					Write-Host "   $('-' * 80)"
+					write-host "`n  $($lang.AvailableLanguages)"
+					write-host "  $('-' * 80)"
 
 					$Match_Available_Languages = @()
 					Get-ChildItem -Path $Langpacks_Sources -Directory -ErrorAction SilentlyContinue | ForEach-Object {
@@ -288,7 +288,7 @@ Function Mainpage
 					if ($Match_Available_Languages.count -gt 0) {
 						ForEach ($item in $Global:Languages_Available) {
 							if ($Match_Available_Languages -contains $item.Region) {
-								Write-Host "   $($item.Region)".PadRight(20) -NoNewline -ForegroundColor Green
+								write-host "  $($item.Region)".PadRight(20) -NoNewline -ForegroundColor Green
 								Write-Host $item.Name -ForegroundColor Yellow
 							}
 						}
@@ -299,23 +299,23 @@ Function Mainpage
 					}
 				}
 				"auto" {
-					Write-Host "`n   $($lang.SwitchLanguage): "
-					Write-Host "   $('-' * 80)"
+					write-host "`n  $($lang.SwitchLanguage): "
+					write-host "  $('-' * 80)"
 					Remove-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Engine).Author)\Suite" -Name "Language" -ErrorAction SilentlyContinue
-					Write-Host "   $($lang.Done)" -ForegroundColor Green
+					write-host "  $($lang.Done)" -ForegroundColor Green
 					Modules_Refresh -Function "ToMainpage -wait 2", "Mainpage"
 				}
 				default {
-					Write-Host "`n   $($lang.SwitchLanguage): " -NoNewline
+					write-host "`n  $($lang.SwitchLanguage): " -NoNewline
 					Write-Host $NewLanguage -ForegroundColor Green
-					Write-Host "   $('-' * 80)"
+					write-host "  $('-' * 80)"
 
 					if (Test-Path "$($Langpacks_Sources)\$($NewLanguage)\Lang.psd1" -PathType Leaf) {
-						Write-Host "   $($lang.Done)" -ForegroundColor Green
+						write-host "  $($lang.Done)" -ForegroundColor Green
 						Save_Dynamic -regkey "Suite" -name "Language" -value $NewLanguage -String
 						Modules_Refresh -Function "ToMainpage -wait 2", "Mainpage"
 					} else {
-						Write-Host "   $($lang.UpdateUnavailable)" -ForegroundColor Red
+						write-host "  $($lang.UpdateUnavailable)" -ForegroundColor Red
 					}
 				}
 			}
@@ -346,8 +346,8 @@ Function Mainpage
 			.快速测试区域
 		#>
 		"t" {
-			Write-Host "`n   $($lang.Developers_Mode)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			write-host "`n  $($lang.Developers_Mode)" -ForegroundColor Yellow
+			write-host "  $('-' * 80)"
 
 			# Start
 
@@ -358,8 +358,8 @@ Function Mainpage
 
 			# End
 
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.Developers_Mode), $($lang.Done)" -ForegroundColor Green
+			write-host "  $('-' * 80)"
+			write-host "  $($lang.Developers_Mode), $($lang.Done)" -ForegroundColor Green
 
 			<#
 				.添加 ToMainpage 防止直接退出

@@ -8,4 +8,5 @@
 	PreventsApps              = Запретить переустановку приложения
 	CloseStoreAuto            = Отключите автоматическую загрузку из Microsoft Store
 	PreventsSuggestApps       = Запретить установку "Рекомендуемых приложений"
+	DelAllUser                = Удалить всех пользователей
 '@

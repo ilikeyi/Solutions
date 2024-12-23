@@ -38,6 +38,6 @@
 	UpdateUpdateStop          = Ocorreu um erro ao descarregar a atualização e o processo de atualização foi abortado.
 	UpdateInstall             = Deseja instalar esta atualização?
 	UpdateInstallSel          = Sim, a atualização acima será instalada\nNão, a atualização não será instalada
-	UpdateNoUpdateAvailable   = \n   Sem atualização disponível.\n\n   você está a correr {0}'s Solutions A última versão disponível.\n
-	UpdateNotSatisfied        = \n   Os requisitos mínimos de versão do programa de atualização não são cumpridos,\n\n   Versão mínima necessária: {0}\n\n   Por favor, descarregue novamente {1}'s Solutions uma cópia da ferramenta para a atualizar.\n\n   A verificação de atualizações foi abortada.\n
+	UpdateNoUpdateAvailable   = \n  Sem atualização disponível.\n\n  você está a correr {0}'s Solutions A última versão disponível.\n
+	UpdateNotSatisfied        = \n  Os requisitos mínimos de versão do programa de atualização não são cumpridos,\n\n  Versão mínima necessária: {0}\n\n  Por favor, descarregue novamente {1}'s Solutions uma cópia da ferramenta para a atualizar.\n\n  A verificação de atualizações foi abortada.\n
 '@

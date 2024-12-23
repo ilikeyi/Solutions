@@ -14,11 +14,11 @@ Function Event_Assign_Not_Allowed_UI
 		$Temp_Save_Has_Been_Run += $item
 	}
 
-	Write-Host "`n   $($lang.AssignTask)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	write-host "`n  $($lang.AssignTask)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 	if ($Global:Queue_Assign_Not_Monuted_Expand_Select.Count -gt 0) {
 		ForEach ($item in $Global:Queue_Assign_Not_Monuted_Expand_Select) {
-			Write-Host "   $($item)" -ForegroundColor Green
+			write-host "  $($item)" -ForegroundColor Green
 		}
 
 		ForEach ($item in $Global:Queue_Assign_Not_Monuted_Expand_Select) {
@@ -32,7 +32,7 @@ Function Event_Assign_Not_Allowed_UI
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		write-host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }
 
@@ -43,8 +43,8 @@ Function Event_Assign_Not_Allowed_UI
 Function Image_Assign_Event_Master
 {
 	Logo -Title $lang.AssignTask
-	Write-Host "   $($lang.AssignTask)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	write-host "  $($lang.AssignTask)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 
 	<#
 		.重置变量
@@ -282,7 +282,7 @@ Function Image_Assign_Event_Master
 		Text           = $lang.Cancel
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			write-host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}

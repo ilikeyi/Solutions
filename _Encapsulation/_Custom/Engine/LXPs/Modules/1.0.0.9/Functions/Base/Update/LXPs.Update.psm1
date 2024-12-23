@@ -28,8 +28,8 @@ Function Update
 	}
 
 	Logo -Title $lang.ChkUpdate
-	Write-Host "   $($lang.ChkUpdate)"
-	Write-Host "   $('-' * 80)"
+	write-host "  $($lang.ChkUpdate)"
+	write-host "  $('-' * 80)"
 
 	if ($Auto) {
 		ForEach ($item in (Get-Module -Name LXPs).PrivateData.PSData.UpdateServer | Sort-Object { Get-Random } ) {
@@ -178,7 +178,7 @@ Function Update_Setting_UI
 		Text           = $lang.Cancel
 		add_Click      = {
 			$UI_Main.Hide()
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			write-host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}
@@ -261,41 +261,41 @@ Function Update_Process
 	#>
 	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Internet Explorer\Main" -Name "DisableFirstRunCustomize" -Value 2 -ErrorAction SilentlyContinue
 
-	Write-Host "   $($lang.UpdateCheckServerStatus -f $Script:ServerList.Count)"
-	Write-Host "   $('-' * 80)"
+	write-host "  $($lang.UpdateCheckServerStatus -f $Script:ServerList.Count)"
+	write-host "  $('-' * 80)"
 
 	ForEach ($item in $Script:ServerList) {
-		Write-Host "   * $($lang.UpdateServerAddress): " -NoNewline -ForegroundColor Yellow
+		write-host "  * $($lang.UpdateServerAddress): " -NoNewline -ForegroundColor Yellow
 		Write-Host $item -ForegroundColor Green
 
 		if (Test_URI $item) {
 			$PreServerVersion = $item
 			$ServerTest = $true
-			Write-Host "     $($lang.UpdateServeravailable)" -ForegroundColor Green
+			write-host "    $($lang.UpdateServeravailable)" -ForegroundColor Green
 			break
 		} else {
-			Write-Host "     $($lang.UpdateServerUnavailable)`n" -ForegroundColor Red
+			write-host "    $($lang.UpdateServerUnavailable)`n" -ForegroundColor Red
 		}
 	}
 
 	if ($ServerTest) {
-		Write-Host "   $('-' * 80)"
-		Write-Host "     $($lang.UpdatePriority)" -ForegroundColor Green
+		write-host "  $('-' * 80)"
+		write-host "    $($lang.UpdatePriority)" -ForegroundColor Green
 	} else {
-		Write-Host "     $($lang.UpdateServerTestFailed)" -ForegroundColor Red
-		Write-Host "   $('-' * 80)"
+		write-host "    $($lang.UpdateServerTestFailed)" -ForegroundColor Red
+		write-host "  $('-' * 80)"
 		return
 	}
 
-	Write-Host "`n   $($lang.UpdateQueryingUpdate)"
+	write-host "`n  $($lang.UpdateQueryingUpdate)"
 
 	$error.Clear()
 	$time = Measure-Command { Invoke-WebRequest -Uri $PreServerVersion -TimeoutSec 15 -ErrorAction stop }
 
 	if ($error.Count -eq 0) {
-		Write-Host "`n   $($lang.UpdateQueryingTime -f $time.TotalMilliseconds)"
+		write-host "`n  $($lang.UpdateQueryingTime -f $time.TotalMilliseconds)"
 	} else {
-		Write-Host "`n   $($lang.UpdateConnectFailed)"
+		write-host "`n  $($lang.UpdateConnectFailed)"
 		return
 	}
 
@@ -314,7 +314,7 @@ Function Update_Process
 	}
 
 	if ($IsCorrectAuVer) {
-		Write-Host "`n   $($lang.UpdateMinimumVersion -f $((Get-Module -Name LXPs).PrivateData.PSData.MinimumVersion))"
+		write-host "`n  $($lang.UpdateMinimumVersion -f $((Get-Module -Name LXPs).PrivateData.PSData.MinimumVersion))"
 		$IsUpdateAvailable = $false
 
 		if ($getSerVer.version.version.Replace('.', '') -gt (Get-Module -Name LXPs).Version.ToString().Replace('.', '')) {
@@ -324,24 +324,24 @@ Function Update_Process
 		}
 
 		if ($IsUpdateAvailable) {
-			Write-Host "`n   $($lang.UpdateVerifyAvailable)"
-			Write-Host "   $('-' * 80)"
+			write-host "`n  $($lang.UpdateVerifyAvailable)"
+			write-host "  $('-' * 80)"
 
-			Write-Host "   * $($lang.UpdateDownloadAddress): " -NoNewline -ForegroundColor Yellow
+			write-host "  * $($lang.UpdateDownloadAddress): " -NoNewline -ForegroundColor Yellow
 			Write-Host $url -ForegroundColor Green
 
 			if (Test_URI $url) {
-				Write-Host "     $($lang.UpdateAvailable)" -ForegroundColor Green
-				Write-Host "   $('-' * 80)"
+				write-host "    $($lang.UpdateAvailable)" -ForegroundColor Green
+				write-host "  $('-' * 80)"
 
-				Write-Host "`n   $($lang.UpdateCurrent)$((Get-Module -Name LXPs).Version.ToString())
+				write-host "`n  $($lang.UpdateCurrent)$((Get-Module -Name LXPs).Version.ToString())
    $($lang.UpdateLatest)$($getSerVer.version.version)
 
    $($getSerVer.changelog.title)
    $('-' * ($getSerVer.changelog.title).Length)
 $($getSerVer.changelog.log)`n"
 	
-				Write-Host "   $($lang.UpdateNewLatest)`n" -ForegroundColor Green
+				write-host "  $($lang.UpdateNewLatest)`n" -ForegroundColor Green
 
 				$FlagsCheckForceUpdate = $False
 				if ($Force) {
@@ -371,38 +371,38 @@ $($getSerVer.changelog.log)`n"
 							Update_And_Download -url $url
 						}
 						1 {
-							Write-Host "`n   $($lang.UserCancel)"
+							write-host "`n  $($lang.UserCancel)"
 						}
 					}
 				}
 			} else {
-				Write-Host "     $($lang.UpdateUnavailable)" -ForegroundColor Red
-				Write-Host "   $('-' * 80)"
+				write-host "    $($lang.UpdateUnavailable)" -ForegroundColor Red
+				write-host "  $('-' * 80)"
 				return
 			}
 		} else {
 			if ($UI_Main_Reset.Checked) {
-				Write-Host "`n   $($lang.UpdateVerifyAvailable)"
-				Write-Host "   $('-' * 80)"
+				write-host "`n  $($lang.UpdateVerifyAvailable)"
+				write-host "  $('-' * 80)"
 
-				Write-Host "   * $($lang.UpdateDownloadAddress): " -NoNewline -ForegroundColor Yellow
+				write-host "  * $($lang.UpdateDownloadAddress): " -NoNewline -ForegroundColor Yellow
 				Write-Host $url -ForegroundColor Green
 
 				if (Test_URI $url) {
-					Write-Host "     $($lang.UpdateAvailable)" -ForegroundColor Green
-					Write-Host "   $('-' * 80)"
+					write-host "    $($lang.UpdateAvailable)" -ForegroundColor Green
+					write-host "  $('-' * 80)"
 					Update_And_Download -url $url
 				} else {
-					Write-Host "     $($lang.UpdateUnavailable)" -ForegroundColor Red
-					Write-Host "   $('-' * 80)"
+					write-host "    $($lang.UpdateUnavailable)" -ForegroundColor Red
+					write-host "  $('-' * 80)"
 					return
 				}
 			} else {
-				Write-Host "   $($lang.UpdateNoUpdateAvailable -f $((Get-Module -Name LXPs).Author))"
+				write-host "  $($lang.UpdateNoUpdateAvailable -f $((Get-Module -Name LXPs).Author))"
 			}
 		}
 	} else {
-		Write-Host "   $($lang.UpdateNotSatisfied -f $((Get-Module -Name LXPs).PrivateData.PSData.MinimumVersion), $((Get-Module -Name LXPs).Author))"
+		write-host "  $($lang.UpdateNotSatisfied -f $((Get-Module -Name LXPs).PrivateData.PSData.MinimumVersion), $((Get-Module -Name LXPs).Author))"
 	}
 }
 
@@ -418,7 +418,7 @@ Function Update_And_Download
 	$start_time = Get-Date
 	remove-item -path $output -force -ErrorAction SilentlyContinue
 	Invoke-WebRequest -Uri $url -OutFile $output -TimeoutSec 30 -DisableKeepAlive -ErrorAction SilentlyContinue | Out-Null
-	Write-Host "`n   $($lang.UpdateTimeUsed)$((Get-Date).Subtract($start_time).Seconds) (s)`n"
+	write-host "`n  $($lang.UpdateTimeUsed)$((Get-Date).Subtract($start_time).Seconds) (s)`n"
 
 	if (Test-Path -Path $output -PathType Leaf) {
 		Archive -filename $output -to "$($PSScriptRoot)\..\..\..\..\.."
@@ -431,20 +431,20 @@ Function Update_And_Download
 
 		$SaveNewVersion = (Get-Module -Name LXPs).Version.ToString().Replace('.', '')
 
-		Write-Host "`n   $($lang.UpdateClean)" -ForegroundColor Yellow
+		write-host "`n  $($lang.UpdateClean)" -ForegroundColor Yellow
 		if ($UI_Main_Clean.Checked) {
 			if ($SaveOldVersionShort -eq $SaveNewVersion) {
-				Write-Host "   $($lang.UpdateNotExecuted)"
+				write-host "  $($lang.UpdateNotExecuted)"
 			} else {
-				Write-host "   $($lang.AddTo)".PadRight(22) -NoNewline -ForegroundColor Green
+				write-host "  $($lang.AddTo)".PadRight(22) -NoNewline -ForegroundColor Green
 				Save_Dynamic -regkey "LXPs\Update" -name "IsUpdate_Clean" -value $SaveOldVersion -String
 				Write-host $lang.Done
 			}
 		} else {
-			Write-Host "   $($lang.Inoperable)"
+			write-host "  $($lang.Inoperable)"
 		}
 	} else {
-		Write-Host "`n   $($lang.UpdateUpdateStop)"
+		write-host "`n  $($lang.UpdateUpdateStop)"
 	}
 }
 
@@ -535,29 +535,29 @@ Function Unzip_Done_Refresh_Process
 	#>
 	Update_Done_Refresh_Process
 
-	Write-Host "`n   * $($lang.UpdatePostProc)"
+	write-host "`n  * $($lang.UpdatePostProc)"
 	if ($Script:IsProcess) {
-		Write-Host "   $($lang.UpdateNotExecuted)" -ForegroundColor red
+		write-host "  $($lang.UpdateNotExecuted)" -ForegroundColor red
 	} else {
-		Write-Host "`n   $($PPocess)"
+		write-host "`n  $($PPocess)"
 		if (Test-Path -Path $PPocess -PathType Leaf) {
 			Start-Process -FilePath $PPocess -wait -WindowStyle Minimized
 			remove-item -path $PPocess -force
-			Write-Host "   $($lang.Done)" -ForegroundColor Green
+			write-host "  $($lang.Done)" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.UpdateNoPost)" -ForegroundColor red
+			write-host "  $($lang.UpdateNoPost)" -ForegroundColor red
 		}
 
-		Write-Host "`n   $($PsPocess)"
+		write-host "`n  $($PsPocess)"
 		if (Test-Path -Path $PsPocess -PathType Leaf) {
 			Start-Process powershell -ArgumentList "-file $($PsPocess)" -Wait -WindowStyle Minimized
 			remove-item -path $PsPocess -force
-			Write-Host "   $($lang.Done)" -ForegroundColor Green
+			write-host "  $($lang.Done)" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.UpdateNoPost)" -ForegroundColor red
+			write-host "  $($lang.UpdateNoPost)" -ForegroundColor red
 		}
 
-		Write-Host "`n   $((Get-Module -Name LXPs).Author)'s Solutions $($lang.UpdateDone)`n"
+		write-host "`n  $((Get-Module -Name LXPs).Author)'s Solutions $($lang.UpdateDone)`n"
 	}
 }
 
@@ -567,11 +567,11 @@ Function Unzip_Done_Refresh_Process
 #>
 Function Update_Done_Refresh_Process
 {
-	Write-Host "`n   $($lang.UpdateDoneRefresh)"
+	write-host "`n  $($lang.UpdateDoneRefresh)"
 	<#
 		.Add code from here
 		.从此处添加代码
 	#>
 
-	Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+	write-host "  $($lang.Done)`n" -ForegroundColor Green
 }

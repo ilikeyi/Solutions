@@ -38,6 +38,6 @@
 	UpdateUpdateStop          = Med prenosom posodobitve je prišlo do napake in postopek posodabljanja je bil prekinjen.
 	UpdateInstall             = Ali želite namestiti to posodobitev?
 	UpdateInstallSel          = Da, zgornja posodobitev bo nameščena\nNe, posodobitev ne bo nameščena
-	UpdateNoUpdateAvailable   = \n   Na voljo ni nobenih posodobitev.\n\n   tečeš {0}'s Solutions Najnovejša razpoložljiva različica.\n
-	UpdateNotSatisfied        = \n   Zahteve glede minimalne različice programa za posodobitev niso izpolnjene,\n\n   Najmanjša zahtevana različica: {0}\n\n   Prenesite znova {1}'s Solutions kopijo orodja za posodobitev.\n\n   Preverjanje posodobitev je bilo prekinjeno.\n
+	UpdateNoUpdateAvailable   = \n  Na voljo ni nobenih posodobitev.\n\n  tečeš {0}'s Solutions Najnovejša razpoložljiva različica.\n
+	UpdateNotSatisfied        = \n  Zahteve glede minimalne različice programa za posodobitev niso izpolnjene,\n\n  Najmanjša zahtevana različica: {0}\n\n  Prenesite znova {1}'s Solutions kopijo orodja za posodobitev.\n\n  Preverjanje posodobitev je bilo prekinjeno.\n
 '@

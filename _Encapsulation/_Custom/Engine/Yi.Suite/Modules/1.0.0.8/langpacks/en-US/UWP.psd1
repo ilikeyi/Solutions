@@ -8,4 +8,5 @@
 	PreventsApps              = Prevent application reinstallation
 	CloseStoreAuto            = Turn off automatic download from Microsoft Store
 	PreventsSuggestApps       = Prevent installation of "Suggested applications"
+	DelAllUser                = Delete All Users
 '@

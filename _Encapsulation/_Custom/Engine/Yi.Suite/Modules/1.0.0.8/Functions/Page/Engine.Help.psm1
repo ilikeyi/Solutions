@@ -7,26 +7,26 @@ Function Engine_Help
 	Clear-Host
 	Logo -Title $lang.Help
 
-	Write-Host "   $($lang.Short_Cmd)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
-	Write-Host "     lang".PadRight(20) -NoNewline -ForegroundColor Yellow
+	write-host "  $($lang.Short_Cmd)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
+	write-host "    lang".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host $lang.SwitchLanguage
 
-	Write-Host "     lang list".PadRight(20) -NoNewline -ForegroundColor Yellow
+	write-host "    lang list".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host $lang.AvailableLanguages
 
-	Write-Host "     lang auto".PadRight(20) -NoNewline -ForegroundColor Yellow
+	write-host "    lang auto".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host "$($lang.SwitchLanguage), $($lang.LanguageReset)"
 
-	Write-Host "     lang {}".PadRight(20) -NoNewline -ForegroundColor Yellow
+	write-host "    lang {}".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host "$($lang.SwitchLanguage), $($lang.LanguageCode) { " -NoNewline
 	Write-Host "lang zh-CN" -NoNewline -ForegroundColor Green
 	Write-Host " }"
 
 	Write-Host
-	Write-Host "     Update".PadRight(20) -NoNewline -ForegroundColor Yellow
+	write-host "    Update".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host $lang.ChkUpdate
 
-	Write-Host "     Update Auto".PadRight(20) -NoNewline -ForegroundColor Yellow
+	write-host "    Update Auto".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host "$($lang.ChkUpdate), $($lang.UpdateSilent)"
 }

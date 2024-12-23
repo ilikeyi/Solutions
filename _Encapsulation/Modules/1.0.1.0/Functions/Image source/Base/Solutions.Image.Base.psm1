@@ -1196,7 +1196,7 @@ Function Menu_Shortcuts_Rebuild_Key
 	ForEach ($item in $Global:Image_Rule) {
 		if ($item.Main.Suffix -eq "wim") {
 			$Scope += $item.Main.Shortcuts
-		
+
 			if ($item.Expand.Count -gt 0) {
 				ForEach ($Expand in $item.Expand) {
 					if ($Expand.Suffix -eq "wim") {
@@ -1910,7 +1910,7 @@ Function Menu_Shortcuts_PS_Cmd
 	$IsFunction = @()
 	Get-Command -CommandType Function | ForEach-Object {
 		if ($Command -Contains $_) {
-	       $IsFunction += $_.name
+			$IsFunction += $_.name
 		}
 	}
 

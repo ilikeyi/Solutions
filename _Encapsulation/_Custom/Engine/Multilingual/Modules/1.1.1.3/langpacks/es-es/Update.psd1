@@ -38,6 +38,6 @@
 	UpdateUpdateStop          = Se produjo un error al descargar la actualización y se canceló el proceso de actualización.
 	UpdateInstall             = ¿Quieres instalar esta actualización?
 	UpdateInstallSel          = Sí, se instalará la actualización anterior\nNo, la actualización no se instalará
-	UpdateNoUpdateAvailable   = \n   No hay actualizaciones disponibles.\n\n   estas corriendo {0}'s Solutions La última versión disponible.\n
-	UpdateNotSatisfied        = \n   No se cumplen los requisitos mínimos de versión del programa de actualización,\n\n   Versión mínima requerida: {0}\n\n   Por favor descargue nuevamente {1}'s Solutions una copia de la herramienta para actualizarla.\n\n   Se ha cancelado la búsqueda de actualizaciones.\n
+	UpdateNoUpdateAvailable   = \n  No hay actualizaciones disponibles.\n\n  estas corriendo {0}'s Solutions La última versión disponible.\n
+	UpdateNotSatisfied        = \n  No se cumplen los requisitos mínimos de versión del programa de actualización,\n\n  Versión mínima requerida: {0}\n\n  Por favor descargue nuevamente {1}'s Solutions una copia de la herramienta para actualizarla.\n\n  Se ha cancelado la búsqueda de actualizaciones.\n
 '@

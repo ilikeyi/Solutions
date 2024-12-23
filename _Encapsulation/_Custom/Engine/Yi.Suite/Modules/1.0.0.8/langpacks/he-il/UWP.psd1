@@ -8,4 +8,5 @@
 	PreventsApps              = מנע התקנה מחדש של האפליקציה
 	CloseStoreAuto            = כבה את ההורדות האוטומטיות של Microsoft Store
 	PreventsSuggestApps       = מנע התקנה של "אפליקציות מוצעות"
+	DelAllUser                = מחק את כל המשתמשים
 '@

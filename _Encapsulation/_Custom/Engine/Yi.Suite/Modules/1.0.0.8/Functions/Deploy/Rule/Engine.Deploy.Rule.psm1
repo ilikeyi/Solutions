@@ -24,7 +24,7 @@ Function Deploy_Guide
 			$NewFilePathFull = Join-Path -Path $itemn -ChildPath $item
 
 			if (Test-Path -Path $NewFilePathFull -PathType leaf) {
-				Write-Host "   $($lang.DeployTask): " -ForegroundColor Yellow
+				write-host "  $($lang.DeployTask): " -ForegroundColor Yellow
 				Write-Host $NewFilePathFull -ForegroundColor Green
 
 				if ($Global:MarkRebootComputer) {

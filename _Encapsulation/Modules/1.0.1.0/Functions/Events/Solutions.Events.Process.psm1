@@ -180,7 +180,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:LanguageAddTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:LanguageAddTasksTime.Reset()
 		$Script:LanguageAddTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:LanguageAddTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -193,20 +193,18 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "`n  $($lang.Setup_Fix_Missing): $($lang.Mounted)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		if ((Get-Variable -Scope global -Name "Queue_Is_Setup_Fix_Missing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-			Write-Host "  $($lang.Operable)" -ForegroundColor Green
-
 			$SearchFolderRule = @(
 				Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Language\Repair"
 				"$($Global:Image_source)_Custom\$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Language\Repair"
 			)
 			$SearchFolderRule = $SearchFolderRule | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
-			Write-Host "`n  $($lang.ProcessSources)" -ForegroundColor Yellow
+			Write-Host "  $($lang.ProcessSources)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
 			ForEach ($item in $SearchFolderRule) {
 				Write-Host "  $($item)" -ForegroundColor Yellow
 			}
-	
+
 			Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
 			foreach ($item in $SearchFolderRule) {
@@ -260,13 +258,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:LanguageAddTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:LanguageAddTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:LanguageAddTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -303,7 +301,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:LanguageDelTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:LanguageDelTasksTime.Reset()
 		$Script:LanguageDelTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:LanguageDelTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -338,7 +336,7 @@ Function Event_Process_Task_Need_Mount
 		} else {
 			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 		}
-		
+
 		$Script:LanguageDelTasksTime.Stop()
 		Write-Host "`n  $($lang.Language): $($lang.Del), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -387,7 +385,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:ComponentsClearTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:ComponentsClearTasksTime.Reset()
 		$Script:ComponentsClearTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:ComponentsClearTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -432,7 +430,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:InBoxAppsDeletePreTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:InBoxAppsDeletePreTasksTime.Reset()
 		$Script:InBoxAppsDeletePreTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:InBoxAppsDeletePreTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -444,13 +442,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:InBoxAppsDeletePreTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:InBoxAppsDeletePreTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:InBoxAppsDeletePreTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -471,7 +469,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:InBoxAppsAddTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:InBoxAppsAddTasksTime.Reset()
 		$Script:InBoxAppsAddTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:InBoxAppsAddTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -483,13 +481,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:InBoxAppsAddTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:InBoxAppsAddTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:InBoxAppsAddTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -510,7 +508,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:InBoxAppsInstallNewTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:InBoxAppsInstallNewTasksTime.Reset()
 		$Script:InBoxAppsInstallNewTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:InBoxAppsInstallNewTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -522,13 +520,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:InBoxAppsInstallNewTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:InBoxAppsInstallNewTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:InBoxAppsInstallNewTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -550,7 +548,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:LXPsDelTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:LXPsDelTasksTime.Reset()
 		$Script:LXPsDelTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:LXPsDelTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -590,7 +588,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:LXPsAddTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:LXPsAddTasksTime.Reset()
 		$Script:LXPsAddTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:LXPsAddTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -602,13 +600,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:LXPsAddTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:LXPsAddTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:LXPsAddTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -630,7 +628,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:LXPsDeleteOldTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:LXPsDeleteOldTasksTime.Reset()
 		$Script:LXPsDeleteOldTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:LXPsDeleteOldTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -670,7 +668,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:LXPsDeleteMatchTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:LXPsDeleteMatchTasksTime.Reset()
 		$Script:LXPsDeleteMatchTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:LXPsDeleteMatchTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -682,13 +680,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:LXPsDeleteMatchTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:LXPsDeleteMatchTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:LXPsDeleteMatchTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -709,7 +707,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:LXPsDeleteOfflineTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:LXPsDeleteOfflineTasksTime.Reset()
 		$Script:LXPsDeleteOfflineTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:LXPsDeleteOfflineTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -721,13 +719,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:LXPsDeleteOfflineTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:LXPsDeleteOfflineTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:LXPsDeleteOfflineTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -748,7 +746,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:InBoxAppsOptimizeTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:InBoxAppsOptimizeTasksTime.Reset()
 		$Script:InBoxAppsOptimizeTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:InBoxAppsOptimizeTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -760,13 +758,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:InBoxAppsOptimizeTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:InBoxAppsOptimizeTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:InBoxAppsOptimizeTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -787,7 +785,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:OSUpdateAddTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:OSUpdateAddTasksTime.Reset()
 		$Script:OSUpdateAddTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:OSUpdateAddTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -799,13 +797,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:OSUpdateAddTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:OSUpdateAddTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:OSUpdateAddTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -826,7 +824,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:OSUpdateDelTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:OSUpdateDelTasksTime.Reset()
 		$Script:OSUpdateDelTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:OSUpdateDelTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -838,13 +836,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:OSUpdateDelTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:OSUpdateDelTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:OSUpdateDelTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -865,11 +863,11 @@ Function Event_Process_Task_Need_Mount
 		$Script:DriveAddTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:DriveAddTasksTime.Reset()
 		$Script:DriveAddTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:DriveAddTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-	
+
 		Drive_Add_Process
 
 		$Script:DriveAddTasksTime.Stop()
@@ -877,13 +875,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:DriveAddTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:DriveAddTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:DriveAddTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -904,11 +902,11 @@ Function Event_Process_Task_Need_Mount
 		$Script:DriveDelTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:DriveDelTasksTime.Reset()
 		$Script:DriveDelTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:DriveDelTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-	
+
 		Drive_Delete_Process
 
 		$Script:DriveDelTasksTime.Stop()
@@ -916,13 +914,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:DriveDelTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:DriveDelTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:DriveDelTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -943,7 +941,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:CuringUpdateTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:CuringUpdateTasksTime.Reset()
 		$Script:CuringUpdateTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:CuringUpdateTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -968,13 +966,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:CuringUpdateTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:CuringUpdateTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:CuringUpdateTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -994,7 +992,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:SupersededClearTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:SupersededClearTasksTime.Reset()
 		$Script:SupersededClearTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:SupersededClearTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -1006,13 +1004,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:SupersededClearTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:SupersededClearTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:SupersededClearTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -1138,7 +1136,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:HealthyTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:HealthyTasksTime.Reset()
 		$Script:HealthyTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:HealthyTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 
@@ -1156,7 +1154,7 @@ Function Event_Process_Task_Need_Mount
 			Write-Host "  $($lang.Healthy_Save)`n" -ForegroundColor Red
 			if ((Get-Variable -Scope global -Name "Queue_Healthy_Dont_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
 				Write-Host "  $($lang.Operable)`n" -ForegroundColor Green
-		
+
 				<#
 					.重置：完成后事件
 				#>
@@ -1179,13 +1177,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:HealthyTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:HealthyTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:HealthyTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -1236,7 +1234,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:EjectSaveTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:EjectSaveTasksTime.Reset()
 		$Script:EjectSaveTasksTime.Start()
-	
+
 		Write-Host "`n  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:EjectSaveTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -1279,7 +1277,7 @@ Function Event_Process_Task_Need_Mount
 						Write-Host "  $('-' * 80)"
 						if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)").Value) {
 							Write-Host "  $($lang.Mounted)"
-					
+
 							<#
 								.健康
 							#>
@@ -1442,13 +1440,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:EjectSaveTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:EjectSaveTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:EjectSaveTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -1470,7 +1468,7 @@ Function Event_Process_Task_Need_Mount
 		$Script:EjectDoNotSaveTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:EjectDoNotSaveTasksTime.Reset()
 		$Script:EjectDoNotSaveTasksTime.Start()
-	
+
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host " $($Script:EjectDoNotSaveTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
@@ -1624,13 +1622,13 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:EjectDoNotSaveTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEnd)" -NoNewline
 		Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAll)" -NoNewline
 		Write-Host "$($Script:EjectDoNotSaveTasksTime.Elapsed)" -ForegroundColor Yellow
-	
+
 		Write-Host "  $($lang.TimeEndAllseconds)" -NoNewline
 		Write-Host "$($Script:EjectDoNotSaveTasksTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -2052,14 +2050,14 @@ Function Eject_Forcibly_All
 					Image_Get_Mount_Status_New -ImageMaster $item.Main.ImageFileName -ImageName $Expand.ImageFileName -ImageFile "$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)" -Silent $True
 
 					if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.ImageFileName)_$($Expand.ImageFileName)").Value) {
-						Write-Host "    $($lang.Mounted)`n"
+						Write-Host "    $($lang.Mounted)"
 
 						<#
 							.初始化变量
 						#>
 						$Eject_Expand_Do_Not_Save_Path = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($Expand.ImageFileName)\Mount"
 
-						Write-Host "    $($lang.YesWork)" -ForegroundColor Yellow
+						Write-Host "`n    $($lang.YesWork)" -ForegroundColor Yellow
 						Write-Host "    $('-' * 78)"
 
 						Write-Host "    $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
@@ -2083,7 +2081,7 @@ Function Eject_Forcibly_All
 						} else {
 							Write-Host "    $($lang.Inoperable)" -ForegroundColor Red
 						}
-		
+
 						Write-Host "`n    $($lang.DoNotSave)" -ForegroundColor Yellow
 						Write-Host "    $('-' * 78)"
 						if ($DontSave) {
@@ -2100,7 +2098,7 @@ Function Eject_Forcibly_All
 
 							Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Eject_Expand_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 							Image_Mount_Force_Del -NewPath "$($Eject_Expand_Do_Not_Save_Path)"
-		
+
 							<#
 								.检查了已挂载后，判断目录是否存在，再次删除。
 							#>
@@ -2108,7 +2106,7 @@ Function Eject_Forcibly_All
 								Dismount-WindowsImage -ScratchDirectory $(Get_Mount_To_Temp) -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Eject_Expand_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 								Image_Mount_Force_Del -NewPath "$($Eject_Expand_Do_Not_Save_Path)"
 							}
-		
+
 							Write-Host "    $($lang.Done)" -ForegroundColor Green
 						}
 					} else {

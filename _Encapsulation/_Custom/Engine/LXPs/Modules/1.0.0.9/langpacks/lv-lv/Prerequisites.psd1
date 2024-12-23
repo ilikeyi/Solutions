@@ -13,7 +13,7 @@
 	Check_Pass_Done                 = Apsveicu, pagājis.
 	How_solve                       = Kā atrisināt
 	UpdatePSVersion                 = Lūdzu, instalējiet jaunāko PowerShell versiju
-	UpdateOSVersion                 = 1. Dodieties uz Microsoft oficiālo vietni, lai lejupielādētu jaunāko operētājsistēmas versiju\n    2. Instalējiet jaunāko operētājsistēmas versiju un mēģiniet vēlreiz
-	HigherTermail                   = 1. Atveriet termināli vai PowerShell ISE kā administratoru, \n       Iestatīt PowerShell izpildes politiku: apiet, PS komandrinda: \n\n       Set-ExecutionPolicy -ExecutionPolicy Bypass -Force\n\n    2. Kad tas ir atrisināts, palaidiet komandu vēlreiz.
-	HigherTermailAdmin              = 1. Atveriet termināli vai PowerShell ISE kā administratoru. \n     2. Kad tas ir atrisināts, palaidiet komandu vēlreiz.
+	UpdateOSVersion                 = 1. Dodieties uz Microsoft oficiālo vietni, lai lejupielādētu jaunāko operētājsistēmas versiju\n   2. Instalējiet jaunāko operētājsistēmas versiju un mēģiniet vēlreiz
+	HigherTermail                   = 1. Atveriet termināli vai PowerShell ISE kā administratoru, \n      Iestatīt PowerShell izpildes politiku: apiet, PS komandrinda: \n\n      Set-ExecutionPolicy -ExecutionPolicy Bypass -Force\n\n   2. Kad tas ir atrisināts, palaidiet komandu vēlreiz.
+	HigherTermailAdmin              = 1. Atveriet termināli vai PowerShell ISE kā administratoru. \n    2. Kad tas ir atrisināts, palaidiet komandu vēlreiz.
 '@

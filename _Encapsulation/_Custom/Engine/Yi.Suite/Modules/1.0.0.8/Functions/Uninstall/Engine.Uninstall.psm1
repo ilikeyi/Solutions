@@ -5,8 +5,8 @@
 Function Uninstall
 {
 	Logo -Title "$($lang.Del) $($lang.MainHisName)"
-	Write-Host "   $($lang.Del) $($lang.MainHisName)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	write-host "  $($lang.Del) $($lang.MainHisName)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
@@ -80,8 +80,8 @@ Function Uninstall
 			if ($UI_Main_Delete_ICON.Checked) {
 				$syspin   = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\syspin")\syspin.exe"
 
-				Write-Host "   $($lang.Del) $($lang.Redundant)" -ForegroundColor Green
-				Write-Host "   $($lang.Del) $($env:USERPROFILE)\Desktop\$($lang.MainHisName).lnk"
+				write-host "  $($lang.Del) $($lang.Redundant)" -ForegroundColor Green
+				write-host "  $($lang.Del) $($env:USERPROFILE)\Desktop\$($lang.MainHisName).lnk"
 				Remove-Item -Path "$($env:USERPROFILE)\Desktop\Bundled Solutions.lnk" -ErrorAction SilentlyContinue
 				Remove-Item -Path "$($env:USERPROFILE)\Desktop\附赠解决方案.lnk" -ErrorAction SilentlyContinue
 				Remove-Item -Path "$($env:USERPROFILE)\Desktop\附贈解決方案.lnk" -ErrorAction SilentlyContinue
@@ -89,7 +89,7 @@ Function Uninstall
 				Remove-Item -Path "$($env:USERPROFILE)\Desktop\ボーナスソリューション.lnk" -ErrorAction SilentlyContinue
 				Remove-Item -Path "$($env:USERPROFILE)\Desktop\Bonuslösung.lnk" -ErrorAction SilentlyContinue
 
-				Write-Host "   $($lang.Del) $($env:SystemDrive)\Users\Public\Desktop\$($lang.MainHisName).lnk"
+				write-host "  $($lang.Del) $($env:SystemDrive)\Users\Public\Desktop\$($lang.MainHisName).lnk"
 				Remove-Item -Path "$($env:SystemDrive)\Users\Public\Desktop\Bundled Solutions.lnk" -ErrorAction SilentlyContinue
 				Remove-Item -Path "$($env:SystemDrive)\Users\Public\Desktop\附赠解决方案.lnk" -ErrorAction SilentlyContinue
 				Remove-Item -Path "$($env:SystemDrive)\Users\Public\Desktop\附贈解決方案.lnk" -ErrorAction SilentlyContinue
@@ -98,7 +98,7 @@ Function Uninstall
 				Remove-Item -Path "$($env:SystemDrive)\Users\Public\Desktop\Bonuslösung.lnk" -ErrorAction SilentlyContinue
 
 				$StartMenu = "$($env:SystemDrive)\ProgramData\Microsoft\Windows\Start Menu\Programs\$((Get-Module -Name Engine).Author)'s Solutions"
-				Write-Host "   $($lang.Del) $($StartMenu)`n"
+				write-host "  $($lang.Del) $($StartMenu)`n"
 				Remove_Tree -Path $StartMenu
 
 				if (Test-Path $syspin -PathType Leaf) {
@@ -109,11 +109,11 @@ Function Uninstall
 				Personalise -Del
 			}
 			if ($UI_Main_Defender_Exclude.Checked) {
-				Write-Host "   $($lang.Del) $($lang.Exclude) ( $($Global:UniqueMainFolder) )`n" -ForegroundColor Green
+				write-host "  $($lang.Del) $($lang.Exclude) ( $($Global:UniqueMainFolder) )`n" -ForegroundColor Green
 				Remove-MpPreference -ExclusionPath "$($Global:UniqueMainFolder)"
 			}
 			if ($UI_Main_Restore_Restricted.Checked) {
-				Write-Host "`n   $($lang.Restricted)`n" -ForegroundColor Green
+				write-host "`n  $($lang.Restricted)`n" -ForegroundColor Green
 				Set-ExecutionPolicy -ExecutionPolicy Restricted -Force
 			}
 			if ($UI_Main_Uninstall_Next.Checked) {
@@ -121,7 +121,7 @@ Function Uninstall
 					.In order to prevent the solution from being unable to be cleaned up, the next time you log in, execute it again
 					.为了防止无法清理解决方案，下次登录时，再次执行
 				#>
-				Write-Host "   $($lang.NextDelete)`n" -ForegroundColor Green
+				write-host "  $($lang.NextDelete)`n" -ForegroundColor Green
 				$regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce"
 				$regKey = "Clear $((Get-Module -Name Engine).Author) Folder"
 				$regValue = "cmd.exe /c rd /s /q ""$($Global:UniqueMainFolder)"""
@@ -133,7 +133,7 @@ Function Uninstall
 				}
 			}
 			if ($UI_Main_Uninstall_All.Checked) {
-				Write-Host "   $($lang.Del) $($lang.MainHisName) ( $($Global:UniqueMainFolder) )`n" -ForegroundColor Green
+				write-host "  $($lang.Del) $($lang.MainHisName) ( $($Global:UniqueMainFolder) )`n" -ForegroundColor Green
 				Remove_Tree -Path "$($Global:UniqueMainFolder)"
 			}
 			$UI_Main.Close()
@@ -146,7 +146,7 @@ Function Uninstall
 		Location       = "268,635"
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			write-host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}

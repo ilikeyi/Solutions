@@ -38,6 +38,6 @@
 	UpdateUpdateStop          = 업데이트를 다운로드하는 동안 오류가 발생하여 업데이트 프로세스가 중단되었습니다.
 	UpdateInstall             = 이 업데이트를 설치 하시겠습니까?
 	UpdateInstallSel          = 예, 위 업데이트가 설치됩니다.\n아니요, 업데이트가 설치되지 않습니다.
-	UpdateNoUpdateAvailable   = \n   사용 가능한 업데이트가 없습니다.\n\n   {0} 솔루션의 최신 버전을 실행 중입니다.\n
-	UpdateNotSatisfied        = \n   최소 업데이트 프로그램 버전 요구 사항을 충족하지 않습니다,\n\n   필요한 최소 버전 : {0}\n\n   다시 다운로드하십시오 {1}'s Solutions 사본, 이 도구를 업데이트합니다.\n\n   업데이트 확인이 중단되었습니다.\n
+	UpdateNoUpdateAvailable   = \n  사용 가능한 업데이트가 없습니다.\n\n  {0} 솔루션의 최신 버전을 실행 중입니다.\n
+	UpdateNotSatisfied        = \n  최소 업데이트 프로그램 버전 요구 사항을 충족하지 않습니다,\n\n  필요한 최소 버전 : {0}\n\n  다시 다운로드하십시오 {1}'s Solutions 사본, 이 도구를 업데이트합니다.\n\n  업데이트 확인이 중단되었습니다.\n
 '@

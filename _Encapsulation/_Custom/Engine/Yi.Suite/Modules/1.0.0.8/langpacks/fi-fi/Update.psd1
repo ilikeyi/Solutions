@@ -38,6 +38,6 @@
 	UpdateUpdateStop          = Päivitystä ladattaessa tapahtui virhe, ja päivitys keskeytettiin.
 	UpdateInstall             = Haluatko asentaa tämän päivityksen?
 	UpdateInstallSel          = Kyllä, yllä oleva päivitys asennetaan\nEi, päivitystä ei asenneta
-	UpdateNoUpdateAvailable   = \n   Päivityksiä ei ole saatavilla.\n\n   sinä juokset {0}'s Solutions Viimeisin saatavilla oleva versio.\n
-	UpdateNotSatisfied        = \n   Päivitysohjelman vähimmäisversion vaatimukset eivät täyty, \n\n   Vähintään vaadittu versio: {0}\n\n   Lataa uudelleen {1}'s Solutions kopio työkalusta sen päivittämistä varten.\n\n   Päivitysten tarkistaminen on keskeytetty.\n
+	UpdateNoUpdateAvailable   = \n  Päivityksiä ei ole saatavilla.\n\n  sinä juokset {0}'s Solutions Viimeisin saatavilla oleva versio.\n
+	UpdateNotSatisfied        = \n  Päivitysohjelman vähimmäisversion vaatimukset eivät täyty, \n\n  Vähintään vaadittu versio: {0}\n\n  Lataa uudelleen {1}'s Solutions kopio työkalusta sen päivittämistä varten.\n\n  Päivitysten tarkistaminen on keskeytetty.\n
 '@

@@ -38,6 +38,6 @@
 	UpdateUpdateStop          = 下載更新時發生錯誤，更新過程中止。
 	UpdateInstall             = 您要安裝此更新嗎？
 	UpdateInstallSel          = 是，將安裝上述更新\n否，則不會安裝該更新
-	UpdateNoUpdateAvailable   = \n   沒有可用的更新。\n\n   您正在運行 {0}'s Solutions 的最新可用版本。\n
-	UpdateNotSatisfied        = \n   不滿足最低更新程序版本要求，\n\n   最低要求版本：{0}\n\n   請重新下載 {1}'s Solutions 的副本，以更新此工具。\n\n   檢查更新已中止。\n
+	UpdateNoUpdateAvailable   = \n  沒有可用的更新。\n\n  您正在運行 {0}'s Solutions 的最新可用版本。\n
+	UpdateNotSatisfied        = \n  不滿足最低更新程序版本要求，\n\n  最低要求版本：{0}\n\n  請重新下載 {1}'s Solutions 的副本，以更新此工具。\n\n  檢查更新已中止。\n
 '@

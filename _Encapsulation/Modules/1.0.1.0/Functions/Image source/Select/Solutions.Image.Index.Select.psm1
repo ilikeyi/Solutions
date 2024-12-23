@@ -569,7 +569,7 @@ Function Image_Select_Index_UI
 
 	<#
 		.可选功能
-	#>	
+	#>
 	$UI_Main_Apply_Adv = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 530
@@ -615,7 +615,7 @@ Function Image_Select_Index_UI
 	#>
 	<#
 		.可选功能
-	#>	
+	#>
 	$UI_Main_Apply_Select_Detailed = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 530
@@ -1324,7 +1324,7 @@ Function Image_Select_Index_UI
 		$UI_Main_Apply_Adv,
 		$UI_Main_Apply_Verify,
 		$UI_Main_Apply_Check,
-	
+
 		$UI_Main_Apply_Select_Detailed,
 		$UI_Main_Apply_Image_Index_Name,
 		$UI_Main_Apply_Image_Name,
@@ -1607,10 +1607,10 @@ Function Image_Select_Mul_UI
 			$TempQueueProcessImageSelectPending = @()
 			$MarkSelectIndexin = @()
 
-	 		<#
-	 			.Mark: Check the selection status
-	 			.标记：检查选择状态
-	 		#>
+			<#
+				.Mark: Check the selection status
+				.标记：检查选择状态
+			#>
 
 			$UI_Main_Menu.Controls | ForEach-Object {
 				if ($_.Enabled) {

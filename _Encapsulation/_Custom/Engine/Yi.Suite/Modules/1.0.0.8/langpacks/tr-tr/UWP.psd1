@@ -8,4 +8,5 @@
 	PreventsApps              = Uygulamanın yeniden yüklenmesini önleyin
 	CloseStoreAuto            = Microsoft Store otomatik indirmelerini kapatın
 	PreventsSuggestApps       = "Önerilen Uygulamalar"ın yüklenmesini engelle
+	DelAllUser                = Tüm kullanıcıları sil
 '@

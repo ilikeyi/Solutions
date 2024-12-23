@@ -13,7 +13,7 @@
 
 	.LINK
 	 https://github.com/ilikeyi/Multilingual
-	 
+
 	.About
 	 Author:  Yi
 	 Website: http://fengyi.tel

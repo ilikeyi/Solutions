@@ -20,7 +20,7 @@ $GroupFile = @(
 #>
 Function Permissions
 {
-	Write-Host "`n   $($lang.Authority)"
+	write-host "`n  $($lang.Authority)"
 	ForEach ($item in $GroupFolderHide) {
 		Get-ChildItem "$($PSScriptRoot)\..\..\..\..\..\..\$($item)" -Directory -ErrorAction SilentlyContinue | ForEach-Object {
 			Set-ItemProperty -Path $_.FullName -Name Attributes -Value Hidden -ErrorAction SilentlyContinue
@@ -31,5 +31,5 @@ Function Permissions
 		Set-ItemProperty -Path "$($PSScriptRoot)\..\..\..\..\..\..\$($item)" -Name Attributes -Value Hidden -ErrorAction SilentlyContinue
 	}
 
-	Write-Host "   $($lang.Done)" -ForegroundColor Green
+	write-host "  $($lang.Done)" -ForegroundColor Green
 }

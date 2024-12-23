@@ -5,8 +5,8 @@
 Function Restore_Point_Create_UI
 {
 	Logo -Title $lang.RestorePoint
-	Write-Host "   $($lang.RestorePoint)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	write-host "  $($lang.RestorePoint)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 
 	$Path = "HKCU:\SOFTWARE\$((Get-Module -Name Engine).Author)\Suite"
 	if (-not (Test-Path $Path)) {
@@ -61,7 +61,7 @@ Function Restore_Point_Create_UI
 		Location       = "268,635"
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			write-host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}
@@ -91,5 +91,5 @@ Function Restore_Point_Create
 	Checkpoint-Computer -description "$((Get-Module -Name Engine).Author)" -restorepointtype "Modify_Settings" -ErrorAction SilentlyContinue
 	New-ItemProperty -LiteralPath "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SystemRestore" -Name 'SystemRestorePointCreationFrequency' -Value 1440 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	Disable-ComputerRestore -Drive $env:SystemDrive -ErrorAction SilentlyContinue
-	Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+	write-host "  $($lang.Done)`n" -ForegroundColor Green
 }

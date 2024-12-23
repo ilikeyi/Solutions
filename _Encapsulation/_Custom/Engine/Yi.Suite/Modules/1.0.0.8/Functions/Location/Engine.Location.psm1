@@ -1,8 +1,8 @@
 ﻿Function Change_Location
 {
 	Logo -Title $lang.LocationUserFolder
-	Write-Host "   $($lang.LocationUserFolder)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	write-host "  $($lang.LocationUserFolder)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 
 	<#
 		.初始化：获取当前位置
@@ -687,7 +687,7 @@
 		Width          = 245
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			write-host "  $($lang.UserCancel)" -ForegroundColor Red
 			$GUILocation.Close()
 		}
 	}
@@ -842,41 +842,41 @@ public extern static int SHSetKnownFolderPath(ref Guid folderId, uint flags, Int
 	switch ($KnownFolder) {
 		"Desktop" {
 			$MarkNewFolderPath = $DesktopOldpath
-			Write-Host "   $($lang.LocationDesktop)" -ForegroundColor Green
+			write-host "  $($lang.LocationDesktop)" -ForegroundColor Green
 		}
 		"Documents" {
 			$MarkNewFolderPath = $MyDocumentsOldpath
-			Write-Host "   $($lang.LocationDocuments)" -ForegroundColor Green
+			write-host "  $($lang.LocationDocuments)" -ForegroundColor Green
 		}
 		"Downloads" {
 			$MarkNewFolderPath = $DownloadsOldpath
-			Write-Host "   $($lang.LocationDownloads)" -ForegroundColor Green
+			write-host "  $($lang.LocationDownloads)" -ForegroundColor Green
 		}
 		"Music" {
 			$MarkNewFolderPath = $MusicOldpath
-			Write-Host "   $($lang.LocationMusic)" -ForegroundColor Green
+			write-host "  $($lang.LocationMusic)" -ForegroundColor Green
 		}
 		"Pictures" {
 			$MarkNewFolderPath = $PicturesOldpath
-			Write-Host "   $($lang.LocationPictures)" -ForegroundColor Green
+			write-host "  $($lang.LocationPictures)" -ForegroundColor Green
 		}
 		"Videos" {
 			$MarkNewFolderPath = $VideoOldpath
-			Write-Host "   $($lang.LocationVideos)" -ForegroundColor Green
+			write-host "  $($lang.LocationVideos)" -ForegroundColor Green
 		}
 		default {
-			Write-Host "    $($KnownFolder)" -ForegroundColor Red
+			write-host "   $($KnownFolder)" -ForegroundColor Red
 		}
 	}
 	
-	Write-Host "   $($lang.LocationFolderOld): " -NoNewline
+	write-host "  $($lang.LocationFolderOld): " -NoNewline
 	Write-host $MarkNewFolderPath
 
-	Write-Host "   $($lang.LocationFolderNew): " -NoNewline
+	write-host "  $($lang.LocationFolderNew): " -NoNewline
 	Write-host $NewFolder
 
 	if ($MarkNewFolderPath -eq $NewFolder) {
-		Write-Host "   $($lang.LocationFolderSame)`n" -ForegroundColor Red
+		write-host "  $($lang.LocationFolderSame)`n" -ForegroundColor Red
 		return
 	} else {
 		Check_Folder -chkpath $NewFolder
@@ -884,24 +884,24 @@ public extern static int SHSetKnownFolderPath(ref Guid folderId, uint flags, Int
 		if (Test_Available_Disk -Path $NewFolder) {
 			New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders" -Name $UserShellFoldersGUIDs[$KnownFolder] -PropertyType ExpandString -Value $NewFolder -Force -ErrorAction SilentlyContinue | Out-Null
 
-			Write-Host "   $($lang.LocationDoneSync)"
+			write-host "  $($lang.LocationDoneSync)"
 			if ($Global:LocationFinishSync) {
 				start-process "robocopy.exe" -argumentlist "`"$($MarkNewFolderPath)`" `"$($NewFolder)`" /E /XO /W:1 /R:1" -wait -WindowStyle Minimized
-				Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+				write-host "  $($lang.Done)`n" -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
-			Write-Host "   $($lang.LocationDoneClean)"
+			write-host "  $($lang.LocationDoneClean)"
 			if ($Global:LocationFinishClear) {
 				Remove-Item -Path $MarkNewFolderPath -Recurse -Force -ErrorAction SilentlyContinue | Out-Null
-				Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+				write-host "  $($lang.Done)`n" -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 		} else {
-			Write-Host "   $($lang.FailedCreateFolder)"
-			Write-host "   $NewFolder)`n" -ForegroundColor Red
+			write-host "  $($lang.FailedCreateFolder)"
+			write-host "  $NewFolder)`n" -ForegroundColor Red
 		}
 	}
 }

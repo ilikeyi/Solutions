@@ -8,4 +8,5 @@
 	PreventsApps              = Preveniți reinstalarea aplicației
 	CloseStoreAuto            = Dezactivați descărcările automate din Microsoft Store
 	PreventsSuggestApps       = Preveniți instalarea "Aplicațiilor sugerate"
+	DelAllUser                = Ștergeți toți utilizatorii
 '@

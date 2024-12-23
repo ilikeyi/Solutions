@@ -13,7 +13,7 @@ Function Logo
 	$Host.UI.RawUI.WindowTitle = "$((Get-Module -Name LXPs).Author)'s Solutions | $($Title)"
 
 	Write-Host
-	Write-Host "   " -NoNewline
+	write-host "  " -NoNewline
 	Write-Host " $((Get-Module -Name LXPs).Author)'s Solutions " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " v$((Get-Module -Name LXPs).Version.ToString()) " -NoNewline -BackgroundColor DarkGreen -ForegroundColor White
 
@@ -29,7 +29,7 @@ Function Logo
 	}
 
 	Write-Host
-	Write-Host "   " -NoNewline
+	write-host "  " -NoNewline
 	Write-Host " $($lang.Learn) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " $((Get-Module -Name LXPs).PrivateData.PSData.ProjectUri) " -BackgroundColor DarkBlue -ForegroundColor White
 
@@ -59,29 +59,29 @@ Function ToMainpage
 Function Mainpage
 {
 	Logo -Title $lang.LXPs -ShowUpdate
-	Write-Host "   $($lang.Menu)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	write-host "  $($lang.Menu)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 
-	Write-Host "      " -NoNewline
+	write-host "     " -NoNewline
 	Write-Host " 1 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.ChkUpdate) " -ForegroundColor Green
 
-	Write-Host "      " -NoNewline
+	write-host "     " -NoNewline
 	Write-Host " 2 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.LXPs) " -ForegroundColor Green
 
 	Write-Host
 	Write-Host
-	Write-Host "   " -NoNewline
+	write-host "  " -NoNewline
 	Write-Host " lang " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.SwitchLanguage) " -ForegroundColor Green
 
-	Write-Host "      " -NoNewline
+	write-host "     " -NoNewline
 	Write-Host " R " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host "  $($lang.RefreshModules) " -ForegroundColor Green
 
 	Write-Host
-	Write-Host "   " -NoNewline
+	write-host "  " -NoNewline
 	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " H'elp * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host " " -NoNewline
@@ -95,9 +95,9 @@ Function Mainpage
 	switch -Wildcard (Read-Host)
 	{
 		"Dev" {
-			Write-Host "`n   $($lang.Developers_Mode)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.Setting)".PadRight(28) -NoNewline
+			write-host "`n  $($lang.Developers_Mode)" -ForegroundColor Yellow
+			write-host "  $('-' * 80)"
+			write-host "  $($lang.Setting)".PadRight(28) -NoNewline
 			if ($Global:Developers_Mode) {
 				$Global:Developers_Mode = $False
 				Write-Host $lang.Disable -ForegroundColor Green
@@ -114,7 +114,7 @@ Function Mainpage
 			Modules_Refresh -Function "ToMainpage -wait 2", "Mainpage"
 		}
 		"Upd *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			write-host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 
 			$NewType = $PSItem.Remove(0, 4).Replace(' ', '')
 			switch ($NewType) {
@@ -143,14 +143,14 @@ Function Mainpage
 			Mainpage
 		}
 		"lang *" {
-			Write-Host "`n   $($lang.Short_Cmd)" -ForegroundColor Yellow
+			write-host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 
 			$NewLanguage = $PSItem.Remove(0, 5).Replace(' ', '')
 			$Langpacks_Sources = "$($PSScriptRoot)\..\..\langpacks"
 			switch ($NewLanguage) {
 				"list" {
-					Write-Host "`n   $($lang.AvailableLanguages)"
-					Write-Host "   $('-' * 80)"
+					write-host "`n  $($lang.AvailableLanguages)"
+					write-host "  $('-' * 80)"
 
 					$Match_Available_Languages = @()
 					Get-ChildItem -Path $Langpacks_Sources -Directory -ErrorAction SilentlyContinue | ForEach-Object {
@@ -162,7 +162,7 @@ Function Mainpage
 					if ($Match_Available_Languages.count -gt 0) {
 						ForEach ($item in $Global:Languages_Available) {
 							if ($Match_Available_Languages -contains $item.Region) {
-								Write-Host "   $($item.Region)".PadRight(20) -NoNewline -ForegroundColor Green
+								write-host "  $($item.Region)".PadRight(20) -NoNewline -ForegroundColor Green
 								Write-Host $item.Name -ForegroundColor Yellow
 							}
 						}
@@ -173,23 +173,23 @@ Function Mainpage
 					}
 				}
 				"auto" {
-					Write-Host "`n   $($lang.SwitchLanguage): "
-					Write-Host "   $('-' * 80)"
+					write-host "`n  $($lang.SwitchLanguage): "
+					write-host "  $('-' * 80)"
 					Remove-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name LXPs).Author)\LXPs" -Name "Language" -ErrorAction SilentlyContinue
-					Write-Host "   $($lang.Done)" -ForegroundColor Green
+					write-host "  $($lang.Done)" -ForegroundColor Green
 					Modules_Refresh -Function "ToMainpage -wait 2", "Mainpage"
 				}
 				default {
-					Write-Host "`n   $($lang.SwitchLanguage): " -NoNewline
+					write-host "`n  $($lang.SwitchLanguage): " -NoNewline
 					Write-Host $NewLanguage -ForegroundColor Green
-					Write-Host "   $('-' * 80)"
+					write-host "  $('-' * 80)"
 
 					if (Test-Path "$($Langpacks_Sources)\$($NewLanguage)\Lang.psd1" -PathType Leaf) {
-						Write-Host "   $($lang.Done)" -ForegroundColor Green
+						write-host "  $($lang.Done)" -ForegroundColor Green
 						Save_Dynamic -regkey "LXPs" -name "Language" -value $NewLanguage -String
 						Modules_Refresh -Function "ToMainpage -wait 2", "Mainpage"
 					} else {
-						Write-Host "   $($lang.UpdateUnavailable)" -ForegroundColor Red
+						write-host "  $($lang.UpdateUnavailable)" -ForegroundColor Red
 					}
 				}
 			}
@@ -220,8 +220,8 @@ Function Mainpage
 			.快速测试区域
 		#>
 		"t" {
-			Write-Host "`n   $($lang.Developers_Mode)" -ForegroundColor Yellow
-			Write-Host "   $('-' * 80)"
+			write-host "`n  $($lang.Developers_Mode)" -ForegroundColor Yellow
+			write-host "  $('-' * 80)"
 
 			# Start
 
@@ -232,8 +232,8 @@ Function Mainpage
 
 			# End
 
-			Write-Host "   $('-' * 80)"
-			Write-Host "   $($lang.Developers_Mode), $($lang.Done)" -ForegroundColor Green
+			write-host "  $('-' * 80)"
+			write-host "  $($lang.Developers_Mode), $($lang.Done)" -ForegroundColor Green
 
 			<#
 				.添加 ToMainpage 防止直接退出

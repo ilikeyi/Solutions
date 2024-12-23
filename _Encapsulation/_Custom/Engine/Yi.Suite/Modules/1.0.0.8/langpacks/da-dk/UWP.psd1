@@ -8,4 +8,5 @@
 	PreventsApps              = Forhindre geninstallation af applikationen
 	CloseStoreAuto            = Slå automatiske downloads fra Microsoft Store fra
 	PreventsSuggestApps       = Forhindre installation af "Foreslåede apps"
+	DelAllUser                = Slet alle brugere
 '@

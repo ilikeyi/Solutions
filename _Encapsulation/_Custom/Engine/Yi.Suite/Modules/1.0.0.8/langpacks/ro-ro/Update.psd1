@@ -38,6 +38,6 @@
 	UpdateUpdateStop          = A apărut o eroare la descărcarea actualizării și procesul de actualizare a fost întrerupt.
 	UpdateInstall             = Doriți să instalați această actualizare?
 	UpdateInstallSel          = Da, actualizarea de mai sus va fi instalată\nNu, actualizarea nu va fi instalată
-	UpdateNoUpdateAvailable   = \n   Nu există actualizări disponibile.\n\n   tu alergi {0}'s Solutions Cea mai recentă versiune disponibilă.\n
-	UpdateNotSatisfied        = \n   Cerințele minime pentru versiunea programului de actualizare nu sunt îndeplinite,\n\n   Versiunea minimă necesară: {0}\n\n   Vă rugăm să descărcați din nou {1}'s Solutions o copie a instrumentului pentru a-l actualiza.\n\n   Verificarea actualizărilor a fost întreruptă.\n
+	UpdateNoUpdateAvailable   = \n  Nu există actualizări disponibile.\n\n  tu alergi {0}'s Solutions Cea mai recentă versiune disponibilă.\n
+	UpdateNotSatisfied        = \n  Cerințele minime pentru versiunea programului de actualizare nu sunt îndeplinite,\n\n  Versiunea minimă necesară: {0}\n\n  Vă rugăm să descărcați din nou {1}'s Solutions o copie a instrumentului pentru a-l actualiza.\n\n  Verificarea actualizărilor a fost întreruptă.\n
 '@

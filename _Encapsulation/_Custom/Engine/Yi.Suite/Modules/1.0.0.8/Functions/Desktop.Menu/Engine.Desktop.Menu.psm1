@@ -11,20 +11,20 @@ Function Personalise
 		[switch]$Hide
 	)
 
-	Write-Host "   $($lang.DesktopMenu)" -ForegroundColor Green
+	write-host "  $($lang.DesktopMenu)" -ForegroundColor Green
 	if ($Del) {
-		Write-Host "   $($lang.Del)".PadRight(28) -NoNewline
+		write-host "  $($lang.Del)".PadRight(28) -NoNewline
 		Remove-Item -Path "HKLM:\SOFTWARE\Classes\Directory\Background\shell\$((Get-Module -Name Engine).Author)" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\$((Get-Module -Name Engine).Author).MainPanel" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\$((Get-Module -Name Engine).Author).Dir" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\$((Get-Module -Name Engine).Author).Reg" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\$((Get-Module -Name Engine).Author).Update" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\$((Get-Module -Name Engine).Author).About" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
-		Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+		write-host "  $($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Add) {
-		Write-Host "   $($lang.AddTo)".PadRight(28) -NoNewline
+		write-host "  $($lang.AddTo)".PadRight(28) -NoNewline
 		$IconFolder = Convert-Path -Path "$($PSScriptRoot)\..\..\..\.." -ErrorAction SilentlyContinue
 		New-Item "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\$((Get-Module -Name Engine).Author).MainPanel" -force -ErrorAction SilentlyContinue | Out-Null
 		New-Item "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\$((Get-Module -Name Engine).Author).MainPanel\command" -force -ErrorAction SilentlyContinue | Out-Null
@@ -62,6 +62,6 @@ Function Personalise
 		}
 
 		New-ItemProperty -LiteralPath "HKLM:\SOFTWARE\Classes\Directory\Background\shell\$((Get-Module -Name Engine).Author)" -Name 'SubCommands' -Value "$((Get-Module -Name Engine).Author).MainPanel;$((Get-Module -Name Engine).Author).Dir;|;$((Get-Module -Name Engine).Author).Update;$((Get-Module -Name Engine).Author).Reg;|;$((Get-Module -Name Engine).Author).About;" -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
-		Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+		write-host "  $($lang.Done)`n" -ForegroundColor Green
 	}
 }

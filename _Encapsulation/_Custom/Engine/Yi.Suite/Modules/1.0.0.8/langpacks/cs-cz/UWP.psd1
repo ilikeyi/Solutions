@@ -8,4 +8,5 @@
 	PreventsApps              = Zabránit přeinstalaci aplikace
 	CloseStoreAuto            = Vypněte automatické stahování Microsoft Store
 	PreventsSuggestApps       = Zabránit instalaci "Navrhovaných aplikací"
+	DelAllUser                = Smazat všechny uživatele
 '@

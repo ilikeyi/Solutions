@@ -38,6 +38,6 @@
 	UpdateUpdateStop          = 更新のダウンロード中にエラーが発生し、更新プロセスが中止されました。
 	UpdateInstall             = この更新プログラムをインストールしますか?
 	UpdateInstallSel          = はい、上記の更新がインストールされます\nいいえ、更新はインストールされません
-	UpdateNoUpdateAvailable   = \n   利用可能なアップデートはありません。\n\n   あなたは走っている {0}'s Solutions の入手可能な最新バージョン。\n
-	UpdateNotSatisfied        = \n   アップデートプログラムの最小バージョン要件を満たしていない、\n\n   最低限必要なバージョン: {0}\n\n   もう一度ダウンロードしてください {1}'s Solutions このツールを更新するには。\n\n   チェックの更新が中止されました。\n
+	UpdateNoUpdateAvailable   = \n  利用可能なアップデートはありません。\n\n  あなたは走っている {0}'s Solutions の入手可能な最新バージョン。\n
+	UpdateNotSatisfied        = \n  アップデートプログラムの最小バージョン要件を満たしていない、\n\n  最低限必要なバージョン: {0}\n\n  もう一度ダウンロードしてください {1}'s Solutions このツールを更新するには。\n\n  チェックの更新が中止されました。\n
 '@

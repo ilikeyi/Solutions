@@ -8,4 +8,5 @@
 	PreventsApps              = Neleiskite iš naujo įdiegti programos
 	CloseStoreAuto            = Išjunkite "Microsoft Store" automatinius atsisiuntimus
 	PreventsSuggestApps       = Neleiskite diegti "Siūlomų programų"
+	DelAllUser                = Ištrinti visus vartotojus
 '@

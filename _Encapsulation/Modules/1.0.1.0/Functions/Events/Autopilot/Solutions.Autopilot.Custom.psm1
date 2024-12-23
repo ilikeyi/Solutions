@@ -52,7 +52,7 @@ Function Image_Assign_Autopilot_Master
 			if ($item.Main.Suffix -eq "wim") {
 				$NewFileFullPathMain = "$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)"
 				Image_Select_Public_Autopilot_Add -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -Uid $item.Main.Uid -MainUid $item.Main.Uid -ImageFilePath $NewFileFullPathMain 
-			
+
 				if ($item.Expand.Count -gt 0) {
 					ForEach ($Expand in $item.Expand) {
 						$NewFileFullPathExpand = "$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)"
@@ -428,7 +428,7 @@ Function Image_Assign_Autopilot_Master
 				$UI_Group_Image_Sources_Select_All.Tag = $Uid
 				$UI_Group_Image_Sources_Select_All.add_Click({
 					$TempSelectItem = $This.Tag
-				
+
 					$UI_Main_Select_Assign_Multitasking.Controls | ForEach-Object {
 						if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
 							if ($TempSelectItem -eq $_.Name) {
@@ -445,7 +445,7 @@ Function Image_Assign_Autopilot_Master
 						}
 					}
 				})
-			
+
 				<#
 					.清除全部
 				#>
@@ -453,7 +453,7 @@ Function Image_Assign_Autopilot_Master
 				$UI_Group_Image_Sources_Select_All.Tag = $Uid
 				$UI_Group_Image_Sources_Select_All.add_Click({
 					$TempSelectItem = $This.Tag
-				
+
 					$UI_Main_Select_Assign_Multitasking.Controls | ForEach-Object {
 						if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
 							if ($TempSelectItem -eq $_.Name) {
@@ -519,7 +519,7 @@ Function Image_Assign_Autopilot_Master
 					LinkBehavior   = "NeverUnderline"
 					add_Click      = {
 						Image_Set_Global_Primary_Key -Uid $this.Parent.Parent.Name -Silent -DevCode "Autopilot - 11"
-		
+
 						Image_Select_Index_Custom_UI
 						Autopilot_Refresh_Event_All
 					}
@@ -1081,7 +1081,7 @@ Function Image_Assign_Autopilot_Master
 				Text           = "$($lang.Save)`n$($MainUid)"
 				Tag            = "Save"
 			}
-	
+
 			<#
 				.不保存
 			#>
@@ -1984,7 +1984,7 @@ Function Image_Assign_Autopilot_Master
 												Image_Select_Disable_Expand_Main_Item_Autopilot -Group $this.Tag -MainUid $this.Name
 											}
 										}
-	
+
 										if ($Global:Primary_Key_Image.Uid -eq "$($item.Main.ImageFileName);$($Expand.ImageFileName);") {
 											$GUIImageSelectInstallExpand.Checked = $True
 										}
@@ -2007,7 +2007,7 @@ Function Image_Assign_Autopilot_Master
 
 										if ($Verify_Expand_WIM.Count -gt 0) {
 											Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Master $item.Main.ImageFileName -ImageName $Expand.ImageFileName -Uid $Expand.Uid -MainUid $item.Main.Uid -ImageFilePath $NewFileFullPathExpand
-	
+
 											if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.ImageFileName)_$($Expand.ImageFileName)").Value) {
 												$GUIImageSelectInstallExpand.ForeColor = "Red"
 											}
@@ -2029,8 +2029,8 @@ Function Image_Assign_Autopilot_Master
 		$UI_Main_Error.Text = ""
 		$UI_Main_Error_Icon.Image = $null
 
-		$MainItem   = @()
-		$disable   = @()
+		$MainItem = @()
+		$disable  = @()
 
 		$Wait_Sync_Some_Select = @()
 		$UI_Main_Select_Wim.Controls | ForEach-Object {
@@ -2046,7 +2046,7 @@ Function Image_Assign_Autopilot_Master
 				if ($Wait_Sync_Some_Select -contains $item.Main.uid) {
 					$MainItem += $item.Main.uid
 				}
-			
+
 				if ($item.Expand.Count -gt 0) {
 					ForEach ($Expand in $item.Expand) {
 						if ($Wait_Sync_Some_Select -contains $Expand.uid) {
@@ -2364,7 +2364,7 @@ Function Image_Assign_Autopilot_Master
 		if ($NewTasksFull.IsAutoSelect -contains "LXPs_Update_UI") {
 			$GUIImageSelectInBoxApps_Update.Checked = $True
 		}
-		
+
 		$GUIImageSelectInBoxApps_Remove = New-Object System.Windows.Forms.CheckBox -Property @{
 			Name           = "IsAssign"
 			Height         = 35
@@ -2505,7 +2505,7 @@ Function Image_Assign_Autopilot_Master
 			if ($NewTasksFull.IsAutoSelect -contains "Feature_Disable_Match_UI") {
 				$UI_Main_Need_Mount_Feature_Disable_Match.Checked = $True
 			}
-	
+
 			$GUIImageSelectFunctionWindowsFeature_Wrap = New-Object system.Windows.Forms.Label -Property @{
 				Height         = 20
 				Width          = 412
@@ -2579,7 +2579,7 @@ Function Image_Assign_Autopilot_Master
 			$Group_Image_Sources_Console.controls.AddRange($GUIImageSourceGroupMountFrom)
 
 			if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Master)_$($ImageName)").Value) {
-	#			Write-Host "已挂载"
+#				Write-Host "已挂载"
 				<#
 					.未发现文件
 				#>
@@ -2650,10 +2650,10 @@ Function Image_Assign_Autopilot_Master
 		if ($Tasks -contains "Language_Delete_UI") { $MarkLanguageGroup = $True }
 		if ($Tasks -contains "Language_Change_UI") { $MarkLanguageGroup = $True }
 		if ($Tasks -contains "Language_Cleanup_Components_UI") { $MarkLanguageGroup = $True }
-	
+
 		if ($MarkLanguageGroup) {
 			$Group_Image_Sources_Console.controls.AddRange($GUIImageSelectFunctionLang)
-	
+
 			if ($Tasks -contains "Language_Add_UI") { $Group_Image_Sources_Console.controls.AddRange($GUIImageSelectFunctionLangAdd) }
 			if ($Tasks -contains "Language_Delete_UI") { $Group_Image_Sources_Console.controls.AddRange($GUIImageSelectFunctionLangDel) }
 			if ($Tasks -contains "Language_Change_UI") { $Group_Image_Sources_Console.controls.AddRange($GUIImageSelectFunctionLangChange) }
@@ -2666,10 +2666,10 @@ Function Image_Assign_Autopilot_Master
 		if ($Tasks -contains "InBox_Apps_Add_UI") { $MarkInBoxAppsGroup = $True }
 		if ($Tasks -contains "LXPs_Update_UI") { $MarkInBoxAppsGroup = $True }
 		if ($Tasks -contains "InBox_Apps_Match_Delete_UI") { $MarkInBoxAppsGroup = $True }
-	
+
 		if ($MarkInBoxAppsGroup) {
 			$Group_Image_Sources_Console.controls.AddRange($GUIImageSelectInBoxApps)
-	
+
 			if ($Tasks -contains "LXPs_Region_Add") { $Group_Image_Sources_Console.controls.AddRange($GUIImageSelectInBoxAppsOne) }
 			if ($Tasks -contains "InBox_Apps_Add_UI") { $Group_Image_Sources_Console.controls.AddRange($GUIImageSelectInBoxAppsTwo) }
 			if ($Tasks -contains "LXPs_Update_UI") { $Group_Image_Sources_Console.controls.AddRange($GUIImageSelectInBoxApps_Update) }
@@ -2682,36 +2682,36 @@ Function Image_Assign_Autopilot_Master
 		$MarkUpdateGroup = $False
 		if ($Tasks -contains "Cumulative_updates_Add_UI") {  $MarkUpdateGroup = $True }
 		if ($Tasks -contains "Cumulative_updates_Delete_UI") { $MarkUpdateGroup = $True }
-	
+
 		if ($MarkUpdateGroup) {
 			$Group_Image_Sources_Console.controls.AddRange($GUIImageSelectFunctionUpdate)
-	
+
 			if ($Tasks -contains "Cumulative_updates_Add_UI") {  $Group_Image_Sources_Console.controls.AddRange($GUIImageSelectFunctionUpdateAdd) }
 			if ($Tasks -contains "Cumulative_updates_Delete_UI") { $Group_Image_Sources_Console.controls.AddRange($GUIImageSelectFunctionUpdateDel) }
-	
+
 			$Group_Image_Sources_Console.controls.AddRange($GUIImageSelectFunctionUpdate_Wrap)
 		}
 
 		$MarkDriveGroup = $False
 		if ($Tasks -contains "Drive_Add_UI") { $MarkDriveGroup = $True }
 		if ($Tasks -contains "Drive_Delete_UI") { $MarkDriveGroup = $True }
-	
+
 		if ($MarkDriveGroup) {
 			$Group_Image_Sources_Console.controls.AddRange($GUIImageSelectFunctionDrive)
-	
+
 			if ($Tasks -contains "Drive_Add_UI") { $Group_Image_Sources_Console.controls.AddRange($GUIImageSelectFunctionDriveAdd) }
 			if ($Tasks -contains "Drive_Delete_UI") { $Group_Image_Sources_Console.controls.AddRange($GUIImageSelectFunctionDriveDel) }
-	
+
 			$Group_Image_Sources_Console.controls.AddRange($GUIImageSelectFunctionDrive_Wrap)
 		}
 
 		$MarkWinFeatureGroup = $False
 		if ($Tasks -contains "Feature_Enabled_Match_UI") { $MarkWinFeatureGroup = $True }
 		if ($Tasks -contains "Feature_Disable_Match_UI") { $MarkWinFeatureGroup = $True }
-	
+
 		if ($MarkWinFeatureGroup) {
 			$Group_Image_Sources_Console.controls.AddRange($GUIImageSelectFunctionWindowsFeature)
-	
+
 			if ($Tasks -contains "Feature_Enabled_Match_UI") { $Group_Image_Sources_Console.controls.AddRange($UI_Main_Need_Mount_Feature_Enabled_Match) }
 			if ($Tasks -contains "Feature_Disable_Match_UI") { $Group_Image_Sources_Console.controls.AddRange($UI_Main_Need_Mount_Feature_Disable_Match) }
 
@@ -2721,10 +2721,10 @@ Function Image_Assign_Autopilot_Master
 		$MarkFunctionsGroup = $False
 		if ($Tasks -contains "Functions_Before_UI") { $MarkFunctionsGroup = $True }
 		if ($Tasks -contains "Functions_Rear_UI") { $MarkFunctionsGroup = $True }
-	
+
 		if ($MarkFunctionsGroup) {
 			$Group_Image_Sources_Console.controls.AddRange($GUIImage_Special_Function)
-	
+
 			if ($Tasks -contains "Functions_Before_UI") { $Group_Image_Sources_Console.controls.AddRange($GUIImage_Functions_Before) }
 			if ($Tasks -contains "Functions_Rear_UI") { $Group_Image_Sources_Console.controls.AddRange($GUIImage_Functions_Rear) }
 
@@ -2808,7 +2808,7 @@ Function Image_Assign_Autopilot_Master
 
 		$Group_Image_Sources_Console.ContextMenuStrip = $UI_Main_Select_Assign_MultitaskingSelectMenu
 		$UI_Main_Export_Event_Custom_Menu.controls.AddRange($paneel)
-		
+
 		$UI_Add_End_Wrap = New-Object system.Windows.Forms.Label -Property @{
 			Height         = 20
 			Width          = 410
@@ -3220,7 +3220,7 @@ Function Image_Assign_Autopilot_Master
 				} else {
 					if (Test-Path -Path $This.Tag -PathType Container) {
 						Start-Process $This.Tag
-	
+
 						$UI_Main_Export_Error.Text = "$($lang.OpenFolder): $($This.Tag), $($lang.Done)"
 						$UI_Main_Export_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 					} else {
@@ -3441,7 +3441,7 @@ Function Image_Assign_Autopilot_Master
 
 							$Autopilot_Language_Is_Finish = @()
 							$Autopilot_Language_Falied = @()
-						
+
 							ForEach ($item in $Global:Image_Rule) {
 								if ($item.Main.Suffix -eq "wim") {
 									if ($Autopilot.Deploy.Prerequisite.ExtractLanguage.Add.Scope -contains $item.main.Uid) {
@@ -3468,13 +3468,13 @@ Function Image_Assign_Autopilot_Master
 											}
 										}
 									}
-								
+
 									if ($item.Expand.Count -gt 0) {
 										ForEach ($itemExpandNew in $item.Expand) {
 											if ($Autopilot.Deploy.Prerequisite.ExtractLanguage.Add.Scope -contains $itemExpandNew.Uid) {
 												foreach ($ConfigRegion in $Autopilot.Deploy.Prerequisite.ExtractLanguage.Add.Region) {
 													$TempPathMain = "$($New_Custom_Path)\$($item.main.ImageFileName)\$($itemExpandNew.ImageFileName)\Language\Add\$($ConfigRegion)"
-												
+
 													if (Test-Path -Path $TempPathMain -PathType Container) {
 														if((Get-ChildItem $TempPathMain -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) {
 															$Autopilot_Language_Is_Finish += @{
@@ -3548,7 +3548,7 @@ Function Image_Assign_Autopilot_Master
 
 										foreach ($ConfigRegion in $Autopilot.Deploy.Prerequisite.ExtractLanguage.Add.Region) {
 											$TempPathMain = "$($New_Custom_Path)\$($item.main.ImageFileName)\$($item.main.ImageFileName)\Language\$($New_Custom_Name)\$($NewArchC)\Add\$($ConfigRegion)"
-										
+
 											if (Test-Path -Path $TempPathMain -PathType Container) {
 												if((Get-ChildItem $TempPathMain -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) {
 													$Autopilot_Language_Is_Finish += @{
@@ -3569,7 +3569,7 @@ Function Image_Assign_Autopilot_Master
 											}
 										}
 									}
-								
+
 									if ($item.Expand.Count -gt 0) {
 										ForEach ($itemExpandNew in $item.Expand) {
 											if ($Autopilot.Deploy.Prerequisite.ExtractLanguage.Add.Scope -contains $itemExpandNew.Uid) {
@@ -3577,7 +3577,7 @@ Function Image_Assign_Autopilot_Master
 
 												foreach ($ConfigRegion in $Autopilot.Deploy.Prerequisite.ExtractLanguage.Add.Region) {
 													$TempPathMain = "$($New_Custom_Path)\$($item.main.ImageFileName)\$($itemExpandNew.ImageFileName)\Language\$($New_Custom_Name)\$($NewArchC)\Add\$($ConfigRegion)"
-												
+
 													if (Test-Path -Path $TempPathMain -PathType Container) {
 														if((Get-ChildItem $TempPathMain -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) {
 															$Autopilot_Language_Is_Finish += @{
@@ -3602,7 +3602,7 @@ Function Image_Assign_Autopilot_Master
 									}
 								}
 							}
-						
+
 							if ($Autopilot_Language_Falied.Count -gt 0) {
 								$GUIImageSelectFunctionLangAdd_btn = New-Object System.Windows.Forms.CheckBox -Property @{
 									Height         = 30
@@ -3666,13 +3666,13 @@ Function Image_Assign_Autopilot_Master
 
 							$Autopilot_Language_Is_Finish = @()
 							$Autopilot_Language_Falied = @()
-						
+
 							ForEach ($item in $Global:Image_Rule) {
 								if ($item.Main.Suffix -eq "wim") {
 									if ($Autopilot.Deploy.Prerequisite.ExtractLanguage.Del.Scope -contains $item.main.Uid) {
 										foreach ($ConfigRegion in $Autopilot.Deploy.Prerequisite.ExtractLanguage.Del.Region) {
 											$TempPathMain = "$($New_Custom_Path)\$($item.main.ImageFileName)\$($item.main.ImageFileName)\Language\Del\$($ConfigRegion)"
-										
+
 											if (Test-Path -Path $TempPathMain -PathType Container) {
 												if((Get-ChildItem $TempPathMain -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) {
 													$Autopilot_Language_Is_Finish += @{
@@ -3693,7 +3693,7 @@ Function Image_Assign_Autopilot_Master
 											}
 										}
 									}
-								
+
 									if ($item.Expand.Count -gt 0) {
 										ForEach ($itemExpandNew in $item.Expand) {
 											if ($Autopilot.Deploy.Prerequisite.ExtractLanguage.Del.Scope -contains $itemExpandNew.Uid) {
@@ -3773,7 +3773,7 @@ Function Image_Assign_Autopilot_Master
 
 										foreach ($ConfigRegion in $Autopilot.Deploy.Prerequisite.ExtractLanguage.Del.Region) {
 											$TempPathMain = "$($New_Custom_Path)\$($item.main.ImageFileName)\$($item.main.ImageFileName)\Language\$($New_Custom_Name)\$($NewArchC)\Del\$($ConfigRegion)"
-										
+
 											if (Test-Path -Path $TempPathMain -PathType Container) {
 												if((Get-ChildItem $TempPathMain -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) {
 													$Autopilot_Language_Is_Finish += @{
@@ -3794,7 +3794,7 @@ Function Image_Assign_Autopilot_Master
 											}
 										}
 									}
-								
+
 									if ($item.Expand.Count -gt 0) {
 										ForEach ($itemExpandNew in $item.Expand) {
 											if ($Autopilot.Deploy.Prerequisite.ExtractLanguage.Del.Scope -contains $itemExpandNew.Uid) {
@@ -3802,7 +3802,7 @@ Function Image_Assign_Autopilot_Master
 
 												foreach ($ConfigRegion in $Autopilot.Deploy.Prerequisite.ExtractLanguage.Del.Region) {
 													$TempPathMain = "$($New_Custom_Path)\$($item.main.ImageFileName)\$($itemExpandNew.ImageFileName)\Language\$($New_Custom_Name)\$($NewArchC)\Del\$($ConfigRegion)"
-												
+
 													if (Test-Path -Path $TempPathMain -PathType Container) {
 														if((Get-ChildItem $TempPathMain -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) {
 															$Autopilot_Language_Is_Finish += @{
@@ -3827,7 +3827,7 @@ Function Image_Assign_Autopilot_Master
 									}
 								}
 							}
-						
+
 							if ($Autopilot_Language_Falied.Count -gt 0) {
 								$GUIImageSelectFunctionLangDel_btn = New-Object System.Windows.Forms.CheckBox -Property @{
 									Height         = 30
@@ -3842,7 +3842,7 @@ Function Image_Assign_Autopilot_Master
 								}
 
 								$UI_Main_Export_Event_Custom_Menu.controls.AddRange($GUIImageSelectFunctionLangDel_btn)
-							
+
 								$GUIImageSelectFunctionLangDel_Status = New-Object system.Windows.Forms.Label -Property @{
 									Height         = 30
 									Width          = 435
@@ -3931,7 +3931,7 @@ Function Image_Assign_Autopilot_Master
 				}
 			}
 		})
-			
+
 		<#
 			.清除全部
 		#>
@@ -3977,9 +3977,9 @@ Function Image_Assign_Autopilot_Master
 				} else {
 					$CheckBox.Checked = $False
 				}
-			
+
 				$Autopilot_Assign_Menu_ISO_Associated_Schemes_Show.controls.AddRange($CheckBox)
-	
+
 				$GUIImageSelectFunctionLang_Wrap = New-Object system.Windows.Forms.Label -Property @{
 					Height         = 20
 					Width          = 435
@@ -4867,14 +4867,14 @@ Function Image_Assign_Autopilot_Master
 		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Add_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Language_Add_UI"
 		}
-	
+
 		<#
 			.语言删除
 		#>
 		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Del_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Language_Delete_UI"
 		}
-	
+
 		<#
 			.更改映像语言
 		#>
@@ -4910,7 +4910,7 @@ Function Image_Assign_Autopilot_Master
 		if ($Temp_Queue_Is_InBox_Apps_Update.Count -gt 0) {
 			$FlagIsWait += "LXPs_Update_UI"
 		}
-	
+
 		<#
 			.本地语言体验（LXPs），删除
 		#>
@@ -4918,7 +4918,7 @@ Function Image_Assign_Autopilot_Master
 		if ($Temp_LXPs_Delete.Count -gt 0) {
 			$FlagIsWait += "LXPs_Remove_UI"
 		}
-	
+
 		<#
 			.按匹配规则删除 InBox Apps 预安装软件
 		#>
@@ -4932,21 +4932,21 @@ Function Image_Assign_Autopilot_Master
 		if ((Get-Variable -Scope global -Name "Queue_Is_Update_Add_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Cumulative_updates_Add_UI"
 		}
-	
+
 		<#
 			.更新删除
 		#>
 		if ((Get-Variable -Scope global -Name "Queue_Is_Update_Del_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Cumulative_updates_Delete_UI"
 		}
-	
+
 		<#
 			.驱动添加
 		#>
 		if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Add_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Drive_Add_UI"
 		}
-	
+
 		<#
 			.驱动删除
 		#>
@@ -4960,7 +4960,7 @@ Function Image_Assign_Autopilot_Master
 		if ((Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_Match_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Feature_Enabled_Match_UI"
 		}
-	
+
 		<#
 			.Windows 功能：禁用，匹配
 		#>
@@ -4968,7 +4968,6 @@ Function Image_Assign_Autopilot_Master
 			$FlagIsWait += "Feature_Disable_Match_UI"
 		}
 
-	
 		<#
 			.运行 PowerShell 函数：有任务前
 		#>
@@ -4976,7 +4975,7 @@ Function Image_Assign_Autopilot_Master
 		if ($Temp_Functions_Before_Task.Count -gt 0) {
 			$FlagIsWait += "Functions_Before_UI"
 		}
-	
+
 		<#
 			.运行 PowerShell 函数：完成任务后
 		#>
@@ -4984,7 +4983,7 @@ Function Image_Assign_Autopilot_Master
 		if ($Temp_Functions_Rear_Task.Count -gt 0) {
 			$FlagIsWait += "Functions_Rear_UI"
 		}
-	
+
 		return $FlagIsWait
 	}
 
@@ -4994,7 +4993,7 @@ Function Image_Assign_Autopilot_Master
 		$UI_Main_Export_Error_Icon.Image = $null
 
 		$UI_Main_Select_Sources_Config_Select.controls.Clear()
-        $UI_Main_Export_Event_Custom_Menu.controls.Clear()
+		$UI_Main_Export_Event_Custom_Menu.controls.Clear()
 
 		$Temp_Save_Sources = @()
 		$UI_Main_Select_Sources.Controls | ForEach-Object {
@@ -5118,7 +5117,7 @@ Function Image_Assign_Autopilot_Master
 				}
 			}
 		}
-	
+
 		<#
 			.从预规则里获取
 		#>
@@ -5128,7 +5127,7 @@ Function Image_Assign_Autopilot_Master
 				break
 			}
 		}
-	
+
 		<#
 			.从用户自定义规则里获取
 		#>
@@ -5267,7 +5266,7 @@ Function Image_Assign_Autopilot_Master
 								$UI_Main_Prerequisite_NotMounted,
 								$GUIImageSelectFunctionLang_Wrap
 							))
-					
+
 							$Script:Prerequisite_Is_Satisfy += @{
 								File      = $item
 								NewFile   = $Verifyfile
@@ -5461,7 +5460,7 @@ Function Image_Assign_Autopilot_Master
 				Padding  = "16,0,0,0"
 				Text     = $lang.NoWork
 			}
-	
+
 			$UI_Main_Prerequisite_Verify_Select.controls.AddRange($UI_Main_Pre_Rule_Not_Find)
 		}
 	}
@@ -5535,7 +5534,6 @@ Function Image_Assign_Autopilot_Master
 
 			$UI_Main_Prerequisite_Eject_Cdrom_After.Checked = $False
 		}
-
 	}
 
 	$UI_Main           = New-Object system.Windows.Forms.Form -Property @{
@@ -5741,12 +5739,12 @@ Function Image_Assign_Autopilot_Master
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-	
+
 			<#
 				.重置变量
 			#>
 			Event_Reset_Variable
-	
+
 			$UI_Main.Close()
 		}
 	}
@@ -5911,12 +5909,12 @@ Function Image_Assign_Autopilot_Master
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-	
+
 			<#
 				.重置变量
 			#>
 			Event_Reset_Variable
-	
+
 			$UI_Main.Close()
 		}
 	}
@@ -6213,7 +6211,6 @@ Function Image_Assign_Autopilot_Master
 		}
 	}
 
-
 	<#
 		.生成解决方案：ISO
 	#>
@@ -6282,7 +6279,7 @@ Function Image_Assign_Autopilot_Master
 		add_Click      = {
 			$Global:Queue_ISO_Associated = $False
 			$SavePath = $Global:Queue_ISO_Associated_Tasks.Sources
-	
+
 			$Global:Queue_ISO_Associated_Tasks = @{
 				Sources = $SavePath
 				Rule = @()
@@ -6429,11 +6426,11 @@ Function Image_Assign_Autopilot_Master
 					}
 				}
 			}
-	
+
 			<#
 				.多任务分配
 			#>
-	
+
 			<#
 				.开始分配可用的多会话任务
 			#>
@@ -6472,7 +6469,7 @@ Function Image_Assign_Autopilot_Master
 							if ($Wait_Sync_Some_Select -contains $Expand.uid) {
 								$MainItem += $item.Main.uid
 								$MainItem += $Expand.uid
-	
+
 								if ($Wait_Sync_Some_Select -notcontains $item.Main.uid) {
 									$disable += $item.Main.uid
 								}
@@ -6535,7 +6532,7 @@ Function Image_Assign_Autopilot_Master
 															.强制打开扩展项不保存，不管选没有选。
 														#>
 														$Fix_Eject_Force_Expand = $True
-													
+
 														New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
 													}
 												}
@@ -6555,7 +6552,7 @@ Function Image_Assign_Autopilot_Master
 															if ($QQNewqqq.Checked) {
 																if ($QQNewqqq.Tag -eq "Save") {
 																	New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
-																
+
 																	if ($Global:Developers_Mode) {
 																		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectMain.101x1 ]`n   Start"
 																		Write-Host "$($lang.Event_Assign_Main), " -NoNewline
@@ -6566,7 +6563,7 @@ Function Image_Assign_Autopilot_Master
 
 																if ($QQNew.Tag -eq "DoNotSave") {
 																	New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
-																
+
 																	if ($Global:Developers_Mode) {
 																		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectMain.200x1 ]`n   Start"
 																		Write-Host "$($lang.Event_Assign_Main), " -NoNewline
@@ -7055,7 +7052,6 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 						}
 					}
 
-
 					<#
 						.选择索引号
 					#>
@@ -7310,6 +7306,7 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			Write-Host "  $('-' * 80)"
 			Functions_Before_UI -Autopilot $NewTasks.Tasks.PSFunctions.Before
 		}
+
 		<#
 			.运行后
 		#>

@@ -38,6 +38,6 @@
 	UpdateUpdateStop          = Wystąpił błąd podczas pobierania aktualizacji i proces aktualizacji został przerwany.
 	UpdateInstall             = Czy chcesz zainstalować tę aktualizację?
 	UpdateInstallSel          = Tak, powyższa aktualizacja zostanie zainstalowana\nNie, aktualizacja nie zostanie zainstalowana
-	UpdateNoUpdateAvailable   = \n   Brak dostępnych aktualizacji.\n\n   biegasz {0}'s Solutions Najnowsza dostępna wersja.\n
-	UpdateNotSatisfied        = \n   Nie są spełnione minimalne wymagania dotyczące wersji programu aktualizacyjnego,\n\n   Minimalna wymagana wersja: {0}\n\n   Pobierz ponownie {1}'s Solutions kopię narzędzia w celu jego aktualizacji.\n\n   Sprawdzanie dostępności aktualizacji zostało przerwane.\n
+	UpdateNoUpdateAvailable   = \n  Brak dostępnych aktualizacji.\n\n  biegasz {0}'s Solutions Najnowsza dostępna wersja.\n
+	UpdateNotSatisfied        = \n  Nie są spełnione minimalne wymagania dotyczące wersji programu aktualizacyjnego,\n\n  Minimalna wymagana wersja: {0}\n\n  Pobierz ponownie {1}'s Solutions kopię narzędzia w celu jego aktualizacji.\n\n  Sprawdzanie dostępności aktualizacji zostało przerwane.\n
 '@

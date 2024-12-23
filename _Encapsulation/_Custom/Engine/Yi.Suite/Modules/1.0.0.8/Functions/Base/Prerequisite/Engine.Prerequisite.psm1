@@ -6,41 +6,41 @@ Function Prerequisite
 {
 	Clear-Host
 	$Host.UI.RawUI.WindowTitle = "$((Get-Module -Name Engine).Author)'s Solutions | $($lang.Prerequisites)"
-	Write-Host "`n   $($lang.Prerequisites)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	write-host "`n  $($lang.Prerequisites)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 
-	Write-Host "   $($lang.Check_PSVersion): " -NoNewline
+	write-host "  $($lang.Check_PSVersion): " -NoNewline
 	if ($PSVersionTable.PSVersion.major -ge "5") {
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 	} else {
 		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 
-		Write-Host "`n   $($lang.How_solve): " -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "     1. $($lang.UpdatePSVersion)`n"
+		write-host "`n  $($lang.How_solve): " -ForegroundColor Yellow
+		write-host "  $('-' * 80)"
+		write-host "    1. $($lang.UpdatePSVersion)`n"
 		pause
 		exit
 	}
 
-	Write-Host "   $($lang.Check_OSVersion): " -NoNewline
+	write-host "  $($lang.Check_OSVersion): " -NoNewline
 	$OSVer = [System.Environment]::OSVersion.Version;
 	if (($OSVer.Major -eq 10 -and $OSVer.Minor -eq 0 -and $OSVer.Build -ge 16299)) {
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 	} else {
 		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 
-		Write-Host "`n   $($lang.How_solve): " -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "    $($lang.UpdateOSVersion)`n"
+		write-host "`n  $($lang.How_solve): " -ForegroundColor Yellow
+		write-host "  $('-' * 80)"
+		write-host "   $($lang.UpdateOSVersion)`n"
 		pause
 		exit
 	}
 
-	Write-Host "   $($lang.Check_Higher_elevated): " -NoNewline
+	write-host "  $($lang.Check_Higher_elevated): " -NoNewline
 	if (([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544") {
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 
-		Write-Host "   $($lang.Check_execution_strategy): " -NoNewline
+		write-host "  $($lang.Check_execution_strategy): " -NoNewline
 		switch (Get-ExecutionPolicy) {
 			"Bypass" {
 				Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -54,9 +54,9 @@ Function Prerequisite
 			default {
 				Write-Host " $($lang.Check_Did_not_pass) " -BackgroundColor DarkRed -ForegroundColor White
 	
-				Write-Host "`n   $($lang.How_solve): " -ForegroundColor Yellow
-				Write-Host "   $('-' * 80)"
-				Write-Host "    $($lang.HigherTermail)`n"
+				write-host "`n  $($lang.How_solve): " -ForegroundColor Yellow
+				write-host "  $('-' * 80)"
+				write-host "   $($lang.HigherTermail)`n"
 				pause
 				exit
 			}
@@ -64,21 +64,21 @@ Function Prerequisite
 	} else {
 		Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 
-		Write-Host "`n   $($lang.How_solve): " -ForegroundColor Yellow
-		Write-Host "   $('-' * 80)"
-		Write-Host "     $($lang.HigherTermailAdmin)`n"
+		write-host "`n  $($lang.How_solve): " -ForegroundColor Yellow
+		write-host "  $('-' * 80)"
+		write-host "    $($lang.HigherTermailAdmin)`n"
 		pause
 		exit
 	}
 
-	Write-Host "   $($lang.UpdateClean): " -NoNewline
+	write-host "  $($lang.UpdateClean): " -NoNewline
 	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Engine).Author)\Suite\Update" -Name "IsUpdate_Clean" -ErrorAction SilentlyContinue) {
 		$GetOldVersion = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Engine).Author)\Suite\Update" -Name "IsUpdate_Clean"
 		$SaveCurrentVersion = (Get-Module -Name Engine).Version.ToString()
 
 		if ($GetOldVersion -eq $SaveCurrentVersion) {
 			Write-Host " $($lang.UpdateNotExecuted) " -BackgroundColor DarkGreen -ForegroundColor White
-			Write-host "   $($lang.Del)".PadRight(22) -NoNewline -ForegroundColor Green
+			write-host "  $($lang.Del)".PadRight(22) -NoNewline -ForegroundColor Green
 			Remove-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Engine).Author)\Suite\Update" -Name "IsUpdate_Clean" -Force -ErrorAction SilentlyContinue | out-null
 			Write-host $lang.Done
 		} else {
@@ -86,7 +86,7 @@ Function Prerequisite
 
 			$Wait_Clean_Folder_Full = Join-Path -Path "$($PSScriptRoot)\..\..\..\.." -ChildPath $GetOldVersion
 
-			Write-host "   $($lang.Del): $($GetOldVersion): " -NoNewline -ForegroundColor Green
+			write-host "  $($lang.Del): $($GetOldVersion): " -NoNewline -ForegroundColor Green
 			remove-item -path $Wait_Clean_Folder_Full -Recurse -force -ErrorAction SilentlyContinue
 
 			if (Test-Path -Path $Wait_Clean_Folder_Full -PathType Container) {
@@ -100,6 +100,6 @@ Function Prerequisite
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 	}
 
-	Write-Host "`n   $($lang.Check_Pass_Done)" -ForegroundColor Green
+	write-host "`n  $($lang.Check_Pass_Done)" -ForegroundColor Green
 	Start-Sleep -s 2
 }

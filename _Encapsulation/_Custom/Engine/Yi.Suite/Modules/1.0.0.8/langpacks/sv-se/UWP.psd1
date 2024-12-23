@@ -8,4 +8,5 @@
 	PreventsApps              = Förhindra ominstallation av applikationen
 	CloseStoreAuto            = Stäng av Microsoft Store automatiska nedladdningar
 	PreventsSuggestApps       = Förhindra installation av "Föreslagna appar"
+	DelAllUser                = Ta bort alla användare
 '@

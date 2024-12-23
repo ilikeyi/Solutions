@@ -440,8 +440,7 @@ Function Event_Assign_Task_Customize
 
 									1、设置首选主键：扩展项
 									   验证是否有任务
-							
-							
+
 									   设置主要项为强行保存、并弹出
 
 			机制：处理主要项：
@@ -677,7 +676,7 @@ Function Event_Assign_Task_Customize
 				}
 				#endregion 未挂载
 			}
-			
+
 			<#
 				.处理扩展项任务，更新映像内的文件
 			#>
@@ -971,35 +970,35 @@ Function Run_Expand
 					ForEach ($itemBB in $Temp_Queue_Process_Image_Select_Pending) {
 						Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 						Write-Host $itemBB.Name -ForegroundColor Yellow
-		
+
 						Write-Host "  $($lang.MountedIndex): " -NoNewline
 						Write-Host $itemBB.Index -ForegroundColor Yellow
 
 						Write-Host
 					}
-		
+
 					ForEach ($itemBB in $Temp_Queue_Process_Image_Select_Pending) {
 						$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($NewMain.ImageFileName)_$($NewExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value
-		
+
 						if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
 							$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($NewExpand.UID);, $($lang.MountedIndex): $($itemBB.Index), $($lang.Wim_Image_Name): $($itemBB.Name)"
 
 							Write-Host "  $($lang.Wim_Image_Name): " -noNewline
 							Write-Host $itemBB.Name -ForegroundColor Yellow
-		
+
 							Write-Host "  $($lang.MountedIndex): " -noNewline
 							Write-Host $itemBB.Index -ForegroundColor Yellow
 
 							if (Event_Assign_Task_Verify -Mount) {
 								Write-Host "`n  $($lang.YesWork)" -ForegroundColor Yellow
 								Write-Host "  $('-' * 80)"
-		
+
 								Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 								Write-Host $NewExpand.Uid -ForegroundColor Green
-		
+
 								Write-Host "  $($lang.Select_Path)" -ForegroundColor Yellow
 								Write-Host "  $($NewExpand.Path)\$($NewExpand.ImageFileName).$($NewExpand.Suffix)`n" -ForegroundColor Green
-		
+
 								Image_Mount_Check -MountFileName "$($NewExpand.Path)\$($NewExpand.ImageFileName).$($NewExpand.Suffix)" -Index $itemBB.Index
 								Expand_Process_abc -NewUid $NewUid -MainUid $NewMain.ImageFileName -ExpandUid $NewExpand.ImageFileName -NewUpdatePath $NewExpand.UpdatePath -ImageFileMount "$($NewExpand.Path)\$($NewExpand.ImageFileName).$($NewExpand.Suffix)"
 							} else {
@@ -1015,7 +1014,6 @@ Function Run_Expand
 				} else {
 					Write-Host "  $($lang.SelectFromError): $($lang.MountedIndexSelect) ( $($NewMain.ImageFileName);$($NewExpand.ImageFileName); )" -ForegroundColor Red
 				}
-
 
 				<#
 					.未检查到用户已选择的分配索引号，继续执行
@@ -1033,7 +1031,7 @@ Function Run_Expand
 							ForEach ($item in $TempQueueProcessImageSelect) {
 								Write-Host "  $($lang.Wim_Image_Name): " -noNewline
 								Write-Host $item.Name -ForegroundColor Yellow
-		
+
 								Write-Host "  $($lang.MountedIndex): " -noNewline
 								Write-Host $item.Index -ForegroundColor Yellow
 
@@ -1054,13 +1052,13 @@ Function Run_Expand
 								if (Event_Assign_Task_Verify -Mount) {
 									Write-Host "`n  $($lang.YesWork)" -ForegroundColor Yellow
 									Write-Host "  $('-' * 80)"
-		
+
 									Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 									Write-Host $NewExpand.UID -ForegroundColor Green
-		
+
 									Write-Host "  $($lang.Select_Path)" -ForegroundColor Yellow
 									Write-Host "  $($NewExpand.Path)\$($NewExpand.ImageFileName).$($NewExpand.Suffix)`n" -ForegroundColor Green
-		
+
 									<#
 										.挂载主文件
 									#>
@@ -1080,52 +1078,52 @@ Function Run_Expand
 						#>
 						Write-Host "`n  $($lang.Index_Is_Event_Select)" -ForegroundColor Yellow
 						Write-Host "  $('-' * 80)"
-		
+
 						<#
 							.读取用户自定义设置，默认，未指定时，弹出设置界面
 						#>
 						Image_Select_Popup_UI -ImageFileName "$($NewExpand.Path)\$($NewExpand.ImageFileName).$($NewExpand.Suffix)"
 
 						$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Popup_Pending_$($NewMain.ImageFileName)_$($NewExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value
-		
+
 						Write-Host "  $($lang.SelectSettingImage): $($lang.MountedIndexSelect)" -ForegroundColor Yellow
 						Write-Host "  $('-' * 80)"
 						if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
 							ForEach ($itemBB in $Temp_Queue_Process_Image_Select_Pending) {
 								Write-Host "  $($lang.Wim_Image_Name): " -noNewline
 								Write-Host $itemBB.Name -ForegroundColor Yellow
-		
+
 								Write-Host "  $($lang.MountedIndex): " -noNewline
 								Write-Host $itemBB.Index -ForegroundColor Yellow
 
 								Write-Host
 							}
-		
+
 							ForEach ($itemBB in $Temp_Queue_Process_Image_Select_Pending) {
 								$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Popup_Pending_$($NewMain.ImageFileName)_$($NewExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value
-		
+
 								if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
 									$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($NewExpand.UID);, $($lang.MountedIndex): $($itemBB.Index), $($lang.Wim_Image_Name): $($itemBB.Name)"
-		
+
 									Write-Host "`n  $($lang.YesWork)" -ForegroundColor Yellow
 									Write-Host "  $('-' * 80)"
-		
+
 									Write-Host "  $($lang.Wim_Image_Name): " -noNewline
 									Write-Host $itemBB.Name -ForegroundColor Yellow
-		
+
 									Write-Host "  $($lang.MountedIndex): " -noNewline
 									Write-Host $itemBB.Index -ForegroundColor Yellow
 
 									if (Event_Assign_Task_Verify -Mount) {
 										Write-Host "`n  $($lang.YesWork)" -ForegroundColor Yellow
 										Write-Host "  $('-' * 80)"
-		
+
 										Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 										Write-Host $NewExpand.Uid -ForegroundColor Green
-		
+
 										Write-Host "  $($lang.Select_Path)" -ForegroundColor Yellow
 										Write-Host "  $($NewExpand.Path)\$($NewExpand.ImageFileName).$($NewExpand.Suffix)`n" -ForegroundColor Green
-		
+
 										Image_Mount_Check -MountFileName "$($NewExpand.Path)\$($NewExpand.ImageFileName).$($NewExpand.Suffix)" -Index $itemBB.Index
 										Expand_Process_abc -NewUid $NewUid -MainUid $NewMain.ImageFileName -ExpandUid $NewExpand.ImageFileName -NewUpdatePath $NewExpand.UpdatePath -ImageFileMount "$($NewExpand.Path)\$($NewExpand.ImageFileName).$($NewExpand.Suffix)"
 									} else {
@@ -1145,57 +1143,56 @@ Function Run_Expand
 						#>
 						Write-Host "`n  $($lang.Index_Pre_Select)" -ForegroundColor Yellow
 						Write-Host "  $('-' * 80)"
-		
+
 						Write-Host "  $($lang.Choose)" -ForegroundColor Green
 						$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($NewMain.ImageFileName)_$($NewExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value
 						if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
 							ForEach ($itemBB in $Temp_Queue_Process_Image_Select_Pending) {
 								Write-Host "  $($lang.Wim_Image_Name): " -noNewline
 								Write-Host $itemBB.Name -ForegroundColor Yellow
-		
+
 								Write-Host "  $($lang.MountedIndex): " -noNewline
 								Write-Host $itemBB.Index -ForegroundColor Yellow
 
 								Write-Host
 							}
 						}
-		
+
 						<#
 							.已安装
 						#>
 						if ($TempQueueProcessImageSelect.count -gt 0) {
 							Write-Host "  $($lang.YesWork)" -ForegroundColor Yellow
 							Write-Host "  $('-' * 80)"
-					
 							Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
 							Write-Host "  $('-' * 80)"
 							ForEach ($item in $TempQueueProcessImageSelect) {
 								Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 								Write-Host $item.Name -ForegroundColor Yellow
-		
+
 								Write-Host "  $($lang.MountedIndex): " -NoNewline
 								Write-Host $item.Index -ForegroundColor Yellow
 
 								Write-Host
 							}
-		
+
 							Write-Host "  $($lang.AddQueue)" -ForegroundColor Yellow
 							Write-Host "  $('-' * 80)"
 							ForEach ($item in $TempQueueProcessImageSelect) {
 								Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 								Write-Host $item.Name -ForegroundColor Yellow
-		
+
 								Write-Host "  $($lang.MountedIndex): " -NoNewline
 								Write-Host $item.Index -ForegroundColor Yellow
-		
+
 								if ($Temp_Queue_Process_Image_Select_Pending.Index -Contains $item.Index) {
 									if (Event_Assign_Task_Verify -Mount) {
 										Write-Host "`n  $($lang.YesWork)" -ForegroundColor Yellow
 										Write-Host "  $('-' * 80)"
-		
+
 										Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 										Write-Host $NewExpand.Uid -ForegroundColor Green
-		
+
 										Write-Host "  $($lang.Select_Path)" -ForegroundColor Yellow
 										Write-Host "  $($NewExpand.Path)\$($NewExpand.ImageFileName).$($NewExpand.Suffix)`n" -ForegroundColor Green
 
@@ -1249,6 +1246,6 @@ Function Run_Expand_Is_New
 	if (Event_Assign_Task_Verify -Mount) {
 		return $True
 	}
-	
+
 	return $False
 }

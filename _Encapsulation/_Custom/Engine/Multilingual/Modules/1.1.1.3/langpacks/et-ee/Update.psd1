@@ -38,6 +38,6 @@
 	UpdateUpdateStop          = Värskenduse allalaadimisel ilmnes viga ja värskendusprotsess katkestati.
 	UpdateInstall             = Kas soovite selle värskenduse installida?
 	UpdateInstallSel          = Jah, ülaltoodud värskendus installitakse\nEi, värskendust ei installita
-	UpdateNoUpdateAvailable   = \n   Värskendusi pole saadaval.\n\n   sa jooksed {0}'s Solutions Viimane saadaolev versioon.\n
-	UpdateNotSatisfied        = \n   Värskendusprogrammi versiooni miinimumnõuded ei ole täidetud, \n\n   Minimaalne nõutav versioon: {0}\n\n   Palun laadige uuesti alla {1}'s Solutions tööriista koopia selle värskendamiseks.\n\n   Värskenduste otsimine on katkestatud.\n
+	UpdateNoUpdateAvailable   = \n  Värskendusi pole saadaval.\n\n  sa jooksed {0}'s Solutions Viimane saadaolev versioon.\n
+	UpdateNotSatisfied        = \n  Värskendusprogrammi versiooni miinimumnõuded ei ole täidetud, \n\n  Minimaalne nõutav versioon: {0}\n\n  Palun laadige uuesti alla {1}'s Solutions tööriista koopia selle värskendamiseks.\n\n  Värskenduste otsimine on katkestatud.\n
 '@

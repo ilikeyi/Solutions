@@ -6,7 +6,7 @@
 	 Description = 描述
 
 	* InBox Apps
-	 	ISO      = 规则命名通过验证 ISO 文件。
+		ISO      = 规则命名通过验证 ISO 文件。
 		SN       = S 版、SN 版
 		Edition  = Windows 操作系统版本识别
 

@@ -8,4 +8,5 @@
 	PreventsApps              = Запобігання перевстановлення програми
 	CloseStoreAuto            = Вимкніть автоматичне завантаження Microsoft Store
 	PreventsSuggestApps       = Заборонити встановлення "Пропонованих програм"
+	DelAllUser                = Видалити всіх користувачів
 '@

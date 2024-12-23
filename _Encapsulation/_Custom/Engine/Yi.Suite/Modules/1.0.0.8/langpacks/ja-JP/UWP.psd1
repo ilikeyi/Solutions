@@ -8,4 +8,5 @@
 	PreventsApps              = アプリケーションが再インストールされないようにします
 	CloseStoreAuto            = Microsoft Store の自動ダウンロードをオフにする
 	PreventsSuggestApps       = 「おすすめアプリ」のインストールを阻止する
+	DelAllUser                = すべてのユーザーを削除する
 '@

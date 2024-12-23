@@ -8,4 +8,5 @@
 	PreventsApps              = Az alkalmazás újratelepítésének megakadályozása
 	CloseStoreAuto            = Kapcsolja ki a Microsoft Store automatikus letöltéseit
 	PreventsSuggestApps       = A "Javasolt alkalmazások" telepítésének megakadályozása
+	DelAllUser                = Az összes felhasználó törlése
 '@

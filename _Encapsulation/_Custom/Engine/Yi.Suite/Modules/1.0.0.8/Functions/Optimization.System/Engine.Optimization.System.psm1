@@ -5,8 +5,8 @@
 Function Optimization_System_UI
 {
 	Logo -Title "$($lang.Optimize) $($lang.System)"
-	Write-Host "   $($lang.Optimize) $($lang.System)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	write-host "  $($lang.Optimize) $($lang.System)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
@@ -1701,7 +1701,7 @@ Function Optimization_System_UI
 		Width          = 148
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			write-host "  $($lang.UserCancel)" -ForegroundColor Red
 			$GUIOS.Close()
 		}
 	}
@@ -2345,8 +2345,8 @@ Function Win11_Context_Menu
 	)
 
 	if ($Classic) {
-		Write-Host "   $($lang.ClassicMenu)"
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.ClassicMenu)"
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		if ((Test-Path -LiteralPath "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32") -ne $true) {
 			New-Item "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" -force -ErrorAction SilentlyContinue | Out-Null
 		}
@@ -2356,8 +2356,8 @@ Function Win11_Context_Menu
 	}
 
 	if ($Modern) {
-		Write-Host "   $($lang.ModernMenu)"
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.ModernMenu)"
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-Item -LiteralPath "HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		RefreshIconCache
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -2377,7 +2377,7 @@ Function Take_Ownership
 	)
 
 	if ($Remove) {
-		Write-Host "   $($lang.Del)".PadRight(22) -NoNewline
+		write-host "  $($lang.Del)".PadRight(22) -NoNewline
 		Remove-Item -LiteralPath "HKLM:\SOFTWARE\Classes\*\shell\TakeOwnership" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -LiteralPath "HKLM:\SOFTWARE\Classes\*\shell\runas" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -LiteralPath "HKLM:\SOFTWARE\Classes\Directory\shell\TakeOwnership" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
@@ -2386,7 +2386,7 @@ Function Take_Ownership
 	}
 
 	if ($Add) {
-		Write-Host "   $($lang.AddTo)".PadRight(22) -NoNewline
+		write-host "  $($lang.AddTo)".PadRight(22) -NoNewline
 		Remove-Item -LiteralPath "HKLM:\SOFTWARE\Classes\*\shell\TakeOwnership" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -LiteralPath "HKLM:\SOFTWARE\Classes\*\shell\runas" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		if((Test-Path -LiteralPath "HKLM:\SOFTWARE\Classes\*\shell\TakeOwnership") -ne $true) { New-Item "HKLM:\SOFTWARE\Classes\*\shell\TakeOwnership" -force -ErrorAction SilentlyContinue | Out-Null };
@@ -2435,15 +2435,15 @@ Function Copy_Path
 		[switch]$Add
 	)
 
-	Write-Host "   $($lang.CopyPath)"
+	write-host "  $($lang.CopyPath)"
 	if ($Remove) {
-		Write-Host "   $($lang.Del)".PadRight(22) -NoNewline
+		write-host "  $($lang.Del)".PadRight(22) -NoNewline
 		Remove-Item -LiteralPath "HKLM:\SOFTWARE\Classes\Allfilesystemobjects\shell\windows.copyaspath" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Add) {
-		Write-Host "   $($lang.AddTo)".PadRight(22) -NoNewline
+		write-host "  $($lang.AddTo)".PadRight(22) -NoNewline
 		if((Test-Path -LiteralPath "HKLM:\SOFTWARE\Classes\Allfilesystemobjects\shell\windows.copyaspath") -ne $true) {
 			New-Item "HKLM:\SOFTWARE\Classes\Allfilesystemobjects\shell\windows.copyaspath" -force -ErrorAction SilentlyContinue | Out-Null
 		}
@@ -2469,9 +2469,9 @@ Function Win11_TPM_Setup
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.TPMSetup)"
+	write-host "  $($lang.TPMSetup)"
 	if ($Restore) {
-		Write-Host "   $($lang.Restore)".PadRight(22) -NoNewline
+		write-host "  $($lang.Restore)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKLM:\SYSTEM\Setup\LabConfig" -Name 'BypassCPUCheck' -Force -ErrorAction SilentlyContinue | out-null
 		Remove-ItemProperty -Path "HKLM:\SYSTEM\Setup\LabConfig" -Name 'BypassStorageCheck' -Force -ErrorAction SilentlyContinue | out-null
 		Remove-ItemProperty -Path "HKLM:\SYSTEM\Setup\LabConfig" -Name 'BypassRAMCheck' -Force -ErrorAction SilentlyContinue | out-null
@@ -2481,7 +2481,7 @@ Function Win11_TPM_Setup
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		if((Test-Path -LiteralPath "HKLM:\SYSTEM\Setup\LabConfig") -ne $true) { New-Item "HKLM:\SYSTEM\Setup\LabConfig" -force -ErrorAction SilentlyContinue | Out-Null }
 		New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\Setup\LabConfig' -Name 'BypassCPUCheck' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\Setup\LabConfig' -Name 'BypassStorageCheck' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
@@ -2504,15 +2504,15 @@ Function Win11_TPM_Update
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.TPMUpdate)"
+	write-host "  $($lang.TPMUpdate)"
 	if ($Restore) {
-		Write-Host "   $($lang.Restore)".PadRight(22) -NoNewline
+		write-host "  $($lang.Restore)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKLM:\SYSTEM\Setup\MoSetup" -Name 'AllowUpgradesWithUnsupportedTPMOrCPU' -Force -ErrorAction SilentlyContinue | out-null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		if((Test-Path -LiteralPath "HKLM:\SYSTEM\Setup\MoSetup") -ne $true) { New-Item "HKLM:\SYSTEM\Setup\MoSetup" -force -ErrorAction SilentlyContinue | Out-Null }
 		New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\Setup\MoSetup' -Name 'AllowUpgradesWithUnsupportedTPMOrCPU' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -2531,15 +2531,15 @@ Function First_Logon_Animation
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.UpdateFirstLogonAnimation)"
+	write-host "  $($lang.UpdateFirstLogonAnimation)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name EnableFirstLogonAnimation -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" -Name EnableFirstLogonAnimation -PropertyType DWord -Value 0 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -2557,15 +2557,15 @@ Function Keep_Space
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.KeepSpace)"
+	write-host "  $($lang.KeepSpace)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		DISM.exe /Online /Set-ReservedStorageState /State:Enabled | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Close)".PadRight(22) -NoNewline
+		write-host "  $($lang.Close)".PadRight(22) -NoNewline
 		DISM.exe /Online /Set-ReservedStorageState /State:Disabled | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -2583,15 +2583,15 @@ Function Hibernation
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.Hibernation)"
+	write-host "  $($lang.Hibernation)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Start-Process 'powercfg.exe' -ArgumentList '/h on' -WindowStyle Minimized
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Close)".PadRight(22) -NoNewline
+		write-host "  $($lang.Close)".PadRight(22) -NoNewline
 		Start-Process 'powercfg.exe' -Verb runAs -ArgumentList '/h off' -WindowStyle Minimized
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -2609,15 +2609,15 @@ Function Power_Supply
 		[switch]$Optimize
 	)
 
-	Write-Host "   $($lang.PowerSupply)"
+	write-host "  $($lang.PowerSupply)"
 	if ($Restore) {
-		Write-Host "   $($lang.Restore)".PadRight(22) -NoNewline
+		write-host "  $($lang.Restore)".PadRight(22) -NoNewline
 		powercfg -restoredefaultschemes
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Optimize) {
-		Write-Host "   $($lang.Optimize)".PadRight(22) -NoNewline
+		write-host "  $($lang.Optimize)".PadRight(22) -NoNewline
 		powercfg -setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
 		powercfg -change -monitor-timeout-ac 0
 		powercfg -change -monitor-timeout-dc 0
@@ -2645,9 +2645,9 @@ Function App_Restart_Screen
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.AppRestartScreen)"
+	write-host "  $($lang.AppRestartScreen)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\Control Panel\Desktop' -Name 'MenuShowDelay' -Value '400' -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
 		Remove-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name 'WaitToKillAppTimeout' -Force -ErrorAction SilentlyContinue | out-null
 		Remove-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name 'HungAppTimeout' -Force -ErrorAction SilentlyContinue | out-null
@@ -2661,7 +2661,7 @@ Function App_Restart_Screen
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\Control Panel\Desktop' -Name 'MenuShowDelay' -Value '0' -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath 'HKCU:\Control Panel\Desktop' -Name 'WaitToKillAppTimeout' -Value '5000' -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath 'HKCU:\Control Panel\Desktop' -Name 'HungAppTimeout' -Value '4000' -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
@@ -2687,9 +2687,9 @@ Function Shortcut_Arrow
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.ShortcutArrow)"
+	write-host "  $($lang.ShortcutArrow)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Restore)".PadRight(22) -NoNewline
+		write-host "  $($lang.Restore)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Classes\IE.AssocFile.URL' -Name 'IsShortcut' -Value "" -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Classes\InternetShortcut' -Name 'IsShortcut' -Value "" -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Classes\lnkfile' -Name 'IsShortcut' -Value "" -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
@@ -2699,7 +2699,7 @@ Function Shortcut_Arrow
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Del)".PadRight(22) -NoNewline
+		write-host "  $($lang.Del)".PadRight(22) -NoNewline
 		if ((Test-Path -LiteralPath "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons") -ne $true) { New-Item "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons" -force -ErrorAction SilentlyContinue | Out-Null }
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons' -Name '29' -Value "$($env:systemroot)\system32\imageres.dll,197" -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "$($env:USERPROFILE)\AppData\Local\iconcache.db" -ErrorAction SilentlyContinue
@@ -2720,9 +2720,9 @@ Function Numlock
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.Numlock)"
+	write-host "  $($lang.Numlock)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -Path "Registry::HKEY_USERS\.DEFAULT\Control Panel\Keyboard" -Name InitialKeyboardIndicators -PropertyType String -Value 2147483650 -Force -ErrorAction SilentlyContinue | Out-Null
 		Add-Type -AssemblyName System.Windows.Forms
 		If (-not ([System.Windows.Forms.Control]::IsKeyLocked('NumLock'))) {
@@ -2733,7 +2733,7 @@ Function Numlock
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -Path "Registry::HKEY_USERS\.DEFAULT\Control Panel\Keyboard" -Name InitialKeyboardIndicators -PropertyType String -Value 2147483648 -Force -ErrorAction SilentlyContinue | Out-Null
 		Add-Type -AssemblyName System.Windows.Forms
 		If ([System.Windows.Forms.Control]::IsKeyLocked('NumLock')) {
@@ -2760,15 +2760,15 @@ Function Separate_Process
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.ExplorerProcess)"
+	write-host "  $($lang.ExplorerProcess)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'SeparateProcess' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'SeparateProcess' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -2786,15 +2786,15 @@ Function Restart_Apps
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.RestartApps)"
+	write-host "  $($lang.RestartApps)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name 'RestartApps' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' -Name 'RestartApps' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -2812,15 +2812,15 @@ Function Check_Boxes
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.CheckBoxes)"
+	write-host "  $($lang.CheckBoxes)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'AutoCheckSelect' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'AutoCheckSelect' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -2838,15 +2838,15 @@ Function Thumbnail_Cache
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.ThumbnailCache)"
+	write-host "  $($lang.ThumbnailCache)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Thumbnail Cache" -Name Autorun -PropertyType DWord -Value 3 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\VolumeCaches\Thumbnail Cache" -Name Autorun -PropertyType DWord -Value 0 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -2866,15 +2866,15 @@ Function Explorer_Open_To
 	)
 
 	if ($ThisPC) {
-		Write-Host "   $($lang.ExplorerTo -f $lang.ExplorerToThisPC)"
-		Write-Host "   $($lang.Setting)".PadRight(22) -NoNewline
+		write-host "  $($lang.ExplorerTo -f $lang.ExplorerToThisPC)"
+		write-host "  $($lang.Setting)".PadRight(22) -NoNewline
 		New-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "LaunchTo" -PropertyType DWord -Value 2 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($QuickAccess) {
-		Write-Host "   $($lang.ExplorerTo -f $lang.ExplorerToQuickAccess)"
-		Write-Host "   $($lang.Setting)".PadRight(22) -NoNewline
+		write-host "  $($lang.ExplorerTo -f $lang.ExplorerToQuickAccess)"
+		write-host "  $($lang.Setting)".PadRight(22) -NoNewline
 		New-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "LaunchTo" -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -2893,9 +2893,9 @@ Function Aero_Shake
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.AeroShake)"
+	write-host "  $($lang.AeroShake)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name 'DisallowShaking' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		Remove-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" -Name "NoWindowMinimizingShortcuts" -ErrorAction SilentlyContinue | Out-Null
 
@@ -2906,7 +2906,7 @@ Function Aero_Shake
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name 'DisallowShaking' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" -Name "NoWindowMinimizingShortcuts" -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
 
@@ -2929,15 +2929,15 @@ Function File_Extensions
 		[switch]$Hide
 	)
 
-	Write-Host "   $($lang.FileExtensions)"
+	write-host "  $($lang.FileExtensions)"
 	if ($Show) {
-		Write-Host "   $($lang.Show)".PadRight(22) -NoNewline
+		write-host "  $($lang.Show)".PadRight(22) -NoNewline
 		New-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name HideFileExt -PropertyType DWord -Value 0 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Hide) {
-		Write-Host "   $($lang.Hide)".PadRight(22) -NoNewline
+		write-host "  $($lang.Hide)".PadRight(22) -NoNewline
 		New-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name HideFileExt -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -2957,15 +2957,15 @@ Function Dark_Mode_To_Apps
 		[switch]$Light
 	)
 
-	Write-Host "   $($lang.DarkMode)$($lang.DarkApps)"
+	write-host "  $($lang.DarkMode)$($lang.DarkApps)"
 	if ($Dark) {
-		Write-Host "   $($lang.Dark)".PadRight(22) -NoNewline
+		write-host "  $($lang.Dark)".PadRight(22) -NoNewline
 		New-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -PropertyType DWord -Value 0 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Light) {
-		Write-Host "   $($lang.Light)".PadRight(22) -NoNewline
+		write-host "  $($lang.Light)".PadRight(22) -NoNewline
 		New-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -2982,15 +2982,15 @@ Function Dark_Mode_To_System
 		[switch]$Light
 	)
 
-	Write-Host "   $($lang.DarkMode)$($lang.DarkSystem)"
+	write-host "  $($lang.DarkMode)$($lang.DarkSystem)"
 	if ($Dark) {
-		Write-Host "   $($lang.Dark)".PadRight(22) -NoNewline
+		write-host "  $($lang.Dark)".PadRight(22) -NoNewline
 		New-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name SystemUsesLightTheme -PropertyType DWord -Value 0 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Light) {
-		Write-Host "   $($lang.Light)".PadRight(22) -NoNewline
+		write-host "  $($lang.Light)".PadRight(22) -NoNewline
 		New-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name SystemUsesLightTheme -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -3007,15 +3007,15 @@ Function Transparency_Effects
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.TransparencyEffects)"
+	write-host "  $($lang.TransparencyEffects)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name EnableTransparency -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
-		Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+		write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name EnableTransparency -PropertyType DWord -Value 0 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -3033,15 +3033,15 @@ Function Snap_Assist_Flyout
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.SnapAssistFlyout)"
+	write-host "  $($lang.SnapAssistFlyout)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name EnableSnapAssistFlyout -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
-		Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+		write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name EnableSnapAssistFlyout -PropertyType DWord -Value 0 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -3063,13 +3063,13 @@ Function Taskbar_Alignment
 	)
 
 	if ($Left) {
-		Write-Host "   $($lang.TaskbarAlignment)$($lang.TaskbarAlignmentLeft)"
+		write-host "  $($lang.TaskbarAlignment)$($lang.TaskbarAlignmentLeft)"
 		New-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name TaskbarAl -PropertyType DWord -Value 0 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Center) {
-		Write-Host "   $($lang.TaskbarAlignment)$($lang.TaskbarAlignmentCentered)"
+		write-host "  $($lang.TaskbarAlignment)$($lang.TaskbarAlignmentCentered)"
 		New-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name TaskbarAl -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -3094,25 +3094,25 @@ Function Taskbar_Widgets
 		}
 	}
 
-	Write-Host "   $($lang.TaskbarWidgets)"
+	write-host "  $($lang.TaskbarWidgets)"
 	if ($Show) {
-		Write-Host "   $($lang.Show)".PadRight(22) -NoNewline
+		write-host "  $($lang.Show)".PadRight(22) -NoNewline
 		if ($MarkHasBeenInstalled) {
 			New-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name TaskbarDa -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
 			Write-Host "$($lang.Done)`n" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+			write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 		}
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Hide) {
-		Write-Host "   $($lang.Hide)".PadRight(22) -NoNewline
+		write-host "  $($lang.Hide)".PadRight(22) -NoNewline
 		if ($MarkHasBeenInstalled) {
 			New-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name TaskbarDa -PropertyType DWord -Value 0 -Force -ErrorAction SilentlyContinue | Out-Null
 			Write-Host "$($lang.Done)`n" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+			write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 		}
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -3130,16 +3130,16 @@ Function Taskbar_Widgets_Remove
 		[switch]$Restore
 	)
 
-	Write-Host "   $($lang.TaskbarWidgetsRemove)"
+	write-host "  $($lang.TaskbarWidgetsRemove)"
 	if ($Remove) {
-		Write-Host "   $($lang.Del)".PadRight(22) -NoNewline
+		write-host "  $($lang.Del)".PadRight(22) -NoNewline
 		Get-AppXProvisionedPackage -Online | Where-Object DisplayName -Like "MicrosoftWindows.Client.WebExperience*" | Remove-AppxProvisionedPackage -AllUsers -Online -ErrorAction SilentlyContinue | Out-Null
 		Get-AppxPackage "MicrosoftWindows.Client.WebExperience*" -ErrorAction SilentlyContinue | Remove-AppxPackage -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Restore) {
-		Write-Host "   $($lang.Restore)".PadRight(22) -NoNewline
+		write-host "  $($lang.Restore)".PadRight(22) -NoNewline
 		Start-Process "ms-windows-store://pdp/?ProductId=9MSSGKG348SP"
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -3164,9 +3164,9 @@ Function Teams_Autostarting
 		}
 	}
 
-	Write-Host "   $($lang.TeamsAutostarting)"
+	write-host "  $($lang.TeamsAutostarting)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		if ($MarkHasBeenInstalled) {
 			if (-not (Test-Path -Path "HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\MicrosoftTeams_8wekyb3d8bbwe\TeamsStartupTask"))
 			{
@@ -3175,12 +3175,12 @@ Function Teams_Autostarting
 			New-ItemProperty -Path "HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\MicrosoftTeams_8wekyb3d8bbwe\TeamsStartupTask" -Name State -PropertyType DWord -Value 2 -Force -ErrorAction SilentlyContinue | Out-Null
 			Write-Host "$($lang.Done)`n" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+			write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 		}
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Close)".PadRight(22) -NoNewline
+		write-host "  $($lang.Close)".PadRight(22) -NoNewline
 		if ($MarkHasBeenInstalled) {
 			if (-not (Test-Path -Path "HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\MicrosoftTeams_8wekyb3d8bbwe\TeamsStartupTask"))
 			{
@@ -3189,7 +3189,7 @@ Function Teams_Autostarting
 			New-ItemProperty -Path "HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData\MicrosoftTeams_8wekyb3d8bbwe\TeamsStartupTask" -Name State -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
 			Write-Host "$($lang.Done)`n" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+			write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 		}
 	}
 }
@@ -3206,15 +3206,15 @@ Function Teams_Taskbar_Chat
 		[switch]$Hide
 	)
 
-	Write-Host "   $($lang.FileExtensions)"
+	write-host "  $($lang.FileExtensions)"
 	if ($Show) {
-		Write-Host "   $($lang.Show)".PadRight(22) -NoNewline
+		write-host "  $($lang.Show)".PadRight(22) -NoNewline
 		New-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name TaskbarMn -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Hide) {
-		Write-Host "   $($lang.Hide)".PadRight(22) -NoNewline
+		write-host "  $($lang.Hide)".PadRight(22) -NoNewline
 		New-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name TaskbarMn -PropertyType DWord -Value 0 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -3232,16 +3232,16 @@ Function Bing_Search
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.BingSearch)"
+	write-host "  $($lang.BingSearch)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" -Name DisableSearchBoxSuggestions -Force -ErrorAction SilentlyContinue | Out-Null
 		Restart_Explorer
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		if (-not (Test-Path -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer"))
 		{
 			New-Item -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" -Force | Out-Null
@@ -3276,9 +3276,9 @@ Function Taskbar_Suggested_Content
 		"SystemPaneSuggestionsEnabled"
 	)
 
-	Write-Host "   $($lang.TaskbarSuggestedContent)"
+	write-host "  $($lang.TaskbarSuggestedContent)"
 	if ($Show) {
-		Write-Host "   $($lang.Show)".PadRight(22) -NoNewline
+		write-host "  $($lang.Show)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Force -ErrorAction SilentlyContinue | Out-Null
 		ForEach ($item in $cdm) {
 			New-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager' -Name $item -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
@@ -3287,7 +3287,7 @@ Function Taskbar_Suggested_Content
 	}
 
 	if ($Hide) {
-		Write-Host "   $($lang.Hide)".PadRight(22) -NoNewline
+		write-host "  $($lang.Hide)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Force -ErrorAction SilentlyContinue | Out-Null
 		ForEach ($item in $cdm) {
 			New-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager' -Name $item -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
@@ -3308,9 +3308,9 @@ Function Suggestions_Device
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.SuggestionsDevice)"
+	write-host "  $($lang.SuggestionsDevice)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Show)".PadRight(22) -NoNewline
+		write-host "  $($lang.Show)".PadRight(22) -NoNewline
 		if((Test-Path -LiteralPath "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileEngagement") -ne $true) {
 			New-Item "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileEngagement" -force -ErrorAction SilentlyContinue | Out-Null
 		}
@@ -3319,7 +3319,7 @@ Function Suggestions_Device
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Hide)".PadRight(22) -NoNewline
+		write-host "  $($lang.Hide)".PadRight(22) -NoNewline
 		if((Test-Path -LiteralPath "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileEngagement") -ne $true) {
 			New-Item "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\UserProfileEngagement" -force -ErrorAction SilentlyContinue | Out-Null
 		}
@@ -3341,21 +3341,21 @@ Function Search_Box
 		[switch]$SearchBox
 	)
 
-	Write-Host "   $($lang.SearchBox)"
+	write-host "  $($lang.SearchBox)"
 	if ($Hide) {
-		Write-Host "   $($lang.Hide)".PadRight(22) -NoNewline
+		write-host "  $($lang.Hide)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($SearchIcon) {
-		Write-Host "   $($lang.Setting)".PadRight(22) -NoNewline
+		write-host "  $($lang.Setting)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($SearchBox) {
-		Write-Host "   $($lang.Setting)".PadRight(22) -NoNewline
+		write-host "  $($lang.Setting)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search' -Name 'SearchboxTaskbarMode' -Value 2 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -3373,9 +3373,9 @@ Function UAC_Never
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.UAC)"
+	write-host "  $($lang.UAC)"
 	if ($Enabled) {
-		Write-Host "   $($lang.UACNever)".PadRight(22) -NoNewline
+		write-host "  $($lang.UACNever)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name 'PromptOnSecureDesktop' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name 'EnableLUA' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name 'ConsentPromptBehaviorAdmin' -Value 5 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
@@ -3383,7 +3383,7 @@ Function UAC_Never
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Restore)".PadRight(22) -NoNewline
+		write-host "  $($lang.Restore)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name 'PromptOnSecureDesktop' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name 'EnableLUA' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' -Name 'ConsentPromptBehaviorAdmin' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
@@ -3403,16 +3403,16 @@ Function File_Transfer_Dialog
 		[switch]$Simple
 	)
 
-	Write-Host "   $($lang.FileTransfer)"
+	write-host "  $($lang.FileTransfer)"
 	if ($Detailed) {
-		Write-Host "   $($lang.Setting)".PadRight(22) -NoNewline
+		write-host "  $($lang.Setting)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" -Force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager -Name EnthusiastMode -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Simple) {
-		Write-Host "   $($lang.Restore)".PadRight(22) -NoNewline
+		write-host "  $($lang.Restore)".PadRight(22) -NoNewline
 		Remove-Item -LiteralPath "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -3430,9 +3430,9 @@ Function Smart_Screen_Apps
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.SmartScreenApps)"
+	write-host "  $($lang.SmartScreenApps)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name "SmartScreenEnabled" -Type String -Value "RequireAdmin"
 		Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" -Name "EnableWebContentEvaluation" -ErrorAction SilentlyContinue
 	
@@ -3446,7 +3446,7 @@ Function Smart_Screen_Apps
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name "SmartScreenEnabled" -Type String -Value "Off"
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppHost" -Name "EnableWebContentEvaluation" -Type DWord -Value 0
 	
@@ -3472,15 +3472,15 @@ Function Smart_Screen_Safe
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.SmartScreenSafe)"
+	write-host "  $($lang.SmartScreenSafe)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments -Name SaveZoneInformation -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		if (-not (Test-Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments))
 		{
 			New-Item -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Attachments -Force -ErrorAction SilentlyContinue | Out-Null
@@ -3502,9 +3502,9 @@ Function Easy_Access_Keyboard
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.EasyAccessKeyboard)"
+	write-host "  $($lang.EasyAccessKeyboard)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Set-ItemProperty -Path "HKCU:\Control Panel\Accessibility\StickyKeys" "Flags" "450" -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\Control Panel\Accessibility\Keyboard Response" "Flags" "126" -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\Control Panel\Accessibility\ToggleKeys" "Flags" "62" -ErrorAction SilentlyContinue | Out-Null
@@ -3512,7 +3512,7 @@ Function Easy_Access_Keyboard
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Set-ItemProperty -Path "HKCU:\Control Panel\Accessibility\StickyKeys" "Flags" "506" -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\Control Panel\Accessibility\Keyboard Response" "Flags" "122" -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\Control Panel\Accessibility\ToggleKeys" "Flags" "58" -ErrorAction SilentlyContinue | Out-Null
@@ -3532,15 +3532,15 @@ Function Maintain
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.Maintain)"
+	write-host "  $($lang.Maintain)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance" -Name "MaintenanceDisabled" -ErrorAction SilentlyContinue
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		if ((Test-Path -LiteralPath "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance") -ne $true) { New-Item "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance" -force -ErrorAction SilentlyContinue | Out-Null }
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance' -Name 'MaintenanceDisabled' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -3559,15 +3559,15 @@ Function Experience
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.Experience)"
+	write-host "  $($lang.Experience)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\SQMClient\Windows" -Name "CEIPEnabled" -ErrorAction SilentlyContinue
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		if ((Test-Path -LiteralPath "HKLM:\SOFTWARE\Policies\Microsoft\SQMClient\Windows") -ne $true) { New-Item "HKLM:\SOFTWARE\Policies\Microsoft\SQMClient\Windows" -force -ErrorAction SilentlyContinue | Out-Null }
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\SQMClient\Windows' -Name 'CEIPEnable' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -3586,15 +3586,15 @@ Function Safety_Warnings
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.SafetyWarnings)"
+	write-host "  $($lang.SafetyWarnings)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Associations" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		if ((Test-Path -LiteralPath "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Associations") -ne $true) { New-Item "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Associations" -force -ErrorAction SilentlyContinue | Out-Null }
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Associations' -Name 'LowRiskFileTypes' -Value '.exe;.reg;.msi;.bat;.cmd;.com;.vbs;.hta;.scr;.pif;.js;' -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -3613,15 +3613,15 @@ Function QOS
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.QOS)"
+	write-host "  $($lang.QOS)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Start-Process -FilePath "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\nvspbind")\nvspbind.exe" -ArgumentList "/e ""*"" ms_pacer" -Wait -WindowStyle Minimized
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Start-Process -FilePath "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\nvspbind")\nvspbind.exe" -ArgumentList "/d ""*"" ms_pacer" -Wait -WindowStyle Minimized
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -3639,15 +3639,15 @@ Function Network_Tuning
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.NetworkTuning)"
+	write-host "  $($lang.NetworkTuning)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		netsh interface tcp set global autotuninglevel=normal | out-null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		netsh interface tcp set global autotuninglevel=disabled | out-null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -3665,15 +3665,15 @@ Function ECN
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.ECN)"
+	write-host "  $($lang.ECN)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		netsh int tcp set global ecn=enabled | out-null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		netsh int tcp set global ecn=disable | out-null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -3691,15 +3691,15 @@ Function Error_Recovery
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.ErrorRecovery)"
+	write-host "  $($lang.ErrorRecovery)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		bcdedit /set {default} bootstatuspolicy DisplayAllFailures | out-null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		bcdedit /set `{current`} bootstatuspolicy ignoreallfailures | out-null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -3717,16 +3717,16 @@ Function DEPPAE
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.DEP)"
+	write-host "  $($lang.DEP)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		bcdedit /deletevalue `{current`} pae 
 		bcdedit /set `{current`} nx OptIn
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		bcdedit /set `{current`} nx AlwaysOff
 		bcdedit /set `{current`} pae ForceDisable
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -3745,15 +3745,15 @@ Function Power_Failure
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PowerFailure)"
+	write-host "  $($lang.PowerFailure)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		bcdedit /set `{current`} Recoveryenabled Yes | out-null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		bcdedit /set `{current`} Recoveryenabled No | out-null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -3806,9 +3806,9 @@ Function Scheduled_Tasks
 		"\Microsoft\XblGameSave\XblGameSaveTask"
 	)
 
-	Write-Host "   $($lang.ScheduledTasks)"
+	write-host "  $($lang.ScheduledTasks)"
 	if ($Restore) {
-		Write-Host "   $($lang.Restore)".PadRight(22) -NoNewline
+		write-host "  $($lang.Restore)".PadRight(22) -NoNewline
 		ForEach ($task in $tasks) {
 			$parts = $task.split('\')
 			$name = $parts[-1]
@@ -3820,7 +3820,7 @@ Function Scheduled_Tasks
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 
 		ForEach ($task in $tasks) {
 			$parts = $task.split('\')
@@ -3845,16 +3845,16 @@ Function Privacy_Voice_Typing
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PrivacyVoiceTyping)"
+	write-host "  $($lang.PrivacyVoiceTyping)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\SOFTWARE\Microsoft\Personalization\Settings" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Personalization\Settings" "AcceptedPrivacyPolicy" "1" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\SOFTWARE\Microsoft\Personalization\Settings" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Personalization\Settings" "AcceptedPrivacyPolicy" "0" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -3873,16 +3873,16 @@ Function Privacy_Contacts_Speech
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PrivacyContactsSpeech)"
+	write-host "  $($lang.PrivacyContactsSpeech)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" "HarvestContacts" "1" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore" "HarvestContacts" "0" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -3901,15 +3901,15 @@ Function Privacy_Language_Opt_Out
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PrivacyLanguageOptOut)"
+	write-host "  $($lang.PrivacyLanguageOptOut)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKCU:\Control Panel\International\User Profile" -Name "HttpAcceptLanguageOptOut" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Optimize)".PadRight(22) -NoNewline
+		write-host "  $($lang.Optimize)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\Control Panel\International\User Profile" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\Control Panel\International\User Profile" "HttpAcceptLanguageOptOut" 0 -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -3928,15 +3928,15 @@ Function Privacy_Ads
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PrivacyAds)"
+	write-host "  $($lang.PrivacyAds)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" -Name "Enabled" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\AdvertisingInfo" "Enabled" 0 -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -3955,16 +3955,16 @@ Function Privacy_Locaton_Aware
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PrivacyLocatonAware)"
+	write-host "  $($lang.PrivacyLocatonAware)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-Item -Path "HKCU:\Printers\Defaults" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Input\TIPC" -Name "Enabled" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\Printers\Defaults" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\Printers\Defaults" "NetID" "{00000000-0000-0000-0000-000000000000}" -ErrorAction SilentlyContinue | Out-Null
 		New-Item -Path "HKCU:\SOFTWARE\Microsoft\Input\TIPC" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
@@ -3998,9 +3998,9 @@ Function Privacy_Set_Sync
 		"Windows"
 	)
 
-	Write-Host "   $($lang.PrivacySetSync)"
+	write-host "  $($lang.PrivacySetSync)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync" "BackupPolicy" 0x3c -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync" "DeviceMetadataUploaded" 0 -ErrorAction SilentlyContinue | Out-Null
@@ -4013,7 +4013,7 @@ Function Privacy_Set_Sync
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync\Groups" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync" "BackupPolicy" 0x3c -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\SettingSync" "DeviceMetadataUploaded" 0 -ErrorAction SilentlyContinue | Out-Null
@@ -4038,9 +4038,9 @@ Function Privacy_Inking_Typing
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PrivacyInkingTyping)"
+	write-host "  $($lang.PrivacyInkingTyping)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization" "RestrictImplicitInkCollection" "0" -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization" "RestrictImplicitTextCollection" "0" -ErrorAction SilentlyContinue | Out-Null
@@ -4048,7 +4048,7 @@ Function Privacy_Inking_Typing
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization" "RestrictImplicitInkCollection" "1" -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\InputPersonalization" "RestrictImplicitTextCollection" "1" -ErrorAction SilentlyContinue | Out-Null
@@ -4068,15 +4068,15 @@ Function Privacy_Share_Unpaired_Devices
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PrivacyShareUnpairedDevices)"
+	write-host "  $($lang.PrivacyShareUnpairedDevices)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled" "Type" "LooselyCoupled" -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\LooselyCoupled" "Value" "Deny" -ErrorAction SilentlyContinue | Out-Null
@@ -4105,15 +4105,15 @@ Function Privacy_Biometrics
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PrivacyLocationSensor)"
+	write-host "  $($lang.PrivacyLocationSensor)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Biometrics" -Name "Enabled" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-Item -Path "HKLM:\Software\Policies\Microsoft\Biometrics" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Biometrics" "Enabled" "0" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -4132,15 +4132,15 @@ Function Privacy_Compatible_Telemetry
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PrivacyCompatibleTelemetry)"
+	write-host "  $($lang.PrivacyCompatibleTelemetry)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\CompatTelRunner.exe" -Name "Debugger" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-Item -Path "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\CompatTelRunner.exe" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\CompatTelRunner.exe" "Debugger" "%windir%\system32\taskkill.exe" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -4159,9 +4159,9 @@ Function Privacy_Diagnostic_Data
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PrivacyDiagnosticData)"
+	write-host "  $($lang.PrivacyDiagnosticData)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Get-Service -Name DiagTrack | Set-Service -StartupType Automatic -ErrorAction SilentlyContinue | Out-Null
 		Get-Service -Name DiagTrack | Start-Service -ErrorAction SilentlyContinue | Out-Null
 		Get-NetFirewallRule -Group DiagTrack | Set-NetFirewallRule -Enabled True -Action Allow -ErrorAction SilentlyContinue | Out-Null
@@ -4169,7 +4169,7 @@ Function Privacy_Diagnostic_Data
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Get-Service -Name DiagTrack | Stop-Service -Force -ErrorAction SilentlyContinue | Out-Null
 		Get-Service -Name DiagTrack | Set-Service -StartupType Disabled -ErrorAction SilentlyContinue | Out-Null
 		Get-NetFirewallRule -Group DiagTrack | Set-NetFirewallRule -Enabled False -Action Block -ErrorAction SilentlyContinue | Out-Null
@@ -4189,16 +4189,16 @@ Function Privacy_Tailored_Experiences
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.TailoredExperiences)"
+	write-host "  $($lang.TailoredExperiences)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Privacy" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Privacy" "TailoredExperiencesWithDiagnosticDataEnabled" "2" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Privacy" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Privacy" "TailoredExperiencesWithDiagnosticDataEnabled" "0" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -4217,16 +4217,16 @@ Function Privacy_Feedback_Notifications
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PrivacyFeedbackNotifications)"
+	write-host "  $($lang.PrivacyFeedbackNotifications)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules" -Name "NumberOfSIUFInPeriod" -ErrorAction SilentlyContinue | Out-Null
 		Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules" -Name "PeriodInNanoSeconds" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules" "NumberOfSIUFInPeriod" "0" -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules" "PeriodInNanoSeconds" "0" -ErrorAction SilentlyContinue | Out-Null
@@ -4246,16 +4246,16 @@ Function Privacy_Location_Tracking
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PrivacyLocationTracking)"
+	write-host "  $($lang.PrivacyLocationTracking)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-Item -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" "Value" "Allow" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-Item -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" "Value" "Deny" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -4274,16 +4274,16 @@ Function Privacy_Location_Sensor
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PrivacyLocationSensor)"
+	write-host "  $($lang.PrivacyLocationSensor)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Permissions\{BFA794E4-F964-4FDB-90F6-45056BFE4B44}" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Permissions\{BFA794E4-F964-4FDB-90F6-45056BFE4B44}" "SensorPermissionState" "1" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Permissions\{BFA794E4-F964-4FDB-90F6-45056BFE4B44}" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Permissions\{BFA794E4-F964-4FDB-90F6-45056BFE4B44}" "SensorPermissionState" "0" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -4302,9 +4302,9 @@ Function Privacy_Experiences_Telemetry
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.ExperiencesTelemetry)"
+	write-host "  $($lang.ExperiencesTelemetry)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\DataCollection" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\DataCollection" "AllowTelemetry" "3" -ErrorAction SilentlyContinue | Out-Null
 
@@ -4318,7 +4318,7 @@ Function Privacy_Experiences_Telemetry
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-Item -Path "HKLM:\Software\Policies\Microsoft\Windows\DataCollection" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Windows\DataCollection" "AllowTelemetry" "0" -ErrorAction SilentlyContinue | Out-Null
 
@@ -4346,9 +4346,9 @@ Function Privacy_Background_Access
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PrivacyBackgroundAccess)"
+	write-host "  $($lang.PrivacyBackgroundAccess)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		ForEach ($key in (Get-ChildItem "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications")) {
 			Remove-ItemProperty -Path ("HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\" + $key.PSChildName) -Name 'Disabled' -Force -ErrorAction SilentlyContinue | out-null
 		}
@@ -4356,7 +4356,7 @@ Function Privacy_Background_Access
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		ForEach ($key in (Get-ChildItem "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications")) {
 			Set-ItemProperty -Path ("HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\" + $key.PSChildName) "Disabled" 1 -ErrorAction SilentlyContinue | Out-Null
 		}
@@ -4376,14 +4376,14 @@ Function Timeline_Time
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.TimelineTime)"
+	write-host "  $($lang.TimelineTime)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\System' -Name 'EnableActivityFeed' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\System' -Name 'EnableActivityFeed' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	}
 
@@ -4402,14 +4402,14 @@ Function Collect_Activity
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.CollectActivity)"
+	write-host "  $($lang.CollectActivity)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\System' -Name 'PublishUserActivities' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\System' -Name 'PublishUserActivities' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	}
 
@@ -4422,8 +4422,8 @@ Function Collect_Activity
 #>
 Function IEProxy
 {
-	Write-Host "   $($lang.IEProxy)"
-	Write-Host "   $($lang.Restore)".PadRight(22) -NoNewline
+	write-host "  $($lang.IEProxy)"
+	write-host "  $($lang.Restore)".PadRight(22) -NoNewline
 	"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections [1 7 17]" | Out-File -FilePath "$($env:TEMP)\ie_proxy.ini" -Encoding ASCII
 	Start-Process "regini" -ArgumentList "$($env:TEMP)\ie_proxy.ini" -WindowStyle Minimized
 	Remove-Item -Path "$($env:TEMP)\ie_proxy.ini" -ErrorAction SilentlyContinue
@@ -4442,14 +4442,14 @@ Function Auto_Detect
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.IEAutoSet)"
+	write-host "  $($lang.IEAutoSet)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings' -Name 'AutoDetect' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings' -Name 'AutoDetect' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	}
 
@@ -4477,9 +4477,9 @@ Function Network_Discovery
 		"@FirewallAPI.dll,-28502"
 	)
 
-	Write-Host "   $($lang.NetworkDiscovery)"
+	write-host "  $($lang.NetworkDiscovery)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		if ((Get-CimInstance -ClassName CIM_ComputerSystem).PartOfDomain -eq $false)
 		{
 			Set-NetFirewallRule -Group $FirewallRules -Profile Private -Enabled True -ErrorAction SilentlyContinue | Out-Null
@@ -4487,18 +4487,18 @@ Function Network_Discovery
 			Set-NetConnectionProfile -NetworkCategory Private
 			Write-Host "$($lang.Done)`n" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+			write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 		}
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		if ((Get-CimInstance -ClassName CIM_ComputerSystem).PartOfDomain -eq $false)
 		{
 			Set-NetFirewallRule -Group $FirewallRules -Profile Private -Enabled False -ErrorAction SilentlyContinue | Out-Null
 			Write-Host "$($lang.Done)`n" -ForegroundColor Green
 		} else {
-			Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+			write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 		}
 	}
 }
@@ -4517,9 +4517,9 @@ Function Network_Adapters_Save_Power
 
 	$Adapters = Get-NetAdapter -Physical | Get-NetAdapterPowerManagement | Where-Object -FilterScript { $_.AllowComputerToTurnOffDevice -ne "Unsupported" }
 
-	Write-Host "   $($lang.NetworkAdaptersPM)"
+	write-host "  $($lang.NetworkAdaptersPM)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		ForEach ($item in $Adapters)
 		{
 			$item.AllowComputerToTurnOffDevice = "Enabled"
@@ -4529,7 +4529,7 @@ Function Network_Adapters_Save_Power
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		ForEach ($item in $Adapters)
 		{
 			$item.AllowComputerToTurnOffDevice = "Disabled"
@@ -4551,15 +4551,15 @@ Function IPv6_Component
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.NetworkAdaptersPM)"
+	write-host "  $($lang.NetworkAdaptersPM)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Enable-NetAdapterBinding -Name * -ComponentID ms_tcpip6 -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Disable-NetAdapterBinding -Name * -ComponentID ms_tcpip6 -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -4578,15 +4578,15 @@ Function Merge_Taskbar_Never
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.MergeTaskbarNever)"
+	write-host "  $($lang.MergeTaskbarNever)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Setting)".PadRight(22) -NoNewline
+		write-host "  $($lang.Setting)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'TaskbarGlomLevel' -Value 2 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Restore)".PadRight(22) -NoNewline
+		write-host "  $($lang.Restore)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name TaskbarGlomLevel -Force -ErrorAction SilentlyContinue
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -4605,14 +4605,14 @@ Function Notification_Center_Always
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.NotificationAlways)"
+	write-host "  $($lang.NotificationAlways)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer' -Name 'EnableAutoTray' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name EnableAutoTray -Force -ErrorAction SilentlyContinue
 	}
 
@@ -4632,14 +4632,14 @@ Function Nav_Show_All
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.NavShowAll)"
+	write-host "  $($lang.NavShowAll)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'NavPaneExpandToCurrentFolder' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "NavPaneExpandToCurrentFolder" -ErrorAction SilentlyContinue | Out-Null
 	}
 
@@ -4659,14 +4659,14 @@ Function Cortana
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.Cortana)"
+	write-host "  $($lang.Cortana)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowCortanaButton" -ErrorAction SilentlyContinue
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'ShowCortanaButton' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	}
 
@@ -4685,14 +4685,14 @@ Function Task_View
 		[switch]$Hide
 	)
 
-	Write-Host "   $($lang.TaskView)"
+	write-host "  $($lang.TaskView)"
 	if ($Show) {
-		Write-Host "   $($lang.Show)".PadRight(22) -NoNewline
+		write-host "  $($lang.Show)".PadRight(22) -NoNewline
 		New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
 	}
 
 	if ($Hide) {
-		Write-Host "   $($lang.Hide)".PadRight(22) -NoNewline
+		write-host "  $($lang.Hide)".PadRight(22) -NoNewline
 		New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -PropertyType DWord -Value 0 -Force -ErrorAction SilentlyContinue | Out-Null
 	}
 
@@ -4711,14 +4711,14 @@ Function Quick_Access_Files
 		[switch]$Hide
 	)
 
-	Write-Host "   $($lang.QuickAccessFiles)"
+	write-host "  $($lang.QuickAccessFiles)"
 	if ($Show) {
-		Write-Host "   $($lang.Show)".PadRight(22) -NoNewline
+		write-host "  $($lang.Show)".PadRight(22) -NoNewline
 		New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name "ShowRecent" -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
 	}
 
 	if ($Hide) {
-		Write-Host "   $($lang.Hide)".PadRight(22) -NoNewline
+		write-host "  $($lang.Hide)".PadRight(22) -NoNewline
 		New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name "ShowRecent" -PropertyType DWord -Value 0 -Force -ErrorAction SilentlyContinue | Out-Null
 	}
 
@@ -4737,14 +4737,14 @@ Function Quick_Access_Folders
 		[switch]$Hide
 	)
 
-	Write-Host "   $($lang.QuickAccessFolders)"
+	write-host "  $($lang.QuickAccessFolders)"
 	if ($Show) {
-		Write-Host "   $($lang.Show)".PadRight(22) -NoNewline
+		write-host "  $($lang.Show)".PadRight(22) -NoNewline
 		New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name "ShowFrequent" -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
 	}
 
 	if ($Hide) {
-		Write-Host "   $($lang.Hide)".PadRight(22) -NoNewline
+		write-host "  $($lang.Hide)".PadRight(22) -NoNewline
 		New-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" -Name "ShowFrequent" -PropertyType DWord -Value 0 -Force -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "$($env:appdata)\Microsoft\Windows\Recent\*.*"
 	}
@@ -4764,14 +4764,14 @@ Function Memory_Compression
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.MemoryCompression)"
+	write-host "  $($lang.MemoryCompression)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Enable-MMAgent -mc
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Disable-MMAgent -mc
 	}
 
@@ -4791,15 +4791,15 @@ Function Prelaunch
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.Prelaunch)"
+	write-host "  $($lang.Prelaunch)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Enable-MMAgent -ApplicationPreLaunch
 		New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters' -Name 'EnablePrefetcher' -Value 3 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Disable-MMAgent -ApplicationPreLaunch
 		New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters' -Name 'EnablePrefetcher' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	}
@@ -4819,15 +4819,15 @@ Function SSD
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.OptSSD)"
+	write-host "  $($lang.OptSSD)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Restore)".PadRight(22) -NoNewline
+		write-host "  $($lang.Restore)".PadRight(22) -NoNewline
 		fsutil behavior set DisableLastAccess 2 | Out-Null
 		fsutil behavior set EncryptPagingFile 0 | Out-Null
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Optimize)".PadRight(22) -NoNewline
+		write-host "  $($lang.Optimize)".PadRight(22) -NoNewline
 		fsutil behavior set DisableLastAccess 1 | Out-Null
 		fsutil behavior set EncryptPagingFile 0 | Out-Null
 	}
@@ -4848,14 +4848,14 @@ Function Compatibility
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.Compatibility)"
+	write-host "  $($lang.Compatibility)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Restore)".PadRight(22) -NoNewline
+		write-host "  $($lang.Restore)".PadRight(22) -NoNewline
 		Remove-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		if ((Test-Path -LiteralPath "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat") -ne $true) { New-Item "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat" -force -ErrorAction SilentlyContinue | Out-Null }
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppCompat' -Name 'DisablePCA' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	}
@@ -4876,9 +4876,9 @@ Function Animation_Effects
 		[switch]$Optimize
 	)
 
-	Write-Host "   $($lang.AnimationEffects)"
+	write-host "  $($lang.AnimationEffects)"
 	if ($Restore) {
-		Write-Host "   $($lang.Restore)".PadRight(22) -NoNewline
+		write-host "  $($lang.Restore)".PadRight(22) -NoNewline
 		Remove-Item -LiteralPath "HKCU:\SOFTWARE\Policies\Microsoft\Windows\DWM" -force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\DWM' -Name 'EnableAeroPeek' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\DWM' -Name 'AlwaysHibernateThumbnails' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
@@ -4896,7 +4896,7 @@ Function Animation_Effects
 	}
 
 	if ($Optimize) {
-		Write-Host "   $($lang.Optimize)".PadRight(22) -NoNewline
+		write-host "  $($lang.Optimize)".PadRight(22) -NoNewline
 		if ((Test-Path -LiteralPath "HKCU:\SOFTWARE\Policies\Microsoft\Windows\DWM") -ne $true) { New-Item "HKCU:\SOFTWARE\Policies\Microsoft\Windows\DWM" -force -ErrorAction SilentlyContinue | Out-Null }
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Policies\Microsoft\Windows\DWM' -Name 'DisallowAnimations' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\DWM' -Name 'EnableAeroPeek' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
@@ -4928,14 +4928,14 @@ Function Defragmentation
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.Defragmentation)"
+	write-host "  $($lang.Defragmentation)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Enable-ScheduledTask -TaskPath "\Microsoft\Windows\Defrag\" -TaskName "ScheduledDefrag" | Out-Null
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Disable-ScheduledTask -TaskPath "\Microsoft\Windows\Defrag\" -TaskName "ScheduledDefrag" | Out-Null
 	}
 
@@ -4955,9 +4955,9 @@ Function Photo_Preview
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PhotoPreview)"
+	write-host "  $($lang.PhotoPreview)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		if ((Test-Path -LiteralPath "HKCU:\Software\Classes\.jpg") -ne $true) { New-Item "HKCU:\Software\Classes\.jpg" -force -ErrorAction SilentlyContinue | Out-Null }
 		if ((Test-Path -LiteralPath "HKCU:\Software\Classes\.jpeg") -ne $true) { New-Item "HKCU:\Software\Classes\.jpeg" -force -ErrorAction SilentlyContinue | Out-Null }
 		if ((Test-Path -LiteralPath "HKCU:\Software\Classes\.gif") -ne $true) { New-Item "HKCU:\Software\Classes\.gif" -force -ErrorAction SilentlyContinue | Out-Null }
@@ -4975,7 +4975,7 @@ Function Photo_Preview
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Remove-Item -Path "HKCU:\Software\Classes\.jpg" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKCU:\Software\Classes\.jpeg" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKCU:\Software\Classes\.gif" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
@@ -5001,9 +5001,9 @@ Function RAM
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.RAM)"
+	write-host "  $($lang.RAM)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Control' -Name 'SvcHostSplitThresholdInKB' -Value 3670016 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Control' -Name 'WaitToKillServiceTimeout' -Value '5000' -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile' -Name 'NetworkThrottlingIndex' -Value 10 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
@@ -5029,7 +5029,7 @@ Function RAM
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Setting)".PadRight(22) -NoNewline
+		write-host "  $($lang.Setting)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Control' -Name 'SvcHostSplitThresholdInKB' -Value 67108864 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Control' -Name 'WaitToKillServiceTimeout' -Value '2000' -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
 		if((Test-Path -LiteralPath "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile") -ne $true) { New-Item "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -force -ErrorAction SilentlyContinue | Out-Null }
@@ -5072,9 +5072,9 @@ Function Storage_Sense
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.StorageSense)"
+	write-host "  $($lang.StorageSense)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		if (-not (Test-Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy))
 		{
 			New-Item -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
@@ -5083,7 +5083,7 @@ Function Storage_Sense
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		if (-not (Test-Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy))
 		{
 			New-Item -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
@@ -5106,14 +5106,14 @@ Function Delivery
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.Delivery)"
+	write-host "  $($lang.Delivery)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-ItemProperty -Path Registry::HKEY_USERS\S-1-5-20\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Settings -Name DownloadMode -PropertyType DWord -Value 1 -Force -ErrorAction SilentlyContinue | Out-Null
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -Path Registry::HKEY_USERS\S-1-5-20\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Settings -Name DownloadMode -PropertyType DWord -Value 0 -Force -ErrorAction SilentlyContinue | Out-Null
 	}
 
@@ -5132,14 +5132,14 @@ Function Password_Unlimited
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PwdUnlimited)"
+	write-host "  $($lang.PwdUnlimited)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		net accounts /maxpwage:42 | Out-Null
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Setting)".PadRight(22) -NoNewline
+		write-host "  $($lang.Setting)".PadRight(22) -NoNewline
 		net accounts /maxpwage:UNLIMITED | Out-Null
 	}
 
@@ -5158,9 +5158,9 @@ Function XboxGameBar
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.XboxGameBar)"
+	write-host "  $($lang.XboxGameBar)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		if (-not (Test-Path HKCU:\Software\Microsoft\Windows\CurrentVersion\GameDVR))
 		{
 			New-Item -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\GameDVR -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
@@ -5172,7 +5172,7 @@ Function XboxGameBar
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		if (-not (Test-Path HKCU:\Software\Microsoft\Windows\CurrentVersion\GameDVR))
 		{
 			New-Item -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\GameDVR -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
@@ -5197,9 +5197,9 @@ Function XboxGameBarTips
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.XboxGameBarTips)"
+	write-host "  $($lang.XboxGameBarTips)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		if (-not (Test-Path HKCU:\SOFTWARE\Microsoft\GameBar))
 		{
 			New-Item -Path HKCU:\SOFTWARE\Microsoft\GameBar -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
@@ -5209,7 +5209,7 @@ Function XboxGameBarTips
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		if (-not (Test-Path HKCU:\SOFTWARE\Microsoft\GameBar))
 		{
 			New-Item -Path HKCU:\SOFTWARE\Microsoft\GameBar -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
@@ -5231,15 +5231,15 @@ Function XboxGameMode
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.XboxGameMode)"
+	write-host "  $($lang.XboxGameMode)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\GameDVR" -Name CursorCaptureEnabled -Force -ErrorAction SilentlyContinue
 		Remove-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\GameDVR" -Name MicrophoneCaptureEnabled -Force -ErrorAction SilentlyContinue
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\GameBar' -Name 'AutoGameModeEnabled' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\GameBar' -Name 'AllowAutoGameMode' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	}
@@ -5259,15 +5259,15 @@ Function XboxGameDVR
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.XboxGameDVR)"
+	write-host "  $($lang.XboxGameDVR)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\GameDVR" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\GameDVR" -Name AllowgameDVR -Force -ErrorAction SilentlyContinue
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\GameDVR" -ItemType Directory -Force -ErrorAction SilentlyContinue | Out-Null
 		New-ItemProperty -LiteralPath "HKLM:\SOFTWARE\Policies\Microsoft\Windows\GameDVR" -Name 'AllowgameDVR' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	}
@@ -5287,14 +5287,14 @@ Function Protected
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.Protected)"
+	write-host "  $($lang.Protected)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		if ((Test-Path -LiteralPath "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments") -ne $true) { New-Item "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments" -force -ErrorAction SilentlyContinue | Out-Null }
 		New-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments' -Name 'SaveZoneInformation' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	}
@@ -5315,14 +5315,14 @@ Function File_Selection_Restrictions
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.MultipleIncrease)"
+	write-host "  $($lang.MultipleIncrease)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Setting)".PadRight(22) -NoNewline
+		write-host "  $($lang.Setting)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer" -Name MultipleInvokePromptMinimum -Force -ErrorAction SilentlyContinue
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer' -Name 'MultipleInvokePromptMinimum' -Value 999 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 	}
 
@@ -5342,14 +5342,14 @@ Function Autoplay
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.Autoplay)"
+	write-host "  $($lang.Autoplay)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers" -Name "DisableAutoplay" -Type DWord -Value 0
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers" -Name "DisableAutoplay" -Type DWord -Value 1
 	}
 
@@ -5369,14 +5369,14 @@ Function Autorun
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.Autorun)"
+	write-host "  $($lang.Autorun)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "NoDriveTypeAutoRun" -ErrorAction SilentlyContinue
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		If (-not (Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer")) {
 			New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" | Out-Null
 		}
@@ -5399,9 +5399,9 @@ Function Error_Reporting
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.ErrorReporting)"
+	write-host "  $($lang.ErrorReporting)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -Name "Disabled" -ErrorAction SilentlyContinue
 
 		Set-Service -Name "WerSvc" -StartupType Manual -ErrorAction SilentlyContinue | Out-Null
@@ -5412,7 +5412,7 @@ Function Error_Reporting
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -Name "Disabled" -Type DWord -Value 1
 
 		Set-Service -Name "WerSvc" -StartupType Disabled -ErrorAction SilentlyContinue | Out-Null
@@ -5436,14 +5436,14 @@ Function F8_Boot_Menu
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.F8BootMenu)"
+	write-host "  $($lang.F8BootMenu)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		bcdedit /set `{current`} bootmenupolicy Legacy | Out-Null
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		bcdedit /set `{current`} bootmenupolicy Standard | Out-Null
 	}
 
@@ -5457,8 +5457,8 @@ Function F8_Boot_Menu
 #>
 Function Send_To
 {
-	Write-Host "   $($lang.SendTo)"
-	Write-Host "   $($lang.Clean)".PadRight(22) -NoNewline
+	write-host "  $($lang.SendTo)"
+	write-host "  $($lang.Clean)".PadRight(22) -NoNewline
 	Remove-Item -Path "$($env:APPDATA)\Microsoft\Windows\SendTo\Mail Recipient.MAPIMail" -ErrorAction SilentlyContinue
 	Remove-Item -Path "$($env:APPDATA)\Microsoft\Windows\SendTo\邮件收件人.lnk" -ErrorAction SilentlyContinue
 	Remove-Item -Path "$($env:APPDATA)\Microsoft\Windows\SendTo\Fax Recipient.lnk" -ErrorAction SilentlyContinue
@@ -5472,8 +5472,8 @@ Function Send_To
 #>
 Function Cleanup_System_Log
 {
-	Write-Host "   $($lang.Logs)"
-	Write-Host "   $($lang.Clean)".PadRight(22) -NoNewline
+	write-host "  $($lang.Logs)"
+	write-host "  $($lang.Clean)".PadRight(22) -NoNewline
 	Get-EventLog -LogName * | ForEach-Object { Clear-EventLog $_.Log }
 	Write-Host "$($lang.Done)`n" -ForegroundColor Green
 }
@@ -5548,8 +5548,8 @@ Function Cleanup_Disk
 #>
 Function Cleanup_SxS
 {
-	Write-Host "   $($lang.SxS)"
-	Write-Host "   $($lang.Clean)".PadRight(22) -NoNewline
+	write-host "  $($lang.SxS)"
+	write-host "  $($lang.Clean)".PadRight(22) -NoNewline
 
 	# 清理组件
 	Dism.exe /online /Cleanup-Image /StartComponentCleanup
@@ -5598,9 +5598,9 @@ Function Notification_Center
 #		"Windows.SystemToast.AutoPlay"                                                        # Autoplay
 	)
 
-	Write-Host "   $($lang.Notification)"
+	write-host "  $($lang.Notification)"
 	if ($Restore) {
-		Write-Host "   $($lang.Restore)".PadRight(22) -NoNewline
+		write-host "  $($lang.Restore)".PadRight(22) -NoNewline
 		Remove-ItemProperty -Path "HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify" -Name "PastIconsStream" -ErrorAction SilentlyContinue
 		Remove-ItemProperty -Path "HKCU:\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify" -Name "IconStreams" -ErrorAction SilentlyContinue
 		
@@ -5617,7 +5617,7 @@ Function Notification_Center
 	}
 
 	if ($Full) {
-		Write-Host "   $($lang.Full)".PadRight(22) -NoNewline
+		write-host "  $($lang.Full)".PadRight(22) -NoNewline
 		If (-not (Test-Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer")) {
 			New-Item -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Explorer" | Out-Null
 		}
@@ -5625,7 +5625,7 @@ Function Notification_Center
 	}
 
 	if ($Part) {
-		Write-Host "   $($lang.Part)".PadRight(22) -NoNewline
+		write-host "  $($lang.Part)".PadRight(22) -NoNewline
 		if ((Test-Path -LiteralPath "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications") -ne $true) { New-Item "HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications" -force -ErrorAction SilentlyContinue | Out-Null }
 		New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Notifications' -Name 'DisableEnhancedNotifications' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 
@@ -5666,9 +5666,9 @@ Function System_Disk_Page_Size
 		[string]$size
 	)
 
-	Write-Host "   $($lang.PagingSize)"
+	write-host "  $($lang.PagingSize)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Setting) $($size)G".PadRight(22) -NoNewline
+		write-host "  $($lang.Setting) $($size)G".PadRight(22) -NoNewline
 		switch ($size)
 		{
 			8 {
@@ -5681,7 +5681,7 @@ Function System_Disk_Page_Size
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Restore)".PadRight(22) -NoNewline
+		write-host "  $($lang.Restore)".PadRight(22) -NoNewline
 		New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -Name 'PagingFiles' -Value @("?:\pagefile.sys") -PropertyType MultiString -force -ErrorAction SilentlyContinue | Out-Null
 	}
 
@@ -5695,8 +5695,8 @@ Function System_Disk_Page_Size
 #>
 Function Remote_Desktop
 {
-	Write-Host "   $($lang.StRemote)"
-	Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+	write-host "  $($lang.StRemote)"
+	write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 	if ((Test-Path -LiteralPath "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server") -ne $true) { New-Item "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server" -force -ErrorAction SilentlyContinue | Out-Null }
 	New-ItemProperty -LiteralPath 'HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server' -Name 'fDenyTSConnections' -Value 0 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 
@@ -5720,8 +5720,8 @@ Function Remote_Desktop
 #>
 Function SMB_File_Share
 {
-	Write-Host "   $($lang.StSMB)"
-	Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+	write-host "  $($lang.StSMB)"
+	write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 	<#
 		.Add 'firewall rules'
 		.添加 '防火墙规则'
@@ -5819,16 +5819,16 @@ Function Desktop_Icon_ThisPC
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.ThisPCRemove -f $lang.LocationDesktop)"
+	write-host "  $($lang.ThisPCRemove -f $lang.LocationDesktop)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}" -ErrorAction SilentlyContinue | Out-Null
 		New-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
         Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}" -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{B4BFCC3A-DB2C-424C-B029-7FE99A87C641}" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -5847,9 +5847,9 @@ Function Desktop_Icon_Document
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.ThisPCRemove -f $lang.LocationDocuments)"
+	write-host "  $($lang.ThisPCRemove -f $lang.LocationDocuments)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A8CDFF1C-4878-43be-B5FD-F8091C1C60D0}" -ErrorAction SilentlyContinue | Out-Null
 		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{d3162b92-9365-467a-956b-92703aca08af}" -ErrorAction SilentlyContinue | Out-Null
 		New-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A8CDFF1C-4878-43be-B5FD-F8091C1C60D0}" -ErrorAction SilentlyContinue | Out-Null
@@ -5858,7 +5858,7 @@ Function Desktop_Icon_Document
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A8CDFF1C-4878-43be-B5FD-F8091C1C60D0}" -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{d3162b92-9365-467a-956b-92703aca08af}" -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A8CDFF1C-4878-43be-B5FD-F8091C1C60D0}" -ErrorAction SilentlyContinue | Out-Null
@@ -5880,9 +5880,9 @@ Function Desktop_Icon_Download
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.ThisPCRemove -f $lang.LocationDownloads)"
+	write-host "  $($lang.ThisPCRemove -f $lang.LocationDownloads)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{374DE290-123F-4565-9164-39C4925E467B}" -ErrorAction SilentlyContinue | Out-Null
 		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{088e3905-0323-4b02-9826-5d99428e115f}" -ErrorAction SilentlyContinue | Out-Null
 		New-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{374DE290-123F-4565-9164-39C4925E467B}" -ErrorAction SilentlyContinue | Out-Null
@@ -5891,7 +5891,7 @@ Function Desktop_Icon_Download
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{374DE290-123F-4565-9164-39C4925E467B}" -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{088e3905-0323-4b02-9826-5d99428e115f}" -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{374DE290-123F-4565-9164-39C4925E467B}" -ErrorAction SilentlyContinue | Out-Null
@@ -5912,9 +5912,9 @@ Function Desktop_Icon_Music
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.ThisPCRemove -f $lang.LocationMusic)"
+	write-host "  $($lang.ThisPCRemove -f $lang.LocationMusic)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{1CF1260C-4DD0-4ebb-811F-33C572699FDE}" -ErrorAction SilentlyContinue | Out-Null
 		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de}" -ErrorAction SilentlyContinue | Out-Null
 		New-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{1CF1260C-4DD0-4ebb-811F-33C572699FDE}" -ErrorAction SilentlyContinue | Out-Null
@@ -5923,7 +5923,7 @@ Function Desktop_Icon_Music
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{1CF1260C-4DD0-4ebb-811F-33C572699FDE}" -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3dfdf296-dbec-4fb4-81d1-6a3438bcf4de}" -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{1CF1260C-4DD0-4ebb-811F-33C572699FDE}" -ErrorAction SilentlyContinue | Out-Null
@@ -5944,9 +5944,9 @@ Function Desktop_Icon_Picture
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.ThisPCRemove -f $lang.LocationPictures)"
+	write-host "  $($lang.ThisPCRemove -f $lang.LocationPictures)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3ADD1653-EB32-4cb0-BBD7-DFA0ABB5ACCA}" -ErrorAction SilentlyContinue | Out-Null
 		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{24ad3ad4-a569-4530-98e1-ab02f9417aa8}" -ErrorAction SilentlyContinue | Out-Null
 		New-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3ADD1653-EB32-4cb0-BBD7-DFA0ABB5ACCA}" -ErrorAction SilentlyContinue | Out-Null
@@ -5955,7 +5955,7 @@ Function Desktop_Icon_Picture
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3ADD1653-EB32-4cb0-BBD7-DFA0ABB5ACCA}" -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{24ad3ad4-a569-4530-98e1-ab02f9417aa8}" -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{3ADD1653-EB32-4cb0-BBD7-DFA0ABB5ACCA}" -ErrorAction SilentlyContinue | Out-Null
@@ -5976,9 +5976,9 @@ Function Desktop_Icon_Video
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.ThisPCRemove -f $lang.LocationVideos)"
+	write-host "  $($lang.ThisPCRemove -f $lang.LocationVideos)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A0953C92-50DC-43bf-BE83-3742FED03C9C}" -ErrorAction SilentlyContinue | Out-Null
 		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}" -ErrorAction SilentlyContinue | Out-Null
 		New-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A0953C92-50DC-43bf-BE83-3742FED03C9C}" -ErrorAction SilentlyContinue | Out-Null
@@ -5987,7 +5987,7 @@ Function Desktop_Icon_Video
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A0953C92-50DC-43bf-BE83-3742FED03C9C}" -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{f86fa3ab-70d2-4fc7-9c99-fcbf05467f3a}" -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{A0953C92-50DC-43bf-BE83-3742FED03C9C}" -ErrorAction SilentlyContinue | Out-Null
@@ -6008,16 +6008,16 @@ Function Desktop_Icon_3D
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.ThisPCRemove -f $lang.Location3D)"
+	write-host "  $($lang.ThisPCRemove -f $lang.Location3D)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" -ErrorAction SilentlyContinue | Out-Null
 		New-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" -ErrorAction SilentlyContinue | Out-Null
 		Remove-Item -Path "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -6031,8 +6031,8 @@ Function Desktop_Icon_3D
 #>
 Function Reset_TaskBar
 {
-	Write-Host "   $($lang.Reset) $($lang.TaskBar)" -ForegroundColor Green
-	Write-Host "   $($lang.Del) $($lang.TaskBar)"
+	write-host "  $($lang.Reset) $($lang.TaskBar)" -ForegroundColor Green
+	write-host "  $($lang.Del) $($lang.TaskBar)"
 	Remove-Item -Path "$($env:AppData)\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\*.*" -ErrorAction SilentlyContinue | Out-Null
 	Remove-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 	if (Test-Path "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\syspin")\syspin.exe" -PathType Leaf) {
@@ -6040,7 +6040,7 @@ Function Reset_TaskBar
 	}
 	Restart_Explorer
 
-	Write-Host "   $($lang.ResetExplorer)`n"
+	write-host "  $($lang.ResetExplorer)`n"
 }
 
 <#
@@ -6060,15 +6060,15 @@ Function Reset_Desktop
 		'HKCU:\Software\Classes\Wow6432Node\Local Settings\Software\Microsoft\Windows\Shell\BagMRU'
 	)
 
-	Write-Host "   $($lang.ResetDesk)" -ForegroundColor Green
-	Write-Host "   $($lang.ResetFolder)"
+	write-host "  $($lang.ResetDesk)" -ForegroundColor Green
+	write-host "  $($lang.ResetFolder)"
 	ForEach ($item in $ResetDesktopReg) {
 		Remove-Item -Path $item -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 	}
 
 	Restart_Explorer
 
-	Write-Host "   $($lang.ResetExplorer)`n"
+	write-host "  $($lang.ResetExplorer)`n"
 	RefreshIconCache
 }
 

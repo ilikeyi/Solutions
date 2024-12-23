@@ -24,10 +24,10 @@ Function Image_Select_Del_UI
 		#>
 		$MarkSelectIndexin = @()
 
-	 	<#
-	 		.Mark: Check the selection status
-	 		.标记：检查选择状态
-	 	#>
+		<#
+			.Mark: Check the selection status
+			.标记：检查选择状态
+		#>
 
 		$UI_Main_Menu.Controls | ForEach-Object {
 			if ($_.Enabled) {

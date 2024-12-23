@@ -38,6 +38,6 @@
 	UpdateUpdateStop          = Güncelleme indirilirken bir hata oluştu ve güncelleme işlemi iptal edildi.
 	UpdateInstall             = Bu güncelleştirmeyi yüklemek istiyor musunuz?
 	UpdateInstallSel          = Evet, yukarıdaki güncelleme yüklenecek\nHayır, güncelleme yüklenmeyecek
-	UpdateNoUpdateAvailable   = \n   Güncelleme mevcut değil.\n\n   koşuyorsun {0}'s Solutions Mevcut en son sürüm.\n
-	UpdateNotSatisfied        = \n   Minimum güncelleme programı sürüm gereksinimlerinin karşılanmaması, \n\n   Minimum gerekli sürüm: {0}\n\n   Lütfen tekrar indirin {1}'s Solutions güncellemek için aracın bir kopyası.\n\n   Güncellemelerin kontrol edilmesi iptal edildi.\n
+	UpdateNoUpdateAvailable   = \n  Güncelleme mevcut değil.\n\n  koşuyorsun {0}'s Solutions Mevcut en son sürüm.\n
+	UpdateNotSatisfied        = \n  Minimum güncelleme programı sürüm gereksinimlerinin karşılanmaması, \n\n  Minimum gerekli sürüm: {0}\n\n  Lütfen tekrar indirin {1}'s Solutions güncellemek için aracın bir kopyası.\n\n  Güncellemelerin kontrol edilmesi iptal edildi.\n
 '@

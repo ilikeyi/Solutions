@@ -156,8 +156,8 @@ Function UWP_Uninstall
 {
 
 	Logo -Title "$($lang.Del) $($lang.UninstallUWP)"
-	Write-Host "   $($lang.Del) $($lang.UninstallUWP)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	write-host "  $($lang.Del) $($lang.UninstallUWP)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
@@ -222,7 +222,7 @@ Function UWP_Uninstall
 
 				[Windows.Management.Deployment.PackageManager, Windows.Web, ContentType = WindowsRuntime]::new().FindPackages() | Select-Object -ExpandProperty Id -Property DisplayName | Where-Object -FilterScript {
 					($_.Name -in (Get-AppxPackage -PackageTypeFilter Bundle -AllUsers).Name) -and ($_.Name -notin $AppsExcluded) -and ($null -ne $_.DisplayName)} | ForEach-Object {
-					 $CheckBox  = New-Object System.Windows.Forms.CheckBox -Property @{
+					$CheckBox  = New-Object System.Windows.Forms.CheckBox -Property @{
 						Height = 35
 						Width  = 365
 						Text   = $_.DisplayName
@@ -403,8 +403,8 @@ Function UWP_Uninstall
 					$UI_Main_Apps_Select.Controls | ForEach-Object {
 						if ($_ -is [System.Windows.Forms.CheckBox]) {
 							if ($_.Checked) {
-								Write-Host "   $($_.Text)"
-								Write-Host "   $($lang.Del)".PadRight(22) -NoNewline
+								write-host "  $($_.Text)"
+								write-host "  $($lang.Del)".PadRight(22) -NoNewline
 								if ($UI_Main_Remove_Sync_To_All_User.Checked) {
 									Get-AppXProvisionedPackage -Online | Where-Object DisplayName -Like "$($_.Tag)" | Remove-AppxProvisionedPackage -AllUsers -Online -ErrorAction SilentlyContinue | Out-Null
 									Get-AppxPackage -Name "$($_.Tag)" | Remove-AppxPackage | Out-Null
@@ -424,8 +424,8 @@ Function UWP_Uninstall
 					$UI_Main_Depend_Select.Controls | ForEach-Object {
 						if ($_ -is [System.Windows.Forms.CheckBox]) {
 							if ($_.Checked) {
-								Write-Host "   $($_.Text)"
-								Write-Host "   $($lang.Del)".PadRight(22) -NoNewline
+								write-host "  $($_.Text)"
+								write-host "  $($lang.Del)".PadRight(22) -NoNewline
 								if ($UI_Main_Remove_Sync_To_All_User.Checked) {
 									Get-AppXProvisionedPackage -Online | Where-Object DisplayName -Like "$($_.Tag)" | Remove-AppxProvisionedPackage -AllUsers -Online -ErrorAction SilentlyContinue | Out-Null
 									Get-AppxPackage -Name "$($_.Tag)" | Remove-AppxPackage | Out-Null
@@ -440,9 +440,9 @@ Function UWP_Uninstall
 				}
 			}
 
-			Write-Host "`n   $($lang.PreventsApps)"
+			write-host "`n  $($lang.PreventsApps)"
 			if ($UI_Main_Suggestions_Prevents_Apps.Checked) {
-				Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+				write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 				$cdm = @(
 					"ContentDeliveryAllowed"
 					"FeatureManagementEnabled"
@@ -458,34 +458,34 @@ Function UWP_Uninstall
 				}
 				Write-Host "$($lang.Done)`n" -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
 			if ($UI_Main_Suggestions_Content.Checked) {
 				Taskbar_Suggested_Content -Hide
 			} else {
-				Write-Host "   $($lang.TaskbarSuggestedContent)"
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				write-host "  $($lang.TaskbarSuggestedContent)"
+				write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
-			Write-Host "   $($lang.CloseStoreAuto)"
+			write-host "  $($lang.CloseStoreAuto)"
 			if ($UI_Main_Close_Store_Auto_Download.Checked) {
-				Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+				write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 				New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\WindowsStore" -Force -ErrorAction SilentlyContinue | Out-Null
 				New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsStore' -Name 'AutoDownload' -Value 2 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 				Write-Host "$($lang.Done)`n" -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
-			Write-Host "   $($lang.PreventsSuggestApps)"
+			write-host "  $($lang.PreventsSuggestApps)"
 			if ($UI_Main_Suggestions_Apps.Checked) {
-				Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+				write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 				New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Force -ErrorAction SilentlyContinue | Out-Null
 				New-ItemProperty -LiteralPath 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent' -Name 'DisableWindowsConsumerFeatures' -Value 1 -PropertyType DWord -force -ErrorAction SilentlyContinue | Out-Null
 				Write-Host "$($lang.Done)`n" -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
 			if ($UI_Main_Suggestions_Device.Checked) {
@@ -502,7 +502,7 @@ Function UWP_Uninstall
 		Width          = 166
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			write-host "  $($lang.UserCancel)" -ForegroundColor Red
 			$UI_Main.Close()
 		}
 	}

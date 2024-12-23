@@ -13,7 +13,7 @@
 	Check_Pass_Done                 = מזל טוב, עבר.
 	How_solve                       = איך לפתור
 	UpdatePSVersion                 = אנא התקן את גרסת PowerShell העדכנית ביותר
-	UpdateOSVersion                 = 1. עבור לאתר הרשמי של מיקרוסופט כדי להוריד את הגרסה העדכנית ביותר של מערכת ההפעלה\n    2. התקן את הגרסה העדכנית ביותר של מערכת ההפעלה ונסה שוב
-	HigherTermail                   = 1. פתח את Terminal או PowerShell ISE כמנהל, \n       הגדר מדיניות ביצוע של PowerShell: עוקף, שורת פקודה PS: \n\n       Set-ExecutionPolicy -ExecutionPolicy Bypass -Force\n\n    2. לאחר פתרון, הפעל מחדש את הפקודה.
-	HigherTermailAdmin              = 1. פתח את Terminal או PowerShell ISE כמנהל. \n     2. לאחר פתרון, הפעל מחדש את הפקודה.
+	UpdateOSVersion                 = 1. עבור לאתר הרשמי של מיקרוסופט כדי להוריד את הגרסה העדכנית ביותר של מערכת ההפעלה\n   2. התקן את הגרסה העדכנית ביותר של מערכת ההפעלה ונסה שוב
+	HigherTermail                   = 1. פתח את Terminal או PowerShell ISE כמנהל, \n      הגדר מדיניות ביצוע של PowerShell: עוקף, שורת פקודה PS: \n\n      Set-ExecutionPolicy -ExecutionPolicy Bypass -Force\n\n   2. לאחר פתרון, הפעל מחדש את הפקודה.
+	HigherTermailAdmin              = 1. פתח את Terminal או PowerShell ISE כמנהל. \n    2. לאחר פתרון, הפעל מחדש את הפקודה.
 '@

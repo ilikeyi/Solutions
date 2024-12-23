@@ -38,6 +38,6 @@
 	UpdateUpdateStop          = Lejupielādējot atjauninājumu, radās kļūda, un atjaunināšanas process tika pārtraukts.
 	UpdateInstall             = Vai vēlaties instalēt šo atjauninājumu?
 	UpdateInstallSel          = Jā, iepriekš minētais atjauninājums tiks instalēts\nNē, atjauninājums netiks instalēts
-	UpdateNoUpdateAvailable   = \n   Nav pieejami atjauninājumi.\n\n   tu skrien {0}'s Solutions Jaunākā pieejamā versija.\n
-	UpdateNotSatisfied        = \n   nav izpildītas minimālās atjaunināšanas programmas versijas prasības,\n\n   Minimālā nepieciešamā versija: {0}\n\n   Lūdzu, lejupielādējiet vēlreiz {1}'s Solutions rīka kopiju, lai to atjauninātu.\n\n   Atjauninājumu pārbaude ir pārtraukta.\n
+	UpdateNoUpdateAvailable   = \n  Nav pieejami atjauninājumi.\n\n  tu skrien {0}'s Solutions Jaunākā pieejamā versija.\n
+	UpdateNotSatisfied        = \n  nav izpildītas minimālās atjaunināšanas programmas versijas prasības,\n\n  Minimālā nepieciešamā versija: {0}\n\n  Lūdzu, lejupielādējiet vēlreiz {1}'s Solutions rīka kopiju, lai to atjauninātu.\n\n  Atjauninājumu pārbaude ir pārtraukta.\n
 '@

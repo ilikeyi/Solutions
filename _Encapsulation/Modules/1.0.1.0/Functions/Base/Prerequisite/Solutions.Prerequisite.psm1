@@ -176,7 +176,7 @@ Function Prerequisite
 
 	Write-Host "`n  $($lang.RuleCustomize)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	ForEach	 ($item in $ExpansionModule) {
+	ForEach ($item in $ExpansionModule) {
 		Write-Host "  $($item.name).psd1: " -NoNewline -ForegroundColor Green
 
 		$MarkFindModule = $False
@@ -237,11 +237,11 @@ Function Prerequisite
 		.检查重复项
 	#>
 	foreach ($item in $Duplicate_Rule_GUID) {
-	    if ($Duplicate_Rule_GUID_seen[$item]) {
-	        $Duplicate_Rule_GUID_duplicates += $item
-	    } else {
-	        $Duplicate_Rule_GUID_seen[$item] = $true
-	    }
+		if ($Duplicate_Rule_GUID_seen[$item]) {
+			$Duplicate_Rule_GUID_duplicates += $item
+		} else {
+			$Duplicate_Rule_GUID_seen[$item] = $true
+		}
 	}
 	$Duplicate_Rule_GUID_duplicates = $Duplicate_Rule_GUID_duplicates | Select-Object -Unique
 

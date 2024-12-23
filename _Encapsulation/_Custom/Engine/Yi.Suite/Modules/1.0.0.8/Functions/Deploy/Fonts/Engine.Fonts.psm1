@@ -29,8 +29,8 @@ Function Install_Fonts
 	)
 	$Host.UI.RawUI.WindowTitle = "$((Get-Module -Name Engine).Author)'s Solutions | $($lang.InstallFonts)"
 
-	Write-Host "   $($fontFile)"
-	Write-Host "   $($lang.Instl)".PadRight(28) -NoNewline
+	write-host "  $($fontFile)"
+	write-host "  $($lang.Instl)".PadRight(28) -NoNewline
 	if ((Test-Path "$($env:SystemDrive)\Windows\fonts\$($shortname)") -or 
 		(Test-Path "$($env:LOCALAPPDATA)\Microsoft\Windows\Fonts\$($shortname)")) {
 		Write-Host "$($lang.ItInstalled)`n" -ForegroundColor Red
@@ -46,8 +46,8 @@ Function Install_Fonts
 #>
 Function Install_Fonts_Process
 {
-	Write-Host "`n   $($lang.InstallFonts)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	write-host "`n  $($lang.InstallFonts)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 
 	$drives = Get-PSDrive | Select-Object -ExpandProperty 'Name' | Select-String -Pattern '^[a-z]$'
 	ForEach ($drive in $drives) {

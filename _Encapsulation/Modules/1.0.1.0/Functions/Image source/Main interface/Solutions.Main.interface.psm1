@@ -2590,7 +2590,7 @@ Write-Host "Test"
 
 							if ($item.Expand.Count -gt 0) {
 								ForEach ($Expand in $item.Expand) {
-								 	Image_Select_New_Sources -Master $item.Main.ImageFileName -ImageName $Expand.ImageFileName -ImageFile "$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)" -ImageUid $Expand.Uid -Expand -Suffix $Expand.Suffix
+									Image_Select_New_Sources -Master $item.Main.ImageFileName -ImageName $Expand.ImageFileName -ImageFile "$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)" -ImageUid $Expand.Uid -Expand -Suffix $Expand.Suffix
 								}
 							}
 						}
@@ -4153,7 +4153,7 @@ Write-Host "Test"
 
 	<#
 		.可选功能
-	#>	
+	#>
 	$GUIImageSourceSettingAdv = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 478
@@ -4361,7 +4361,7 @@ Write-Host "Test"
 
 	<#
 		.删除
-	#>	
+	#>
 	$GUIImageSourceSettingDelete = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 478

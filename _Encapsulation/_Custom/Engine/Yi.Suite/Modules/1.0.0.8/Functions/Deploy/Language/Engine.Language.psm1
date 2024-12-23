@@ -4,7 +4,7 @@
 #>
 Function Language_Setting
 {
-	Write-Host "`n   $($lang.SettingLangAndKeyboard)"
+	write-host "`n  $($lang.SettingLangAndKeyboard)"
 
 	<#
 		.Current UI main language
@@ -32,12 +32,12 @@ Function Language_Setting
 	#>
 	Language_Process -NewLang $Script:UILanguage
 
-	Write-Host "`n   $($lang.SetLang)"
-	Write-Host "   $($Script:UILanguage)" -ForegroundColor Green
+	write-host "`n  $($lang.SetLang)"
+	write-host "  $($Script:UILanguage)" -ForegroundColor Green
 
-	Write-Host "`n   $($lang.LanguageInstalled)"
+	write-host "`n  $($lang.LanguageInstalled)"
 	ForEach ($item in $Global:LanguagesAreInstalled) {
-		Write-Host "   $($item)" -ForegroundColor Green
+		write-host "  $($item)" -ForegroundColor Green
 	}
 
 	<#
@@ -66,8 +66,8 @@ Function Language_Setting
 					.Determine whether there is en-US, and if there is, it is added as a second language first
 					·判断是否有 en-US，有则优先添加为第二语言，
 
-					 There is no en-US, and other languages are added randomly to mark as second languages.
-					 如果没有 en-US，随机添加其它语言标记为第二语言。
+					There is no en-US, and other languages are added randomly to mark as second languages.
+					如果没有 en-US，随机添加其它语言标记为第二语言。
 		#>
 
 		<#
@@ -75,13 +75,13 @@ Function Language_Setting
 			.单语
 		#>
 		if ($Global:LanguagesAreInstalled.Count -le 1) {
-			Write-Host "`n   $($lang.LangSingle)"
+			write-host "`n  $($lang.LangSingle)"
 		} else {
 			<#
 				.Multilingual
 				.多语
 			#>
-			Write-Host "`n   $($lang.LangMul)"
+			write-host "`n  $($lang.LangMul)"
 
 			<#
 				.There is no en-US, and other languages are added randomly to mark as second languages.
@@ -100,16 +100,16 @@ Function Language_Setting
 			#>
 			if ($initWaitRandomlyLang -Contains "en-US") {
 				Language_Process -NewLang "en-US"
-				Write-Host "`n   $($lang.AddTo): en-US"
+				write-host "`n  $($lang.AddTo): en-US"
 			} else {
-				Write-Host "`n   $($lang.RandomlyWaitSel)"
+				write-host "`n  $($lang.RandomlyWaitSel)"
 				ForEach ($item in $initWaitRandomlyLang) {
-					Write-Host "   $($item)"
+					write-host "  $($item)"
 				}
 
-				Write-Host "`n   $($lang.RandomlySelResults)"
+				write-host "`n  $($lang.RandomlySelResults)"
 				$RandomlySelectLang = $initWaitRandomlyLang | Get-Random
-				Write-Host "   $($RandomlySelectLang)" -ForegroundColor Green
+				write-host "  $($RandomlySelectLang)" -ForegroundColor Green
 				Language_Process -NewLang $RandomlySelectLang
 			}
 		}
@@ -121,7 +121,7 @@ Function Language_Setting
 		ForEach ($item in $Global:LanguagesAreInstalled) {
 			if ($Script:UILanguage -ne $item) {
 				Language_Process -NewLang $item
-				Write-Host "   $($lang.AddTo): $item"
+				write-host "  $($lang.AddTo): $item"
 			}
 		}
 	}
@@ -166,8 +166,8 @@ Function Language_Setting
 	if (Deploy_Sync -Mark "Use_UTF8") {
 		Language_Use_UTF8 -Enabled
 	} else {
-		Write-Host "   $($lang.SettingUTF8)"
-		Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+		write-host "  $($lang.SettingUTF8)"
+		write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 	}
 }
 
@@ -192,10 +192,10 @@ Function Language_Process
 
 	if ($NewLang -eq "zh-CN" ) {
 		$FlagsNewLanguage = $True
-		Write-Host "   $($lang.KeyboardSequence)$($lang.Pinyi)"
+		write-host "  $($lang.KeyboardSequence)$($lang.Pinyi)"
 		$Script:GroupLanguage[0].InputMethodTips.add('0804:{81D4E9C9-1D3B-41BC-9E6C-4B40BF79E35E}{FA550B04-5AD7-411f-A5AC-CA038EC515D7}')      # Pinyin
 
-		Write-Host "   $($lang.KeyboardSequence)$($lang.Wubi)"
+		write-host "  $($lang.KeyboardSequence)$($lang.Wubi)"
 		$Script:GroupLanguage[0].InputMethodTips.add('0804:{6a498709-e00b-4c45-a018-8f9e4081ae40}{82590C13-F4DD-44f4-BA1D-8667246FDF8E}')      # Wubi
 	}
 
@@ -236,21 +236,21 @@ Function Language_Region_Setting
 		[switch]$Force
 	)
 
-	Write-Host "`n   $($lang.SettingLocale)"
+	write-host "`n  $($lang.SettingLocale)"
 	if ($Match) {
 		$Region = Language_Region
 		ForEach ($itemRegion in $Region) {
 			if (Test-Path -Path "$($PSScriptRoot)\..\..\..\..\..\Deploy\Region\$($itemRegion.Region)" -PathType Leaf) {
-				Write-Host "   $($itemRegion.Name)"
-				Write-Host "   $($itemRegion.Region)"
+				write-host "  $($itemRegion.Name)"
+				write-host "  $($itemRegion.Region)"
 				Set-WinSystemLocale $itemRegion.Region -ErrorAction SilentlyContinue | Out-Null
 
 				<#
 					.Setting time
 					.设置时间
 				#>
-#				Write-Host "`n   $($lang.SetTimezone)"
-#				Write-Host "   $($itemRegion.Timezone)" -ForegroundColor Green
+#				write-host "`n  $($lang.SetTimezone)"
+#				write-host "  $($itemRegion.Timezone)" -ForegroundColor Green
 #				Set-TimeZone -Id $itemRegion.Timezone -PassThru | Out-Null
 
 				<#
@@ -261,20 +261,20 @@ Function Language_Region_Setting
 				Get-Service "W32Time"
 				W32tm /resync /force
 
-				Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+				write-host "  $($lang.Done)`n" -ForegroundColor Green
 				break
 			}
 		}
 	} else {
-		Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+		write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 	}
 
 	if ($Force) {
-		Write-Host "   $((Get-Culture).Name)"
+		write-host "  $((Get-Culture).Name)"
 		Set-WinSystemLocale (Get-Culture).Name -ErrorAction SilentlyContinue | Out-Null
-		Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+		write-host "  $($lang.Done)`n" -ForegroundColor Green
 	} else {
-		Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+		write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 	}
 }
 
@@ -286,9 +286,9 @@ Function Language_Use_UTF8
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.SettingUTF8)"
+	write-host "  $($lang.SettingUTF8)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Nls\CodePage" -Name "ACP" -Type String -Value 65001 -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Nls\CodePage" -Name "OEMCP" -Type String -Value 65001 -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Nls\CodePage" -Name "MACCP" -Type String -Value 65001 -ErrorAction SilentlyContinue | Out-Null
@@ -296,7 +296,7 @@ Function Language_Use_UTF8
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Nls\CodePage" -Name "ACP" -Type String -Value 936 -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Nls\CodePage" -Name "OEMCP" -Type String -Value 936 -ErrorAction SilentlyContinue | Out-Null
 		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Nls\CodePage" -Name "MACCP" -Type String -Value 10008 -ErrorAction SilentlyContinue | Out-Null

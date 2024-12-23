@@ -21,8 +21,8 @@ $Global:OSCodename = @(
 #>
 Function LXPs_Download
 {
-	Write-Host "`n   $($lang.LXPs)"
-	Write-Host "   $('-' * 80)"
+	write-host "`n  $($lang.LXPs)"
+	write-host "  $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
@@ -1231,7 +1231,7 @@ Function LXPs_Download
 		Width          = 280
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			write-host "  $($lang.UserCancel)" -ForegroundColor Red
 			$Script:Queue_Language_Download_Select = @()
 			$UI_Main.Close()
 		}
@@ -1410,7 +1410,7 @@ Function LXPs_Download
 
 			$UI_Main_Available_Languages_Select.controls.AddRange($CheckBox)
 
-			$UI_Main_Languages_Detailed_View_Mask_Results.Text += "    $($itemRegion.Name)`n    https://www.microsoft.com/store/productId/$($itemRegion.LIP)`n`n"
+			$UI_Main_Languages_Detailed_View_Mask_Results.Text += "    $($itemRegion.Name)`n   https://www.microsoft.com/store/productId/$($itemRegion.LIP)`n`n"
 		}
 	}
 
@@ -1524,7 +1524,7 @@ Function LXPs_Download_Report_Process
 		$FolderDirect = $Path
 	}
 
-	Write-Host "`n   $($lang.AdvAppsDetailed)"
+	write-host "`n  $($lang.AdvAppsDetailed)"
 	$QueueSelectLXPsReport = @()
 	$RandomGuid = [guid]::NewGuid()
 	$ISOTestFolderMain = Join-Path -Path $env:userprofile -ChildPath "AppData\Local\Temp\$($RandomGuid)"
@@ -1595,7 +1595,7 @@ Function LXPs_Download_Licence_Process
 		$FolderDirect = $Path
 	}
 
-	Write-Host "`n   $($lang.LicenseCreate)"
+	write-host "`n  $($lang.LicenseCreate)"
 	$QueueLXPsLicenceSelect = @()
 	$Region = Language_Region
 	ForEach ($itemRegion in $Region) {
@@ -1612,28 +1612,28 @@ Function LXPs_Download_Licence_Process
 	}
 
 	if ($QueueLXPsLicenceSelect.count -gt 0) {
-		Write-Host "   $($lang.YesWork)" -ForegroundColor Green
+		write-host "  $($lang.YesWork)" -ForegroundColor Green
 
-		Write-Host "`n   $($lang.ProcessSources)"
-		Write-Host "   $('-' * 80)"
-		Write-Host "   $($Path)"
+		write-host "`n  $($lang.ProcessSources)"
+		write-host "  $('-' * 80)"
+		write-host "  $($Path)"
 
-		Write-Host "`n   $($lang.AddSources)"
-		Write-Host "   $('-' * 80)"
+		write-host "`n  $($lang.AddSources)"
+		write-host "  $('-' * 80)"
 		ForEach ($item in $QueueLXPsLicenceSelect) {
-			Write-Host "   $($item.Language): ".PadRight(28) -NoNewline
+			write-host "  $($item.Language): ".PadRight(28) -NoNewline
 			Write-Host $item.FileName
 		}
 
-		Write-Host "`n   $($lang.AddQueue)"
-		Write-Host "   $('-' * 80)"
+		write-host "`n  $($lang.AddQueue)"
+		write-host "  $('-' * 80)"
 		ForEach ($item in $QueueLXPsLicenceSelect) {
 			$TempNewFileFullPath = Join-Path -Path $item.OrgPath -ChildPath $item.FileName
 
 			if (Test-Path -Path $TempNewFileFullPath -PathType Leaf) {
 				$Wait_Remove_Temp_File = Join-Path -Path $item.OrgPath -ChildPath "License.xml"
 
-				Write-Host "   $($item.Language): ".PadRight(28) -NoNewline
+				write-host "  $($item.Language): ".PadRight(28) -NoNewline
 				Remove-Item -Path $Wait_Remove_Temp_File -ErrorAction SilentlyContinue
 
 				Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -1644,52 +1644,52 @@ Function LXPs_Download_Licence_Process
 				$zipFile.Dispose()
 
 				if (Test-Path -Path $Wait_Remove_Temp_File -PathType Leaf) {
-					Write-Host "   $($lang.Done)" -ForegroundColor Green
+					write-host "  $($lang.Done)" -ForegroundColor Green
 				} else {
-					Write-Host "   $($lang.Failed)" -ForegroundColor Red
+					write-host "  $($lang.Failed)" -ForegroundColor Red
 				}
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		write-host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }
 
 Function LXPs_Download_Process
 {
 	if ($Script:Queue_Language_Download_Select.Count -gt 0) {
-		Write-Host "   $($lang.YesWork)" -ForegroundColor Green
+		write-host "  $($lang.YesWork)" -ForegroundColor Green
 
-		Write-Host "`n   $($lang.AddSources)"
-		Write-Host "   $('-' * 80)"
+		write-host "`n  $($lang.AddSources)"
+		write-host "  $('-' * 80)"
 		ForEach ($item in $Script:Queue_Language_Download_Select) {
-			Write-Host "   $($item)"
+			write-host "  $($item)"
 		}
 
-		Write-Host "`n   $($lang.ProcessSources)"
-		Write-Host "   $('-' * 80)"
+		write-host "`n  $($lang.ProcessSources)"
+		write-host "  $('-' * 80)"
 		$Region = Language_Region
 		ForEach ($itemRegion in $Region) {
 			if ($Script:Queue_Language_Download_Select -Contains $itemRegion.Region) {
 				$NewFolder = Join-Path -Path $UI_Main_Save_To.Text -ChildPath "LocalExperiencePack\$($itemRegion.Region)"
 				Check_Folder -chkpath $NewFolder
 
-				Write-Host "   $($itemRegion.Region): " -NoNewline -ForegroundColor Yellow
+				write-host "  $($itemRegion.Region): " -NoNewline -ForegroundColor Yellow
 				Write-Host $itemRegion.Name -ForegroundColor Green
 
-				Write-Host "   $($lang.SaveTo): " -NoNewline -ForegroundColor Yellow
+				write-host "  $($lang.SaveTo): " -NoNewline -ForegroundColor Yellow
 				Write-Host $NewFolder -ForegroundColor Green
 
 				if ($Script:IsDownload) {
 					LXPs_URL_Download_Process -NewLang $itemRegion.Region -StoreURL $itemRegion.LIP -SaveTo $NewFolder
 				} else {
 					$NewFilename = "LanguageExperiencePack.$($itemRegion.Region).Neutral.appx"
-					Write-Host "   $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+					write-host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 					Write-Host $NewFilename -ForegroundColor Green
 
 					$test_new_Filename = Join-Path -Path $NewFolder -ChildPath $NewFilename
 					if (Test-Path -Path $test_new_Filename -PathType Leaf) {
-						Write-Host "   $($lang.AlreadyExists)`n" -ForegroundColor Green
+						write-host "  $($lang.AlreadyExists)`n" -ForegroundColor Green
 					} else {
 						LXPs_URL_Download_Process -NewLang $itemRegion.Region -StoreURL $itemRegion.LIP -SaveTo $NewFolder
 					}
@@ -1697,7 +1697,7 @@ Function LXPs_Download_Process
 			}
 		}
 	} else {
-		Write-Host "   $($lang.NoWork)" -ForegroundColor Red
+		write-host "  $($lang.NoWork)" -ForegroundColor Red
 	}
 }
 
@@ -1712,7 +1712,7 @@ function LXPs_URL_Download_Process
 
 	$NewStoreURL = "https://www.microsoft.com/store/productId/$($StoreURL)"
 
-	Write-Host "   $($lang.UpdateDownloadAddress): " -NoNewline -ForegroundColor Yellow
+	write-host "  $($lang.UpdateDownloadAddress): " -NoNewline -ForegroundColor Yellow
 	Write-Host $NewStoreURL -ForegroundColor Green
 
 	try {
@@ -1725,12 +1725,12 @@ function LXPs_URL_Download_Process
 		$HtmlResult = $wchttp.UploadString($URI, $myParameters)
 		$Start = $HtmlResult.IndexOf("<p>The links were successfully received from the Microsoft Store server.</p>")
 	} catch {
-		Write-Host "   $($lang.DownloadFailed)`n" -ForegroundColor Red
+		write-host "  $($lang.DownloadFailed)`n" -ForegroundColor Red
 		return
 	}
 
 	if ($Start -eq -1) {
-		Write-Host "   $($lang.Get_Link_Failed)`n"
+		write-host "  $($lang.Get_Link_Failed)`n"
 		return
 	}
 	$TableEnd=($HtmlResult.LastIndexOf("</table>")+8)
@@ -1754,8 +1754,8 @@ function LXPs_URL_Download_Process
 	$ProductID = $NewStoreURL.Substring($LastFrontSlash+1, $NewStoreURL.Length-$LastFrontSlash-1)
 
 	if ([regex]::IsMatch($SaveTo, "([,!@?#$%^&*()\[\]]+|\\\.\.|\\\\\.|\.\.\\\|\.\\\|\.\.\/|\.\/|\/\.\.|\/\.|;|(?<![A-Za-z]):)|^\w+:(\w|.*:)")) {
-		Write-Host "   $($lang.Path_Invalid_Failed)" -ForegroundColor Red
-		Write-Host "   $($SaveTo)"
+		write-host "  $($lang.Path_Invalid_Failed)" -ForegroundColor Red
+		write-host "  $($SaveTo)"
 		return
 	}
 
@@ -1764,69 +1764,69 @@ function LXPs_URL_Download_Process
 		$InitalSaveToDownload = Join-Path -Path $SaveTo -ChildPath $Download.textContent
 	
 		if ($Script:IsDownload) {
-			Write-Host "`n   $($lang.DownloadNow)"
-			Write-Host "   $($Download.textContent)" -ForegroundColor Green
+			write-host "`n  $($lang.DownloadNow)"
+			write-host "  $($Download.textContent)" -ForegroundColor Green
 
 			if (Test-Path -Path $InitalSaveToDownload -PathType Leaf) {
-				Write-Host "   $($lang.AlreadyExists)`n" -ForegroundColor Green
+				write-host "  $($lang.AlreadyExists)`n" -ForegroundColor Green
 			} else {
 				$wchttp.DownloadFile($Download.href, $InitalSaveToDownload)
 
 				if (Test-Path -Path $InitalSaveToDownload -PathType Leaf) {
-					Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+					write-host "  $($lang.Done)`n" -ForegroundColor Green
 				} else {
-					Write-Host "   $($lang.DownloadFailed)`n" -ForegroundColor Red
+					write-host "  $($lang.DownloadFailed)`n" -ForegroundColor Red
 				}
 			}
 		} else {
 			if ($Download.textContent -like "*$($Script:Version)*.appx") {
-				Write-Host "`n   $($lang.DownloadNow)"
-				Write-Host "   $($Download.textContent)"
+				write-host "`n  $($lang.DownloadNow)"
+				write-host "  $($Download.textContent)"
 				try {
 					$wchttp.DownloadFile($Download.href, $InitalSaveToDownload)
 				} catch {
-					Write-Host "   $($lang.DownloadFailed)`n" -ForegroundColor Red
+					write-host "  $($lang.DownloadFailed)`n" -ForegroundColor Red
 					return
 				}
 
 				if (Test-Path -Path $InitalSaveToDownload -PathType Leaf) {
 					$SaveToNewFileLep = Join-Path -Path $SaveTo -ChildPath "LanguageExperiencePack.$($NewLang).Neutral.appx"
-					Write-Host "   $($lang.Done)" -ForegroundColor Green
+					write-host "  $($lang.Done)" -ForegroundColor Green
 
 					<#
 						.Renaming
 						.改名
 					#>
-					Write-Host "`n   $($lang.LXPsRename)"
+					write-host "`n  $($lang.LXPsRename)"
 					if ($Script:IsRename) {
-						Write-Host "   $($lang.UpdateAvailable)" -ForegroundColor Green
-						Write-Host "   LanguageExperiencePack.$($NewLang).Neutral.appx"
+						write-host "  $($lang.UpdateAvailable)" -ForegroundColor Green
+						write-host "  LanguageExperiencePack.$($NewLang).Neutral.appx"
 
 						Rename-Item -Path $InitalSaveToDownload -NewName $SaveToNewFileLep -ErrorAction SilentlyContinue
 
 						if (Test-Path -Path $SaveToNewFileLep -PathType Leaf) {
-							Write-Host "   $($lang.Done)" -ForegroundColor Green
+							write-host "  $($lang.Done)" -ForegroundColor Green
 						} else {
-							Write-Host "   $($lang.Failed)" -ForegroundColor Red
+							write-host "  $($lang.Failed)" -ForegroundColor Red
 						}
 					} else {
-						Write-Host "   $($lang.UpdateUnavailable)" -ForegroundColor Red
+						write-host "  $($lang.UpdateUnavailable)" -ForegroundColor Red
 					}
 
 					<#
 						.License
 						.证书
 					#>
-					Write-Host "`n   $($lang.LicenseCreate)"
+					write-host "`n  $($lang.LicenseCreate)"
 					if ($Script:IsLicence) {
 						$TempNewFileFullPath = $SaveToNewFileLep
 						$NewFileLepLicense   = Join-Path -Path $SaveTo -ChildPath "License.xml"
 
-						Write-Host "   $($lang.UpdateAvailable)" -ForegroundColor Green
+						write-host "  $($lang.UpdateAvailable)" -ForegroundColor Green
 						Remove-Item $NewFileLepLicense -ErrorAction SilentlyContinue
 
 						if (Test-Path -Path $TempNewFileFullPath -PathType Leaf) {
-							Write-Host "   $($TempNewFileFullPath)" -ForegroundColor Green
+							write-host "  $($TempNewFileFullPath)" -ForegroundColor Green
 
 							try {
 								Add-Type -AssemblyName System.IO.Compression.FileSystem
@@ -1837,21 +1837,21 @@ function LXPs_URL_Download_Process
 								$zipFile.Dispose()
 
 								if (Test-Path -Path $NewFileLepLicense -PathType Leaf) {
-									Write-Host "   $($lang.Done)" -ForegroundColor Green
+									write-host "  $($lang.Done)" -ForegroundColor Green
 								} else {
-									Write-Host "   $($lang.Failed)" -ForegroundColor Red
+									write-host "  $($lang.Failed)" -ForegroundColor Red
 								}
 							} catch {
-								Write-Host "   $($lang.Failed)" -ForegroundColor Red
+								write-host "  $($lang.Failed)" -ForegroundColor Red
 							}
 						} else {
-							Write-Host "   $($lang.Failed)" -ForegroundColor Red
+							write-host "  $($lang.Failed)" -ForegroundColor Red
 						}
 					} else {
-						Write-Host "   $($lang.UpdateUnavailable)" -ForegroundColor Green
+						write-host "  $($lang.UpdateUnavailable)" -ForegroundColor Green
 					}
 				} else {
-					Write-Host "   $($lang.DownloadFailed)`n" -ForegroundColor Red
+					write-host "  $($lang.DownloadFailed)`n" -ForegroundColor Red
 				}
 			}
 		}

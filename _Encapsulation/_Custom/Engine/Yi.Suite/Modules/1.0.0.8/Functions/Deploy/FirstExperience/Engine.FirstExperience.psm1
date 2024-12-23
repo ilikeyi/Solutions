@@ -11,15 +11,15 @@ Function FirstExperience
 	)
 
 	Logo -Title $lang.FirstDeployment
-	Write-Host "   $($lang.FirstDeployment)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	write-host "  $($lang.FirstDeployment)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 
 	if ($Force) {
 		if (Deploy_Sync -Mark "Auto_Update") {
-			Write-Host "   $($lang.ForceUpdate)"
+			write-host "  $($lang.ForceUpdate)"
 			Update -Auto -Force -IsProcess
 		} else {
-			Write-Host "   $($lang.UpdateSkipUpdateCheck)"
+			write-host "  $($lang.UpdateSkipUpdateCheck)"
 		}
 
 		FirstExperience_Process
@@ -290,8 +290,8 @@ Function FirstExperience_Setting_UI
 					Cleanup_Appx_Tasks -Disable
 				}
 			} else {
-				Write-Host "   $($lang.PreAppxCleanup)"
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				write-host "  $($lang.PreAppxCleanup)"
+				write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
 			if ($GUIFELanguageComponents.Checked) {
@@ -303,8 +303,8 @@ Function FirstExperience_Setting_UI
 					Cleanup_Unsed_Language -Disable
 				}
 			} else {
-				Write-Host "   $($lang.CleanupOndemandLP)"
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				write-host "  $($lang.CleanupOndemandLP)"
+				write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
 			if ($GUIFECleanupUnusedLP.Checked) {
@@ -316,8 +316,8 @@ Function FirstExperience_Setting_UI
 					Cleanup_On_Demand_Language -Disable
 				}
 			} else {
-				Write-Host "   $($lang.CleanupUnusedLP)"
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				write-host "  $($lang.CleanupUnusedLP)"
+				write-host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 
 			if ($GUIFEVolume.Enabled) {
@@ -330,12 +330,12 @@ Function FirstExperience_Setting_UI
 						System_Disk_Label -VolumeName $(Get-Module -Name Engine).Author
 					}
 				} else {
-					Write-Host "`n   $($lang.VolumeLabel)"
-					Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+					write-host "`n  $($lang.VolumeLabel)"
+					write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 				}
 			} else {
-				Write-Host "`n   $($lang.VolumeLabel)"
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				write-host "`n  $($lang.VolumeLabel)"
+				write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
 			if ($GUIFEDeskMenu.Enabled) {
@@ -347,79 +347,79 @@ Function FirstExperience_Setting_UI
 						Personalise -Add
 					}
 				} else {
-					Write-Host "   $($lang.DesktopMenu)" -ForegroundColor Green
-					Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+					write-host "  $($lang.DesktopMenu)" -ForegroundColor Green
+					write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 				}
 			} else {
-				Write-Host "   $($lang.DesktopMenu)" -ForegroundColor Green
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				write-host "  $($lang.DesktopMenu)" -ForegroundColor Green
+				write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
-			Write-Host "   $($lang.ExcludeDefenders)"
+			write-host "  $($lang.ExcludeDefenders)"
 			if ($GUIFEDefenders.Checked) {
 				Firewall_Exclusion
 			} else {
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				write-host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 
 			if ($GUIFELangAndKeyboard.Checked) {
 				Language_Setting
-				Write-Host "   $($lang.Done)" -ForegroundColor Green
+				write-host "  $($lang.Done)" -ForegroundColor Green
 			} else {
-				Write-Host "`n   $($lang.SettingLangAndKeyboard)"
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				write-host "`n  $($lang.SettingLangAndKeyboard)"
+				write-host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 
 			if ($GUIFEUtf8.Checked) {
 				Language_Use_UTF8 -Enabled
 			} else {
-				Write-Host "`n   $($lang.SettingUTF8)"
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				write-host "`n  $($lang.SettingUTF8)"
+				write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
 			if ($GUIFELocale.Checked) {
 				Language_Region_Setting -Force
 			} else {
-				Write-Host "   $($lang.SettingLocale)"
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				write-host "  $($lang.SettingLocale)"
+				write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
 			if ($GUIFEFixMainFolder.Checked) {
 				Repair_Home_Directory
 			} else {
-				Write-Host "   $($lang.FixMainFolder): $((Get-Module -Name Engine).Author)"
-				Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+				write-host "  $($lang.FixMainFolder): $((Get-Module -Name Engine).Author)"
+				write-host "  $($lang.Inoperable)" -ForegroundColor Red
 			}
 
 			if ($GUIFEFDPermissions.Checked) {
 				Permissions
 			} else {
-				Write-Host "`n   $($lang.FDPermissions)"
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				write-host "`n  $($lang.FDPermissions)"
+				write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
-			Write-Host "   $($lang.Shortcuts)"
+			write-host "  $($lang.Shortcuts)"
 			if ($GUIFEShortcut.Checked) {
 				Shortcut_Process
-				Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+				write-host "  $($lang.Done)`n" -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
-			Write-Host "   $($lang.DeployCleanup)"
+			write-host "  $($lang.DeployCleanup)"
 			if ($GUIFEDeployCleanup.Checked) {
 				Remove_Tree -Path "$($PSScriptRoot)\..\..\..\..\..\Deploy"
-				Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+				write-host "  $($lang.Done)`n" -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
-			Write-Host "   $($lang.Reboot)"
+			write-host "  $($lang.Reboot)"
 			if ($GUIFEReboot.Checked) {
 				Restart-Computer -Force
-				Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+				write-host "  $($lang.Done)`n" -ForegroundColor Green
 			} else {
-				Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+				write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 			}
 
 			$GUIFE.Close()
@@ -432,7 +432,7 @@ Function FirstExperience_Setting_UI
 		Location       = "268,635"
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			write-host "  $($lang.UserCancel)" -ForegroundColor Red
 			$GUIFE.Close()
 		}
 	}
@@ -521,18 +521,18 @@ Function FirstExperience_Process
 		.获取已安装所有语言是否是多语版，多语版则添加已知策略
 	#>
 	if ($Global:LanguagesAreInstalled.count -ge 2) {
-		Write-Host "   $($lang.LangMul) ( $($Global:LanguagesAreInstalled.count) )"
+		write-host "  $($lang.LangMul) ( $($Global:LanguagesAreInstalled.count) )"
 
 		<#
 			.Appx cleanup maintenance tasks
 			.Appx 清理维护任务
 		#>
 		if (Deploy_Sync -Mark "Disable_Cleanup_Appx_Tasks") {
-			Write-Host "   $($lang.Operable)" -ForegroundColor Green
+			write-host "  $($lang.Operable)" -ForegroundColor Green
 			Cleanup_Appx_Tasks -Disable
 		} else {
-			Write-Host "   $($lang.PreAppxCleanup)"
-			Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+			write-host "  $($lang.PreAppxCleanup)"
+			write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 		}
 
 		<#
@@ -540,11 +540,11 @@ Function FirstExperience_Process
 			.阻止清理未使用的按需功能语言包
 		#>
 		if (Deploy_Sync -Mark "Disable_Cleanup_On_Demand_Language") {
-			Write-Host "   $($lang.Operable)" -ForegroundColor Green
+			write-host "  $($lang.Operable)" -ForegroundColor Green
 			Cleanup_On_Demand_Language -Disable
 		} else {
-			Write-Host "   $($lang.CleanupOndemandLP)"
-			Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+			write-host "  $($lang.CleanupOndemandLP)"
+			write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 		}
 
 		<#
@@ -552,14 +552,14 @@ Function FirstExperience_Process
 			.阻止清理未使用的语言包
 		#>
 		if (Deploy_Sync -Mark "Disable_Cleanup_Unsed_Language") {
-			Write-Host "   $($lang.Operable)" -ForegroundColor Green
+			write-host "  $($lang.Operable)" -ForegroundColor Green
 			Cleanup_Unsed_Language -Disable
 		} else {
-			Write-Host "   $($lang.CleanupUnusedLP)"
-			Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+			write-host "  $($lang.CleanupUnusedLP)"
+			write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 		}
 	} else {
-		Write-Host "   $($lang.LangSingle) ( $($Global:LanguagesAreInstalled.count) )"
+		write-host "  $($lang.LangSingle) ( $($Global:LanguagesAreInstalled.count) )"
 	}
 
 	<#
@@ -569,8 +569,8 @@ Function FirstExperience_Process
 	if (Deploy_Sync -Mark "Disable_Network_Location_Wizard") {
 		Network_Location_Wizard -Disable
 	} else {
-		Write-Host "   $($lang.NetworkLocationWizard)"
-		Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+		write-host "  $($lang.NetworkLocationWizard)"
+		write-host "  $($lang.Inoperable)" -ForegroundColor Red
 	}
 
 	<#
@@ -595,15 +595,15 @@ Function FirstExperience_Process
 		.Add exclusion to firewall
 		.向防火墙添加排除
 	#>
-	Write-Host "   $($lang.ExcludeDefenders)"
+	write-host "  $($lang.ExcludeDefenders)"
 	if (Deploy_Sync -Mark "Exclude_Defender") {
 		Firewall_Exclusion
 	} else {
-		Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+		write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 	}
 
 	<#
-	 	.Desktop right-click menu
+		.Desktop right-click menu
 		.桌面右键菜单
 	#>
 	if (Deploy_Sync -Mark "Desktop_Menu") {
@@ -656,9 +656,9 @@ Function FirstExperience_Process
 		.After completing the prerequisite deployment, determine whether to restart the computer
 		.完成先决条件部署后，判断是否重启计算机
 	#>
-	Write-Host "   $($lang.Reboot)"
+	write-host "  $($lang.Reboot)"
 	if (Deploy_Sync -Mark "Prerequisites_Reboot") {
-		Write-Host "   $($lang.Operable)".PadRight(28) -NoNewline
+		write-host "  $($lang.Operable)".PadRight(28) -NoNewline
 
 		<#
 			.Setting: Forcibly bypass UAC prompts
@@ -681,9 +681,9 @@ Function FirstExperience_Process
 		New-ItemProperty -Path $regPath -Name "$((Get-Module -Name Engine).Author)" -Value $regValue -PropertyType STRING -Force | Out-Null
 
 		Restart-Computer -Force
-		Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+		write-host "  $($lang.Done)`n" -ForegroundColor Green
 	} else {
-		Write-Host "   $($lang.Inoperable)`n"
+		write-host "  $($lang.Inoperable)`n"
 		FirstExperience_Deploy
 	}
 }
@@ -700,8 +700,8 @@ Function FirstExperience_Deploy
 	)
 
 	Logo -Title $lang.FirstDeployment
-	Write-Host "   $($lang.FirstDeployment)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	write-host "  $($lang.FirstDeployment)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 
 	<#
 		.Prerequisite deployment rules
@@ -740,15 +740,15 @@ Function FirstExperience_Deploy
 		.Pop up the main interface
 		.弹出主界面
 	#>
-	Write-Host "   $($lang.FirstDeploymentPopup)"
+	write-host "  $($lang.FirstDeploymentPopup)"
 	if ($FlagsClearSolutionsRule) {
-		Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+		write-host "  $($lang.Inoperable)" -ForegroundColor Red
 	} else {
 		if (Deploy_Sync -Mark "Popup_Engine") {
-			Write-Host "   $($lang.Operable)" -ForegroundColor Green
+			write-host "  $($lang.Operable)" -ForegroundColor Green
 			Start-Process powershell -ArgumentList "-file $((Convert-Path -Path "$($PSScriptRoot)\..\..\..\..\..\Engine.ps1" -ErrorAction SilentlyContinue))"
 		} else {
-			Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+			write-host "  $($lang.Inoperable)" -ForegroundColor Red
 		}
 	}
 
@@ -762,9 +762,9 @@ Function FirstExperience_Deploy
 		.Allow the first pre-experience, as planned
 		.允许首次预体验，按计划
 	#>
-	Write-Host "`n   $($lang.FirstExpFinishOnDemand)"
+	write-host "`n  $($lang.FirstExpFinishOnDemand)"
 	if (Deploy_Sync -Mark "Allow_First_Pre_Experience") {
-		Write-Host "   $($lang.Operable)" -ForegroundColor Green
+		write-host "  $($lang.Operable)" -ForegroundColor Green
 
 		<#
 			.Create a restore point
@@ -1007,10 +1007,10 @@ Function FirstExperience_Deploy
 		)
 
 		ForEach ($item in $PreServices) {
-			Write-Host "   $($lang.Close) $item"
+			write-host "  $($lang.Close) $item"
 			Get-Service -Name $item | Set-Service -StartupType Disabled -ErrorAction SilentlyContinue | Out-Null
 			Stop-Service $item -Force -NoWait -ErrorAction SilentlyContinue | Out-Null
-			Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+			write-host "  $($lang.Done)`n" -ForegroundColor Green
 		}
 
 		<#
@@ -1021,8 +1021,8 @@ Function FirstExperience_Deploy
 			($_.Name -in (Get-AppxPackage -PackageTypeFilter Bundle -AllUsers).Name) -and ($null -ne $_.DisplayName)} | ForEach-Object {
 			if (($AppsUncheck + $AppsExcluded) -Contains $_.Name) {
 			} else {
-				Write-Host "   $($_.Name)"
-				Write-Host "   $($lang.Del)".PadRight(22) -NoNewline
+				write-host "  $($_.Name)"
+				write-host "  $($lang.Del)".PadRight(22) -NoNewline
 				Get-AppXProvisionedPackage -Online | Where-Object DisplayName -Like "$($_.Name)" | Remove-AppxProvisionedPackage -AllUsers -Online -ErrorAction SilentlyContinue | Out-Null
 				Get-AppxPackage -Name "$($_.Name)" | Remove-AppxPackage | Out-Null
 				Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -1046,11 +1046,11 @@ Function FirstExperience_Deploy
 			if (Test-Path $NewConfig -PathType Leaf) {
 				Start-Process powershell -ArgumentList "-File $($DynamicInstl) -Config ""$($NewConfig)"" -App ""$($init_Install_App)""" -NoNewWindow -Wait
 			} else {
-				Write-Host "     $($lang.UpdateUnavailable)" -ForegroundColor Yellow
-				Write-Host "     $($NewConfig)" -ForegroundColor Red
+				write-host "    $($lang.UpdateUnavailable)" -ForegroundColor Yellow
+				write-host "    $($NewConfig)" -ForegroundColor Red
 			}
 		} else {
-			Write-Host "`n   $($lang.InstlNo)$DynamicInstl" -ForegroundColor Red
+			write-host "`n  $($lang.InstlNo)$DynamicInstl" -ForegroundColor Red
 		}
 
 		<#
@@ -1067,20 +1067,20 @@ Function FirstExperience_Deploy
 
 #			& $DynamicInstl -App $init_Install_App
 #		} else {
-#			Write-Host "`n   $($lang.InstlNo)$DynamicInstl" -ForegroundColor Red
+#			write-host "`n  $($lang.InstlNo)$DynamicInstl" -ForegroundColor Red
 #		}
 	} else {
-		Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+		write-host "  $($lang.Inoperable)" -ForegroundColor Red
 	}
 
-	Write-Host "`n   $($lang.FirstDeployment)"
+	write-host "`n  $($lang.FirstDeployment)"
 	Deploy_Guide
 
 	<#
 		.Search for Bat and PS1
 		.搜索 Bat、PS1
 	#>
-	Write-Host "`n   $($lang.DiskSearch)"
+	write-host "`n  $($lang.DiskSearch)"
 
 	<#
 		.Search for local deployment: Bat
@@ -1123,7 +1123,7 @@ Function FirstExperience_Deploy
 		Get-PSDrive -PSProvider FileSystem -ErrorAction SilentlyContinue | ForEach-Object {
 			$TempFilePath = Join-Path -Path $_.Root -ChildPath $item
 
-			Write-Host "   $($TempFilePath)"
+			write-host "  $($TempFilePath)"
 			if (Test-Path $TempFilePath -PathType Leaf) {
 				Write-Host	"   $($lang.DiskSearchFind): " -NoNewline
 				Write-host $TempFilePath -ForegroundColor Green
@@ -1146,7 +1146,7 @@ Function FirstExperience_Deploy
 		Get-PSDrive -PSProvider FileSystem -ErrorAction SilentlyContinue | ForEach-Object {
 			$TempFilePath = Join-Path -Path $_.Root -ChildPath $item
 
-			Write-Host "   $($TempFilePath)"
+			write-host "  $($TempFilePath)"
 			if (Test-Path $TempFilePath -PathType Leaf) {
 				Write-Host	"   $($lang.DiskSearchFind): " -NoNewline
 				Write-host $TempFilePath -ForegroundColor Green
@@ -1167,13 +1167,13 @@ Function FirstExperience_Deploy
 		.Recovery PowerShell strategy
 		.恢复 PowerShell 策略
 	#>
-	Write-Host "`n   $($lang.Restricted)`n" -ForegroundColor Green
+	write-host "`n  $($lang.Restricted)`n" -ForegroundColor Green
 	if (Deploy_Sync -Mark "Reset_Execution_Policy") {
-		Write-Host "   $($lang.Operable)" -ForegroundColor Green
+		write-host "  $($lang.Operable)" -ForegroundColor Green
 		Set-ExecutionPolicy -ExecutionPolicy Restricted -Force
-		Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+		write-host "  $($lang.Done)`n" -ForegroundColor Green
 	} else {
-		Write-Host "   $($lang.Inoperable)" -ForegroundColor Red
+		write-host "  $($lang.Inoperable)" -ForegroundColor Red
 	}
 
 	<#
@@ -1189,7 +1189,7 @@ Function FirstExperience_Deploy
 			.In order to prevent the solution from being unable to be cleaned up, the next time you log in, execute it again
 			.为了防止无法清理解决方案，下次登录时，再次执行
 		#>
-		Write-Host "   $($lang.NextDelete)`n" -ForegroundColor Green
+		write-host "  $($lang.NextDelete)`n" -ForegroundColor Green
 		$regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce"
 		$regKey = "Clear $((Get-Module -Name Engine).Author) Folder"
 		$regValue = "cmd.exe /c rd /s /q ""$($UniqueMainFolder)"""
@@ -1216,16 +1216,16 @@ Function FirstExperience_Deploy
 	#>
 	Remove_Tree -Path "$($PSScriptRoot)\..\..\..\..\..\Deploy"
 
-	Write-Host "   $($lang.Reboot)"
+	write-host "  $($lang.Reboot)"
 	if ($Global:MarkRebootComputer) {
 		<#
 			.Reboot Computer
 			.重启计算机
 		#>
 		Restart-Computer -Force
-		Write-Host "   $($lang.Done)" -ForegroundColor Green
+		write-host "  $($lang.Done)" -ForegroundColor Green
 	} else {
-		Write-Host "   $($lang.Inoperable)"
+		write-host "  $($lang.Inoperable)"
 	}
 
 	if ($Quit) {
@@ -1246,15 +1246,15 @@ Function Cleanup_Appx_Tasks
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.PreAppxCleanup)"
+	write-host "  $($lang.PreAppxCleanup)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Enable-ScheduledTask -TaskPath "\Microsoft\Windows\AppxDeploymentClient\" -TaskName "Pre-staged app cleanup" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Disable-ScheduledTask -TaskPath "\Microsoft\Windows\AppxDeploymentClient\" -TaskName "Pre-staged app cleanup" -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -1272,9 +1272,9 @@ Function Cleanup_On_Demand_Language
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.CleanupUnusedLP)"
+	write-host "  $($lang.CleanupUnusedLP)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Enable-ScheduledTask -TaskPath "\Microsoft\Windows\MUI\" -TaskName "LPRemove" -ErrorAction SilentlyContinue | Out-Null
 
 		Remove-ItemProperty -Path "HKLM:\Software\Policies\Microsoft\Control Panel\International" -Name 'BlockCleanupOfUnusedPreinstalledLangPacks' -Force -ErrorAction SilentlyContinue | out-null
@@ -1282,7 +1282,7 @@ Function Cleanup_On_Demand_Language
 	}
 	
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Disable-ScheduledTask -TaskPath "\Microsoft\Windows\MUI\" -TaskName "LPRemove" -ErrorAction SilentlyContinue | Out-Null
 
 		If (-not (Test-Path "HKLM:\Software\Policies\Microsoft\Control Panel\International")) {
@@ -1305,9 +1305,9 @@ Function Cleanup_Unsed_Language
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.CleanupOndemandLP)"
+	write-host "  $($lang.CleanupOndemandLP)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Enable-ScheduledTask -TaskPath "\Microsoft\Windows\LanguageComponentsInstaller" -TaskName "Uninstallation" -ErrorAction SilentlyContinue | Out-Null
 
 		Remove-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\TextInput" -Name 'AllowLanguageFeaturesUninstall' -Force -ErrorAction SilentlyContinue | out-null
@@ -1315,7 +1315,7 @@ Function Cleanup_Unsed_Language
 	}
 	
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		Disable-ScheduledTask -TaskPath "\Microsoft\Windows\LanguageComponentsInstaller" -TaskName "Uninstallation" -ErrorAction SilentlyContinue | Out-Null
 
 		If (-not (Test-Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Policies\TextInput")) {
@@ -1338,15 +1338,15 @@ Function Network_Location_Wizard
 		[switch]$Disable
 	)
 
-	Write-Host "   $($lang.NetworkLocationWizard)"
+	write-host "  $($lang.NetworkLocationWizard)"
 	if ($Enabled) {
-		Write-Host "   $($lang.Enable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Network\NewNetworkWindowOff" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 	
 	if ($Disable) {
-		Write-Host "   $($lang.Disable)".PadRight(22) -NoNewline
+		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Network\NewNetworkWindowOff" -Force -ErrorAction SilentlyContinue | Out-Null
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -1363,11 +1363,11 @@ Function System_Disk_Label
 		[string]$VolumeName
 	)
 
-	Write-Host "`n   $($lang.VolumeLabel): " -NoNewline
+	write-host "`n  $($lang.VolumeLabel): " -NoNewline
 	Write-host $VolumeName -ForegroundColor Green
-	Write-Host "   $($lang.Setting)".PadRight(28) -NoNewline
+	write-host "  $($lang.Setting)".PadRight(28) -NoNewline
 	(New-Object -ComObject "Shell.Application").NameSpace($env:SystemDrive).Self.Name = $VolumeName
-	Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+	write-host "  $($lang.Done)`n" -ForegroundColor Green
 }
 
 <#
@@ -1381,16 +1381,16 @@ Function Firewall_Exclusion
 	)
 
 	ForEach ($item in $ExcludeMpPreference) {
-		Write-Host "   $($item)"
-		Write-Host "   $($lang.AddTo)".PadRight(28) -NoNewline
+		write-host "  $($item)"
+		write-host "  $($lang.AddTo)".PadRight(28) -NoNewline
 		Add-MpPreference -ExclusionPath (Convert-Path -Path $item -ErrorAction SilentlyContinue) -ErrorAction SilentlyContinue | Out-Null
-		Write-Host "   $($lang.Done)" -ForegroundColor Green
+		write-host "  $($lang.Done)" -ForegroundColor Green
 	}
 }
 
 Function Repair_Home_Directory
 {
-	Write-Host "`n   $($lang.FixMainFolder): $((Get-Module -Name Engine).Author)"
+	write-host "`n  $($lang.FixMainFolder): $((Get-Module -Name Engine).Author)"
 
 	$DeskEdit = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\..\AIO\DeskEdit")\DeskEdit.exe"
 	if (Test-Path $DeskEdit -PathType Leaf) {
@@ -1400,8 +1400,8 @@ Function Repair_Home_Directory
 		if (Test-Path -Path $IconPath -PathType Leaf) {
 			Start-Process -FilePath $DeskEdit -ArgumentList "/F=""$($Global:UniqueMainFolder)"" /S=.ShellClassInfo /L=IconResource=""$($IconPath),0"""
 		}
-		Write-Host "   $($lang.Done)`n" -ForegroundColor Green
+		write-host "  $($lang.Done)`n" -ForegroundColor Green
 	} else {
-		Write-Host "   $($lang.Inoperable)`n" -ForegroundColor Red
+		write-host "  $($lang.Inoperable)`n" -ForegroundColor Red
 	}
 }

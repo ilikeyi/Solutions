@@ -8,4 +8,5 @@
 	PreventsApps              = Estä sovelluksen uudelleenasennus
 	CloseStoreAuto            = Poista Microsoft Storen automaattiset lataukset käytöstä
 	PreventsSuggestApps       = Estä "suositeltujen sovellusten" asennus
+	DelAllUser                = Poista kaikki käyttäjät
 '@

@@ -154,8 +154,8 @@ Function Update_Create_UI
 
 	Logo -Title $lang.UpdateCreate
 
-	Write-Host "   $($lang.UpdateCreate)" -ForegroundColor Yellow
-	Write-Host "   $('-' * 80)"
+	write-host "  $($lang.UpdateCreate)" -ForegroundColor Yellow
+	write-host "  $('-' * 80)"
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
@@ -313,7 +313,7 @@ Function Update_Create_UI
 		Location       = "268,635"
 		Text           = $lang.Cancel
 		add_Click      = {
-			Write-Host "   $($lang.UserCancel)" -ForegroundColor Red
+			write-host "  $($lang.UserCancel)" -ForegroundColor Red
 			$GUIUpdate.Close()
 		}
 	}
@@ -415,15 +415,15 @@ Function Update_Create_Process
 	#>
 	ForEach ($item in $AIOPackage) {
 		$PublicAioItem = Join-Path -Path $PublicAio -ChildPath $item.Name
-		write-host "   $($lang.FileName): " -NoNewline
+		write-host "  $($lang.FileName): " -NoNewline
 		write-host $PublicAioItem -ForegroundColor Green
 
 		$CurrentAioSaveTo = Join-Path -Path $CurrentAio -ChildPath $item.Name
-		write-host "   $($lang.SaveTo): " -NoNewline
+		write-host "  $($lang.SaveTo): " -NoNewline
 		write-host $CurrentAioSaveTo -ForegroundColor Green
-		Write-Host "   $('-' * 80)"
+		write-host "  $('-' * 80)"
 
-		write-host "   $($lang.AddTo)".PadRight(28) -NoNewline
+		write-host "  $($lang.AddTo)".PadRight(28) -NoNewline
 		if (Test-Path -Path $PublicAioItem -PathType Container) {
 			remove-item -path $CurrentAioSaveTo -Recurse -force -ErrorAction SilentlyContinue
 
@@ -455,7 +455,7 @@ Function Update_Create_Process_Add
 		Check_Folder -chkpath $TempFolderUpdate
 		switch ($Type) {
 			"zip" {
-				Write-Host "   * $($lang.Uping) $($UpdateName).zip"
+				write-host "  * $($lang.Uping) $($UpdateName).zip"
 
 				$arguments = @(
 					"a",
@@ -470,10 +470,10 @@ Function Update_Create_Process_Add
 				Start-Process -FilePath $Verify_Install_Path -ArgumentList $Arguments -Wait -WindowStyle Minimized
 
 				remove-item -path "$($TempFolderUpdate)\*.tar" -Force -ErrorAction SilentlyContinue
-				Write-Host "     $($lang.Done)`n" -ForegroundColor Green
+				write-host "    $($lang.Done)`n" -ForegroundColor Green
 			}
 			"tar" {
-				Write-Host "   * $($lang.Uping) $($UpdateName).tar"
+				write-host "  * $($lang.Uping) $($UpdateName).tar"
 
 				$arguments = @(
 					"a",
@@ -485,10 +485,10 @@ Function Update_Create_Process_Add
 				Start-Process -FilePath $Verify_Install_Path -ArgumentList $Arguments -Wait -WindowStyle Minimized
 
 				remove-item -path "$($TempFolderUpdate)\*.tar" -Force -ErrorAction SilentlyContinue
-				Write-Host "     $($lang.Done)`n" -ForegroundColor Green
+				write-host "    $($lang.Done)`n" -ForegroundColor Green
 			}
 			"xz" {
-				Write-Host "   * $($lang.Uping) $($UpdateName).tar.xz"
+				write-host "  * $($lang.Uping) $($UpdateName).tar.xz"
 				if (Test-Path -Path "$($TempFolderUpdate)\$($UpdateName).tar" -PathType Leaf) {
 					$arguments = @(
 						"a",
@@ -500,9 +500,9 @@ Function Update_Create_Process_Add
 					Start-Process -FilePath $Verify_Install_Path -ArgumentList $Arguments -Wait -WindowStyle Minimized
 
 					remove-item -path "$($TempFolderUpdate)\*.tar" -Force -ErrorAction SilentlyContinue
-					Write-Host "     $($lang.Done)`n" -ForegroundColor Green
+					write-host "    $($lang.Done)`n" -ForegroundColor Green
 				} else {
-					Write-Host "     $($lang.SkipCreate) $($UpdateName).tar`n"
+					write-host "    $($lang.SkipCreate) $($UpdateName).tar`n"
 				}
 			}
 			"gz" {
@@ -518,14 +518,14 @@ Function Update_Create_Process_Add
 					Start-Process -FilePath $Verify_Install_Path -ArgumentList $Arguments -Wait -WindowStyle Minimized
 
 					remove-item -path "$($TempFolderUpdate)\*.tar" -Force -ErrorAction SilentlyContinue
-					Write-Host "     $($lang.Done)`n" -ForegroundColor Green
+					write-host "    $($lang.Done)`n" -ForegroundColor Green
 				} else {
-					Write-Host "     $($lang.SkipCreate) $($UpdateName).tar`n"
+					write-host "    $($lang.SkipCreate) $($UpdateName).tar`n"
 				}
 			}
 		}
 	} else {
-		Write-Host "     $($lang.ZipStatus)`n" -ForegroundColor Green
+		write-host "    $($lang.ZipStatus)`n" -ForegroundColor Green
 	}
 }
 
@@ -537,7 +537,7 @@ Function Update_Create_ASC
 			Remove-Item -path "$($_.FullName).sig" -Force -ErrorAction SilentlyContinue
 			Remove-Item -path "$($_.FullName).asc" -Force -ErrorAction SilentlyContinue
 
-			Write-Host "   * $($lang.Uping) $($UpdateName).asc"
+			write-host "  * $($lang.Uping) $($UpdateName).asc"
 			if (([string]::IsNullOrEmpty($Script:secure_password))) {
 				$arguments = @(
 					"--local-user",
@@ -567,13 +567,13 @@ Function Update_Create_ASC
 			}
 
 			if (Test-Path "$($_.FullName).asc" -PathType Leaf) {
-				Write-Host "     $($lang.Done)`n" -ForegroundColor Green
+				write-host "    $($lang.Done)`n" -ForegroundColor Green
 			} else {
-				Write-Host "     $($lang.Inoperable)`n"
+				write-host "    $($lang.Inoperable)`n"
 			}
 		}
 	} else {
-		Write-Host "    $($lang.ASCStatus)" -ForegroundColor Red
+		write-host "   $($lang.ASCStatus)" -ForegroundColor Red
 	}
 }
 
@@ -583,11 +583,11 @@ Function Update_Create_SHA256
 		$fullnewpathFU = $_.FullName
 		$fullnewpath = "$($_.FullName).sha256"
 
-		Write-Host "   * $($lang.Uping) $($_.FullName).sha256"
+		write-host "  * $($lang.Uping) $($_.FullName).sha256"
 		$calchash = (Get-FileHash -Path $fullnewpathFU -Algorithm SHA256)
 		"$($calchash.hash)  $($_.Name)" | Out-File -FilePath $fullnewpath -Encoding ASCII
 
-		Write-Host "     $($lang.Done)`n" -ForegroundColor Green
+		write-host "    $($lang.Done)`n" -ForegroundColor Green
 	}
 }
 

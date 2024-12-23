@@ -8,4 +8,5 @@
 	PreventsApps              = Spriječite ponovnu instalaciju aplikacije
 	CloseStoreAuto            = Isključite automatska preuzimanja Microsoft Storea
 	PreventsSuggestApps       = Spriječi instalaciju "Predloženih aplikacija"
+	DelAllUser                = Izbriši sve korisnike
 '@

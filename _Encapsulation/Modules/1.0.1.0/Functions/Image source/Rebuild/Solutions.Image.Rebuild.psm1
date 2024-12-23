@@ -35,7 +35,7 @@ Function Rebuild_Image_File
 
 			Write-Host
 		}
-		
+
 		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		$Save_To_Temp_Folder_Path = Get_Mount_To_Temp
