@@ -300,6 +300,7 @@ D:\Yi.Solutions\_Encapsulation\_SIP.ps1
 
 <h4><pre>C.&nbsp;&nbsp;Video Tutorial</pre></h4>
 <ol>The video tutorial includes different packaging methods: custom allocation of packaging events, automatic driving, manual packaging, and introduction to packaging scripts.</ol>
+<ol>Explain how to encapsulate multi-language processes in an offline state. Task objectives include: extracting language packs, installing language packs, installing InBox Apps, adding cumulative updates, generating solutions, etc. All predetermined goals can be easily achieved through learning.</ol>
 
 <ul>
   <dl>
@@ -307,7 +308,6 @@ D:\Yi.Solutions\_Encapsulation\_SIP.ps1
       <p>1.&nbsp;&nbsp;Packaging tutorial</p>
       <dl>
         <dd>1.1.&nbsp;&nbsp;Windows 11 24H2: Practical packaging tutorial, offline packaging multi-language
-        <p>Explain how to encapsulate multi-language processes in an offline state. Task objectives include: extracting language packs, installing language packs, installing InBox Apps, adding cumulative updates, generating solutions, etc. All predetermined goals can be easily achieved through learning.</p>
             <dl>
                <dd>
 
