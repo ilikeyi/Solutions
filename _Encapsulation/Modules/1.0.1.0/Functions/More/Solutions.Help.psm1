@@ -62,11 +62,11 @@ Function Solutions_Help
 	Write-Host $lang.Del -NoNewline
 	Write-Host " { IW RW BW } { $($lang.MountedIndex) }" -ForegroundColor Green
 
-	Write-Host "     Mount".PadRight(20) -NoNewline -ForegroundColor Yellow
+	Write-Host "     Mt".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host $lang.Mount -NoNewline
 	Write-Host " { IW RW BW } { $($lang.MountedIndex) }" -ForegroundColor Green
 
-	Write-Host "     Remount".PadRight(20) -NoNewline -ForegroundColor Yellow
+	Write-Host "     Remt".PadRight(20) -NoNewline -ForegroundColor Yellow
 	Write-Host "$($lang.Mount), $($lang.PleaseChoose)"
 
 	Write-Host "`n  $($lang.Mounted_Status)"
@@ -272,15 +272,15 @@ Function Solutions_Help_Command
 				Get_Next
 			}
 		}
-		"Unmount" {
+		"Unmt" {
 			Write-Host $(' ' * 2) -NoNewline
-			Write-Host " Help Unmount " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " Help Unmt " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host " $($lang.Setting): $($lang.Event_Primary_Key)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
 			ForEach ($item in $Global:Image_Rule) {
 				if ($item.Main.Suffix -eq "wim") {
 					Write-Host $(' ' * 2) -NoNewline
-					Write-Host " Unmount " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+					Write-Host " Unmt " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 					Write-host " " -NoNewline
 					Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 					Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
@@ -297,7 +297,7 @@ Function Solutions_Help_Command
 					ForEach ($Expand in $item.Expand) {
 						if ($Expand.Suffix -eq "wim") {
 							Write-Host $(' ' * 2) -NoNewline
-							Write-Host " Unmount " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+							Write-Host " Unmt " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 							Write-host " " -NoNewline
 							Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 							Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow

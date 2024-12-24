@@ -1446,6 +1446,7 @@ Function Image_Save_Primary_Key_Shortcuts
 	Write-host "Save" -ForegroundColor Green
 
 	Write-Host "  $($lang.RuleName): " -NoNewline
+	$Name = $Name.Remove(0, 5).Replace(' ', '')
 	Write-host $Name -ForegroundColor Green
 
 	Write-Host "`n  $($lang.Event_Primary_Key) *" -ForegroundColor Yellow
@@ -1575,9 +1576,10 @@ Function Image_Unmount_Primary_Key_Shortcuts
 	)
 
 	Write-Host "`n  $($lang.Command): " -NoNewline
-	Write-host "Unmount" -ForegroundColor Green
+	Write-host "Unmt" -ForegroundColor Green
 
 	Write-Host "  $($lang.RuleName): " -NoNewline
+	$Name = $Name.Remove(0, 5).Replace(' ', '')
 	Write-host $Name -ForegroundColor Green
 
 	Write-Host "`n  $($lang.Event_Primary_Key) *" -ForegroundColor Yellow

@@ -152,7 +152,7 @@ Function Functions_Menu
 		}
 		"Save *" {
 			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
-			Image_Save_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 5).Replace(' ', '')
+			Image_Save_Primary_Key_Shortcuts -Name $PSItem
 			ToWait -wait 2
 			Functions_Menu
 		}
@@ -160,15 +160,15 @@ Function Functions_Menu
 		<#
 			.快捷指令：卸载，默认不保存
 		#>
-		"unmount" {
+		"Unmt" {
 			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 			Image_Eject_Dont_Save_Current
 			ToWait -wait 2
 			Functions_Menu
 		}
-		"unmount *" {
+		"Unmt *" {
 			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
-			Image_Unmount_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 7).Replace(' ', '')
+			Image_Unmount_Primary_Key_Shortcuts -Name $PSItem
 			ToWait -wait 2
 			Functions_Menu
 		}

@@ -186,7 +186,7 @@ Function Mainpage
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.DoNotSave) " -NoNewline -ForegroundColor Green
-			Write-Host " Unmount * " -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " Unmt * " -BackgroundColor DarkMagenta -ForegroundColor White
 		} else {
 			if (Image_Is_Mount) {
 				Write-Host "$($lang.Image_Unmount_After): " -NoNewline
@@ -202,7 +202,7 @@ Function Mainpage
 				Write-Host ", " -NoNewline
 
 				Write-Host "$($lang.DoNotSave) " -NoNewline -ForegroundColor Red
-				Write-Host " Unmount * " -BackgroundColor DarkRed -ForegroundColor White
+				Write-Host " Unmt * " -BackgroundColor DarkRed -ForegroundColor White
 			}
 		}
 	} else {
@@ -220,7 +220,7 @@ Function Mainpage
 			Write-Host ", " -NoNewline
 
 			Write-Host "$($lang.DoNotSave) " -NoNewline -ForegroundColor Red
-			Write-Host " Unmount * " -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host " Unmt * " -BackgroundColor DarkRed -ForegroundColor White
 		}
 	}
 
@@ -673,7 +673,7 @@ Function Mainpage
 			<#
 				.快捷指令：重新选择映像来源：挂载
 			#>
-			"remount" {
+			"remt" {
 				Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 
 				Write-Host "`n  $($lang.Mount)"
@@ -695,7 +695,7 @@ Function Mainpage
 			}
 			"Save *" {
 				Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
-				Image_Save_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 5).Replace(' ', '')
+				Image_Save_Primary_Key_Shortcuts -Name $PSItem
 				ToWait -wait 2
 				Mainpage
 			}
@@ -703,15 +703,15 @@ Function Mainpage
 			<#
 				.快捷指令：卸载，默认不保存
 			#>
-			"unmount" {
+			"Unmt" {
 				Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 				Image_Eject_Dont_Save_Current
 				ToWait -wait 2
 				Mainpage
 			}
-			"unmount *" {
+			"Unmt *" {
 				Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
-				Image_Unmount_Primary_Key_Shortcuts -Name $PSItem.Remove(0, 7).Replace(' ', '')
+				Image_Unmount_Primary_Key_Shortcuts -Name $PSItem
 				ToWait -wait 2
 				Mainpage
 			}

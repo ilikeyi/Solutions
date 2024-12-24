@@ -261,7 +261,7 @@ Function Image_Get_Mount_Status
 			Write-host " " -NoNewline
 			Write-Host " Save " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-host " " -NoNewline
-			Write-Host " Unmount " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host " Unmt " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-host " " -NoNewline
 			Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-host " " -NoNewline
