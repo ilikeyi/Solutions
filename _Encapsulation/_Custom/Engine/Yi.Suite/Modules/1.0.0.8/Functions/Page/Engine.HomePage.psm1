@@ -91,49 +91,49 @@ Function Mainpage
 	write-host "  $('-' * 80)"
 
 	write-host "     " -NoNewline
-	Write-Host " 1 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " 1 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 	Write-Host "  $($lang.ChkUpdate)" -ForegroundColor Green
 
 	write-host "     " -NoNewline
-	Write-Host " 2 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " 2 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 	Write-Host "  $($lang.FirstDeployment)" -ForegroundColor Green
 
 	write-host "     " -NoNewline
-	Write-Host " 3 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " 3 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 	Write-Host "  $($lang.Del) $($lang.Mainname)" -ForegroundColor Green
 
 	Write-Host
 
 	write-host "     " -NoNewline
-	Write-Host " 4 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " 4 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 	Write-Host "  $($lang.RestorePoint)" -ForegroundColor Green
 
 	write-host "     " -NoNewline
-	Write-Host " 5 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " 5 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 	Write-Host "  $($lang.LocationUserFolder)" -ForegroundColor Green
 
 	write-host "     " -NoNewline
-	Write-Host " 6 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " 6 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 	Write-Host "  $($lang.DeskIcon)" -ForegroundColor Green
 
 	write-host "     " -NoNewline
-	Write-Host " 7 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " 7 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 	Write-Host "  $($lang.Optimize) $($lang.System)" -ForegroundColor Green
 
 	write-host "     " -NoNewline
-	Write-Host " 8 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " 8 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 	Write-Host "  $($lang.Optimize) $($lang.Service)" -ForegroundColor Green
 
 	write-host "     " -NoNewline
-	Write-Host " 9 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " 9 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 	Write-Host "  $($lang.Del) $($lang.UninstallUWP)" -ForegroundColor Green
 
 	write-host "    " -NoNewline
-	Write-Host " 10 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " 10 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 	Write-Host "  $($lang.Instl) $($lang.Necessary)" -ForegroundColor Green
 
 	write-host "    " -NoNewline
-	Write-Host " 11 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " 11 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 	Write-Host "  $($lang.Instl) $($lang.MostUsedSoftware)" -ForegroundColor Green
 
 	Write-Host
@@ -161,7 +161,7 @@ Function Mainpage
 	Write-Host " $($lang.Short_Cmd) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " " -NoNewline
 
-	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor White -ForegroundColor Black
+	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
 	Write-Host ": " -NoNewline
 
 	switch -Wildcard (Read-Host)
