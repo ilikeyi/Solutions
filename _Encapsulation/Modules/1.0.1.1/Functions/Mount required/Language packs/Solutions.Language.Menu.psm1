@@ -42,11 +42,11 @@ Function Language_Menu
 	Write-Host "  $('-' * 80)"
 
 	Write-host "    " -NoNewline
-	Write-Host " E " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " E " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host "  $($lang.LanguageExtract)" -ForegroundColor Green
 
 	Write-host "    " -NoNewline
-	Write-Host " 1 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " 1 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Verify_Is_Current_Same) {
 		Write-Host "  $($lang.AddTo)" -ForegroundColor Green
 	} else {
@@ -54,7 +54,7 @@ Function Language_Menu
 	}
 
 	Write-host "    " -NoNewline
-	Write-Host " 2 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " 2 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Verify_Is_Current_Same) {
 		Write-Host "  $($lang.Del)" -ForegroundColor Green
 	} else {
@@ -62,7 +62,7 @@ Function Language_Menu
 	}
 
 	Write-host "    " -NoNewline
-	Write-Host " 3 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " 3 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Verify_Is_Current_Same) {
 		Write-Host "  $($lang.SwitchLanguage)" -ForegroundColor Green
 	} else {
@@ -80,7 +80,7 @@ Function Language_Menu
 	if (Verify_Is_Current_Same) {
 		if (Image_Is_Select_Boot) {
 			Write-host "    " -NoNewline
-			Write-Host " 4 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " 4 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			if (Test-Path -Path $LanguageRepair_Path -PathType Container) {
 				Write-Host "  $($lang.BootSyncToISO)" -ForegroundColor Green
 			} else {
@@ -107,7 +107,7 @@ Function Language_Menu
 				Write-Host "  $($SearchFolderRule)" -ForegroundColor Yellow
 
 				Write-host "   " -NoNewline
-				Write-Host " 11 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+				Write-Host " 11 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 				if (Test-Path -Path $LanguageRepair_Path -PathType Container) {
 					Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 				} else {
@@ -115,7 +115,7 @@ Function Language_Menu
 				}
 			
 				Write-host "   " -NoNewline
-				Write-Host " 12 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+				Write-Host " 12 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 				if (Test-Path -Path $LanguageRepair_ISO_Path -PathType Container) {
 					Write-Host "  ISO" -ForegroundColor Green
 				} else {
@@ -123,7 +123,7 @@ Function Language_Menu
 				}
 
 				Write-host "   " -NoNewline
-				Write-Host " 13 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+				Write-Host " 13 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 				Write-Host "  $($lang.OpenFolder)" -ForegroundColor Green
 				Write-Host
 			} else {
@@ -134,7 +134,7 @@ Function Language_Menu
 				Write-Host "  $($SearchFolderRuleCustom)" -ForegroundColor Yellow
 
 				Write-host "   " -NoNewline
-				Write-Host " 21 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+				Write-Host " 21 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 				if (Test-Path -Path $LanguageRepair_Path -PathType Container) {
 					Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 				} else {
@@ -143,7 +143,7 @@ Function Language_Menu
 
 
 				Write-host "   " -NoNewline
-				Write-Host " 22 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+				Write-Host " 22 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 				if (Test-Path -Path $LanguageRepair_ISO_Path -PathType Container) {
 					Write-Host "  ISO" -ForegroundColor Green
 				} else {
@@ -151,7 +151,7 @@ Function Language_Menu
 				}
 
 				Write-host "   " -NoNewline
-				Write-Host " 23 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+				Write-Host " 23 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 				Write-Host "  $($lang.OpenFolder)" -ForegroundColor Green
 			} else {
 				Write-Host "  $($SearchFolderRuleCustom)" -ForegroundColor Red
@@ -166,7 +166,7 @@ Function Language_Menu
 	Write-Host "`n  $($lang.MoreFeature)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 	Write-host "    " -NoNewline
-	Write-Host " C " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " C " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Verify_Is_Current_Same) {
 		Write-Host "  $($lang.OnlyLangCleanup)" -ForegroundColor Green
 	} else {
@@ -174,7 +174,7 @@ Function Language_Menu
 	}
 
 	Write-host "    " -NoNewline
-	Write-Host " L " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " L " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Verify_Is_Current_Same) {
 		if (Image_Is_Select_Boot) {
 			Write-Host "  $($lang.LangIni)" -ForegroundColor Green
@@ -186,7 +186,7 @@ Function Language_Menu
 	}
 
 	Write-host "    " -NoNewline
-	Write-Host " V " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " V " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Verify_Is_Current_Same) {
 		Write-Host "  $($lang.ViewLanguage)" -ForegroundColor Green
 	} else {
@@ -197,7 +197,7 @@ Function Language_Menu
 	Write-Host "  $('-' * 80)"
 
 	Write-host "    " -NoNewline
-	Write-Host " P " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " P " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Green
@@ -209,7 +209,7 @@ Function Language_Menu
 	}
 
 	Write-host "    " -NoNewline
-	Write-Host " S " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " S " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "  $($lang.ExportShow)" -ForegroundColor Green
@@ -227,7 +227,7 @@ Function Language_Menu
 			Write-Host "`n   $($lang.SaveTo)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 79)"
 			Write-host "   " -NoNewline
-			Write-Host " SS " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " SS " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			Write-Host "  $($Temp_Expand_Rule)" -ForegroundColor Green
 		}
 	}
@@ -246,7 +246,7 @@ Function Language_Menu
 	Write-Host " $($lang.Short_Cmd) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " " -NoNewline
 
-	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host ": " -NoNewline
 
 	switch -Wildcard (Read-Host)

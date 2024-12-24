@@ -41,7 +41,7 @@ Function Update_Menu
 	Write-Host "`n  $($lang.CUpdate)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 	Write-host "    " -NoNewline
-	Write-Host " 1 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " 1 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "  $($lang.AddTo)" -ForegroundColor Green
@@ -53,7 +53,7 @@ Function Update_Menu
 	}
 
 	Write-host "    " -NoNewline
-	Write-Host " 2 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " 2 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "  $($lang.Del)" -ForegroundColor Green
@@ -67,7 +67,7 @@ Function Update_Menu
 	Write-Host "`n  $($lang.MoreFeature)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 	Write-host "    " -NoNewline
-	Write-Host " 3 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " 3 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "  $($lang.CuringUpdate)" -ForegroundColor Green
@@ -80,7 +80,7 @@ Function Update_Menu
 
 	Write-Host "         $('-' * 73)"
 	Write-host "         " -NoNewline
-	Write-Host " 31 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " 31 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "  $($lang.Superseded)" -ForegroundColor Green
@@ -92,7 +92,7 @@ Function Update_Menu
 	}
 
 	Write-host "         " -NoNewline
-	Write-Host " 32 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " 32 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "  $($lang.Superseded), $($lang.ExcludeItem)" -ForegroundColor Green
@@ -106,7 +106,7 @@ Function Update_Menu
 	Write-Host "`n  $($lang.GetImagePackage)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 	Write-host "    " -NoNewline
-	Write-Host " P " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " P " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Green
@@ -118,7 +118,7 @@ Function Update_Menu
 	}
 
 	Write-host "    " -NoNewline
-	Write-Host " S " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " S " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "  $($lang.ExportShow)" -ForegroundColor Green
@@ -136,7 +136,7 @@ Function Update_Menu
 			Write-Host "`n   $($lang.SaveTo)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 79)"
 			Write-host "   " -NoNewline
-			Write-Host " SS " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " SS " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			Write-Host "  $($Temp_Expand_Rule)" -ForegroundColor Green
 		}
 	}
@@ -155,7 +155,7 @@ Function Update_Menu
 	Write-Host " $($lang.Short_Cmd) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " " -NoNewline
 
-	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host ": " -NoNewline
 
 	switch -Wildcard (Read-Host)

@@ -44,43 +44,43 @@ Function Solutions_Menu
 	Write-Host "  $('-' * 80)"
 
 	Write-host "    " -NoNewline
-	Write-Host " C " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " C " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host "  $($lang.IsCreate)" -ForegroundColor Green
 
 	Write-Host "`n  $($Global:Image_source)" -ForegroundColor Yellow
 
 	if (Test-Path -Path $(Join-Path -Path $Global:Image_source -ChildPath "Sources\`$OEM$") -PathType Container) {
 		Write-host "    " -NoNewline
-		Write-Host " 1 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " 1 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.Del): " -NoNewline -ForegroundColor Green
 		Write-Host "\Sources\`$OEM$" -ForegroundColor Yellow
 	} else {
 		Write-host "    " -NoNewline
-		Write-Host " 1 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " 1 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.Del): " -NoNewline -ForegroundColor Red
 		Write-Host "\Sources\`$OEM$" -ForegroundColor Yellow
 	}
 
 	if (Test-Path -Path $(Join-Path -Path $Global:Image_source -ChildPath "Sources\Unattend.xml") -PathType leaf) {
 		Write-host "    " -NoNewline
-		Write-Host " 2 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " 2 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.Del): " -NoNewline -ForegroundColor Green
 		Write-Host "\Sources\Unattend.xml" -ForegroundColor Yellow
 	} else {
 		Write-host "    " -NoNewline
-		Write-Host " 2 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " 2 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.Del): " -NoNewline -ForegroundColor Red
 		Write-Host "\Sources\Unattend.xml" -ForegroundColor Yellow
 	}
 
 	if (Test-Path -Path $(Join-Path -Path $Global:Image_source -ChildPath "Autounattend.xml") -PathType leaf) {
 		Write-host "    " -NoNewline
-		Write-Host " 3 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " 3 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.Del): " -NoNewline -ForegroundColor Green
 		Write-Host "\Autounattend.xml" -ForegroundColor Yellow
 	} else {
 		Write-host "    " -NoNewline
-		Write-Host " 3 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " 3 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.Del): " -NoNewline -ForegroundColor Red
 		Write-Host "\Autounattend.xml" -ForegroundColor Yellow
 	}
@@ -91,11 +91,11 @@ Function Solutions_Menu
 		(Test-Path -Path $(Join-Path -Path $Global:Image_source -ChildPath "Sources\`$OEM$") -PathType Container))
 	{
 		Write-host "    " -NoNewline
-		Write-Host " A " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " A " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.EnglineDoneClearFull)" -ForegroundColor Green
 	} else {
 		Write-host "    " -NoNewline
-		Write-Host " A " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " A " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.EnglineDoneClearFull)" -ForegroundColor Red
 	}
 
@@ -106,12 +106,12 @@ Function Solutions_Menu
 		$File_Path_MainFolder = "$($TestNewFolder)\$((Get-Module -Name Solutions).Author)"
 		if (Test-Path -Path $File_Path_MainFolder -PathType Container) {
 			Write-host "   " -NoNewline
-			Write-Host " 11 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " 11 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			Write-Host "  $($lang.Del): " -NoNewline -ForegroundColor Green
 			Write-Host $((Get-Module -Name Solutions).Author) -ForegroundColor Yellow
 		} else {
 			Write-host "   " -NoNewline
-			Write-Host " 11 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " 11 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			Write-Host "  $($lang.Del): " -NoNewline -ForegroundColor Red
 			Write-Host "\$((Get-Module -Name Solutions).Author)" -ForegroundColor Yellow
 		}
@@ -119,12 +119,12 @@ Function Solutions_Menu
 		$File_Path_Unattend = "$($TestNewFolder)\Windows\Panther\Unattend.xml"
 		if (Test-Path -Path $File_Path_Unattend -PathType leaf) {
 			Write-host "   " -NoNewline
-			Write-Host " 12 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " 12 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			Write-Host "  $($lang.Del): " -NoNewline -ForegroundColor Green
 			Write-Host "\Windows\Panther\Unattend.xml" -ForegroundColor Yellow
 		} else {
 			Write-host "   " -NoNewline
-			Write-Host " 12 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " 12 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			Write-Host "  $($lang.Del): " -NoNewline -ForegroundColor Red
 			Write-Host "\Windows\Panther\Unattend.xml" -ForegroundColor Yellow
 		}
@@ -132,12 +132,12 @@ Function Solutions_Menu
 		$File_Path_Office = "$($TestNewFolder)\Users\Public\Desktop\Office"
 		if (Test-Path -Path $File_Path_Office -PathType Container) {
 			Write-host "   " -NoNewline
-			Write-Host " 13 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " 13 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			Write-Host "  $($lang.Del): " -NoNewline -ForegroundColor Green
 			Write-Host "\Users\Public\Desktop\Office" -ForegroundColor Yellow
 		} else {
 			Write-host "   " -NoNewline
-			Write-Host " 13 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " 13 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			Write-Host "  $($lang.Del): " -NoNewline -ForegroundColor Red
 			Write-Host "\Users\Public\Desktop\Office" -ForegroundColor Yellow
 		}
@@ -148,11 +148,11 @@ Function Solutions_Menu
 			(Test-Path -Path $File_Path_Office -PathType Container))
 		{
 			Write-host "   " -NoNewline
-			Write-Host " AA " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " AA " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			Write-Host "  $($lang.EnglineDoneClearFull)" -ForegroundColor Green
 		} else {
 			Write-host "   " -NoNewline
-			Write-Host " AA " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " AA " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			Write-Host "  $($lang.EnglineDoneClearFull)" -ForegroundColor Red
 		}
 	}
@@ -171,7 +171,7 @@ Function Solutions_Menu
 	Write-Host " $($lang.Short_Cmd) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " " -NoNewline
 
-	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host ": " -NoNewline
 
 	switch -Wildcard (Read-Host)

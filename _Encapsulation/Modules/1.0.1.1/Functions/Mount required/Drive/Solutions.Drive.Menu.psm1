@@ -43,32 +43,32 @@ Function Drive_Menu
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-host "    " -NoNewline
-			Write-Host " 1 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " 1 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			Write-Host "  $($lang.AddTo)" -ForegroundColor Green
 		} else {
 			Write-host "    " -NoNewline
-			Write-Host " 1 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " 1 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			Write-Host "  $($lang.AddTo)" -ForegroundColor Red
 		}
 	} else {
 		Write-host "    " -NoNewline
-		Write-Host " 1 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " 1 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.AddTo)" -ForegroundColor Red
 	}
 
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-host "    " -NoNewline
-			Write-Host " 2 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " 2 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			Write-Host "  $($lang.Del)" -ForegroundColor Green
 		} else {
 			Write-host "    " -NoNewline
-			Write-Host " 2 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " 2 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			Write-Host "  $($lang.Del)" -ForegroundColor Red
 		}
 	} else {
 		Write-host "    " -NoNewline
-		Write-Host " 2 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " 2 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.Del)" -ForegroundColor Red
 	}
 
@@ -76,7 +76,7 @@ Function Drive_Menu
 	Write-Host "  $('-' * 80)"
 
 	Write-host "    " -NoNewline
-	Write-Host " P " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " P " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Green
@@ -88,7 +88,7 @@ Function Drive_Menu
 	}
 
 	Write-host "    " -NoNewline
-	Write-Host " S " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " S " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "  $($lang.ExportShow)" -ForegroundColor Green
@@ -106,7 +106,7 @@ Function Drive_Menu
 			Write-Host "`n   $($lang.SaveTo)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 79)"
 			Write-host "   " -NoNewline
-			Write-Host " SS " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " SS " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			Write-Host "  $($Temp_Expand_Rule)" -ForegroundColor Green
 		}
 	}
@@ -125,7 +125,7 @@ Function Drive_Menu
 	Write-Host " $($lang.Short_Cmd) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " " -NoNewline
 
-	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host ": " -NoNewline
 
 	switch -Wildcard (Read-Host)

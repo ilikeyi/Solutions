@@ -35,41 +35,41 @@
 	Write-Host "  $('-' * 80)"
 	if (Verify_Is_Current_Same) {
 		Write-host "    " -NoNewline
-		Write-Host " 1 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " 1 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.LocalExperiencePack): $($lang.AddTo)" -ForegroundColor Green
 	} else {
 		Write-host "    " -NoNewline
-		Write-Host " 1 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " 1 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.LocalExperiencePack): $($lang.AddTo)" -ForegroundColor Red
 	}
 
 	if (Verify_Is_Current_Same) {
 		Write-host "    " -NoNewline
-		Write-Host " 2 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " 2 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.InboxAppsManager): $($lang.AddTo)" -ForegroundColor Green
 	} else {
 		Write-host "    " -NoNewline
-		Write-Host " 2 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " 2 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.InboxAppsManager): $($lang.AddTo)" -ForegroundColor Red
 	}
 
 	if (Verify_Is_Current_Same) {
 		Write-host "    " -NoNewline
-		Write-Host " 3 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " 3 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.LocalExperiencePack): $($lang.Update)" -ForegroundColor Green
 	} else {
 		Write-host "    " -NoNewline
-		Write-Host " 3 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " 3 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.LocalExperiencePack): $($lang.Update)" -ForegroundColor Red
 	}
 
 	if (Verify_Is_Current_Same) {
 		Write-host "    " -NoNewline
-		Write-Host " 4 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " 4 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.LocalExperiencePack): $($lang.Del)" -ForegroundColor Green
 	} else {
 		Write-host "    " -NoNewline
-		Write-Host " 4 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " 4 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.LocalExperiencePack): $($lang.Del)" -ForegroundColor Red
 	}
 
@@ -77,11 +77,11 @@
 	Write-Host "    $('-' * 78)"
 	if (Verify_Is_Current_Same) {
 		Write-host "    " -NoNewline
-		Write-Host " A " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " A " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.InboxAppsManager): $($lang.InboxAppsOfflineDel)" -ForegroundColor Green
 	} else {
 		Write-host "    " -NoNewline
-		Write-Host " A " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " A " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.InboxAppsManager): $($lang.InboxAppsOfflineDel)" -ForegroundColor Red
 	}
 
@@ -89,28 +89,28 @@
 	Write-Host "    $('-' * 78)"
 	if (Verify_Is_Current_Same) {
 		Write-host "    " -NoNewline
-		Write-Host " F " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " F " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.AllClear)" -ForegroundColor Green
 	} else {
 		Write-host "    " -NoNewline
-		Write-Host " F " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " F " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.AllClear)" -ForegroundColor Red
 	}
 
 	if (Verify_Is_Current_Same) {
 		Write-host "    " -NoNewline
-		Write-Host " E " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " E " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.ExcludeItem)" -ForegroundColor Green
 	} else {
 		Write-host "    " -NoNewline
-		Write-Host " E " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " E " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.ExcludeItem)" -ForegroundColor Green
 	}
 
 	Write-Host "`n`n  $($lang.GetInBoxApps)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 	Write-host "    " -NoNewline
-	Write-Host " P " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " P " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Green
@@ -122,7 +122,7 @@
 	}
 
 	Write-host "    " -NoNewline
-	Write-Host " S " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " S " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "  $($lang.ExportShow)" -ForegroundColor Green
@@ -140,7 +140,7 @@
 			Write-Host "`n   $($lang.SaveTo)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 79)"
 			Write-host "   " -NoNewline
-			Write-Host " SS " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+			Write-Host " SS " -NoNewline -BackgroundColor Green -ForegroundColor Black
 			Write-Host "  $($Temp_Expand_Rule)" -ForegroundColor Green
 		}
 	}
@@ -148,11 +148,11 @@
 	Write-host
 	if (Verify_Is_Current_Same) {
 		Write-host "    " -NoNewline
-		Write-Host " C " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " C " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 	} else {
 		Write-host "    " -NoNewline
-		Write-Host " C " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+		Write-Host " C " -NoNewline -BackgroundColor Green -ForegroundColor Black
 		Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Red
 	}
 
@@ -170,7 +170,7 @@
 	Write-Host " $($lang.Short_Cmd) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " " -NoNewline
 
-	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host ": " -NoNewline
 
 	switch -Wildcard (Read-Host)

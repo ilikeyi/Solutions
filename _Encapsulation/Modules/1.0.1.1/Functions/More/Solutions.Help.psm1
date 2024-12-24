@@ -238,7 +238,7 @@ Function Solutions_Help_Command
 					Write-Host $(' ' * 7) -NoNewline
 					Write-Host " Save " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 					Write-host " " -NoNewline
-					Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+					Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 					Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 					Write-Host $item.Main.Uid -ForegroundColor Green
 
@@ -255,7 +255,7 @@ Function Solutions_Help_Command
 							Write-Host $(' ' * 7) -NoNewline
 							Write-Host " Save " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 							Write-host " " -NoNewline
-							Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+							Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 							Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 							Write-Host $Expand.Uid -ForegroundColor Green
 
@@ -282,7 +282,7 @@ Function Solutions_Help_Command
 					Write-Host $(' ' * 2) -NoNewline
 					Write-Host " Unmt " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 					Write-host " " -NoNewline
-					Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+					Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 					Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 					Write-Host $item.Main.Uid -ForegroundColor Green
 
@@ -299,7 +299,7 @@ Function Solutions_Help_Command
 							Write-Host $(' ' * 2) -NoNewline
 							Write-Host " Unmt " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 							Write-host " " -NoNewline
-							Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+							Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 							Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 							Write-Host $Expand.Uid -ForegroundColor Green
 
@@ -338,7 +338,7 @@ Function Solutions_Help_Command
 					Write-Host $(' ' * 7) -NoNewline
 					Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 					Write-host " " -NoNewline
-					Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+					Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 					Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 					Write-Host $item.Main.Uid -ForegroundColor Green
 
@@ -356,7 +356,7 @@ Function Solutions_Help_Command
 							Write-Host $(' ' * 7) -NoNewline
 							Write-Host " Sel " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 							Write-host " " -NoNewline
-							Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+							Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 							Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 							Write-Host $Expand.Uid -ForegroundColor Green
 
@@ -387,7 +387,7 @@ Function Solutions_Help_Command
 						Write-Host $(' ' * 7) -NoNewline
 						Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 						Write-host " " -NoNewline
-						Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+						Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 						Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 						Write-Host $item.Main.Uid -ForegroundColor Green
 
@@ -399,7 +399,7 @@ Function Solutions_Help_Command
 					Write-Host $(' ' * 7) -NoNewline
 					Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 					Write-host " " -NoNewline
-					Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+					Write-Host " $($item.Main.Shortcuts) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 					Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 					Write-Host $item.Main.Uid -ForegroundColor Green
 
@@ -420,7 +420,7 @@ Function Solutions_Help_Command
 								Write-Host $(' ' * 7) -NoNewline
 								Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 								Write-host " " -NoNewline
-								Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+								Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 								Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 								Write-Host $Expand.Uid -ForegroundColor Green
 
@@ -432,7 +432,7 @@ Function Solutions_Help_Command
 							Write-Host $(' ' * 7) -NoNewline
 							Write-Host " View " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 							Write-host " " -NoNewline
-							Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+							Write-Host " $($Expand.Shortcuts) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 							Write-Host " $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 							Write-Host $Expand.Uid -ForegroundColor Green
 

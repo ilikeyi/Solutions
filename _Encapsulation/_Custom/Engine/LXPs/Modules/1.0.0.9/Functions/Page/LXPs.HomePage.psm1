@@ -63,11 +63,11 @@ Function Mainpage
 	write-host "  $('-' * 80)"
 
 	Write-host "     " -NoNewline
-	Write-Host " 1 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " 1 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host "  $($lang.ChkUpdate) " -ForegroundColor Green
 
 	Write-host "     " -NoNewline
-	Write-Host " 2 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " 2 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host "  $($lang.LXPs) " -ForegroundColor Green
 
 	Write-Host
@@ -89,7 +89,7 @@ Function Mainpage
 	Write-Host " $($lang.Short_Cmd) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " " -NoNewline
 
-	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host ": " -NoNewline
 
 	switch -Wildcard (Read-Host)

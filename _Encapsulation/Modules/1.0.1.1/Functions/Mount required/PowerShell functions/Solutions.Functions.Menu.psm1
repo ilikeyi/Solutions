@@ -43,7 +43,7 @@ Function Functions_Menu
 	Write-Host "`n  $($lang.SpecialFunction)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 	Write-host "    " -NoNewline
-	Write-Host " 1 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " 1 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "  $($lang.Functions_Before)" -ForegroundColor Green
@@ -55,7 +55,7 @@ Function Functions_Menu
 	}
 
 	Write-host "    " -NoNewline
-	Write-Host " 2 " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " 2 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "  $($lang.Functions_Rear)" -ForegroundColor Green
@@ -85,7 +85,7 @@ Function Functions_Menu
 	Write-Host " $($lang.Short_Cmd) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " " -NoNewline
 
-	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host ": " -NoNewline
 
 	switch -Wildcard (Read-Host)

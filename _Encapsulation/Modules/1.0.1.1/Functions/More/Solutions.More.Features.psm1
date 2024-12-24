@@ -10,11 +10,11 @@ Function Feature_More_Menu
 	Write-Host "  $($lang.Menu)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 	Write-host "     " -NoNewline
-	Write-Host " M " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " M " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host "  $($lang.MoreFeature)" -ForegroundColor Green
 
 	Write-host "     " -NoNewline
-	Write-Host " A " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " A " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host "  $($lang.ViewMounted)" -ForegroundColor Green
 
 	Write-Host $(' ' * 3) -NoNewline
@@ -64,7 +64,7 @@ Function Feature_More_Menu
 	Write-Host " $($lang.Short_Cmd) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " " -NoNewline
 
-	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
+	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host ": " -NoNewline
 
 	switch -Wildcard (Read-Host)
