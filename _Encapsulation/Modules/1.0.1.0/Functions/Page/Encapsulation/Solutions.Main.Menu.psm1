@@ -240,7 +240,7 @@ Function Mainpage
 	}
 
 	Write-Host "   13  " -NoNewline -ForegroundColor Green
-	Write-Host " $($lang.Language): " -ForegroundColor Yellow -NoNewline
+	Write-Host " $($lang.Unzip_Language): " -ForegroundColor Yellow -NoNewline
 	Write-Host "$($lang.LanguageExtract) " -NoNewline -ForegroundColor Green
 	Write-Host " LP E " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ", " -NoNewline
