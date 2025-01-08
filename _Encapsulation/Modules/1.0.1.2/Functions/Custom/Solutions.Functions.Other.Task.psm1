@@ -293,12 +293,12 @@ Function Other_Tasks_RAMDISK_AR
 	Write-Host "  $($lang.RuleName): ".PadRight(22) -NoNewline
 	Write-host "Function Other_Tasks_RAMDISK_AR" -ForegroundColor Yellow
 
+	Write-Host "  $($lang.RuleDescription): ".PadRight(22) -NoNewline
+	Write-host $lang.Other_Tasks_RAMDISK_AR -ForegroundColor Yellow
+
 	Write-Host "`n  $($lang.Repair)" -ForegroundColor Yellow
 	Write-Host "    * $($lang.HistoryClearDismSave)" -ForegroundColor Green
 	Write-Host "    * $($lang.Clear_Bad_Mount)" -ForegroundColor Green
-
-	Write-Host "`n  $($lang.RuleDescription): ".PadRight(22) -NoNewline
-	Write-host $lang.Other_Tasks_RAMDISK_AR -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 
 	<#
