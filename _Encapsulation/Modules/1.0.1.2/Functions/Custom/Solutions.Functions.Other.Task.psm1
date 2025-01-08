@@ -262,8 +262,9 @@ Function Other_Tasks_RAMDISK
 					Write-Host "  $('-' * 80)`n"
 				}
 
+				Write-Host "  $($lang.Running): " -NoNewline
 				Invoke-Expression -Command "Format-Volume -DriveLetter $($item.DriveLetter) -NewFileSystemLabel ""$($item.Label)"""
-				Write-Host "  $($lang.Done)" -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			}
 		} else {
 			Write-Host "  $($lang.AutoSelectRAMDISK): " -NoNewline
@@ -331,8 +332,9 @@ Function Other_Tasks_RAMDISK_AR
 					Write-Host "  $('-' * 80)`n"
 				}
 
+				Write-Host "  $($lang.Running): " -NoNewline
 				Invoke-Expression -Command "Format-Volume -DriveLetter $($item.DriveLetter) -NewFileSystemLabel ""$($item.Label)"""
-				Write-Host "  $($lang.Done)" -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			}
 
 			write-host "`n  $($lang.HistoryClearDismSave)"
