@@ -4051,27 +4051,27 @@ Function Image_Assign_Autopilot_Master
 
 									if ($SelectAssociation -contains $FileA) {
 										$CheckBox.Checked = $True
-
-										$AutopilotTestOffice = Get-Content -Raw -Path $_.FullName | ConvertFrom-Json
-										if ($AutopilotTestOffice.Deploy.ImageSource.Tasks.Solutions.Schome.Collection.Office.IsDeploy) {
-											$MatchIs = $True
-											$TestFullOffice = "$($PSScriptRoot)\..\..\..\..\..\_Custom\Office\$($AutopilotTestOffice.Deploy.ImageSource.Tasks.Solutions.Schome.Collection.Office.Version)\$($Global:Architecture)"
-
-											if (Test-Path -Path $TestFullOffice -PathType Container) {
-												Get-ChildItem -Path $TestFullOffice -directory -ErrorAction SilentlyContinue | ForEach-Object {
-													if (Test-Path -Path "$($_.FullName)\Data\v64.cab" -PathType Leaf) {
-														$MatchIs = $False
-													}
-												}
-											}
-
-											if ($MatchIs) {
-												$CheckBox.Checked = $False
-												$CheckBox.ForeColor = "RED"
-											}
-										}
 									} else {
 										$CheckBox.Checked = $False
+									}
+
+									$AutopilotTestOffice = Get-Content -Raw -Path $_.FullName | ConvertFrom-Json
+									if ($AutopilotTestOffice.Deploy.ImageSource.Tasks.Solutions.Schome.Collection.Office.IsDeploy) {
+										$MatchIs = $True
+										$TestFullOffice = "$($PSScriptRoot)\..\..\..\..\..\_Custom\Office\$($AutopilotTestOffice.Deploy.ImageSource.Tasks.Solutions.Schome.Collection.Office.Version)\$($Global:Architecture)"
+
+										if (Test-Path -Path $TestFullOffice -PathType Container) {
+											Get-ChildItem -Path $TestFullOffice -directory -ErrorAction SilentlyContinue | ForEach-Object {
+												if (Test-Path -Path "$($_.FullName)\Data\v64.cab" -PathType Leaf) {
+													$MatchIs = $False
+												}
+											}
+										}
+
+										if ($MatchIs) {
+											$CheckBox.Checked = $False
+											$CheckBox.ForeColor = "RED"
+										}
 									}
 								} else {
 									$FileError    = New-Object system.Windows.Forms.Label -Property @{
