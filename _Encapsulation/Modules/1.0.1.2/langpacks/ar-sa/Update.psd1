@@ -11,8 +11,6 @@
 	UpdateResetTips           = عندما يتوفر عنوان التنزيل، يتم فرض التنزيل وتحديثه تلقائيًا.
 	UpdateCheckServerStatus   = التحقق من حالة الخادم ( يتوفر {0} من الخيارات )
 	UpdateServerAddress       = عنوان الخادم
-	UpdateServeravailable     = الحالة: متاح
-	UpdateServerUnavailable   = الحالة: غير متوفر
 	UpdatePriority            = تم تعيينها بالفعل كأولوية
 	UpdateServerTestFailed    = فشل اختبار حالة الخادم
 	UpdateQueryingUpdate      = الاستعلام عن التحديثات...
@@ -37,6 +35,6 @@
 	UpdateUpdateStop          = حدث خطأ أثناء تنزيل التحديث وتم إحباط عملية التحديث.
 	UpdateInstall             = هل تريد تثبيت هذا التحديث؟
 	UpdateInstallSel          = نعم، سيتم تثبيت التحديث أعلاه\nلا، لن يتم تثبيت التحديث
-	UpdateNoUpdateAvailable   = \n   لا توجد تحديثات متاحة.\n\n   {0}'s Solutions أنت تقوم بتشغيل أحدث إصدار من \n
-	UpdateNotSatisfied        = \n   عدم استيفاء الحد الأدنى من متطلبات إصدار برنامج التحديث،\n\n   الحد الأدنى للإصدار المطلوب:{0}\n\n   يرجى إعادة تنزيل نسختك من {0}' لتحديث هذه الأداة.\n\n   تم إحباط التحقق من وجود تحديثات.\n
+	UpdateNoUpdateAvailable   = \n  لا توجد تحديثات متاحة.\n\n  {0}'s Solutions أنت تقوم بتشغيل أحدث إصدار من \n
+	UpdateNotSatisfied        = \n  عدم استيفاء الحد الأدنى من متطلبات إصدار برنامج التحديث،\n\n  الحد الأدنى للإصدار المطلوب:{0}\n\n  يرجى إعادة تنزيل نسختك من {0}' لتحديث هذه الأداة.\n\n  تم إحباط التحقق من وجود تحديثات.\n
 '@

@@ -11,8 +11,6 @@
 	UpdateResetTips           = ダウンロードアドレスが利用可能になったら, ダウンロードを強制して自動的に更新します。
 	UpdateCheckServerStatus   = サーバーステータスを確認します ( 合計 {0} はオプション )
 	UpdateServerAddress       = サーバーアドレス
-	UpdateServeravailable     = ステータス：利用可能
-	UpdateServerUnavailable   = ステータス：利用不可
 	UpdatePriority            = が優先度として設定されています
 	UpdateServerTestFailed    = サーバーステータステストに失敗しました
 	UpdateQueryingUpdate      = クエリと更新...
@@ -37,6 +35,6 @@
 	UpdateUpdateStop          = 更新のダウンロード中にエラーが発生し, 更新プロセスが中止されました。
 	UpdateInstall             = このアップデートをインストールしますか？
 	UpdateInstallSel          = はい, 上記のアップデートがインストールされます\nいいえ, アップデートはインストールされません
-	UpdateNoUpdateAvailable   = \n   利用可能な更新はありません。\n\n   を実行しています {0}'s Solutions 最新バージョンです。\n
-	UpdateNotSatisfied        = \n   不满足最低更新程序版本要求，\n\n   最低限必要なバージョン：{0}\n\n   もう一度ダウンロードしてください {1}'s Solutions このツールを更新するには。\n\n   チェックの更新が中止されました。\n
+	UpdateNoUpdateAvailable   = \n  利用可能な更新はありません。\n\n  を実行しています {0}'s Solutions 最新バージョンです。\n
+	UpdateNotSatisfied        = \n  不满足最低更新程序版本要求，\n\n  最低限必要なバージョン：{0}\n\n  もう一度ダウンロードしてください {1}'s Solutions このツールを更新するには。\n\n  チェックの更新が中止されました。\n
 '@

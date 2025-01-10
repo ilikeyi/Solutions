@@ -11,8 +11,6 @@
 	UpdateResetTips           = Ko je naslov za prenos na voljo, se prenos vsili in samodejno posodobi.
 	UpdateCheckServerStatus   = Preverite stanje strežnika ( na voljo je {0} možnosti )
 	UpdateServerAddress       = Naslov strežnika
-	UpdateServeravailable     = Status: Na voljo
-	UpdateServerUnavailable   = Status: Ni na voljo
 	UpdatePriority            = Že nastavljen kot prednostni
 	UpdateServerTestFailed    = Neuspešen preizkus stanja strežnika
 	UpdateQueryingUpdate      = Poizvedovanje za posodobitve ...
@@ -37,6 +35,6 @@
 	UpdateUpdateStop          = Med prenosom posodobitve je prišlo do napake in postopek posodabljanja je bil prekinjen.
 	UpdateInstall             = Ali želite namestiti to posodobitev?
 	UpdateInstallSel          = Da, zgornja posodobitev bo nameščena\nNe, posodobitev ne bo nameščena
-	UpdateNoUpdateAvailable   = \n   Na voljo ni nobenih posodobitev.\n\n   tečeš {0}'s Solutions Najnovejša razpoložljiva različica.\n
-	UpdateNotSatisfied        = \n   Zahteve glede minimalne različice programa za posodobitev niso izpolnjene,\n\n   Najmanjša zahtevana različica: {0}\n\n   Prenesite znova {1}'s Solutions kopijo orodja za posodobitev.\n\n   Preverjanje posodobitev je bilo prekinjeno.\n
+	UpdateNoUpdateAvailable   = \n  Na voljo ni nobenih posodobitev.\n\n  tečeš {0}'s Solutions Najnovejša razpoložljiva različica.\n
+	UpdateNotSatisfied        = \n  Zahteve glede minimalne različice programa za posodobitev niso izpolnjene,\n\n  Najmanjša zahtevana različica: {0}\n\n  Prenesite znova {1}'s Solutions kopijo orodja za posodobitev.\n\n  Preverjanje posodobitev je bilo prekinjeno.\n
 '@

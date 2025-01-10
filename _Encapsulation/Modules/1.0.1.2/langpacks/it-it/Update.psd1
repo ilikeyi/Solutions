@@ -11,8 +11,6 @@
 	UpdateResetTips           = Quando l'indirizzo di download è disponibile, il download viene forzato e aggiornato automaticamente.
 	UpdateCheckServerStatus   = Controlla lo stato del server ( {0} opzioni disponibili )
 	UpdateServerAddress       = Indirizzo del server
-	UpdateServeravailable     = Stato: disponibile
-	UpdateServerUnavailable   = Stato: non disponibile
 	UpdatePriority            = Già impostato come priorità
 	UpdateServerTestFailed    = Test dello stato del server non riuscito
 	UpdateQueryingUpdate      = Richiesta aggiornamenti...
@@ -37,6 +35,6 @@
 	UpdateUpdateStop          = Si è verificato un errore durante il download dell'aggiornamento e il processo di aggiornamento è stato interrotto.
 	UpdateInstall             = Vuoi installare questo aggiornamento?
 	UpdateInstallSel          = Sì, l'aggiornamento sopra riportato verrà installato\nNo, l'aggiornamento non verrà installato
-	UpdateNoUpdateAvailable   = \n   Nessun aggiornamento disponibile.\n\n   stai correndo {0}'s Solutions L'ultima versione disponibile.\n
-	UpdateNotSatisfied        = \n   I requisiti minimi della versione del programma di aggiornamento non sono soddisfatti,\n\n   Versione minima richiesta: {0}\n\n   Si prega di scaricare di nuovo {1}'s Solutions una copia dello strumento per aggiornarlo.\n\n   Il controllo degli aggiornamenti è stato interrotto.\n
+	UpdateNoUpdateAvailable   = \n  Nessun aggiornamento disponibile.\n\n  stai correndo {0}'s Solutions L'ultima versione disponibile.\n
+	UpdateNotSatisfied        = \n  I requisiti minimi della versione del programma di aggiornamento non sono soddisfatti,\n\n  Versione minima richiesta: {0}\n\n  Si prega di scaricare di nuovo {1}'s Solutions una copia dello strumento per aggiornarlo.\n\n  Il controllo degli aggiornamenti è stato interrotto.\n
 '@

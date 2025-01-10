@@ -164,8 +164,8 @@ $AvailableLanguages = @(
 			FileName                = "File name"
 			SaveTo                  = "Save to"
 			ItInstalled             = "Installed"
-			UpdateServeravailable   = "Status: available"
-			NotAvailable            = "Status: unavailable"
+			UpdateAvailable         = "Available"
+			UpdateUnavailable       = "Unavailable"
 			ExistingInstlPacker     = "Already compressed"
 			DownloadLinkError       = "The download address is invalid."
 			ErrorDown               = "An error occurred during the download"
@@ -233,8 +233,8 @@ $AvailableLanguages = @(
 			FileName                = "Dateiname"
 			SaveTo                  = "Speichern unter"
 			ItInstalled             = "Eingerichtet"
-			UpdateServeravailable   = "Status: verfügbar"
-			NotAvailable            = "Status: nicht verfügbar"
+			UpdateAvailable         = "Verfügbar"
+			UpdateUnavailable       = "Nicht verfügbar"
 			ExistingInstlPacker     = "Bereits komprimiert"
 			DownloadLinkError       = "Die Download-Adresse ist ungültig."
 			ErrorDown               = "Beim Download ist ein Fehler aufgetreten"
@@ -302,8 +302,8 @@ $AvailableLanguages = @(
 			FileName                = "ファイル名"
 			SaveTo                  = "に保存"
 			ItInstalled             = "インストール済み"
-			UpdateServeravailable   = "ステータス: 利用可能"
-			NotAvailable            = "ステータス: 利用不可"
+			UpdateAvailable         = "利用可能"
+			UpdateUnavailable       = "利用不可"
 			ExistingInstlPacker     = "すでに圧縮されています"
 			DownloadLinkError       = "ダウンロードアドレスが無効です。"
 			ErrorDown               = "ダウンロード中にエラーが発生しました"
@@ -371,8 +371,8 @@ $AvailableLanguages = @(
 			FileName                = "파일"
 			SaveTo                  = "저장 위치"
 			ItInstalled             = "설치됨"
-			UpdateServeravailable   = "상태: 가능"
-			NotAvailable            = "상태: 사용할 수 없음"
+			UpdateAvailable         = "가능"
+			UpdateUnavailable       = "사용할 수 없음"
 			ExistingInstlPacker     = "이미 압축됨"
 			DownloadLinkError       = "다운로드 주소가 잘못되었습니다."
 			ErrorDown               = "다운로드 중 오류가 발생했습니다."
@@ -440,8 +440,8 @@ $AvailableLanguages = @(
 			FileName                = "文件名"
 			SaveTo                  = "保存到"
 			ItInstalled             = "已安装"
-			UpdateServeravailable   = "状态：可用"
-			NotAvailable            = "状态：不可用"
+			UpdateAvailable         = "可用"
+			UpdateUnavailable       = "不可用"
 			ExistingInstlPacker     = "已有压缩包"
 			DownloadLinkError       = "下载地址无效。"
 			ErrorDown               = "下载过程中出现错误"
@@ -509,8 +509,8 @@ $AvailableLanguages = @(
 			FileName                = "檔案名稱"
 			SaveTo                  = "保存到"
 			ItInstalled             = "已安裝"
-			UpdateServeravailable   = "狀態：可用"
-			NotAvailable            = "狀態：不可用"
+			UpdateAvailable         = "可用"
+			UpdateUnavailable       = "不可用"
 			ExistingInstlPacker     = "已有壓縮包"
 			DownloadLinkError       = "下載地址無效。"
 			ErrorDown               = "下載過程中出現錯誤"
@@ -1132,7 +1132,7 @@ Function Install_Process
 								Check_Folder -chkpath $OutTo
 								Invoke-WebRequest -Uri $url -OutFile $OutAny -ErrorAction SilentlyContinue | Out-Null
 							} else {
-								write-host "     - $($lang.NotAvailable)" -ForegroundColor Red
+								write-host "     - $($lang.UpdateUnavailable)" -ForegroundColor Red
 							}
 						}
 					}
@@ -1187,7 +1187,7 @@ Function Install_Process
 								Check_Folder -chkpath $OutTo
 								Invoke-WebRequest -Uri $url -OutFile $OutAny -ErrorAction SilentlyContinue | Out-Null
 							} else {
-								write-host "     - $($lang.NotAvailable)`n" -ForegroundColor Red
+								write-host "     - $($lang.UpdateUnavailable)`n" -ForegroundColor Red
 							}
 						}
 					}
@@ -1240,7 +1240,7 @@ Function Install_Process
 								Check_Folder -chkpath $OutTo
 								Invoke-WebRequest -Uri $url -OutFile $OutAny -ErrorAction SilentlyContinue | Out-Null
 							} else {
-								write-host "     - $($lang.NotAvailable)`n" -ForegroundColor Red
+								write-host "     - $($lang.UpdateUnavailable)`n" -ForegroundColor Red
 							}
 						}
 					}
@@ -1274,7 +1274,7 @@ Function Install_Process
 						Invoke-WebRequest -Uri $url -OutFile $OutAny -ErrorAction SilentlyContinue | Out-Null
 						Open_Apps -filename $OutAny -param $param -mode $mode
 					} else {
-						write-host "     - $($lang.NotAvailable)`n" -ForegroundColor Red
+						write-host "     - $($lang.UpdateUnavailable)`n" -ForegroundColor Red
 					}
 				}
 			}
@@ -1714,10 +1714,10 @@ Function Update_Process
 		if (Test_URI $item) {
 			$ServerTest = $true
 			$url = $item
-			write-host "    $($lang.UpdateServeravailable)" -ForegroundColor Green
+			write-host "    $($lang.UpdateAvailable)" -ForegroundColor Green
 			break
 		} else {
-			write-host "    $($lang.NotAvailable)`n" -ForegroundColor Red
+			write-host "    $($lang.UpdateUnavailable)`n" -ForegroundColor Red
 		}
 	}
 

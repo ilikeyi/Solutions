@@ -271,10 +271,10 @@ Function Update_Process
 		if (Test_URI $item) {
 			$PreServerVersion = $item
 			$ServerTest = $true
-			write-host "    $($lang.UpdateServeravailable)" -ForegroundColor Green
+			write-host "    $($lang.UpdateAvailable)" -ForegroundColor Green
 			break
 		} else {
-			write-host "    $($lang.UpdateServerUnavailable)`n" -ForegroundColor Red
+			write-host "    $($lang.UpdateUnavailable)`n" -ForegroundColor Red
 		}
 	}
 

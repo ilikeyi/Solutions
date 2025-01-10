@@ -11,8 +11,6 @@
 	UpdateResetTips           = Kad lejupielādes adrese ir pieejama, lejupielāde tiek piespiesta un atjaunināta automātiski.
 	UpdateCheckServerStatus   = Pārbaudiet servera statusu ( pieejamas {0} opcijas )
 	UpdateServerAddress       = Servera adrese
-	UpdateServeravailable     = Statuss: pieejams
-	UpdateServerUnavailable   = Statuss: Nav pieejams
 	UpdatePriority            = Jau iestatīta kā prioritāte
 	UpdateServerTestFailed    = Servera statusa pārbaude neizdevās
 	UpdateQueryingUpdate      = Notiek atjauninājumu vaicājums...
@@ -37,6 +35,6 @@
 	UpdateUpdateStop          = Lejupielādējot atjauninājumu, radās kļūda, un atjaunināšanas process tika pārtraukts.
 	UpdateInstall             = Vai vēlaties instalēt šo atjauninājumu?
 	UpdateInstallSel          = Jā, iepriekš minētais atjauninājums tiks instalēts\nNē, atjauninājums netiks instalēts
-	UpdateNoUpdateAvailable   = \n   Nav pieejami atjauninājumi.\n\n   tu skrien {0}'s Solutions Jaunākā pieejamā versija.\n
-	UpdateNotSatisfied        = \n   nav izpildītas minimālās atjaunināšanas programmas versijas prasības,\n\n   Minimālā nepieciešamā versija: {0}\n\n   Lūdzu, lejupielādējiet vēlreiz {1}'s Solutions rīka kopiju, lai to atjauninātu.\n\n   Atjauninājumu pārbaude ir pārtraukta.\n
+	UpdateNoUpdateAvailable   = \n  Nav pieejami atjauninājumi.\n\n  tu skrien {0}'s Solutions Jaunākā pieejamā versija.\n
+	UpdateNotSatisfied        = \n  nav izpildītas minimālās atjaunināšanas programmas versijas prasības,\n\n  Minimālā nepieciešamā versija: {0}\n\n  Lūdzu, lejupielādējiet vēlreiz {1}'s Solutions rīka kopiju, lai to atjauninātu.\n\n  Atjauninājumu pārbaude ir pārtraukta.\n
 '@

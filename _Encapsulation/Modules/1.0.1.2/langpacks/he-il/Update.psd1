@@ -11,8 +11,6 @@
 	UpdateResetTips           = כאשר כתובת ההורדה זמינה, ההורדה נאלצת ומתעדכנת אוטומטית.
 	UpdateCheckServerStatus   = בדוק את סטטוס השרת ( {0} אפשרויות זמינות )
 	UpdateServerAddress       = כתובת שרת
-	UpdateServeravailable     = סטטוס: זמין
-	UpdateServerUnavailable   = סטטוס: לא זמין
 	UpdatePriority            = כבר הוגדר בעדיפות
 	UpdateServerTestFailed    = בדיקת מצב השרת נכשלה
 	UpdateQueryingUpdate      = מבקש עדכונים...
@@ -37,6 +35,6 @@
 	UpdateUpdateStop          = אירעה שגיאה בעת הורדת העדכון ותהליך העדכון בוטל.
 	UpdateInstall             = האם ברצונך להתקין את העדכון הזה?
 	UpdateInstallSel          = כן, העדכונים לעיל יותקנו\nלא, העדכון לא יותקן
-	UpdateNoUpdateAvailable   = \n   אין עדכונים זמינים.\n\n   אתה רץ {0}'s Solutions הגרסה האחרונה הזמינה.\n
-	UpdateNotSatisfied        = \n   דרישות גרסת העדכון המינימליות אינן מתקיימות, \n\n   מינימום גרסה נדרשת: {0}\n\n   נא להוריד שוב {1}'s Solutions עותק של הכלי כדי לעדכן אותו.\n\n   בדיקת העדכונים בוטלה.\n
+	UpdateNoUpdateAvailable   = \n  אין עדכונים זמינים.\n\n  אתה רץ {0}'s Solutions הגרסה האחרונה הזמינה.\n
+	UpdateNotSatisfied        = \n  דרישות גרסת העדכון המינימליות אינן מתקיימות, \n\n  מינימום גרסה נדרשת: {0}\n\n  נא להוריד שוב {1}'s Solutions עותק של הכלי כדי לעדכן אותו.\n\n  בדיקת העדכונים בוטלה.\n
 '@

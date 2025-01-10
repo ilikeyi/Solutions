@@ -11,8 +11,6 @@
 	UpdateResetTips           = 다운로드 주소를 사용할 수 있는 경우 강제로 다운로드 및 업데이트합니다.
 	UpdateCheckServerStatus   = 서버 상태 확인 ( 총 {0} 개 선택사항 )
 	UpdateServerAddress       = 서버 주소
-	UpdateServeravailable     = 상태: 사용 가능
-	UpdateServerUnavailable   = 상태: 사용할 수 없음
 	UpdatePriority            = 우선 순위로 설정되었습니다.
 	UpdateServerTestFailed    = 서버 상태 테스트 실패
 	UpdateQueryingUpdate      = 쿼리 및 업데이트 중...
@@ -37,6 +35,6 @@
 	UpdateUpdateStop          = 업데이트를 다운로드하는 동안 오류가 발생하여 업데이트 프로세스가 중단되었습니다.
 	UpdateInstall             = 이 업데이트를 설치하시겠습니까 ?
 	UpdateInstallSel          = 예, 위 업데이트가 설치됩니다.\n아니요,이 업데이트를 설치하지 않습니다.
-	UpdateNoUpdateAvailable   = \n   사용 가능한 업데이트가 없습니다.\n\n   당신은 달리고 있습니다 {0}'s Solutions 최신 버전.\n
-	UpdateNotSatisfied        = \n   최소 업데이트 버전 요구 사항을 충족시키지 마십시오.\n\n   최소 요구 사항 버전 {0}\n\n   다시 다운로드하십시오 {1}'s Solutions 이 도구를 업데이트하는 사본.\n\n   업데이트가 중단되었는지 확인하십시오.\n
+	UpdateNoUpdateAvailable   = \n  사용 가능한 업데이트가 없습니다.\n\n  당신은 달리고 있습니다 {0}'s Solutions 최신 버전.\n
+	UpdateNotSatisfied        = \n  최소 업데이트 버전 요구 사항을 충족시키지 마십시오.\n\n  최소 요구 사항 버전 {0}\n\n  다시 다운로드하십시오 {1}'s Solutions 이 도구를 업데이트하는 사본.\n\n  업데이트가 중단되었는지 확인하십시오.\n
 '@

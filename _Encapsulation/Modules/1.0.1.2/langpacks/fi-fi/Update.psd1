@@ -11,8 +11,6 @@
 	UpdateResetTips           = Kun latausosoite on saatavilla, lataus pakotetaan ja päivitetään automaattisesti.
 	UpdateCheckServerStatus   = Tarkista palvelimen tila ( {0} vaihtoehtoa käytettävissä )
 	UpdateServerAddress       = Palvelimen osoite
-	UpdateServeravailable     = Tila: Saatavilla
-	UpdateServerUnavailable   = Tila: Ei saatavilla
 	UpdatePriority            = Jo asetettu prioriteetiksi
 	UpdateServerTestFailed    = Palvelimen tilatesti epäonnistui
 	UpdateQueryingUpdate      = Haetaan päivityksiä...
@@ -37,6 +35,6 @@
 	UpdateUpdateStop          = Päivitystä ladattaessa tapahtui virhe, ja päivitys keskeytettiin.
 	UpdateInstall             = Haluatko asentaa tämän päivityksen?
 	UpdateInstallSel          = Kyllä, yllä oleva päivitys asennetaan\nEi, päivitystä ei asenneta
-	UpdateNoUpdateAvailable   = \n   Päivityksiä ei ole saatavilla.\n\n   olet juoksemassa {0}'s Solutions on uusin versio.\n
-	UpdateNotSatisfied        = \n   Päivitysohjelman vähimmäisversion vaatimukset eivät täyty, \n\n   Vähintään vaadittu versio: {0}\n\n   Lataa uudelleen {1}'s Solutions kopio työkalusta sen päivittämistä varten.\n\n   Päivitysten tarkistaminen on keskeytetty.\n
+	UpdateNoUpdateAvailable   = \n  Päivityksiä ei ole saatavilla.\n\n  olet juoksemassa {0}'s Solutions on uusin versio.\n
+	UpdateNotSatisfied        = \n  Päivitysohjelman vähimmäisversion vaatimukset eivät täyty, \n\n  Vähintään vaadittu versio: {0}\n\n  Lataa uudelleen {1}'s Solutions kopio työkalusta sen päivittämistä varten.\n\n  Päivitysten tarkistaminen on keskeytetty.\n
 '@

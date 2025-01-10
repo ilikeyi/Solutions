@@ -11,8 +11,6 @@
 	UpdateResetTips           = Kai atsisiuntimo adresas yra pasiekiamas, atsisiuntimas yra priverstinis ir atnaujinamas automatiškai.
 	UpdateCheckServerStatus   = Patikrinkite serverio būseną ( galimos {0} parinktys )
 	UpdateServerAddress       = Serverio adresas
-	UpdateServeravailable     = Būsena: Yra
-	UpdateServerUnavailable   = Būsena: nėra
 	UpdatePriority            = Jau nustatytas kaip prioritetas
 	UpdateServerTestFailed    = Nepavyko patikrinti serverio būsenos
 	UpdateQueryingUpdate      = Užklausa dėl atnaujinimų...
@@ -37,6 +35,6 @@
 	UpdateUpdateStop          = Atsisiunčiant naujinimą įvyko klaida ir atnaujinimo procesas buvo nutrauktas.
 	UpdateInstall             = Ar norite įdiegti šį naujinimą?
 	UpdateInstallSel          = Taip, aukščiau nurodytas naujinimas bus įdiegtas\nNe, naujinimas nebus įdiegtas
-	UpdateNoUpdateAvailable   = \n   Nėra jokių atnaujinimų.\n\n   tu bėgi {0}'s Solutions Naujausia galima versija.\n
-	UpdateNotSatisfied        = \n   Netenkinami minimalūs atnaujinimo programos versijos reikalavimai, \n\n   Minimali reikalinga versija: {0}\n\n   Atsisiųskite dar kartą {1}'s Solutions įrankio, skirto jį atnaujinti, kopiją.\n\n   Atnaujinimų tikrinimas buvo nutrauktas.\n
+	UpdateNoUpdateAvailable   = \n  Nėra jokių atnaujinimų.\n\n  tu bėgi {0}'s Solutions Naujausia galima versija.\n
+	UpdateNotSatisfied        = \n  Netenkinami minimalūs atnaujinimo programos versijos reikalavimai, \n\n  Minimali reikalinga versija: {0}\n\n  Atsisiųskite dar kartą {1}'s Solutions įrankio, skirto jį atnaujinti, kopiją.\n\n  Atnaujinimų tikrinimas buvo nutrauktas.\n
 '@

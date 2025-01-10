@@ -31,7 +31,7 @@ $Language = @(
 )
 
 ForEach ($Rule in $Language) {
-    Write-Host "`n   Rule name: $($Rule.Match)" -ForegroundColor Yellow; Write-Host "   $('-' * 80)"
+    Write-Host "`n   Rule name: $($Rule.Match)" -ForegroundColor Yellow; Write-Host "  $('-' * 80)"
     ForEach ($Component in $Initl_install_Language_Component) {
         if ($Component -like "*$($Rule.Match)*$($Lang)*") {
             Write-Host "   Component name: " -NoNewline; Write-Host $Component -ForegroundColor Green

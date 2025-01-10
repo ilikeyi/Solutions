@@ -11,8 +11,6 @@
 	UpdateResetTips           = Když je k dispozici adresa pro stahování, stahování je vynuceno a automaticky aktualizováno.
 	UpdateCheckServerStatus   = Zkontrolujte stav serveru ( dostupné možnosti: {0} )
 	UpdateServerAddress       = Adresa serveru
-	UpdateServeravailable     = Stav: K dispozici
-	UpdateServerUnavailable   = Stav: Není k dispozici
 	UpdatePriority            = Již nastaveno jako priorita
 	UpdateServerTestFailed    = Neúspěšný test stavu serveru
 	UpdateQueryingUpdate      = Dotaz na aktualizace...
@@ -37,6 +35,6 @@
 	UpdateUpdateStop          = Při stahování aktualizace došlo k chybě a proces aktualizace byl přerušen.
 	UpdateInstall             = Chcete nainstalovat tuto aktualizaci?
 	UpdateInstallSel          = Ano, výše uvedená aktualizace bude nainstalována\nNe, aktualizace nebude nainstalována
-	UpdateNoUpdateAvailable   = \n   Nejsou k dispozici žádné aktualizace.\n\n   běžíš {0}'s Solutions je nejnovější verze.\n
-	UpdateNotSatisfied        = \n   Nejsou splněny požadavky na minimální verzi aktualizačního programu, \n\n   Minimální požadovaná verze: {0}\n\n   Stáhněte si prosím znovu {1}'s Solutions kopii nástroje pro jeho aktualizaci. \n\n   Kontrola aktualizací byla přerušena.\n
+	UpdateNoUpdateAvailable   = \n  Nejsou k dispozici žádné aktualizace.\n\n  běžíš {0}'s Solutions je nejnovější verze.\n
+	UpdateNotSatisfied        = \n  Nejsou splněny požadavky na minimální verzi aktualizačního programu, \n\n  Minimální požadovaná verze: {0}\n\n  Stáhněte si prosím znovu {1}'s Solutions kopii nástroje pro jeho aktualizaci. \n\n  Kontrola aktualizací byla přerušena.\n
 '@

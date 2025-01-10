@@ -11,8 +11,6 @@
 	UpdateResetTips           = İndirme adresi mevcut olduğunda indirme otomatik olarak zorunlu hale getirilir ve güncellenir.
 	UpdateCheckServerStatus   = Sunucu durumunu kontrol edin ( {0} seçenek mevcut )
 	UpdateServerAddress       = Sunucu adresi
-	UpdateServeravailable     = Durum: Mevcut
-	UpdateServerUnavailable   = Durum: Mevcut değil
 	UpdatePriority            = Zaten öncelikli olarak ayarlandı
 	UpdateServerTestFailed    = Başarısız sunucu durumu testi
 	UpdateQueryingUpdate      = Güncellemeler sorgulanıyor...
@@ -37,6 +35,6 @@
 	UpdateUpdateStop          = Güncelleme indirilirken bir hata oluştu ve güncelleme işlemi iptal edildi.
 	UpdateInstall             = Bu güncelleştirmeyi yüklemek istiyor musunuz?
 	UpdateInstallSel          = Evet, yukarıdaki güncelleme yüklenecek\nHayır, güncelleme yüklenmeyecek
-	UpdateNoUpdateAvailable   = \n   Güncelleme mevcut değil.\n\n   koşuyorsun {0}'s Solutions Mevcut en son sürüm.\n
-	UpdateNotSatisfied        = \n   Minimum güncelleme programı sürüm gereksinimlerinin karşılanmaması, \n\n   Minimum gerekli sürüm: {0}\n\n   Lütfen tekrar indirin {1}'s Solutions güncellemek için aracın bir kopyası.\n\n   Güncellemelerin kontrol edilmesi iptal edildi.\n
+	UpdateNoUpdateAvailable   = \n  Güncelleme mevcut değil.\n\n  koşuyorsun {0}'s Solutions Mevcut en son sürüm.\n
+	UpdateNotSatisfied        = \n  Minimum güncelleme programı sürüm gereksinimlerinin karşılanmaması, \n\n  Minimum gerekli sürüm: {0}\n\n  Lütfen tekrar indirin {1}'s Solutions güncellemek için aracın bir kopyası.\n\n  Güncellemelerin kontrol edilmesi iptal edildi.\n
 '@

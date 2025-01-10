@@ -11,8 +11,6 @@
 	UpdateResetTips           = Kada je adresa za preuzimanje dostupna, preuzimanje se nameće i ažurira automatski.
 	UpdateCheckServerStatus   = Provjerite status poslužitelja ( dostupno {0} opcija )
 	UpdateServerAddress       = Adresa poslužitelja
-	UpdateServeravailable     = Status: Dostupan
-	UpdateServerUnavailable   = Status: Nije dostupno
 	UpdatePriority            = Već je postavljeno kao prioritet
 	UpdateServerTestFailed    = Neuspjeli test statusa poslužitelja
 	UpdateQueryingUpdate      = Upit za ažuriranja...
@@ -37,6 +35,6 @@
 	UpdateUpdateStop          = Došlo je do pogreške prilikom preuzimanja ažuriranja i postupak ažuriranja je prekinut.
 	UpdateInstall             = Želite li instalirati ovo ažuriranje?
 	UpdateInstallSel          = Da, gore navedeno ažuriranje bit će instalirano\nNe, ažuriranje neće biti instalirano
-	UpdateNoUpdateAvailable   = \n   Nema dostupnih ažuriranja.\n\n   ti trčiš {0}'s Solutions Najnovija dostupna verzija.\n
-	UpdateNotSatisfied        = \n   Zahtjevi minimalne verzije programa za ažuriranje nisu ispunjeni, \n\n   Minimalna potrebna verzija: {0}\n\n   Preuzmite ponovo {1}'s Solutions kopiju alata za njegovo ažuriranje.\n\n   Provjera ažuriranja je prekinuta.\n
+	UpdateNoUpdateAvailable   = \n  Nema dostupnih ažuriranja.\n\n  ti trčiš {0}'s Solutions Najnovija dostupna verzija.\n
+	UpdateNotSatisfied        = \n  Zahtjevi minimalne verzije programa za ažuriranje nisu ispunjeni, \n\n  Minimalna potrebna verzija: {0}\n\n  Preuzmite ponovo {1}'s Solutions kopiju alata za njegovo ažuriranje.\n\n  Provjera ažuriranja je prekinuta.\n
 '@

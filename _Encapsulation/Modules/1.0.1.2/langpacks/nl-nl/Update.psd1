@@ -11,8 +11,6 @@
 	UpdateResetTips           = Wanneer het downloadadres beschikbaar is, wordt de download geforceerd en automatisch bijgewerkt.
 	UpdateCheckServerStatus   = Controleer de serverstatus ( {0} opties beschikbaar )
 	UpdateServerAddress       = Serveradres
-	UpdateServeravailable     = Status: Beschikbaar
-	UpdateServerUnavailable   = Status: Niet beschikbaar
 	UpdatePriority            = Al ingesteld als prioriteit
 	UpdateServerTestFailed    = Mislukte serverstatustest
 	UpdateQueryingUpdate      = Vragen om updates...
@@ -37,6 +35,6 @@
 	UpdateUpdateStop          = Er is een fout opgetreden tijdens het downloaden van de update en het updateproces is afgebroken.
 	UpdateInstall             = Wil je deze update installeren?
 	UpdateInstallSel          = Ja, de bovenstaande update wordt geïnstalleerd\nNee, de update wordt niet geïnstalleerd
-	UpdateNoUpdateAvailable   = \n   Geen updates beschikbaar.\n\n   jij bent aan het rennen {0}'s Solutions De nieuwste beschikbare versie.\n
-	UpdateNotSatisfied        = \n   Er wordt niet voldaan aan de minimale vereisten voor de versie van het updateprogramma,\n\n   Minimaal vereiste versie: {0}\n\n   Download opnieuw {1}'s Solutions een kopie van het hulpprogramma om het bij te werken.\n\n   Het controleren op updates is afgebroken.\n
+	UpdateNoUpdateAvailable   = \n  Geen updates beschikbaar.\n\n  jij bent aan het rennen {0}'s Solutions De nieuwste beschikbare versie.\n
+	UpdateNotSatisfied        = \n  Er wordt niet voldaan aan de minimale vereisten voor de versie van het updateprogramma,\n\n  Minimaal vereiste versie: {0}\n\n  Download opnieuw {1}'s Solutions een kopie van het hulpprogramma om het bij te werken.\n\n  Het controleren op updates is afgebroken.\n
 '@

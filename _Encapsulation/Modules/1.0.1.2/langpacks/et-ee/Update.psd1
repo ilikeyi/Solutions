@@ -11,8 +11,6 @@
 	UpdateResetTips           = Kui allalaadimisaadress on saadaval, siis allalaadimine sunnitakse ja seda värskendatakse automaatselt.
 	UpdateCheckServerStatus   = Kontrolli serveri olekut ( saadaval on {0} valikut )
 	UpdateServerAddress       = Serveri aadress
-	UpdateServeravailable     = Olek: saadaval
-	UpdateServerUnavailable   = Olek: Pole saadaval
 	UpdatePriority            = Juba seatud prioriteediks
 	UpdateServerTestFailed    = Serveri oleku test ebaõnnestus
 	UpdateQueryingUpdate      = Värskenduste päring...
@@ -37,6 +35,6 @@
 	UpdateUpdateStop          = Värskenduse allalaadimisel ilmnes viga ja värskendusprotsess katkestati.
 	UpdateInstall             = Kas soovite selle värskenduse installida?
 	UpdateInstallSel          = Jah, ülaltoodud värskendus installitakse\nEi, värskendust ei installita
-	UpdateNoUpdateAvailable   = \n   Värskendusi pole saadaval.\n\n   sa jooksed {0}'s Solutions on uusim versioon.\n
-	UpdateNotSatisfied        = \n   Värskendusprogrammi versiooni miinimumnõuded ei ole täidetud, \n\n   Minimaalne nõutav versioon: {0}\n\n   Palun laadige uuesti alla {1}'s Solutions tööriista koopia selle värskendamiseks.\n\n   Värskenduste otsimine on katkestatud.\n
+	UpdateNoUpdateAvailable   = \n  Värskendusi pole saadaval.\n\n  sa jooksed {0}'s Solutions on uusim versioon.\n
+	UpdateNotSatisfied        = \n  Värskendusprogrammi versiooni miinimumnõuded ei ole täidetud, \n\n  Minimaalne nõutav versioon: {0}\n\n  Palun laadige uuesti alla {1}'s Solutions tööriista koopia selle värskendamiseks.\n\n  Värskenduste otsimine on katkestatud.\n
 '@

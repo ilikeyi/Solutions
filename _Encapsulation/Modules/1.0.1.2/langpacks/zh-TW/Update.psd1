@@ -11,8 +11,6 @@
 	UpdateResetTips           = 下載地址可用時，強制下載並自動更新。
 	UpdateCheckServerStatus   = 檢查服務器狀態 ( 共 {0} 個可選 )
 	UpdateServerAddress       = 服務器地址
-	UpdateServeravailable     = 狀態：可用
-	UpdateServerUnavailable   = 狀態：不可用
 	UpdatePriority            = 已設置為優先級
 	UpdateServerTestFailed    = 未通過服務器狀態測試
 	UpdateQueryingUpdate      = 正在查詢更新中...
@@ -37,6 +35,6 @@
 	UpdateUpdateStop          = 下載更新時發生錯誤，更新過程中止。
 	UpdateInstall             = 您要安裝此更新嗎？
 	UpdateInstallSel          = 是，將安裝上述更新\n否，則不會安裝該更新
-	UpdateNoUpdateAvailable   = \n   沒有可用的更新。 \n\n   您正在運行 {0}'s Solutions 的是最新版。\n
-	UpdateNotSatisfied        = \n   不滿足最低更新程序版本要求，\n\n   最低要求版本：{0}\n\n   請重新下載 {1}'s Solutions 的副本，以更新此工具。 \n\n   檢查更新已中止。 \n
+	UpdateNoUpdateAvailable   = \n  沒有可用的更新。 \n\n  您正在運行 {0}'s Solutions 的是最新版。\n
+	UpdateNotSatisfied        = \n  不滿足最低更新程序版本要求，\n\n  最低要求版本：{0}\n\n  請重新下載 {1}'s Solutions 的副本，以更新此工具。 \n\n  檢查更新已中止。 \n
 '@
