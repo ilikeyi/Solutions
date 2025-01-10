@@ -3997,12 +3997,11 @@ Function Image_Assign_Autopilot_Master
 			Get-ChildItem -Path "$($MainSources)\_ISO" -Directory -ErrorAction SilentlyContinue | ForEach-Object {
 				$NewEnglinePath = Convert-Path "$($PSScriptRoot)\..\..\..\..\.."
 				$TempFilePath = Join-Path -Path $NewEnglinePath -ChildPath "\_Custom\Engine"
-				$NewGroupName = [IO.Path]::GetFileName($_.FullName)
 
 				$UI_Main_Pre_Rule_Not_Find = New-Object system.Windows.Forms.LinkLabel -Property @{
 					Height         = 30
 					Width          = 435
-					Text           = $NewGroupName
+					Text           = [IO.Path]::GetFileName($_.FullName)
 					Tag            = $_.FullName
 					LinkColor      = "GREEN"
 					ActiveLinkColor = "RED"
@@ -4048,14 +4047,32 @@ Function Image_Assign_Autopilot_Master
 										Text      = $FileA
 										Tag       = $_.FullName
 									}
+									$Autopilot_Assign_Menu_ISO_Associated_Schemes_Show.controls.AddRange($CheckBox)
 
 									if ($SelectAssociation -contains $FileA) {
 										$CheckBox.Checked = $True
+
+										$AutopilotTestOffice = Get-Content -Raw -Path $_.FullName | ConvertFrom-Json
+										if ($AutopilotTestOffice.Deploy.ImageSource.Tasks.Solutions.Schome.Collection.Office.IsDeploy) {
+											$MatchIs = $True
+											$TestFullOffice = "$($PSScriptRoot)\..\..\..\..\..\_Custom\Office\$($AutopilotTestOffice.Deploy.ImageSource.Tasks.Solutions.Schome.Collection.Office.Version)\$($Global:Architecture)"
+
+											if (Test-Path -Path $TestFullOffice -PathType Container) {
+												Get-ChildItem -Path $TestFullOffice -directory -ErrorAction SilentlyContinue | ForEach-Object {
+													if (Test-Path -Path "$($_.FullName)\Data\v64.cab" -PathType Leaf) {
+														$MatchIs = $False
+													}
+												}
+											}
+
+											if ($MatchIs) {
+												$CheckBox.Checked = $False
+												$CheckBox.ForeColor = "RED"
+											}
+										}
 									} else {
 										$CheckBox.Checked = $False
 									}
-
-									$Autopilot_Assign_Menu_ISO_Associated_Schemes_Show.controls.AddRange($CheckBox)
 								} else {
 									$FileError    = New-Object system.Windows.Forms.Label -Property @{
 										Height    = 35
