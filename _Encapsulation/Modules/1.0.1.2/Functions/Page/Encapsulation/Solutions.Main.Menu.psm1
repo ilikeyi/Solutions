@@ -104,7 +104,8 @@ Function Mainpage
 	Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 	Write-Host
-	Write-Host "  $($lang.Setting) " -NoNewline
+	Write-Host "  " -NoNewline
+	Write-Host " $($lang.Setting) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " S'et * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ", $($lang.SelectSettingImage)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
