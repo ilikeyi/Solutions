@@ -304,6 +304,7 @@ Function Image_Init_Disk_Sources
 		.标记注册表位置
 	#>
 	$Path = "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions"
+
 	<#
 		.Set the validation disk tag
 		.设置验证磁盘标记
@@ -402,10 +403,8 @@ Function Image_Select
 		Write-Host "  $($lang.Logging): " -NoNewline -ForegroundColor Yellow
 		Write-Host "$($Global:LogsSaveFolder)\$($Global:LogSaveTo)" -ForegroundColor Green
 
-		$GetCurrentDiskTo = Get-ItemPropertyValue -Path $Path -Name "DiskTo" -ErrorAction SilentlyContinue
 		Write-Host "`n  $($lang.SelectSettingImage)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($GetCurrentDiskTo)" -ForegroundColor Green
 	}
 
 	<#
@@ -430,6 +429,9 @@ Function Image_Select
 		(
 			[switch]$IsForce
 		)
+
+		$GUIImageSourceGroupAPI_Rule_Path.BackColor = "#FFFFFF"
+		$GUIImageSourceGroupAPI_New_Path.BackColor = "#FFFFFF"
 
 		if (Verify_New_RuleName) {
 			if ($IsForce) {
@@ -488,8 +490,8 @@ Function Image_Select
 				$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.AddTo): $($GUIImageSourceGroupAPI_Rule_Path.Text), $($lang.Done)"
 				$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.Change): $($GUIImageSourceGroupAPI_Rule_Path.Text), $($lang.Done)"
 			}
-			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 
+			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			$GUIImageSourceGroupAPI_Rule_Path.Text = ""
 			$GUIImageSourceGroupAPI_Rule_Path.BackColor = "#FFFFFF"
 			$GUIImageSourceGroupAPI_New_Path.Text = ""
@@ -3755,6 +3757,7 @@ Function Image_Select
 		Text           = ""
 		add_Click      = {
 			$GUIImageSourceGroupAPI_Rule_Path.BackColor = "#FFFFFF"
+			$GUIImageSourceGroupAPI_New_Path.BackColor = "#FFFFFF"
 			$GUIImageSourceGroupAPIErrorMsg.Text = ""
 			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = $null
 		}
@@ -3785,6 +3788,7 @@ Function Image_Select
 		margin         = "25,0,0,20"
 		Text           = ""
 		add_Click      = {
+			$GUIImageSourceGroupAPI_Rule_Path.BackColor = "#FFFFFF"
 			$GUIImageSourceGroupAPI_New_Path.BackColor = "#FFFFFF"
 			$GUIImageSourceGroupAPIErrorMsg.Text = ""
 			$GUIImageSourceGroupAPIErrorMsg_Icon.Image = $null
