@@ -7324,7 +7324,8 @@ Function Solutions_Office_Copy_Config_Prerequisite
 		Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
 		Write-Host $_.FullName -ForegroundColor Green
 
-		Write-Host "  $($lang.Wim_Rule_Verify): " -NoNewline
+		Write-Host "  " -NoNewline
+		Write-Host " $($lang.Wim_Rule_Verify) " -NoNewline -BackgroundColor White -ForegroundColor Black
 		if (TestXMLFile -path $_.FullName) {
 			Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 		} else {
@@ -7870,7 +7871,9 @@ Function Solutions_Create_Deploy_Report
 	Write-Host "`n  $($lang.Wim_Rule_Check)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 	Write-Host "  $($Save_engine_to_new_path_json)"
-	Write-Host "  $($lang.Wim_Rule_Verify): " -NoNewline
+
+	Write-Host "  " -NoNewline
+	Write-Host " $($lang.Wim_Rule_Verify) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	try {
 		$Autopilot = Get-Content -Raw -Path $Save_engine_to_new_path_json | ConvertFrom-Json
 		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -8168,7 +8171,8 @@ $($Save_Microsoft_Windows_PE)
 	Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
 	Write-Host $FullFilename -ForegroundColor Green
 
-	Write-Host "  $($lang.Wim_Rule_Verify): " -NoNewline
+	Write-Host "  " -NoNewline
+	Write-Host " $($lang.Wim_Rule_Verify) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	if (TestXMLFile -path $FullFilename) {
 		Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 	} else {

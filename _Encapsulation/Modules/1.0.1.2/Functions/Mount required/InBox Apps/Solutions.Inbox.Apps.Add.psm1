@@ -2330,7 +2330,8 @@ Function InBox_Apps_Add_Match_Process
 					Write-Host "  $($CommandNewPrint)`n" -ForegroundColor Green
 				}
 
-				Write-Host "  $($lang.AddTo): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  " -NoNewline
+				Write-Host " $($lang.AddTo) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				try {
 					Invoke-Expression -Command $CommandNew
 					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -2393,7 +2394,8 @@ Function InBox_Apps_Add_Match_Process
 						Write-Host "  $($CommandNewPrint)`n" -ForegroundColor Green
 					}
 
-					Write-Host "  $($lang.AddTo): " -NoNewline -ForegroundColor Yellow
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.AddTo) " -NoNewline -BackgroundColor White -ForegroundColor Black
 					try {
 						Invoke-Expression -Command $CommandNew
 						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -2454,7 +2456,8 @@ Function InBox_Apps_Add_Match_Process
 						Write-Host "  $($CommandNewPrint)`n" -ForegroundColor Green
 					}
 
-					Write-Host "  $($lang.AddTo): " -NoNewline -ForegroundColor Yellow
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.AddTo) " -NoNewline -BackgroundColor White -ForegroundColor Black
 					try {
 						Invoke-Expression -Command $CommandNew
 						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White

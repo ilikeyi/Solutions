@@ -134,8 +134,10 @@ Function Solutions_API_Command
 						Write-Host "  $('-' * 80)"
 						Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
 						Write-Host $GetImportFileName -ForegroundColor Green
-						Write-Host "  $($lang.Running): " -NoNewline -ForegroundColor Yellow
-						Write-Host $lang.Done -BackgroundColor DarkGreen -ForegroundColor White
+
+						Write-Host "  " -NoNewline
+						Write-Host " $($lang.Running) " -NoNewline -BackgroundColor White -ForegroundColor Black
+						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
 						Get_Next
 					} else {

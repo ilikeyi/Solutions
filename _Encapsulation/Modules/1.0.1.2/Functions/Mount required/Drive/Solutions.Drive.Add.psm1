@@ -1172,8 +1172,11 @@ Function Drive_Add_Process
 							Write-Host "  $('-' * 80)`n"
 						}
 
-						Write-Host "  $($_.FullName)" -ForegroundColor Green
-						Write-Host "  $($lang.AddTo): " -NoNewline
+						Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+						Write-Host $_.FullName -ForegroundColor Green
+
+						Write-Host "  " -NoNewline
+						Write-Host " $($lang.AddTo) " -NoNewline -BackgroundColor White -ForegroundColor Black
 						Add-WindowsDriver -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Add.log" -Path $test_mount_folder_Current -Driver $_.FullName -Recurse -ForceUnsigned -ErrorAction SilentlyContinue | Out-Null
 						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 

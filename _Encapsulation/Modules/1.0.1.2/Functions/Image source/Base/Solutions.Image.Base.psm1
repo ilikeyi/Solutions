@@ -1916,9 +1916,9 @@ Function Menu_Shortcuts_PS_Cmd
 			Invoke-Expression -Command $item
 
 			Write-Host "  $('-' * 80)"
-			write-host "  $($lang.Running): " -NoNewline
-			Write-Host "$($item), " -ForegroundColor Green -NoNewline
-			Write-Host $lang.Done -BackgroundColor DarkGreen -ForegroundColor White
+			Write-Host "  $($item), " -ForegroundColor Green -NoNewline
+			Write-Host " $($lang.Running) " -NoNewline -BackgroundColor White -ForegroundColor Black
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		}
 	} else {
 		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
@@ -1939,7 +1939,8 @@ Function Menu_Shortcuts_PS_Cmd
 			Invoke-Expression $item
 
 			Write-Host "  $('-' * 80)"
-			write-host "  $($lang.Running): " -NoNewline
+			Write-Host "  " -NoNewline
+			Write-Host " $($lang.Running) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			Write-Host "$($item), " -ForegroundColor Green -NoNewline
 			Write-Host $lang.Done -BackgroundColor DarkGreen -ForegroundColor White
 			write-host

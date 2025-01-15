@@ -13,7 +13,8 @@
 			Write-Host $MainFolderFullname -ForegroundColor Green
 
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Wim_Rule_Verify): " -NoNewline
+			Write-Host "  " -NoNewline
+			Write-Host " $($lang.Wim_Rule_Verify) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			try {
 				$Autopilot = Get-Content -Raw -Path $MainFolderFullname | ConvertFrom-Json
 				Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White

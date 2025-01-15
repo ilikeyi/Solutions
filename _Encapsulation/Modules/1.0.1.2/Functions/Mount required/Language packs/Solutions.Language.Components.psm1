@@ -506,9 +506,11 @@ Function Cleanup_Components_Process
 		Write-Host "  $('-' * 80)"
 
 		ForEach ($item in $InitlClearLanguagePackage | Sort-Object -Descending) {
-			Write-Host "  $($item)" -ForegroundColor Green
+			Write-Host "  $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
+			Write-Host $item -ForegroundColor Green
 
-			Write-Host "  $($lang.Del): " -NoNewline
+			Write-Host "  " -NoNewline
+			Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
 				try {
 					Remove-AppxProvisionedPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove-AppxProvisionedPackage.log" -Path $test_mount_folder_Current -PackageName $item -ErrorAction SilentlyContinue | Out-Null

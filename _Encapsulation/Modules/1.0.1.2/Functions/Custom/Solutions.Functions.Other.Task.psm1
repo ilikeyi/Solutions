@@ -26,7 +26,9 @@ Function Other_Tasks_Clear
 		if (Verify_Is_Current_Same) {
 			$Local_Regedit_File_System = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\$((Get-Module -Name Solutions).Author)"
 			Write-Host "  $($Local_Regedit_File_System)" -ForegroundColor Green
-			Write-Host "  $($lang.Del): " -NoNewline
+			
+			Write-Host "  " -NoNewline
+			Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			if (Test-Path -Path $Local_Regedit_File_System -PathType Container) {
 				Remove_Tree -Path $Local_Regedit_File_System
 
@@ -262,7 +264,8 @@ Function Other_Tasks_RAMDISK
 					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "  $($lang.Running): " -NoNewline
+				Write-Host "  " -NoNewline
+				Write-Host " $($lang.Running) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				Invoke-Expression -Command "Format-Volume -DriveLetter $($item.DriveLetter) -NewFileSystemLabel ""$($item.Label)"""
 				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			}
@@ -332,14 +335,16 @@ Function Other_Tasks_RAMDISK_AR
 					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "  $($lang.Running): " -NoNewline
+				Write-Host "  " -NoNewline
+				Write-Host " $($lang.Running) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				Invoke-Expression -Command "Format-Volume -DriveLetter $($item.DriveLetter) -NewFileSystemLabel ""$($item.Label)"""
 				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			}
 
 			write-host "`n  $($lang.HistoryClearDismSave)"
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Del): " -NoNewline
+			Write-Host "  " -NoNewline
+			Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\WIMMount\Mounted Images\*" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 

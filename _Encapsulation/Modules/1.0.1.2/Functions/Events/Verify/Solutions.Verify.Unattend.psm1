@@ -13,7 +13,8 @@
 			Write-Host $MainFolderFullname -ForegroundColor Green
 
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.Wim_Rule_Verify): " -NoNewline
+			Write-Host "  " -NoNewline
+			Write-Host " $($lang.Wim_Rule_Verify) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			if (TestXMLFile -path $MainFolderFullname) {
 				Write-Host " $($lang.Check_Pass) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {

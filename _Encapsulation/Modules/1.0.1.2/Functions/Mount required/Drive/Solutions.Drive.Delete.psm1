@@ -1172,8 +1172,11 @@ Function Drive_Delete_Process
 							Write-Host "  $('-' * 80)`n"
 						}
 
-						Write-Host "  $($_.FullName)" -ForegroundColor Green
-						Write-Host "  $($lang.Del): " -NoNewline
+						Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+						Write-Host $_.FullName -ForegroundColor Green
+
+						Write-Host "  " -NoNewline
+						Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 						Remove-WindowsDriver -Path $test_mount_folder_Current -Driver $_.FullName -ErrorAction SilentlyContinue | Out-Null
 						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 

@@ -432,7 +432,8 @@ Function Update_And_Download
 			if ($SaveOldVersionShort -eq $SaveNewVersion) {
 				Write-Host "  $($lang.UpdateNotExecuted)"
 			} else {
-				Write-Host "  $($lang.AddTo): " -NoNewline -ForegroundColor Green
+				Write-Host "  " -NoNewline
+				Write-Host " $($lang.AddTo) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				Save_Dynamic -regkey "Solutions\Update" -name "IsUpdate_Clean" -value $SaveOldVersion -String
 				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			}

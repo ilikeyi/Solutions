@@ -488,7 +488,8 @@ Function InBox_Apps_Offline_Delete_Process
 					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "  $($lang.Del): " -NoNewline
+				Write-Host "  " -NoNewline
+				Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				try {
 					Remove-AppxProvisionedPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove-AppxProvisionedPackage.log" -Path $test_mount_folder_Current -PackageName $item -ErrorAction SilentlyContinue | Out-Null
 					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White

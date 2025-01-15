@@ -129,7 +129,8 @@ Function Image_Select_Export_UI
 										Write-Host "  $($lang.MountedIndex): " -NoNewline
 										Write-Host $itemDetail.ImageIndex -ForegroundColor Yellow
 
-										Write-Host "  $($lang.AddTo): " -NoNewline
+										Write-Host "  " -NoNewline
+										Write-Host " $($lang.AddTo) " -NoNewline -BackgroundColor White -ForegroundColor Black
 										try {
 											dism /ScratchDir:"""$(Get_Mount_To_Temp)""" /LogPath:"$(Get_Mount_To_Logs)\Export.log" /export-image /SourceImageFile:"""$($Global:Primary_Key_Image.FullPath)""" /swmfile:"""$($Global:Primary_Key_Image.Path)\$($Global:Primary_Key_Image.ImageFileName)*.$($Global:Primary_Key_Image.Suffix)""" /SourceIndex:"""$($itemDetail.ImageIndex)""" /DestinationImageFile:"""$($FileBrowser.FileName)""" /Compress:max /CheckIntegrity
 											Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -239,7 +240,8 @@ Function Image_Select_Export_UI
 						Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
 						Write-Host $TempReBuildWim -ForegroundColor Green
 
-						Write-Host "  $($lang.Wim_Rule_Verify): " -NoNewline
+						Write-Host "  " -NoNewline
+						Write-Host " $($lang.Wim_Rule_Verify) " -NoNewline -BackgroundColor White -ForegroundColor Black
 						if (Test-Path -Path $TempReBuildWim -PathType Leaf) {
 							Remove-Item -Path $Global:Primary_Key_Image.FullPath -ErrorAction SilentlyContinue
 							Rename-Item -Path $TempReBuildWim -NewName $Global:Primary_Key_Image.FullPath -ErrorAction SilentlyContinue

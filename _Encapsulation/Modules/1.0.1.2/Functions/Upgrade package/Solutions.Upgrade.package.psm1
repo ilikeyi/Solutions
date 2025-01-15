@@ -218,8 +218,8 @@ Function Update_Create_UI
 					Write-Host "  $($lang.SaveTo): " -NoNewline -ForegroundColor Yellow
 					Write-Host "$($NewConfig)\$($item.Name)" -ForegroundColor Green
 
-					Write-Host "  $($lang.AddTo): " -NoNewline
-
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.AddTo) " -NoNewline -BackgroundColor White -ForegroundColor Black
 					Start-Process powershell -ArgumentList "-File ""$($item.PSFile)"" $($MarkNewRunAction) -SaveTo ""$($NewConfig)\$($item.Name)""" -Wait -WindowStyle Minimized
 					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 

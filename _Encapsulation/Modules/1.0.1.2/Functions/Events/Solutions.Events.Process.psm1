@@ -974,7 +974,8 @@ Function Event_Process_Task_Need_Mount
 			Write-Host "  $('-' * 80)`n"
 		}
 
-		Write-Host "  $($lang.Running): " -NoNewline
+		Write-Host "  " -NoNewline
+		Write-Host " $($lang.Running) " -NoNewline -BackgroundColor White -ForegroundColor Black
 		Dism /Image:""$($test_mount_Sources)"" /cleanup-image /StartComponentCleanup /ResetBase
 		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
@@ -2011,7 +2012,8 @@ Function Healthy_Check_Process
 		}
 
 		try {
-			Write-Host "  $($lang.Running): " -NoNewline
+			Write-Host "  " -NoNewline
+			Write-Host " $($lang.Running) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			$Get_Image_Halter = (Repair-WindowsImage -Path $NewPath -ScanHealth -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Repair.log").ImageHealthState
 			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 

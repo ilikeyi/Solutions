@@ -4025,7 +4025,8 @@ Function ISO_Create_Process
 						Remove-Item -path "$($Global:ISOSaveToFullName).asc" -Force -ErrorAction SilentlyContinue
 
 						Write-Host "  * $($Global:ISOSaveToFullName).asc"
-						Write-Host "    $($lang.Uping): " -NoNewline
+						Write-Host "    " -NoNewline
+						Write-Host " $($lang.Uping) " -NoNewline -BackgroundColor White -ForegroundColor Black
 						if ([string]::IsNullOrEmpty($Global:secure_password)) {
 							$arguments = @(
 								"--local-user",
@@ -4108,7 +4109,8 @@ Function ISO_Create_Process
 			Write-Host "`n  $($lang.EmptyDirectory)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
 			if ($Global:EmptyDirectory) {
-				Write-Host "  $($lang.Del): " -NoNewline
+				Write-Host "  " -NoNewline
+				Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				Remove_Tree $Global:Image_source
 				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {

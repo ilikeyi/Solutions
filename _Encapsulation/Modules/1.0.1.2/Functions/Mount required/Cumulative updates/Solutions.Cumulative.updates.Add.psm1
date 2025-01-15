@@ -1899,7 +1899,8 @@ Function Update_Add_Process
 						Write-Host "  $($CommandNewPrint)`n" -ForegroundColor Green
 					}
 
-					Write-Host "  $($lang.AddTo): " -NoNewline
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.AddTo) " -NoNewline -BackgroundColor White -ForegroundColor Black
 					try {
 						Invoke-Expression -Command $CommandNew
 						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White

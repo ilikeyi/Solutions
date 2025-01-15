@@ -514,7 +514,8 @@ Function InBox_Apps_LIPs_Delete_Process
 					Write-Host "  $('-' * 80)`n"
 				}
 
-				Write-Host "  $($lang.Del): " -NoNewline
+				Write-Host "  " -NoNewline
+				Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				try {
 					Get-appxprovisionedpackage -Path $test_mount_folder_Current | where-object {
 						if ($_.packagename –like "*LanguageExperiencePack*$($item)*") {
@@ -562,9 +563,11 @@ Function InBox_Apps_LIPs_Delete_Process_add
 
 	$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
 
-	Write-Host "  $($packnewname)"
-	Write-Host "  $($lang.Del): " -NoNewline
+	Write-Host "  $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
+	Write-Host $packnewname -ForegroundColor Green
 
+	Write-Host "  " -NoNewline
+	Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	try {
 		Remove-AppxProvisionedPackage -Path $test_mount_folder_Current -PackageName $packnewname -ErrorAction SilentlyContinue | Out-Null
 		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White

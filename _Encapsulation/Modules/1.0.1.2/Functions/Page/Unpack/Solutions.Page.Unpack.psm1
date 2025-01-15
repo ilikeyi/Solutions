@@ -711,7 +711,8 @@ Function UnPack_Compression_Create_Format
 		switch ($Type) {
 			"z7" {
 				Write-Host "  * $($UnPackName).7z, 3GB"
-				Write-Host "    $($lang.Uping): " -NoNewline
+				Write-Host "    " -NoNewline
+				Write-Host " $($lang.Uping) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				if ($Script:BackupSoluionsExclude) {
 					$arguments = "a", "-m0=lzma2", "-v4096M", "$($TempFolderUnPack)\$($UnPackName).7z", "$($ArchiveExcludeUnPack)", "*.*", "-mcu=on", "-mx9";
 				} else {
@@ -724,7 +725,8 @@ Function UnPack_Compression_Create_Format
 			}
 			"zip" {
 				Write-Host "  * $($UnPackName).zip"
-				Write-Host "    $($lang.Uping): " -NoNewline
+				Write-Host "    " -NoNewline
+				Write-Host " $($lang.Uping) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				if ($Script:BackupSoluionsExclude) {
 					$arguments = "a", "-tzip", "$($TempFolderUnPack)\$($UnPackName).zip", "$($ArchiveExcludeUnPack)", "*.*", "-mcu=on", "-r", "-mx9";
 				} else {
@@ -735,7 +737,8 @@ Function UnPack_Compression_Create_Format
 
 				Write-Host "`n  * latest.zip"
 				if ($UI_Create_Latest_Zip.Checked) {
-					Write-Host "    $($lang.Uping): " -NoNewline
+					Write-Host "    " -NoNewline
+					Write-Host " $($lang.Uping) " -NoNewline -BackgroundColor White -ForegroundColor Black
 					Copy-Item "$($TempFolderUnPack)\$($UnPackName).zip" -Destination "$($TempFolderUnPack)\latest.zip" -ErrorAction SilentlyContinue
 					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 				} else {
@@ -746,7 +749,8 @@ Function UnPack_Compression_Create_Format
 			}
 			"tar" {
 				Write-Host "  * $($UnPackName).tar"
-				Write-Host "    $($lang.Uping): " -NoNewline
+				Write-Host "    " -NoNewline
+				Write-Host " $($lang.Uping) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				if ($Script:BackupSoluionsExclude) {
 					$arguments = "a", "$($TempFolderUnPack)\$($UnPackName).tar", "$($ArchiveExcludeUnPack)", "*.*", "-r";
 				} else {
@@ -759,7 +763,8 @@ Function UnPack_Compression_Create_Format
 			}
 			"xz" {
 				Write-Host "  * $($UnPackName).tar.xz"
-				Write-Host "    $($lang.Uping): " -NoNewline
+				Write-Host "    " -NoNewline
+				Write-Host " $($lang.Uping) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				if (Test-Path -Path "$($TempFolderUnPack)\$($UnPackName).tar") {
 					$arguments = "a", "$($TempFolderUnPack)\$($UnPackName).tar.xz", "$($TempFolderUnPack)\$($UnPackName).tar", "-mf=bcj", "-mx9";
 					Start-Process -FilePath $Verify_Install_Path -argument $arguments -Wait -WindowStyle Minimized
@@ -772,7 +777,8 @@ Function UnPack_Compression_Create_Format
 			}
 			"gz" {
 				Write-Host "  * $($UnPackName).tar.gz"
-				Write-Host "    $($lang.Uping): " -NoNewline
+				Write-Host "    " -NoNewline
+				Write-Host " $($lang.Uping) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				if (Test-Path -Path "$($TempFolderUnPack)\$($UnPackName).tar") {
 					$arguments = "a", "-tgzip", "$($TempFolderUnPack)\$($UnPackName).tar.gz", "$($TempFolderUnPack)\$($UnPackName).tar", "-mx9";
 					Start-Process -FilePath $Verify_Install_Path -argument $arguments -Wait -WindowStyle Minimized
@@ -805,7 +811,8 @@ Function UnPack_Create_SHA256_GPG
 
 	Get-ChildItem $Path -Recurse -Include ($UnPackigtype + $NewBuildTypeUnpack) -ErrorAction SilentlyContinue | ForEach-Object {
 		if (Test-Path -Path $_.FullName -PathType leaf) {
-			Write-Host "  $($_.FullName)" -ForegroundColor Green
+			Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+			Write-Host $_.FullName -ForegroundColor Green
 		}
 	}
 	Write-Host
@@ -823,7 +830,9 @@ Function UnPack_Create_SHA256_GPG
 			$Verify_Install_Path = Get_ASC -Run "gpg.exe"
 			if (Test-Path -Path $Verify_Install_Path -PathType leaf) {
 				Write-Host "    $($fullnewpathasc)"
-				Write-Host "    $($lang.Uping): " -NoNewline
+
+				Write-Host "    " -NoNewline
+				Write-Host " $($lang.Uping) " -NoNewline -BackgroundColor White -ForegroundColor Black
 
 				if ($Script:UnPackCreateASCClean) {
 					Remove-Item -path $fullnewpathasc -Force -ErrorAction SilentlyContinue
@@ -855,7 +864,8 @@ Function UnPack_Create_SHA256_GPG
 
 		if ($Script:UnPackCreateSHA256) {
 			Write-Host "    $($fullnewpath).sha256"
-			Write-Host "    $($lang.Uping): " -NoNewline
+			Write-Host "    " -NoNewline
+			Write-Host " $($lang.Uping) " -NoNewline -BackgroundColor White -ForegroundColor Black
 
 			if ($Script:UnPackCreateSHA256Clean) {
 				Remove-Item -Force -ErrorAction SilentlyContinue $fullnewpathsha256
@@ -912,8 +922,8 @@ Function Update_Create_Version
 	Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
 	Write-Host $New_latest_Json_File -ForegroundColor Green
 
-	Write-Host "  $($lang.Wim_Rule_Verify): " -NoNewline
-
+	Write-Host "  " -NoNewline
+	Write-Host " $($lang.Wim_Rule_Verify) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	try {
 		$Autopilot = Get-Content -Raw -Path $New_latest_Json_File | ConvertFrom-Json
 		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White

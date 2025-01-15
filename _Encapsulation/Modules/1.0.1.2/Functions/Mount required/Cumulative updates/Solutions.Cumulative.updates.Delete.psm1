@@ -1882,7 +1882,8 @@ Function Update_Del_Process
 					Write-Host "  $($lang.FullName): " -NoNewline -ForegroundColor Yellow
 					Write-Host $_.FullName -ForegroundColor Green
 
-					Write-Host "  $($lang.Del): " -NoNewline
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 					try {
 						Remove-WindowsPackage -Path $test_mount_folder_Current -PackagePath $_.FullName -ErrorAction SilentlyContinue | Out-Null
 						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
