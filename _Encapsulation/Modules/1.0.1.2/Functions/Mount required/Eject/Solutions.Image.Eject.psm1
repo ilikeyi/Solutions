@@ -1473,10 +1473,10 @@ Function Image_Save_Primary_Key_Shortcuts
 					Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 					Write-Host "  $('-' * 80)"
 					Write-Host "  Save-WindowsImage -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
-					Write-Host "  $('-' * 80)`n"
+					Write-Host "  $('-' * 80)"
 				}
 
-				Write-Host "  $($lang.Save): " -NoNewline
+				Write-Host "`n  $($lang.Save): " -NoNewline
 				Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $test_mount_folder_Current | Out-Null
 				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {

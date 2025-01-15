@@ -1270,7 +1270,7 @@ function Mount_Fix_Bad
 	dism /cleanup-wim | Out-Null
 	Clear-WindowsCorruptMountPoint -ErrorAction SilentlyContinue | Out-Null
 
-	Write-Host "  $($lang.RemoveDone)`n" -ForegroundColor Green
+	Write-Host "  $($lang.RemoveDone)" -ForegroundColor Green
 }
 
 function Mount_Fix_Dism
@@ -1280,7 +1280,7 @@ function Mount_Fix_Dism
 
 	Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\WIMMount\Mounted Images\*" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
 
-	Write-Host "  $($lang.RemoveDone)`n" -ForegroundColor Green
+	Write-Host "  $($lang.RemoveDone)" -ForegroundColor Green
 }
 
 function Solutions_Clear_Hostiry

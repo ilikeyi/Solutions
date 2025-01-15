@@ -1909,6 +1909,7 @@ Function Update_Add_Process
 					}
 
 					$UpdateTasksTime.Stop()
+
 					Write-Host "`n  $($lang.TimeEnd)" -NoNewline
 					Write-Host $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -ForegroundColor Yellow
 

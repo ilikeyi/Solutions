@@ -90,9 +90,10 @@ Function Image_Mount_Check
 				Write-Host "  $('-' * 80)`n"
 			}
 
+			Write-Host "  $($lang.Unmount): " -NoNewline
 			Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path $test_mount_folder -Discard -ErrorAction SilentlyContinue | Out-Null
 			Image_Mount_Force_Del -NewPath $test_mount_folder
-			Write-Host "  $($lang.Done)" -ForegroundColor Green
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		}
 		Check_Folder -chkpath $test_mount_folder
 
@@ -1564,6 +1565,8 @@ Function Menu_Shortcuts_PowerShell_functions_Unrestricted
 			}
 		}
 	}
+
+	$Global:Function_Unrestricted = @()
 }
 
 <#

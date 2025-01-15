@@ -2168,15 +2168,16 @@ Function InBox_Apps_LIPs_Add_Mark_Process
 		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Select_Queue_LXPs_Add_Custom_Select) {
 			Write-Host "  $($item.Path)"
+
 			if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_English_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
 				$shortname = [IO.Path]::GetFileName($item.Path)
 				if ($shortname -eq "en-US") {
 					Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
 				} else {
-					InBox_Apps_Add_Mark_Process -Path $($item.Path)
+					InBox_Apps_Add_Mark_Process -Path $item.Path
 				}
 			} else {
-				InBox_Apps_Add_Mark_Process -Path $($item.Path)
+				InBox_Apps_Add_Mark_Process -Path $item.Path
 			}
 		}
 	} else {

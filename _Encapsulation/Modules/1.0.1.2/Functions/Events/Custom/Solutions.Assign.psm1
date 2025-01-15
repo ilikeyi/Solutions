@@ -507,8 +507,9 @@ Function Event_Assign_Task_Customize
 				}
 				#endregion 处理扩展项任务
 
-				Image_Set_Global_Primary_Key -Uid $WildCard.Main.Uid -DevCode "18"
+				Image_Set_Global_Primary_Key -Uid $WildCard.Main.Uid -DevCode "588"
 				Event_Process_Task_Need_Mount
+				Image_Set_Global_Primary_Key -Uid $WildCard.Main.Uid -DevCode "588_End"
 				#endregion 已挂载主要项
 			} else {
 				Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
@@ -657,8 +658,9 @@ Function Event_Assign_Task_Customize
 							<#
 								.处理主要项
 							#>
-							Image_Set_Global_Primary_Key -Uid $WildCard.Main.Uid -DevCode "22"
+							Image_Set_Global_Primary_Key -Uid $WildCard.Main.Uid -DevCode "2266"
 							Event_Process_Task_Need_Mount
+							Image_Set_Global_Primary_Key -Uid $WildCard.Main.Uid -DevCode "2266_End"
 						}
 
 						if ($Global:Developers_Mode) {

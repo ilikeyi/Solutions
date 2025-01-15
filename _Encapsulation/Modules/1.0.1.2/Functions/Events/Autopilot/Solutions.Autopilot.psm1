@@ -75,6 +75,7 @@ Function Event_Assign_Task_Customize_Autopilot
 
 				Image_Set_Global_Primary_Key -Uid $WildCard.Main.Uid -DevCode "18"
 				Event_Process_Task_Need_Mount
+				Image_Set_Global_Primary_Key -Uid $WildCard.Main.Uid -DevCode "18_End"
 				#endregion 已挂载主要项
 			} else {
 				Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
@@ -225,6 +226,7 @@ Function Event_Assign_Task_Customize_Autopilot
 							#>
 							Image_Set_Global_Primary_Key -Uid $WildCard.Main.Uid -DevCode "2233333"
 							Event_Process_Task_Need_Mount
+							Image_Set_Global_Primary_Key -Uid $WildCard.Main.Uid -DevCode "2233333_End"
 						}
 
 						if ($Global:Developers_Mode) {
@@ -714,6 +716,9 @@ Function Run_Expand
 										Write-Host "  $($lang.Select_Path)" -ForegroundColor Yellow
 										Write-Host "  $($NewExpand.Path)\$($NewExpand.ImageFileName).$($NewExpand.Suffix)`n" -ForegroundColor Green
 
+										<#
+											.挂载主文件
+										#>
 										Image_Mount_Check -MountFileName "$($NewExpand.Path)\$($NewExpand.ImageFileName).$($NewExpand.Suffix)" -Index $itemBB.Index
 										Expand_Process_abc_Autopilot -NewUid $NewUid -MainUid $NewMain.ImageFileName -ExpandUid $NewExpand.ImageFileName -NewUpdatePath $NewExpand.UpdatePath -ImageFileMount "$($NewExpand.Path)\$($NewExpand.ImageFileName).$($NewExpand.Suffix)"
 									} else {

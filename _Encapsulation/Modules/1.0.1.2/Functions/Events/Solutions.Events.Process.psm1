@@ -254,6 +254,7 @@ Function Event_Process_Task_Need_Mount
 		}
 
 		$Script:LanguageAddTasksTime.Stop()
+
 		Write-Host "`n  $($lang.Language): $($lang.AddTo), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
@@ -338,6 +339,7 @@ Function Event_Process_Task_Need_Mount
 		}
 
 		$Script:LanguageDelTasksTime.Stop()
+
 		Write-Host "`n  $($lang.Language): $($lang.Del), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
@@ -393,6 +395,7 @@ Function Event_Process_Task_Need_Mount
 		Cleanup_Components_Process
 
 		$Script:ComponentsClearTasksTime.Stop()
+
 		Write-Host "`n  $($lang.OnlyLangCleanup), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
@@ -438,6 +441,7 @@ Function Event_Process_Task_Need_Mount
 		InBox_Apps_LIPs_Clean_Process
 
 		$Script:InBoxAppsDeletePreTasksTime.Stop()
+
 		Write-Host "`n  $($lang.InboxAppsClear), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
@@ -477,6 +481,7 @@ Function Event_Process_Task_Need_Mount
 		InBox_Apps_LIPs_Add_Mark_Process
 
 		$Script:InBoxAppsAddTasksTime.Stop()
+
 		Write-Host "`n  $($lang.LocalExperiencePack): $($lang.AddTo), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
@@ -516,6 +521,7 @@ Function Event_Process_Task_Need_Mount
 		InBox_Apps_Add_Process
 
 		$Script:InBoxAppsInstallNewTasksTime.Stop()
+
 		Write-Host "`n  $($lang.InboxAppsManager): $($lang.AddTo), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
@@ -556,6 +562,7 @@ Function Event_Process_Task_Need_Mount
 		InBox_Apps_LIPs_Delete_Process
 
 		$Script:LXPsDelTasksTime.Stop()
+
 		Write-Host "`n  $($lang.LocalExperiencePack): $($lang.Del), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
@@ -596,6 +603,7 @@ Function Event_Process_Task_Need_Mount
 		InBox_Apps_LIPs_Add_Process
 
 		$Script:LXPsAddTasksTime.Stop()
+
 		Write-Host "`n  $($lang.LocalExperiencePack): $($lang.Update), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
@@ -676,6 +684,7 @@ Function Event_Process_Task_Need_Mount
 		InBox_Apps_Match_Delete_Process
 
 		$Script:LXPsDeleteMatchTasksTime.Stop()
+
 		Write-Host "`n  $($lang.InboxAppsMatchDel), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
@@ -715,6 +724,7 @@ Function Event_Process_Task_Need_Mount
 		InBox_Apps_Offline_Delete_Process
 
 		$Script:LXPsDeleteOfflineTasksTime.Stop()
+
 		Write-Host "`n  $($lang.InboxAppsManager): $($lang.InboxAppsOfflineDel), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
@@ -754,6 +764,7 @@ Function Event_Process_Task_Need_Mount
 		Inbox_Apps_Hard_Links_Optimize
 
 		$Script:InBoxAppsOptimizeTasksTime.Stop()
+
 		Write-Host "`n  $($lang.Optimize_Appx_Package), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
@@ -793,7 +804,8 @@ Function Event_Process_Task_Need_Mount
 		Update_Add_Process
 
 		$Script:OSUpdateAddTasksTime.Stop()
-		Write-Host "`n  $($lang.CUpdate): $($lang.AddTo), $($lang.Done)" -ForegroundColor Yellow
+
+		Write-Host "  $($lang.CUpdate): $($lang.AddTo), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:OSUpdateAddTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
@@ -832,7 +844,8 @@ Function Event_Process_Task_Need_Mount
 		Update_Del_Process
 
 		$Script:OSUpdateDelTasksTime.Stop()
-		Write-Host "`n  $($lang.CUpdate): $($lang.Del), $($lang.Done)" -ForegroundColor Yellow
+
+		Write-Host "  $($lang.CUpdate): $($lang.Del), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
 		Write-Host "$($Script:OSUpdateDelTasksTimeStart -f "yyyy/MM/dd HH:mm:ss tt")" -ForegroundColor Yellow
@@ -871,6 +884,7 @@ Function Event_Process_Task_Need_Mount
 		Drive_Add_Process
 
 		$Script:DriveAddTasksTime.Stop()
+
 		Write-Host "`n  $($lang.Drive): $($lang.AddTo), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
@@ -910,6 +924,7 @@ Function Event_Process_Task_Need_Mount
 		Drive_Delete_Process
 
 		$Script:DriveDelTasksTime.Stop()
+
 		Write-Host "`n  $($lang.Drive): $($lang.Del), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
@@ -959,9 +974,12 @@ Function Event_Process_Task_Need_Mount
 			Write-Host "  $('-' * 80)`n"
 		}
 
+		Write-Host "  $($lang.Running): " -NoNewline
 		Dism /Image:""$($test_mount_Sources)"" /cleanup-image /StartComponentCleanup /ResetBase
+		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
 		$Script:CuringUpdateTasksTime.Stop()
+
 		Write-Host "`n  $($lang.CuringUpdate), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
@@ -1000,6 +1018,7 @@ Function Event_Process_Task_Need_Mount
 		Image_Clear_Superseded
 
 		$Script:SupersededClearTasksTime.Stop()
+
 		Write-Host "`n  $($lang.Superseded), $($lang.Done)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.TimeStart)" -NoNewline
@@ -1106,7 +1125,7 @@ Function Event_Process_Task_Need_Mount
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 77)"
 				Write-Host "  Dism.exe /Image:""$($test_mount_Sources)"" /Get-Intl" -ForegroundColor Green
-				Write-Host "  $('-' * 77)`n"
+				Write-Host "  $('-' * 77)"
 			}
 
 			$Get_Index_Now = Image_Get_Mount_Index
@@ -1265,6 +1284,7 @@ Function Event_Process_Task_Need_Mount
 
 						Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 						Write-Host $itemExpandNew.Uid -ForegroundColor Green
+						Image_Set_Global_Primary_Key -Silent -Uid $itemExpandNew.Uid -DevCode "100100"
 
 						Write-Host "  $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
 						Write-Host $Temp_Do_Not_Save_Path -ForegroundColor Green
@@ -1320,7 +1340,7 @@ Function Event_Process_Task_Need_Mount
 									Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 									Write-Host "  $('-' * 80)"
 									Write-Host "  Save-WindowsImage -Path ""$($test_mount_Sources_Expand)""" -ForegroundColor Green
-									Write-Host "  $('-' * 80)`n"
+									Write-Host "  $('-' * 80)"
 								}
 
 								Write-Host "`n  $($lang.Save): " -NoNewline
@@ -1359,11 +1379,13 @@ Function Event_Process_Task_Need_Mount
 									Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 									Write-Host "  $('-' * 80)"
 									Write-Host "  Dismount-WindowsImage -Path ""$($Temp_Do_Not_Save_Path)"" -Discard" -ForegroundColor Green
-									Write-Host "  $('-' * 80)`n"
+									Write-Host "  $('-' * 80)"
 								}
 
+								Write-Host "  $($lang.Unmount): " -NoNewline
 								Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Temp_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 								Image_Mount_Force_Del -NewPath "$($Temp_Do_Not_Save_Path)"
+								Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
 								<#
 									.检查了已挂载后，判断目录是否存在，再次删除。
@@ -1380,8 +1402,10 @@ Function Event_Process_Task_Need_Mount
 										Write-Host "  $('-' * 80)`n"
 									}
 
+									Write-Host "  $($lang.Unmount): " -NoNewline
 									Dismount-WindowsImage -ScratchDirectory $(Get_Mount_To_Temp) -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Temp_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 									Image_Mount_Force_Del -NewPath "$($Temp_Do_Not_Save_Path)"
+									Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 								}
 
 								Write-Host "  $($lang.Done)" -ForegroundColor Green
@@ -1414,6 +1438,7 @@ Function Event_Process_Task_Need_Mount
 
 		Write-Host "`n  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 		Write-Host $Global:Primary_Key_Image.Uid -ForegroundColor Green
+
 		Write-Host "`n  $($lang.Save)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		$test_mount_Sources = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
@@ -1427,10 +1452,12 @@ Function Event_Process_Task_Need_Mount
 			Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
 			Write-Host "  Save-WindowsImage -Path ""$($test_mount_Sources)""" -ForegroundColor Green
-			Write-Host "  $('-' * 80)`n"
+			Write-Host "  $('-' * 80)"
 		}
 
+		Write-Host "`n  $($lang.Save): " -NoNewline
 		Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $test_mount_Sources | Out-Null
+		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
 		$Script:EjectSaveTasksTime.Stop()
 
@@ -1529,8 +1556,10 @@ Function Event_Process_Task_Need_Mount
 									Write-Host "  $('-' * 80)`n"
 								}
 
+								Write-Host "  $($lang.Unmount): " -NoNewline
 								Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Temp_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 								Image_Mount_Force_Del -NewPath "$($Temp_Do_Not_Save_Path)"
+								Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 							}
 
 							if (Test-Path -Path $Temp_Do_Not_Save_Path -PathType Container) {
@@ -1545,8 +1574,10 @@ Function Event_Process_Task_Need_Mount
 									Write-Host "  $('-' * 80)`n"
 								}
 
+								Write-Host "  $($lang.Unmount): " -NoNewline
 								Dismount-WindowsImage -ScratchDirectory $(Get_Mount_To_Temp) -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Temp_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 								Image_Mount_Force_Del -NewPath "$($Temp_Do_Not_Save_Path)"
+								Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 							}
 
 							Write-Host "  $($lang.Done)" -ForegroundColor Green
@@ -1577,7 +1608,6 @@ Function Event_Process_Task_Need_Mount
 		#>
 		Write-Host "`n  $($lang.Mounted_Status)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.Unmount)" -ForegroundColor Yellow
 		if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)").Value) {
 			Write-Host "  $($lang.Mounted)"
 
@@ -1592,8 +1622,10 @@ Function Event_Process_Task_Need_Mount
 				Write-Host "  $('-' * 80)`n"
 			}
 
+			Write-Host "  $($lang.Unmount): " -NoNewline
 			Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Temp_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 			Image_Mount_Force_Del -NewPath "$($Temp_Do_Not_Save_Path)"
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		}
 
 		<#
@@ -1611,8 +1643,10 @@ Function Event_Process_Task_Need_Mount
 				Write-Host "  $('-' * 80)`n"
 			}
 
+			Write-Host "  $($lang.Unmount): " -NoNewline
 			Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Temp_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 			Image_Mount_Force_Del -NewPath "$($Temp_Do_Not_Save_Path)"
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 		}
 
 		$Script:EjectDoNotSaveTasksTime.Stop()
@@ -1977,9 +2011,11 @@ Function Healthy_Check_Process
 		}
 
 		try {
+			Write-Host "  $($lang.Running): " -NoNewline
 			$Get_Image_Halter = (Repair-WindowsImage -Path $NewPath -ScanHealth -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Repair.log").ImageHealthState
+			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
-			Write-Host "  $($lang.MatchMode): " -NoNewline
+			Write-Host "`n  $($lang.MatchMode): " -NoNewline
 			Write-Host $Get_Image_Halter -ForegroundColor Yellow
 
 			switch ($Get_Image_Halter) {
@@ -2077,6 +2113,7 @@ Function Eject_Forcibly_All
 								Write-Host "  $('-' * 80)`n"
 							}
 
+							Write-Host "  $($lang.Save): " -NoNewline
 							Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $Eject_Expand_Do_Not_Save_Path | Out-Null
 							Write-Host "    $($lang.Done)" -ForegroundColor Green
 						} else {
@@ -2097,15 +2134,19 @@ Function Eject_Forcibly_All
 								Write-Host "  $('-' * 80)`n"
 							}
 
+							Write-Host "  $($lang.Unmount): " -NoNewline
 							Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Eject_Expand_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 							Image_Mount_Force_Del -NewPath "$($Eject_Expand_Do_Not_Save_Path)"
+							Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
 							<#
 								.检查了已挂载后，判断目录是否存在，再次删除。
 							#>
 							if (Test-Path -Path $Eject_Expand_Do_Not_Save_Path -PathType Container) {
+								Write-Host "  $($lang.Unmount): " -NoNewline
 								Dismount-WindowsImage -ScratchDirectory $(Get_Mount_To_Temp) -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Eject_Expand_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 								Image_Mount_Force_Del -NewPath "$($Eject_Expand_Do_Not_Save_Path)"
+								Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 							}
 
 							Write-Host "    $($lang.Done)" -ForegroundColor Green
@@ -2162,15 +2203,19 @@ Function Eject_Forcibly_All
 						Write-Host "  $('-' * 80)`n"
 					}
 
+					Write-Host "  $($lang.Unmount): " -NoNewline
 					Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Eject_Main_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 					Image_Mount_Force_Del -NewPath "$($Eject_Main_Do_Not_Save_Path)"
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
 					<#
 						.检查了已挂载后，判断目录是否存在，再次删除。
 					#>
 					if (Test-Path -Path $Eject_Main_Do_Not_Save_Path -PathType Container) {
+						Write-Host "  $($lang.Unmount): " -NoNewline
 						Dismount-WindowsImage -ScratchDirectory $(Get_Mount_To_Temp) -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Eject_Main_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 						Image_Mount_Force_Del -NewPath "$($Eject_Main_Do_Not_Save_Path)"
+						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 					}
 
 					Write-Host "  $($lang.Done)" -ForegroundColor Green

@@ -542,7 +542,7 @@ Function InBox_Apps_LIPs_Delete_Process
 			} else {
 				Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				Write-Host "  $($lang.NotMounted)`n" -ForegroundColor Red
+				Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 			}
 		}
 	} else {
