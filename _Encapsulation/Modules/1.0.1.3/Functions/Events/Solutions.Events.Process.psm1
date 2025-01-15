@@ -1285,7 +1285,6 @@ Function Event_Process_Task_Need_Mount
 
 						Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 						Write-Host $itemExpandNew.Uid -ForegroundColor Green
-						Image_Set_Global_Primary_Key -Silent -Uid $itemExpandNew.Uid -DevCode "100100"
 
 						Write-Host "  $($lang.Select_Path): " -NoNewline -ForegroundColor Yellow
 						Write-Host $Temp_Do_Not_Save_Path -ForegroundColor Green

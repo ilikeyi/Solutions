@@ -2177,8 +2177,6 @@ Function InBox_Apps_Add_Match_Process
 				if ($DependencyPackage.count -gt 0) {
 					Write-Host "$($DependencyPackage.count) $($lang.EventManagerCount)" -ForegroundColor Green
 					Write-Host "  $('.' * 80)"
-					Write-Host "  $($lang.AddQueue)" -ForegroundColor Yellow
-					Write-Host "  $('.' * 80)"
 					foreach ($itemdp in $DependencyPackage) {
 						Write-Host "  $($itemdp)"
 					}
