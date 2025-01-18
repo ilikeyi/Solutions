@@ -90,7 +90,8 @@ Function Image_Mount_Check
 				Write-Host "  $('-' * 80)`n"
 			}
 
-			Write-Host "  $($lang.Unmount): " -NoNewline
+			Write-Host "  " -NoNewline
+			Write-Host " $($lang.Unmount) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path $test_mount_folder -Discard -ErrorAction SilentlyContinue | Out-Null
 			Image_Mount_Force_Del -NewPath $test_mount_folder
 			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White

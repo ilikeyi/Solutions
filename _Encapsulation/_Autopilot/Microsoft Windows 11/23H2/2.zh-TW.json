@@ -491,7 +491,7 @@
 								"IsEvent": {
 									"CuringUpdate": true,
 									"Superseded": {
-										"IsSuperseded": false,
+										"IsSuperseded": true,
 										"ExcludeRules": true
 									}
 								}
@@ -506,7 +506,7 @@
 								"IsEvent": {
 									"CuringUpdate": true,
 									"Superseded": {
-										"IsSuperseded": false,
+										"IsSuperseded": true,
 										"ExcludeRules": true
 									}
 								}
@@ -546,7 +546,7 @@
 						"More": {
 							"CuringUpdate": false,
 							"Superseded": {
-								"IsSuperseded": false,
+								"IsSuperseded": true,
 								"ExcludeRules": true
 							},
 							"Healthy": true,
@@ -622,7 +622,7 @@
 								"IsEvent": {
 									"CuringUpdate": true,
 									"Superseded": {
-										"IsSuperseded": false,
+										"IsSuperseded": true,
 										"ExcludeRules": true
 									}
 								}
@@ -637,7 +637,7 @@
 								"IsEvent": {
 									"CuringUpdate": true,
 									"Superseded": {
-										"IsSuperseded": false,
+										"IsSuperseded": true,
 										"ExcludeRules": true
 									}
 								}
@@ -664,7 +664,7 @@
 						"More": {
 							"CuringUpdate": false,
 							"Superseded": {
-								"IsSuperseded": false,
+								"IsSuperseded": true,
 								"ExcludeRules": true
 							},
 							"Healthy": false,
@@ -743,7 +743,7 @@
 								"IsEvent": {
 									"CuringUpdate": true,
 									"Superseded": {
-										"IsSuperseded": false,
+										"IsSuperseded": true,
 										"ExcludeRules": true
 									}
 								}
@@ -758,7 +758,7 @@
 								"IsEvent": {
 									"CuringUpdate": true,
 									"Superseded": {
-										"IsSuperseded": false,
+										"IsSuperseded": true,
 										"ExcludeRules": true
 									}
 								}
@@ -791,7 +791,7 @@
 						"More": {
 							"CuringUpdate": false,
 							"Superseded": {
-								"IsSuperseded": false,
+								"IsSuperseded": true,
 								"ExcludeRules": true
 							},
 							"Healthy": false,

@@ -1343,7 +1343,9 @@ Function Event_Process_Task_Need_Mount
 									Write-Host "  $('-' * 80)"
 								}
 
-								Write-Host "`n  $($lang.Save): " -NoNewline
+								Write-Host
+								Write-Host "  " -NoNewline
+								Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
 								Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $test_mount_Sources_Expand | Out-Null
 								Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 							} else {
@@ -1382,7 +1384,8 @@ Function Event_Process_Task_Need_Mount
 									Write-Host "  $('-' * 80)"
 								}
 
-								Write-Host "  $($lang.Unmount): " -NoNewline
+								Write-Host "  " -NoNewline
+								Write-Host " $($lang.Unmount) " -NoNewline -BackgroundColor White -ForegroundColor Black
 								Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Temp_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 								Image_Mount_Force_Del -NewPath "$($Temp_Do_Not_Save_Path)"
 								Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -1402,7 +1405,8 @@ Function Event_Process_Task_Need_Mount
 										Write-Host "  $('-' * 80)`n"
 									}
 
-									Write-Host "  $($lang.Unmount): " -NoNewline
+									Write-Host "  " -NoNewline
+									Write-Host " $($lang.Unmount) " -NoNewline -BackgroundColor White -ForegroundColor Black
 									Dismount-WindowsImage -ScratchDirectory $(Get_Mount_To_Temp) -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Temp_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 									Image_Mount_Force_Del -NewPath "$($Temp_Do_Not_Save_Path)"
 									Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -1455,7 +1459,9 @@ Function Event_Process_Task_Need_Mount
 			Write-Host "  $('-' * 80)"
 		}
 
-		Write-Host "`n  $($lang.Save): " -NoNewline
+		Write-Host
+		Write-Host "  " -NoNewline
+		Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
 		Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $test_mount_Sources | Out-Null
 		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
@@ -1556,7 +1562,8 @@ Function Event_Process_Task_Need_Mount
 									Write-Host "  $('-' * 80)`n"
 								}
 
-								Write-Host "  $($lang.Unmount): " -NoNewline
+								Write-Host "  " -NoNewline
+								Write-Host " $($lang.Unmount) " -NoNewline -BackgroundColor White -ForegroundColor Black
 								Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Temp_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 								Image_Mount_Force_Del -NewPath "$($Temp_Do_Not_Save_Path)"
 								Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -1574,7 +1581,8 @@ Function Event_Process_Task_Need_Mount
 									Write-Host "  $('-' * 80)`n"
 								}
 
-								Write-Host "  $($lang.Unmount): " -NoNewline
+								Write-Host "  " -NoNewline
+								Write-Host " $($lang.Unmount) " -NoNewline -BackgroundColor White -ForegroundColor Black
 								Dismount-WindowsImage -ScratchDirectory $(Get_Mount_To_Temp) -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Temp_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 								Image_Mount_Force_Del -NewPath "$($Temp_Do_Not_Save_Path)"
 								Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -1622,7 +1630,8 @@ Function Event_Process_Task_Need_Mount
 				Write-Host "  $('-' * 80)`n"
 			}
 
-			Write-Host "  $($lang.Unmount): " -NoNewline
+			Write-Host "  " -NoNewline
+			Write-Host " $($lang.Unmount) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Temp_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 			Image_Mount_Force_Del -NewPath "$($Temp_Do_Not_Save_Path)"
 			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -1643,7 +1652,8 @@ Function Event_Process_Task_Need_Mount
 				Write-Host "  $('-' * 80)`n"
 			}
 
-			Write-Host "  $($lang.Unmount): " -NoNewline
+			Write-Host "  " -NoNewline
+			Write-Host " $($lang.Unmount) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Temp_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 			Image_Mount_Force_Del -NewPath "$($Temp_Do_Not_Save_Path)"
 			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -2114,7 +2124,8 @@ Function Eject_Forcibly_All
 								Write-Host "  $('-' * 80)`n"
 							}
 
-							Write-Host "  $($lang.Save): " -NoNewline
+							Write-Host "  " -NoNewline
+							Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
 							Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $Eject_Expand_Do_Not_Save_Path | Out-Null
 							Write-Host "    $($lang.Done)" -ForegroundColor Green
 						} else {
@@ -2135,7 +2146,8 @@ Function Eject_Forcibly_All
 								Write-Host "  $('-' * 80)`n"
 							}
 
-							Write-Host "  $($lang.Unmount): " -NoNewline
+							Write-Host "  " -NoNewline
+							Write-Host " $($lang.Unmount) " -NoNewline -BackgroundColor White -ForegroundColor Black
 							Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Eject_Expand_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 							Image_Mount_Force_Del -NewPath "$($Eject_Expand_Do_Not_Save_Path)"
 							Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -2144,7 +2156,8 @@ Function Eject_Forcibly_All
 								.检查了已挂载后，判断目录是否存在，再次删除。
 							#>
 							if (Test-Path -Path $Eject_Expand_Do_Not_Save_Path -PathType Container) {
-								Write-Host "  $($lang.Unmount): " -NoNewline
+								Write-Host "  " -NoNewline
+								Write-Host " $($lang.Unmount) " -NoNewline -BackgroundColor White -ForegroundColor Black
 								Dismount-WindowsImage -ScratchDirectory $(Get_Mount_To_Temp) -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Eject_Expand_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 								Image_Mount_Force_Del -NewPath "$($Eject_Expand_Do_Not_Save_Path)"
 								Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -2183,7 +2196,9 @@ Function Eject_Forcibly_All
 						Write-Host "  $('-' * 80)`n"
 					}
 
-					Write-Host "`n  $($lang.Save): " -NoNewline
+					Write-Host
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
 					Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $Eject_Main_Do_Not_Save_Path | Out-Null
 					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 				} else {
@@ -2204,7 +2219,8 @@ Function Eject_Forcibly_All
 						Write-Host "  $('-' * 80)`n"
 					}
 
-					Write-Host "  $($lang.Unmount): " -NoNewline
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.Unmount) " -NoNewline -BackgroundColor White -ForegroundColor Black
 					Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Eject_Main_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 					Image_Mount_Force_Del -NewPath "$($Eject_Main_Do_Not_Save_Path)"
 					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -2213,7 +2229,8 @@ Function Eject_Forcibly_All
 						.检查了已挂载后，判断目录是否存在，再次删除。
 					#>
 					if (Test-Path -Path $Eject_Main_Do_Not_Save_Path -PathType Container) {
-						Write-Host "  $($lang.Unmount): " -NoNewline
+						Write-Host "  " -NoNewline
+						Write-Host " $($lang.Unmount) " -NoNewline -BackgroundColor White -ForegroundColor Black
 						Dismount-WindowsImage -ScratchDirectory $(Get_Mount_To_Temp) -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($Eject_Main_Do_Not_Save_Path)" -Discard -ErrorAction SilentlyContinue | Out-Null
 						Image_Mount_Force_Del -NewPath "$($Eject_Main_Do_Not_Save_Path)"
 						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White

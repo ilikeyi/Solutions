@@ -499,7 +499,8 @@ Function Feature_Enabled_Match_Process
 						Write-Host "  $('-' * 80)`n"
 					}
 
-					Write-Host "  $($lang.Enable): " -NoNewline
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.Enable) " -NoNewline -BackgroundColor White -ForegroundColor Black
 					Enable-WindowsOptionalFeature -Path $TestFolderMountCurrent -FeatureName $item -Source $TestFolderMountSxs, $TestFolderMountRoute -All -LimitAccess | Out-Null
 					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 				} else {
@@ -510,7 +511,8 @@ Function Feature_Enabled_Match_Process
 						Write-Host "  $('-' * 80)`n"
 					}
 
-					Write-Host "  $($lang.Enable): " -NoNewline
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.Enable) " -NoNewline -BackgroundColor White -ForegroundColor Black
 					Enable-WindowsOptionalFeature -Path $TestFolderMountCurrent -FeatureName $item -Source $TestFolderMountSxs -All -LimitAccess | Out-Null
 					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 				}

@@ -1284,27 +1284,51 @@ Function Image_Clear_Superseded
 		try {
 			Get-WindowsPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Get.log" -Path $test_mount_folder_Current -ErrorAction SilentlyContinue | ForEach-Object {
 				if ($_.PackageState -eq "Superseded") {
-					$InitlClearSuperseded += $_.PackageName
-					Write-Host "  $($_.PackageName)" -ForegroundColor Green
-				}
-			}
-		} catch {
-			Write-Host "  $($_)" -ForegroundColor Red
-			Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
-			Write-Host "  $($lang.Superseded), $($lang.Inoperable) ( Superseded )" -ForegroundColor Red
-		}
+					Write-Host "  $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
+					Write-Host $_.PackageName -ForegroundColor Green
 
-		try {
-			Get-WindowsPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Get.log" -Path $test_mount_folder_Current -ErrorAction SilentlyContinue | ForEach-Object {
-				if ($_.PackageState -eq "UninstallPending") {
+					Write-Host "  $($lang.RuleDescription): " -NoNewline -ForegroundColor Yellow
+					Write-Host "Superseded" -ForegroundColor Green
+
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.AddTo) " -NoNewline -BackgroundColor White -ForegroundColor Black
 					$InitlClearSuperseded += $_.PackageName
-					Write-Host "  $($_.PackageName)" -ForegroundColor Green
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+					Write-Host
+				}
+
+#				if ($_.PackageState -eq "Staged") {
+#					Write-Host "  $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
+#					Write-Host $_.PackageName -ForegroundColor Green
+#
+#					Write-Host "  $($lang.RuleDescription): " -NoNewline -ForegroundColor Yellow
+#					Write-Host "Staged" -ForegroundColor Green
+#
+#					Write-Host "  " -NoNewline
+#					Write-Host " $($lang.AddTo) " -NoNewline -BackgroundColor White -ForegroundColor Black
+#					$InitlClearSuperseded += $_.PackageName
+#					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+#					Write-Host
+#				}
+
+				if ($_.PackageState -eq "UninstallPending") {
+					Write-Host "  $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
+					Write-Host $_.PackageName -ForegroundColor Green
+
+					Write-Host "  $($lang.RuleDescription): " -NoNewline -ForegroundColor Yellow
+					Write-Host "UninstallPending" -ForegroundColor Green
+
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.AddTo) " -NoNewline -BackgroundColor White -ForegroundColor Black
+					$InitlClearSuperseded += $_.PackageName
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+					Write-Host
 				}
 			}
 		} catch {
 			Write-Host "  $($_)" -ForegroundColor Red
 			Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
-			Write-Host "  $($lang.Superseded), $($lang.Inoperable) ( UninstallPending )" -ForegroundColor Red
+			Write-Host "  $($lang.Superseded), $($lang.Inoperable)" -ForegroundColor Red
 		}
 
 		<#
@@ -1323,15 +1347,15 @@ Function Image_Clear_Superseded
 			Write-Host "  $('-' * 80)"
 			ForEach ($item in $InitlClearSuperseded) {
 				if ($InitlClearSupersededExclude -notContains $item) {
+					Write-Host "  $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
+					Write-Host $item -ForegroundColor Red
+
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 						Write-Host "  $('-' * 80)"
 						Write-Host "  Remove-WindowsPackage -Path ""$($test_mount_folder_Current)"" -PackageName ""$($item)""" -ForegroundColor Green
 						Write-Host "  $('-' * 80)`n"
 					}
-
-					Write-Host "  $($lang.RuleFileType): " -NoNewline -ForegroundColor Yellow
-					Write-Host $item -ForegroundColor Red
 
 					Write-Host "  " -NoNewline
 					Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black

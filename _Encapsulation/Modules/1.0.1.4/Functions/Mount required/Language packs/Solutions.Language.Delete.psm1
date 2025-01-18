@@ -1,8 +1,8 @@
 ﻿<#
-	.Delete update
-	.删除更新
+	.Del language
+	.删除语言
 #>
-Function Cumulative_updates_Delete_UI
+Function Language_Delete_UI
 {
 	param
 	(
@@ -10,33 +10,68 @@ Function Cumulative_updates_Delete_UI
 	)
 
 	<#
-		.转换架构类型
-	#>
-	switch ($Global:Architecture) {
-		"arm64" { $ArchitectureNew = "arm64" }
-		"AMD64" { $ArchitectureNew = "x64" }
-		"x86" { $ArchitectureNew = "x86" }
-	}
-
-	<#
 		初始化全局变量
 	#>
+	$Script:Temp_Select_Language_Del_Folder = @()
+
 	$SearchFolderRule = @(
-		Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Update\$($ArchitectureNew)\Del"
-		"$($Global:Image_source)_Custom\$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Update\Del"
+		Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Language\Del"
+		"$($Global:Image_source)_Custom\$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Language\Del"
 	)
 	$SearchFolderRule = $SearchFolderRule | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 	$Search_Folder_Multistage_Rule = @(
-		Join-Path -Path $Global:MainMasterFolder -ChildPath "$($Global:ImageType)\_Custom\$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Update"
+		Join-Path -Path $Global:MainMasterFolder -ChildPath "$($Global:ImageType)\_Custom\$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Language"
 	)
 	$Search_Folder_Multistage_Rule = $Search_Folder_Multistage_Rule | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
-
-	$Script:Temp_Select_Custom_Folder_Queue = @()
 
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
+
+	Function Language_Refresh_Del_Auto_Suggestions
+	{
+		$UI_Main_Error.Text = ""
+		$UI_Main_Error_Icon.Image = $null
+
+		if ($UI_Main_Auto_Sync_Suggestions.Enabled) {
+			if ($UI_Main_Auto_Sync_Suggestions.Checked) {
+				<#
+					.Mark: Check the selection status
+					.标记：检查选择状态
+				#>
+				$MarkCheckIsLangSelect = $False
+
+				$UI_Main_Extract_Tips.Text = ""
+				$UI_Main_Rule.Controls | ForEach-Object {
+					if ($_ -is [System.Windows.Forms.CheckBox]) {
+						if ($_.Enabled) {
+							if ($_.Checked) {
+								$MarkCheckIsLangSelect = $True
+							}
+						}
+					}
+				}
+
+				if ($MarkCheckIsLangSelect) {
+					$UI_Main_Extract_Tips.Text = $lang.LangNewAutoSelectTips
+					$UI_Main_Lang_Sync_To_Sources.Checked = $True
+					$UI_Main_Lang_Sync_To_Sources.Enabled = $True
+
+					$UI_Main_Language_Ini_Rebuild.Checked = $True
+					$UI_Main_Language_Ini_Rebuild.Enabled = $True
+				} else {
+					$UI_Main_Extract_Tips.Text = $lang.LangNewAutoNoNewSelect
+				}
+			} else {
+				$UI_Main_Extract_Tips.Text = $lang.LangNewAutoNoSelect
+			}
+		} else {
+			New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $false -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $false -Force
+			$UI_Main_Extract_Tips.Text = ""
+		}
+	}
 
 	<#
 		.事件：强行结束按需任务
@@ -48,68 +83,63 @@ Function Cumulative_updates_Delete_UI
 		$UI_Main.Close()
 	}
 
-	Function Autopilot_Cumulative_updates_Delete_UI_Save
+	Function Autopilot_Language_Delete_UI_Save
 	{
 		$UI_Main_Error.Text = ""
 		$UI_Main_Error_Icon.Image = $null
 
-		$Temp_Get_Select_Queue = @()
+		$Temp_Select_Del_New_Language_Sources = @()
+
+		<#
+			.Mark: Check the selection status
+			.标记：检查选择状态
+		#>
 		$UI_Main_Rule.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.CheckBox]) {
 				if ($_.Enabled) {
 					if ($_.Checked) {
-						$Temp_Get_Select_Queue += $_.Tag
+						$Temp_Select_Del_New_Language_Sources += $_.Tag
 					}
 				}
 			}
 		}
 
-		if ($Temp_Get_Select_Queue.Count -gt 0) {
-			New-Variable -Scope global -Name "Queue_Is_Update_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-			New-Variable -Scope global -Name "Queue_Is_Update_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Get_Select_Queue -Force
+		if ($Temp_Select_Del_New_Language_Sources.Count -gt 0) {
+			New-Variable -Scope global -Name "Queue_Is_Language_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Select_Del_New_Language_Sources -Force
 
 			<#
-				.固化更新
+				.同步语言包到安装程序
 			#>
-			New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-			if ($GUIUpdateAddCuring.Enabled) {
-				if ($GUIUpdateAddCuring.Checked) {
-					New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+			if ($UI_Main_Lang_Sync_To_Sources.Enabled) {
+				if ($UI_Main_Lang_Sync_To_Sources.Checked) {
+					New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
 				}
 			}
 
-			<#
-				.清理取代的
-			#>
-			New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-			New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-			if ($UI_Main_Superseded_Rule.Enabled) {
-				if ($UI_Main_Superseded_Rule.Checked) {
-					New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-				}
-
-				if ($UI_Main_Superseded_Rule_Exclude.Enabled) {
-					if ($UI_Main_Superseded_Rule_Exclude.Checked) {
-						New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-					}
+			New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+			if ($UI_Main_Language_Ini_Rebuild.Enabled) {
+				if ($UI_Main_Language_Ini_Rebuild.Checked) {
+					New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
 				}
 			}
 
-			Refres_Event_Tasks_Update_Del_UI
+			Refres_Event_Tasks_Language_Del_UI
 
 			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Error.Text = "$($lang.Save), $($lang.Done)"
-			return $True
+			return $true
 		} else {
 			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
-			$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.NoChoose)"
-			return $False
+			$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.NoChoose) $($lang.AddSources)"
+			return $false
 		}
 	}
 
-	Function Refres_Event_Tasks_Update_Del_UI
+	Function Refres_Event_Tasks_Language_Del_UI
 	{
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		if ($Temp_Assign_Task_Select.Count -gt 0) {
@@ -118,7 +148,7 @@ Function Cumulative_updates_Delete_UI
 			$UI_Main_Dashboard_Event_Clear.Text = $lang.EventManagerNo
 		}
 
-		if ((Get-Variable -Scope global -Name "Queue_Is_Update_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Enable)"
 		} else {
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Disable)"
@@ -126,10 +156,12 @@ Function Cumulative_updates_Delete_UI
 	}
 
 	$UI_Main_Event_Clear_Click = {
-		New-Variable -Scope global -Name "Queue_Is_Update_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Update_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 
-		Refres_Event_Tasks_Update_Del_UI
+		Refres_Event_Tasks_Language_Del_UI
 
 		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 		$UI_Main_Error.Text = "$($lang.EventManagerCurrentClear), $($lang.Done)"
@@ -150,14 +182,21 @@ Function Cumulative_updates_Delete_UI
 		Check_Folder -chkpath "$($this.Tag)\$($RandomGuid)\$($ArchitectureNew)\Add"
 		Check_Folder -chkpath "$($this.Tag)\$($RandomGuid)\$($ArchitectureNew)\Del"
 
-		Update_Del_Refresh_Sourcs
+		Language_Del_Refresh_Sources
 	}
 
-	Function Update_Del_Refresh_Sourcs
+	<#
+		.Get pre-configured language settings
+		.获取预配置设置的语言
+	#>
+	Function Language_Del_Refresh_Sources
 	{
 		$UI_Main_Error.Text = ""
 		$UI_Main_Error_Icon.Image = $null
 		$UI_Main_Rule.controls.Clear()
+
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		<#
 			.计算公式：
@@ -165,7 +204,6 @@ Function Cumulative_updates_Delete_UI
 					(初始化字符长度 * 初始化字符长度）
 				/ 控件高度
 		#>
-
 		<#
 			.初始化字符长度
 		#>
@@ -182,7 +220,7 @@ Function Cumulative_updates_Delete_UI
 		if ($SearchFolderRule.Count -gt 0) {
 			$UI_Main_Pre_Rule  = New-Object system.Windows.Forms.Label -Property @{
 				Height         = 30
-				Width          = 520
+				Width          = 525
 				Padding        = "16,0,0,0"
 				Text           = $lang.RulePre
 			}
@@ -194,21 +232,18 @@ Function Cumulative_updates_Delete_UI
 
 				$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
 					Height    = $([math]::Ceiling($InitLength / $InitCharacterLength) * $InitControlHeight)
-					Width     = 490
-					Margin    = "35,0,0,5"
+					Width     = 493
+					Margin    = "35,0,0,10"
 					Text      = $item
 					Tag       = $item
-					add_Click = {
-						$UI_Main_Error.Text = ""
-						$UI_Main_Error_Icon.Image = $null
-					}
+					add_Click = { Language_Refresh_Del_Auto_Suggestions }
 				}
 				$UI_Main_Rule.controls.AddRange($CheckBox)
 
 				$AddSourcesPath     = New-Object system.Windows.Forms.LinkLabel -Property @{
 					autosize        = 1
 					Padding         = "50,0,0,0"
-					margin          = "0,5,0,15"
+					margin          = "0,0,0,15"
 					Text            = $lang.RuleNoFindFile
 					Tag             = $item
 					LinkColor       = "GREEN"
@@ -236,9 +271,9 @@ Function Cumulative_updates_Delete_UI
 				}
 
 				$AddSourcesPathOpen = New-Object system.Windows.Forms.LinkLabel -Property @{
-					Height          = 40
+					Height          = 35
 					Width           = 525
-					Padding         = "48,0,0,0"
+					Padding         = "47,0,0,0"
 					Text            = $lang.OpenFolder
 					Tag             = $item
 					LinkColor       = "GREEN"
@@ -266,9 +301,9 @@ Function Cumulative_updates_Delete_UI
 				}
 
 				$AddSourcesPathPaste = New-Object system.Windows.Forms.LinkLabel -Property @{
-					Height          = 40
+					Height          = 35
 					Width           = 525
-					Padding         = "48,0,0,0"
+					Padding         = "47,0,0,0"
 					Text            = $lang.Paste
 					Tag             = $item
 					LinkColor       = "GREEN"
@@ -289,7 +324,7 @@ Function Cumulative_updates_Delete_UI
 						}
 					}
 				}
-
+	
 				if (Test-Path -Path $item -PathType Container) {
 					<#
 						.目录可用时，自动选择：预置规则
@@ -312,7 +347,7 @@ Function Cumulative_updates_Delete_UI
 					}
 
 					<#
-						.不再检查目录里是否存在文件
+						.判断目录里，是否存在文件
 					#>
 					if ($UI_Main_Dont_Checke_Is_File.Checked) {
 						$CheckBox.Enabled = $True
@@ -320,10 +355,11 @@ Function Cumulative_updates_Delete_UI
 						<#
 							.从目录里判断是否有文件
 						#>
-						if((Get-ChildItem $item -Recurse -Include $Global:Search_KB_File_Type -ErrorAction SilentlyContinue | Measure-Object).Count -eq 0) {
+						if((Get-ChildItem $item -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | Measure-Object).Count -eq 0) {
 							<#
 								.提示，未发现文件
 							#>
+
 							$UI_Main_Rule.controls.AddRange($AddSourcesPath)
 							$CheckBox.Enabled = $False
 						} else {
@@ -331,21 +367,15 @@ Function Cumulative_updates_Delete_UI
 						}
 					}
 
-					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
-						Height         = 30
-						Width          = 520
-					}
 					$UI_Main_Rule.controls.AddRange((
 						$AddSourcesPathOpen,
-						$AddSourcesPathPaste,
-						$AddSourcesPath_Wrap
+						$AddSourcesPathPaste
 					))
 				} else {
 					$CheckBox.Enabled = $False
-
 					$AddSourcesPathNoFolder = New-Object system.Windows.Forms.LinkLabel -Property @{
 						autosize        = 1
-						Padding         = "48,0,0,0"
+						Padding         = "47,0,0,0"
 						Text            = $lang.RuleMatchNoFindFolder
 						Tag             = $item
 						LinkColor       = "GREEN"
@@ -353,18 +383,19 @@ Function Cumulative_updates_Delete_UI
 						LinkBehavior    = "NeverUnderline"
 						add_Click       = {
 							Check_Folder -chkpath $this.Tag
-							Update_Del_Refresh_Sourcs
+							Language_Del_Refresh_Sources
 						}
 					}
-					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
-						Height         = 30
-						Width          = 520
-					}
-					$UI_Main_Rule.controls.AddRange((
-						$AddSourcesPathNoFolder,
-						$AddSourcesPath_Wrap
-					))
+
+					$UI_Main_Rule.controls.AddRange($AddSourcesPathNoFolder)
 				}
+
+				$Add_Pre_Rule_Wrap = New-Object system.Windows.Forms.Label -Property @{
+					Height         = 30
+					Width          = 525
+				}
+
+				$UI_Main_Rule.controls.AddRange($Add_Pre_Rule_Wrap)
 			}
 		}
 
@@ -374,9 +405,9 @@ Function Cumulative_updates_Delete_UI
 		if ($Search_Folder_Multistage_Rule.Count -gt 0) {
 			$UI_Main_Multistage_Rule_Name = New-Object system.Windows.Forms.Label -Property @{
 				Height         = 30
-				Width          = 520
+				Width          = 525
 				Padding        = "16,0,0,0"
-				margin         = "0,20,0,0"
+				Margin         = "0,20,0,0"
 				Text           = $lang.RuleMultistage
 			}
 			$UI_Main_Rule.controls.AddRange($UI_Main_Multistage_Rule_Name)
@@ -391,10 +422,9 @@ Function Cumulative_updates_Delete_UI
 
 				if ($MarkIsFolderRule) {
 					$No_Find_Multistage_Rule_Create = New-Object system.Windows.Forms.LinkLabel -Property @{
-						Height         = 35
-						Width          = 525
+						autosize        = 1
 						Padding         = "33,0,0,0"
-						margin          = "0,8,0,0"
+						margin          = "0,8,0,15"
 						Text            = $lang.RuleMultistageFindCreateNew
 						Tag             = $item
 						LinkColor       = "GREEN"
@@ -403,23 +433,6 @@ Function Cumulative_updates_Delete_UI
 						add_Click       = $UI_Main_Create_New_Tempate_Click
 					}
 					$UI_Main_Rule.controls.AddRange($No_Find_Multistage_Rule_Create)
-
-					$No_Find_Multistage_Rule_Create_New_Template = New-Object system.Windows.Forms.LinkLabel -Property @{
-						Height         = 35
-						Width          = 525
-						Padding         = "33,0,0,0"
-						margin          = "0,8,0,15"
-						Text            = $lang.RuleNewTempate
-						Tag             = $item
-						LinkColor       = "GREEN"
-						ActiveLinkColor = "RED"
-						LinkBehavior    = "NeverUnderline"
-						add_Click       = {
-							Create_Template_UI -Auto -NewDel
-							Update_Del_Refresh_Sourcs
-						}
-					}
-					$UI_Main_Rule.controls.AddRange($No_Find_Multistage_Rule_Create_New_Template)
 
 					Get-ChildItem -Path $item -Directory -ErrorAction SilentlyContinue | Where-Object {
 						<#
@@ -456,51 +469,31 @@ Function Cumulative_updates_Delete_UI
 						}
 						$UI_Main_Rule.controls.AddRange($AddSourcesPathName)
 
-						Update_Del_Refresh_Sources_New -Sources $_.FullName -NewMaster $Global:Primary_Key_Image.Master -ImageName $Global:Primary_Key_Image.ImageFileName
+						Language_Del_Refresh_Sources_New -Sources $_.FullName -ImageMaster $Global:Primary_Key_Image.Master -ImageName $Global:Primary_Key_Image.ImageFileName
 
 						$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 							Height         = 30
-							Width          = 520
+							Width          = 525
 						}
 						$UI_Main_Rule.controls.AddRange($AddSourcesPath_Wrap)
 					}
 				} else {
-					$No_Find_Multistage_Rule_Create_New_Template = New-Object system.Windows.Forms.LinkLabel -Property @{
-						Height         = 35
-						Width          = 525
-						Padding         = "33,0,0,0"
-						margin          = "0,8,0,15"
-						Text            = $lang.RuleNewTempate
-						Tag             = $item
-						LinkColor       = "GREEN"
-						ActiveLinkColor = "RED"
-						LinkBehavior    = "NeverUnderline"
-						add_Click       = {
-							Create_Template_UI -Auto -NewDel
-							Update_Del_Refresh_Sourcs
-						}
-					}
-					$UI_Main_Rule.controls.AddRange($No_Find_Multistage_Rule_Create_New_Template)
-
 					$InitLength = $item.Length
 					if ($InitLength -lt $InitCharacterLength) { $InitLength = $InitCharacterLength }
 
-					$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
-						Height    = $([math]::Ceiling($InitLength / $InitCharacterLength) * $InitControlHeight)
-						Width     = 465
-						Margin    = "35,0,0,5"
-						Text      = $item
-						Tag       = $item
-						Enabled   = $False
-						add_Click = {
-							$UI_Main_Error.Text = ""
-							$UI_Main_Error_Icon.Image = $null
-						}
+					$CheckBox    = New-Object System.Windows.Forms.CheckBox -Property @{
+						Height   = $([math]::Ceiling($InitLength / $InitCharacterLength) * $InitControlHeight)
+						Width    = 493
+						Margin   = "35,0,0,5"
+						Text     = $item
+						Tag      = $item
+						Enabled  = $False
+						add_Click = { Language_Refresh_Del_Auto_Suggestions }
 					}
 
 					$No_Find_Multistage_Rule = New-Object system.Windows.Forms.LinkLabel -Property @{
 						autosize        = 1
-						Padding         = "49,0,0,0"
+						Padding         = "47,0,0,0"
 						Text            = $lang.RuleMultistageFindFailed
 						Tag             = $item
 						LinkColor       = "GREEN"
@@ -511,8 +504,9 @@ Function Cumulative_updates_Delete_UI
 
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
-						Width          = 520
+						Width          = 525
 					}
+
 					$UI_Main_Rule.controls.AddRange((
 						$CheckBox,
 						$No_Find_Multistage_Rule,
@@ -527,34 +521,31 @@ Function Cumulative_updates_Delete_UI
 		#>
 		$UI_Main_Other_Rule = New-Object system.Windows.Forms.Label -Property @{
 			Height         = 30
-			Width          = 520
-			Margin         = "0,35,0,0"
+			Width          = 525
 			Padding        = "18,0,0,0"
+			Margin         = "0,35,0,0"
 			Text           = $lang.RuleCustomize
 		}
 		$UI_Main_Rule.controls.AddRange($UI_Main_Other_Rule)
-		if ($Script:Temp_Select_Custom_Folder_Queue.count -gt 0) {
-			ForEach ($item in $Script:Temp_Select_Custom_Folder_Queue) {
+		if ($Script:Temp_Select_Language_Del_Folder.count -gt 0) {
+			ForEach ($item in $Script:Temp_Select_Language_Del_Folder) {
 				$InitLength = $item.Length
 				if ($InitLength -lt $InitCharacterLength) { $InitLength = $InitCharacterLength }
 
-				$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
-					Height    = $([math]::Ceiling($InitLength / $InitCharacterLength) * $InitControlHeight)
-					Width     = 470
-					Margin    = "35,0,0,5"
-					Text      = $item
-					Tag       = $item
-					add_Click = {
-						$UI_Main_Error.Text = ""
-						$UI_Main_Error_Icon.Image = $null
-					}
+				$CheckBox    = New-Object System.Windows.Forms.CheckBox -Property @{
+					Height   = $([math]::Ceiling($InitLength / $InitCharacterLength) * $InitControlHeight)
+					Width    = 493
+					Margin   = "35,0,0,5"
+					Text     = $item
+					Tag      = $item
+					add_Click = { Language_Refresh_Del_Auto_Suggestions }
 				}
 				$UI_Main_Rule.controls.AddRange($CheckBox)
 
 				$AddSourcesPath     = New-Object system.Windows.Forms.LinkLabel -Property @{
 					autosize        = 1
 					Padding         = "50,0,0,0"
-					margin          = "0,5,0,5"
+					margin          = "0,0,0,15"
 					Text            = $lang.RuleNoFindFile
 					Tag             = $item
 					LinkColor       = "GREEN"
@@ -582,9 +573,9 @@ Function Cumulative_updates_Delete_UI
 				}
 
 				$AddSourcesPathOpen = New-Object system.Windows.Forms.LinkLabel -Property @{
-					Height          = 40
-					Width           = 470
-					Padding         = "48,0,0,0"
+					Height          = 35
+					Width           = 525
+					Padding         = "47,0,0,0"
 					Text            = $lang.OpenFolder
 					Tag             = $item
 					LinkColor       = "GREEN"
@@ -612,9 +603,9 @@ Function Cumulative_updates_Delete_UI
 				}
 
 				$AddSourcesPathPaste = New-Object system.Windows.Forms.LinkLabel -Property @{
-					Height          = 40
-					Width           = 470
-					Padding         = "48,0,0,0"
+					Height          = 35
+					Width           = 525
+					Padding         = "47,0,0,0"
 					Text            = $lang.Paste
 					Tag             = $item
 					LinkColor       = "GREEN"
@@ -658,7 +649,7 @@ Function Cumulative_updates_Delete_UI
 					}
 
 					<#
-						.不再检查目录里是否存在文件
+						.判断目录里，是否存在文件
 					#>
 					if ($UI_Main_Dont_Checke_Is_File.Checked) {
 						$CheckBox.Enabled = $True
@@ -666,7 +657,7 @@ Function Cumulative_updates_Delete_UI
 						<#
 							.从目录里判断是否有文件
 						#>
-						if((Get-ChildItem $item -Recurse -Include $Global:Search_KB_File_Type -ErrorAction SilentlyContinue | Measure-Object).Count -eq 0) {
+						if((Get-ChildItem $item -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | Measure-Object).Count -eq 0) {
 							<#
 								.提示，未发现文件
 							#>
@@ -679,8 +670,9 @@ Function Cumulative_updates_Delete_UI
 
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
-						Width          = 520
+						Width          = 525
 					}
+
 					$UI_Main_Rule.controls.AddRange((
 						$AddSourcesPathOpen,
 						$AddSourcesPathPaste,
@@ -688,10 +680,9 @@ Function Cumulative_updates_Delete_UI
 					))
 				} else {
 					$CheckBox.Enabled = $False
-
 					$AddSourcesPathNoFolder = New-Object system.Windows.Forms.LinkLabel -Property @{
 						autosize        = 1
-						Padding         = "48,0,0,0"
+						Padding         = "47,0,0,0"
 						Text            = $lang.RuleMatchNoFindFolder
 						Tag             = $item
 						LinkColor       = "GREEN"
@@ -699,48 +690,40 @@ Function Cumulative_updates_Delete_UI
 						LinkBehavior    = "NeverUnderline"
 						add_Click       = {
 							Check_Folder -chkpath $this.Tag
-							Update_Del_Refresh_Sourcs
+							Language_Del_Refresh_Sources
 						}
 					}
-					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
-						Height         = 30
-						Width          = 520
-					}
-					$UI_Main_Rule.controls.AddRange((
-						$AddSourcesPathNoFolder,
-						$AddSourcesPath_Wrap
-					))
+
+					$UI_Main_Rule.controls.AddRange($AddSourcesPathNoFolder)
 				}
 			}
 		} else {
 			$UI_Main_Other_Rule_Not_Find = New-Object system.Windows.Forms.Label -Property @{
 				Height         = 40
-				Width          = 520
+				Width          = 525
 				Padding        = "33,0,0,0"
 				Text           = $lang.NoWork
 			}
-			$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
-				Height         = 30
-				Width          = 520
-			}
-			$UI_Main_Rule.controls.AddRange((
-				$UI_Main_Other_Rule_Not_Find,
-				$AddSourcesPath_Wrap
-			))
+			$UI_Main_Rule.controls.AddRange($UI_Main_Other_Rule_Not_Find)
 		}
+
+		$Add_Other_Rule_Wrap = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 30
+			Width          = 525
+		}
+		$UI_Main_Rule.controls.AddRange($Add_Other_Rule_Wrap)
+
+		Language_Refresh_Del_Auto_Suggestions
 	}
 
-	Function Update_Del_Refresh_Sources_New
+	Function Language_Del_Refresh_Sources_New
 	{
 		param
 		(
-			$NewMaster,
+			$ImageMaster,
 			$ImageName,
 			$Sources
 		)
-
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
-		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		<#
 			.转换架构类型
@@ -788,10 +771,7 @@ Function Cumulative_updates_Delete_UI
 			margin    = "55,0,0,0"
 			Text      = "$($ArchitectureNew)\Del"
 			Tag       = $MarkNewFolder
-			add_Click = {
-				$UI_Main_Error.Text = ""
-				$UI_Main_Error_Icon.Image = $null
-			}
+			add_Click = { Language_Refresh_Del_Auto_Suggestions }
 		}
 		$UI_Main_Rule.controls.AddRange($CheckBoxInstall)
 
@@ -825,7 +805,7 @@ Function Cumulative_updates_Delete_UI
 				<#
 					.从目录里判断是否有文件
 				#>
-				if((Get-ChildItem $MarkNewFolder -Recurse -Include $Global:Search_KB_File_Type -ErrorAction SilentlyContinue | Measure-Object).Count -eq 0) {
+				if((Get-ChildItem $MarkNewFolder -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | Measure-Object).Count -eq 0) {
 					<#
 						.提示，未发现文件
 					#>
@@ -837,7 +817,6 @@ Function Cumulative_updates_Delete_UI
 			}
 		} else {
 			$CheckBoxInstall.Enabled = $False
-
 			$AddSourcesPathNoFolder = New-Object system.Windows.Forms.LinkLabel -Property @{
 				autosize        = 1
 				Padding         = "71,0,0,0"
@@ -848,17 +827,11 @@ Function Cumulative_updates_Delete_UI
 				LinkBehavior    = "NeverUnderline"
 				add_Click       = {
 					Check_Folder -chkpath $this.Tag
-					Update_Del_Refresh_Sourcs
+					Language_Del_Refresh_Sources
 				}
 			}
-			$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
-				Height         = 30
-				Width          = 520
-			}
-			$UI_Main_Rule.controls.AddRange((
-				$AddSourcesPathNoFolder,
-				$AddSourcesPath_Wrap
-			))
+
+			$UI_Main_Rule.controls.AddRange($AddSourcesPathNoFolder)
 		}
 	}
 
@@ -879,18 +852,19 @@ Function Cumulative_updates_Delete_UI
 		if ($_.Data.GetDataPresent([Windows.Forms.DataFormats]::FileDrop)) {
 			foreach ($filename in $_.Data.GetData([Windows.Forms.DataFormats]::FileDrop)) {
 				if (Test-Path -Path $filename -PathType Container) {
-					$Get_Temp_Select_Update_Del_Folder = @()
+					$Get_Temp_Select_Update_Add_Folder = @()
 					$UI_Main_Rule.Controls | ForEach-Object {
 						if ($_ -is [System.Windows.Forms.CheckBox]) {
-							$Get_Temp_Select_Update_Del_Folder += $_.Tag
+							$Get_Temp_Select_Update_Add_Folder += $_.Tag
 						}
 					}
 
-					if ($Get_Temp_Select_Update_Del_Folder -Contains $filename) {
+					if ($Get_Temp_Select_Update_Add_Folder -Contains $filename) {
 						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 						$UI_Main_Error.Text = $lang.Existed
 					} else {
-						$Script:Temp_Select_Custom_Folder_Queue += $filename
+						$Script:Temp_Select_Language_Del_Folder += $filename
+						Language_Del_Refresh_Sources
 					}
 				} else {
 					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
@@ -904,25 +878,25 @@ Function Cumulative_updates_Delete_UI
 		autoScaleMode  = 2
 		Height         = 720
 		Width          = 928
-		Text           = "$($lang.CUpdate): $($lang.Del)"
+		Text           = "$($lang.Language): $($lang.Del)"
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
 		MinimizeBox    = $False
 		ControlBox     = $False
-		BackColor      = "#ffffff"
+		BackColor      = "#FFFFFF"
 		FormBorderStyle = "Fixed3D"
 		AllowDrop      = $true
 		Add_DragOver   = $UI_Main_DragOver
 		Add_DragDrop   = $UI_Main_DragDrop
 	}
-	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
+	$UI_Main_Menu      = New-Object System.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
 		Height         = 675
 		Width          = 555
 		autoSizeMode   = 1
 		Location       = '20,0'
-		Padding        = "0,15,0,0"
+		Padding        = "0,10,0,0"
 		autoScroll     = $True
 	}
 
@@ -948,9 +922,6 @@ Function Cumulative_updates_Delete_UI
 		add_Click      = $UI_Main_Event_Clear_Click
 	}
 
-	<#
-		.可选功能
-	#>
 	$UI_Main_Adv       = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 530
@@ -959,25 +930,73 @@ Function Cumulative_updates_Delete_UI
 	}
 
 	<#
+		.按相反的顺序删除语言包
+	#>
+	$UI_Main_Is_Order_Rule_Lang = New-Object System.Windows.Forms.CheckBox -Property @{
+		Height         = 40
+		Width          = 530
+		ForeColor      = "#008000"
+		Padding        = "18,0,0,0"
+		Text           = $lang.DescendingRuleLang
+		add_Click      = {
+			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
+
+			if ($this.Checked) {
+				New-Variable -Scope global -Name "Queue_Is_Language_Del_Reverse_Order_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+			} else {
+				New-Variable -Scope global -Name "Queue_Is_Language_Del_Reverse_Order_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+			}
+		}
+	}
+	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Del_Reverse_Order_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		$UI_Main_Is_Order_Rule_Lang.Checked = $True
+	} else {
+		$UI_Main_Is_Order_Rule_Lang.Checked = $False
+	}
+
+	$UI_Main_Is_Order_Rule_Lang_Tips = New-Object system.Windows.Forms.Label -Property @{
+		AutoSize       = 1
+		margin         = "36,0,0,10"
+		Text           = $lang.OrderRuleLangTips
+	}
+	$UI_Main_Is_Order_Rule_Lang_View = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 40
+		Width          = 530
+		Padding        = "35,0,0,0"
+		margin         = "0,20,0,0"
+		Text           = $lang.LXPsAddDelTipsView
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
+
+			$UI_Main_Mask_Tips.Visible = $True
+		}
+	}
+
+	<#
 		.不再检查目录里是否存在文件
 	#>
 	$UI_Main_Dont_Checke_Is_File = New-Object System.Windows.Forms.CheckBox -Property @{
-		Height         = 35
+		Height         = 40
 		Width          = 530
 		Padding        = "18,0,0,0"
-		Text           = "$($lang.RuleSkipFolderCheck): $($Global:Search_KB_File_Type)"
+		Text           = "$($lang.RuleSkipFolderCheck): $($Global:Search_Language_File_Type)"
 		add_Click      = {
 			if ($UI_Main_Dont_Checke_Is_File.Checked) {
-				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Skip_Check_File_Del" -value "True" -String
+				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -name "$(Get_GPS_Location)_Is_Skip_Check_File_Del" -value "True" -String
 			} else {
-				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Skip_Check_File_Del" -value "False" -String
+				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -name "$(Get_GPS_Location)_Is_Skip_Check_File_Del" -value "False" -String
 			}
 
-			Update_Del_Refresh_Sourcs
+			Language_Del_Refresh_Sources
 		}
 	}
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Skip_Check_File_Del" -ErrorAction SilentlyContinue) {
-		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Skip_Check_File_Del" -ErrorAction SilentlyContinue) {
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -Name "$(Get_GPS_Location)_Is_Skip_Check_File_Del" -ErrorAction SilentlyContinue) {
+		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -Name "$(Get_GPS_Location)_Is_Skip_Check_File_Del" -ErrorAction SilentlyContinue) {
 			"True" {
 				$UI_Main_Dont_Checke_Is_File.Checked = $True
 			}
@@ -1009,16 +1028,16 @@ Function Cumulative_updates_Delete_UI
 			Text           = $lang.RulePre
 			add_Click      = {
 				if ($UI_Main_Dont_Checke_Is_RulePre.Checked) {
-					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_Available_Del" -value "True" -String
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -name "$(Get_GPS_Location)_Is_Check_Folder_Available_Delete" -value "True" -String
 				} else {
-					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_Available_Del" -value "False" -String
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -name "$(Get_GPS_Location)_Is_Check_Folder_Available_Delete" -value "False" -String
 				}
 
-				Update_Del_Refresh_Sourcs
+				Language_Del_Refresh_Sources
 			}
 		}
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_Available_Del" -ErrorAction SilentlyContinue) {
-			switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_Available_Del" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -Name "$(Get_GPS_Location)_Is_Check_Folder_Available_Delete" -ErrorAction SilentlyContinue) {
+			switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -Name "$(Get_GPS_Location)_Is_Check_Folder_Available_Delete" -ErrorAction SilentlyContinue) {
 				"True" {
 					$UI_Main_Dont_Checke_Is_RulePre.Checked = $True
 				}
@@ -1040,16 +1059,16 @@ Function Cumulative_updates_Delete_UI
 			Text           = $lang.RuleMultistage
 			add_Click      = {
 				if ($UI_Main_Dont_Checke_Is_RuleMultistage.Checked) {
-					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_RuleMultistage_Del" -value "True" -String
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -name "$(Get_GPS_Location)_Is_Check_Folder_RuleMultistage_Delete" -value "True" -String
 				} else {
-					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_RuleMultistage_Del" -value "False" -String
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -name "$(Get_GPS_Location)_Is_Check_Folder_RuleMultistage_Delete" -value "False" -String
 				}
 
-				Update_Del_Refresh_Sourcs
+				Language_Del_Refresh_Sources
 			}
 		}
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_RuleMultistage_Del" -ErrorAction SilentlyContinue) {
-			switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_RuleMultistage_Del" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -Name "$(Get_GPS_Location)_Is_Check_Folder_RuleMultistage_Delete" -ErrorAction SilentlyContinue) {
+			switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -Name "$(Get_GPS_Location)_Is_Check_Folder_RuleMultistage_Delete" -ErrorAction SilentlyContinue) {
 				"True" {
 					$UI_Main_Dont_Checke_Is_RuleMultistage.Checked = $True
 				}
@@ -1071,16 +1090,16 @@ Function Cumulative_updates_Delete_UI
 			Text           = $lang.RuleCustomize
 			add_Click      = {
 				if ($UI_Main_Dont_Checke_Is_RuleOther.Checked) {
-					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_RuleOther_Del" -value "True" -String
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -name "$(Get_GPS_Location)_Is_Check_Folder_RuleOther_Delete" -value "True" -String
 				} else {
-					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_RuleOther_Del" -value "False" -String
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -name "$(Get_GPS_Location)_Is_Check_Folder_RuleOther_Delete" -value "False" -String
 				}
 
-				Update_Del_Refresh_Sourcs
+				Language_Del_Refresh_Sources
 			}
 		}
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_RuleOther_Del" -ErrorAction SilentlyContinue) {
-			switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_RuleOther_Del" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -Name "$(Get_GPS_Location)_Is_Check_Folder_RuleOther_Delete" -ErrorAction SilentlyContinue) {
+			switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -Name "$(Get_GPS_Location)_Is_Check_Folder_RuleOther_Delete" -ErrorAction SilentlyContinue) {
 				"True" {
 					$UI_Main_Dont_Checke_Is_RuleOther.Checked = $True
 				}
@@ -1092,79 +1111,97 @@ Function Cumulative_updates_Delete_UI
 			$UI_Main_Dont_Checke_Is_RuleOther.Checked = $True
 		}
 
-	<#
-		.固化更新
-	#>
-	$GUIUpdateAddCuring = New-Object System.Windows.Forms.CheckBox -Property @{
-		Height         = 35
-		Width          = 515
-		Margin         = "18,15,0,0"
-		Text           = $lang.CuringUpdate
-		Checked        = $True
-		add_Click      = {
-			$UI_Main_Error.Text = ""
-			$UI_Main_Error_Icon.Image = $null
-		}
-	}
-	$GUIUpdateAddCuringTips = New-Object System.Windows.Forms.Label -Property @{
-		AutoSize       = 1
-		Margin         = "36,0,0,0"
-		Text           = $lang.CuringUpdateTips
+	$UI_Main_Extract_Tips = New-Object system.Windows.Forms.Label -Property @{
+		Height         = 180
+		Width          = 278
+		Location       = "622,135"
+		Text           = $lang.AddSources
 	}
 
 	<#
-		.清理取代的
+		.遇到 boot.wim 时
 	#>
-	$UI_Main_Superseded_Rule = New-Object System.Windows.Forms.CheckBox -Property @{
-		Height         = 35
-		Width          = 450
-		Margin         = "36,20,0,0"
-		Text           = $lang.Superseded
-		Checked        = $True
-		add_Click      = {
-			$UI_Main_Error.Text = ""
-			$UI_Main_Error_Icon.Image = $null
-		}
-	}
-	$UI_Main_Superseded_Rule_Tips = New-Object system.Windows.Forms.Label -Property @{
-		AutoSize       = 1
-		Margin         = "52,0,0,10"
-		Text           = $lang.SupersededTips
-	}
-	$UI_Main_Superseded_Rule_Exclude = New-Object System.Windows.Forms.CheckBox -Property @{
-		Height         = 35
-		Width          = 530
-		Padding        = "52,0,0,0"
-		Text           = $lang.ExcludeItem
-		add_Click      = {
-			$UI_Main_Error.Text = ""
-			$UI_Main_Error_Icon.Image = $null
-		}
-	}
-	$UI_Main_Superseded_Rule_View_Detailed = New-Object system.Windows.Forms.LinkLabel -Property @{
+	$UI_Main_Find_Boot_Mount = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 530
-		Padding        = "68,0,0,0"
-		Text           = $lang.Exclude_View
-		LinkColor      = "GREEN"
-		ActiveLinkColor = "RED"
-		LinkBehavior   = "NeverUnderline"
+		Padding        = "18,0,0,0"
+		Margin         = "0,25,0,0"
+		Text           = $($lang.BootProcess -f "boot")
+	}
+	$UI_Main_Auto_Sync_Suggestions = New-Object System.Windows.Forms.CheckBox -Property @{
+		Height         = 40
+		Width          = 530
+		Padding        = "18,0,0,0"
+		Text           = $lang.LangNewAutoSelect
+		Enabled        = $False
+		add_Click      = {
+			if ($UI_Main_Auto_Sync_Suggestions.Checked) {
+				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -name "$(Get_GPS_Location)_AllowAutoSelectSuggestions" -value "True" -String
+			} else {
+				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -name "$(Get_GPS_Location)_AllowAutoSelectSuggestions" -value "False" -String
+			}
+
+			<#
+				.刷新通知
+			#>
+			Language_Refresh_Del_Auto_Suggestions
+		}
+	}
+
+	<#
+		.同步语言包到安装程序
+	#>
+	$UI_Main_Lang_Sync_To_Sources = New-Object System.Windows.Forms.CheckBox -Property @{
+		Height         = 40
+		Width          = 530
+		Padding        = "35,0,0,0"
+		Text           = $lang.BootSyncToISO
+		Enabled        = $False
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
 
-			$UI_Main_View_Detailed.Visible = $True
-			$UI_Main_View_Detailed_Show.Text = ""
-
-			$UI_Main_View_Detailed_Show.Text += "   $($lang.ExcludeItem)`n"
-			ForEach ($item in $Global:ExcludeClearSuperseded) {
-				$UI_Main_View_Detailed_Show.Text += "       $($item)`n"
+			if ($UI_Main_Lang_Sync_To_Sources.Checked) {
+				New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+			} else {
+				New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 			}
 		}
 	}
+	$UI_Main_Lang_Sync_To_Sources_Tips = New-Object system.Windows.Forms.Label -Property @{
+		AutoSize       = 1
+		Padding        = "50,0,0,0"
+		Text           = $lang.BootSyncToISOTips
+	}
 
 	<#
-		.Select the rule
+		.重建 Lang.ini
+	#>
+	$UI_Main_Language_Ini_Rebuild = New-Object System.Windows.Forms.CheckBox -Property @{
+		Height         = 40
+		Width          = 530
+		Padding        = "35,0,0,0"
+		margin         = "0,25,0,0"
+		Text           = $lang.LangIni
+		Enabled        = $False
+		add_Click      = {
+			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
+
+			if ($UI_Main_Language_Ini_Rebuild.Checked) {
+				New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+			} else {
+				New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+			}
+		}
+	}
+	$UI_Main_Language_Ini_Rebuild_Tips = New-Object system.Windows.Forms.Label -Property @{
+		AutoSize       = 1
+		Padding        = "50,0,0,0"
+		Text           = $lang.LangIniTips
+	}
+
+	<#
 		.选择规则
 	#>
 	$UI_Main_Rule_Name = New-Object system.Windows.Forms.Label -Property @{
@@ -1183,15 +1220,14 @@ Function Cumulative_updates_Delete_UI
 	<#
 		.刷新
 	#>
-	$UI_Main_Refresh_Sources = New-Object system.Windows.Forms.Button -Property @{
+	$UI_Main_Refresh   = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
 		Location       = "620,10"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.Refresh
 		add_Click      = {
-			Update_Del_Refresh_Sourcs
-			Refres_Event_Tasks_Update_Del_UI
+			Language_Del_Refresh_Sources
 
 			$UI_Main_Error.Text = "$($lang.Refresh), $($lang.Done)"
 			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
@@ -1208,10 +1244,10 @@ Function Cumulative_updates_Delete_UI
 		Width          = 280
 		Text           = $lang.SelectFolder
 		add_Click      = {
-			$Get_Temp_Select_Update_Del_Folder = @()
+			$Get_Temp_Select_Update_Add_Folder = @()
 			$UI_Main_Rule.Controls | ForEach-Object {
 				if ($_ -is [System.Windows.Forms.CheckBox]) {
-					$Get_Temp_Select_Update_Del_Folder += $_.Tag
+					$Get_Temp_Select_Update_Add_Folder += $_.Tag
 				}
 			}
 
@@ -1220,12 +1256,12 @@ Function Cumulative_updates_Delete_UI
 			}
 
 			if ($FolderBrowser.ShowDialog() -eq "OK") {
-				if ($Get_Temp_Select_Update_Del_Folder -Contains $FolderBrowser.SelectedPath) {
+				if ($Get_Temp_Select_Update_Add_Folder -Contains $FolderBrowser.SelectedPath) {
 					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					$UI_Main_Error.Text = $lang.Existed
 				} else {
-					$Script:Temp_Select_Custom_Folder_Queue += $FolderBrowser.SelectedPath
-					Update_Del_Refresh_Sourcs
+					$Script:Temp_Select_Language_Del_Folder += $FolderBrowser.SelectedPath
+					Language_Del_Refresh_Sources
 				}
 			} else {
 				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
@@ -1233,43 +1269,85 @@ Function Cumulative_updates_Delete_UI
 			}
 		}
 	}
-	$UI_Main_Select_Folder_Tips = New-Object system.Windows.Forms.Label -Property @{
-		Height         = 100
-		Width          = 260
-		Location       = "628,95"
-		Text           = $lang.DropFolder
+
+	<#
+		.提取语言
+	#>
+	$UI_Main_Extract   = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "620,90"
+		Height         = 36
+		Width          = 280
+		Text           = $lang.LanguageExtract
+		add_Click      = {
+			Language_Extract_UI -Del
+			Language_Del_Refresh_Sources
+		}
 	}
 
 	<#
-		.Mask: Displays the rule details
-		.蒙板：显示规则详细信息
+		.显示提示蒙层
 	#>
-	$UI_Main_View_Detailed = New-Object system.Windows.Forms.Panel -Property @{
+	$UI_Main_Mask_Tips = New-Object system.Windows.Forms.Panel -Property @{
 		BorderStyle    = 0
-		Height         = 678
-		Width          = 1006
+		Height         = 760
+		Width          = 928
 		autoSizeMode   = 1
 		Padding        = "8,0,8,0"
 		Location       = '0,0'
 		Visible        = $False
 	}
-	$UI_Main_View_Detailed_Show = New-Object System.Windows.Forms.RichTextBox -Property @{
-		Height         = 600
-		Width          = 880
+	$UI_Main_Mask_Tips_Results = New-Object System.Windows.Forms.RichTextBox -Property @{
+		Height         = 555
+		Width          = 885
 		BorderStyle    = 0
 		Location       = "15,15"
 		Text           = ""
 		BackColor      = "#FFFFFF"
 		ReadOnly       = $True
 	}
-	$UI_Main_View_Detailed_Canel = New-Object system.Windows.Forms.Button -Property @{
+	$UI_Main_Mask_Tips_Global_Do_Not = New-Object System.Windows.Forms.CheckBox -Property @{
+		Location       = "20,607"
+		Height         = 30
+		Width          = 550
+		Text           = $lang.LXPsAddDelTipsGlobal
+		add_Click      = {
+			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
+
+			if ($UI_Main_Mask_Tips_Global_Do_Not.Checked) {
+				Save_Dynamic -regkey "Solutions" -name "TipsWarningLanguageGlobal" -value "True" -String
+				$UI_Main_Mask_Tips_Do_Not.Enabled = $False
+			} else {
+				Save_Dynamic -regkey "Solutions" -name "TipsWarningLanguageGlobal" -value "False" -String
+				$UI_Main_Mask_Tips_Do_Not.Enabled = $True
+			}
+		}
+	}
+	$UI_Main_Mask_Tips_Do_Not = New-Object System.Windows.Forms.CheckBox -Property @{
+		Location       = "20,635"
+		Height         = 30
+		Width          = 550
+		Text           = $lang.LXPsAddDelTips
+		add_Click      = {
+			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
+
+			if ($UI_Main_Mask_Tips_Do_Not.Checked) {
+				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -name "TipsWarningLanguage" -value "True" -String
+			} else {
+				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -name "TipsWarningLanguage" -value "False" -String
+			}
+		}
+	}
+	$UI_Main_Mask_Tips_Canel = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
 		Location       = "620,635"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.Cancel
 		add_Click      = {
-			$UI_Main_View_Detailed.Visible = $False
+			$UI_Main_Mask_Tips.Visible = $False
 		}
 	}
 
@@ -1298,7 +1376,7 @@ Function Cumulative_updates_Delete_UI
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "26" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
+			Event_Need_Mount_Global_Variable -DevQueue "21" -Master $Global:Primary_Key_Image.Master -ImageFileName $Global:Primary_Key_Image.ImageFileName
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -1349,7 +1427,7 @@ Function Cumulative_updates_Delete_UI
 		add_Click      = { Event_Assign_Setting }
 	}
 	$UI_Main_Suggestion_Stop = New-Object system.Windows.Forms.LinkLabel -Property @{
-		Height         = 40
+		Height         = 30
 		Width          = 280
 		Text           = $lang.AssignForceEnd
 		Location       = '636,455'
@@ -1386,8 +1464,8 @@ Function Cumulative_updates_Delete_UI
 		Width          = 280
 		Text           = $lang.Save
 		add_Click      = {
-			if (Autopilot_Cumulative_updates_Delete_UI_Save) {
-
+			if (Autopilot_Language_Delete_UI_Save) {
+				
 			}
 		}
 	}
@@ -1405,54 +1483,13 @@ Function Cumulative_updates_Delete_UI
 
 				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
-				if ($Temp_Assign_Task_Select.count -gt 0) {
-					ForEach ($item in $Temp_Assign_Task_Select) {
+				$Temp_Language_Del_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				if ($Temp_Language_Del_Custom_Select.count -gt 0) {
+					ForEach ($item in $Temp_Language_Del_Custom_Select) {
 						Write-Host "  $($item)" -ForegroundColor Green
 					}
 				} else {
 					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
-				}
-
-				<#
-					.固化更新
-				#>
-				Write-Host "`n  $($lang.CuringUpdate)" -ForegroundColor Yellow
-				New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-				if ($GUIUpdateAddCuring.Enabled) {
-					if ($GUIUpdateAddCuring.Checked) {
-						Write-Host "  $($lang.Operable)" -ForegroundColor Green
-
-						New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-					} else {
-						Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-					}
-				} else {
-					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-				}
-
-				<#
-					.清理取代的
-				#>
-				New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-				New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-				Write-Host "`n  $($lang.Superseded)" -ForegroundColor Yellow
-				if ($UI_Main_Superseded_Rule.Enabled) {
-					if ($UI_Main_Superseded_Rule.Checked) {
-						Write-Host "  $($lang.Operable)" -ForegroundColor Green
-
-						New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-					} else {
-						Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-					}
-
-					if ($UI_Main_Superseded_Rule_Exclude.Enabled) {
-						if ($UI_Main_Superseded_Rule_Exclude.Checked) {
-							New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-						}
-					}
-				} else {
-					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 			}
 
@@ -1464,26 +1501,32 @@ Function Cumulative_updates_Delete_UI
 		}
 	}
 	$UI_Main.controls.AddRange((
-		$UI_Main_View_Detailed,
+		$UI_Main_Mask_Tips,
 		$UI_Main_Menu,
+		$UI_Main_Select_Folder,
+		$UI_Main_Refresh,
+		$UI_Main_Extract,
+		$UI_Main_Extract_Tips,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_Refresh_Sources,
-		$UI_Main_Select_Folder,
-		$UI_Main_Select_Folder_Tips,
 		$UI_Main_Event_Clear,
 		$UI_Main_Save,
 		$UI_Main_Canel
 	))
-	$UI_Main_View_Detailed.controls.AddRange((
-		$UI_Main_View_Detailed_Show,
-		$UI_Main_View_Detailed_Canel
+	$UI_Main_Mask_Tips.controls.AddRange((
+		$UI_Main_Mask_Tips_Results,
+		$UI_Main_Mask_Tips_Global_Do_Not,
+		$UI_Main_Mask_Tips_Do_Not,
+		$UI_Main_Mask_Tips_Canel
 	))
 	$UI_Main_Menu.controls.AddRange((
 		$UI_Main_Dashboard,
 		$UI_Main_Dashboard_Event_Status,
 		$UI_Main_Dashboard_Event_Clear,
 		$UI_Main_Adv,
+		$UI_Main_Is_Order_Rule_Lang,
+		$UI_Main_Is_Order_Rule_Lang_Tips,
+		$UI_Main_Is_Order_Rule_Lang_View,
 		$UI_Main_Is_Chheck_Mount_Type,
 		$UI_Main_Dont_Checke_Is_File,
 		$UI_Main_Auto_select_Folder,
@@ -1491,64 +1534,178 @@ Function Cumulative_updates_Delete_UI
 			$UI_Main_Dont_Checke_Is_RuleMultistage,
 			$UI_Main_Dont_Checke_Is_RuleOther,
 
-			$GUIUpdateAddCuring,
-		$GUIUpdateAddCuringTips,
-		$UI_Main_Superseded_Rule,
-		$UI_Main_Superseded_Rule_Tips,
-		$UI_Main_Superseded_Rule_Exclude,
-		$UI_Main_Superseded_Rule_View_Detailed,
+		<#
+			.遇到 boot.wim 时
+		#>
+		$UI_Main_Find_Boot_Mount,
+		$UI_Main_Auto_Sync_Suggestions,
+		$UI_Main_Lang_Sync_To_Sources,
+		$UI_Main_Lang_Sync_To_Sources_Tips,
+		$UI_Main_Language_Ini_Rebuild,
+		$UI_Main_Language_Ini_Rebuild_Tips,
 		$UI_Main_Rule_Name,
 		$UI_Main_Rule
 	))
 
-	<#
-		.复选框：清理取代的
-	#>
+	$UI_Main_Mask_Tips_Results.Text += $lang.RuleLanguageTips
+
+	ForEach ($item in $Global:Search_File_Order) {
+		<#
+			.1 = 开始分配：基本
+		#>
+		$UI_Main_Mask_Tips_Results.Text += "`n   $($lang.Basic): $($item.Basic.Count) $($lang.EventManagerCount)`n"
+		ForEach ($Basic in $item.Basic) {
+			$UI_Main_Mask_Tips_Results.Text += "      $($Basic)`n"
+		}
+
+		<#
+			.2 = 开始分配：字体
+		#>
+		$UI_Main_Mask_Tips_Results.Text += "`n   $($lang.Fonts): $($item.Fonts.Count) $($lang.EventManagerCount)`n"
+		ForEach ($Fonts in $item.Fonts) {
+			$UI_Main_Mask_Tips_Results.Text += "      $($Fonts)`n"
+		}
+
+		<#
+			.3 = 开始分配：OCR
+		#>
+		$UI_Main_Mask_Tips_Results.Text += "`n   $($lang.OCR): $($item.OCR.Count) $($lang.EventManagerCount)`n"
+		ForEach ($OCR in $item.OCR) {
+			$UI_Main_Mask_Tips_Results.Text += "      $($OCR)`n"
+		}
+
+		<#
+			.4 = 开始分配：手写内容识别
+		#>
+		$UI_Main_Mask_Tips_Results.Text += "`n   $($lang.Handwriting): $($item.Basic.Count) $($lang.EventManagerCount)`n"
+		ForEach ($Handwriting in $item.Handwriting) {
+			$UI_Main_Mask_Tips_Results.Text += "      $($Handwriting)`n"
+		}
+
+		<#
+			.5 = 开始分配：文本转语音
+		#>
+		$UI_Main_Mask_Tips_Results.Text += "`n   $($lang.TextToSpeech): $($item.TextToSpeech.Count) $($lang.EventManagerCount)`n"
+		ForEach ($TextToSpeech in $item.TextToSpeech) {
+			$UI_Main_Mask_Tips_Results.Text += "      $($TextToSpeech)`n"
+		}
+
+		<#
+			.6 = 开始分配：语音识别
+		#>
+		$UI_Main_Mask_Tips_Results.Text += "`n   $($lang.Speech): $($item.Speech.Count) $($lang.EventManagerCount)`n"
+		ForEach ($Speech in $item.Speech) {
+			$UI_Main_Mask_Tips_Results.Text += "      $($Speech)`n"
+		}
+
+		<#
+			.7 = 开始分配：零售演示体验
+		#>
+		$UI_Main_Mask_Tips_Results.Text += "`n   $($lang.Retail): $($item.Retail.Count) $($lang.EventManagerCount)`n"
+		ForEach ($Retail in $item.Retail) {
+			$UI_Main_Mask_Tips_Results.Text += "      $($Retail)`n"
+		}
+
+		<#
+			.8 = 开始分配：按需功能 FOD
+		#>
+		$UI_Main_Mask_Tips_Results.Text += "`n   $($lang.Features_On_Demand): $($item.Features_On_Demand.Count) $($lang.EventManagerCount)`n"
+		ForEach ($FeaturesOnDemand in $item.Features_On_Demand) {
+			$UI_Main_Mask_Tips_Results.Text += "      $($FeaturesOnDemand)`n"
+		}
+	}
+
+	$UI_Main_Mask_Tips_Results.Text += $lang.RuleLanguageTipsExt
+
 	<#
 		.判断 boot.wim
 	#>
 	if (Image_Is_Select_Boot) {
-		<#
-			.清理取代的
-		#>
-		$UI_Main_Superseded_Rule.Checked = $False
-		$UI_Main_Superseded_Rule.Enabled = $False
-		$UI_Main_Superseded_Rule_Exclude.Enabled = $False
+		$UI_Main_Auto_Sync_Suggestions.Enabled = $True
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -Name "$(Get_GPS_Location)_AllowAutoSelectSuggestions" -ErrorAction SilentlyContinue) {
+			switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -Name "$(Get_GPS_Location)_AllowAutoSelectSuggestions" -ErrorAction SilentlyContinue) {
+				"True" {
+					$UI_Main_Auto_Sync_Suggestions.Checked = $True
+				}
+				"False" {
+					$UI_Main_Auto_Sync_Suggestions.Checked = $False
+				}
+			}
+		} else {
+			$UI_Main_Auto_Sync_Suggestions.Checked = $True
+		}
 
 		<#
-			.固化更新
+			.同步语言包到安装程序
 		#>
-		$GUIUpdateAddCuring.Checked = $False
-		$GUIUpdateAddCuring.Enabled = $False
-	}
+		$UI_Main_Lang_Sync_To_Sources.Enabled = $True
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+			$UI_Main_Lang_Sync_To_Sources.Checked = $True
+		} else {
+			$UI_Main_Lang_Sync_To_Sources.Checked = $False
+		}
 
-	if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-		$UI_Main_Superseded_Rule.Checked = $True
+		<#
+			.重建 Lang.ini
+		#>
+		$UI_Main_Language_Ini_Rebuild.Enabled = $True
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+			$UI_Main_Language_Ini_Rebuild.Checked = $True
+		} else {
+			$UI_Main_Language_Ini_Rebuild.Checked = $False
+		}
 	} else {
-		$UI_Main_Superseded_Rule.Checked = $False
+		$UI_Main_Auto_Sync_Suggestions.Checked = $False
+		$UI_Main_Auto_Sync_Suggestions.Enabled = $False
+		$UI_Main_Lang_Sync_To_Sources.Checked = $False
+		$UI_Main_Lang_Sync_To_Sources.Enabled = $False
+		$UI_Main_Language_Ini_Rebuild.Checked = $False
+		$UI_Main_Language_Ini_Rebuild.Enabled = $False
 	}
 
-	if ((Get-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-		$GUIUpdateAddCuring.Checked = $True
+	Language_Del_Refresh_Sources
+	Refres_Event_Tasks_Language_Del_UI
+
+	<#
+		.提示
+	#>
+	$MarkShowNewTips = $False
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -Name "TipsWarningLanguageGlobal" -ErrorAction SilentlyContinue) {
+		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -Name "TipsWarningLanguageGlobal" -ErrorAction SilentlyContinue) {
+			"True" {
+				$MarkShowNewTips = $True
+				$UI_Main_Mask_Tips_Global_Do_Not.Checked = $True
+				$UI_Main_Mask_Tips_Do_Not.Enabled = $False
+			}
+			"False" {
+				$UI_Main_Mask_Tips_Global_Do_Not.Checked = $False
+				$UI_Main_Mask_Tips_Do_Not.Enabled = $True
+			}
+		}
+	}
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -Name "TipsWarningLanguage" -ErrorAction SilentlyContinue) {
+		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Language" -Name "TipsWarningLanguage" -ErrorAction SilentlyContinue) {
+			"True" {
+				$MarkShowNewTips = $True
+				$UI_Main_Mask_Tips_Do_Not.Checked = $True
+			}
+			"False" {
+				$UI_Main_Mask_Tips_Do_Not.Checked = $False
+			}
+		}
+	}
+	if ($MarkShowNewTips) {
+		$UI_Main_Mask_Tips.Visible = $True
 	} else {
-		$GUIUpdateAddCuring.Checked = $False
+		$UI_Main_Mask_Tips.Visible = $False
 	}
-
-	if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-		$UI_Main_Superseded_Rule_Exclude.Checked = $True
-	} else {
-		$UI_Main_Superseded_Rule_Exclude.Checked = $False
-	}
-
-	Update_Del_Refresh_Sourcs
-	Refres_Event_Tasks_Update_Del_UI
 
 	<#
 		.Add right-click menu: select all, clear button
 		.添加右键菜单：全选、清除按钮
 	#>
-	$GUIUpdateAddMenu = New-Object System.Windows.Forms.ContextMenuStrip
-	$GUIUpdateAddMenu.Items.Add($lang.AllSel).add_Click({
+	$UI_Main_Menu_Right = New-Object System.Windows.Forms.ContextMenuStrip
+	$UI_Main_Menu_Right.Items.Add($lang.AllSel).add_Click({
 		$UI_Main_Rule.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.CheckBox]) {
 				if ($_.Enabled) {
@@ -1557,7 +1714,7 @@ Function Cumulative_updates_Delete_UI
 			}
 		}
 	})
-	$GUIUpdateAddMenu.Items.Add($lang.AllClear).add_Click({
+	$UI_Main_Menu_Right.Items.Add($lang.AllClear).add_Click({
 		$UI_Main_Rule.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.CheckBox]) {
 				if ($_.Enabled) {
@@ -1566,14 +1723,14 @@ Function Cumulative_updates_Delete_UI
 			}
 		}
 	})
-	$UI_Main_Rule.ContextMenuStrip = $GUIUpdateAddMenu
+	$UI_Main_Rule.ContextMenuStrip = $UI_Main_Menu_Right
 
 	if ($Global:AutopilotMode) {
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Autopilot), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 	}
 
 	if ($Global:EventQueueMode) {
-		Write-Host "`n  $($lang.CUpdate): $($lang.Del)" -ForegroundColor Yellow
+		Write-Host "`n  $($lang.Language): $($lang.Del)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.OnDemandPlanTask), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
@@ -1585,7 +1742,7 @@ Function Cumulative_updates_Delete_UI
 	}
 
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-		Write-Host "`n  $($lang.CUpdate): $($lang.Del)" -ForegroundColor Yellow
+		Write-Host "`n  $($lang.Language): $($lang.Del)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
@@ -1635,26 +1792,64 @@ Function Cumulative_updates_Delete_UI
 
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
-		New-Variable -Scope global -Name "Queue_Is_Update_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		Write-Host "  $('-' * 80)"
+		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
 
-		$Temp_Assign_Task_Select_Is = @()
-		$UI_Main_Rule.Controls | ForEach-Object {
-			if ($_ -is [System.Windows.Forms.CheckBox]) {
-				$Temp_Assign_Task_Select_Is += $_.Tag
-			}
+		<#
+			.按相反的顺序删除语言包
+		#>
+		if ($Autopilot.Adv.DescendingRuleLang) {
+			$UI_Main_Is_Order_Rule_Lang.Checked = $true
+		} else {
+			$UI_Main_Is_Order_Rule_Lang.Checked = $False
 		}
 
-		foreach ($item in $Autopilot.Path) {
-			if ($Temp_Assign_Task_Select_Is -notcontains $item) {
-				$Script:Temp_Select_Custom_Folder_Queue += $item
-			}
+		<#
+			.不再检查目录里是否存在文件
+		#>
+		if ($Autopilot.Adv.NoCheckFileType) {
+			$UI_Main_Dont_Checke_Is_File.Checked = $true
+		} else {
+			$UI_Main_Dont_Checke_Is_File.Checked = $False
 		}
 
-		Update_Del_Refresh_Sourcs
+		<#
+			.有事件时自动选择建议项
+		#>
+		if ($Autopilot.Adv.AutoSuggestions) {
+			$UI_Main_Auto_Sync_Suggestions.Checked = $true
+		} else {
+			$UI_Main_Auto_Sync_Suggestions.Checked = $False
+		}
+
+			<#
+				.遇到 boot.wim 时
+			#>
+				<#
+					.同步语言包到 ISO
+				#>
+				if ($Autopilot.Adv.BootSyncToISO) {
+					$UI_Main_Lang_Sync_To_Sources.Checked = $true
+				} else {
+					$UI_Main_Lang_Sync_To_Sources.Checked = $False
+				}
+
+				<#
+					.重建 Lang.ini
+				#>
+				if ($Autopilot.Adv.LangIniRebuild) {
+					$UI_Main_Language_Ini_Rebuild.Checked = $true
+				} else {
+					$UI_Main_Language_Ini_Rebuild.Checked = $False
+				}
+
+		Language_Refresh_Del_Auto_Suggestions
+
+		$New_Custom_Path = Autopilot_Custom_Replace_Variable -var $Autopilot.Source
 
 		$UI_Main_Rule.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.CheckBox]) {
-				if ($Autopilot.Path -contains $_.Tag) {
+				if ($New_Custom_Path -contains $_.Text) {
 					$_.Checked = $True
 				} else {
 					$_.Checked = $False
@@ -1662,66 +1857,21 @@ Function Cumulative_updates_Delete_UI
 			}
 		}
 
-		<#
-			.固化更新
-		#>
-		if ($Autopilot.IsEvent.CuringUpdate) {
-			$GUIUpdateAddCuring.Checked = $True
-		} else {
-			$GUIUpdateAddCuring.Checked = $False
-		}
-
-			if ($Autopilot.IsEvent.Superseded.IsSuperseded) {
-				$UI_Main_Superseded_Rule.Checked = $True
-			} else {
-				$UI_Main_Superseded_Rule.Checked = $False
-			}
-
-			if ($Autopilot.IsEvent.Superseded.ExcludeRules) {
-				$UI_Main_Superseded_Rule_Exclude.Checked = $True
-			} else {
-				$UI_Main_Superseded_Rule_Exclude.Checked = $False
-			}
-
-		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
-		if (Autopilot_Cumulative_updates_Delete_UI_Save) {
+		if (Autopilot_Language_Delete_UI_Save) {
 			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
-
-			Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
-			Write-Host "  $('-' * 80)"
-			$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
-			foreach ($item in $Temp_Assign_Task_Select) {
-				Write-Host "  $($item)" -ForegroundColor Green
-			}
 		} else {
 			Write-Host " $($lang.ISOCreateFailed) " -BackgroundColor DarkRed -ForegroundColor White
 
 			$UI_Main.ShowDialog() | Out-Null
 		}
 	} else {
-		$Temp_Assign_Task_Select_Is = @()
-		$UI_Main_Rule.Controls | ForEach-Object {
-			if ($_ -is [System.Windows.Forms.CheckBox]) {
-				$Temp_Assign_Task_Select_Is += $_.Tag
-			}
-		}
+		$Temp_Language_Add_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
 
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
-		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
-
-		foreach ($item in $Temp_Assign_Task_Select) {
-			if ($Temp_Assign_Task_Select_Is -notcontains $item) {
-				$Script:Temp_Select_Custom_Folder_Queue += $item
-			}
-		}
-
-		Update_Del_Refresh_Sourcs
-
-		if ($Temp_Assign_Task_Select.count -gt 0) {
+		if ($Temp_Language_Add_Custom_Select.count -gt 0) {
 			$UI_Main_Rule.Controls | ForEach-Object {
 				if ($_ -is [System.Windows.Forms.CheckBox]) {
-					if ($Temp_Assign_Task_Select -contains $_.Tag) {
-						$_.Checked = $true
+					if ($Temp_Language_Add_Custom_Select -contains $_.Text) {
+						$_.Checked = $True
 					} else {
 						$_.Checked = $False
 					}
@@ -1733,166 +1883,91 @@ Function Cumulative_updates_Delete_UI
 	}
 }
 
-Function Autopilot_Cumulative_updates_Delete_UI_Import
-{
-	param
-	(
-		$Tasks
-	)
-
-	<#
-		.测试完成后，检查配置文件里是否有事件
-	#>
-	if ([string]::IsNullOrEmpty($Tasks)) {
-		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
-	} else {
-		switch ($Tasks.Schome) {
-			"Auto" {
-				Write-Host "  $($lang.Autopilot_Scheme): " -NoNewline -ForegroundColor Yellow
-
-				<#
-					.从公共库里导入，顺序：
-						1、当前配置；
-						2、全局配置。
-				#>
-				$New_Tasks_Assign_Auto_Schome = @()
-
-				if ($New_Tasks_Assign_Auto_Schome.Count -le 0) {
-					<#
-						.当前
-					#>
-					if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Del_Auto" -ErrorAction SilentlyContinue) {
-						$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Del_Auto" -ErrorAction SilentlyContinue
-
-						if ($GetSelectVer.Count -gt 0) {
-							Write-Host "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid)"
-							$New_Tasks_Assign_Auto_Schome = $GetSelectVer
-
-							Write-Host "`n  $($lang.AddSources)" -ForegroundColor Yellow
-							foreach ($item in $GetSelectVer) {
-								Write-Host "  $($item)" -ForegroundColor Green
-							}
-						}
-					}
-				}
-
-				if ($New_Tasks_Assign_Auto_Schome.Count -le 0) {
-					if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Del_Auto" -ErrorAction SilentlyContinue) {
-						$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Del_Auto" -ErrorAction SilentlyContinue
-
-						if ($GetSelectVer.Count -gt 0) {
-							Write-Host $lang.Autopilot_Sync_To_Global
-							$New_Tasks_Assign_Auto_Schome = $GetSelectVer
-
-							Write-Host "`n  $($lang.AddSources)" -ForegroundColor Yellow
-							foreach ($item in $GetSelectVer) {
-								Write-Host "  $($item)" -ForegroundColor Green
-							}
-						}
-					}
-				}
-
-				if ($New_Tasks_Assign_Auto_Schome.Count -gt 0) {
-					$Is_Valid_New_Custom_Path = @()
-
-					foreach ($item in $New_Tasks_Assign_Auto_Schome) {
-						if (Test-Path -Path $item -PathType Container) {
-							if((Get-ChildItem $item -Recurse -Include $Global:Search_KB_File_Type -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) {
-								$Is_Valid_New_Custom_Path += $item
-							}
-						}
-					}
-
-					if ($Is_Valid_New_Custom_Path.count -gt 0) {
-						$New_Event = @{
-							IsEvent = $Tasks.IsEvent
-							Path = $Is_Valid_New_Custom_Path
-						}
-
-						Cumulative_updates_Delete_UI -Autopilot $New_Event
-					} else {
-						Write-Host "  $($lang.NoWork)" -ForegroundColor Red
-					}
-				} else {
-					Write-Host " $($lang.NoWork) " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
-				}
-			}
-			"Custom" {
-				Write-Host "`n  $($lang.RuleCustomize)" -ForegroundColor Yellow
-
-				<#
-					.转换配置文件变量
-				#>
-				$New_Custom_Path = Autopilot_Custom_Replace_Variable -var $Tasks.Custom
-
-				$Is_Valid_New_Custom_Path = @()
-
-				foreach ($item in $New_Custom_Path) {
-					if (Test-Path -Path $item -PathType Container) {
-						if((Get-ChildItem $item -Recurse -Include $Global:Search_KB_File_Type -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) {
-							$Is_Valid_New_Custom_Path += $item
-						}
-					}
-				}
-
-				if ($Is_Valid_New_Custom_Path.count -gt 0) {
-					$New_Event = @{
-						IsEvent = $Tasks.IsEvent
-						Path = $Is_Valid_New_Custom_Path
-					}
-
-					Cumulative_updates_Delete_UI -Autopilot $New_Event
-				} else {
-					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
-				}
-			}
-		}
-	}
-}
-
 <#
-	.Start processing to add updates
-	.开始处理添加更新
+	.Processing delete language
+	.处理删除语言
 #>
-Function Update_Del_Process
+Function Language_Delete_Process
 {
-	$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
-	if ($Temp_Assign_Task_Select.count -gt 0) {
+	$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
+
+	$Temp_Language_Del_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	if ($Temp_Language_Del_Custom_Select.count -gt 0) {
+		Write-Host "  $($lang.YesWork)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+
 		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 
-		ForEach ($item in $Temp_Assign_Task_Select) {
+		ForEach ($item in $Temp_Language_Del_Custom_Select) {
 			Write-Host "  $($item)" -ForegroundColor Green
 		}
 
 		Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
-		$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount"
+		ForEach ($item in $Temp_Language_Del_Custom_Select) {
+			<#
+				.Set the sort order to reverse when fetching files
+				.获取文件时设置排序为反向
 
-		ForEach ($item in $Temp_Assign_Task_Select) {
-			Get-ChildItem $item -Recurse -Include $Global:Search_KB_File_Type -ErrorAction SilentlyContinue | ForEach-Object {
-				if (Test-Path -Path $_.FullName -PathType Leaf) {
-					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
-						Write-Host "  $('-' * 80)"
-						Write-Host "  Remove-WindowsPackage -Path ""$($test_mount_folder_Current)"" -PackagePath ""$($_.FullName)""" -ForegroundColor Green
-						Write-Host "  $('-' * 80)`n"
+				Sort-Object -Descending
+			#>
+			Write-Host "  $($lang.DescendingRuleLang)" -ForegroundColor Yellow
+			if ((Get-Variable -Scope global -Name "Queue_Is_Language_Del_Reverse_Order_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+				Write-Host "  $($lang.UpdateAvailable)`n" -ForegroundColor Green
+
+				Get-ChildItem $item -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | Sort-Object -Descending | ForEach-Object {
+					if (Test-Path -Path $_.FullName -PathType Leaf) {
+						Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+						Write-Host $_.FullName -ForegroundColor Green
+
+						if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
+							Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+							Write-Host "  $('-' * 80)"
+							Write-Host "  Remove-WindowsPackage -Path ""$($test_mount_folder_Current)"" -PackageName ""$($_.FullName)""" -ForegroundColor Green
+							Write-Host "  $('-' * 80)`n"
+						}
+
+						Write-Host "  " -NoNewline
+						Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
+						try {
+							Remove-WindowsPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove.log" -Path $test_mount_folder_Current -PackagePath $_.FullName -ErrorAction SilentlyContinue | Out-Null
+							Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+						} catch {
+							Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+							Write-Host "  $($_)" -ForegroundColor Red
+						}
+
+						Write-Host
 					}
+				}
+			} else {
+				Write-Host "  $($lang.UpdateUnavailable)`n" -ForegroundColor Red
 
-					Write-Host "  $($lang.FullName): " -NoNewline -ForegroundColor Yellow
-					Write-Host $_.FullName -ForegroundColor Green
+				Get-ChildItem $item -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | ForEach-Object {
+					if (Test-Path -Path $_.FullName -PathType Leaf) {
+						Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
+						Write-Host $_.FullName -ForegroundColor Green
 
-					Write-Host "  " -NoNewline
-					Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
-					try {
-						Remove-WindowsPackage -Path $test_mount_folder_Current -PackagePath $_.FullName -ErrorAction SilentlyContinue | Out-Null
-						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
-					} catch {
-						Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
-						Write-Host "  $($_)" -ForegroundColor Red
+						if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
+							Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+							Write-Host "  $('-' * 80)"
+							Write-Host "  Remove-WindowsPackage -Path ""$($test_mount_folder_Current)"" -PackageName ""$($_.FullName)""" -ForegroundColor Green
+							Write-Host "  $('-' * 80)`n"
+						}
+
+						Write-Host "  " -NoNewline
+						Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
+						try {
+							Remove-WindowsPackage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Remove.log" -Path $test_mount_folder_Current -PackagePath $_.FullName -ErrorAction SilentlyContinue | Out-Null
+							Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+						} catch {
+							Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+							Write-Host "  $($_)" -ForegroundColor Red
+						}
+
+						Write-Host
 					}
-
-					Write-Host
 				}
 			}
 		}
