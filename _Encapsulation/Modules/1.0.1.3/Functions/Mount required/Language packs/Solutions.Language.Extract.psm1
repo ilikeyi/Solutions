@@ -11,7 +11,7 @@ Function Language_Extract_UI
 		[switch]$Del
 	)
 
-	Write-Host "`n  $($lang.LanguageExtract)" -ForegroundColor Yellow
+	Write-Host "`n  $($lang.Language): $($lang.LanguageExtract)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 
 	$Search_Folder_Multistage_Rule = Join-Path -Path $Global:MainMasterFolder -ChildPath "$($Global:ImageType)\_Custom"
@@ -2193,8 +2193,6 @@ Function Language_Extract_UI
 	}
 
 	if ($Autopilot) {
-		Write-Host "`n  $($lang.Language): $($lang.LanguageExtract)" -ForegroundColor Yellow
-		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
 		Write-Host "  $($lang.LanguageExtract): " -NoNewline -ForegroundColor Yellow

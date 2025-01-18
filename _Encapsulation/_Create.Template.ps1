@@ -65,4 +65,4 @@ if ($Functions) {
 	exit
 }
 
-Create_Template
+Create_Template_UI
