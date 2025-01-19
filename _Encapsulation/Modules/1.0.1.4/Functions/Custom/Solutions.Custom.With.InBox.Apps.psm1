@@ -1682,7 +1682,6 @@ $Global:Pre_Config_Rules = @(
 						@{ Name = "Microsoft.YourPhone";                     Match = "YourPhone";                         License = "YourPhone";                         Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00"); }
 						@{ Name = "Microsoft.ZuneMusic";                     Match = "ZuneMusic";                         License = "ZuneMusic";                         Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00"); }
 						@{ Name = "Microsoft.ZuneVideo";                     Match = "ZuneVideo";                         License = "ZuneVideo";                         Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00"); }
-						@{ Name = "Microsoft.MinecraftEducationEdition";     Match = "MinecraftEducationEdition";         License = "MinecraftEducationEdition";         Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00.UWPDesktop"); }
 						@{ Name = "Microsoft.Whiteboard";                    Match = "Whiteboard";                        License = "Whiteboard";                        Region = "All"; Dependencies = @("Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00"); }
 					)
 				}
