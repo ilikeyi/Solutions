@@ -1093,7 +1093,8 @@ Function Drive_Delete_UI
 			}
 		}
 
-		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
+		Write-Host "  " -NoNewline
+		Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
 		if (Autopilot_Drive_Del_UI_Save) {
 			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 

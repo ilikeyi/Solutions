@@ -1055,7 +1055,7 @@ Function Image_Eject_UI
 					<#
 						.保存
 					#>
-					Write-Host "  $($lang.SaveTo)" -ForegroundColor Yellow
+					Write-Host "  $($lang.Save)" -ForegroundColor Yellow
 					if ($UI_Main_Mount_Save.Checked) {
 						Write-Host "  $($lang.Operable)" -ForegroundColor Green
 						New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force

@@ -111,8 +111,8 @@ Function Covert_Software_Package_Unpack
 			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
 			Write-Host "`n  $($fullnewpathsha256)"
-			Write-Host "  " -NoNewline
 
+			Write-Host "  " -NoNewline
 			Write-Host " $($lang.Uping) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			Remove-Item -Path $fullnewpathsha256 -Force -ErrorAction SilentlyContinue
 			$calchash = (Get-FileHash "$($TempFolderUpdate)\$($item.Name).zip" -Algorithm SHA256)

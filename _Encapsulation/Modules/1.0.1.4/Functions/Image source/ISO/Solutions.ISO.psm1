@@ -3411,7 +3411,8 @@ Function ISO_Create_UI
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
+		Write-Host "  " -NoNewline
+		Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
 
 		<#
 			.选择发行日期：年
@@ -3973,7 +3974,8 @@ Function ISO_Create_Process
 				Start-Process -FilePath $OscdimgArch -ArgumentList $Arguments -Wait -NoNewWindow
 			}
 
-			Write-Host "  $($lang.Uping): " -NoNewline
+			Write-Host "  " -NoNewline
+			Write-Host " $($lang.Uping) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			if (Test-Path -Path $Global:ISOSaveToFullName -PathType Leaf) {
 				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
@@ -4007,7 +4009,8 @@ Function ISO_Create_Process
 				Start-Process -FilePath $BypassTPMCmd -ArgumentList $Arguments -wait -WindowStyle Minimized
 				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+				Write-Host "  " -NoNewline
+				Write-Host " $($lang.UpdateUnavailable) " -BackgroundColor DarkRed -ForegroundColor White
 			}
 
 			<#
@@ -4080,7 +4083,8 @@ Function ISO_Create_Process
 			if ($Global:CreateSHA256) {
 				Write-Host "  $($Global:ISOSaveToFullName).sha256" -ForegroundColor Green
 
-				Write-Host "  $($lang.Uping): " -NoNewline
+				Write-Host "  " -NoNewline
+				Write-Host " $($lang.Uping) " -NoNewline -BackgroundColor White -ForegroundColor Black
 
 				<#
 					.删除旧文件 .sha256

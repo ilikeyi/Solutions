@@ -1683,7 +1683,8 @@ Function Cumulative_updates_Delete_UI
 				$UI_Main_Superseded_Rule_Exclude.Checked = $False
 			}
 
-		Write-Host "  $($lang.Save): " -NoNewline -ForegroundColor Yellow
+		Write-Host "  " -NoNewline
+		Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
 		if (Autopilot_Cumulative_updates_Delete_UI_Save) {
 			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 

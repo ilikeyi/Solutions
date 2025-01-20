@@ -998,18 +998,26 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 					Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
 					Write-Host "  $('-' * 80)"
 					ForEach ($item in $TempQueueProcessImageSelect) {
-						Write-Host "`n  $($lang.LXPsWaitAddUpdate)" -ForegroundColor Green
-						Write-Host "  $('-' * 80)"
 						Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 						Write-Host $item.Name -ForegroundColor Yellow
 
 						Write-Host "  $($lang.MountedIndex): " -NoNewline
 						Write-Host $item.Index -ForegroundColor Yellow
 
-						Write-Host "  $('-' * 80)"
 						$Arguments = "update ""$($MasterFile)"" $($item.Index) --command=""add '$($Temp_Expand_Rule.FileName)' '$($Temp_Expand_Rule.UpdatePath)'"""
-						Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
 
+						if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
+							Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+							Write-Host "  $('-' * 80)"
+							Write-Host "  Start-Process -FilePath '$($wimlib)' -ArgumentList '$($Arguments)" -ForegroundColor Green
+							Write-Host "  $('-' * 80)"
+						}
+
+						Write-Host
+						Write-Host "  " -NoNewline
+						Write-Host " $($lang.LXPsWaitAddUpdate) " -NoNewline -BackgroundColor White -ForegroundColor Black
+						Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
+						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 						Write-Host
 					}
 				} else {
@@ -1034,18 +1042,26 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 				Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
 				ForEach ($wimlib_item_Mount in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($NewMaster)_$($NewMaster)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "`n  $($lang.LXPsWaitAddUpdate)" -ForegroundColor Green
-					Write-Host "  $('-' * 80)"
 					Write-Host "  $($lang.Wim_Image_Name): " -noNewline
 					Write-Host $wimlib_item_Mount.IName -ForegroundColor Yellow
 
 					Write-Host "  $($lang.MountedIndex): " -noNewline
 					Write-Host $wimlib_item_Mount.Index -ForegroundColor Yellow
-					Write-Host "  $('-' * 80)"
 
 					$Arguments = "update ""$($MasterFile)"" $($wimlib_item_Mount.Index) --command=""add '$($Temp_Expand_Rule.FileName)' '$($Temp_Expand_Rule.UpdatePath)'"""
-					Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
 
+					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
+						Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+						Write-Host "  $('-' * 80)"
+						Write-Host "  Start-Process -FilePath '$($wimlib)' -ArgumentList '$($Arguments)" -ForegroundColor Green
+						Write-Host "  $('-' * 80)"
+					}
+
+					Write-Host
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.LXPsWaitAddUpdate) " -NoNewline -BackgroundColor White -ForegroundColor Black
+					Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 					Write-Host
 				}
 			}
