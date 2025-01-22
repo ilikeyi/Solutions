@@ -6,6 +6,8 @@ Function Image_Convert_Create_Info_Process
 		[string]$SaveTo
 	)
 
+	$NewSaveTo = $SaveTo.Replace("\", "\\")
+
 @"
 {
 	"author": {
@@ -14,7 +16,7 @@ Function Image_Convert_Create_Info_Process
 	},
 	"Sources": {
 		"OriginalName": "$($sources)",
-		"CopyTo":       "$($SaveTo)"
+		"CopyTo":       "$($NewSaveTo)"
 	},
 	"Backup": {
 		"Time": "$(Get-Date -Format "MM/dd/yyyy hh:mm:ss")"
