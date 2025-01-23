@@ -433,18 +433,22 @@ Function Image_Get_Mount_Index
 	<#
 		.判断 ISO 主要来源是否存在文件
 	#>
-	if (Test-Path -Path $Global:Primary_Key_Image.FullPath -PathType leaf) {
-		<#
-			.Get all mounted images from the current system that match the current one
-			.从当前系统里获取所有已挂载镜像与当前匹配
-		#>
-		Get-WindowsImage -Mounted -ErrorAction SilentlyContinue | ForEach-Object {
+	if (([string]::IsNullOrEmpty($Global:Primary_Key_Image.FullPath))) {
+
+	} else {
+		if (Test-Path -Path $Global:Primary_Key_Image.FullPath -PathType leaf) {
 			<#
-				.判断文件路径与当前是否一致
+				.Get all mounted images from the current system that match the current one
+				.从当前系统里获取所有已挂载镜像与当前匹配
 			#>
-			if ($_.ImagePath -eq $Global:Primary_Key_Image.FullPath) {
-				$MarkErrorMounted = $True
-				$Index = $_.ImageIndex
+			Get-WindowsImage -Mounted -ErrorAction SilentlyContinue | ForEach-Object {
+				<#
+					.判断文件路径与当前是否一致
+				#>
+				if ($_.ImagePath -eq $Global:Primary_Key_Image.FullPath) {
+					$MarkErrorMounted = $True
+					$Index = $_.ImageIndex
+				}
 			}
 		}
 	}

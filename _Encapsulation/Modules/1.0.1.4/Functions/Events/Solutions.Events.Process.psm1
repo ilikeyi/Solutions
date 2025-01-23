@@ -1699,7 +1699,7 @@ Function Event_Process_Task_Need_Mount
 	Write-Host "$($Script:SingleTaskTime.ElapsedMilliseconds) $($lang.TimeMillisecond)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 
-	Write-Host "  $($lang.Done)`n" -ForegroundColor Green
+	Write-Host "  $($lang.Done)" -ForegroundColor Green
 }
 
 <#
@@ -1939,7 +1939,7 @@ Function Event_Process_Available_UI
 			}
 		}
 	} else {
-		Write-Host "  $($lang.NoWork)`n" -ForegroundColor Red
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 
 		$Init_IsEvent = @(
 			"Event_Completion_Setting_UI"

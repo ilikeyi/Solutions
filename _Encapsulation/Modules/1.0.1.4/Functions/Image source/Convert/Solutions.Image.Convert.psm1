@@ -357,7 +357,7 @@ Function Image_Convert_UI
 #			$GUIImageConvertRebuld.Checked = $True      # 拆分：选择
 			$GUIImageConvertRebuld.Enabled = $True      # 重建：启用
 			$GUIImageConvertSplit.Enabled = $True       # 拆分：启用
-#			$GUIImageConvertSplit.Checked = $True       # 拆分：选择
+			$GUIImageConvertSplit.Checked = $True       # 拆分：选择
 		}
 
 		<#
@@ -1144,10 +1144,16 @@ Function Image_Convert_Process
 				Write-Host "  $($lang.Done)" -ForegroundColor Green
 			}
 
-			Write-Host "`n  $($lang.Del)"
-			Write-Host "  $($Install_wim)" -ForegroundColor Green
+			Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+			Write-Host $Install_wim -ForegroundColor Green
+
+			Write-Host "  " -NoNewline
+			Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			if (Test-Path -Path $Install_wim -PathType leaf) {
 				Remove_Tree -Path $Install_wim
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+			} else {
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
 
 			if ($Global:Developers_Mode) {
@@ -1196,26 +1202,32 @@ Function Image_Convert_Process
 				转换为 wim 后，判断是否存在新的 install.wim，存在则删除旧的 install.esd
 			#>
 			if (Test-Path -Path $Install_wim -PathType leaf) {
-				Write-Host "`n  $($lang.Del)"
-				Write-Host "  $($Install_ESD)" -ForegroundColor Green
+				Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+				Write-Host $Install_ESD -ForegroundColor Green
+
+				Write-Host "  " -NoNewline
+				Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				Remove_Tree -Path $Install_ESD
+				if (Test-Path -Path $Install_ESD -PathType leaf) {
+					Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+				} else {
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+				}
 
 				<#
 					.拆分 SWM
 				#>
 				Write-Host "`n  $($lang.ConvertSplit)"
+				Write-Host "  $('-' * 80)"
 				if ($Global:Queue_Convert_Tasks.Split.IsSplit) {
-					Write-Host "  $($lang.Operable)" -ForegroundColor Green
-
 					Get-ChildItem -Path $SearchImageSources -Recurse -include "*.swm" | ForEach-Object {
 						Write-Host "  $($lang.Del): $($_.Fullname)`n" -ForegroundColor Green
 						Remove-Item -Path $_.Fullname -ErrorAction SilentlyContinue
 					}
 
-					Write-Host "`n  $($Install_wim)" -ForegroundColor Green
+					Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+					Write-Host $Install_wim -ForegroundColor Green
 					if (Test-Path -Path $Install_wim -PathType leaf) {
-						Write-Host "  $($lang.Operable)" -ForegroundColor Green
-
 						if ($Global:Developers_Mode) {
 							Write-Host "`n  $($lang.Developers_Mode_Location): 7`n" -ForegroundColor Green
 						}
@@ -1227,24 +1239,27 @@ Function Image_Convert_Process
 							Write-Host "  $('-' * 80)`n"
 						}
 
-						Write-Host "`n  $($lang.Conver_Split_To_Swm): "
+						Write-Host "  " -NoNewline
+						Write-Host " $($lang.Conver_Split_To_Swm) " -NoNewline -BackgroundColor White -ForegroundColor Black
 						try {
 							Split-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Split.log" -ImagePath "$($Install_wim)" -SplitImagePath "$($Install_SWM)" -FileSize "$($Global:Queue_Convert_Tasks.Split.Size)" -CheckIntegrity
-							Write-Host "  $($lang.Done)" -ForegroundColor Green
+							Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 						} catch {
-							Write-Host "  $($lang.ConvertChk)"
-							Write-Host "  $($Install_wim)"
+							Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 							Write-Host "  $($_)" -ForegroundColor Red
-							Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 						}
 
-						Write-Host "`n  $($lang.Del)"
-						Write-Host "  $($Install_wim)" -ForegroundColor Green
+						Write-Host
+						Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+						Write-Host $Install_wim -ForegroundColor Green
+
+						Write-Host "  " -NoNewline
+						Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 						if (Test-Path -Path $Install_SWM -PathType leaf) {
 							Remove_Tree -Path $Install_wim
-							Write-Host "  $($lang.Done)" -ForegroundColor Green
+							Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 						} else {
-							Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+							Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 						}
 					} else {
 						Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -1292,6 +1307,7 @@ Function Image_Convert_Process
 				.拆分前重建 install.wim
 			#>
 			Write-Host "`n  $($lang.Rebuild)"
+			Write-Host "  $('-' * 80)"
 			if ($Global:Queue_Convert_Tasks.Rebuild) {
 				Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				Rebuild_Image_File -Filename $Install_wim
@@ -1344,14 +1360,16 @@ Function Image_Convert_Process
 			<#
 				转换为 ESD 后，判断是否存在新的 install.wim，存在则删除旧的 install.esd
 			#>
-			Write-Host "`n  $($lang.Del)"
-			Write-Host "  $($Install_wim)" -ForegroundColor Green
+			Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+			Write-Host $Install_wim -ForegroundColor Green
+
+			Write-Host "  " -NoNewline
+			Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			if (Test-Path -Path $Install_ESD -PathType leaf) {
 				Remove_Tree -Path $Install_wim
-
-				Write-Host "  $($lang.Done)" -ForegroundColor Green
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
 
 			Write-Host "`n  $($lang.Converting -f "WIM", "ESD"), $($lang.Done)" -ForegroundColor Green
@@ -1369,7 +1387,8 @@ Function Image_Convert_Process
 		{
 			Write-Host "`n  $($lang.Converting -f "Wim", "Swm")" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($Install_wim)`n"
+			Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+			Write-Host $Install_wim -ForegroundColor Green
 			
 			if ($Global:Queue_Convert_Tasks.Backup) {
 				$SaveFileToWim = Join-Path -Path $Global:MainMasterFolder -ChildPath "Backup\Install.wim\$($RandomGuid)\install.wim"
@@ -1392,6 +1411,7 @@ Function Image_Convert_Process
 				.拆分前重建 install.wim
 			#>
 			Write-Host "`n  $($lang.Rebuild)"
+			Write-Host "  $('-' * 80)"
 			if ($Global:Queue_Convert_Tasks.Rebuild) {
 				Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				Rebuild_Image_File -Filename $Install_wim
@@ -1405,17 +1425,16 @@ Function Image_Convert_Process
 				.拆分 SWM
 			#>
 			Write-Host "`n  $($lang.ConvertSplit)"
+			Write-Host "  $('-' * 80)"
 			if ($Global:Queue_Convert_Tasks.Split.IsSplit) {
-				Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				Get-ChildItem -Path $SearchImageSources -Recurse -include "*.swm" | ForEach-Object {
 					Write-Host "  $($lang.Del): $($_.Fullname)`n" -ForegroundColor Green
 					Remove-Item -Path $_.Fullname -ErrorAction SilentlyContinue
 				}
 
-				Write-Host "`n  $($Install_wim)" -ForegroundColor Green
+				Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+				Write-Host $Install_wim -ForegroundColor Green
 				if (Test-Path -Path $Install_wim -PathType leaf) {
-					Write-Host "  $($lang.Operable)" -ForegroundColor Green
-
 					if ($Global:Developers_Mode) {
 						Write-Host "`n  $($lang.Developers_Mode_Location): 7`n" -ForegroundColor Green
 					}
@@ -1427,22 +1446,27 @@ Function Image_Convert_Process
 						Write-Host "  $('-' * 80)`n"
 					}
 
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.Conver_Split_To_Swm) " -NoNewline -BackgroundColor White -ForegroundColor Black
 					try {
 						Split-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Split.log" -ImagePath "$($Install_wim)" -SplitImagePath "$($Install_SWM)" -FileSize $Global:Queue_Convert_Tasks.Split.Size -CheckIntegrity
+						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 					} catch {
-						Write-Host $lang.ConvertChk
-						Write-Host "  $($Install_wim)"
+						Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 						Write-Host "  $($_)" -ForegroundColor Red
-						Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 					}
 
-					Write-Host "`n  $($lang.Del)"
-					Write-Host "  $($Install_SWM)" -ForegroundColor Green
+					Write-Host
+					Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+					Write-Host $Install_SWM -ForegroundColor Green
+
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 					if (Test-Path -Path $Install_SWM -PathType leaf) {
 						Remove_Tree -Path $Install_wim
-						Write-Host "  $($lang.Done)" -ForegroundColor Green
+						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 					} else {
-						Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+						Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 					}
 				} else {
 					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -1459,7 +1483,8 @@ Function Image_Convert_Process
 		{
 			Write-Host "`n  $($lang.Converting -f "Swm", "wim")"
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($Install_wim)`n"
+			Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+			Write-Host $Install_wim -ForegroundColor Green
 
 			$SaveFileToSwm = Join-Path -Path $Global:MainMasterFolder -ChildPath "Backup\Install.wim\$($RandomGuid)\install*.swm"
 			$SaveFileToSwmMatch = Join-Path -Path $Global:Image_source -ChildPath "Sources\*.swm"
