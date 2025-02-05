@@ -105,17 +105,21 @@ Function Uninstall
 					Start-Process -FilePath $syspin -ArgumentList """$($StartMenu)\$((Get-Module -Name Engine).Author)'s Solutions.lnk"" ""51394""" -Wait -WindowStyle Hidden
 				}
 			}
+
 			if ($UI_Main_Delete_Right_Menu.Checked) {
 				Personalise -Del
 			}
+
 			if ($UI_Main_Defender_Exclude.Checked) {
 				write-host "  $($lang.Del) $($lang.Exclude) ( $($(Convert-Path -Path "$($PSScriptRoot)\..\..\..\..\.." -ErrorAction SilentlyContinue)) )`n" -ForegroundColor Green
 				Remove-MpPreference -ExclusionPath "$($(Convert-Path -Path "$($PSScriptRoot)\..\..\..\..\.." -ErrorAction SilentlyContinue))"
 			}
+
 			if ($UI_Main_Restore_Restricted.Checked) {
 				write-host "`n  $($lang.Restricted)`n" -ForegroundColor Green
 				Set-ExecutionPolicy -ExecutionPolicy Restricted -Force
 			}
+
 			if ($UI_Main_Uninstall_Next.Checked) {
 				<#
 					.In order to prevent the solution from being unable to be cleaned up, the next time you log in, execute it again
@@ -132,11 +136,23 @@ Function Uninstall
 					New-ItemProperty -Path $regPath -Name $regKey -Value $regValue -PropertyType STRING -Force | Out-Null
 				}
 			}
+
 			if ($UI_Main_Uninstall_All.Checked) {
+				Stop-Transcript -ErrorAction SilentlyContinue | Out-Null
+
+				#region Force Delete
+				Personalise -Del
+
+				write-host "  $($lang.Del) $($lang.Exclude) ( $($(Convert-Path -Path "$($PSScriptRoot)\..\..\..\..\.." -ErrorAction SilentlyContinue)) )`n" -ForegroundColor Green
+				Remove-MpPreference -ExclusionPath "$($(Convert-Path -Path "$($PSScriptRoot)\..\..\..\..\.." -ErrorAction SilentlyContinue))"
+				#endregion
+
 				write-host "  $($lang.Del) $($lang.MainHisName) ( $($(Convert-Path -Path "$($PSScriptRoot)\..\..\..\..\.." -ErrorAction SilentlyContinue)) )`n" -ForegroundColor Green
 				Remove_Tree -Path $(Convert-Path -Path "$($PSScriptRoot)\..\..\..\..\.." -ErrorAction SilentlyContinue)
 			}
+
 			$UI_Main.Close()
+			Stop-Process $PID
 		}
 	}
 	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
