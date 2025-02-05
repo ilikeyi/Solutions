@@ -70,7 +70,7 @@ Function Instl_Custom_Software_Config
 				"""$($Global:IsLang)"""
 			)
 
-			Start-Process "powershell" -ArgumentList $arguments -Verb RunAs -Wait
+			Start-Process "powershell" -ArgumentList $arguments -Verb RunAs -Wait -WindowStyle Minimized
 		} else {
 			write-host "    $($lang.UpdateUnavailable)" -ForegroundColor Yellow
 			write-host "    $($NewConfig)" -ForegroundColor Red
@@ -94,7 +94,7 @@ Function Instl_Custom_Software
 			"""$($Global:IsLang)"""
 		)
 
-		Start-Process "powershell" -ArgumentList $arguments -Verb RunAs -Wait
+		Start-Process "powershell" -ArgumentList $arguments -Verb RunAs -Wait -WindowStyle Minimized
 	} else {
 		write-host "`n  $($lang.InstlNo)$DynamicInstl" -ForegroundColor Red
 	}

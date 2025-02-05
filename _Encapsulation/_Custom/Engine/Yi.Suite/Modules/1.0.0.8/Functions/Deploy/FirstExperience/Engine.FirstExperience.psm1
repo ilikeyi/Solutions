@@ -1055,7 +1055,7 @@ Function FirstExperience_Deploy
 					"""$($init_Install_App)"""
 				)
 
-				Start-Process "powershell" -ArgumentList $arguments -Verb RunAs -Wait
+				Start-Process "powershell" -ArgumentList $arguments -Verb RunAs -Wait -WindowStyle Minimized
 			} else {
 				write-host "    $($lang.UpdateUnavailable)" -ForegroundColor Yellow
 				write-host "    $($NewConfig)" -ForegroundColor Red
