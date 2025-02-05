@@ -1055,7 +1055,7 @@ Function FirstExperience_Deploy
 					"""$($init_Install_App)"""
 				)
 
-				Start-Process "powershell" -ArgumentList $arguments -Verb RunAs -Wait -WindowStyle Minimized
+				Start-Process "powershell" -ArgumentList $arguments -Verb RunAs -Wait -NoNewWindow
 			} else {
 				write-host "    $($lang.UpdateUnavailable)" -ForegroundColor Yellow
 				write-host "    $($NewConfig)" -ForegroundColor Red
@@ -1410,22 +1410,21 @@ Function Repair_Home_Directory
 
 	$DeskEdit = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\..\AIO\DeskEdit")\DeskEdit.exe"
 	if (Test-Path $DeskEdit -PathType Leaf) {
+		$arguments = @(
+			"/F=""$(Convert-Path -Path "$($PSScriptRoot)\..\..\..\..\..\.." -ErrorAction SilentlyContinue)"""
+			"/S=.ShellClassInfo"
+			"/L=LocalizedResourceName=""$((Get-Module -Name Engine).Author)'s Solutions"""
+		)
+
+		Start-Process -FilePath $DeskEdit -ArgumentList $arguments -Wait
+
 		$IconFolder = Convert-Path -Path "$($PSScriptRoot)\..\..\..\..\.." -ErrorAction SilentlyContinue
 		$IconPath = Join-Path -Path $IconFolder -ChildPath "Assets\icons\Engine.ico"
 		if (Test-Path -Path $IconPath -PathType Leaf) {
 			$arguments = @(
 				"/F=""$(Convert-Path -Path "$($PSScriptRoot)\..\..\..\..\..\.." -ErrorAction SilentlyContinue)"""
-				"/S=.ShellClassInf"
-				"o"
-				"/L=IconResource=""$($IconPath),0"""
-			)
-
-			Start-Process -FilePath $DeskEdit -ArgumentList $arguments -Wait
-		} else {
-			$arguments = @(
-				"/F=""$(Convert-Path -Path "$($PSScriptRoot)\..\..\..\..\..\.." -ErrorAction SilentlyContinue)"""
 				"/S=.ShellClassInfo"
-				"/L=LocalizedResourceName=""$((Get-Module -Name Engine).Author)'s Solutions"""
+				"/L=IconResource=""$($IconPath),0"""
 			)
 
 			Start-Process -FilePath $DeskEdit -ArgumentList $arguments -Wait

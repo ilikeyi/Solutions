@@ -2454,10 +2454,10 @@ Function Mainpage
 
 	write-host "`n  Author: Yi ( https://fengyi.tel )
 
-   From: Yi's Solutions
-   buildstring: 1.0.0.1.yi_release.2025.1.7
+  From: Yi's Solutions
+  buildstring: 1.0.0.1.yi_release.2025.1.7
 
-   $($lang.Instl)"
+  $($lang.Instl)"
 	write-host "  $('-' * 80)"
 }
 
