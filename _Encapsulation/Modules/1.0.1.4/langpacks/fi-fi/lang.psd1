@@ -27,7 +27,7 @@
 	Setting                         = Perustaa
 	Change                          = Muuttaa
 	Help                            = Auttaa
-	Logging                         = Tallenna loki kohteeseen
+	Logging                         = Loki
 	AvailableLanguages              = Saatavilla olevat kielet
 	SwitchLanguage                  = Vaihtaa kieltä
 	LanguageSelRegion               = Valitse maasi tai alueesi

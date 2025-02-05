@@ -27,7 +27,7 @@
 	Setting                         = Configurar
 	Change                          = Mudar
 	Help                            = Ajuda
-	Logging                         = Salvar registro em
+	Logging                         = Registro
 	AvailableLanguages              = Idiomas disponíveis
 	SwitchLanguage                  = Mudar de idioma
 	LanguageSelRegion               = Selecione seu país ou região

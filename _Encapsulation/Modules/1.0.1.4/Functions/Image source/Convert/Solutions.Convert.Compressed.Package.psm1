@@ -45,6 +45,8 @@ Function Covert_Software_Package_Unpack
 	Write-Host "`n  $($lang.ConvertToArchive)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 
+	Image_Init_Disk_Sources
+
 	$Script:CompressedPackage = @()
 	$ExcludeCompressedPackageSoftware = @(
 		"dControl"

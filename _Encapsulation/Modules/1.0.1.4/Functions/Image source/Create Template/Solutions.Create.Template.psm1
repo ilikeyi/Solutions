@@ -14,6 +14,8 @@ Function Create_Template_UI
 	Write-Host "`n  $($lang.RuleNewTempate)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 
+	Image_Init_Disk_Sources
+
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()

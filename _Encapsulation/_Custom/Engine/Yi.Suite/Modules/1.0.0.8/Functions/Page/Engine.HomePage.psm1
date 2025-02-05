@@ -59,7 +59,18 @@ Function Instl_Custom_Software_Config
 		$NewConfig = Join-Path -Path $(Convert-Path -Path "$($PSScriptRoot)\..\..") -ChildPath "langpacks\$($Global:IsLang)\App.json"
 
 		if (Test-Path $NewConfig -PathType Leaf) {
-			Start-Process powershell -ArgumentList "-File $($DynamicInstl) -Config ""$($NewConfig)"" -Lang ""$($Global:IsLang)""" -NoNewWindow -Wait
+			$arguments = @(
+				"-ExecutionPolicy",
+				"ByPass",
+				"-file",
+				"""$($DynamicInstl)""",
+				"-Config",
+				"""$($NewConfig)""",
+				"-Lang",
+				"""$($Global:IsLang)"""
+			)
+
+			Start-Process "powershell" -ArgumentList $arguments -Verb RunAs -Wait
 		} else {
 			write-host "    $($lang.UpdateUnavailable)" -ForegroundColor Yellow
 			write-host "    $($NewConfig)" -ForegroundColor Red
@@ -74,7 +85,16 @@ Function Instl_Custom_Software
 	$DynamicInstl = "$($PSScriptRoot)\..\..\Instl\Instl.ps1"
 
 	if (Test-Path $DynamicInstl -PathType Leaf) {
-		Start-Process powershell -ArgumentList "-File $($DynamicInstl) -Lang ""$($Global:IsLang)""" -NoNewWindow -Wait
+		$arguments = @(
+			"-ExecutionPolicy",
+			"ByPass",
+			"-file",
+			"""$($DynamicInstl)""",
+			"-Lang",
+			"""$($Global:IsLang)"""
+		)
+
+		Start-Process "powershell" -ArgumentList $arguments -Verb RunAs -Wait
 	} else {
 		write-host "`n  $($lang.InstlNo)$DynamicInstl" -ForegroundColor Red
 	}

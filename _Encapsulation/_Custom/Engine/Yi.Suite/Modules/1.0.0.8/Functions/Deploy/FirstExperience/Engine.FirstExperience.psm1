@@ -1044,7 +1044,18 @@ Function FirstExperience_Deploy
 			$NewConfig = Join-Path -Path $(Convert-Path -Path "$($PSScriptRoot)\..\..\..") -ChildPath "langpacks\$($Global:IsLang)\App.json"
 
 			if (Test-Path $NewConfig -PathType Leaf) {
-				Start-Process powershell -ArgumentList "-File $($DynamicInstl) -Config ""$($NewConfig)"" -App ""$($init_Install_App)""" -NoNewWindow -Wait
+				$arguments = @(
+					"-ExecutionPolicy",
+					"ByPass",
+					"-file",
+					"""$($DynamicInstl)""",
+					"-Config",
+					"""$($NewConfig)""",
+					"-App",
+					"""$($init_Install_App)"""
+				)
+
+				Start-Process "powershell" -ArgumentList $arguments -Verb RunAs -Wait
 			} else {
 				write-host "    $($lang.UpdateUnavailable)" -ForegroundColor Yellow
 				write-host "    $($NewConfig)" -ForegroundColor Red

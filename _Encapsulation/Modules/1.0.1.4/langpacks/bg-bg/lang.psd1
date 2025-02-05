@@ -27,7 +27,7 @@
 	Setting                         = Настроен
 	Change                          = Промяна
 	Help                            = Помощ
-	Logging                         = Запазване на дневника в
+	Logging                         = Дневник
 	AvailableLanguages              = Налични езици
 	SwitchLanguage                  = Превключване на езика
 	LanguageSelRegion               = Изберете вашата страна или регион

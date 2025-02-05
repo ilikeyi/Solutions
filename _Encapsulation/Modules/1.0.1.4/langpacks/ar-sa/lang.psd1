@@ -27,7 +27,7 @@
 	Setting                         = يثبت
 	Change                          = يتغير
 	Help                            = يساعد
-	Logging                         = حفظ السجل ل
+	Logging                         = سجل
 	AvailableLanguages              = اللغات المتاحة
 	SwitchLanguage                  = تبديل اللغة
 	LanguageSelRegion               = اختر بلدك أو منطقتك

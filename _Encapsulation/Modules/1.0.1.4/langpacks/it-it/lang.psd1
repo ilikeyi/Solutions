@@ -27,7 +27,7 @@
 	Setting                         = Impostare
 	Change                          = Modifica
 	Help                            = Aiuto
-	Logging                         = Salva registro in
+	Logging                         = Tronco d'albero
 	AvailableLanguages              = Lingue disponibili
 	SwitchLanguage                  = Cambiare lingua
 	LanguageSelRegion               = Seleziona il tuo paese o regione

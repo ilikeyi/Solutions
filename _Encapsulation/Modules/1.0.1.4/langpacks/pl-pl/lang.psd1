@@ -27,7 +27,7 @@
 	Setting                         = Organizować coś
 	Change                          = Zmiana
 	Help                            = Pomoc
-	Logging                         = Zapisz dziennik w
+	Logging                         = Dziennik
 	AvailableLanguages              = Dostępne języki
 	SwitchLanguage                  = Zmień język
 	LanguageSelRegion               = Wybierz swój kraj lub region

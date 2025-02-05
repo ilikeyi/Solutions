@@ -27,7 +27,7 @@
 	Setting                         = Sette opp
 	Change                          = Endre
 	Help                            = Hjelp
-	Logging                         = Lagre loggen til
+	Logging                         = Logg
 	AvailableLanguages              = Tilgjengelige språk
 	SwitchLanguage                  = Bytte språk
 	LanguageSelRegion               = Velg ditt land eller din region

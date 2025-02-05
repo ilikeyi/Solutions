@@ -27,7 +27,7 @@
 	Setting                         = Настраивать
 	Change                          = Изменять
 	Help                            = Помощь
-	Logging                         = Сохранить журнал в
+	Logging                         = Бревно
 	AvailableLanguages              = Доступные языки
 	SwitchLanguage                  = Переключить язык
 	LanguageSelRegion               = Выберите вашу страну или регион

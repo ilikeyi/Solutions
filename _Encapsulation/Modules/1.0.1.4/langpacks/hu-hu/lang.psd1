@@ -27,7 +27,7 @@
 	Setting                         = Felállítani
 	Change                          = Változás
 	Help                            = Segítség
-	Logging                         = Napló mentése ide
+	Logging                         = Log
 	AvailableLanguages              = Elérhető nyelvek
 	SwitchLanguage                  = Nyelvet váltani
 	LanguageSelRegion               = Válassza ki országát vagy régióját

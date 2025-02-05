@@ -27,7 +27,7 @@
 	Setting                         = Налаштувати
 	Change                          = Зміна
 	Help                            = Допомогти
-	Logging                         = Зберегти журнал у
+	Logging                         = Журнал
 	AvailableLanguages              = Доступні мови
 	SwitchLanguage                  = Змінити мову
 	LanguageSelRegion               = Виберіть свою країну або регіон

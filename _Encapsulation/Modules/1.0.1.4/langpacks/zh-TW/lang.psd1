@@ -27,7 +27,7 @@
 	Setting                         = 設置
 	Change                          = 更改
 	Help                            = 幫助
-	Logging                         = 保存日誌到
+	Logging                         = 紀錄
 	AvailableLanguages              = 可用語言
 	SwitchLanguage                  = 切換語言
 	LanguageSelRegion               = 選擇您的國家或地區

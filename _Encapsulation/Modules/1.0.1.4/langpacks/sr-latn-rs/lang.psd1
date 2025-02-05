@@ -27,7 +27,7 @@
 	Setting                         = Поставити
 	Change                          = Промена
 	Help                            = Помоћ
-	Logging                         = Сачувај дневник у
+	Logging                         = Лог
 	AvailableLanguages              = Доступни језици
 	SwitchLanguage                  = Промени језик
 	LanguageSelRegion               = Изаберите своју земљу или регион

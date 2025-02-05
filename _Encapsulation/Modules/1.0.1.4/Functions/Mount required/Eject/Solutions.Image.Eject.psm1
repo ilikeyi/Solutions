@@ -1381,15 +1381,15 @@ Function Image_Select_Eject_Disable_Expand_Item
 			if ($Group -eq $_.Name) {
 				$_.Controls | ForEach-Object {
 					if ($_.Tag -eq "ADV") {
-						ForEach ($QQNew in $_.Controls) {
-							if ($QQNew -is [System.Windows.Forms.checkbox]) {
-								if ($QQNew.Tag -like "$($Name)_Expand*") {
+						ForEach ($ItemNew in $_.Controls) {
+							if ($ItemNew -is [System.Windows.Forms.checkbox]) {
+								if ($ItemNew.Tag -like "$($Name)_Expand*") {
 									if ($open) {
-										$QQNew.Enabled = $True
+										$ItemNew.Enabled = $True
 									}
 
 									if ($Close) {
-										$QQNew.Enabled = $False
+										$ItemNew.Enabled = $False
 									}
 								}
 							}

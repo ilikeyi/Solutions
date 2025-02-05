@@ -27,7 +27,7 @@
 	Setting                         = Nastaviť
 	Change                          = Zmeniť
 	Help                            = Pomôcť
-	Logging                         = Uložiť denník do
+	Logging                         = Log
 	AvailableLanguages              = Dostupné jazyky
 	SwitchLanguage                  = Prepnúť jazyk
 	LanguageSelRegion               = Vyberte svoju krajinu alebo región

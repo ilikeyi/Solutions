@@ -27,7 +27,7 @@
 	Setting                         = Στήνω
 	Change                          = Αλλαγή
 	Help                            = Βοήθεια
-	Logging                         = Αποθήκευση αρχείου καταγραφής σε
+	Logging                         = Κούτσουρο
 	AvailableLanguages              = Διαθέσιμες γλώσσες
 	SwitchLanguage                  = Αλλαγή γλώσσας
 	LanguageSelRegion               = Επιλέξτε τη χώρα ή την περιοχή σας

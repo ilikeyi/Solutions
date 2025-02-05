@@ -27,7 +27,7 @@
 	Setting                         = Kurmak
 	Change                          = Değiştirmek
 	Help                            = Yardım
-	Logging                         = Günlüğü şuraya kaydet:
+	Logging                         = Kayıt
 	AvailableLanguages              = Mevcut diller
 	SwitchLanguage                  = Dili değiştir
 	LanguageSelRegion               = Ülkenizi veya bölgenizi seçin

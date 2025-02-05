@@ -1291,14 +1291,14 @@ Function Image_Assign_Event_Master
 							if ($_.Name -eq "ImageSourcesConsole") {
 								ForEach ($_ in $_.Controls) {
 									if ($_.Tag -eq "ADV") {
-										ForEach ($QQNew in $_.Controls) {
-											if ($QQNew -is [System.Windows.Forms.CheckBox]) {
-												$QQNew.Checked = $True
+										ForEach ($ItemNew in $_.Controls) {
+											if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
+												$ItemNew.Checked = $True
 
-												if ($QQNew.Checked) {
-													Image_Select_Disable_Expand_Item -Group $QQNew.Parent.Parent.Name -Name $QQNew.Tag -Open
+												if ($ItemNew.Checked) {
+													Image_Select_Disable_Expand_Item -Group $ItemNew.Parent.Parent.Name -Name $ItemNew.Tag -Open
 												} else {
-													Image_Select_Disable_Expand_Item -Group $QQNew.Parent.Parent.Name -Name $QQNew.Tag -Close
+													Image_Select_Disable_Expand_Item -Group $ItemNew.Parent.Parent.Name -Name $ItemNew.Tag -Close
 												}
 											}
 										}
@@ -1328,14 +1328,14 @@ Function Image_Assign_Event_Master
 							if ($_.Name -eq "ImageSourcesConsole") {
 								ForEach ($_ in $_.Controls) {
 									if ($_.Tag -eq "ADV") {
-										ForEach ($QQNew in $_.Controls) {
-											if ($QQNew -is [System.Windows.Forms.CheckBox]) {
-												$QQNew.Checked = $False
+										ForEach ($ItemNew in $_.Controls) {
+											if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
+												$ItemNew.Checked = $False
 
-												if ($QQNew.Checked) {
-													Image_Select_Disable_Expand_Item -Group $QQNew.Parent.Parent.Name -Name $QQNew.Tag -Open
+												if ($ItemNew.Checked) {
+													Image_Select_Disable_Expand_Item -Group $ItemNew.Parent.Parent.Name -Name $ItemNew.Tag -Open
 												} else {
-													Image_Select_Disable_Expand_Item -Group $QQNew.Parent.Parent.Name -Name $QQNew.Tag -Close
+													Image_Select_Disable_Expand_Item -Group $ItemNew.Parent.Parent.Name -Name $ItemNew.Tag -Close
 												}
 											}
 										}
@@ -1381,14 +1381,14 @@ Function Image_Assign_Event_Master
 									}
 								
 									if ($_.Tag -eq "ADV") {
-										ForEach ($QQNew in $_.Controls) {
-											if ($QQNew -is [System.Windows.Forms.CheckBox]) {
-												$QQNew.Checked = $True
+										ForEach ($ItemNew in $_.Controls) {
+											if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
+												$ItemNew.Checked = $True
 
-												if ($QQNew.Checked) {
-													Image_Select_Disable_Expand_Item -Group $QQNew.Parent.Parent.Name -Name $QQNew.Tag -Open
+												if ($ItemNew.Checked) {
+													Image_Select_Disable_Expand_Item -Group $ItemNew.Parent.Parent.Name -Name $ItemNew.Tag -Open
 												} else {
-													Image_Select_Disable_Expand_Item -Group $QQNew.Parent.Parent.Name -Name $QQNew.Tag -Close
+													Image_Select_Disable_Expand_Item -Group $ItemNew.Parent.Parent.Name -Name $ItemNew.Tag -Close
 												}
 											}
 										}
@@ -1424,14 +1424,14 @@ Function Image_Assign_Event_Master
 									}
 
 									if ($_.Tag -eq "ADV") {
-										ForEach ($QQNew in $_.Controls) {
-											if ($QQNew -is [System.Windows.Forms.CheckBox]) {
-												$QQNew.Checked = $False
+										ForEach ($ItemNew in $_.Controls) {
+											if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
+												$ItemNew.Checked = $False
 
-												if ($QQNew.Checked) {
-													Image_Select_Disable_Expand_Item -Group $QQNew.Parent.Parent.Name -Name $QQNew.Tag -Open
+												if ($ItemNew.Checked) {
+													Image_Select_Disable_Expand_Item -Group $ItemNew.Parent.Parent.Name -Name $ItemNew.Tag -Open
 												} else {
-													Image_Select_Disable_Expand_Item -Group $QQNew.Parent.Parent.Name -Name $QQNew.Tag -Close
+													Image_Select_Disable_Expand_Item -Group $ItemNew.Parent.Parent.Name -Name $ItemNew.Tag -Close
 												}
 											}
 										}
@@ -1555,14 +1555,14 @@ Function Image_Assign_Event_Master
 							ForEach ($_ in $_.Controls) {
 								if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
 									if ($_.Tag -eq "ADV") {
-										ForEach ($QQNew in $_.Controls) {
-											if ($QQNew.Tag -like "$($Name)_Expand*") {
+										ForEach ($ItemNew in $_.Controls) {
+											if ($ItemNew.Tag -like "$($Name)_Expand*") {
 												if ($open) {
-													$QQNew.Enabled = $True
+													$ItemNew.Enabled = $True
 												}
 
 												if ($Close) {
-													$QQNew.Enabled = $False
+													$ItemNew.Enabled = $False
 												}
 											}
 										}
@@ -2475,11 +2475,11 @@ Function Image_Assign_Event_Master
 											$TempQueueProcessImageSelectPending = @()
 											$MarkSelectIndexin = @()
 
-											ForEach ($QQNew in $_.Controls) {
-												if ($QQNew -is [System.Windows.Forms.CheckBox]) {
-													if ($QQNew.Enabled) {
-														if ($QQNew.Checked) {
-															$MarkSelectIndexin += $QQNew.Tag
+											ForEach ($ItemNew in $_.Controls) {
+												if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
+													if ($ItemNew.Enabled) {
+														if ($ItemNew.Checked) {
+															$MarkSelectIndexin += $ItemNew.Tag
 														}
 													}
 												}
@@ -2500,11 +2500,11 @@ Function Image_Assign_Event_Master
 											}
 										}
 
-										ForEach ($QQNew in $_.Controls) {
-											if ($QQNew -is [System.Windows.Forms.CheckBox]) {
-												if ($QQNew.Name -eq "EjectForce") {
-													if ($QQNew.Enabled) {
-														if ($QQNew.Checked) {
+										ForEach ($ItemNew in $_.Controls) {
+											if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
+												if ($ItemNew.Name -eq "EjectForce") {
+													if ($ItemNew.Enabled) {
+														if ($ItemNew.Checked) {
 															<#
 																.强制打开扩展项不保存，不管选没有选。
 															#>
@@ -2516,27 +2516,27 @@ Function Image_Assign_Event_Master
 												}
 
 												#region Enabled
-												if ($QQNew.Name -eq "IsAssign") {
-													if ($QQNew.Enabled) {
-														if ($QQNew.Checked) {
-															$Mul_Temp_Save_UI_Main += $QQNew.Tag
+												if ($ItemNew.Name -eq "IsAssign") {
+													if ($ItemNew.Enabled) {
+														if ($ItemNew.Checked) {
+															$Mul_Temp_Save_UI_Main += $ItemNew.Tag
 														}
 													}
 												}
 												#endregion
 											}
 
-											if ($QQNew -is [System.Windows.Forms.FlowLayoutPanel]) {
+											if ($ItemNew -is [System.Windows.Forms.FlowLayoutPanel]) {
 												#region 保存：主要项
-												if ($QQNew.Tag -eq "EjectMain") {
-													ForEach ($QQNewqqq in $QQNew.Controls) {
-														if ($QQNewqqq -is [System.Windows.Forms.RadioButton]) {
+												if ($ItemNew.Tag -eq "EjectMain") {
+													ForEach ($ItemNewTwo in $ItemNew.Controls) {
+														if ($ItemNewTwo -is [System.Windows.Forms.RadioButton]) {
 															<#
 																.判断保存
 															#>
-															if ($QQNewqqq.Enabled) {
-																if ($QQNewqqq.Checked) {
-																	if ($QQNewqqq.Tag -eq "Save") {
+															if ($ItemNewTwo.Enabled) {
+																if ($ItemNewTwo.Checked) {
+																	if ($ItemNewTwo.Tag -eq "Save") {
 																		New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
 
 																		if ($Global:Developers_Mode) {
@@ -2547,7 +2547,7 @@ Function Image_Assign_Event_Master
 																		}
 																	}
 
-																	if ($QQNew.Tag -eq "DoNotSave") {
+																	if ($ItemNew.Tag -eq "DoNotSave") {
 																		New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
 
 																		if ($Global:Developers_Mode) {
@@ -2566,11 +2566,11 @@ Function Image_Assign_Event_Master
 											}
 
 											#region ADV
-											if ($QQNew.Tag -eq "ADV") {
-												ForEach ($QQNew in $QQNew.Controls) {
-													if ($QQNew.Enabled) {
-														if ($QQNew.Checked) {
-															New-Variable -Scope global -Name "Queue_$($QQNew.Tag)_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
+											if ($ItemNew.Tag -eq "ADV") {
+												ForEach ($ItemNew in $ItemNew.Controls) {
+													if ($ItemNew.Enabled) {
+														if ($ItemNew.Checked) {
+															New-Variable -Scope global -Name "Queue_$($ItemNew.Tag)_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
 														}
 													}
 												}
@@ -2613,11 +2613,11 @@ Function Image_Assign_Event_Master
 														$TempQueueProcessImageSelectPending = @()
 														$MarkSelectIndexin = @()
 
-														ForEach ($QQNew in $_.Controls) {
-															if ($QQNew -is [System.Windows.Forms.CheckBox]) {
-																if ($QQNew.Enabled) {
-																	if ($QQNew.Checked) {
-																		$MarkSelectIndexin += $QQNew.Tag
+														ForEach ($ItemNew in $_.Controls) {
+															if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
+																if ($ItemNew.Enabled) {
+																	if ($ItemNew.Checked) {
+																		$MarkSelectIndexin += $ItemNew.Tag
 																	}
 																}
 															}
@@ -2639,11 +2639,11 @@ Function Image_Assign_Event_Master
 														}
 													}
 
-													ForEach ($QQNew in $_.Controls) {
-														if ($QQNew -is [System.Windows.Forms.CheckBox]) {
-															if ($QQNew.Name -eq "EjectForce") {
-																if ($QQNew.Enabled) {
-																	if ($QQNew.Checked) {
+													ForEach ($ItemNew in $_.Controls) {
+														if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
+															if ($ItemNew.Name -eq "EjectForce") {
+																if ($ItemNew.Enabled) {
+																	if ($ItemNew.Checked) {
 																		Write-Host "qwryhggvvvvv"
 																		New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
 																	}
@@ -2651,27 +2651,27 @@ Function Image_Assign_Event_Master
 															}
 
 															#region Enabled
-															if ($QQNew.Name -eq "IsAssign") {
-																if ($QQNew.Enabled) {
-																	if ($QQNew.Checked) {
-																		$Temp_New_Save_UI_Expand += $QQNew.Tag
+															if ($ItemNew.Name -eq "IsAssign") {
+																if ($ItemNew.Enabled) {
+																	if ($ItemNew.Checked) {
+																		$Temp_New_Save_UI_Expand += $ItemNew.Tag
 																	}
 																}
 															}
 															#endregion
 														}
 
-														if ($QQNew -is [System.Windows.Forms.FlowLayoutPanel]) {
+														if ($ItemNew -is [System.Windows.Forms.FlowLayoutPanel]) {
 															#region 保存：主要项
-															if ($QQNew.Tag -eq "EjectMain") {
-																ForEach ($QQNewqqq in $QQNew.Controls) {
-																	if ($QQNewqqq -is [System.Windows.Forms.RadioButton]) {
+															if ($ItemNew.Tag -eq "EjectMain") {
+																ForEach ($ItemNewTwo in $ItemNew.Controls) {
+																	if ($ItemNewTwo -is [System.Windows.Forms.RadioButton]) {
 																		<#
 																			.判断保存
 																		#>
-																		if ($QQNewqqq.Enabled) {
-																			if ($QQNewqqq.Checked) {
-																				if ($QQNewqqq.Tag -eq "Save") {
+																		if ($ItemNewTwo.Enabled) {
+																			if ($ItemNewTwo.Checked) {
+																				if ($ItemNewTwo.Tag -eq "Save") {
 																					New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
 
 																					if ($Global:Developers_Mode) {
@@ -2682,7 +2682,7 @@ Function Image_Assign_Event_Master
 																					}
 																				}
 
-																				if ($QQNewqqq.Tag -eq "DoNotSave") {
+																				if ($ItemNewTwo.Tag -eq "DoNotSave") {
 																					New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
 
 																					if ($Global:Developers_Mode) {
@@ -2700,15 +2700,15 @@ Function Image_Assign_Event_Master
 															#endregion
 
 															#region 保存：扩展项
-															if ($QQNew.Tag -eq "EjectExpand") {
-																ForEach ($QQNewqqq in $QQNew.Controls) {
-																	if ($QQNewqqq -is [System.Windows.Forms.RadioButton]) {
+															if ($ItemNew.Tag -eq "EjectExpand") {
+																ForEach ($ItemNewTwo in $ItemNew.Controls) {
+																	if ($ItemNewTwo -is [System.Windows.Forms.RadioButton]) {
 																		<#
 																			.判断保存
 																		#>
-																		if ($QQNewqqq.Enabled) {
-																			if ($QQNewqqq.Checked) {
-																				if ($QQNewqqq.Tag -eq "Save") {
+																		if ($ItemNewTwo.Enabled) {
+																			if ($ItemNewTwo.Checked) {
+																				if ($ItemNewTwo.Tag -eq "Save") {
 																					New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
 
 																					if ($Global:Developers_Mode) {
@@ -2719,7 +2719,7 @@ Function Image_Assign_Event_Master
 																					}
 																				}
 
-																				if ($QQNewqqq.Tag -eq "DoNotSave") {
+																				if ($ItemNewTwo.Tag -eq "DoNotSave") {
 																					New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
 
 																					if ($Global:Developers_Mode) {
@@ -2746,17 +2746,17 @@ Function Image_Assign_Event_Master
 														}
 
 														#region ADV
-														if ($QQNew.Tag -eq "ADV") {
-															ForEach ($QQNewqqq in $QQNew.Controls) {
-																if ($QQNewqqq.Enabled) {
-																	if ($QQNewqqq.Checked) {
-																		$Temp_New_Save_UI_Expand_Expand += "Queue_$($QQNewqqq.Tag)_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
-																		New-Variable -Scope global -Name "Queue_$($QQNewqqq.Tag)_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
+														if ($ItemNew.Tag -eq "ADV") {
+															ForEach ($ItemNewTwo in $ItemNew.Controls) {
+																if ($ItemNewTwo.Enabled) {
+																	if ($ItemNewTwo.Checked) {
+																		$Temp_New_Save_UI_Expand_Expand += "Queue_$($ItemNewTwo.Tag)_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
+																		New-Variable -Scope global -Name "Queue_$($ItemNewTwo.Tag)_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
 																	} else {
-																		New-Variable -Scope global -Name "Queue_$($QQNewqqq.Tag)_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $False -Force
+																		New-Variable -Scope global -Name "Queue_$($ItemNewTwo.Tag)_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $False -Force
 																	}
 																} else {
-																	New-Variable -Scope global -Name "Queue_$($QQNewqqq.Tag)_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $False -Force
+																	New-Variable -Scope global -Name "Queue_$($ItemNewTwo.Tag)_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $False -Force
 																}
 															}
 														}

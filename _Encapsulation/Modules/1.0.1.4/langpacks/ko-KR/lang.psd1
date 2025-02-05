@@ -27,7 +27,7 @@
 	Setting                         = 설정
 	Change                          = 잔돈
 	Help                            = 돕다
-	Logging                         = 다음 위치에 로그 저장
+	Logging                         = 통나무
 	AvailableLanguages              = 사용 가능한 언어
 	SwitchLanguage                  = 언어를 바꾸다
 	LanguageSelRegion               = 국가 또는 지역을 선택하세요.

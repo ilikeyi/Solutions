@@ -27,7 +27,7 @@
 	Setting                         = Opgezet
 	Change                          = Wijziging
 	Help                            = Hulp
-	Logging                         = Logboek opslaan in
+	Logging                         = Logboek
 	AvailableLanguages              = Beschikbare talen
 	SwitchLanguage                  = Van taal wisselen
 	LanguageSelRegion               = Selecteer uw land of regio

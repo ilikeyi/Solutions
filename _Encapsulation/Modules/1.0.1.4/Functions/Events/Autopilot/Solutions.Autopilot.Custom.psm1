@@ -1648,14 +1648,14 @@ Function Image_Assign_Autopilot_Master
 							ForEach ($ImageSourcesConsole in $_.Controls) {
 								if ($ImageSourcesConsole -is [System.Windows.Forms.FlowLayoutPanel]) {
 									if ($ImageSourcesConsole.Tag -eq "ADV") {
-										ForEach ($QQNew in $ImageSourcesConsole.Controls) {
-											if ($QQNew.Tag -like "$($Name)_Expand*") {
+										ForEach ($ItemNew in $ImageSourcesConsole.Controls) {
+											if ($ItemNew.Tag -like "$($Name)_Expand*") {
 												if ($open) {
-													$QQNew.Enabled = $True
+													$ItemNew.Enabled = $True
 												}
 
 												if ($Close) {
-													$QQNew.Enabled = $False
+													$ItemNew.Enabled = $False
 												}
 											}
 										}
@@ -4562,12 +4562,11 @@ Function Image_Assign_Autopilot_Master
 					if ("ISO" -eq $_.Name) {
 						$ISO_path = $_.Tag
 
-						ForEach ($QQNew in $_.Controls) {
-
-							if ($QQNew -is [System.Windows.Forms.CheckBox]) {
-								if ($QQNew.Enabled) {
-									if ($QQNew.Checked) {
-										$ISO += $QQNew.Tag
+						ForEach ($ItemNew in $_.Controls) {
+							if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
+								if ($ItemNew.Enabled) {
+									if ($ItemNew.Checked) {
+										$ISO += $ItemNew.Tag
 									}
 								}
 							}
@@ -6528,11 +6527,11 @@ Function Image_Assign_Autopilot_Master
 										$TempQueueProcessImageSelectPending = @()
 										$MarkSelectIndexin = @()
 
-										ForEach ($QQNew in $_.Controls) {
-											if ($QQNew -is [System.Windows.Forms.CheckBox]) {
-												if ($QQNew.Enabled) {
-													if ($QQNew.Checked) {
-														$MarkSelectIndexin += $QQNew.Tag
+										ForEach ($ItemNew in $_.Controls) {
+											if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
+												if ($ItemNew.Enabled) {
+													if ($ItemNew.Checked) {
+														$MarkSelectIndexin += $ItemNew.Tag
 													}
 												}
 											}
@@ -6554,11 +6553,11 @@ Function Image_Assign_Autopilot_Master
 										}
 									}
 
-									ForEach ($QQNew in $_.Controls) {
-										if ($QQNew -is [System.Windows.Forms.CheckBox]) {
-											if ($QQNew.Name -eq "EjectForce") {
-												if ($QQNew.Enabled) {
-													if ($QQNew.Checked) {
+									ForEach ($ItemNew in $_.Controls) {
+										if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
+											if ($ItemNew.Name -eq "EjectForce") {
+												if ($ItemNew.Enabled) {
+													if ($ItemNew.Checked) {
 														<#
 															.强制打开扩展项不保存，不管选没有选。
 														#>
@@ -6571,17 +6570,17 @@ Function Image_Assign_Autopilot_Master
 											#endregion
 										}
 
-										if ($QQNew -is [System.Windows.Forms.FlowLayoutPanel]) {
+										if ($ItemNew -is [System.Windows.Forms.FlowLayoutPanel]) {
 											#region 保存：主要项
-											if ($QQNew.Tag -eq "EjectMain") {
-												ForEach ($QQNewqqq in $QQNew.Controls) {
-													if ($QQNewqqq -is [System.Windows.Forms.RadioButton]) {
+											if ($ItemNew.Tag -eq "EjectMain") {
+												ForEach ($ItemNewTwo in $ItemNew.Controls) {
+													if ($ItemNewTwo -is [System.Windows.Forms.RadioButton]) {
 														<#
 															.判断保存
 														#>
-														if ($QQNewqqq.Enabled) {
-															if ($QQNewqqq.Checked) {
-																if ($QQNewqqq.Tag -eq "Save") {
+														if ($ItemNewTwo.Enabled) {
+															if ($ItemNewTwo.Checked) {
+																if ($ItemNewTwo.Tag -eq "Save") {
 																	New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
 
 																	if ($Global:Developers_Mode) {
@@ -6592,7 +6591,7 @@ Function Image_Assign_Autopilot_Master
 																	}
 																}
 
-																if ($QQNew.Tag -eq "DoNotSave") {
+																if ($ItemNew.Tag -eq "DoNotSave") {
 																	New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
 
 																	if ($Global:Developers_Mode) {
@@ -6611,12 +6610,12 @@ Function Image_Assign_Autopilot_Master
 										}
 
 										#region ADV
-										if ($QQNew.Tag -eq "ADV") {
-											ForEach ($QQNewTTTT in $QQNew.Controls) {
-												if ($QQNewTTTT -is [System.Windows.Forms.CheckBox]) {
-													if ($QQNewTTTT.Enabled) {
-														if ($QQNewTTTT.Checked) {
-															New-Variable -Scope global -Name "Queue_$($QQNewTTTT.Tag)_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
+										if ($ItemNew.Tag -eq "ADV") {
+											ForEach ($ItemNewTTTT in $ItemNew.Controls) {
+												if ($ItemNewTTTT -is [System.Windows.Forms.CheckBox]) {
+													if ($ItemNewTTTT.Enabled) {
+														if ($ItemNewTTTT.Checked) {
+															New-Variable -Scope global -Name "Queue_$($ItemNewTTTT.Tag)_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
 														}
 													}
 												}
@@ -6645,11 +6644,11 @@ Function Image_Assign_Autopilot_Master
 												$TempQueueProcessImageSelectPending = @()
 												$MarkSelectIndexin = @()
 
-												ForEach ($QQNew in $_.Controls) {
-													if ($QQNew -is [System.Windows.Forms.CheckBox]) {
-														if ($QQNew.Enabled) {
-															if ($QQNew.Checked) {
-																$MarkSelectIndexin += $QQNew.Tag
+												ForEach ($ItemNew in $_.Controls) {
+													if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
+														if ($ItemNew.Enabled) {
+															if ($ItemNew.Checked) {
+																$MarkSelectIndexin += $ItemNew.Tag
 															}
 														}
 													}
@@ -6681,28 +6680,28 @@ Function Image_Assign_Autopilot_Master
 												}
 											}
 
-											ForEach ($QQNew in $_.Controls) {
-												if ($QQNew -is [System.Windows.Forms.CheckBox]) {
-													if ($QQNew.Name -eq "EjectForce") {
-														if ($QQNew.Enabled) {
-															if ($QQNew.Checked) {
+											ForEach ($ItemNew in $_.Controls) {
+												if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
+													if ($ItemNew.Name -eq "EjectForce") {
+														if ($ItemNew.Enabled) {
+															if ($ItemNew.Checked) {
 																New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
 															}
 														}
 													}
 												}
 
-												if ($QQNew -is [System.Windows.Forms.FlowLayoutPanel]) {
+												if ($ItemNew -is [System.Windows.Forms.FlowLayoutPanel]) {
 													#region 保存：主要项
-													if ($QQNew.Tag -eq "EjectMain") {
-														ForEach ($QQNewqqq in $QQNew.Controls) {
-															if ($QQNewqqq -is [System.Windows.Forms.RadioButton]) {
+													if ($ItemNew.Tag -eq "EjectMain") {
+														ForEach ($ItemNewTwo in $ItemNew.Controls) {
+															if ($ItemNewTwo -is [System.Windows.Forms.RadioButton]) {
 																<#
 																	.判断保存
 																#>
-																if ($QQNewqqq.Enabled) {
-																	if ($QQNewqqq.Checked) {
-																		if ($QQNewqqq.Tag -eq "Save") {
+																if ($ItemNewTwo.Enabled) {
+																	if ($ItemNewTwo.Checked) {
+																		if ($ItemNewTwo.Tag -eq "Save") {
 																			New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
 
 																			if ($Global:Developers_Mode) {
@@ -6713,7 +6712,7 @@ Function Image_Assign_Autopilot_Master
 																			}
 																		}
 
-																		if ($QQNewqqq.Tag -eq "DoNotSave") {
+																		if ($ItemNewTwo.Tag -eq "DoNotSave") {
 																			New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
 
 																			if ($Global:Developers_Mode) {
@@ -6731,15 +6730,15 @@ Function Image_Assign_Autopilot_Master
 													#endregion
 
 													#region 保存：扩展项
-													if ($QQNew.Tag -eq "EjectExpand") {
-														ForEach ($QQNewqqq in $QQNew.Controls) {
-															if ($QQNewqqq -is [System.Windows.Forms.RadioButton]) {
+													if ($ItemNew.Tag -eq "EjectExpand") {
+														ForEach ($ItemNewTwo in $ItemNew.Controls) {
+															if ($ItemNewTwo -is [System.Windows.Forms.RadioButton]) {
 																<#
 																	.判断保存
 																#>
-																if ($QQNewqqq.Enabled) {
-																	if ($QQNewqqq.Checked) {
-																		if ($QQNewqqq.Tag -eq "Save") {
+																if ($ItemNewTwo.Enabled) {
+																	if ($ItemNewTwo.Checked) {
+																		if ($ItemNewTwo.Tag -eq "Save") {
 																			New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
 
 																			if ($Global:Developers_Mode) {
@@ -6750,7 +6749,7 @@ Function Image_Assign_Autopilot_Master
 																			}
 																		}
 
-																		if ($QQNewqqq.Tag -eq "DoNotSave") {
+																		if ($ItemNewTwo.Tag -eq "DoNotSave") {
 																			New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
 
 																			if ($Global:Developers_Mode) {
@@ -6777,17 +6776,17 @@ Function Image_Assign_Autopilot_Master
 												}
 
 												#region ADV
-												if ($QQNew.Tag -eq "ADV") {
-													ForEach ($QQNewqqq in $QQNew.Controls) {
-														if ($QQNewqqq -is [System.Windows.Forms.CheckBox]) {
-															if ($QQNewqqq.Enabled) {
-																if ($QQNewqqq.Checked) {
-																	New-Variable -Scope global -Name "Queue_$($QQNewqqq.Tag)_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
+												if ($ItemNew.Tag -eq "ADV") {
+													ForEach ($ItemNewTwo in $ItemNew.Controls) {
+														if ($ItemNewTwo -is [System.Windows.Forms.CheckBox]) {
+															if ($ItemNewTwo.Enabled) {
+																if ($ItemNewTwo.Checked) {
+																	New-Variable -Scope global -Name "Queue_$($ItemNewTwo.Tag)_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
 																} else {
-																	New-Variable -Scope global -Name "Queue_$($QQNewqqq.Tag)_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $False -Force
+																	New-Variable -Scope global -Name "Queue_$($ItemNewTwo.Tag)_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $False -Force
 																}
 															} else {
-																New-Variable -Scope global -Name "Queue_$($QQNewqqq.Tag)_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $False -Force
+																New-Variable -Scope global -Name "Queue_$($ItemNewTwo.Tag)_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $False -Force
 															}
 														}
 													}
@@ -7108,54 +7107,54 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 						ForEach ($ImageSourcesConsole in $_.Controls) {
 							if ($ImageSourcesConsole -is [System.Windows.Forms.FlowLayoutPanel]) {
 								if ($ImageSourcesConsole.Tag -eq "EjectMain") {
-									ForEach ($QQNew in $ImageSourcesConsole.Controls) {
-										if ($QQNew -is [System.Windows.Forms.RadioButton]) {
-											if ($NewTasks.Tasks.Eject.Schome -eq $QQNew.Tag) {
-												$QQNew.Checked = $True
+									ForEach ($ItemNew in $ImageSourcesConsole.Controls) {
+										if ($ItemNew -is [System.Windows.Forms.RadioButton]) {
+											if ($NewTasks.Tasks.Eject.Schome -eq $ItemNew.Tag) {
+												$ItemNew.Checked = $True
 											} else {
-												$QQNew.Checked = $False
+												$ItemNew.Checked = $False
 											}
 										}
 									}
 								}
 
 								if ($ImageSourcesConsole.Tag -eq "ADV") {
-									ForEach ($QQNew in $ImageSourcesConsole.Controls) {
-										if ($QQNew -is [System.Windows.Forms.Checkbox]) {
+									ForEach ($ItemNew in $ImageSourcesConsole.Controls) {
+										if ($ItemNew -is [System.Windows.Forms.Checkbox]) {
 											<#
 												.配置：重建
 											#>
-											if ($QQNew.Tag -eq "Rebuild") {
+											if ($ItemNew.Tag -eq "Rebuild") {
 												if ($NewTasks.Tasks.Expand.Rebuild) {
-													$QQNew.Checked = $True
+													$ItemNew.Checked = $True
 												} else {
-													$QQNew.Checked = $False
+													$ItemNew.Checked = $False
 												}
 											}
 
 											<#
 												.允许更新规则
 											#>
-											if ($QQNew.Tag -eq "Is_Update_Rule") {
+											if ($ItemNew.Tag -eq "Is_Update_Rule") {
 												if ($NewTasks.Tasks.Expand.Rules.isUpdate) {
-													$QQNew.Checked = $True
-													Image_Select_Disable_Expand_Item_Autopilot -Group $QQNew.Parent.Parent.Parent.Name -Name $QQNew.Tag -Open
+													$ItemNew.Checked = $True
+													Image_Select_Disable_Expand_Item_Autopilot -Group $ItemNew.Parent.Parent.Parent.Name -Name $ItemNew.Tag -Open
 												} else {
-													$QQNew.Checked = $False
-													Image_Select_Disable_Expand_Item_Autopilot -Group $QQNew.Parent.Parent.Parent.Name -Name $QQNew.Tag -Close
+													$ItemNew.Checked = $False
+													Image_Select_Disable_Expand_Item_Autopilot -Group $ItemNew.Parent.Parent.Parent.Name -Name $ItemNew.Tag -Close
 												}
 											}
 
 											<#
 												.更新到所有索引号
 											#>
-											if ($QQNew.Tag -eq "Is_Update_Rule_Expand_To_All") {
+											if ($ItemNew.Tag -eq "Is_Update_Rule_Expand_To_All") {
 												if ($NewTasks.Tasks.Expand.Rules.UpdateToAll) {
-													$QQNew.Checked = $True
-													Image_Select_Disable_Expand_Item_Autopilot -Group $QQNew.Parent.Parent.Parent.Name -Name $QQNew.Tag -Open
+													$ItemNew.Checked = $True
+													Image_Select_Disable_Expand_Item_Autopilot -Group $ItemNew.Parent.Parent.Parent.Name -Name $ItemNew.Tag -Open
 												} else {
-													$QQNew.Checked = $False
-													Image_Select_Disable_Expand_Item_Autopilot -Group $QQNew.Parent.Parent.Parent.Name -Name $QQNew.Tag -Close
+													$ItemNew.Checked = $False
+													Image_Select_Disable_Expand_Item_Autopilot -Group $ItemNew.Parent.Parent.Parent.Name -Name $ItemNew.Tag -Close
 												}
 											}
 										}

@@ -9,6 +9,8 @@ Function Update_Create_UI
 	Write-Host "  $($lang.UpdateCreate)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 
+	Image_Init_Disk_Sources
+
 	Add-Type -AssemblyName System.Windows.Forms
 	Add-Type -AssemblyName System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()

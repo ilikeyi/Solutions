@@ -27,7 +27,7 @@
 	Setting                         = לְהַקִים
 	Change                          = לְשַׁנוֹת
 	Help                            = עֶזרָה
-	Logging                         = שמור יומן ב
+	Logging                         = עֵץ
 	AvailableLanguages              = שפות זמינות
 	SwitchLanguage                  = להחליף שפה
 	LanguageSelRegion               = בחר את המדינה או האזור שלך

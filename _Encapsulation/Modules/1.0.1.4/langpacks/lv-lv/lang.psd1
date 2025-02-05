@@ -27,7 +27,7 @@
 	Setting                         = Izveidot
 	Change                          = Mainīt
 	Help                            = Palīdzēt
-	Logging                         = Saglabāt žurnālu uz
+	Logging                         = Žurnāls
 	AvailableLanguages              = Pieejamās valodas
 	SwitchLanguage                  = Mainīt valodu
 	LanguageSelRegion               = Izvēlieties savu valsti vai reģionu

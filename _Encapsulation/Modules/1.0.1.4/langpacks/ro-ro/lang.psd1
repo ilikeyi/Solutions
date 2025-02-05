@@ -27,7 +27,7 @@
 	Setting                         = Înființat
 	Change                          = Schimba
 	Help                            = Ajutor
-	Logging                         = Salvați jurnalul în
+	Logging                         = Jurnal
 	AvailableLanguages              = Limbi disponibile
 	SwitchLanguage                  = Schimba limba
 	LanguageSelRegion               = Selectați țara sau regiunea dvs

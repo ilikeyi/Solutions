@@ -27,7 +27,7 @@
 	Setting                         = Installation
 	Change                          = Changement
 	Help                            = Aide
-	Logging                         = Enregistrer le journal dans
+	Logging                         = Enregistrer
 	AvailableLanguages              = Langues offertes
 	SwitchLanguage                  = Changer de langue
 	LanguageSelRegion               = Choisissez votre pays ou région

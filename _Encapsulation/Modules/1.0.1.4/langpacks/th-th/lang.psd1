@@ -27,7 +27,7 @@
 	Setting                         = ตั้งค่า
 	Change                          = เปลี่ยน
 	Help                            = ช่วย
-	Logging                         = บันทึกบันทึกไปที่
+	Logging                         = บันทึก
 	AvailableLanguages              = ภาษาที่ใช้ได้
 	SwitchLanguage                  = เปลี่ยนภาษา
 	LanguageSelRegion               = เลือกประเทศหรือภูมิภาคของคุณ

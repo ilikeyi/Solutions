@@ -26,7 +26,7 @@
 	Setting                         = Nastavit
 	Change                          = Přeměna
 	Help                            = Pomoc
-	Logging                         = Uložit protokol do
+	Logging                         = Log
 	AvailableLanguages              = Dostupné jazyky
 	SwitchLanguage                  = Přepnout jazyk
 	LanguageSelRegion               = Vyberte svou zemi nebo oblast

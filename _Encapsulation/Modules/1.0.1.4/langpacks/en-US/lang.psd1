@@ -27,7 +27,7 @@
 	Setting                         = Settings
 	Change                          = Change
 	Help                            = Help
-	Logging                         = Save the log to
+	Logging                         = Log
 	AvailableLanguages              = Available languages
 	SwitchLanguage                  = Switch language
 	LanguageSelRegion               = Select your country or region

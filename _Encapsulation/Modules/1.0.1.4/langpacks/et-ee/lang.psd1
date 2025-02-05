@@ -27,7 +27,7 @@
 	Setting                         = Üles seada
 	Change                          = Muuda
 	Help                            = Abi
-	Logging                         = Salvesta logi asukohta
+	Logging                         = Logi
 	AvailableLanguages              = Saadaolevad keeled
 	SwitchLanguage                  = Keelt vahetada
 	LanguageSelRegion               = Valige oma riik või piirkond

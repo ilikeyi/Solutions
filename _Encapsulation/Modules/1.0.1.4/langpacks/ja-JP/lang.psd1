@@ -27,7 +27,7 @@
 	Setting                         = 設定
 	Change                          = 変える
 	Help                            = ヘルプ
-	Logging                         = ログを保存する
+	Logging                         = ログ
 	AvailableLanguages              = 利用可能な言語
 	SwitchLanguage                  = 言語を切り替える
 	LanguageSelRegion               = 国または地域を選択してください

@@ -27,7 +27,7 @@
 	Setting                         = Nustatyti
 	Change                          = Keisti
 	Help                            = Padėti
-	Logging                         = Išsaugoti žurnalą į
+	Logging                         = Žurnalas
 	AvailableLanguages              = Galimos kalbos
 	SwitchLanguage                  = Pakeisti kalbą
 	LanguageSelRegion               = Pasirinkite savo šalį arba regioną
