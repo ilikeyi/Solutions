@@ -1633,7 +1633,7 @@ Function LXPs_Download_Licence_Process
 			if (Test-Path -Path $TempNewFileFullPath -PathType Leaf) {
 				$Wait_Remove_Temp_File = Join-Path -Path $item.OrgPath -ChildPath "License.xml"
 
-				write-host "  $($item.Language): " -NoNewline
+				write-host "  $($item.Language) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				Remove-Item -Path $Wait_Remove_Temp_File -ErrorAction SilentlyContinue
 
 				Add-Type -AssemblyName System.IO.Compression.FileSystem
