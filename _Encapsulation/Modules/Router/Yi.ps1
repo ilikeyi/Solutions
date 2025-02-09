@@ -15,6 +15,7 @@ param
 	[switch]$Unpack,
 	[switch]$Ceup,
 	[switch]$va,
+	[switch]$vu,
 	[switch]$zip,
 	[switch]$Fix,
 	[switch]$FixDism,
@@ -52,7 +53,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Verification: Pre-answer template file"
 			Unpack               = "pack"
 			ChkUpdate            = "Check for updates"
-			CreateUP             = "Create an upgrade package"
 			CreateTemplate       = "Create template"
 			CEUP                 = "Create a deployment engine upgrade package"
 			zip                  = "All software is packaged in zip compression format"
@@ -85,7 +85,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "التحقق: يجب أن يكون ملف قالب الإجابة المسبقة"
 			Unpack               = "بالة"
 			ChkUpdate            = "تحقق من وجود تحديثات"
-			CreateUP             = "قم بإنشاء حزمة ترقية"
 			CreateTemplate       = "إنشاء قالب"
 			CEUP                 = "إنشاء حزمة ترقية محرك النشر"
 			zip                  = "يتم تعبئة جميع البرامج بتنسيق ضغط الرمز البريدي"
@@ -118,7 +117,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Проверка: трябва предварително отговор файл шаблон"
 			Unpack               = "Бейл"
 			ChkUpdate            = "Провери за актуализации"
-			CreateUP             = "Създайте пакет за надграждане"
 			CreateTemplate       = "Създайте шаблон"
 			CEUP                 = "Създайте пакет за надграждане на машина за внедряване"
 			zip                  = "Целият софтуер e опакован във формат на компресия c цип"
@@ -151,7 +149,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Bekræftelse: skal forhåndsbesvare skabelonfil"
 			Unpack               = "Bale"
 			ChkUpdate            = "Søg efter opdateringer"
-			CreateUP             = "Opret en opgraderingspakke"
 			CreateTemplate       = "Opret skabelon"
 			CEUP                 = "Opret en opgraderingspakke til implementeringsmotor"
 			zip                  = "Al software er pakket i zip -komprimeringsformat"
@@ -184,7 +181,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Überprüfung: Es sollte eine Vorlagedatei vorab beantwortet werden"
 			Unpack               = "Ballen"
 			ChkUpdate            = "Auf Updates prüfen"
-			CreateUP             = "Upgrade-Paket erstellen"
 			CreateTemplate       = "Vorlage erstellen"
 			CEUP                 = "Erstellen Sie ein Upgradepaket für die Bereitstellungs-Engine"
 			zip                  = "Alle Software ist im ZIP -Komprimierungsformat verpackt"
@@ -217,7 +213,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Επαλήθευση: θα πρέπει να απαντήσει εκ των προτέρων το αρχείο προτύπου"
 			Unpack               = "Μπάλλα"
 			ChkUpdate            = "Ελεγχος για ενημερώσεις"
-			CreateUP             = "Δημιουργήστε ένα πακέτο αναβάθμισης"
 			CreateTemplate       = "Δημιουργία προτύπου"
 			CEUP                 = "Δημιουργήστε ένα πακέτο αναβάθμισης κινητήρα ανάπτυξης"
 			zip                  = "Όλο το λογισμικό είναι συσκευασμένο σε μορφή συμπίεσης με φερμουάρ"
@@ -250,7 +245,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Verificación: debe responder previamente el archivo de plantilla"
 			Unpack               = "Embalar"
 			ChkUpdate            = "Buscar actualizaciones"
-			CreateUP             = "Crear paquete de actualización"
 			CreateTemplate       = "Crear plantilla"
 			CEUP                 = "Crear un paquete de actualización del motor de implementación"
 			zip                  = "Todo el software está empaquetado en formato comprimido zip."
@@ -283,7 +277,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Verificación: debe responder previamente el archivo de plantilla"
 			Unpack               = "Bala"
 			ChkUpdate            = "Buscar actualizaciones"
-			CreateUP             = "Crear un paquete de actualización"
 			CreateTemplate       = "Ustvari predlogo"
 			CEUP                 = "Crear un paquete de actualización del motor de implementación"
 			zip                  = "Todo el software está empaquetado en formato de compresión zip"
@@ -316,7 +309,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Kinnitus: peaks mallifaili eelnevalt vastama"
 			Unpack               = "Bale"
 			ChkUpdate            = "Kontrolli kas uuendused on saadaval"
-			CreateUP             = "Looge täienduspakett"
 			CreateTemplate       = "Loo mall"
 			CEUP                 = "Looge juurutusmootori täienduspakett"
 			zip                  = "Kogu tarkvara on pakendatud ZIP -i tihendusvormingusse"
@@ -349,7 +341,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Varmistus: pitäisi vastata mallitiedostoon etukäteen"
 			Unpack               = "Paali"
 			ChkUpdate            = "Tarkista päivitykset"
-			CreateUP             = "Luo päivityspaketti"
 			CreateTemplate       = "Luo malli"
 			CEUP                 = "Luo käyttöönottomoottorin päivityspaketti"
 			zip                  = "Kaikki ohjelmistot on pakattu postinumeroon"
@@ -382,7 +373,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Vérification: doit pré-répondre le fichier modèle"
 			Unpack               = "Balle"
 			ChkUpdate            = "Vérifier les mises à jour"
-			CreateUP             = "Créer un package de mise à niveau"
 			CreateTemplate       = "Créer un modèle"
 			CEUP                 = "Créer un package de mise à niveau du moteur de déploiement"
 			zip                  = "Tous les logiciels sont emballés au format de compression zip"
@@ -415,7 +405,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Vérification: doit pré-répondre le fichier modèle"
 			Unpack               = "Paquet"
 			ChkUpdate            = "Vérifier les mises à jour"
-			CreateUP             = "Créer un package de mise à niveau"
 			CreateTemplate       = "Créer un modèle"
 			CEUP                 = "Créer un package de mise à niveau du moteur de déploiement"
 			zip                  = "Tous les logiciels sont emballés au format compressé zip"
@@ -448,7 +437,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "אימות: צריך לענות מראש על קובץ תבנית"
 			Unpack               = "חֲבִילָה"
 			ChkUpdate            = "בדוק עדכונים"
-			CreateUP             = "צור חבילת שדרוג"
 			CreateTemplate       = "צור תבנית"
 			CEUP                 = "צור חבילת שדרוג מנוע פריסה"
 			zip                  = "כל התוכנה ארוזת בפורמט דחיסת מיקוד"
@@ -481,7 +469,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Provjera: trebala bi biti datoteka predloška odgovora"
 			Unpack               = "Bale"
 			ChkUpdate            = "Provjerite ima li ažuriranja"
-			CreateUP             = "Napravite paket nadogradnje"
 			CreateTemplate       = "Izradi predložak"
 			CEUP                 = "Stvorite paket za nadogradnju mehanizma za implementaciju"
 			zip                  = "Sav je softver pakiran u formatu kompresije ZIP -a"
@@ -514,7 +501,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Ellenőrzés: előre meg kell válaszolni a sablonfájlt"
 			Unpack               = "Bála"
 			ChkUpdate            = "Frissítések keresése"
-			CreateUP             = "Frissítési csomag létrehozása"
 			CreateTemplate       = "Sablon létrehozása"
 			CEUP                 = "Hozzon létre egy telepítési motor-frissítési csomagot"
 			zip                  = "Az összes szoftver zip tömörítési formátumban van csomagolva"
@@ -547,7 +533,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Verifica: dovrebbe pre-rispondere al file modello"
 			Unpack               = "Balla"
 			ChkUpdate            = "Controlla gli aggiornamenti"
-			CreateUP             = "Crea pacchetto di aggiornamento"
 			CreateTemplate       = "Crea modello"
 			CEUP                 = "Creare un pacchetto di aggiornamento del motore di distribuzione"
 			zip                  = "Tutto il software è confezionato in formato di compressione Zip"
@@ -580,7 +565,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "検証: テンプレート ファイルを事前に回答する必要があります"
 			Unpack               = "ベール"
 			ChkUpdate            = "アップデートを確認"
-			CreateUP             = "アップグレードパッケージを作成する"
 			CreateTemplate       = "テンプレートの作成"
 			CEUP                 = "デプロイメント エンジン アップグレード パッケージを作成する"
 			zip                  = "すべてのソフトウェアはzip圧縮形式でパッケージ化されています"
@@ -613,7 +597,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "확인: 템플릿 파일에 미리 답변해야 합니다."
 			Unpack               = "곤포"
 			ChkUpdate            = "업데이트 확인"
-			CreateUP             = "업그레이드 패키지 생성"
 			CreateTemplate       = "템플릿 만들기"
 			CEUP                 = "배치 엔진 업그레이드 패키지 작성"
 			zip                  = "모든 소프트웨어는 zip 압축 형식으로 포장됩니다"
@@ -646,7 +629,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Patvirtinimas: turėtų iš anksto atsakyti šablono failas"
 			Unpack               = "Bale"
 			ChkUpdate            = "Tikrinti, ar yra atnaujinimų"
-			CreateUP             = "Sukurkite atnaujinimo paketą"
 			CreateTemplate       = "Sukurti šabloną"
 			CEUP                 = "Sukurkite diegimo variklio naujinimo paketą"
 			zip                  = "Visa programinė įranga yra supakuota į ZIP suspaudimo formatą"
@@ -679,7 +661,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Verifikācija: vajadzētu pirms atbildes veidnes faila"
 			Unpack               = "Bāle"
 			ChkUpdate            = "Meklēt atjauninājumus"
-			CreateUP             = "Izveidojiet jaunināšanas pakotni"
 			CreateTemplate       = "Izveidot veidni"
 			CEUP                 = "Izveidojiet izvietošanas programmas jaunināšanas pakotni"
 			zip                  = "Visa programmatūra ir iesaiņota pasta kompresijas formātā"
@@ -712,7 +693,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Bekreftelse: skal forhåndsbesvare malfil"
 			Unpack               = "Bale"
 			ChkUpdate            = "Se etter oppdateringer"
-			CreateUP             = "Lag oppgraderingspakke"
 			CreateTemplate       = "Lag mal"
 			CEUP                 = "Opprett en oppgraderingspakke for distribusjonsmotoren"
 			zip                  = "All programvare er pakket i zip -komprimeringsformat"
@@ -745,7 +725,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Verificatie: moet het sjabloonbestand vooraf beantwoorden"
 			Unpack               = "Pak"
 			ChkUpdate            = "Controleer op updates"
-			CreateUP             = "Upgradepakket maken"
 			CreateTemplate       = "Sjabloon maken"
 			CEUP                 = "Maak een upgradepakket voor de implementatie-engine"
 			zip                  = "Alle software is verpakt in een gecomprimeerd zip-formaat"
@@ -778,7 +757,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Weryfikacja: powinna wstępnie odpowiedzieć na plik szablonu"
 			Unpack               = "Bela"
 			ChkUpdate            = "Sprawdź aktualizacje"
-			CreateUP             = "Utwórz pakiet aktualizacji"
 			CreateTemplate       = "Utwórz szablon"
 			CEUP                 = "Utwórz pakiet aktualizacji mechanizmu wdrażania"
 			zip                  = "Wszystkie oprogramowanie jest pakowane w formacie kompresji zip"
@@ -811,7 +789,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Verificação: deve pré-responder arquivo de modelo"
 			Unpack               = "Fardo"
 			ChkUpdate            = "Verifique se há atualizações"
-			CreateUP             = "Criar pacote de atualização"
 			CreateTemplate       = "Utwórz szablon"
 			CEUP                 = "Criar um pacote de atualização do mecanismo de implantação"
 			zip                  = "Todo o software está embalado em formato de compressão ZIP"
@@ -844,7 +821,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Verificação: deve pré-responder ficheiro de modelo"
 			Unpack               = "Pacote"
 			ChkUpdate            = "Verifique se existem atualizações"
-			CreateUP             = "Criar pacote de atualização"
 			CreateTemplate       = "Criar modelo"
 			CEUP                 = "Crie um pacote de atualização do mecanismo de implementação"
 			zip                  = "Todo o software é empacotado em formato comprimido zip"
@@ -877,7 +853,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Verificare: ar trebui să răspundă înainte de fișierul șablon"
 			Unpack               = "Balot"
 			ChkUpdate            = "Verifică pentru actualizări"
-			CreateUP             = "Creați un pachet de upgrade"
 			CreateTemplate       = "Creați șablon"
 			CEUP                 = "Creați un pachet de actualizare a motorului de implementare"
 			zip                  = "Toate software -ul este ambalat în format de compresie zip"
@@ -910,7 +885,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Проверка: необходимо предварительно ответить на файл шаблона"
 			Unpack               = "Бэйл"
 			ChkUpdate            = "Проверить наличие обновлений"
-			CreateUP             = "Создать пакет обновления"
 			CreateTemplate       = "Создать шаблон"
 			CEUP                 = "Создание пакета обновления механизма развертывания"
 			zip                  = "Bce программное обеспечение упаковано в формате сжатия Zip"
@@ -943,7 +917,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Overenie: mal by sa predpísať súbor šablóny odpovede"
 			Unpack               = "Bale"
 			ChkUpdate            = "Skontroluj aktualizácie"
-			CreateUP             = "Vytvorte inovačný balík"
 			CreateTemplate       = "Vytvorte šablónu"
 			CEUP                 = "Vytvorte balík inovácie nástroja nasadenia"
 			zip                  = "Celý softvér je zabalený vo formáte kompresie zipsov"
@@ -976,7 +949,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Preverjanje: datoteka predloge mora biti pred odgovorom"
 			Unpack               = "Bale"
 			ChkUpdate            = "Preveri za posodobitve"
-			CreateUP             = "Ustvari paket nadgradnje"
 			CreateTemplate       = "Ustvari predlogo"
 			CEUP                 = "Ustvarite paket nadgradnje motorja za uvajanje"
 			zip                  = "Vsa programska oprema je pakirana v obliki stiskanja zip"
@@ -1009,7 +981,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Верификација: треба унапред одговорити на датотеку шаблона"
 			Unpack               = "Бале"
 			ChkUpdate            = "Провери ажурирања"
-			CreateUP             = "Креирајте пакет за надоградњу"
 			CreateTemplate       = "Креирајте шаблон"
 			CEUP                 = "Креирајте пакет за надоградњу машине за примену"
 			zip                  = "Сав софтвер је упакован у зип компресијски формат"
@@ -1042,7 +1013,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Verifiering: ska förhandsbesvara mallfil"
 			Unpack               = "Packa"
 			ChkUpdate            = "Sök efter uppdateringar"
-			CreateUP             = "Skapa uppgraderingspaket"
 			CreateTemplate       = "Skapa mall"
 			CEUP                 = "Skapa ett uppgraderingspaket för distributionsmotorn"
 			zip                  = "All programvara är förpackad i zip-komprimerat format"
@@ -1075,7 +1045,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "การยืนยัน: ควรตอบไฟล์เทมเพลตล่วงหน้า"
 			Unpack               = "เบล"
 			ChkUpdate            = "ตรวจสอบสำหรับการอัพเดต"
-			CreateUP             = "สร้างแพ็คเกจอัพเกรด"
 			CreateTemplate       = "สร้างเทมเพลต"
 			CEUP                 = "สร้างแพ็คเกจการปรับรุ่นกลไกการปรับใช้"
 			zip                  = "ซอฟต์แวร์ทั้งหมดบรรจุในรูปแบบการบีบอัด zip"
@@ -1108,7 +1077,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Doğrulama: şablon dosyasına önceden yanıt verilmelidir"
 			Unpack               = "Balya"
 			ChkUpdate            = "Güncellemeleri kontrol et"
-			CreateUP             = "Bir yükseltme paketi oluşturun"
 			CreateTemplate       = "Şablon oluştur"
 			CEUP                 = "Bir dağıtım altyapısı yükseltme paketi oluşturun"
 			zip                  = "Tüm yazılımlar zip sıkıştırma formatında paketlenmiştir"
@@ -1141,7 +1109,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "Перевірка: необхідно попередньо відповісти файл шаблону"
 			Unpack               = "Бейл"
 			ChkUpdate            = "Перевірити наявність оновлень"
-			CreateUP             = "Створіть пакет оновлення"
 			CreateTemplate       = "Створити шаблон"
 			CEUP                 = "Створіть пакет оновлення механізму розгортання"
 			zip                  = "Bce програмне забезпечення упаковано y форматі стиснення zip"
@@ -1174,7 +1141,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "验证：应预答模板文件"
 			Unpack               = "打包"
 			ChkUpdate            = "检查更新"
-			CreateUP             = "创建升级包"
 			CreateTemplate       = "创建模板"
 			CEUP                 = "创建部署引擎升级包"
 			zip                  = "所有软件都以 zip 压缩格式打包"
@@ -1207,7 +1173,6 @@ $AvailableLanguages = @(
 			VerifyUnattend       = "驗證：應預答範本文件"
 			Unpack               = "打包"
 			ChkUpdate            = "檢查更新"
-			CreateUP             = "創建升級包"
 			CreateTemplate       = "創建範本"
 			CEUP                 = "創建部署引擎升級包"
 			zip                  = "所有軟件都以 zip 壓縮格式打包"
@@ -1466,11 +1431,6 @@ Function Help
 	Write-Host "  | " -NoNewLine
 	Write-Host $lang.ChkUpdate -ForegroundColor Yellow
 
-	Write-Host "    C   " -NoNewLine -ForegroundColor Green
-	Write-Host "$($PSscript.BaseName) -CU" -NoNewLine -ForegroundColor Green
-	Write-Host "      | " -NoNewLine
-	Write-Host $lang.CreateUP -ForegroundColor Yellow
-
 	Write-Host "    T   " -NoNewLine -ForegroundColor Green
 	Write-Host "$($PSscript.BaseName) -CT" -NoNewLine -ForegroundColor Green
 	Write-Host "      | " -NoNewLine
@@ -1599,9 +1559,6 @@ Function Help
 	{
 		"u" {
 			powershell -file "$($PSScriptRoot)\..\..\_Sip.ps1" -Function "Update"
-		}
-		"c" {
-			powershell -file "$($PSScriptRoot)\..\..\_Create.Upgrade.Package.ps1"
 		}
 		"t" {
 			powershell -file "$($PSScriptRoot)\..\..\_Create.Template.ps1"
@@ -1762,8 +1719,8 @@ if ($va) {
 	return
 }
 
-if ($Update) {
-	powershell -file "$($PSScriptRoot)\..\..\_Create.upgrade.package.ps1"
+if ($vu) {
+	powershell -file "$($PSScriptRoot)\..\..\_Sip.ps1" -Function "Verify_Unattend_Custom_File"
 	return
 }
 
