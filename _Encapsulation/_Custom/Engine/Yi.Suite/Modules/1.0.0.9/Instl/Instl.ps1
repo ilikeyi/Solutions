@@ -634,7 +634,13 @@ Function Install_Init_Disk_To
 	<#
 		.搜索磁盘条件，排除系统盘
 	#>
-	$drives = Get-PSDrive -PSProvider FileSystem -ErrorAction SilentlyContinue | Where-Object { -not ((Join_MainFolder -Path $env:SystemDrive) -eq $_.Root) } | Select-Object -ExpandProperty 'Root'
+	$ExcludeDisk = @(
+		Join_MainFolder -Path $env:SystemDrive
+		"A:\"
+		"B:\"
+	)
+
+	$drives = Get-PSDrive -PSProvider FileSystem -ErrorAction SilentlyContinue | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Where-Object { $ExcludeDisk -notcontains $_.Root } | Select-Object -ExpandProperty 'Root'
 
 	<#
 		.从注册表里获取是否检查磁盘可用空间

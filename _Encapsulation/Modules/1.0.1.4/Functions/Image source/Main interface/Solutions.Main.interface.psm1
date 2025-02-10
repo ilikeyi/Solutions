@@ -329,11 +329,19 @@ Function Image_Init_Disk_Sources
 	}
 
 	if (-not ($MarkGetDiskTo)) {
-		$drives = Get-CimInstance -Class Win32_LogicalDisk -ErrorAction SilentlyContinue | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | ForEach-Object { -not ((Join_MainFolder -Path $env:SystemDrive) -eq $_.DeviceID) } | Select-Object -ExpandProperty 'DeviceID'
+		$ExcludeDisk = @(
+			Join_MainFolder -Path $env:SystemDrive
+			"A:\"
+			"B:\"
+		)
+
+		$drives = Get-PSDrive -PSProvider FileSystem -ErrorAction SilentlyContinue | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Where-Object { $ExcludeDisk -notcontains $_.Root } | Select-Object -ExpandProperty 'Root'
 		ForEach ($item in $drives) {
-			if (Test_Available_Disk -Path $item) {
-				Image_Set_Disk_Sources -Disk $item
-				return
+			if ($ExcludeDisk -notcontains $item) {
+				if (Test_Available_Disk -Path $item) {
+					Image_Set_Disk_Sources -Disk $(Join_MainFolder -Path $item)
+					return
+				}
 			}
 		}
 
