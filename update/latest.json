@@ -1,0 +1,16 @@
+{
+	"author": {
+		"name": "Yi",
+		"url":  "https://fengyi.tel"
+	},
+	"version": {
+		"buildstring": "yi_release.2025.4.7",
+		"version":     "1.0.1.6",
+		"minau":       "1.0.0.0"
+	},
+	"changelog": {
+		"title": "Yi's Solutions - Change log",
+		"log":   "   - Routing function: self-healing sequence after adding * New\n   - API: Application Programming Interface, Shortcut: (API *) * New\n   - New shortcut commands and dynamic UI * New"
+	},
+	"url": "https://github.com/ilikeyi/Solutions/raw/refs/heads/main/update/latest.zip"
+}

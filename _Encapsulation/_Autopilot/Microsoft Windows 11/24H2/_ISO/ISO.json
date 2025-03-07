@@ -1,0 +1,59 @@
+{
+	"Config": {
+		"Author":  "Yi",
+		"Url":     "https://fengyi.tel",
+		"Version": "1.0.0.5"
+	},
+	"Deploy": {
+		"ImageSource": {
+			"Tasks": {
+				"ISO": {
+					"SaveTo":              "",
+					"Structure":  {
+						"InstallType":     true,
+						"UniqueName":      true,
+						"Group":          "Windows 11 24H2",
+						"Event":           false,
+						"EngineVersion":   ""
+					},
+					"PublicDate": {
+						"Year":            true,
+						"Month":           true
+					},
+					"WindowsVersion": {
+						"Enable":          true,
+						"Version":         "Auto",
+						"InitialRelease":  "11"
+					},
+					"WindowsCode": {
+						"Enable":          true,
+						"Code":            "Auto",
+						"InitialCode":     "24H2"
+					},
+					"Random":              false,
+					"ImageLanguage":       false,
+					"imageVersions":       false,
+					"imageVersionsType":   false,
+					"Before": {
+						"Rebuild": {
+							"Install":    false,
+							"Boot":       false
+						}
+					},
+					"After": {
+						"TPM":            true,
+						"Sha256":         false,
+						"RemoveImage":    false,
+						"PGP": {
+							"Enable":     false,
+							"Config": {
+								"Pwd":    "",
+								"KeyID":  "0FEBF674EAD23E05"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
