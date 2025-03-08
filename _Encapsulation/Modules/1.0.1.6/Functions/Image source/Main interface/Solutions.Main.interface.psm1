@@ -1544,11 +1544,18 @@ Function Image_Select
 		#>
 		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -Name "IsCheckLowDiskSize" -ErrorAction SilentlyContinue) {
 			switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -Name "IsCheckLowDiskSize" -ErrorAction SilentlyContinue) {
-				"True" { $GUIImageSourceGroupSettingSize.Checked = $True }
-				"False" { $GUIImageSourceGroupSettingSize.Checked = $False }
+				"True" {
+					$GUIImageSourceGroupSettingSize.Checked = $True
+					$GUIImageSourceGroupSettingLowSize.Enabled = $True
+				}
+				"False" {
+					$GUIImageSourceGroupSettingSize.Checked = $False
+					$GUIImageSourceGroupSettingLowSize.Enabled = $False
+				}
 			}
 		} else {
 			$GUIImageSourceGroupSettingSize.Checked = $True
+			$GUIImageSourceGroupSettingLowSize.Enabled = $True
 		}
 
 		<#
@@ -5501,7 +5508,7 @@ Function Image_Select
 				$GUIImageSourceGroupSettingLowSize
 			} else {
 				$GUIImageSourceGroupSettingLowSize.Enabled = $False
-				Save_Dynamic -regkey "Solutions" -name "IsCheckLowDiskSize" -value "True" -String
+				Save_Dynamic -regkey "Solutions" -name "IsCheckLowDiskSize" -value "False" -String
 			}
 
 			Image_Select_Refresh_Disk_Local
