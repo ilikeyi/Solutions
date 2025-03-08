@@ -269,18 +269,18 @@ Function Update_Process
 		if (Test_URI $item) {
 			$PreServerVersion = $item
 			$ServerTest = $true
-			Write-Host "     $($lang.UpdateAvailable)" -ForegroundColor Green
+			Write-Host "    $($lang.UpdateAvailable)" -ForegroundColor Green
 			break
 		} else {
-			Write-Host "     $($lang.UpdateUnavailable)`n" -ForegroundColor Red
+			Write-Host "    $($lang.UpdateUnavailable)`n" -ForegroundColor Red
 		}
 	}
 
 	if ($ServerTest) {
 		Write-Host "  $('-' * 80)"
-		Write-Host "     $($lang.UpdatePriority)" -ForegroundColor Green
+		Write-Host "    $($lang.UpdatePriority)" -ForegroundColor Green
 	} else {
-		Write-Host "     $($lang.UpdateServerTestFailed)" -ForegroundColor Red
+		Write-Host "    $($lang.UpdateServerTestFailed)" -ForegroundColor Red
 		Write-Host "  $('-' * 80)"
 		return
 	}

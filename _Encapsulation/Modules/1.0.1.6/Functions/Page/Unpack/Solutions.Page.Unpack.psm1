@@ -910,7 +910,7 @@ Function Update_Create_Version
 	},
 	"changelog": {
 		"title": "$((Get-Module -Name Solutions).Author)'s Solutions - Change log",
-		"log":   "   - Routing function: self-healing sequence after adding * New\n   - API: Application Programming Interface, Shortcut: (API *) * New\n   - New shortcut commands and dynamic UI * New"
+		"log":   "  - Routing function: self-healing sequence after adding * New\n  - API: Application Programming Interface, Shortcut: (API *) * New\n  - New shortcut commands and dynamic UI * New"
 	},
 	"url": "$((Get-Module -Name Solutions).HelpInfoURI)/download/solutions/latest.zip"
 }

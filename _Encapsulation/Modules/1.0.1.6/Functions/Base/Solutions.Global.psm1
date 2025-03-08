@@ -239,7 +239,8 @@ Function Archive
 	Write-Host "  $($lang.SaveTo): " -NoNewline -ForegroundColor Yellow
 	Write-Host $to -ForegroundColor Green
 
-	Write-Host "  $($lang.UpdateUnpacking): " -NoNewline -BackgroundColor DarkGreen -ForegroundColor White
+	Write-Host "  " -NoNewline
+	Write-Host " $($lang.UpdateUnpacking) " -NoNewline -BackgroundColor White -ForegroundColor Black
 
 	$Verify_Install_Path = Get_Zip -Run "7z.exe"
 	if (Test-Path -Path $Verify_Install_Path -PathType leaf) {
