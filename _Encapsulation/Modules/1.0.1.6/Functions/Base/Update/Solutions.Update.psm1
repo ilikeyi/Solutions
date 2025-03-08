@@ -263,7 +263,7 @@ Function Update_Process
 	Write-Host "  $('-' * 80)"
 
 	ForEach ($item in $Script:ServerList) {
-		Write-Host "   * $($lang.UpdateServerAddress): " -NoNewline -ForegroundColor Yellow
+		Write-Host "  * $($lang.UpdateServerAddress): " -NoNewline -ForegroundColor Yellow
 		Write-Host $item -ForegroundColor Green
 
 		if (Test_URI $item) {
@@ -324,7 +324,7 @@ Function Update_Process
 		if ($IsUpdateAvailable) {
 			Write-Host "`n  $($lang.UpdateVerifyAvailable)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "   * $($lang.UpdateDownloadAddress): " -NoNewline -ForegroundColor Yellow
+			Write-Host "  * $($lang.UpdateDownloadAddress): " -NoNewline -ForegroundColor Yellow
 			Write-Host $url -ForegroundColor Green
 
 			if (Test_URI $url) {
@@ -332,10 +332,10 @@ Function Update_Process
 				Write-Host "  $('-' * 80)"
 
 				Write-Host "`n  $($lang.UpdateCurrent): $((Get-Module -Name Solutions).Version.ToString())
-   $($lang.UpdateLatest): $($getSerVer.version.version)
+  $($lang.UpdateLatest): $($getSerVer.version.version)
 
-   $($getSerVer.changelog.title)
-   $('-' * ($getSerVer.changelog.title).Length)
+  $($getSerVer.changelog.title)
+  $('-' * ($getSerVer.changelog.title).Length)
 $($getSerVer.changelog.log)`n"
 
 				Write-Host "  $($lang.UpdateNewLatest)`n" -ForegroundColor Green
@@ -381,7 +381,7 @@ $($getSerVer.changelog.log)`n"
 			if ($UI_Main_Reset.Checked) {
 				Write-Host "`n  $($lang.UpdateVerifyAvailable)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				Write-Host "   * $($lang.UpdateDownloadAddress): " -NoNewline -ForegroundColor Yellow
+				Write-Host "  * $($lang.UpdateDownloadAddress): " -NoNewline -ForegroundColor Yellow
 				Write-Host $url -ForegroundColor Green
 
 				if (Test_URI $url) {
