@@ -4218,11 +4218,13 @@ Function Image_Select
 		add_Click      = {
 			if ($GUIImageSourceSettingIsAllowDevMode.Checked) {
 				Save_Dynamic -regkey "Solutions" -name "IsAllowDevMode" -value "True" -String
+				$Global:Developers_Mode = $True
 
 				$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 				$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.IsAllowDevMode), $($lang.Enable), $($lang.Done)"
 			} else {
 				Save_Dynamic -regkey "Solutions" -name "IsAllowDevMode" -value "False" -String
+				$Global:Developers_Mode = $False
 
 				$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 				$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.IsAllowDevMode), $($lang.Disable), $($lang.Done)"
@@ -9016,6 +9018,7 @@ Function Image_Select
 							$Global:Developers_Mode = $True
 							Write-Host " $($lang.Enable) " -BackgroundColor DarkGreen -ForegroundColor White
 						} else {
+							$Global:Developers_Mode = $False
 							Write-Host " $($lang.AfterFinishingNoProcess) " -BackgroundColor DarkRed -ForegroundColor White
 						}
 
