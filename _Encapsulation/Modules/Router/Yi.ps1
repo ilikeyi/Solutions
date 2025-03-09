@@ -1282,6 +1282,7 @@ Function System_Env_Test_Order
 		remove-item -path $newFileName -force -ErrorAction SilentlyContinue
 		return
 	}
+	remove-item -path $newFileName -force -ErrorAction SilentlyContinue
 
 	for ($i = 1; $i -le $windows_path.Count; $i++) {
 		$RefreshGetVarPath = Get-ItemPropertyValue -Path "HKLM:\System\CurrentControlSet\Control\Session Manager\Environment" -Name "Path" -ErrorAction SilentlyContinue
