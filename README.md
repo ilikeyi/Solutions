@@ -64,22 +64,25 @@ Detailed introduction
 1. Image.Sources
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Image.Sources_en-US.webp)
 
-2. Setting
+2. Image source, select primary key
+![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Image.Sources.Sel_en-US.webp)
+
+3. Setting
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Setting_en-US.webp)
 
-3. API
+4. API
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Api_en-US.webp)
 
-4. ISO
+5. ISO
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/ISO_en-US.webp)
 
-5. Main Menu: No primary key selected
+6. Main Menu: No primary key selected
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Menu_en-US.webp)
 
-6. Main Menu: Primary key set
+7. Main Menu: Primary key set
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Menu.Sel_en-US.webp)
 
-7. Shortcuts User Guide
+8. Shortcuts User Guide
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Shortcut_en-US.webp)
 
 <ol>Vector original file, document version Illustator 2020, open it with Adobe Illustrator 2024 or higher</ol>
