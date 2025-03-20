@@ -63,7 +63,7 @@ Detailed introduction
 
 <ol>
  <li>Encapsulated script interactive experience
-   <ol>
+   <ul>
 <li>Image source, main interface
 
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Image.Sources_en-US.webp)
@@ -88,11 +88,11 @@ Detailed introduction
 
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/ISO_en-US.webp)
 </li>
-</ol>
+</ul>
  </li>
 
  <li>Encapsulated script main menu
-      <ol>
+      <ul>
 <li>No primary key selected
 
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Menu_en-US.webp)
@@ -110,7 +110,7 @@ Detailed introduction
 Vector original file, document version Illustator 2020, open it with Adobe Illustrator 2024 or higher <a href="https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Shortcut.ai">Github</a> | <a href="https://fengyi.tel/download/solutions/Screenshots/Shortcut.ai">Yi</a>
 </li>
  </li>
-</ol>
+</ul>
 </details>
 
 <br>
