@@ -61,32 +61,53 @@ Detailed introduction
 <details open>
     <summary>Screenshots</summary>
 
-1. Image.Sources
+<ol>
+ <li>Encapsulated script interactive experience
+   <dl>Image source, main interface
+
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Image.Sources_en-US.webp)
+</dl>
 
-2. Image source, select primary key
+   <dl>Image source, primary key selected
+
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Image.Sources.Sel_en-US.webp)
+</dl>
 
-3. Setting
+   <dl>Setting
+
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Setting_en-US.webp)
+</dl>
 
-4. API
+   <dl>API
+
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Api_en-US.webp)
+</dl>
 
-5. ISO
-![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/ISO_en-US.webp)
+   <dl>ISO
 
-6. Main Menu: No primary key selected
+![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/ISO_en-US.webp)</dl>
+ </li>
+
+ <li>Encapsulated script main menu
+   <dl>No primary key selected
+
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Menu_en-US.webp)
+</dl>
 
-7. Main Menu: Primary key set
+   <dl>Primary key set
+
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Menu.Sel_en-US.webp)
+</dl>
 
-8. Shortcuts User Guide
+   <dl>Shortcuts User Guide
+
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Shortcut_en-US.webp)
 
-<ol>Vector original file, document version Illustator 2020, open it with Adobe Illustrator 2024 or higher</ol>
-<ol><a href="https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Shortcut.ai">Github</a> | <a href="https://fengyi.tel/download/solutions/Screenshots/Shortcut.ai">Yi</a></ol>
+Vector original file, document version Illustator 2020, open it with Adobe Illustrator 2024 or higher
+<a href="https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Shortcut.ai">Github</a> | <a href="https://fengyi.tel/download/solutions/Screenshots/Shortcut.ai">Yi</a>
+   </dl>
+ </li>
+</ol>
 </details>
 
 <br>
