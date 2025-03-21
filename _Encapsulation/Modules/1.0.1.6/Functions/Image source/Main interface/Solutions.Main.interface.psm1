@@ -8384,12 +8384,45 @@ Function Image_Select
 	<#
 		.选择源文件
 	#>
-	$UIUnzipPanel_To   = New-Object System.Windows.Forms.Label -Property @{
-		Height         = 40
+	$UIUnzipPanel_To = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 35
 		Width          = 658
+		margin          = "0,30,0,0"
 		Text           = $lang.SelFile
-		margin         = "0,30,0,0"
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$UIUnzipPanelErrorMsg.Text = ""
+			$UIUnzipPanelErrorMsg_Icon.Image = $null
+			$UIUnzipPanel_To_Path.BackColor = "#FFFFFF"
+			$UIUnzipPanelErrorMsg.ForeColor = "Black"
+
+			$FileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{
+				Filter = "ISO Files (*.iso)|*.iso"
+			}
+
+			if ($FileBrowser.ShowDialog() -eq "OK") {
+				$UIUnzipPanel_To_Path.Text = $FileBrowser.FileName
+				$UIUnzipPanel_To_New_Path.Text = [System.IO.Path]::GetFileNameWithoutExtension($FileBrowser.FileName)
+				Refresh_ISO_CRC_SHA
+			} else {
+				$UIUnzipPanelErrorMsg.Text = $lang.UserCanel
+				$UIUnzipPanelErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+			}
+		}
 	}
+
+	<#
+		.托动文件：提示
+	#>
+	$UIUnzipPanel_To_Path_Select_Tips = New-Object System.Windows.Forms.Label -Property @{
+		Height          = 35
+		Width           = 660
+		Text            = $lang.DropFile
+		Padding         = "16,0,0,0"
+	}
+
 	$UIUnzipPanel_To_Path = New-Object System.Windows.Forms.TextBox -Property @{
 		Height         = 30
 		Width          = 620
@@ -8400,6 +8433,31 @@ Function Image_Select
 			$UIUnzipPanelErrorMsg_Icon.Image = $null
 			$UIUnzipPanelErrorMsg.Text = ""
 			$UIUnzipPanel_To_Path.BackColor = "#FFFFFF"
+		}
+	}
+
+	$UIUnzipPanel_To_Path_Paste = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height          = 40
+		Width           = 655
+		Padding         = "16,0,0,0"
+		Text            = $lang.Paste
+		LinkColor       = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior    = "NeverUnderline"
+		add_Click       = {
+			$UIUnzipPanelErrorMsg.Text = ""
+			$UIUnzipPanel_To_Path.BackColor = "#FFFFFF"
+			$UIUnzipPanelErrorMsg.ForeColor = "Black"
+
+			if ([string]::IsNullOrEmpty($UIUnzipPanel_To_Path.Text)) {
+				$UIUnzipPanelErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UIUnzipPanelErrorMsg.Text = "$($lang.Paste), $($lang.Inoperable)"
+			} else {
+				Set-Clipboard -Value $UIUnzipPanel_To_Path.Text
+
+				$UIUnzipPanelErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+				$UIUnzipPanelErrorMsg.Text = "$($lang.Paste), $($lang.Done)"
+			}
 		}
 	}
 
@@ -8551,7 +8609,7 @@ Function Image_Select
 		}
 	}
 	$UIUnzipPanel_SHA256_Calibration_Wrap = New-Object System.Windows.Forms.Label -Property @{
-		Height             = 30
+		Height             = 25
 		Width              = 655
 	}
 
@@ -8692,96 +8750,21 @@ Function Image_Select
 		}
 	}
 	$UIUnzipPanel_SHA512_Calibration_Wrap = New-Object System.Windows.Forms.Label -Property @{
-		Height             = 30
+		Height             = 25
 		Width              = 655
-	}
-
-	<#
-		.选择 ISO 文件
-	#>
-	$UIUnzipPanel_To_Path_Select = New-Object system.Windows.Forms.LinkLabel -Property @{
-		Height         = 40
-		Width          = 658
-		Padding        = "16,0,0,0"
-		margin          = "0,20,0,0"
-		Text           = $lang.SelFile
-		LinkColor      = "GREEN"
-		ActiveLinkColor = "RED"
-		LinkBehavior   = "NeverUnderline"
-		add_Click      = {
-			$UIUnzipPanelErrorMsg.Text = ""
-			$UIUnzipPanelErrorMsg_Icon.Image = $null
-			$UIUnzipPanel_To_Path.BackColor = "#FFFFFF"
-			$UIUnzipPanelErrorMsg.ForeColor = "Black"
-
-			$FileBrowser = New-Object System.Windows.Forms.OpenFileDialog -Property @{
-				Filter = "ISO Files (*.iso)|*.iso"
-			}
-
-			if ($FileBrowser.ShowDialog() -eq "OK") {
-				$UIUnzipPanel_To_Path.Text = $FileBrowser.FileName
-				$UIUnzipPanel_To_New_Path.Text = [System.IO.Path]::GetFileNameWithoutExtension($FileBrowser.FileName)
-				Refresh_ISO_CRC_SHA
-			} else {
-				$UIUnzipPanelErrorMsg.Text = $lang.UserCanel
-				$UIUnzipPanelErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
-			}
-		}
-	}
-
-	<#
-		.托动文件：提示
-	#>
-	$UIUnzipPanel_To_Path_Select_Tips = New-Object System.Windows.Forms.Label -Property @{
-		Height          = 30
-		Width           = 660
-		Text            = $lang.DropFile
-		Padding         = "37,0,0,0"
-		margin          = "0,0,0,20"
-	}
-	$UIUnzipPanel_To_Path_Paste = New-Object system.Windows.Forms.LinkLabel -Property @{
-		Height          = 40
-		Width           = 655
-		Padding         = "16,0,0,0"
-		Text            = $lang.Paste
-		LinkColor       = "GREEN"
-		ActiveLinkColor = "RED"
-		LinkBehavior    = "NeverUnderline"
-		add_Click       = {
-			$UIUnzipPanelErrorMsg.Text = ""
-			$UIUnzipPanel_To_Path.BackColor = "#FFFFFF"
-			$UIUnzipPanelErrorMsg.ForeColor = "Black"
-
-			if ([string]::IsNullOrEmpty($UIUnzipPanel_To_Path.Text)) {
-				$UIUnzipPanelErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
-				$UIUnzipPanelErrorMsg.Text = "$($lang.Paste), $($lang.Inoperable)"
-			} else {
-				Set-Clipboard -Value $UIUnzipPanel_To_Path.Text
-
-				$UIUnzipPanelErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
-				$UIUnzipPanelErrorMsg.Text = "$($lang.Paste), $($lang.Done)"
-			}
-		}
-	}
-	$UIUnzipPanel_To_Path_Select_Tips = New-Object System.Windows.Forms.Label -Property @{
-		Height          = 30
-		Width           = 658
-		Text            = $lang.DropFile
-		Padding         = "37,0,0,0"
-		margin          = "0,0,0,15"
 	}
 
 	<#
 		.解压已选择的文件到
 	#>
 	$UIUnzipPanel_To_New = New-Object System.Windows.Forms.Label -Property @{
-		Height         = 40
+		Height         = 35
 		Width          = 658
 		Text           = $lang.SaveTo
-		margin         = "0,35,0,0"
+		margin         = "0,30,0,0"
 	}
 	$UIUnzipPanel_To_New_Sources = New-Object system.Windows.Forms.LinkLabel -Property @{
-		Height         = 40
+		Height         = 35
 		Width          = 655
 		Padding        = "20,0,5,0"
 		Text           = $lang.SelectFolder
@@ -9493,7 +9476,9 @@ Function Image_Select
 		$UIUnzipPanel_Menu_Sources_Paste,
 		$UIUnzipPanel_Menu_Sources_Reset,
 		$UIUnzipPanel_To,
+		$UIUnzipPanel_To_Path_Select_Tips,
 		$UIUnzipPanel_To_Path,
+		$UIUnzipPanel_To_Path_Paste,
 		$UIUnzipPanel_Sparse,
 		$UIUnzipPanel_SHA256_Calibration,
 		$UIUnzipPanel_SHA256_Calibration_Wrap,
@@ -9501,9 +9486,6 @@ Function Image_Select
 		$UIUnzipPanel_SHA512_Calibration,
 		$UIUnzipPanel_SHA512_Calibration_Wrap,
 
-		$UIUnzipPanel_To_Path_Select,
-		$UIUnzipPanel_To_Path_Select_Tips,
-		$UIUnzipPanel_To_Path_Paste,
 		$UIUnzipPanel_To_New,
 		$UIUnzipPanel_To_New_Sources,
 		$UIUnzipPanel_To_New_Path,
