@@ -2096,7 +2096,6 @@ Function Image_Select
 			}
 		}
 
-		
 		Get-CimInstance -ClassName Win32_Volume -ErrorAction SilentlyContinue | Where-Object { -not ([string]::IsNullOrEmpty($_.DriveLetter) -or [string]::IsNullOrWhiteSpace($_.DriveLetter))} | ForEach-Object {
 			if (Test_Available_Disk -Path $_.DriveLetter) {
 				$RadioButton  = New-Object System.Windows.Forms.RadioButton -Property @{
@@ -2123,7 +2122,7 @@ Function Image_Select
 				}
 
 				if ($GUIImageSourceGroupMountChangeExclude.Checked) {
-					if ($_.FileSystemType -eq "ReFS") {
+					if ($_.FileSystem -eq "ReFS") {
 						$RadioButton.Text = "$($_.Label) ( $($_.DriveLetter) ), $($lang.ReFS_Exclude)"
 						$RadioButton.Enabled = $False
 						$RadioButton.Checked = $False

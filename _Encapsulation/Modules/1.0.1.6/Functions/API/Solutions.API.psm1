@@ -171,7 +171,7 @@ Function Solutions_API_Help
 	write-host
 	write-host "  " -NoNewline
 	Write-host " API List " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-host "  $($lang.Command)"
+	Write-host " $($lang.Command)"
 
 	write-host
 	write-host "  " -NoNewline
