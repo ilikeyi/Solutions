@@ -119,7 +119,7 @@ Vector original file, document version Illustator 2020, open it with Adobe Illus
   <summary>Component</summary>
 
 <h4><pre>A.&nbsp;&nbsp;Packaging Tutorial</pre></h4>
-<ol>The packaging tutorial written by Yi can optionally start the packaging journey of Windows 11 24H2, 23H2, Windows 10 22H2, and Windows Server 2025, 2022. Different packaging versions are available.</ol>
+<ol>The packaging tutorial written by Yi can optionally start the packaging journey of Windows 11 25H2, 24H2, 23H2, Windows 10 22H2, and Windows Server 2025, 2022. Different packaging versions are available.</ol>
 
 <ul>
   <p>Different versions are provided: a full version and a simplified version. The formats provided are: .Docx document format, .Pdf document format. Version differences:</p>
