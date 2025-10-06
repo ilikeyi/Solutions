@@ -518,7 +518,8 @@ Function Test_URI
 #>
 Function Unzip_Done_Refresh_Process
 {
-	$to = "$($PSScriptRoot)\..\..\.."
+	$SaveNewVersion = (Get-Module -Name Solutions).Version.ToString()
+	$to = "$($PSScriptRoot)\..\..\..\..\$($SaveNewVersion)"
 	if (Test-Path -Path $to -PathType Container) {
 		$to = Convert-Path -Path $to -ErrorAction SilentlyContinue
 	}
