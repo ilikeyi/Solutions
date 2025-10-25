@@ -37,6 +37,7 @@ $TempFolderUnPack = "$(Convert-Path "$($PSScriptRoot)\..\..\..\..\..\.." -ErrorA
 #>
 $ArchiveExcludeUnPack = @(
 	"-xr-!_Unpack"
+	"-xr-!_Learn\Packaging.tutorial\OS.11\25H2\Expand\Install\Report"
 	"-xr-!_Encapsulation\Logs"
 	"-xr-!_Encapsulation\_Custom\Engine\LXPs\Logs"
 	"-xr-!_Encapsulation\_Custom\Engine\LXPs\AIO\7zPacker"
@@ -910,7 +911,7 @@ Function Update_Create_Version
 	},
 	"changelog": {
 		"title": "$((Get-Module -Name Solutions).Author)'s Solutions - Change log",
-		"log":   "  - Added Windows 11 25H2 video tutorials, autonomous driving solutions, and packaging scripts. * New\n  - Deleted the outdated 23H2 packaging tutorials. * Del\n  - Deleted all reports to reduce the installation size. * Del\n  - Routing function: self-healing sequence after adding * New\n  - API: Application Programming Interface, Shortcut: (API *) * New\n  - New shortcut commands and dynamic UI * New"
+		"log":   "  - Added Windows 11 25H2 video tutorials, autonomous driving solutions, and packaging scripts. * New\n  - Deleted the outdated 23H2 packaging tutorials. * Del\n  - Routing function: self-healing sequence after adding * New\n  - API: Application Programming Interface, Shortcut: (API *) * New\n  - New shortcut commands and dynamic UI * New"
 	},
 	"url": "$((Get-Module -Name Solutions).HelpInfoURI)/download/solutions/latest.zip"
 }
