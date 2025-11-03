@@ -344,9 +344,8 @@ Function Image_Get_Apps_Package
 			return
 		}
 
-		$Get_Index_Now = Image_Get_Mount_Index
 		Check_Folder -chkpath $Save
-		$TempSaveTo = "$($Save)\Index.$($Get_Index_Now).InBox.Apps.$(Get-Date -Format "yyyyMMddHHmmss").csv"
+		$TempSaveTo = "$($Save)\Index.$(Image_Get_Mount_Index).InBox.Apps.$(Get-Date -Format "yyyyMMddHHmmss").csv"
 
 		Write-Host "`n  $($lang.SaveTo)"
 		Write-Host "  $($TempSaveTo)" -ForegroundColor Green
@@ -390,6 +389,8 @@ Function Image_Get_Apps_Package
 		if ($View) {
 			powershell -NoLogo -NonInteractive -file "$($TempSaveTo).ps1" -wait
 		}
+
+		Remove-Item -path "$($TempSaveTo).ps1" -Force -ErrorAction SilentlyContinue
 	} else {
 		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -464,10 +465,8 @@ Function Image_Get_Detailed
 
 		if (Image_Is_Select_IAB) {
 			if (Verify_Is_Current_Same) {
-				$Get_Index_Now = Image_Get_Mount_Index
-
 				Check_Folder -chkpath $test_create_report_folder_Current
-				$TempSaveTo = "$($test_create_report_folder_Current)\Index.$($Get_Index_Now).Image.$(Get-Date -Format "yyyyMMddHHmmss").csv"
+				$TempSaveTo = "$($test_create_report_folder_Current)\Index.$(Image_Get_Mount_Index).Image.$(Get-Date -Format "yyyyMMddHHmmss").csv"
 			} else {
 				Check_Folder -chkpath $test_create_report_folder_route
 				$TempSaveTo = "$($test_create_report_folder_route)\Index.Image.$(Get-Date -Format "yyyyMMddHHmmss").csv"
@@ -533,6 +532,8 @@ Function Image_Get_Detailed
 		if ($View) {
 			powershell -NoLogo -NonInteractive -file "$($TempSaveTo).ps1" -wait
 		}
+
+		Remove-Item -path "$($TempSaveTo).ps1" -Force -ErrorAction SilentlyContinue
 	} else {
 		Write-Host "  $($lang.NoInstallImage)"
 		Write-Host "  $($Filename)" -ForegroundColor Red
@@ -568,9 +569,8 @@ Function Image_Get_Components_Package
 			return
 		}
 
-		$Get_Index_Now = Image_Get_Mount_Index
 		Check_Folder -chkpath $Save
-		$TempSaveTo = "$($Save)\Index.$($Get_Index_Now).Components.$(Get-Date -Format "yyyyMMddHHmmss").csv"
+		$TempSaveTo = "$($Save)\Index.$(Image_Get_Mount_Index).Components.$(Get-Date -Format "yyyyMMddHHmmss").csv"
 
 		Write-Host "`n  $($lang.SaveTo)"
 		Write-Host "  $($TempSaveTo)" -ForegroundColor Green
@@ -612,6 +612,8 @@ Function Image_Get_Components_Package
 		if ($View) {
 			powershell -NoLogo -NonInteractive -file "$($TempSaveTo).ps1" -wait
 		}
+
+		Remove-Item -path "$($TempSaveTo).ps1" -Force -ErrorAction SilentlyContinue
 	} else {
 		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"

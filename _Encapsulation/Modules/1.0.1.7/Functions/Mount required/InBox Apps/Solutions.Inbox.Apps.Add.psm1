@@ -1238,11 +1238,10 @@ Function InBox_Apps_Add_UI
 						}
 					}
 
-					$Get_Index_Now = Image_Get_Mount_Index
 					$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report\InBox.Apps"
 
 					Check_Folder -chkpath $test_mount_folder_Current
-					$TempSaveTo = "$($test_mount_folder_Current)\Index.$($Get_Index_Now).$(Get-Date -Format "yyyyMMddHHmmss").csv"
+					$TempSaveTo = "$($test_mount_folder_Current)\Index.$(Image_Get_Mount_Index).$(Get-Date -Format "yyyyMMddHHmmss").csv"
 
 					$custom_array | Export-CSV -NoType -Path $TempSaveTo
 
@@ -1283,8 +1282,10 @@ Function InBox_Apps_Add_UI
 
 					powershell -NoLogo -NonInteractive -file "$($TempSaveTo).ps1" -wait
 				}
-			} else {
 
+				Remove-Item -path "$($TempSaveTo).ps1" -Force -ErrorAction SilentlyContinue
+			} else {
+				
 			}
 		}
 	}

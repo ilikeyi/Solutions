@@ -4,8 +4,6 @@
 #>
 Function Event_Process_Task_Need_Mount
 {
-	$Get_Index_Now = Image_Get_Mount_Index
-
 	# 保存
 	$IsEjectAfterSave = $False
 	if ((Get-Variable -Scope global -Name "Queue_Eject_Only_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
@@ -72,7 +70,7 @@ Function Event_Process_Task_Need_Mount
 		.Running PowerShell Functions: Before Tasks
 		.运行 PowerShell 函数：有任务前
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.SpecialFunction): $($lang.Functions_Before)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.SpecialFunction): $($lang.Functions_Before)"
 
 	Write-Host "`n  $($lang.SpecialFunction): $($lang.Functions_Before)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -97,7 +95,7 @@ Function Event_Process_Task_Need_Mount
 		.Generate solution
 		.生成解决方案
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.Solution)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.Solution)"
 
 	Write-Host "`n  $($lang.Solution)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -115,7 +113,7 @@ Function Event_Process_Task_Need_Mount
 	<#
 		.Windows Feature: Enabled, Match
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.WindowsFeature): $($lang.Enable), $($lang.MatchMode)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.WindowsFeature): $($lang.Enable), $($lang.MatchMode)"
 
 	Write-Host "`n  $($lang.WindowsFeature): $($lang.Enable), $($lang.MatchMode)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -128,7 +126,7 @@ Function Event_Process_Task_Need_Mount
 	<#
 		.Windows Feature: Enabled, Match
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.WindowsFeature): $($lang.Disable), $($lang.MatchMode)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.WindowsFeature): $($lang.Disable), $($lang.MatchMode)"
 
 	Write-Host "`n  $($lang.WindowsFeature): $($lang.Disable), $($lang.MatchMode)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -142,7 +140,7 @@ Function Event_Process_Task_Need_Mount
 		.Windows Feature: Enabled
 		.Windows 功能：启用
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.WindowsFeature): $($lang.Enable)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.WindowsFeature): $($lang.Enable)"
 
 	Write-Host "`n  $($lang.WindowsFeature): $($lang.Enable)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -156,7 +154,7 @@ Function Event_Process_Task_Need_Mount
 		.Windows Feature: Disable
 		.Windows 功能：禁用
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.WindowsFeature): $($lang.Disable)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.WindowsFeature): $($lang.Disable)"
 
 	Write-Host "`n  $($lang.WindowsFeature): $($lang.Disable)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -171,7 +169,7 @@ Function Event_Process_Task_Need_Mount
 		.Add Language
 		.添加语言
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.Language): $($lang.AddTo)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.Language): $($lang.AddTo)"
 
 	Write-Host "`n  $($lang.Language): $($lang.AddTo)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -227,7 +225,7 @@ Function Event_Process_Task_Need_Mount
 		<#
 			.同步语言包到安装程序
 		#>
-		$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.BootSyncToISO)"
+		$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.BootSyncToISO)"
 
 		Write-Host "`n  $($lang.BootSyncToISO)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -243,7 +241,7 @@ Function Event_Process_Task_Need_Mount
 			.Rebuild lang.ini
 			.重建 lang.ini
 		#>
-		$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.LangIni)"
+		$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.LangIni)"
 
 		Write-Host "`n  $($lang.LangIni)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -277,7 +275,7 @@ Function Event_Process_Task_Need_Mount
 		.Change the global default language of the image
 		.更改映像全局默认语言
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.SwitchLanguage)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.SwitchLanguage)"
 
 	Write-Host "`n  $($lang.SwitchLanguage)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -293,7 +291,7 @@ Function Event_Process_Task_Need_Mount
 		.Delete Language
 		.删除语言
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.Language): $($lang.Del)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.Language): $($lang.Del)"
 
 	Write-Host "`n  $($lang.Language): $($lang.Del)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -312,7 +310,7 @@ Function Event_Process_Task_Need_Mount
 		<#
 			.同步语言包到安装程序
 		#>
-		$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.BootSyncToISO)"
+		$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.BootSyncToISO)"
 
 		Write-Host "`n  $($lang.BootSyncToISO)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -328,7 +326,7 @@ Function Event_Process_Task_Need_Mount
 			.Rebuild lang.ini
 			.重建 lang.ini
 		#>
-		$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.LangIni)"
+		$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.LangIni)"
 
 		Write-Host "`n  $($lang.LangIni)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -362,7 +360,7 @@ Function Event_Process_Task_Need_Mount
 		.Change the global default language of the image
 		.更改映像全局默认语言
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.SwitchLanguage)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.SwitchLanguage)"
 
 	Write-Host "`n  $($lang.SwitchLanguage)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -378,7 +376,7 @@ Function Event_Process_Task_Need_Mount
 		.clean up components: Language
 		.清理组件：语言
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.OnlyLangCleanup)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.OnlyLangCleanup)"
 
 	Write-Host "`n  $($lang.OnlyLangCleanup)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -424,7 +422,7 @@ Function Event_Process_Task_Need_Mount
 		.Verify whether to remove old pre-installed software
 		.验证是否删除旧的预安装软件
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.InboxAppsClear)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.InboxAppsClear)"
 
 	Write-Host "`n  $($lang.InboxAppsClear)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -464,7 +462,7 @@ Function Event_Process_Task_Need_Mount
 		.Step 1: Add local language experience packs (LXPs)
 		.第一步：添加本地语言体验包 (LXPs)
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.LocalExperiencePack): $($lang.AddTo)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.LocalExperiencePack): $($lang.AddTo)"
 
 	Write-Host "`n  $($lang.LocalExperiencePack): $($lang.AddTo)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -504,7 +502,7 @@ Function Event_Process_Task_Need_Mount
 		.InBox Apps: Add
 		.Inbox Apps: 添加
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.InboxAppsManager): $($lang.AddTo)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.InboxAppsManager): $($lang.AddTo)"
 
 	Write-Host "`n  $($lang.InboxAppsManager): $($lang.AddTo)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -544,7 +542,7 @@ Function Event_Process_Task_Need_Mount
 		.Step 3: Remove local language experience packs (LXPs)
 		.第三步：删除本地语言体验包 (LXPs)
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.LocalExperiencePack): $($lang.Del)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.LocalExperiencePack): $($lang.Del)"
 
 	Write-Host "`n  $($lang.LocalExperiencePack): $($lang.Del)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -585,7 +583,7 @@ Function Event_Process_Task_Need_Mount
 		.Step 4: Add only local language experience packs (LXPs)
 		.第四步：仅添加本地语言体验包 (LXPs)
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.LocalExperiencePack): $($lang.Update)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.LocalExperiencePack): $($lang.Update)"
 
 	Write-Host "`n  $($lang.LocalExperiencePack): $($lang.Update)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -626,7 +624,7 @@ Function Event_Process_Task_Need_Mount
 		.Step 5: Remove local language experience packs (LXPs)
 		.第五步：删除本地语言体验包 (LXPs)
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.LocalExperiencePack): $($lang.Del)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.LocalExperiencePack): $($lang.Del)"
 
 	Write-Host "`n  $($lang.LocalExperiencePack): $($lang.Del)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -666,7 +664,7 @@ Function Event_Process_Task_Need_Mount
 		.Step 6: Remove selected InBox Apps preinstalled software by rule matching
 		.第六步：按规则匹配删除已选择的 InBox Apps 预安装软件
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.InboxAppsMatchDel)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.InboxAppsMatchDel)"
 
 	Write-Host "`n  $($lang.InboxAppsMatchDel)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -707,7 +705,7 @@ Function Event_Process_Task_Need_Mount
 		.Step 7: Delete installed InBox Apps apps offline
 		.第七步：离线删除已安装的 InBox Apps 应用
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.InboxAppsManager): $($lang.InboxAppsOfflineDel)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.InboxAppsManager): $($lang.InboxAppsOfflineDel)"
 
 	Write-Host "`n  $($lang.InboxAppsManager): $($lang.InboxAppsOfflineDel)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -747,7 +745,7 @@ Function Event_Process_Task_Need_Mount
 		.Optimize the provisioning of Appx packages by replacing the same files with hard links
 		.优化预配 Appx 包，通过用硬链接替换相同的文件
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.Optimize_Appx_Package)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.Optimize_Appx_Package)"
 
 	Write-Host "`n  $($lang.Optimize_Appx_Package)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -787,7 +785,7 @@ Function Event_Process_Task_Need_Mount
 		.Cumulative updates: Add
 		.累积更新：添加
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.CUpdate): $($lang.AddTo)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.CUpdate): $($lang.AddTo)"
 
 	Write-Host "`n  $($lang.CUpdate): $($lang.AddTo)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -827,7 +825,7 @@ Function Event_Process_Task_Need_Mount
 		.Cumulative updates: Delete
 		.累积更新：删除
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.CUpdate): $($lang.Del)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.CUpdate): $($lang.Del)"
 
 	Write-Host "`n  $($lang.CUpdate): $($lang.Del)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -867,7 +865,7 @@ Function Event_Process_Task_Need_Mount
 		.Drive: Add
 		.驱动：添加
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.Drive): $($lang.AddTo)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.Drive): $($lang.AddTo)"
 
 	Write-Host "`n  $($lang.Drive): $($lang.AddTo)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -907,7 +905,7 @@ Function Event_Process_Task_Need_Mount
 		.Drive: Delete
 		.驱动: 删除
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.Drive): $($lang.Del)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.Drive): $($lang.Del)"
 
 	Write-Host "`n  $($lang.Drive): $($lang.Del)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -947,7 +945,7 @@ Function Event_Process_Task_Need_Mount
 		.Curing Update
 		.固化更新
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.CuringUpdate)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.CuringUpdate)"
 
 	Write-Host "`n  $($lang.CuringUpdate)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -1002,7 +1000,7 @@ Function Event_Process_Task_Need_Mount
 	<#
 		.清理取代的
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.Superseded)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.Superseded)"
 
 	Write-Host "`n  $($lang.Superseded)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -1044,7 +1042,7 @@ Function Event_Process_Task_Need_Mount
 	<#
 		.获取预安装应用 InBox Apps
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.GetInBoxApps)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.GetInBoxApps)"
 
 	Write-Host "`n  $($lang.GetInBoxApps)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -1065,7 +1063,7 @@ Function Event_Process_Task_Need_Mount
 	<#
 		.查看安装的所有软件包的列表
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.GetImagePackage)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.GetImagePackage)"
 
 	Write-Host "`n  $($lang.GetImagePackage)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -1086,7 +1084,7 @@ Function Event_Process_Task_Need_Mount
 	<#
 		.查看已安装的驱动列表
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.ViewDrive)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.ViewDrive)"
 
 	Write-Host "`n  $($lang.ViewDrive)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -1107,7 +1105,7 @@ Function Event_Process_Task_Need_Mount
 	<#
 		.映像语言
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.ImageLanguage)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.ImageLanguage)"
 
 	Write-Host "`n  $($lang.ImageLanguage)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -1129,9 +1127,8 @@ Function Event_Process_Task_Need_Mount
 				Write-Host "  $('-' * 77)"
 			}
 
-			$Get_Index_Now = Image_Get_Mount_Index
 			Check_Folder -chkpath $Temp_Export_SaveTo
-			$TempSaveTo = "$($Temp_Export_SaveTo)\Index.$($Get_Index_Now).Language.$(Get-Date -Format "yyyyMMddHHmmss").log"
+			$TempSaveTo = "$($Temp_Export_SaveTo)\Index.$(Image_Get_Mount_Index).Language.$(Get-Date -Format "yyyyMMddHHmmss").log"
 
 			Write-Host "`n  $($lang.SaveTo)"
 			Write-Host "  $($TempSaveTo)" -ForegroundColor Green
@@ -1147,7 +1144,7 @@ Function Event_Process_Task_Need_Mount
 	<#
 		.健康
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.Healthy)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.Healthy)"
 
 	Write-Host "`n  $($lang.Healthy)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -1215,7 +1212,7 @@ Function Event_Process_Task_Need_Mount
 		.Running PowerShell Functions: After Completing a Task
 		.运行 PowerShell 函数：完成任务后
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.SpecialFunction): $($lang.Functions_Rear)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.SpecialFunction): $($lang.Functions_Rear)"
 
 	Write-Host "`n  $($lang.SpecialFunction): $($lang.Functions_Rear)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -1244,7 +1241,7 @@ Function Event_Process_Task_Need_Mount
 
 		2、如果没有规则，则根据用户勾选：“未指定映像内卸载动作时，不保存”按钮来操作。
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.UnmountAndSave)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.UnmountAndSave)"
 
 	Write-Host "`n  $($lang.UnmountAndSave)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -1493,7 +1490,7 @@ Function Event_Process_Task_Need_Mount
 
 		 2、获取所有扩展项，判断是否有已挂载，指令：1、不保存，2、卸载。
 	#>
-	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $($Get_Index_Now), $($lang.DoNotSave)"
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.DoNotSave)"
 
 	Write-Host "`n  $($lang.DoNotSave)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"

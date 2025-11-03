@@ -97,11 +97,11 @@ Function Mainpage
 	Write-Host "  $('-' * 80)"
 	Write-host "   " -NoNewline
 	Write-Host " A " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
+	Write-Host " $($lang.Autopilot)" -ForegroundColor Green
 
 	Write-host "   " -NoNewline
 	Write-Host " C " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
+	Write-Host " $($lang.OnDemandPlanTask)" -ForegroundColor Green
 
 	Write-Host
 	Write-Host "  " -NoNewline
@@ -111,7 +111,7 @@ Function Mainpage
 	Write-Host "  $('-' * 80)"
 	Write-host "   " -NoNewline
 	Write-Host " 1 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "  $($lang.Mount) " -NoNewline -ForegroundColor Green
+	Write-Host " $($lang.Mount) " -NoNewline -ForegroundColor Green
 	Write-Host " MT * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ", " -NoNewline
 
@@ -135,7 +135,7 @@ Function Mainpage
 	Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Green
 	Write-Host " ISD * " -BackgroundColor DarkMagenta -ForegroundColor White
 
-	Write-Host "       " -NoNewline
+	Write-Host "      " -NoNewline
 
 	Write-Host " $($lang.Export_Image) " -NoNewline -ForegroundColor Green
 	if (Image_Is_Select_IAB) {
@@ -162,26 +162,26 @@ Function Mainpage
 
 	Write-host "   " -NoNewline
 	Write-Host " 2 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "  $($lang.UnpackISO)" -ForegroundColor Yellow
+	Write-Host " $($lang.UnpackISO)" -ForegroundColor Yellow
 
 	Write-host "   " -NoNewline
 	if (Image_Is_Mount_Specified -Master "Install" -ImageFileName "Install") {
 		Write-Host " 3 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
-		Write-Host "  $($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm)" -ForegroundColor Red
+		Write-Host " $($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm)" -ForegroundColor Red
 	} else {
 		Write-Host " 3 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-		Write-Host "  $($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm)" -ForegroundColor Green
+		Write-Host " $($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm)" -ForegroundColor Green
 	}
 
 	Write-host "   " -NoNewline
 	Write-Host " 4 " -NoNewline -BackgroundColor Green -ForegroundColor Black
-	Write-Host "  $($lang.MoreFeature)" -ForegroundColor Yellow
+	Write-Host " $($lang.MoreFeature)" -ForegroundColor Yellow
 
 	Write-Host "`n  $($lang.AssignNeedMount)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 	Write-host "  " -NoNewline
 	Write-Host " 11 " -NoNewline -BackgroundColor Green -ForegroundColor Black
-	Write-Host "  $($lang.Mounted_Status): " -ForegroundColor Yellow -NoNewline
+	Write-Host " $($lang.Mounted_Status): " -ForegroundColor Yellow -NoNewline
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "$($lang.Save) " -NoNewline -ForegroundColor Green
@@ -229,7 +229,7 @@ Function Mainpage
 
 	Write-host "  " -NoNewline
 	Write-Host " 12 " -NoNewline -BackgroundColor Green -ForegroundColor Black
-	Write-Host "  $($lang.Solution): " -ForegroundColor Yellow -NoNewline
+	Write-Host " $($lang.Solution): " -ForegroundColor Yellow -NoNewline
 	Write-Host "$($lang.IsCreate) " -NoNewline -ForegroundColor Green
 	Write-Host " SC " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ", " -NoNewline
@@ -245,7 +245,7 @@ Function Mainpage
 
 	Write-host "  " -NoNewline
 	Write-Host " 13 " -NoNewline -BackgroundColor Green -ForegroundColor Black
-	Write-Host "  $($lang.Unzip_Language): " -ForegroundColor Yellow -NoNewline
+	Write-Host " $($lang.Unzip_Language): " -ForegroundColor Yellow -NoNewline
 	Write-Host "$($lang.LanguageExtract) " -NoNewline -ForegroundColor Green
 	Write-Host " LP E " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ", " -NoNewline
@@ -289,7 +289,7 @@ Function Mainpage
 
 	Write-host "  " -NoNewline
 	Write-Host " 14 " -NoNewline -BackgroundColor Green -ForegroundColor Black
-	Write-Host "  $($lang.InboxAppsManager): " -ForegroundColor Yellow -NoNewline
+	Write-Host " $($lang.InboxAppsManager): " -ForegroundColor Yellow -NoNewline
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Green
@@ -299,7 +299,7 @@ Function Mainpage
 			Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Green
 			Write-Host " IA D " -BackgroundColor DarkMagenta -ForegroundColor White
 
-			Write-Host "        $($lang.LocalExperiencePack): " -NoNewline -ForegroundColor Yellow
+			Write-Host "       $($lang.LocalExperiencePack): " -NoNewline -ForegroundColor Yellow
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Green
 			Write-Host " EP A " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 			Write-Host ", " -NoNewline
@@ -318,7 +318,7 @@ Function Mainpage
 			Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Red
 			Write-Host " IA D " -BackgroundColor DarkRed -ForegroundColor White
 
-			Write-Host "        $($lang.LocalExperiencePack): " -NoNewline -ForegroundColor Yellow
+			Write-Host "       $($lang.LocalExperiencePack): " -NoNewline -ForegroundColor Yellow
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
 			Write-Host " EP A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 			Write-Host ", " -NoNewline
@@ -338,7 +338,7 @@ Function Mainpage
 		Write-Host "$($lang.Del) " -NoNewline -ForegroundColor Red
 		Write-Host " IA D " -BackgroundColor DarkRed -ForegroundColor White
 
-		Write-Host "        $($lang.LocalExperiencePack): " -NoNewline -ForegroundColor Yellow
+		Write-Host "       $($lang.LocalExperiencePack): " -NoNewline -ForegroundColor Yellow
 		Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Red
 		Write-Host " EP A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host ", " -NoNewline
@@ -353,7 +353,7 @@ Function Mainpage
 
 	Write-host "  " -NoNewline
 	Write-Host " 22 " -NoNewline -BackgroundColor Green -ForegroundColor Black
-	Write-Host "  $($lang.CUpdate): " -ForegroundColor Yellow -NoNewline
+	Write-Host " $($lang.CUpdate): " -ForegroundColor Yellow -NoNewline
 	Write-Host "$($lang.RuleNewTempate) " -NoNewline -ForegroundColor Green
 	Write-Host " CU C " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ", " -NoNewline
@@ -385,7 +385,7 @@ Function Mainpage
 
 	Write-host "  " -NoNewline
 	Write-Host " 23 " -NoNewline -BackgroundColor Green -ForegroundColor Black
-	Write-Host "  $($lang.Drive): " -ForegroundColor Yellow -NoNewline
+	Write-Host " $($lang.Drive): " -ForegroundColor Yellow -NoNewline
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "$($lang.AddTo) " -NoNewline -ForegroundColor Green
@@ -413,7 +413,7 @@ Function Mainpage
 
 	Write-host "  " -NoNewline
 	Write-Host " 24 " -NoNewline -BackgroundColor Green -ForegroundColor Black
-	Write-Host "  $($lang.Editions): " -ForegroundColor Yellow -NoNewline
+	Write-Host " $($lang.Editions): " -ForegroundColor Yellow -NoNewline
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "$($lang.Change) " -NoNewline -ForegroundColor Green
@@ -441,7 +441,7 @@ Function Mainpage
 
 	Write-host "  " -NoNewline
 	Write-Host " 33 " -NoNewline -BackgroundColor Green -ForegroundColor Black
-	Write-Host "  $($lang.WindowsFeature): " -ForegroundColor Yellow -NoNewline
+	Write-Host " $($lang.WindowsFeature): " -ForegroundColor Yellow -NoNewline
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "$($lang.Enable) " -NoNewline -ForegroundColor Green
@@ -469,7 +469,7 @@ Function Mainpage
 
 	Write-host "  " -NoNewline
 	Write-Host " 34 " -NoNewline -BackgroundColor Green -ForegroundColor Black
-	Write-Host "  $($lang.SpecialFunction): " -ForegroundColor Yellow -NoNewline
+	Write-Host " $($lang.SpecialFunction): " -ForegroundColor Yellow -NoNewline
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host "$($lang.Functions_Before) " -NoNewline -ForegroundColor Green

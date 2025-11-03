@@ -1235,9 +1235,8 @@ Function Image_Get_Installed_Drive
 			return
 		}
 
-		$Get_Index_Now = Image_Get_Mount_Index
 		Check_Folder -chkpath $Save
-		$TempSaveTo = "$($Save)\Index.$($Get_Index_Now).Drive.$(Get-Date -Format "yyyyMMddHHmmss").csv"
+		$TempSaveTo = "$($Save)\Index.$(Image_Get_Mount_Index).Drive.$(Get-Date -Format "yyyyMMddHHmmss").csv"
 
 		Write-Host "`n  $($lang.SaveTo)"
 		Write-Host "  $($TempSaveTo)" -ForegroundColor Green
@@ -1287,6 +1286,8 @@ Function Image_Get_Installed_Drive
 		if ($View) {
 			powershell -NoLogo -NonInteractive -file "$($TempSaveTo).ps1" -wait
 		}
+
+		Remove-Item -path "$($TempSaveTo).ps1" -Force -ErrorAction SilentlyContinue
 	} else {
 		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"

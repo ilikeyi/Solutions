@@ -427,7 +427,7 @@ Function Image_Get_Mount_Status_New
 #>
 Function Image_Get_Mount_Index
 {
-	$MarkErrorMounted = $False
+	$MarkErrorMounted = $True
 	$Index = ""
 
 	<#
@@ -446,16 +446,14 @@ Function Image_Get_Mount_Index
 					.判断文件路径与当前是否一致
 				#>
 				if ($_.ImagePath -eq $Global:Primary_Key_Image.FullPath) {
-					$MarkErrorMounted = $True
-					$Index = $_.ImageIndex
+					$MarkErrorMounted = $False
+					return $_.ImageIndex
 				}
 			}
 		}
 	}
 
 	if ($MarkErrorMounted) {
-		return $Index
-	} else {
 		return "Not"
 	}
 }
