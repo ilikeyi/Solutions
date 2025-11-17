@@ -5,8 +5,7 @@
 $Global:OSCodename = @(
 	("Windows Server Preview Build",     "20344"),
 	("Windows Server 2022",              "20348"),
-	("Windows 11 25H2",                  "26200"),
-	("Windows 11 24H2",                  "26100"),
+	("Windows 11 24H2 or 25H2",          "26100"),
 	("Windows 11 22H2 or 23H2",          "22621"),
 	("Windows 11 21h2",                  "22000"),
 	("Windows 10 Insider Preview Build", "19645"),
