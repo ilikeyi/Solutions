@@ -4074,7 +4074,10 @@ Function Installation_interface_UI
 					"False" { $UI_Main_Adv_Safety_Warnings.Checked = $False }
 				}
 			} else {
-				$UI_Main_Adv_Safety_Warnings.Checked = $True
+				if (Get-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Associations" -Name "LowRiskFileTypes" -ErrorAction SilentlyContinue) {
+				} else {
+					$UI_Main_Adv_Safety_Warnings.Checked = $True
+				}
 			}
 		}
 
