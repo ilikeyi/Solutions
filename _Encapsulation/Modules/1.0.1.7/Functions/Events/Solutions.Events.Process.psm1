@@ -2029,25 +2029,25 @@ Function Healthy_Check_Process
 			switch ($Get_Image_Halter) {
 				"Healthy" {
 					Write-Host "  $($lang.Healthy)" -ForegroundColor Green
-#					Logs_Write -Main -Verbose "[Onekey] index: $($Script:MarkNowItem), Mount: $($NewPath)" -Level Info -Tag "Check Damage"
+#					Logs_Write -Main "[Onekey] index: $(Image_Get_Mount_Index), Mount: $($NewPath)" -Level Info -Tag "Check Halter"
 
 					return $True
 				}
 				"Repairable" {
 					Write-Host "  $($lang.Repairable)" -ForegroundColor Red
-					Logs_Write -Main -Verbose "[Onekey] index: $($Script:MarkNowItem), Mount: $($NewPath)" -Level Error -Tag "Check Damage"
+					Logs_Write -Main "[Onekey] index: $(Image_Get_Mount_Index), Mount: $($NewPath)" -Level Error -Tag "Check Halter"
 
 					return $False
 				}
 				"NonRepairable" {
 					Write-Host "  $($lang.NonRepairable)" -ForegroundColor Red
-					Logs_Write -Main -Verbose "[Onekey] index: $($Script:MarkNowItem), Mount: $($NewPath)" -Level Error -Tag "Check Damage"
+					Logs_Write -Main "[Onekey] index: $(Image_Get_Mount_Index), Mount: $($NewPath)" -Level Error -Tag "Check Halter"
 
 					return $False
 				}
 				default {
 					Write-Host "  Error" -ForegroundColor Red
-					Logs_Write -Main -Verbose "[Onekey] index: $($Script:MarkNowItem), Mount: $($NewPath)" -Level Error -Tag "Check Damage"
+					Logs_Write -Main "[Onekey] index: $(Image_Get_Mount_Index), Mount: $($NewPath)" -Level Error -Tag "Check Halter"
 
 					return $False
 				}
