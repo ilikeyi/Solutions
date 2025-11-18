@@ -16,7 +16,7 @@ Open "Terminal" or "PowerShell ISE" as an administrator, paste the following com
 
 Open "Terminal" or "PowerShell ISE" as an administrator, set PowerShell execution policy: Bypass, PS command line:
 ```
-Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine -Force
 ```
 
 <br>
@@ -251,7 +251,7 @@ Vector original file, document version Illustator 2020, open it with Adobe Illus
     <p>2.2.&nbsp;&nbsp;Open "Terminal" or "PowerShell ISE" as an administrator, set PowerShell execution policy: Bypass, PS command line:
 
 ```
-Set-ExecutionPolicy -ExecutionPolicy Bypass -Force
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine -Force
 ```
 
 </p>
