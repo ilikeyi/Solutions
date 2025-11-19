@@ -1873,7 +1873,7 @@ Function Update_Del_Process
 		ForEach ($item in $Temp_Assign_Task_Select) {
 			Get-ChildItem $item -Recurse -Include $Global:Search_KB_File_Type -ErrorAction SilentlyContinue | ForEach-Object {
 				if (Test-Path -Path $_.FullName -PathType Leaf) {
-					Write-Host "  $($lang.FullName): " -NoNewline -ForegroundColor Yellow
+					Write-Host "  $($lang.FileName): " -NoNewline -ForegroundColor Yellow
 					Write-Host $_.FullName -ForegroundColor Green
 
 					if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {

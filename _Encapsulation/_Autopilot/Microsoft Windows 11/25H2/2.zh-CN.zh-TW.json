@@ -493,7 +493,7 @@
 									"{Image_source}_Custom\\{Master}\\{Image}\\Update\\Add"
 								],
 								"IsEvent": {
-									"CuringUpdate": true,
+									"CuringUpdate": false,
 									"Superseded": {
 										"IsSuperseded": true,
 										"ExcludeRules": true
