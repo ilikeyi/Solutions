@@ -41,7 +41,7 @@ $Global:Pre_Config_Rules = @(
 				GUID        = "67b30543-6bdf-4d35-b5cd-edeed1b20333"
 				Author      = "Yi"
 				Copyright   = "FengYi, Inc. All rights reserved."
-				Name        = "Microsoft Windows 11 25H2"
+				Name        = "Microsoft Windows 11 24H2 and 25H2"
 				Description = ""
 				Autopilot   = @{
 					Prerequisite = @{
@@ -66,77 +66,77 @@ $Global:Pre_Config_Rules = @(
 					}
 				}
 				ISO = @(
-					#region Windows 11 25H2 Business
+					#region Windows 11 24H2 Business
 					@{
-						ISO = "en-us_windows_11_business_editions_version_25h2_x64_dvd_41c521e7.iso"
+						ISO = "en-us_windows_11_business_editions_version_24h2_x64_dvd_59a1851e.iso"
 						AlternativeFilenames = @(
-							"SW_DVD9_Win_Pro_11_25H2_64BIT_English_Pro_Ent_EDU_N_MLF_X24-13075.ISO"
+							"SW_DVD9_Win_Pro_11_24H2_64BIT_English_Pro_Ent_EDU_N_MLF_X23-69812.ISO"
 						)
-						FileList = "https://files.rg-adguard.net/file/136ef757-5e4a-5964-95a3-3803f2de0c8b"
+						FileList = "https://files.rg-adguard.net/file/4bfa831a-0073-3bb4-5dde-6c07df68d7e3"
 						CRCSHA = @{
-							SHA256 = "2b65df49334b64e9341dc404e9c527bf1b2a9a105e95314a347fd29ac9900581"
-							SHA512 = "173852aa0663a60bc3613de629f159f2f8d24e719327b738dbc2a5a4d7ba5ba3ef8111859f18e3e49763d2ac7f00c8cd7075dd33f0f1103018f25487377dd1fc"
+							SHA256 = "d0dca325314322518ae967d58c3061bcae57ee9743a8a1cf374aad8637e5e8ac"
+							SHA512 = "8ee14deaf0a931f1cb1f0ee5efa6117c7924cefd8baf337dde48a150920178ba9ac1c1911408b6d05e4c9eb3cf1748116d31074a7a113764bcc69cc5128bfd04"
 						}
 					}
 					@{
-						ISO = "en-us_windows_11_business_editions_version_25h2_arm64_dvd_8afc9b39.iso"
+						ISO = "en-us_windows_11_business_editions_version_24h2_arm64_dvd_ad92e9d8.iso"
 						AlternativeFilenames = @(
-							"SW_DVD9_Win_Pro_11_25H2_Arm64_English_Pro_Ent_EDU_N_MLF_X24-13111.ISO"
+							"SW_DVD9_Win_Pro_11_24H2_Arm64_English_Pro_Ent_EDU_N_MLF_X23-69850.ISO"
 						)
-						FileList = "https://files.rg-adguard.net/file/e7e9a4e0-7bc8-1bdd-5671-fb2feaf7e46e"
+						FileList = "https://files.rg-adguard.net/file/cfb08972-7f11-f3a5-ae7c-8f084dc1996e"
 						CRCSHA = @{
-							SHA256 = "8a01a5d5def7ee9013943fd4f181ed13cb6c8ee5ef8f0eb03862cfd1f6200e15"
-							SHA512 = "8856cdbd1675362b6fdf4128f763c7134fc8e85e2063176fab28f90a189ca32a3728a9b8c0d1fcef635ca0fa08e9aebfc3fc897ee888286eb8713027fbaf2d30"
-						}
-					}
-					#endregion
-
-					#region Windows 11 25H2 Consumer editions
-					@{
-						ISO = "en-us_windows_11_consumer_editions_version_25h2_x64_dvd_9934ee4c.iso"
-						AlternativeFilenames = @(
-							"Win11_25H2_English_x64.iso"
-						)
-						FileList = "https://files.rg-adguard.net/file/8d625f81-4e0a-a542-a5ac-177e3fc4548e"
-						CRCSHA = @{
-							SHA256 = "d141f6030fed50f75e2b03e1eb2e53646c4b21e5386047cb860af5223f102a32"
-							SHA512 = "43f866358d228050c31fdb260cbd3fba3aadca0ade89561538d434451a6d27b3a1534b4650d84b3ad9167bde4a96d279dee49b20a5fdd1fa5205bb72e34b236b"
-						}
-					}
-					@{
-						ISO = "en-us_windows_11_consumer_editions_version_25h2_arm64_dvd_de2d8bf8.iso"
-						AlternativeFilenames = @(
-							"Win11_25H2_English_Arm64.iso"
-						)
-						FileList = "https://files.rg-adguard.net/file/a6329578-0cd5-4256-4377-fc8e82882184"
-						CRCSHA = @{
-							SHA256 = "32cde0071ed8086b29bb6c8c3bf17ba9e3cdf43200537434a811a9b6cc2711a1"
-							SHA512 = "e630953ad41919df845e5dab1eb53474ad713e88fe1bab12c83e8e152cd75b0850fc36e7437e54078cc9cde5dce924d24f51c4a55ebfb2f441a0f09810a2ffcd"
+							SHA256 = "15ff94a99e89846c54316275f60ea697c9517e5dea7b3a963157a4c632524f72"
+							SHA512 = "8b4676c50b7b5a56a648ee7192ddaf00bf3c84dd99bcc3308db82625573affcb36b379723358aa368700b1800b678e40e65a25b5cf83d9c561c68142aa46d393"
 						}
 					}
 					#endregion
 
-					#region Windows 11 IoT Enterprise, version 25H2
+					#region Windows 11 24H2 Consumer editions
 					@{
-						ISO = "en-us_windows_11_iot_enterprise_version_25h2_x64_dvd_67098cd6.iso"
+						ISO = "en-us_windows_11_consumer_editions_version_24h2_x64_dvd_1d5fcad3.iso"
 						AlternativeFilenames = @(
-							"X24-12902_26200.6584.250915-1905.25h2_ge_release_svc_refresh_CLIENTENTERPRISE_OEM_x64FRE_en-us.iso"
+							"X23-81971_26100.1742.240906-0331.ge_release_svc_refresh_CLIENT_CONSUMER_x64FRE_en-us.iso"
 						)
-						FileList = "https://files.rg-adguard.net/file/fce4ab0f-1033-19b9-42e7-860501a6d3a1"
+						FileList = "https://files.rg-adguard.net/file/1ebf9c88-803f-636e-ad8a-5b60966dcd64"
 						CRCSHA = @{
-							SHA256 = "2717211095e362c8005ae1ed36be771f27f2031545b065be1718b6fe717b6b12"
-							SHA512 = "1d5710de4fa4f611932f9900a3caa450d477792869ffc78fade52bfada37919e1d6dfb2ea3eae8157379c43155a3b32bd02c76b5278b1ea513a56af431334eca"
+							SHA256 = "b56b911bf18a2ceaeb3904d87e7c770bdf92d3099599d61ac2497b91bf190b11"
+							SHA512 = "4292beb7cd8e3aa75a3e07e3426d49def735cca6b8914456530f9541bf02bd913710117d5bd2492d2002774a13916b951b8ab7012bee5322decacf3c3224a0a7"
 						}
 					}
 					@{
-						ISO = "en-us_windows_11_iot_enterprise_version_25h2_arm64_dvd_59e0d737.iso"
+						ISO = "en-us_windows_11_consumer_editions_version_24h2_arm64_dvd_4cc70bf6.iso"
 						AlternativeFilenames = @(
-							"X24-12903_26200.6584.250915-1905.25h2_ge_release_svc_refresh_CLIENTENTERPRISE_OEM_A64FRE_en-us.iso"
+							"X23-81973_26100.1742.240906-0331.ge_release_svc_refresh_CLIENT_CONSUMER_A64FRE_en-us.iso"
 						)
-						FileList = "https://files.rg-adguard.net/file/c1600ec1-ccf1-c08d-bb46-d9daca25c10c"
+						FileList = "https://files.rg-adguard.net/file/9f751f60-0919-4a5a-8fb5-7bd6340a5df6"
 						CRCSHA = @{
-							SHA256 = "de28a746bad8879b680aaf6a2e2993bf80aaad23904e0acc449815ada5c90107"
-							SHA512 = "360fd47aa194d2b90c604a37e8713c874e47a919a5ee7712694ee086da55a729b4f6cbc909236f489c0b457ff868da0ee8972ebb0dd7804968818c5ed1a4aec3"
+							SHA256 = "57d1dfb2c6690a99fe99226540333c6c97d3fd2b557a50dfe3d68c3f675ef2b0"
+							SHA512 = "f3ce15b98b58c2879ab213a99d9396d7c923f92b139c8d60668fadc2215aa0ffcb7ceb2b8343c1e38ca25830b9d3474f9874dc69b1ec5faa2cc535263481d8c4"
+						}
+					}
+					#endregion
+
+					#region Windows 11 IoT Enterprise, version 24H2
+					@{
+						ISO = "en-us_windows_11_iot_enterprise_version_24h2_x64_dvd_3a99b72b.iso"
+						AlternativeFilenames = @(
+							"X23-81952_26100.1742.240906-0331.ge_release_svc_refresh_CLIENTENTERPRISE_OEM_x64FRE_en-us.iso"
+						)
+						FileList = "https://files.rg-adguard.net/file/d8ee9445-b9eb-5f45-f75e-e92a057820bf"
+						CRCSHA = @{
+							SHA256 = "eceb8dc167077e07f9a9bd04e472ea542944974b81b2ebc25477772a71bdbb69"
+							SHA512 = "0747dcdae094a88962d7fc74e56d85aa7fa00a0f6add522d10a098ffae130d6688f37593f00d99e976380fcfe9847bc2757f30c04768624328d0f27c40eef5f9"
+						}
+					}
+					@{
+						ISO = "en-us_windows_11_iot_enterprise_version_24h2_arm64_dvd_e9155a10.iso"
+						AlternativeFilenames = @(
+							"X23-81976_26100.1742.240906-0331.ge_release_svc_refresh_CLIENTENTERPRISE_OEM_A64FRE_en-us.iso"
+						)
+						FileList = "https://files.rg-adguard.net/file/bacf17e5-a307-5a01-1a35-71268dc0c2e3"
+						CRCSHA = @{
+							SHA256 = "a931b791cadd12e0d38aac2d765d389a06bcba3154a4164afeacc839a3bdbc0d"
+							SHA512 = "f583c979e84e3c5650c3c1979cd25897470d95db2ad44e384b254b39932a201d93f61693bf803bf81c9bfe489ab478c1f347844b51a85ebe4283a97c5d946c18"
 						}
 					}
 					#endregion
@@ -537,712 +537,6 @@ $Global:Pre_Config_Rules = @(
 						@{ Name = "Microsoft.CrossDevice";                          Match = "CrossDevice";                                 License = "CrossDevice";                                 Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00.UWPDesktop", "Microsoft.WindowsAppRuntime.1.7"); }
 						@{ Name = "MSTeams";                                        Match = "MSTeams*{ARCHC}";                             License = "MSTeams*{ARCHC}";                             Region = "AD;AE;AF;AG;AI;AL;AM;AO;AQ;AR;AS;AT;AU;AW;AX;AZ;BA;BB;BD;BE;BF;BG;BH;BI;BJ;BL;BM;BN;BO;BQ;BR;BS;BT;BV;BW;BY;BZ;CA;CC;CD;CF;CG;CH;CI;CK;CL;CM;CO;CR;CU;CV;CW;CX;CY;CZ;DE;DJ;DK;DM;DO;DZ;EC;EE;EG;ER;ES;ET;FI;FJ;FK;FM;FO;FR;GA;GB;GD;GE;GF;GG;GH;GI;GL;GM;GN;GP;GQ;GR;GS;GT;GU;GW;GY;HK;HM;HN;HR;HT;HU;ID;IE;IL;IM;IN;IO;IQ;IR;IS;IT;JE;JM;JO;JP;KE;KG;KH;KI;KM;KN;KP;KR;KW;KY;KZ;LA;LB;LC;LI;LK;LR;LS;LT;LU;LV;LY;MA;MC;MD;ME;MF;MG;MH;MK;ML;MM;MN;MO;MP;MQ;MR;MS;MT;MU;MV;MW;MX;MY;MZ;NA;NC;NE;NF;NG;NI;NL;NO;NP;NR;NU;NZ;OM;PA;PE;PF;PG;PH;PK;PL;PM;PN;PR;PS;PT;PW;PY;QA;RE;RO;RS;RU;RW;SA;SB;SC;SD;SE;SG;SH;SI;SJ;SK;SL;SM;SN;SO;SR;SS;ST;SV;SX;SY;SZ;TC;TD;TF;TG;TH;TJ;TK;TL;TM;TN;TO;TR;TT;TV;TW;TZ;UA;UG;UM;US;UY;UZ;VA;VC;VE;VG;VI;VN;VU;WF;WS;XK;YE;YT;ZA;ZM;ZW"; Dependencies = @("Microsoft.WindowsAppRuntime.1.5", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
 						@{ Name = "MicrosoftCorporationII.MicrosoftFamily";         Match = "MicrosoftFamily";                             License = "MicrosoftFamily";                             Region = "All"; Dependencies = @("Microsoft.WindowsAppRuntime.1.5", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-					)
-				}
-				Language = @{
-					ISO = @(
-						@{
-							ISO = "https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/26100.1.240331-1435.ge_release_amd64fre_CLIENT_LOF_PACKAGES_OEM.iso";
-							AlternativeFilenames = @(
-								"mul_languages_and_optional_features_for_windows_11_version_24h2_x64_dvd_eb44bee0.iso"
-								"SW_DVD9_Win_11_24H2_x64_MultiLang_LangPackAll_LIP_LoF_X23-69888.ISO"
-							)
-							FileList = "https://files.rg-adguard.net/file/025cfc5d-f5fa-7d00-246e-76c04a40e210"
-							CRCSHA = @{
-								SHA256 = "fdbd87c2cd69ba84ef2ea69d5b468938355d0d634b7de7a1988480f94713a738";
-								SHA512 = "b8b76fd8bef3ee29a2efccf73a23e30395762f43260cf3be6e014181cd5e754e912c2fc63c001745a7c71afa70f70d8357f403780dd70cef72c101dce1b0796b"
-							}
-						}
-						@{
-							ISO = "26100.1.240331-1435.ge_release_arm64fre_CLIENT_LOF_PACKAGES_OEM.iso";
-							AlternativeFilenames = @(
-								"mul_languages_and_optional_features_for_windows_11_version_24h2_arm64_dvd_5c4dae5b.iso"
-							)
-							FileList = "https://files.rg-adguard.net/file/a75a5453-30a4-2197-1ecb-3a602d92d9a0"
-							CRCSHA = @{
-								SHA256 = "cce90237f1dcb00840ca1a279b1f075a1df29787afa5a516b13db716fc6481fa";
-								SHA512 = "e109003ae0479dfa4d91d3bd2164d1bcc56a5204c15d7599e0a5fb8bacc33cbae291a68d85c718d034cbbad5f8d338fafad3ba61bc08b525a2f5c75126542bb2"
-							}
-						}
-					)
-					Rule = @(
-						#region Boot
-						@{
-							Uid  = "Boot;Boot;Wim;"
-							Rule = @(
-								@{
-									Architecture = "Auto"
-									Rule = @(
-										@{ Match = "WinPE-FontSupport-{Lang}.cab";     Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs"; }
-										@{ Match = "WinPE-FontSupport-{Lang}.cab";     Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "lp.cab";                           Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "WinPE-Setup_{Lang}.cab";           Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "WINPE-SETUP-CLIENT_{Lang}.CAB";    Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-securestartup_{Lang}.cab";   Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-atbroker_{Lang}.cab";        Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-audiocore_{Lang}.cab";       Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-audiodrivers_{Lang}.cab";    Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-enhancedstorage_{Lang}.cab"; Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-narrator_{Lang}.cab";        Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-scripting_{Lang}.cab";       Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-speech-tts_{Lang}.cab";      Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-srh_{Lang}.cab";             Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-srt_{Lang}.cab";             Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-wds-tools_{Lang}.cab";       Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-wmi_{Lang}.cab";             Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-									)
-								}
-							)
-							Repair = @()
-						}
-						#endregion
-
-						#region Install
-						@{
-							Uid  = "Install;Install;Wim;"
-							Rule = @(
-								@{
-									Architecture = "Auto"
-									Rule = @(
-										@{ Match = "Microsoft-Windows-LanguageFeatures-Fonts-{DiyLang}-Package~31bf3856ad364e35~{ARCH}~~.cab";                      Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-Client-Language-Pack_{ARCHC}_{Lang}.cab";                                                     Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-LanguageFeatures-Basic-{Lang}-Package~31bf3856ad364e35~{ARCH}~~.cab";                         Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-LanguageFeatures-Handwriting-{Lang}-Package~31bf3856ad364e35~{ARCH}~~.cab";                   Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-LanguageFeatures-OCR-{Lang}-Package~31bf3856ad364e35~{ARCH}~~.cab";                           Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-LanguageFeatures-Speech-{Lang}-Package~31bf3856ad364e35~{ARCH}~~.cab";                        Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-LanguageFeatures-TextToSpeech-{Lang}-Package~31bf3856ad364e35~{ARCH}~~.cab";                  Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-InternetExplorer-Optional-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                       Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                                     Structure = "LanguagesAndOptionalFeatures"; } # Windows 11 Enterprise LTSC 2024
-										@{ Match = "Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                                      Structure = "LanguagesAndOptionalFeatures"; } # Windows 11 Enterprise LTSC 2024
-										@{ Match = "Microsoft-Windows-Notepad-System-FoD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                              Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-Notepad-System-FoD-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                               Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-MediaPlayer-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                                     Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-MediaPlayer-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                                      Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-MSPaint-FOD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                                     Structure = "LanguagesAndOptionalFeatures"; } # Windows 11 Enterprise LTSC 2024
-										@{ Match = "Microsoft-Windows-MSPaint-FOD-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                                      Structure = "LanguagesAndOptionalFeatures"; } # Windows 11 Enterprise LTSC 2024
-										@{ Match = "Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                              Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                               Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-Printing-PMCPPC-FoD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                             Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                                   Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                                    Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-WMIC-FoD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                                        Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-WMIC-FoD-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                                         Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "HyperV-OptionalFeature-VirtualMachinePlatform-Client-Disabled-FOD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab"; Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-DirectoryServices-ADAM-Client-FOD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";               Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-DirectoryServices-ADAM-Client-FOD-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-EnterpriseClientSync-Host-FOD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                   Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-EnterpriseClientSync-Host-FOD-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                    Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-ProjFS-OptionalFeature-FOD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                      Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-SenseClient-FoD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                                 Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-SnippingTool-FoD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                                Structure = "LanguagesAndOptionalFeatures"; } # Windows 11 Enterprise LTSC 2024
-										@{ Match = "Microsoft-Windows-SimpleTCP-FOD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                                   Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-SmbDirect-FOD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                                   Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-Telnet-Client-FOD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                               Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-TerminalServices-AppServer-Client-FOD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";           Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-TerminalServices-AppServer-Client-FOD-Package~31bf3856ad364e35~wow64~{Lang}~.cab";            Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-TFTP-Client-FOD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                                 Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-VBSCRIPT-FoD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                                    Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-VBSCRIPT-FoD-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                                     Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-WinOcr-FOD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                                      Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-WinOcr-FOD-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                                       Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-InternationalFeatures-{Specific}-Package~31bf3856ad364e35~{ARCH}~~.cab";                      Structure = "LanguagesAndOptionalFeatures"; }
-									)
-								}
-								@{
-									Architecture = "Arm64"
-									Rule = @(
-										@{ Match = "Microsoft-Windows-LanguageFeatures-Fonts-{DiyLang}-Package~31bf3856ad364e35~arm64~~.cab";                       Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-Client-Language-Pack_arm64_{Lang}.cab";                                                       Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-LanguageFeatures-Basic-{Lang}-Package~31bf3856ad364e35~arm64~~.cab";                          Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-LanguageFeatures-Handwriting-{Lang}-Package~31bf3856ad364e35~arm64~~.cab";                    Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-LanguageFeatures-OCR-{Lang}-Package~31bf3856ad364e35~arm64~~.cab";                            Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-LanguageFeatures-Speech-{Lang}-Package~31bf3856ad364e35~arm64~~.cab";                         Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-LanguageFeatures-TextToSpeech-{Lang}-Package~31bf3856ad364e35~arm64~~.cab";                   Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-InternetExplorer-Optional-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                        Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                                      Structure = "LanguagesAndOptionalFeatures"; } # Windows 11 Enterprise LTSC 2024
-										@{ Match = "Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~arm64.x86~{Lang}~.cab";                                  Structure = "LanguagesAndOptionalFeatures"; } # Windows 11 Enterprise LTSC 2024
-										@{ Match = "Microsoft-Windows-Notepad-System-FoD-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                               Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-Notepad-System-FoD-Package~31bf3856ad364e35~arm64.x86~{Lang}~.cab";                           Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-MediaPlayer-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                                      Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-MediaPlayer-Package~31bf3856ad364e35~arm64.x86~{Lang}~.cab";                                  Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-MSPaint-FOD-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                                      Structure = "LanguagesAndOptionalFeatures"; } # Windows 11 Enterprise LTSC 2024
-										@{ Match = "Microsoft-Windows-MSPaint-FOD-Package~31bf3856ad364e35~arm64.x86~{Lang}~.cab";                                  Structure = "LanguagesAndOptionalFeatures"; } # Windows 11 Enterprise LTSC 2024
-										@{ Match = "Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                               Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~arm64.x86~{Lang}~.cab";                           Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-Printing-PMCPPC-FoD-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                              Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                                    Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~arm64.x86~{Lang}~.cab";                                Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-WMIC-FoD-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                                         Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-WMIC-FoD-Package~31bf3856ad364e35~arm64.x86~{Lang}~.cab";                                     Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "HyperV-OptionalFeature-VirtualMachinePlatform-Client-Disabled-FOD-Package~31bf3856ad364e35~arm64~{Lang}~.cab";  Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-DirectoryServices-ADAM-Client-FOD-Package~31bf3856ad364e35~arm64.x86~{Lang}~.cab";            Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-EnterpriseClientSync-Host-FOD-Package~31bf3856ad364e35~arm64.x86~{Lang}~.cab";                Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-ProjFS-OptionalFeature-FOD-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                       Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-SenseClient-FoD-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                                  Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-SnippingTool-FoD-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                                 Structure = "LanguagesAndOptionalFeatures"; } # Windows 11 Enterprise LTSC 2024
-										@{ Match = "Microsoft-Windows-SimpleTCP-FOD-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                                    Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-SmbDirect-FOD-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                                    Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-Telnet-Client-FOD-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                                Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-TFTP-Client-FOD-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                                  Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-VBSCRIPT-FoD-Package~31bf3856ad364e35~arm64~{Lang}~.cab";                                     Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-VBSCRIPT-FoD-Package~31bf3856ad364e35~arm64.x86~{Lang}~.cab";                                 Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-WinOcr-FOD-Package~31bf3856ad364e35~arm64.x86~{Lang}~.cab";                                   Structure = "LanguagesAndOptionalFeatures"; }
-										@{ Match = "Microsoft-Windows-InternationalFeatures-{Specific}-Package~31bf3856ad364e35~arm64~~.cab";                       Structure = "LanguagesAndOptionalFeatures"; }
-									)
-								}
-							)
-						}
-						#endregion
-
-						#region WinRE
-						@{
-							Uid  = "Install;WinRE;Wim;"
-							Rule = @(
-								@{
-									Architecture = "Auto"
-									Rule = @(
-										@{ Match = "WinPE-FontSupport-{Lang}.cab";     Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs"; }
-										@{ Match = "WinPE-FontSupport-{Lang}.cab";     Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "lp.cab";                           Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-securestartup_{Lang}.cab";   Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-arm64ec-support_{Lang}.cab"; Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-atbroker_{Lang}.cab";        Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-audiocore_{Lang}.cab";       Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-audiodrivers_{Lang}.cab";    Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-connectivity_{Lang}.cab";    Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-enhancedstorage_{Lang}.cab"; Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-narrator_{Lang}.cab";        Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-scripting_{Lang}.cab";       Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-speech-tts_{Lang}.cab";      Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-srh_{Lang}.cab";             Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-srt_{Lang}.cab";             Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-wds-tools_{Lang}.cab";       Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-wmi_{Lang}.cab";             Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-appxdeployment_{Lang}.cab";  Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-appxpackaging_{Lang}.cab";   Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-storagewmi_{Lang}.cab";      Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-wifi_{Lang}.cab";            Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-windowsupdate_{Lang}.cab";   Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-rejuv_{Lang}.cab";           Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-opcservices_{Lang}.cab";     Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-										@{ Match = "winpe-hta_{Lang}.cab";             Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
-									)
-								}
-							)
-						}
-						#endregion
-					)
-				}
-			}
-			#endregion
-
-			#region Windows 11 24H2
-			@{
-				GUID        = "bb60fdc0-944f-4bc8-b6c7-6174d34956a5"
-				Author      = "Yi"
-				Copyright   = "FengYi, Inc. All rights reserved."
-				Name        = "Microsoft Windows 11 24H2"
-				Description = ""
-				Autopilot   = @{
-					Prerequisite = @{
-						x64 = @{
-							ISO = @{
-								Language  = @(
-									"26100.1.240331-1435.ge_release_amd64fre_CLIENT_LOF_PACKAGES_OEM.iso"
-								)
-								InBoxApps = @(
-									"26100.1742.240904-1906.ge_release_svc_prod1_amd64fre_InboxApps.iso"
-								)
-							}
-						}
-						arm64 = @{
-							ISO = @{
-								Language  = @(
-									"mul_languages_and_optional_features_for_windows_11_version_24h2_arm64_dvd_5c4dae5b.iso"
-								)
-								InBoxApps = @(
-									"SW_DVD9_NTRL_Win_11_24H2_64_Arm64_Inbox_Apps_OEM_VL_updt_Sep_2024_X23-81949.ISO"
-								)
-							}
-						}
-					}
-				}
-				ISO = @(
-					#region Windows 11 24H2 Business
-					@{
-						ISO = "en-us_windows_11_business_editions_version_24h2_x64_dvd_59a1851e.iso"
-						AlternativeFilenames = @(
-							"SW_DVD9_Win_Pro_11_24H2_64BIT_English_Pro_Ent_EDU_N_MLF_X23-69812.ISO"
-						)
-						FileList = "https://files.rg-adguard.net/file/4bfa831a-0073-3bb4-5dde-6c07df68d7e3"
-						CRCSHA = @{
-							SHA256 = "d0dca325314322518ae967d58c3061bcae57ee9743a8a1cf374aad8637e5e8ac"
-							SHA512 = "8ee14deaf0a931f1cb1f0ee5efa6117c7924cefd8baf337dde48a150920178ba9ac1c1911408b6d05e4c9eb3cf1748116d31074a7a113764bcc69cc5128bfd04"
-						}
-					}
-					@{
-						ISO = "en-us_windows_11_business_editions_version_24h2_arm64_dvd_ad92e9d8.iso"
-						AlternativeFilenames = @(
-							"SW_DVD9_Win_Pro_11_24H2_Arm64_English_Pro_Ent_EDU_N_MLF_X23-69850.ISO"
-						)
-						FileList = "https://files.rg-adguard.net/file/cfb08972-7f11-f3a5-ae7c-8f084dc1996e"
-						CRCSHA = @{
-							SHA256 = "15ff94a99e89846c54316275f60ea697c9517e5dea7b3a963157a4c632524f72"
-							SHA512 = "8b4676c50b7b5a56a648ee7192ddaf00bf3c84dd99bcc3308db82625573affcb36b379723358aa368700b1800b678e40e65a25b5cf83d9c561c68142aa46d393"
-						}
-					}
-					#endregion
-
-					#region Windows 11 24H2 Consumer editions
-					@{
-						ISO = "en-us_windows_11_consumer_editions_version_24h2_x64_dvd_1d5fcad3.iso"
-						AlternativeFilenames = @(
-							"X23-81971_26100.1742.240906-0331.ge_release_svc_refresh_CLIENT_CONSUMER_x64FRE_en-us.iso"
-						)
-						FileList = "https://files.rg-adguard.net/file/1ebf9c88-803f-636e-ad8a-5b60966dcd64"
-						CRCSHA = @{
-							SHA256 = "b56b911bf18a2ceaeb3904d87e7c770bdf92d3099599d61ac2497b91bf190b11"
-							SHA512 = "4292beb7cd8e3aa75a3e07e3426d49def735cca6b8914456530f9541bf02bd913710117d5bd2492d2002774a13916b951b8ab7012bee5322decacf3c3224a0a7"
-						}
-					}
-					@{
-						ISO = "en-us_windows_11_consumer_editions_version_24h2_arm64_dvd_4cc70bf6.iso"
-						AlternativeFilenames = @(
-							"X23-81973_26100.1742.240906-0331.ge_release_svc_refresh_CLIENT_CONSUMER_A64FRE_en-us.iso"
-						)
-						FileList = "https://files.rg-adguard.net/file/9f751f60-0919-4a5a-8fb5-7bd6340a5df6"
-						CRCSHA = @{
-							SHA256 = "57d1dfb2c6690a99fe99226540333c6c97d3fd2b557a50dfe3d68c3f675ef2b0"
-							SHA512 = "f3ce15b98b58c2879ab213a99d9396d7c923f92b139c8d60668fadc2215aa0ffcb7ceb2b8343c1e38ca25830b9d3474f9874dc69b1ec5faa2cc535263481d8c4"
-						}
-					}
-					#endregion
-
-					#region Windows 11 IoT Enterprise, version 24H2
-					@{
-						ISO = "en-us_windows_11_iot_enterprise_version_24h2_x64_dvd_3a99b72b.iso"
-						AlternativeFilenames = @(
-							"X23-81952_26100.1742.240906-0331.ge_release_svc_refresh_CLIENTENTERPRISE_OEM_x64FRE_en-us.iso"
-						)
-						FileList = "https://files.rg-adguard.net/file/d8ee9445-b9eb-5f45-f75e-e92a057820bf"
-						CRCSHA = @{
-							SHA256 = "eceb8dc167077e07f9a9bd04e472ea542944974b81b2ebc25477772a71bdbb69"
-							SHA512 = "0747dcdae094a88962d7fc74e56d85aa7fa00a0f6add522d10a098ffae130d6688f37593f00d99e976380fcfe9847bc2757f30c04768624328d0f27c40eef5f9"
-						}
-					}
-					@{
-						ISO = "en-us_windows_11_iot_enterprise_version_24h2_arm64_dvd_e9155a10.iso"
-						AlternativeFilenames = @(
-							"X23-81976_26100.1742.240906-0331.ge_release_svc_refresh_CLIENTENTERPRISE_OEM_A64FRE_en-us.iso"
-						)
-						FileList = "https://files.rg-adguard.net/file/bacf17e5-a307-5a01-1a35-71268dc0c2e3"
-						CRCSHA = @{
-							SHA256 = "a931b791cadd12e0d38aac2d765d389a06bcba3154a4164afeacc839a3bdbc0d"
-							SHA512 = "f583c979e84e3c5650c3c1979cd25897470d95db2ad44e384b254b39932a201d93f61693bf803bf81c9bfe489ab478c1f347844b51a85ebe4283a97c5d946c18"
-						}
-					}
-					#endregion
-
-					#region Windows 11 Enterprise LTSC 2024
-					@{
-						ISO = "en-us_windows_11_enterprise_ltsc_2024_x64_dvd_965cfb00.iso"
-						AlternativeFilenames = @(
-							"SW_DVD9_WIN_ENT_LTSC_2024_64-bit_English_MLF_X23-70046.ISO"
-						)
-						FileList = "https://files.rg-adguard.net/file/142ca376-487f-e858-a606-e120e70b9d02"
-						CRCSHA = @{
-							SHA256 = "157d8365a517c40afeb3106fdd74d0836e1025debbc343f2080e1a8687607f51"
-							SHA512 = "ea4e8e31bc45c078eb23b5e1e294c7bab0ba79c1a17769b9e7ede2ad32576d2b31355196f7ce39db8075a115d0464e7d70395b95a6ae6086a45c1f7e85e8e112"
-						}
-					}
-					#endregion
-
-					#region Windows 11 IoT Enterprise LTSC 2024
-					@{
-						ISO = "en-us_windows_11_iot_enterprise_ltsc_2024_x64_dvd_f6b14814.iso"
-						AlternativeFilenames = @(
-							"X23-81951_26100.1742.240906-0331.ge_release_svc_refresh_CLIENT_ENTERPRISES_OEM_x64FRE_en-us.iso"
-						)
-						FileList = "https://files.rg-adguard.net/file/9160d5cf-f480-a1c9-a62c-b75ab0708d2c"
-						CRCSHA = @{
-							SHA256 = "4f59662a96fc1da48c1b415d6c369d08af55ddd64e8f1c84e0166d9e50405d7a"
-							SHA512 = "b3b8ab225537518a9baa3a85124947a1e4dfbb639ea277d9355b17165f195490ad21f44e9b72778ac2a41bc6561a18ed599bb72f6f3648e0cb110b9e1a35bdb9"
-						}
-					}
-					@{
-						ISO = "en-us_windows_11_iot_enterprise_ltsc_2024_arm64_dvd_ec517836.iso"
-						AlternativeFilenames = @(
-							"X23-81950_26100.1742.240906-0331.ge_release_svc_refresh_CLIENT_ENTERPRISES_OEM_A64FRE_en-us.iso"
-						)
-						FileList = "https://files.rg-adguard.net/file/de2234af-1514-ff50-50af-5a3395549c42"
-						CRCSHA = @{
-							SHA256 = "f8f068cdc90c894a55d8c8530db7c193234ba57bb11d33b71383839ac41246b4"
-							SHA512 = "fa4bc7823dfd7e9c1776442f2567f8530252fcd5a9ed702a0dfdbdd967d0f6a41c7607f03a154411b8d77d297114946259f403304260f6de94123120d233201d"
-						}
-					}
-					#endregion
-				)
-				InboxApps = @{
-					ISO = @(
-						@{
-							ISO = "https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/26100.1742.240904-1906.ge_release_svc_prod1_amd64fre_InboxApps.iso"
-							AlternativeFilenames = @(
-								"X23-81949_26100.1742.240904-1906.ge_release_svc_prod1_amd64fre_InboxApps.iso"
-								"SW_DVD9_NTRL_Win_11_24H2_64_Arm64_Inbox_Apps_OEM_VL_updt_Sep_2024_X23-81949.ISO"
-							)
-							FileList = "https://files.rg-adguard.net/file/81c83696-3f5f-0ab8-1c0f-fffb59921b41"
-							CRCSHA = @{
-								SHA256 = "8db72c69d9df4457843ebb4444b723c29d1703b4db9cff60fbc443b7121a9fbf"
-								SHA512 = "6ffd6bc3406ebb621a365ec54bac28cc964ce135830b9405a66d1235e4a1ce890af504d5508f5e8f6cf73f603ae8a246b91ec3cdbb77e65216eb9ae46dba73e8"
-							}
-						}
-					)
-					SN = @{
-						Edition = @(
-							"EnterpriseS"
-							"EnterpriseSN"
-							"IoTEnterpriseS"
-						)
-					}
-					Edition = @(
-						#region Group 1
-						@{
-							Name = @(
-								"Core"
-								"CoreSingleLanguage"
-							)
-							Apps = @(
-								"Microsoft.UI.Xaml.2.8"
-								"Microsoft.WindowsAppRuntime.1.3"
-								"Microsoft.WindowsAppRuntime.1.4"
-								"Microsoft.NET.Native.Framework.2.2"
-								"Microsoft.NET.Native.Runtime.2.2"
-								"Microsoft.VCLibs.140.00"
-								"Microsoft.VCLibs.140.00.UWPDesktop"
-								"Microsoft.Services.Store.Engagement"
-
-								"Clipchamp.Clipchamp"
-								"Microsoft.ApplicationCompatibilityEnhancements"
-								"Microsoft.AV1VideoExtension"
-								"Microsoft.AVCEncoderVideoExtension"
-								"Microsoft.BingNews"
-								"Microsoft.BingSearch"
-								"Microsoft.BingWeather"
-								"Microsoft.DesktopAppInstaller"
-								"Microsoft.GamingApp"
-								"Microsoft.GetHelp"
-								"Microsoft.HEIFImageExtension"
-								"Microsoft.HEVCVideoExtension"
-								"Microsoft.MicrosoftOfficeHub"
-								"Microsoft.MicrosoftSolitaireCollection"
-								"Microsoft.MicrosoftStickyNotes"
-								"Microsoft.MPEG2VideoExtension"
-								"Microsoft.OutlookForWindows"
-								"Microsoft.Paint"
-								"Microsoft.PowerAutomateDesktop"
-								"Microsoft.RawImageExtension"
-								"Microsoft.ScreenSketch"
-								"Microsoft.SecHealthUI"
-								"Microsoft.StorePurchaseApp"
-								"Microsoft.Todos"
-								"Microsoft.VP9VideoExtensions"
-								"Microsoft.WebMediaExtensions"
-								"Microsoft.WebpImageExtension"
-								"Microsoft.Windows.DevHome"
-								"Microsoft.Windows.Photos"
-								"Microsoft.WindowsAlarms"
-								"Microsoft.WindowsCalculator"
-								"Microsoft.WindowsCamera"
-								"Microsoft.WindowsFeedbackHub"
-								"Microsoft.WindowsNotepad"
-								"Microsoft.WindowsSoundRecorder"
-								"Microsoft.WindowsStore"
-								"Microsoft.WindowsTerminal"
-								"Microsoft.Xbox.TCUI"
-								"Microsoft.XboxGamingOverlay"
-								"Microsoft.XboxIdentityProvider"
-								"Microsoft.XboxSpeechToTextOverlay"
-								"Microsoft.YourPhone"
-								"Microsoft.ZuneMusic"
-								"MicrosoftCorporationII.MicrosoftFamily"
-								"MicrosoftCorporationII.QuickAssist"
-								"MicrosoftWindows.Client.WebExperience"
-								"Microsoft.CrossDevice"
-								"MSTeams"
-							)
-						}
-						#endregion
-
-						#region Group 2
-						@{
-							Name = @(
-								"CoreN"
-							)
-							Apps = @(
-								"Microsoft.UI.Xaml.2.8"
-								"Microsoft.WindowsAppRuntime.1.3"
-								"Microsoft.WindowsAppRuntime.1.4"
-								"Microsoft.NET.Native.Framework.2.2"
-								"Microsoft.NET.Native.Runtime.2.2"
-								"Microsoft.VCLibs.140.00"
-								"Microsoft.VCLibs.140.00.UWPDesktop"
-								"Microsoft.Services.Store.Engagement"
-
-								"Clipchamp.Clipchamp"
-								"Microsoft.ApplicationCompatibilityEnhancements"
-								"Microsoft.BingNews"
-								"Microsoft.BingSearch"
-								"Microsoft.BingWeather"
-								"Microsoft.DesktopAppInstaller"
-								"Microsoft.GetHelp"
-								"Microsoft.MicrosoftOfficeHub"
-								"Microsoft.MicrosoftSolitaireCollection"
-								"Microsoft.MicrosoftStickyNotes"
-								"Microsoft.OutlookForWindows"
-								"Microsoft.Paint"
-								"Microsoft.PowerAutomateDesktop"
-								"Microsoft.ScreenSketch"
-								"Microsoft.SecHealthUI"
-								"Microsoft.StorePurchaseApp"
-								"Microsoft.Todos"
-								"Microsoft.Windows.Photos"
-								"Microsoft.WindowsAlarms"
-								"Microsoft.WindowsCalculator"
-								"Microsoft.WindowsCamera"
-								"Microsoft.WindowsFeedbackHub"
-								"Microsoft.WindowsNotepad"
-								"Microsoft.WindowsStore"
-								"Microsoft.WindowsTerminal"
-								"Microsoft.XboxIdentityProvider"
-								"Microsoft.XboxSpeechToTextOverlay"
-								"Microsoft.YourPhone"
-								"MicrosoftCorporationII.MicrosoftFamily"
-								"MicrosoftCorporationII.QuickAssist"
-								"MicrosoftWindows.Client.WebExperience"
-								"Microsoft.CrossDevice"
-								"MSTeams"
-							)
-						}
-						#endregion
-
-						#region Group 3
-						@{
-							Name = @(
-								"Education"
-								"Professional"
-								"ProfessionalEducation"
-								"ProfessionalWorkstation"
-								"Enterprise"
-								"IoTEnterprise"
-								"IoTEnterpriseK"
-								"ServerRdsh"
-
-#								"ServerStandardCore"
-								"ServerStandard"
-#								"ServerDataCenterCore"
-								"ServerDatacenter"
-							)
-							Apps = @(
-								"Microsoft.UI.Xaml.2.8"
-								"Microsoft.WindowsAppRuntime.1.3"
-								"Microsoft.WindowsAppRuntime.1.4"
-								"Microsoft.NET.Native.Framework.2.2"
-								"Microsoft.NET.Native.Runtime.2.2"
-								"Microsoft.VCLibs.140.00"
-								"Microsoft.VCLibs.140.00.UWPDesktop"
-								"Microsoft.Services.Store.Engagement"
-
-								"Clipchamp.Clipchamp"
-								"Microsoft.ApplicationCompatibilityEnhancements"
-								"Microsoft.AV1VideoExtension"
-								"Microsoft.AVCEncoderVideoExtension"
-								"Microsoft.BingNews"
-								"Microsoft.BingSearch"
-								"Microsoft.BingWeather"
-								"Microsoft.DesktopAppInstaller"
-								"Microsoft.GamingApp"
-								"Microsoft.GetHelp"
-								"Microsoft.HEIFImageExtension"
-								"Microsoft.HEVCVideoExtension"
-								"Microsoft.MicrosoftOfficeHub"
-								"Microsoft.MicrosoftSolitaireCollection"
-								"Microsoft.MicrosoftStickyNotes"
-								"Microsoft.MPEG2VideoExtension"
-								"Microsoft.OutlookForWindows"
-								"Microsoft.Paint"
-								"Microsoft.PowerAutomateDesktop"
-								"Microsoft.RawImageExtension"
-								"Microsoft.ScreenSketch"
-								"Microsoft.SecHealthUI"
-								"Microsoft.StorePurchaseApp"
-								"Microsoft.Todos"
-								"Microsoft.VP9VideoExtensions"
-								"Microsoft.WebMediaExtensions"
-								"Microsoft.WebpImageExtension"
-								"Microsoft.Windows.DevHome"
-								"Microsoft.Windows.Photos"
-								"Microsoft.WindowsAlarms"
-								"Microsoft.WindowsCalculator"
-								"Microsoft.WindowsCamera"
-								"Microsoft.WindowsFeedbackHub"
-								"Microsoft.WindowsNotepad"
-								"Microsoft.WindowsSoundRecorder"
-								"Microsoft.WindowsStore"
-								"Microsoft.WindowsTerminal"
-								"Microsoft.Xbox.TCUI"
-								"Microsoft.XboxGamingOverlay"
-								"Microsoft.XboxIdentityProvider"
-								"Microsoft.XboxSpeechToTextOverlay"
-								"Microsoft.YourPhone"
-								"Microsoft.ZuneMusic"
-								"MicrosoftCorporationII.QuickAssist"
-								"MicrosoftWindows.Client.WebExperience"
-								"Microsoft.CrossDevice"
-								"MSTeams"
-							)
-						}
-						#endregion
-
-						#region Group 4
-						@{
-							Name = @(
-								"EducationN"
-								"ProfessionalN"
-								"ProfessionalEducationN"
-								"ProfessionalWorkstationN"
-								"EnterpriseN"
-								"EnterpriseGN"
-								"EnterpriseSN"
-								"CloudN"
-								"CloudEN"
-								"CloudEditionLN"
-								"StarterN"
-							)
-							Apps = @(
-								"Microsoft.UI.Xaml.2.8"
-								"Microsoft.WindowsAppRuntime.1.3"
-								"Microsoft.WindowsAppRuntime.1.4"
-								"Microsoft.NET.Native.Framework.2.2"
-								"Microsoft.NET.Native.Runtime.2.2"
-								"Microsoft.VCLibs.140.00"
-								"Microsoft.VCLibs.140.00.UWPDesktop"
-								"Microsoft.Services.Store.Engagement"
-
-								"Clipchamp.Clipchamp"
-								"Microsoft.ApplicationCompatibilityEnhancements"
-								"Microsoft.BingNews"
-								"Microsoft.BingSearch"
-								"Microsoft.BingWeather"
-								"Microsoft.DesktopAppInstaller"
-								"Microsoft.GetHelp"
-								"Microsoft.MicrosoftOfficeHub"
-								"Microsoft.MicrosoftSolitaireCollection"
-								"Microsoft.MicrosoftStickyNotes"
-								"Microsoft.OutlookForWindows"
-								"Microsoft.Paint"
-								"Microsoft.PowerAutomateDesktop"
-								"Microsoft.ScreenSketch"
-								"Microsoft.SecHealthUI"
-								"Microsoft.StorePurchaseApp"
-								"Microsoft.Todos"
-								"Microsoft.Windows.Photos"
-								"Microsoft.WindowsAlarms"
-								"Microsoft.WindowsCalculator"
-								"Microsoft.WindowsCamera"
-								"Microsoft.WindowsFeedbackHub"
-								"Microsoft.WindowsNotepad"
-								"Microsoft.WindowsStore"
-								"Microsoft.WindowsTerminal"
-								"Microsoft.XboxIdentityProvider"
-								"Microsoft.XboxSpeechToTextOverlay"
-								"Microsoft.YourPhone"
-								"MicrosoftCorporationII.QuickAssist"
-								"MicrosoftWindows.Client.WebExperience"
-								"Microsoft.CrossDevice"
-								"MSTeams"
-							)
-						}
-						#endregion
-
-						#region Group 5
-						@{
-							Name = @(
-								"EnterpriseS"
-								"EnterpriseSN"
-								"IoTEnterpriseS"
-								"IoTEnterpriseSK"
-							)
-							Apps = @(
-								"Microsoft.SecHealthUI"
-							)
-						}
-					)
-					Rule = @(
-						@{ Name = "Microsoft.UI.Xaml.2.8";                          Match = "UI.Xaml*{ARCHTag}*2.8";                       License = "UI.Xaml*{ARCHTag}*2.8";                       Region = "All"; Dependencies = @(); }
-						@{ Name = "Microsoft.WindowsAppRuntime.1.3";                Match = "WindowsAppRuntime.{ARCHC}.1.3";               License = "WindowsAppRuntime.{ARCHC}.1.3";               Region = "All"; Dependencies = @(); }
-						@{ Name = "Microsoft.WindowsAppRuntime.1.4";                Match = "WindowsAppRuntime.{ARCHC}.1.4";               License = "WindowsAppRuntime.{ARCHC}.1.4";               Region = "All"; Dependencies = @(); }
-						@{ Name = "Microsoft.NET.Native.Framework.2.2";             Match = "Native.Framework*{ARCHTag}*2.2";              License = "Native.Framework*{ARCHTag}*2.2";              Region = "All"; Dependencies = @(); }
-						@{ Name = "Microsoft.NET.Native.Runtime.2.2";               Match = "Native.Runtime*{ARCHTag}*2.2";                License = "Native.Runtime*{ARCHTag}*2.2";                Region = "All"; Dependencies = @(); }
-						@{ Name = "Microsoft.VCLibs.140.00";                        Match = "Microsoft.VCLibs.{ARCHTag}.14.00.appx";       License = "VCLibs.{ARCHTag}.14.00.appx";                 Region = "All"; Dependencies = @(); }
-						@{ Name = "Microsoft.VCLibs.140.00.UWPDesktop";             Match = "Microsoft.VCLibs.{ARCHTag}.14.00.UWPDesktop"; License = "Microsoft.VCLibs.{ARCHTag}.14.00.UWPDesktop"; Region = "All"; Dependencies = @(); }
-						@{ Name = "Microsoft.Services.Store.Engagement";            Match = "Services.Store.Engagement*{ARCHC}";           License = "Services.Store.Engagement*{ARCHC}";           Region = "All"; Dependencies = @(); }
-
-						@{ Name = "Microsoft.DesktopAppInstaller";                  Match = "DesktopAppInstaller";                         License = "DesktopAppInstaller";                         Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.WindowsStore";                         Match = "WindowsStore";                                License = "WindowsStore";                                Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "MicrosoftWindows.Client.WebExperience";          Match = "WebExperience";                               License = "WebExperience";                               Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00"); }
-						@{ Name = "Clipchamp.Clipchamp";                            Match = "Clipchamp.Clipchamp";                         License = "Clipchamp.Clipchamp";                         Region = "All"; Dependencies = @(); }
-						@{ Name = "Microsoft.ApplicationCompatibilityEnhancements"; Match = "ApplicationCompatibilityEnhancements";        License = "ApplicationCompatibilityEnhancements";        Region = "All"; Dependencies = @(); }
-						@{ Name = "Microsoft.AV1VideoExtension";                    Match = "AV1VideoExtension";                           License = "AV1VideoExtension";                           Region = "All"; Dependencies = @(); }
-						@{ Name = "Microsoft.AVCEncoderVideoExtension";             Match = "AVCEncoderVideoExtension";                    License = "AVCEncoderVideoExtension";                    Region = "All"; Dependencies = @(); }
-						@{ Name = "Microsoft.BingNews";                             Match = "BingNews";                                    License = "BingNews";                                    Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.BingSearch";                           Match = "BingSearch";                                  License = "BingSearch";                                  Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00"); }
-						@{ Name = "Microsoft.BingWeather";                          Match = "BingWeather";                                 License = "BingWeather";                                 Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.GamingApp";                            Match = "GamingApp";                                   License = "GamingApp";                                   Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.GetHelp";                              Match = "GetHelp";                                     License = "GetHelp";                                     Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.HEIFImageExtension";                   Match = "HEIFImageExtension";                          License = "HEIFImageExtension*";                         Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00"); }
-
-						<#
-								File: X23-75752_HEVCappxbundle.img
-						   File list: https://files.rg-adguard.net/file/d6624138-77bb-13c1-9766-47b6b5e5864b
-							  Family: Tools and Resources
-							 Version: HEVC Video Extensions
-						#>
-						@{ Name = "Microsoft.HEVCVideoExtension";                   Match = "HEVCVideoExtension";                          License = "15a6383d188a454ca98e15931ce48dc4_License1";   Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00"); }
-
-						@{ Name = "Microsoft.MicrosoftOfficeHub";                   Match = "MicrosoftOfficeHub";                          License = "MicrosoftOfficeHub";                          Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.MicrosoftSolitaireCollection";         Match = "MicrosoftSolitaireCollection";                License = "MicrosoftSolitaireCollection";                Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.MicrosoftStickyNotes";                 Match = "MicrosoftStickyNotes";                        License = "MicrosoftStickyNotes";                        Region = "All"; Dependencies = @("Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00"); }
-						@{ Name = "Microsoft.MPEG2VideoExtension";                  Match = "MPEG2VideoExtension";                         License = "MPEG2VideoExtension";                         Region = "All"; Dependencies = @(); }
-						@{ Name = "Microsoft.OutlookForWindows";                    Match = "Microsoft.OutlookForWindows_8wekyb3d8bbwe";   License = "Microsoft.OutlookForWindows_8wekyb3d8bbwe";   Region = "AD;AE;AF;AG;AI;AL;AM;AO;AQ;AR;AS;AT;AU;AW;AX;AZ;BA;BB;BD;BE;BF;BG;BH;BI;BJ;BL;BM;BN;BO;BQ;BR;BS;BT;BV;BW;BY;BZ;CA;CC;CD;CF;CG;CH;CI;CK;CL;CM;CO;CR;CU;CV;CW;CX;CY;CZ;DE;DJ;DK;DM;DO;DZ;EC;EE;EG;ER;ES;ET;FI;FJ;FK;FM;FO;FR;GA;GB;GD;GE;GF;GG;GH;GI;GL;GM;GN;GP;GQ;GR;GS;GT;GU;GW;GY;HK;HM;HN;HR;HT;HU;ID;IE;IL;IM;IN;IO;IQ;IR;IS;IT;JE;JM;JO;JP;KE;KG;KH;KI;KM;KN;KP;KR;KW;KY;KZ;LA;LB;LC;LI;LK;LR;LS;LT;LU;LV;LY;MA;MC;MD;ME;MF;MG;MH;MK;ML;MM;MN;MO;MP;MQ;MR;MS;MT;MU;MV;MW;MX;MY;MZ;NA;NC;NE;NF;NG;NI;NL;NO;NP;NR;NU;NZ;OM;PA;PE;PF;PG;PH;PK;PL;PM;PN;PR;PS;PT;PW;PY;QA;RE;RO;RS;RU;RW;SA;SB;SC;SD;SE;SG;SH;SI;SJ;SK;SL;SM;SN;SO;SR;SS;ST;SV;SX;SY;SZ;TC;TD;TF;TG;TH;TJ;TK;TL;TM;TN;TO;TR;TT;TV;TW;TZ;UA;UG;UM;US;UY;UZ;VA;VC;VE;VG;VI;VN;VU;WF;WS;XK;YE;YT;ZA;ZM;ZW"; Dependencies = @(); }
-						@{ Name = "Microsoft.Paint";                                Match = "Paint";                                       License = "Paint";                                       Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop", "Microsoft.UI.Xaml.2.8"); }
-						@{ Name = "Microsoft.PowerAutomateDesktop";                 Match = "PowerAutomateDesktop";                        License = "PowerAutomateDesktop";                        Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.RawImageExtension";                    Match = "RawImageExtension";                           License = "RawImageExtension";                           Region = "All"; Dependencies = @(); }
-						@{ Name = "Microsoft.ScreenSketch";                         Match = "ScreenSketch";                                License = "ScreenSketch";                                Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.WindowsAppRuntime.1.3", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.SecHealthUI";                          Match = "SecHealthUI*{ARCHC}";                         License = "SecHealthUI*{ARCHC}";                         Region = "All"; Dependencies = @(); }
-						@{ Name = "Microsoft.StorePurchaseApp";                     Match = "StorePurchaseApp";                            License = "StorePurchaseApp";                            Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.Todos";                                Match = "Todos";                                       License = "Todos";                                       Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop", "Microsoft.Services.Store.Engagement"); }
-						@{ Name = "Microsoft.VP9VideoExtensions";                   Match = "VP9VideoExtensions";                          License = "VP9VideoExtensions";                          Region = "All"; Dependencies = @(); }
-						@{ Name = "Microsoft.WebMediaExtensions";                   Match = "WebMediaExtensions";                          License = "WebMediaExtensions";                          Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00"); }
-						@{ Name = "Microsoft.WebpImageExtension";                   Match = "WebpImageExtension";                          License = "WebpImageExtension";                          Region = "All"; Dependencies = @(); }
-						@{ Name = "Microsoft.Windows.DevHome";                      Match = "DevHome";                                     License = "DevHome";                                     Region = "All"; Dependencies = @("Microsoft.WindowsAppRuntime.1.3", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.Windows.Photos";                       Match = "Windows.Photos";                              License = "Windows.Photos";                              Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.WindowsAlarms";                        Match = "WindowsAlarms";                               License = "WindowsAlarms";                               Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop", "Microsoft.WindowsAppRuntime.1.3"); }
-						@{ Name = "Microsoft.WindowsCalculator";                    Match = "WindowsCalculator";                           License = "WindowsCalculator";                           Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.WindowsCamera";                        Match = "WindowsCamera";                               License = "WindowsCamera";                               Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00"); }
-						@{ Name = "Microsoft.WindowsFeedbackHub";                   Match = "WindowsFeedbackHub";                          License = "WindowsFeedbackHub";                          Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.WindowsNotepad";                       Match = "WindowsNotepad";                              License = "WindowsNotepad";                              Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.WindowsSoundRecorder";                 Match = "WindowsSoundRecorder";                        License = "WindowsSoundRecorder";                        Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.WindowsTerminal";                      Match = "WindowsTerminal";                             License = "WindowsTerminal";                             Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8"); }
-						@{ Name = "Microsoft.Xbox.TCUI";                            Match = "Xbox.TCUI";                                   License = "Xbox.TCUI";                                   Region = "All"; Dependencies = @("Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00"); }
-						@{ Name = "Microsoft.XboxGamingOverlay";                    Match = "XboxGamingOverlay";                           License = "XboxGamingOverlay";                           Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00"); }
-						@{ Name = "Microsoft.XboxIdentityProvider";                 Match = "XboxIdentityProvider";                        License = "XboxIdentityProvider";                        Region = "All"; Dependencies = @("Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00"); }
-						@{ Name = "Microsoft.XboxSpeechToTextOverlay";              Match = "XboxSpeechToTextOverlay";                     License = "XboxSpeechToTextOverlay";                     Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00"); }
-						@{ Name = "Microsoft.YourPhone";                            Match = "YourPhone";                                   License = "YourPhone";                                   Region = "All"; Dependencies = @("Microsoft.WindowsAppRuntime.1.4", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.ZuneMusic";                            Match = "ZuneMusic";                                   License = "ZuneMusic";                                   Region = "All"; Dependencies = @("Microsoft.UI.Xaml.2.8", "Microsoft.NET.Native.Framework.2.2", "Microsoft.NET.Native.Runtime.2.2", "Microsoft.VCLibs.140.00"); }
-						@{ Name = "MicrosoftCorporationII.QuickAssist";             Match = "QuickAssist";                                 License = "QuickAssist";                                 Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "Microsoft.CrossDevice";                          Match = "CrossDevice";                                 License = "CrossDevice";                                 Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "MSTeams";                                        Match = "MSTeams*{ARCHC}";                             License = "MSTeams*{ARCHC}";                             Region = "AD;AE;AF;AG;AI;AL;AM;AO;AQ;AR;AS;AT;AU;AW;AX;AZ;BA;BB;BD;BE;BF;BG;BH;BI;BJ;BL;BM;BN;BO;BQ;BR;BS;BT;BV;BW;BY;BZ;CA;CC;CD;CF;CG;CH;CI;CK;CL;CM;CO;CR;CU;CV;CW;CX;CY;CZ;DE;DJ;DK;DM;DO;DZ;EC;EE;EG;ER;ES;ET;FI;FJ;FK;FM;FO;FR;GA;GB;GD;GE;GF;GG;GH;GI;GL;GM;GN;GP;GQ;GR;GS;GT;GU;GW;GY;HK;HM;HN;HR;HT;HU;ID;IE;IL;IM;IN;IO;IQ;IR;IS;IT;JE;JM;JO;JP;KE;KG;KH;KI;KM;KN;KP;KR;KW;KY;KZ;LA;LB;LC;LI;LK;LR;LS;LT;LU;LV;LY;MA;MC;MD;ME;MF;MG;MH;MK;ML;MM;MN;MO;MP;MQ;MR;MS;MT;MU;MV;MW;MX;MY;MZ;NA;NC;NE;NF;NG;NI;NL;NO;NP;NR;NU;NZ;OM;PA;PE;PF;PG;PH;PK;PL;PM;PN;PR;PS;PT;PW;PY;QA;RE;RO;RS;RU;RW;SA;SB;SC;SD;SE;SG;SH;SI;SJ;SK;SL;SM;SN;SO;SR;SS;ST;SV;SX;SY;SZ;TC;TD;TF;TG;TH;TJ;TK;TL;TM;TN;TO;TR;TT;TV;TW;TZ;UA;UG;UM;US;UY;UZ;VA;VC;VE;VG;VI;VN;VU;WF;WS;XK;YE;YT;ZA;ZM;ZW"; Dependencies = @("Microsoft.WindowsAppRuntime.1.3", "Microsoft.VCLibs.140.00", "Microsoft.VCLibs.140.00.UWPDesktop"); }
-						@{ Name = "MicrosoftCorporationII.MicrosoftFamily";         Match = "MicrosoftFamily";                             License = "MicrosoftFamily";                             Region = "All"; Dependencies = @("Microsoft.VCLibs.140.00.UWPDesktop"); }
 					)
 				}
 				Language = @{

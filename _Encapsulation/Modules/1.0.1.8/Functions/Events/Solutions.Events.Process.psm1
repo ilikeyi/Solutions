@@ -974,7 +974,9 @@ Function Event_Process_Task_Need_Mount
 
 		Write-Host "  " -NoNewline
 		Write-Host " $($lang.Running) " -NoNewline -BackgroundColor White -ForegroundColor Black
+
 		Dism /Image:""$($test_mount_Sources)"" /cleanup-image /StartComponentCleanup /ResetBase
+
 		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
 		$Script:CuringUpdateTasksTime.Stop()
