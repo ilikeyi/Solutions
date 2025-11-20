@@ -158,14 +158,9 @@
 	OnlyLangCleanup                 = 清理元件：按語言標記
 	Matched_Component_Names         = 已匹配組件名：
 	BootProcess                     = 处理 {0}.wim 时
-	Extract_Rule_Only_And_Full      = 僅提取已選語言
 	Sync_Language_To                = 同步到
 	BootSyncToISO                   = 同步語言包到安裝程式
 	BootSyncToISOTips               = 離線映射已安裝的語言包，同步到 ISO 安裝程式裡。
-	Setup_Fix_Missing               = 自動修復安裝程式缺少項
-	Setup_Fix_Missing_Tips          = 如果安裝程式缺少 arunres.dll.mui、spwizres.dll.mui、w32uires.dll.mui 時，請打開“提取”，選擇規則後，點擊“自動修復安裝程式缺少項”。
-	Setup_Fix_Missing_Extract       = 提取安裝程式缺少項
-	Setup_Fix_Missing_Extract_Tips  = 從所有本地語言包里提取安裝程式缺少項：arunres.dll.mui、spwizres.dll.mui、w32uires.dll.mui。
 	LangIni                         = 重新生成 Lang.ini
 	LangIniTips                     = 同步完成后需重建 ISO 里的 Lang.ini。
 	LangNewAutoSelect               = 有事件時自動選擇建議項

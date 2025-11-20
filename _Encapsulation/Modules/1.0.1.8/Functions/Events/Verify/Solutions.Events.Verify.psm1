@@ -49,13 +49,6 @@ Function Event_Assign_Task_Verify
 		}
 
 		<#
-			.自动修复安装程序缺少项：已挂载
-		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Setup_Fix_Missing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-			$FlagIsWait = $True
-		}
-
-		<#
 			.同步语言包到安装程序：添加
 		#>
 		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {

@@ -158,14 +158,9 @@
 	OnlyLangCleanup                 = Bileşenleri temizleyin: dile göre etiketleyin
 	Matched_Component_Names         = Eşleşen bileşen adı:
 	BootProcess                     = {0}.wim işlenirken
-	Extract_Rule_Only_And_Full      = Yalnızca seçili dilleri çıkart
 	Sync_Language_To                = Senkronizasyon
 	BootSyncToISO                   = Dil paketlerini yükleyiciyle senkronize edin
 	BootSyncToISOTips               = Çevrimdışı görüntünün yüklü dil paketi, ISO yükleyiciyle senkronize edilir.
-	Setup_Fix_Missing               = Eksik yükleyici öğelerini otomatik olarak düzeltin
-	Setup_Fix_Missing_Tips          = Kurulum programında arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui eksikse, "Çıkart"ı açın, "Kurallar"ı seçin ve "Yükleyici Eksik Öğelerini Çıkart"a tıklayın.
-	Setup_Fix_Missing_Extract       = Yükleyicinin eksik öğelerini çıkarın
-	Setup_Fix_Missing_Extract_Tips  = Yükleyicinin eksik öğelerini tüm yerel dil paketlerinden çıkarın: arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui.
 	LangIni                         = Lang.ini'yi yeniden oluştur
 	LangIniTips                     = Senkronizasyon tamamlandıktan sonra ISO'daki Lang.ini'nin yeniden oluşturulması gerekiyor.
 	LangNewAutoSelect               = Bir etkinlik meydana geldiğinde önerilen öğeleri otomatik olarak seç

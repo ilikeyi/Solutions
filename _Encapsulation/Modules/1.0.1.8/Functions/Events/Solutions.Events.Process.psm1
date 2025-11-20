@@ -186,43 +186,6 @@ Function Event_Process_Task_Need_Mount
 		Language_Add_Process
 
 		<#
-			.自动修复安装程序缺少项：已挂载
-		#>
-		Write-Host "`n  $($lang.Setup_Fix_Missing): $($lang.Mounted)" -ForegroundColor Yellow
-		Write-Host "  $('-' * 80)"
-		if ((Get-Variable -Scope global -Name "Queue_Is_Setup_Fix_Missing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-			$SearchFolderRule = @(
-				Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Language\Repair"
-				"$($Global:Image_source)_Custom\$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Language\Repair"
-			)
-			$SearchFolderRule = $SearchFolderRule | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
-
-			Write-Host "  $($lang.ProcessSources)" -ForegroundColor Yellow
-			Write-Host "  $('-' * 80)"
-			ForEach ($item in $SearchFolderRule) {
-				Write-Host "  $($item)" -ForegroundColor Yellow
-			}
-
-			Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
-			Write-Host "  $('-' * 80)"
-			foreach ($item in $SearchFolderRule) {
-				Write-Host "  $($lang.Select_Path): " -noNewline
-				Write-Host $item -ForegroundColor Yellow
-				Write-Host "  $('-' * 80)"
-
-				if (Test-Path -Path $item -PathType Container) {
-					$test_mount_Sources = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Mount\Sources"
-
-					Language_Repair_Cli -PathSources $item -SaveTo $test_mount_Sources
-				} else {
-					Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
-				} 
-			}
-		} else {
-			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-		}
-
-		<#
 			.同步语言包到安装程序
 		#>
 		$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.BootSyncToISO)"

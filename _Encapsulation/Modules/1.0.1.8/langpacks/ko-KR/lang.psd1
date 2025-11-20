@@ -158,14 +158,9 @@
 	OnlyLangCleanup                 = 정리 구성요소: 언어별 태그 지정
 	Matched_Component_Names         = 일치하는 구성 요소 이름: \
 	BootProcess                     = {0}.wim 을 처리할 때
-	Extract_Rule_Only_And_Full      = 선택한 언어만 추출됩니다
 	Sync_Language_To                = 동기화 대상
 	BootSyncToISO                   = 설치 프로그램에 언어 팩 동기화
 	BootSyncToISOTips               = ISO 설치 프로그램과 동기화된 설치된 언어 팩의 오프라인 이미지.
-	Setup_Fix_Missing               = 설치 프로그램 누락 항목 자동 수정
-	Setup_Fix_Missing_Tips          = 설치 관리자에 arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui 가 없는 경우 추출을 열고 규칙을 선택한 다음 설치 프로그램 누락된 항목 자동 수정을 클릭합니다.
-	Setup_Fix_Missing_Extract       = 설치 프로그램이 누락 된 추출을 추출합니다
-	Setup_Fix_Missing_Extract_Tips  = 모든 로컬 언어 팩에서 설치 프로그램 누락 항목 추출: arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui.
 	LangIni                         = Lang.ini 재생성
 	LangIniTips                     = 동기화가 완료되면 ISO에서 Lang.ini 를 다시 빌드해야 합니다.
 	LangNewAutoSelect               = 이벤트가 있을 때 자동으로 제안 선택

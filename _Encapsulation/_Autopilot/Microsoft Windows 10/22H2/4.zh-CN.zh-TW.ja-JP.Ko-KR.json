@@ -14,10 +14,6 @@
 					"Guid": "d33b848d-ef73-470b-ba0e-8b7f21536ccd",
 					"CleanDuplicate": false,
 					"NoExtractEnglish": true,
-					"Missing": {
-						"IsMissing": false,
-						"OnlySelectRegion": false
-					},
 					"SaveTo": {
 						"Schome": "Custom",
 						"Custom": {

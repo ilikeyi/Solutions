@@ -158,14 +158,9 @@
 	OnlyLangCleanup                 = Rengör komponenter: tagga efter språk
 	Matched_Component_Names         = Matchat komponentnamn:
 	BootProcess                     = När du bearbetar {0}.wim
-	Extract_Rule_Only_And_Full      = Extrahera endast valda språk
 	Sync_Language_To                = Synkronisera till
 	BootSyncToISO                   = Synkronisera språkpaket till installationsprogrammet
 	BootSyncToISOTips               = Det installerade språkpaketet för offlineavbildningen synkroniseras med ISO-installationsprogrammet.
-	Setup_Fix_Missing               = Åtgärda automatiskt saknade installationsobjekt
-	Setup_Fix_Missing_Tips          = Om installationsprogrammet saknas arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui, öppna "Extract", välj "Rules" och klicka på "Extract Installer Missing Items".
-	Setup_Fix_Missing_Extract       = Extrahera installationsprogrammet som saknas
-	Setup_Fix_Missing_Extract_Tips  = Extrahera installationsprogrammet som saknas från alla lokala språkpaket: arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui.
 	LangIni                         = Återskapa Lang.ini
 	LangIniTips                     = Efter att synkroniseringen är klar måste Lang.ini i ISO byggas om.
 	LangNewAutoSelect               = Välj automatiskt föreslagna objekt när en händelse inträffar

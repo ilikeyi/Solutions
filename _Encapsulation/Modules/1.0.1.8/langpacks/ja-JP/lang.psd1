@@ -158,14 +158,9 @@
 	OnlyLangCleanup                 = コンポーネントのクリーンアップ: 言語別にマークします
 	Matched_Component_Names         = 一致したコンポーネント名: \
 	BootProcess                     = {0}.wim を処理するとき
-	Extract_Rule_Only_And_Full      = 選択した言語のみが抽出されます
 	Sync_Language_To                = 同期先
 	BootSyncToISO                   = 言語パックをインストーラーに同期します
 	BootSyncToISOTips               = オフライン イメージにインストールされている言語パックは, ISO インストーラに同期されます。
-	Setup_Fix_Missing               = インストーラーの不足している項目を自動的に修正します
-	Setup_Fix_Missing_Tips          = インストーラーに arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui が見つからない場合は, [抽出] を開き, ルールを選択して, [インストーラーの不足している項目を自動的に修正する] をクリックします。
-	Setup_Fix_Missing_Extract       = インストーラーが見つからないことを抽出します
-	Setup_Fix_Missing_Extract_Tips  = すべてのローカル言語パックからインストーラーに不足している項目を抽出します: arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui
 	LangIni                         = 再生する Lang.ini
 	LangIniTips                     = 同期が完了したら, ISO の Lang .ini を再構築する必要があります。
 	LangNewAutoSelect               = イベントが発生すると, 提案が自動的に選択されます

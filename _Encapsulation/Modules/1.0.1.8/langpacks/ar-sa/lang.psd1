@@ -158,14 +158,9 @@
 	OnlyLangCleanup                 = المكونات النظيفة: علامة حسب اللغة
 	Matched_Component_Names         = اسم المكون المطابق: 
 	BootProcess                     = {0}.wim عند معالجة
-	Extract_Rule_Only_And_Full      = استخراج اللغات المحددة فقط
 	Sync_Language_To                = مزامنة ل
 	BootSyncToISO                   = مزامنة حزم اللغات مع المثبت
 	BootSyncToISOTips               = تتم مزامنة حزمة اللغة المثبتة للصورة غير المتصلة بالإنترنت مع برنامج تثبيت ISO.
-	Setup_Fix_Missing               = إصلاح عناصر التثبيت المفقودة تلقائيًا
-	Setup_Fix_Missing_Tips          = إذا كان برنامج التثبيت يفتقد arunres.dll.mui، وspwizres.dll.mui، وw32uires.dll.mui، فافتح "استخراج"، وحدد "القواعد"، ثم انقر فوق "استخراج العناصر المفقودة لبرنامج التثبيت".
-	Setup_Fix_Missing_Extract       = استخراج العناصر المفقودة المثبت
-	Setup_Fix_Missing_Extract_Tips  = قم باستخراج العناصر المفقودة للمثبت من كافة حزم اللغات المحلية: arunres.dll.mui، spwizres.dll.mui، w32uires.dll.mui.
 	LangIni                         = إعادة إنشاء Lang.ini
 	LangIniTips                     = بعد اكتمال المزامنة، يجب إعادة بناء Lang.ini في ISO.
 	LangNewAutoSelect               = تحديد العناصر المقترحة تلقائيًا عند وقوع حدث ما

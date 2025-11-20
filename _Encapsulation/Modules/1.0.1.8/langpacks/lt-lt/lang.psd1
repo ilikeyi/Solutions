@@ -158,14 +158,9 @@
 	OnlyLangCleanup                 = Švarūs komponentai: pažymėkite pagal kalbą
 	Matched_Component_Names         = Atitinkamas komponento pavadinimas:
 	BootProcess                     = Apdorojant {0}.wim
-	Extract_Rule_Only_And_Full      = Išskleiskite tik pasirinktas kalbas
 	Sync_Language_To                = Sinchronizuoti su
 	BootSyncToISO                   = Sinchronizuokite kalbos paketus su diegimo programa
 	BootSyncToISOTips               = Įdiegtas neprisijungus pasiekiamo vaizdo kalbos paketas sinchronizuojamas su ISO diegimo programa.
-	Setup_Fix_Missing               = Automatiškai pataisykite trūkstamus diegimo programos elementus
-	Setup_Fix_Missing_Tips          = Jei diegimo programoje nėra arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui, atidarykite "Extract", pasirinkite "Rules" ir spustelėkite "Extract Installer Missing Items".
-	Setup_Fix_Missing_Extract       = Išskleiskite diegimo programos trūkstamus elementus
-	Setup_Fix_Missing_Extract_Tips  = Ištraukite diegimo programos trūkstamus elementus iš visų vietinių kalbų paketų: arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui.
 	LangIni                         = Atkurti Lang.ini
 	LangIniTips                     = Užbaigus sinchronizavimą, ISO Lang.ini reikia atkurti.
 	LangNewAutoSelect               = Automatiškai pasirinkite siūlomus elementus, kai įvyksta įvykis

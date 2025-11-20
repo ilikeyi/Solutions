@@ -531,184 +531,6 @@ Function Language_Extract_UI
 		}
 	}
 
-	Function Language_Extract_Add_Reair
-	{
-		<#
-			.重置结果
-		#>
-		$UI_Main_View_Detailed.Visible = $True
-		$UI_Main_Error.Text = ""
-		$UI_Main_Error_Icon.Image = $null
-		$UI_Main_View_Detailed_Show.Text = ""
-		
-		$Region = Language_Region
-		$InBox_Apps_Rule_Select_Single = @()
-
-		<#
-			.从预规则里获取
-		#>
-		ForEach ($itemPre in $Global:Pre_Config_Rules) {
-			ForEach ($item in $itemPre.Version) {
-				if ($Script:LanguageSearchRuleSelected -eq $item.GUID) {
-					$InBox_Apps_Rule_Select_Single = $item
-					break
-				}
-			}
-		}
-
-		<#
-			.从单条规则里获取
-		#>
-		ForEach ($item in $Global:Preconfigured_Rule_Language) {
-			if ($Script:LanguageSearchRuleSelected -eq $item.GUID) {
-				$InBox_Apps_Rule_Select_Single = $item
-				break
-			}
-		}
-
-		<#
-			.从用户自定义规则里获取
-		#>
-		if (Is_Find_Modules -Name "Solutions.Custom.Extension") {
-			if ($Global:Custom_Rule.count -gt 0) {
-				ForEach ($item in $Global:Custom_Rule) {
-					if ($Script:LanguageSearchRuleSelected -eq $item.GUID) {
-						$InBox_Apps_Rule_Select_Single = $item
-						break
-					}
-				}
-			}
-		}
-
-		if ($InBox_Apps_Rule_Select_Single.count -gt 0) {
-			$UI_Main_View_Detailed_Show.Text += "$($lang.Language)`n"
-			if ($InBox_Apps_Rule_Select_Single.Language.Rule.Count -gt 0) {
-				ForEach ($PrintExpandRule in $InBox_Apps_Rule_Select_Single.Language.Rule) {
-					$WimLib_SplieNew_Rule_path = $PrintExpandRule.Uid -split ';'
-
-					<#
-						.不使用多级目录自定义规则
-					#>
-					if ($UI_Main_Dont_Use_Rules.Checked) {
-						$CopyTo = "$($UI_Main_Extract_Rule_To_Result.Text)\$($WimLib_SplieNew_Rule_path[0])\$($WimLib_SplieNew_Rule_path[1])\Language\Repair"
-					} else {
-						$CopyTo = "$($UI_Main_Extract_Rule_To_Result.Text)\$($WimLib_SplieNew_Rule_path[0])\$($WimLib_SplieNew_Rule_path[1])\Language\$($UI_Main_Multistage_Rule_Name_Custom.Text)\Repair"
-					}
-
-					$UI_Main_View_Detailed_Show.Text += "     $($lang.Event_Primary_Key): $($PrintExpandRule.Uid): $($PrintExpandRule.Repair.Count) $($lang.EventManagerCount)`n     $($lang.SaveTo): $($CopyTo)`n     $('-' * 80)`n"
-					
-					<#
-						.判断是否有可用的修复规则
-					#>
-					if ($PrintExpandRule.Repair.Count -gt 0) {
-						<#
-							.循环修复规则
-						#>
-						ForEach ($item in $PrintExpandRule.Repair) {
-							<#
-								.仅提取已选语言
-							#>
-							if ($UI_Main_Extract_Rule_Only_And_Full.Checked) {
-								ForEach ($itemIsSelectLanguage in $Script:TempSelectLXPsLanguage) {
-									Process_Extract_New_Search -NewLanguage $itemIsSelectLanguage
-								}
-							} else {
-								<#
-									.循环语言，提取全部已知语言
-								#>
-								ForEach ($itemRegion in $Region) {
-									Process_Extract_New_Search -NewLanguage $itemRegion
-								}
-							}
-						}
-					} else {
-						$UI_Main_View_Detailed_Show.Text += "     $($lang.NoWork)`n"
-					}
-
-					$UI_Main_View_Detailed_Show.Text += "`n"
-				}
-			} else {
-				$UI_Main_View_Detailed_Show.Text += $lang.NoWork
-			}
-
-		} else {
-			$UI_Main_View_Detailed_Show.Text += $lang.NoWork
-		}
-	}
-
-	Function Process_Extract_New_Search
-	{
-		param
-		(
-			$NewLanguage
-		)
-
-		$Verify_Install_Path = Get_Zip -Run "7z.exe"
-
-		<#
-			.转换变量
-		#>
-		$NewArch  = $Global:Architecture
-		$NewArchC = $Global:Architecture.Replace("AMD64", "x64")
-
-		$Language_Repair_FileList = @(
-			"arunres.dll.mui"
-			"spwizres.dll.mui"
-			"w32uires.dll.mui"
-		)
-
-		$SearchNewStructure = $item.Structure.Replace("{ARCH}", $NewArch).Replace("{ARCHC}", $NewArchC).Replace("{Lang}", $NewLanguage)
-		$SearchNewFileName  = $item.Match.Replace("{ARCH}", $NewArch).Replace("{ARCHC}", $NewArchC).Replace("{Lang}", $NewLanguage)
-		$SearchNewPath = $item.Path.Replace("{ARCH}", $NewArch).Replace("{ARCHC}", $NewArchC).Replace("{Lang}", $NewLanguage)
-		$UI_Main_View_Detailed_Show.Text += "     $($SearchNewFileName)`n"
-
-		Get-CimInstance -Class Win32_LogicalDisk -ErrorAction SilentlyContinue | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | ForEach-Object {
-			$TempFileFullName = "$($SearchNewStructure)\$($SearchNewFileName)"
-			$SearchTempFile = Join-Path -Path $_.DeviceID -ChildPath $TempFileFullName
-		
-			if (Test-Path -Path $SearchTempFile -PathType Leaf) {
-				$UI_Main_View_Detailed_Show.Text += "         $($SearchTempFile)"
-
-				<#
-					.判断 7z
-				#>
-				if (Test-Path -Path $Verify_Install_Path -PathType leaf) {
-					$UI_Main_View_Detailed_Show.Text += "     $($UpdateUnpacking)"
-
-					Check_Folder -chkpath "$($CopyTo)\$($NewLanguage)"
-
-					$arguments = @(
-						"e",
-						"-y",
-						"""$($SearchTempFile)""",
-						"-o""$($CopyTo)\$($NewLanguage)""",
-						"""$($SearchNewPath)\*.*"""
-					)
-
-					Start-Process -FilePath $Verify_Install_Path -argument $arguments -Wait -WindowStyle Hidden
-
-					$UI_Main_View_Detailed_Show.Text += "     $($lang.Done)`n"
-
-					ForEach ($itemCheckRepir in $Language_Repair_FileList) {
-						$NewRepairFullPath = "$($CopyTo)\$($NewLanguage)\$($itemCheckRepir)"
-						$UI_Main_View_Detailed_Show.Text += "             $($itemCheckRepir)"
-
-						if (Test-Path -Path $NewRepairFullPath -PathType leaf) {
-							$UI_Main_View_Detailed_Show.Text += "     $($lang.Done)`n"
-						} else {
-							$UI_Main_View_Detailed_Show.Text += "     $($lang.MatchMode), $($lang.Failed)`n"
-						}
-					}
-				} else {
-					Write-Host "  $($lang.ZipStatus)`n" -ForegroundColor Green
-				}
-				$UI_Main_View_Detailed_Show.Text += "`n"
-			
-				return
-			}
-		}
-	}
-
 	Function Language_Extract_Add_Duplication
 	{
 		param
@@ -1483,51 +1305,6 @@ Function Language_Extract_UI
 		}
 	}
 
-	$UI_Main_Extract_Adv = New-Object System.Windows.Forms.Label -Property @{
-		Height         = 30
-		Width          = 437
-		Location       = '620,185'
-		Text           = $lang.AdvOption
-	}
-	<#
-		.提取：自动修复安装程序缺少项：已挂载
-	#>
-	$UI_Main_Extract_Repair = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Height         = 36
-		Width          = 280
-		Location       = "620,215"
-		Text           = $lang.Setup_Fix_Missing_Extract
-		add_Click      = {
-			if ($UI_Main_Extract_Rule_Only_And_Full.Checked) {
-				if (Extract_Language_Check_Customize -RuleNaming -SelectWIM -FolderName -SavePath -SelectLanguage) {
-					Language_Extract_Add_Reair
-				}
-			} else {
-				if (Extract_Language_Check_Customize -RuleNaming -SelectWIM -FolderName -SavePath) {
-					Language_Extract_Add_Reair
-				}
-			}
-		}
-	}
-	$UI_Main_Extract_Rule_Only_And_Full = New-Object System.Windows.Forms.CheckBox -Property @{
-		Height         = 40
-		Width          = 280
-		Location       = "620,260"
-		Text           = $lang.Extract_Rule_Only_And_Full
-		Checked        = $True
-		add_Click      = {
-			$UI_Main_Error.Text = ""
-			$UI_Main_Error_Icon.Image = $null
-		}
-	}
-	$UI_Main_Extract_Repair_Tips = New-Object system.Windows.Forms.Label -Property @{
-		Height         = 100
-		Width          = 265
-		Location       = "635,300"
-		Text           = $lang.Setup_Fix_Missing_Extract_Tips
-	}
-
 	$UI_Main_Extract_End_Wrap = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 20
 		Width          = 425
@@ -1564,10 +1341,6 @@ Function Language_Extract_UI
 		$UI_Main_Extract_Search,
 		$UI_Main_Extract_Import,
 		$UI_Main_Extract_View,
-		$UI_Main_Extract_Adv,
-		$UI_Main_Extract_Repair,
-		$UI_Main_Extract_Rule_Only_And_Full,
-		$UI_Main_Extract_Repair_Tips,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
 		$UI_Main_Canel
@@ -2198,15 +1971,6 @@ Function Language_Extract_UI
 		Write-Host "  $($lang.LanguageExtract): " -NoNewline -ForegroundColor Yellow
 
 		<#
-			.提取：仅提取已选语言
-		#>
-		if ($Autopilot.Missing.OnlySelectRegion) {
-			$UI_Main_Extract_Rule_Only_And_Full.Checked = $true
-		} else {
-			$UI_Main_Extract_Rule_Only_And_Full.Checked = $False
-		}
-
-		<#
 			.关闭跳过 en-US 选项，防止自动提取时过滤
 		#>
 		if ($Autopilot.NoExtractEnglish) {
@@ -2315,23 +2079,6 @@ Function Language_Extract_UI
 
 			ForEach ($item in $Script:TempSelectLXPsLanguage) {
 				Language_Extract_Add_Refresh -NewLanguage $item -Mode "Import" -NewUid $Script:Select_WIM_Scheme -SaveTo $Script:MarkCheckSelectAddDelDefault
-			}
-
-			<#
-				.提取：自动修复安装程序缺少项：已挂载
-			#>
-			if ($Autopilot.Missing.IsMissing) {
-				if ($UI_Main_Extract_Rule_Only_And_Full.Checked) {
-					if (Extract_Language_Check_Customize -RuleNaming -SelectWIM -FolderName -SavePath -SelectLanguage) {
-						Language_Extract_Add_Reair
-					}
-				} else {
-					if (Extract_Language_Check_Customize -RuleNaming -SelectWIM -FolderName -SavePath) {
-						Language_Extract_Add_Reair
-					}
-				}
-			} else {
-
 			}
 
 			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White

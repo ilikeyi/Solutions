@@ -158,14 +158,9 @@
 	OnlyLangCleanup                 = Καθαρά στοιχεία: ετικέτα ανά γλώσσα
 	Matched_Component_Names         = Αντιστοιχισμένο όνομα στοιχείου:
 	BootProcess                     = Κατά την επεξεργασία του {0}.wim
-	Extract_Rule_Only_And_Full      = Εξαγωγή μόνο επιλεγμένων γλωσσών
 	Sync_Language_To                = Συγχρονισμός με
 	BootSyncToISO                   = Συγχρονίστε τα πακέτα γλωσσών με το πρόγραμμα εγκατάστασης
 	BootSyncToISOTips               = Το εγκατεστημένο πακέτο γλώσσας της εικόνας εκτός σύνδεσης συγχρονίζεται με το πρόγραμμα εγκατάστασης ISO.
-	Setup_Fix_Missing               = Αυτόματη διόρθωση στοιχείων εγκατάστασης που λείπουν
-	Setup_Fix_Missing_Tips          = Εάν λείπει το πρόγραμμα εγκατάστασης arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui, ανοίξτε το "Extract", επιλέξτε "Rules" και κάντε κλικ στο "Extract Installer Missing Items".
-	Setup_Fix_Missing_Extract       = Εξαγωγή στοιχείων που λείπουν από το πρόγραμμα εγκατάστασης
-	Setup_Fix_Missing_Extract_Tips  = Εξαγάγετε τα στοιχεία που λείπουν από το πρόγραμμα εγκατάστασης από όλα τα πακέτα τοπικών γλωσσών: arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui.
 	LangIni                         = Αναγέννηση Lang.ini
 	LangIniTips                     = Αφού ολοκληρωθεί ο συγχρονισμός, το Lang.ini στο ISO πρέπει να ξαναδημιουργηθεί.
 	LangNewAutoSelect               = Αυτόματη επιλογή προτεινόμενων στοιχείων όταν συμβαίνει ένα συμβάν

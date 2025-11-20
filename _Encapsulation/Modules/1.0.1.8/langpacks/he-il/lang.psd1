@@ -158,14 +158,9 @@
 	OnlyLangCleanup                 = רכיבים נקיים: תג לפי שפה
 	Matched_Component_Names         = שם רכיב תואם:
 	BootProcess                     = בעת עיבוד {0}.wim
-	Extract_Rule_Only_And_Full      = חלץ רק שפות נבחרות
 	Sync_Language_To                = סנכרן עם
 	BootSyncToISO                   = סנכרן חבילות שפה למתקין
 	BootSyncToISOTips               = ערכת השפה המותקנת של התמונה הלא מקוונת מסונכרנת למתקין ISO.
-	Setup_Fix_Missing               = תקן אוטומטית פריטי התקנה חסרים
-	Setup_Fix_Missing_Tips          = אם לתוכנית ההתקנה חסר arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui, פתח את "חלץ", בחר "כללים" ולחץ על "חלץ פריטים חסרים של מתקין".
-	Setup_Fix_Missing_Extract       = חלץ פריטים חסרים במתקין
-	Setup_Fix_Missing_Extract_Tips  = חלץ את הפריטים החסרים של המתקין מכל חבילות השפה המקומיות: arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui.
 	LangIni                         = צור מחדש את Lang.ini
 	LangIniTips                     = לאחר השלמת הסנכרון, יש לבנות מחדש את Lang.ini ב-ISO.
 	LangNewAutoSelect               = בחר אוטומטית פריטים מוצעים כאשר מתרחש אירוע

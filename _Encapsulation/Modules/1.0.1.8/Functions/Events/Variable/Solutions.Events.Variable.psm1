@@ -483,11 +483,6 @@ Function Event_Need_Mount_Global_Variable
 		New-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Master)_$($ImageFileName)" -Value $True -Force
 
 	<#
-		.自动修复安装程序缺少项：已挂载
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Setup_Fix_Missing_$($Master)_$($ImageFileName)" -Value $False -Force
-
-	<#
 		.同步语言包到安装程序
 	#>
 	New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Master)_$($ImageFileName)" -Value $False -Force

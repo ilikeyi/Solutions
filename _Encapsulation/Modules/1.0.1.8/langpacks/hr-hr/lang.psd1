@@ -158,14 +158,9 @@
 	OnlyLangCleanup                 = Čiste komponente: oznaka prema jeziku
 	Matched_Component_Names         = Podudarni naziv komponente:
 	BootProcess                     = Prilikom obrade {0}.wim
-	Extract_Rule_Only_And_Full      = Ekstrahirajte samo odabrane jezike
 	Sync_Language_To                = Sinkronizacija s
 	BootSyncToISO                   = Sinkronizirajte jezične pakete s programom za instalaciju
 	BootSyncToISOTips               = Instalirani jezični paket izvanmrežne slike sinkroniziran je s ISO instalacijskim programom.
-	Setup_Fix_Missing               = Automatski popravi stavke programa za instalaciju koje nedostaju
-	Setup_Fix_Missing_Tips          = Ako instalacijskom programu nedostaje arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui, otvorite "Extract", odaberite "Rules" i kliknite "Extract Installer Missing Items".
-	Setup_Fix_Missing_Extract       = Izdvojite stavke programa za instalaciju koje nedostaju
-	Setup_Fix_Missing_Extract_Tips  = Izdvojite stavke koje nedostaju u instalacijskom programu iz svih lokalnih jezičnih paketa: arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui.
 	LangIni                         = Regeneriraj Lang.ini
 	LangIniTips                     = Nakon dovršetka sinkronizacije potrebno je ponovno izgraditi Lang.ini u ISO.
 	LangNewAutoSelect               = Automatski odaberite predložene stavke kada se dogodi događaj

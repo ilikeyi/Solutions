@@ -158,14 +158,9 @@
 	OnlyLangCleanup                 = Tīri komponenti: atzīmējiet pēc valodas
 	Matched_Component_Names         = Atbilstošs komponenta nosaukums:
 	BootProcess                     = Apstrādājot failu {0}.wim
-	Extract_Rule_Only_And_Full      = Izvilkt tikai atlasītās valodas
 	Sync_Language_To                = Sinhronizēt ar
 	BootSyncToISO                   = Sinhronizējiet valodu pakotnes ar instalētāju
 	BootSyncToISOTips               = Bezsaistes attēla instalētā valodas pakotne tiek sinhronizēta ar ISO instalēšanas programmu.
-	Setup_Fix_Missing               = Automātiski labojiet trūkstošos instalēšanas vienumus
-	Setup_Fix_Missing_Tips          = Ja instalēšanas programmā trūkst arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui, atveriet "Extract", atlasiet "Rules" un noklikšķiniet uz "Extract Installer Missing Items".
-	Setup_Fix_Missing_Extract       = Izvilkt instalētāja trūkstošos vienumus
-	Setup_Fix_Missing_Extract_Tips  = Izņemiet instalētāja trūkstošos vienumus no visām vietējo valodu pakotnēm: arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui.
 	LangIni                         = Atjaunot Lang.ini
 	LangIniTips                     = Kad sinhronizācija ir pabeigta, ISO ir jāpārveido Lang.ini.
 	LangNewAutoSelect               = Automātiski atlasīt ieteiktos vienumus, kad notiek notikums

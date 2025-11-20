@@ -58,9 +58,6 @@ Function Language_Add_UI
 					$UI_Main_Lang_Sync_To_Sources.Checked = $True
 					$UI_Main_Lang_Sync_To_Sources.Enabled = $True
 
-					$UI_Main_Setup_Fix_Missing.Checked = $True
-					$UI_Main_Setup_Fix_Missing.Enabled = $True
-
 					$UI_Main_Language_Ini_Rebuild.Checked = $True
 					$UI_Main_Language_Ini_Rebuild.Enabled = $True
 				} else {
@@ -71,7 +68,6 @@ Function Language_Add_UI
 			}
 		} else {
 			New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-			New-Variable -Scope global -Name "Queue_Is_Setup_Fix_Missing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 			New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 			$UI_Main_Extract_Tips.Text = ""
 		}
@@ -134,16 +130,6 @@ Function Language_Add_UI
 			}
 
 			<#
-				.自动修复安装程序缺少项：已挂载
-			#>
-			New-Variable -Scope global -Name "Queue_Is_Setup_Fix_Missing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-			if ($UI_Main_Setup_Fix_Missing.Enabled) {
-				if ($UI_Main_Setup_Fix_Missing.Checked) {
-					New-Variable -Scope global -Name "Queue_Is_Setup_Fix_Missing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-				}
-			}
-
-			<#
 				.同步语言包到安装程序
 			#>
 			New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
@@ -197,7 +183,6 @@ Function Language_Add_UI
 		New-Variable -Scope global -Name "Queue_Is_Language_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 		New-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
 		New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Setup_Fix_Missing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 		New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
 
 		Refres_Event_Tasks_Language_Add_UI
@@ -1218,32 +1203,6 @@ Function Language_Add_UI
 	}
 
 	<#
-		.自动修复安装程序缺少项：已挂载
-	#>
-	$UI_Main_Setup_Fix_Missing = New-Object System.Windows.Forms.CheckBox -Property @{
-		Height         = 40
-		Width          = 530
-		Padding        = "35,0,0,0"
-		Text           = "$($lang.Setup_Fix_Missing): $($lang.Mounted)"
-		Enabled        = $False
-		add_Click      = {
-			$UI_Main_Error.Text = ""
-			$UI_Main_Error_Icon.Image = $null
-
-			if ($UI_Main_Setup_Fix_Missing.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_Setup_Fix_Missing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-			} else {
-				New-Variable -Scope global -Name "Queue_Is_Setup_Fix_Missing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-			}
-		}
-	}
-	$UI_Main_Setup_Fix_Missing_Tips = New-Object system.Windows.Forms.Label -Property @{
-		AutoSize       = 1
-		Padding        = "50,0,0,0"
-		Text           = $lang.Setup_Fix_Missing_Tips
-	}
-
-	<#
 		.同步语言包到安装程序
 	#>
 	$UI_Main_Lang_Sync_To_Sources = New-Object System.Windows.Forms.CheckBox -Property @{
@@ -1637,8 +1596,6 @@ Function Language_Add_UI
 		#>
 		$UI_Main_Find_Boot_Mount,
 		$UI_Main_Auto_Sync_Suggestions,
-		$UI_Main_Setup_Fix_Missing,
-		$UI_Main_Setup_Fix_Missing_Tips,
 		$UI_Main_Lang_Sync_To_Sources,
 		$UI_Main_Lang_Sync_To_Sources_Tips,
 		$UI_Main_Language_Ini_Rebuild,
@@ -1754,16 +1711,6 @@ Function Language_Add_UI
 		}
 
 		<#
-			.自动修复安装程序缺少项：已挂载
-		#>
-		$UI_Main_Setup_Fix_Missing.Enabled = $True
-		if ((Get-Variable -Scope global -Name "Queue_Is_Setup_Fix_Missing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-			$UI_Main_Setup_Fix_Missing.Checked = $True
-		} else {
-			$UI_Main_Setup_Fix_Missing.Checked = $False
-		}
-
-		<#
 			.重建 Lang.ini
 		#>
 		$UI_Main_Language_Ini_Rebuild.Enabled = $True
@@ -1777,8 +1724,6 @@ Function Language_Add_UI
 		$UI_Main_Auto_Sync_Suggestions.Enabled = $False
 		$UI_Main_Lang_Sync_To_Sources.Checked = $False
 		$UI_Main_Lang_Sync_To_Sources.Enabled = $False
-		$UI_Main_Setup_Fix_Missing.Checked = $False
-		$UI_Main_Setup_Fix_Missing.Enabled = $False
 		$UI_Main_Language_Ini_Rebuild.Checked = $False
 		$UI_Main_Language_Ini_Rebuild.Enabled = $False
 	}
@@ -1958,15 +1903,6 @@ Function Language_Add_UI
 			<#
 				.遇到 boot.wim 时
 			#>
-				<#
-					.自动修复安装程序缺少项：已挂载
-				#>
-				if ($Autopilot.Adv.SetupFixMissing) {
-					$UI_Main_Setup_Fix_Missing.Checked = $true
-				} else {
-					$UI_Main_Setup_Fix_Missing.Checked = $False
-				}
-
 				<#
 					.同步语言包到安装程序
 				#>

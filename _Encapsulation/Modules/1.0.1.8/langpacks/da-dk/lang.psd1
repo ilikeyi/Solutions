@@ -158,14 +158,9 @@
 	OnlyLangCleanup                 = Rengør komponenter: tag efter sprog
 	Matched_Component_Names         = Matchet komponentnavn:
 	BootProcess                     = Ved behandling af {0}.wim
-	Extract_Rule_Only_And_Full      = Uddrag kun udvalgte sprog
 	Sync_Language_To                = Synkroniser til
 	BootSyncToISO                   = Synkroniser sprogpakker til installationsprogrammet
 	BootSyncToISOTips               = Den installerede sprogpakke af offlinebilledet synkroniseres med ISO-installationsprogrammet.
-	Setup_Fix_Missing               = Reparer automatisk manglende installationselementer
-	Setup_Fix_Missing_Tips          = Hvis installationsprogrammet mangler arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui, åbn "Udpak", vælg "Regler", og klik på "Udtræk Installer Missing Items".
-	Setup_Fix_Missing_Extract       = Udpak manglende elementer i installationsprogrammet
-	Setup_Fix_Missing_Extract_Tips  = Udpak de manglende elementer fra installationsprogrammet fra alle lokale sprogpakker: arunres.dll.mui, spwizres.dll.mui, w32uires.dll.mui.
 	LangIni                         = Gendan Lang.ini
 	LangIniTips                     = Efter synkroniseringen er gennemført, skal Lang.ini i ISO'en genopbygges.
 	LangNewAutoSelect               = Vælg automatisk foreslåede elementer, når en hændelse indtræffer
