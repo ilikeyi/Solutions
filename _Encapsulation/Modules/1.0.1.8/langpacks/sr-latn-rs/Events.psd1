@@ -22,6 +22,7 @@
 	EventManagerClear               = Обришите све догађаје
 	EventManagerCurrentClear        = Обришите сачуване задатке
 	AfterFinishingNotExecuted       = Када је задатак или догађај доступан
+	AfterFinishCleanupTemp          = Дозволи чишћење привремених датотека Temp
 	AfterFinishingNoProcess         = Није обрађено
 	AfterFinishingPause             = Пауза
 	AfterFinishingReboot            = Поново покрените рачунар

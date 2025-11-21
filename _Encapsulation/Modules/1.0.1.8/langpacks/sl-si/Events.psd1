@@ -22,6 +22,7 @@
 	EventManagerClear               = Počisti vse dogodke
 	EventManagerCurrentClear        = Počisti shranjena opravila
 	AfterFinishingNotExecuted       = Ko je naloga ali dogodek na voljo
+	AfterFinishCleanupTemp          = Dovoli čiščenje začasnih datotek Temp
 	AfterFinishingNoProcess         = Ni obdelano
 	AfterFinishingPause             = Premor
 	AfterFinishingReboot            = Znova zaženite računalnik

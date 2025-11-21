@@ -22,6 +22,7 @@
 	EventManagerClear               = Fjern alle hendelser
 	EventManagerCurrentClear        = Fjern lagrede oppgaver
 	AfterFinishingNotExecuted       = Når en oppgave eller hendelse er tilgjengelig
+	AfterFinishCleanupTemp          = Tillat opprydding av midlertidige filer i Temp format
 	AfterFinishingNoProcess         = Ikke behandlet
 	AfterFinishingPause             = Pause
 	AfterFinishingReboot            = Start datamaskinen på nytt

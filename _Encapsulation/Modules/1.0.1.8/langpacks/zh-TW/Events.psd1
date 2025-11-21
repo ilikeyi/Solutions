@@ -22,6 +22,7 @@
 	EventManagerClear               = 清除所有事件
 	EventManagerCurrentClear        = 清除已儲存的任務
 	AfterFinishingNotExecuted       = 有可用任務或事件時
+	AfterFinishCleanupTemp          = 允許清理 Temp 臨時文件
 	AfterFinishingNoProcess         = 不处理
 	AfterFinishingPause             = 暫停
 	AfterFinishingReboot            = 重啟計算機

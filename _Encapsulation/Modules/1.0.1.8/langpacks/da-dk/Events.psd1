@@ -22,6 +22,7 @@
 	EventManagerClear               = Ryd alle hændelser
 	EventManagerCurrentClear        = Ryd gemte opgaver
 	AfterFinishingNotExecuted       = Når en opgave eller begivenhed er tilgængelig
+	AfterFinishCleanupTemp          = Tillad oprydning af Temp midlertidige filer
 	AfterFinishingNoProcess         = Ikke behandlet
 	AfterFinishingPause             = Pause
 	AfterFinishingReboot            = Genstart computeren

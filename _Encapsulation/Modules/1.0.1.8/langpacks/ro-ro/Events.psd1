@@ -22,6 +22,7 @@
 	EventManagerClear               = Ștergeți toate evenimentele
 	EventManagerCurrentClear        = Ștergeți sarcinile salvate
 	AfterFinishingNotExecuted       = Când o sarcină sau un eveniment este disponibil
+	AfterFinishCleanupTemp          = Permite curățarea fișierelor temporare Temp
 	AfterFinishingNoProcess         = Nu este procesat
 	AfterFinishingPause             = Pauză
 	AfterFinishingReboot            = Reporniți computerul

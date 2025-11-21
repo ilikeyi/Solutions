@@ -22,6 +22,7 @@
 	EventManagerClear               = Minden esemény törlése
 	EventManagerCurrentClear        = Mentett feladatok törlése
 	AfterFinishingNotExecuted       = Amikor egy feladat vagy esemény elérhető
+	AfterFinishCleanupTemp          = Temp ideiglenes fájlok törlésének engedélyezése
 	AfterFinishingNoProcess         = Nincs feldolgozva
 	AfterFinishingPause             = Szünet
 	AfterFinishingReboot            = Indítsa újra a számítógépet

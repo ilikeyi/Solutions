@@ -22,6 +22,7 @@
 	EventManagerClear               = Cancella tutti gli eventi
 	EventManagerCurrentClear        = Cancella le attività salvate
 	AfterFinishingNotExecuted       = Quando un'attività o un evento è disponibile
+	AfterFinishCleanupTemp          = Consenti la pulizia dei file temporanei "Temp"
 	AfterFinishingNoProcess         = Non elaborato
 	AfterFinishingPause             = Pausa
 	AfterFinishingReboot            = Riavviare il computer

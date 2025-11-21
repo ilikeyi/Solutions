@@ -22,6 +22,7 @@
 	EventManagerClear               = Εκκαθάριση όλων των συμβάντων
 	EventManagerCurrentClear        = Εκκαθάριση αποθηκευμένων εργασιών
 	AfterFinishingNotExecuted       = Όταν μια εργασία ή μια εκδήλωση είναι διαθέσιμη
+	AfterFinishCleanupTemp          = Επιτρέπεται ο καθαρισμός προσωρινών αρχείων Temp
 	AfterFinishingNoProcess         = Δεν έχει υποστεί επεξεργασία
 	AfterFinishingPause             = Παύση
 	AfterFinishingReboot            = Κάντε επανεκκίνηση του υπολογιστή

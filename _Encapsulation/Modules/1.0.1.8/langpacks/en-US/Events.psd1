@@ -22,6 +22,7 @@
 	EventManagerClear               = Clear all events
 	EventManagerCurrentClear        = Clear saved tasks
 	AfterFinishingNotExecuted       = When a task or event is available
+	AfterFinishCleanupTemp          = Allow cleaning up temporary files
 	AfterFinishingNoProcess         = Not processed
 	AfterFinishingPause             = Pause
 	AfterFinishingReboot            = Restart computer

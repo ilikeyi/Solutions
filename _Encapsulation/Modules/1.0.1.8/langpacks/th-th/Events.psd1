@@ -22,6 +22,7 @@
 	EventManagerClear               = ล้างเหตุการณ์ทั้งหมด
 	EventManagerCurrentClear        = ล้างงานที่บันทึกไว้
 	AfterFinishingNotExecuted       = เมื่อมีงานหรือเหตุการณ์เกิดขึ้น
+	AfterFinishCleanupTemp          = อนุญาตให้ล้างไฟล์ชั่วคราว Temp
 	AfterFinishingNoProcess         = ไม่ได้รับการประมวลผล
 	AfterFinishingPause             = หยุดชั่วคราว
 	AfterFinishingReboot            = รีสตาร์ทคอมพิวเตอร์

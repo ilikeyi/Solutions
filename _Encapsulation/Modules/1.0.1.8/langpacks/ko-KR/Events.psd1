@@ -22,6 +22,7 @@
 	EventManagerClear               = 모든 이벤트 지우기
 	EventManagerCurrentClear        = 저장된 작업 지우기
 	AfterFinishingNotExecuted       = 작업 또는 이벤트를 사용할 수 있는 경우
+	AfterFinishCleanupTemp          = Temp 임시 파일 정리 허용
 	AfterFinishingNoProcess         = 진행되지 않았다
 	AfterFinishingPause             = 정지시키다
 	AfterFinishingReboot            = 컴퓨터를 다시 시작

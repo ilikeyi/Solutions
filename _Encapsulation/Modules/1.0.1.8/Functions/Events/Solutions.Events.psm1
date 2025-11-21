@@ -733,6 +733,7 @@ Function Event_Track
 		Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -name "Time" -value $(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt") -String
 
 		Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -name "AfterFinishing" -value "Pause" -String
+		Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -name "IsCleanupTemp" -value "False" -String
 	}
 
 	if ($Del) {
@@ -904,5 +905,6 @@ Function Init_Canel_Event
 			.初始化：完成后事件
 		#>
 		Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -name "AfterFinishing" -value "Pause" -String
+		Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -name "IsCleanupTemp" -value "False" -String
 	}
 }

@@ -22,6 +22,7 @@
 	EventManagerClear               = Wis alle evenementen
 	EventManagerCurrentClear        = Wis opgeslagen taken
 	AfterFinishingNotExecuted       = Wanneer een taak of gebeurtenis beschikbaar is
+	AfterFinishCleanupTemp          = Opschonen van tijdelijke Temp bestanden toestaan
 	AfterFinishingNoProcess         = Niet verwerkt
 	AfterFinishingPause             = Pauze
 	AfterFinishingReboot            = Start de computer opnieuw op

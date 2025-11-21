@@ -22,6 +22,7 @@
 	EventManagerClear               = Notīrīt visus notikumus
 	EventManagerCurrentClear        = Notīrīt saglabātos uzdevumus
 	AfterFinishingNotExecuted       = Kad uzdevums vai notikums ir pieejams
+	AfterFinishCleanupTemp          = Atļaut pagaidu failu Temp tīrīšanu
 	AfterFinishingNoProcess         = Nav apstrādāts
 	AfterFinishingPause             = Pauze
 	AfterFinishingReboot            = Restartējiet datoru

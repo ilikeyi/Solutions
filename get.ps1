@@ -3046,6 +3046,8 @@ Function Safety_Warnings
 	if ($Enabled) {
 		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		Remove-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Associations" -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
+
+		RestartExplorer
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 
@@ -3053,9 +3055,21 @@ Function Safety_Warnings
 		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		if ((Test-Path -LiteralPath "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Associations") -ne $true) { New-Item "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Associations" -force -ErrorAction SilentlyContinue | Out-Null }
 		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Associations' -Name 'LowRiskFileTypes' -Value $SafetyWarningsExclude -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
+
+		RestartExplorer
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
 } 
+
+Function RestartExplorer
+{
+	Stop-Process -ProcessName explorer -force -ErrorAction SilentlyContinue
+	Start-Sleep 5
+	$Running = Get-Process explorer -ErrorAction SilentlyContinue
+	if (-not ($Running)) {
+		Start-Process "explorer.exe"
+	}
+}
 
 <#
 	.Dynamic save function

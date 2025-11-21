@@ -22,6 +22,7 @@
 	EventManagerClear               = Vymazat všechny události
 	EventManagerCurrentClear        = Vymazat uložené úkoly
 	AfterFinishingNotExecuted       = Když je k dispozici úkol nebo událost
+	AfterFinishCleanupTemp          = Povolit čištění dočasných souborů Temp
 	AfterFinishingNoProcess         = Nezpracováno
 	AfterFinishingPause             = Pauza
 	AfterFinishingReboot            = Restartujte počítač

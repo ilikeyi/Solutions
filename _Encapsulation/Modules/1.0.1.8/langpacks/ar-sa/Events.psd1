@@ -22,6 +22,7 @@
 	EventManagerClear               = مسح كافة الأحداث
 	EventManagerCurrentClear        = مسح المهام المحفوظة
 	AfterFinishingNotExecuted       = عند توفر مهمة أو حدث
+	AfterFinishCleanupTemp          = السماح بتنظيف الملفات المؤقتة
 	AfterFinishingNoProcess         = لم تتم معالجتها
 	AfterFinishingPause             = يوقف
 	AfterFinishingReboot            = أعد تشغيل الكمبيوتر

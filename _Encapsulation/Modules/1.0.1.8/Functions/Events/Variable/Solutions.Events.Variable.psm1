@@ -67,6 +67,7 @@ Function Event_Reset_Variable
 		$EventMaps = "Queue"
 
 		Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -name "AfterFinishing" -value "NoProcess" -String
+		Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -name "IsCleanupTemp" -value "False" -String
 	}
 
 	if ($Global:EventQueueMode) {

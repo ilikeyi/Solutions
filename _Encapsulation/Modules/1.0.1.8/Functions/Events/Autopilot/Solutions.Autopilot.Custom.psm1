@@ -4745,10 +4745,10 @@ Function Image_Assign_Autopilot_Master
 			#>
 			Write-Host "`n  $($lang.LanguageExtractAddTo): $($lang.AfterFinishingNotExecuted)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			if ([string]::IsNullOrEmpty($Autopilot.Deploy.IsEvent.Finish)) {
+			if ([string]::IsNullOrEmpty($Autopilot.Deploy.IsEvent.AfterCompletion)) {
 				Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 			} else {
-				Event_Completion_Setting_UI -Autopilot $Autopilot.Deploy.IsEvent.Finish
+				Event_Completion_Setting_UI -Autopilot $Autopilot.Deploy.IsEvent.AfterCompletion
 			}
 			#endregion
 

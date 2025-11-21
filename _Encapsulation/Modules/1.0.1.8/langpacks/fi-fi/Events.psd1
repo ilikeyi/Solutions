@@ -22,6 +22,7 @@
 	EventManagerClear               = Tyhjennä kaikki tapahtumat
 	EventManagerCurrentClear        = Tyhjennä tallennetut tehtävät
 	AfterFinishingNotExecuted       = Kun tehtävä tai tapahtuma on käytettävissä
+	AfterFinishCleanupTemp          = Salli väliaikaisten tiedostojen Temp tyhjentäminen
 	AfterFinishingNoProcess         = Ei käsitelty
 	AfterFinishingPause             = Tauko
 	AfterFinishingReboot            = Käynnistä tietokone uudelleen

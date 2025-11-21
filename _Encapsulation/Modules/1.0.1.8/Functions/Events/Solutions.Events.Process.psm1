@@ -935,11 +935,17 @@ Function Event_Process_Task_Need_Mount
 			Write-Host "  $('-' * 80)`n"
 		}
 
+		$arguments = @(
+			"/Image:""$($test_mount_Sources)""",
+			"/cleanup-image",
+			"/StartComponentCleanup",
+			"/ResetBase"
+		)
+
+		Start-Process -FilePath "Dism.exe" -ArgumentList $Arguments -Wait -NoNewWindow
+
 		Write-Host "  " -NoNewline
 		Write-Host " $($lang.Running) " -NoNewline -BackgroundColor White -ForegroundColor Black
-
-		Dism /Image:""$($test_mount_Sources)"" /cleanup-image /StartComponentCleanup /ResetBase
-
 		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
 		$Script:CuringUpdateTasksTime.Stop()
@@ -1141,6 +1147,7 @@ Function Event_Process_Task_Need_Mount
 					.重置：完成后事件
 				#>
 				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -name "AfterFinishing" -value "NoProcess" -String
+				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -name "IsCleanupTemp" -value "False" -String
 
 				<#
 					.清空所有任务

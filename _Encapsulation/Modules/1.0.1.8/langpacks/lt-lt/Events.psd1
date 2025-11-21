@@ -22,6 +22,7 @@
 	EventManagerClear               = Išvalyti visus įvykius
 	EventManagerCurrentClear        = Išvalyti išsaugotas užduotis
 	AfterFinishingNotExecuted       = Kai pasiekiama užduotis ar įvykis
+	AfterFinishCleanupTemp          = Leisti išvalyti Temp laikinuosius failus
 	AfterFinishingNoProcess         = Neapdorotas
 	AfterFinishingPause             = Pauzė
 	AfterFinishingReboot            = Iš naujo paleiskite kompiuterį

@@ -22,6 +22,7 @@
 	EventManagerClear               = Tüm etkinlikleri temizle
 	EventManagerCurrentClear        = Kaydedilen görevleri temizle
 	AfterFinishingNotExecuted       = Bir görev veya etkinlik mevcut olduğunda
+	AfterFinishCleanupTemp          = Temp geçici dosyalarının temizlenmesine izin ver
 	AfterFinishingNoProcess         = İşlenmedi
 	AfterFinishingPause             = Duraklatma
 	AfterFinishingReboot            = Bilgisayarı yeniden başlat

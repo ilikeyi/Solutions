@@ -22,6 +22,7 @@
 	EventManagerClear               = すべてのイベントをクリアします
 	EventManagerCurrentClear        = 保存したタスクをクリアする
 	AfterFinishingNotExecuted       = 使用可能なタスクまたはイベントがある場合
+	AfterFinishCleanupTemp          = Temp 一時ファイルの削除を許可する
 	AfterFinishingNoProcess         = 処理されていません
 	AfterFinishingPause             = 一時停止します
 	AfterFinishingReboot            = コンピュータを再起動します

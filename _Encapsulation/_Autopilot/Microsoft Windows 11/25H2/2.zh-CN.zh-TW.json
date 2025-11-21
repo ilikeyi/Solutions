@@ -824,7 +824,10 @@
 					"Minute": "1"
 				}
 			},
-			"Finish": "Pause"
+			"AfterCompletion": {
+				"IsCleanupTemp": true,
+				"Finish": "Pause"
+			}
 		}
 	}
 }

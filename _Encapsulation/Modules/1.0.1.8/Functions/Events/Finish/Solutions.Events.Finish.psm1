@@ -82,7 +82,7 @@ Function Event_Completion_Setting_UI
 	}
 	$UI_Main_After_Finishing = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
-		Height         = 625
+		Height         = 540
 		Width          = 280
 		autoSizeMode   = 1
 		Padding        = "15,0,0,0"
@@ -127,6 +127,21 @@ Function Event_Completion_Setting_UI
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
+		}
+	}
+
+	$UI_Main_Temp      = New-Object System.Windows.Forms.CheckBox -Property @{
+		Height         = 65
+		Width          = 280
+		Location       = '15,600'
+		Text           = $lang.AfterFinishCleanupTemp
+		Checked        = $True
+		add_Click      = {
+			if ($UI_Main_Temp.Checked) {
+				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -name "IsCleanupTemp" -value "True" -String
+			} else {
+				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -name "IsCleanupTemp" -value "False" -String
+			}
 		}
 	}
 
@@ -265,6 +280,7 @@ Function Event_Completion_Setting_UI
 		$UI_Main_Tips,
 		$UI_Main_Not_Executed,
 		$UI_Main_After_Finishing,
+		$UI_Main_Temp,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
 		$UI_Main_Save,
@@ -277,7 +293,6 @@ Function Event_Completion_Setting_UI
 		$UI_Main_After_Finishing_Reboot,
 		$UI_Main_After_Finishing_Shutdown
 	))
-
 
 	if ($Global:AutopilotMode) {
 		$EventMaps = "Queue"
@@ -355,6 +370,19 @@ Function Event_Completion_Setting_UI
 		$UI_Main_After_Finishing_Pause.Checked = $True
 	}
 
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -Name "IsCleanupTemp" -ErrorAction SilentlyContinue) {
+		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -Name "IsCleanupTemp" -ErrorAction SilentlyContinue) {
+			"True" {
+				$UI_Main_Temp.Checked = $True
+			}
+			"False" {
+				$UI_Main_Temp.Checked = $False
+			}
+		}
+	} else {
+		$UI_Main_Temp.Checked = $False
+	}
+
 	<#
 		.Allow open windows to be on top
 		.允许打开的窗口后置顶
@@ -371,7 +399,7 @@ Function Event_Completion_Setting_UI
 		Write-Host "  " -NoNewline
 		Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
 
-		switch ($Autopilot) {
+		switch ($Autopilot.Finish) {
 			"NoProcess" { $UI_Main_After_Finishing_NoProcess.Checked = $True }
 			"Pause" { $UI_Main_After_Finishing_Pause.Checked = $True }
 			"Reboot" { $UI_Main_After_Finishing_Reboot.Checked = $True }
@@ -379,6 +407,14 @@ Function Event_Completion_Setting_UI
 			default {
 				$UI_Main_After_Finishing_Pause.Checked = $True
 			}
+		}
+
+		if ($Autopilot.IsCleanupTemp) {
+			$UI_Main_Temp.Checked = $True
+			Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -name "IsCleanupTemp" -value "True" -String
+		} else {
+			$UI_Main_Temp.Checked = $False
+			Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -name "IsCleanupTemp" -value "False" -String
 		}
 
 		if (Autopilot_Event_Completion_Setting_UI_Save) {
@@ -413,6 +449,46 @@ Function Event_Completion_Process
 	if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
 		$EventMaps = "Assign"
 	}
+
+	Write-Host "`n  $($lang.AfterFinishCleanupTemp)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -Name "IsCleanupTemp" -ErrorAction SilentlyContinue) {
+		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -Name "IsCleanupTemp" -ErrorAction SilentlyContinue) {
+			"True" {
+				Write-Host "  $($lang.AfterFinishingNotExecuted)" -ForegroundColor Green
+
+				$TempPaths = @(
+					$env:Temp
+					"$($env:SystemRoot)\Logs\DISM"
+				)
+
+				foreach ($TempPath in $TempPaths) {
+					Write-Host "  $($TempPath)" -ForegroundColor Green
+				
+					if (Test-Path -Path $TempPath -PathType Container) {
+						Get-ChildItem -Path $TempPath -Recurse -Force | ForEach-Object {
+							try {
+								Remove-Item -Path $_.FullName -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
+							} catch {
+								Write-Host $_ -ForegroundColor Red
+							}
+						}
+
+						Remove-Item -Path $TempPath -Force -Recurse -ErrorAction SilentlyContinue | Out-Null
+					}
+				}
+
+				Write-Host "`n  $('-' * 80)"
+				Write-Host "  $($lang.Done)`n" -ForegroundColor Green
+			}
+			"False" {
+				Write-Host "  $($lang.AfterFinishingNoProcess)" -ForegroundColor Green
+			}
+		}
+	} else {
+		Write-Host "  $($lang.AfterFinishingNoProcess)" -ForegroundColor Green
+	}
+	Write-Host
 
 	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -Name "AfterFinishing" -ErrorAction SilentlyContinue) {
 		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Event\$($EventMaps)\$($Global:EventProcessGuid)" -Name "AfterFinishing" -ErrorAction SilentlyContinue) {

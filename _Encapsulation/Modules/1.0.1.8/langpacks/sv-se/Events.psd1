@@ -22,6 +22,7 @@
 	EventManagerClear               = Rensa alla händelser
 	EventManagerCurrentClear        = Rensa sparade uppgifter
 	AfterFinishingNotExecuted       = När en uppgift eller händelse är tillgänglig
+	AfterFinishCleanupTemp          = Tillåt rensning av temporära temporära filer
 	AfterFinishingNoProcess         = Ej bearbetad
 	AfterFinishingPause             = Paus
 	AfterFinishingReboot            = Starta om datorn

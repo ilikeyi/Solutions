@@ -2418,8 +2418,11 @@ Function Language_Rule_Add_group
 
 					Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 					Write-Host $Fonts.FileName -ForegroundColor Green
-					Write-Host "  $($lang.AddTo), $($lang.Done)`n" -ForegroundColor Green
 
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.AddTo) " -NoNewline -BackgroundColor White -ForegroundColor Black
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+					Write-Host
 					break
 				}
 			}
@@ -2427,7 +2430,12 @@ Function Language_Rule_Add_group
 			if ($Mark_Is_Match) {
 				Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 				Write-Host $Fonts.FileName -ForegroundColor Red
-				Write-Host "  $($lang.MatchMode), $($lang.Failed)`n" -ForegroundColor Red
+
+				Write-Host "  " -NoNewline
+				Write-Host " $($lang.MatchMode) " -NoNewline -BackgroundColor White -ForegroundColor Black
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+				Write-Host
+
 				$Script:Init_Exclude_File += $Fonts.FileName
 			}
 		}
@@ -2470,7 +2478,11 @@ Function Language_Rule_Add_group
 
 					Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 					Write-Host $Fonts.FileName -ForegroundColor Green
-					Write-Host "  $($lang.AddTo), $($lang.Done)`n" -ForegroundColor Green
+
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.AddTo) " -NoNewline -BackgroundColor White -ForegroundColor Black
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+					Write-Host
 					break
 				}
 			}
@@ -2478,7 +2490,12 @@ Function Language_Rule_Add_group
 			if ($Mark_Is_Match) {
 				Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 				Write-Host $Fonts.FileName -ForegroundColor Red
-				Write-Host "  $($lang.MatchMode), $($lang.Failed)`n" -ForegroundColor Red
+
+				Write-Host "  " -NoNewline
+				Write-Host " $($lang.MatchMode) " -NoNewline -BackgroundColor White -ForegroundColor Black
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+				Write-Host
+
 				$Script:Init_Exclude_File += $Fonts.FileName
 			}
 		}
@@ -2521,7 +2538,11 @@ Function Language_Rule_Add_group
 
 					Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 					Write-Host $Fonts.FileName -ForegroundColor Green
-					Write-Host "  $($lang.AddTo), $($lang.Done)`n" -ForegroundColor Green
+
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.AddTo) " -NoNewline -BackgroundColor White -ForegroundColor Black
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+					Write-Host
 					break
 				}
 			}
@@ -2529,7 +2550,12 @@ Function Language_Rule_Add_group
 			if ($Mark_Is_Match) {
 				Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 				Write-Host $Fonts.FileName -ForegroundColor Red
-				Write-Host "  $($lang.MatchMode), $($lang.Failed)`n" -ForegroundColor Red
+
+				Write-Host "  " -NoNewline
+				Write-Host " $($lang.MatchMode) " -NoNewline -BackgroundColor White -ForegroundColor Black
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+				Write-Host
+
 				$Script:Init_Exclude_File += $Fonts.FileName
 			}
 		}
@@ -2572,7 +2598,11 @@ Function Language_Rule_Add_group
 
 					Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 					Write-Host $Fonts.FileName -ForegroundColor Green
-					Write-Host "  $($lang.AddTo), $($lang.Done)`n" -ForegroundColor Green
+
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.AddTo) " -NoNewline -BackgroundColor White -ForegroundColor Black
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+					Write-Host
 					break
 				}
 			}
@@ -2580,7 +2610,12 @@ Function Language_Rule_Add_group
 			if ($Mark_Is_Match) {
 				Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 				Write-Host $Fonts.FileName -ForegroundColor Red
-				Write-Host "  $($lang.MatchMode), $($lang.Failed)`n" -ForegroundColor Red
+
+				Write-Host "  " -NoNewline
+				Write-Host " $($lang.MatchMode) " -NoNewline -BackgroundColor White -ForegroundColor Black
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+				Write-Host
+
 				$Script:Init_Exclude_File += $Fonts.FileName
 			}
 		}
@@ -2623,7 +2658,11 @@ Function Language_Rule_Add_group
 
 					Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 					Write-Host $Fonts.FileName -ForegroundColor Green
-					Write-Host "  $($lang.AddTo), $($lang.Done)`n" -ForegroundColor Green
+
+					Write-Host "  " -NoNewline
+					Write-Host " $($lang.AddTo) " -NoNewline -BackgroundColor White -ForegroundColor Black
+					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+					Write-Host
 					break
 				}
 			}
@@ -2631,7 +2670,12 @@ Function Language_Rule_Add_group
 			if ($Mark_Is_Match) {
 				Write-Host "  $($lang.LXPsWaitAdd): " -NoNewline
 				Write-Host $Fonts.FileName -ForegroundColor Red
-				Write-Host "  $($lang.MatchMode), $($lang.Failed)`n" -ForegroundColor Red
+
+				Write-Host "  " -NoNewline
+				Write-Host " $($lang.MatchMode) " -NoNewline -BackgroundColor White -ForegroundColor Black
+				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
+				Write-Host
+
 				$Script:Init_Exclude_File += $Fonts.FileName
 			}
 		}

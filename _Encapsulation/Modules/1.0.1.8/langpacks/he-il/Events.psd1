@@ -22,6 +22,7 @@
 	EventManagerClear               = נקה את כל האירועים
 	EventManagerCurrentClear        = נקה משימות שמורות
 	AfterFinishingNotExecuted       = כאשר משימה או אירוע זמינים
+	AfterFinishCleanupTemp          = אפשר ניקוי קבצים זמניים זמניים
 	AfterFinishingNoProcess         = לא מעובד
 	AfterFinishingPause             = הַפסָקָה
 	AfterFinishingReboot            = הפעל מחדש את המחשב

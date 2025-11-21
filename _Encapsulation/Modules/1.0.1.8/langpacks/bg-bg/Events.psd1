@@ -22,6 +22,7 @@
 	EventManagerClear               = Изчистване на всички събития
 	EventManagerCurrentClear        = Изчистване на запазените задачи
 	AfterFinishingNotExecuted       = Когато е налична задача или събитие
+	AfterFinishCleanupTemp          = Разрешаване на почистване на временни файлове с име Temp
 	AfterFinishingNoProcess         = Не се обработва
 	AfterFinishingPause             = Пауза
 	AfterFinishingReboot            = Рестартирайте компютъра

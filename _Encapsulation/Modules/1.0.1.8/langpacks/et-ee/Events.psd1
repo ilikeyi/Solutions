@@ -22,6 +22,7 @@
 	EventManagerClear               = Kustuta kõik sündmused
 	EventManagerCurrentClear        = Kustuta salvestatud ülesanded
 	AfterFinishingNotExecuted       = Kui ülesanne või sündmus on saadaval
+	AfterFinishCleanupTemp          = Luba ajutiste failide puhastamine
 	AfterFinishingNoProcess         = Ei töödeldud
 	AfterFinishingPause             = Paus
 	AfterFinishingReboot            = Taaskäivitage arvuti
