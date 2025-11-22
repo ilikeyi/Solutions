@@ -3477,15 +3477,12 @@ Function ISO_Create_UI
 
 			if ($Autopilot.WindowsCode.Code -eq "Auto") {
 				if ([string]::IsNullOrEmpty($GUIISOSelectManual_Select.Text)) {
-					$GUIISOSelectManual_Select.Items.Add($Autopilot.WindowsCode.InitialCode) | Out-Null
-					$GUIISOSelectManual_Select.Text = $Autopilot.WindowsCode.InitialCode
+					$GUIISOSelectManual_Select.Items.Add($Autopilot.WindowsCode.Code) | Out-Null
+					$GUIISOSelectManual_Select.Text = $Autopilot.WindowsCode.Code
 				}
 			} else {
-				if ([string]::IsNullOrEmpty($Autopilot.WindowsCode.InitialCode)) {
-				} else {
-					$GUIISOSelectManual_Select.Items.Add($Autopilot.WindowsCode.InitialCode) | Out-Null
-					$GUIISOSelectManual_Select.Text = $Autopilot.WindowsCode.InitialCode
-				}
+				$GUIISOSelectManual_Select.Items.Add($Autopilot.WindowsCode.Code) | Out-Null
+				$GUIISOSelectManual_Select.Text = $Autopilot.WindowsCode.Code
 			}
 
 			if ([string]::IsNullOrEmpty($GUIISOSelectManual_Select.Text)) {
