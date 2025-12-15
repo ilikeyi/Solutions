@@ -51,7 +51,7 @@ Function Image_Capture_UI
 				}
 			}
 		}
-	}	
+	}
 	$UI_Main           = New-Object system.Windows.Forms.Form -Property @{
 		autoScaleMode  = 2
 		Height         = 720

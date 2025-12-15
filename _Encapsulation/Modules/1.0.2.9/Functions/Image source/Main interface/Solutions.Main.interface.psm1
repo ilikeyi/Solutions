@@ -2166,6 +2166,7 @@ Function Image_Select
 				@{ Path = @("Language_Extract_UI");                Lang = "$($lang.Language): $($lang.LanguageExtract)"; }
 				@{ Path = @("Solutions");                          Lang = "$($lang.Solution): $($lang.IsCreate)"; }
 				@{ Path = @("Image_Convert");                      Lang = "$($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm)"; }
+				@{ Path = @("Menu_Shortcuts_Euwl");                Lang = $lang.Wim_Rule_Update; }
 				@{ Path = @("ISO_Create");                         Lang = $lang.UnpackISO; }
 			)
 			GroupPK = @(

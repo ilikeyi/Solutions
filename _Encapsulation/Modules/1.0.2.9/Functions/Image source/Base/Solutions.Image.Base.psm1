@@ -312,11 +312,11 @@ Function Image_Get_Mount_Status_New
 			}
 
 			If (([String]::IsNullOrEmpty($Shortcuts))) {
-				Write-Host " $($ImageName)".PadRight(8) -NoNewline -ForegroundColor Yellow
+				Write-Host " $($ImageName).$($Suffix)".PadRight(13) -NoNewline -ForegroundColor Yellow
 			} else {
 				Write-host " " -NoNewline
 				Write-Host " $($Shortcuts) " -NoNewline -BackgroundColor DarkBlue -ForegroundColor White
-				Write-Host " $($ImageName)".PadRight(8) -NoNewline -ForegroundColor Yellow
+				Write-Host " $($ImageName).$($Suffix)".PadRight(13) -NoNewline -ForegroundColor Yellow
 			}
 		}
 

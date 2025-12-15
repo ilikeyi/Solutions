@@ -7,8 +7,8 @@ Function Event_Reset_Suggest
 	$Global:EventProcessGuid = [guid]::NewGuid()
 
 	$GroupSuggest = @(
-		"Queue_Assign_Has_Been_Run"            # 分配已运行过的 UI
-		"Queue_Is_Mounted_Primary_Assign_Task" # 需要挂载项，主键
+		"Queue_Assign_Has_Been_Run"                  # 分配已运行过的 UI
+		"Queue_Is_Mounted_Primary_Assign_Task"       # 需要挂载项，主键
 		"Queue_Is_Mounted_Expand_Assign_Task"
 		"Queue_Is_Mounted_Expand_Assign_Task_Select"
 	)
@@ -31,8 +31,8 @@ Function Event_Reset_Suggest_Custom
 	)
 
 	$GroupSuggest = @(
-		"Queue_Assign_Has_Been_Run"            # 分配已运行过的 UI
-		"Queue_Is_Mounted_Primary_Assign_Task" # 需要挂载项，主键
+		"Queue_Assign_Has_Been_Run"                  # 分配已运行过的 UI
+		"Queue_Is_Mounted_Primary_Assign_Task"       # 需要挂载项，主键
 		"Queue_Is_Mounted_Expand_Assign_Task"
 		"Queue_Is_Mounted_Expand_Assign_Task_Select"
 	)
