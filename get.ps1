@@ -4148,6 +4148,7 @@ Function Installation_interface_UI
 	$SettingSafetyWarnings_Mask.controls.AddRange((
 		$SettingSafetyWarningsName,
 		$SettingSafetyWarnings_List,
+		$SettingSafetyWarnings_Error,
 		$SettingSafetyWarnings_Mask_OK,
 		$SettingSafetyWarnings_Mask_Canel
 	))
