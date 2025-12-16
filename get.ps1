@@ -63,7 +63,7 @@ param
 
 $Default_directory_name = "YiSolutions"
 $Script:SafetyWarningsExclude = @()
-$SafetyWarningsExcludeSuggest = @( "iso"; )
+$SafetyWarningsExcludeSuggest = @( "exe"; "reg"; "msi"; "bat"; "cmd"; "com"; "vbs"; "hta"; "scr"; "pif"; "js"; "iso"; )
 $SafetyWarningsExcludeFull = @( "exe"; "reg"; "msi"; "bat"; "cmd"; "com"; "vbs"; "hta"; "scr"; "pif"; "js"; "iso"; "zip"; "rar"; "nfo"; "htm"; "html"; )
 
 $Update_Server = @(
@@ -3071,13 +3071,15 @@ Function Save_Safety_Warnings
 	)
 
 	$NewGroup = @()
+	$NewGroupSave = ""
 	foreach ($item in $New) {
 		$NewGroup += ".$($item.Replace('.', ''));"
+		$NewGroupSave += ".$($item.Replace('.', ''));"
 	}
 
 	if ($NewGroup.Count -gt 0) {
-		$Script:SafetyWarningsExclude = [string]$NewGroup
 		Save_Dynamic -regkey "Solutions\Get" -name "SafetyWarningsExclude" -value $New -Multi
+		$Script:SafetyWarningsExclude = $NewGroupSave
 	}
 }
 
