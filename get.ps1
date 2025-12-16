@@ -29,7 +29,7 @@
 											"No"             = Do not go
 
 
-	 PS C:\> .\_get.ps1 -DSW              | Disable security warnings for common file types
+	 PS C:\> .\_get.ps1 -SW ".iso", ".Other" | Disable security warnings for common file types
 	 PS C:\> .\_get.ps1 -AddRouter        | Add routing functionality
 	 PS C:\> .\_get.ps1 -AddTakeOwnership | Add context menu: Take Ownership
 	 PS C:\> .\_get.ps1 -Silent           | After customizing the interactive mode, you can add a silent installation command to perform the installation.
@@ -50,36 +50,22 @@
 [CmdletBinding()]
 param
 (
-	[String]
-	$Language,
-
-	[Switch]
-	$Reset,
-
-	[String[]]
-	$Cus,
-
-	[String]
-	$To,
-
-	[String]
-	$GoTo,
-
-	[switch]
-	$DSW = $False,
-
-	[switch]
-	$AddRouter = $False,
-
-	[switch]
-	$AddTakeOwnership = $False,
-
-	[switch]
-	$Silent
+	[String]$Language,
+	[Switch]$Reset,
+	[String[]]$Cus,
+	[String]$To,
+	[String]$GoTo,
+	[array]$Sw,
+	[switch]$AddRouter = $False,
+	[switch]$AddTakeOwnership = $False,
+	[switch]$Silent
 )
 
 $Default_directory_name = "YiSolutions"
-$SafetyWarningsExclude = ".iso;"
+$Script:SafetyWarningsExclude = @()
+$SafetyWarningsExcludeSuggest = @( "iso"; )
+$SafetyWarningsExcludeFull = @( "exe"; "reg"; "msi"; "bat"; "cmd"; "com"; "vbs"; "hta"; "scr"; "pif"; "js"; "iso"; "zip"; "rar"; "nfo"; "htm"; "html"; )
+
 $Update_Server = @(
 	"https://fengyi.tel/download/solutions/latest.zip"
 	"https://github.com/ilikeyi/Solutions/raw/main/update/latest.zip"
@@ -125,6 +111,7 @@ $AvailableLanguages = @(
 			Del                      = "Delete"
 			Enable                   = "Enable"
 			Disable                  = "Disable"
+			Setting                  = "Settings"
 			Done                     = "Done"
 			Inoperable               = "Inoperable"
 			FileFormatError          = "File format error."
@@ -200,6 +187,7 @@ $AvailableLanguages = @(
 			Del                      = "يمسح"
 			Enable                   = "يُمكَِن"
 			Disable                  = "إبطال"
+			Setting                  = "يثبت"
 			Done                     = "ينهي"
 			Inoperable               = "غير صالح للعمل"
 			FileFormatError          = "تنسيق الملف غير صحيح"
@@ -275,6 +263,7 @@ $AvailableLanguages = @(
 			Del                      = "изтрий"
 			Enable                   = "Активирайте"
 			Disable                  = "Деактивиране"
+			Setting                  = "Настроен"
 			Done                     = "Завършете"
 			Inoperable               = "Неработоспособен"
 			FileFormatError          = "Файловият формат e неправилен"
@@ -350,6 +339,7 @@ $AvailableLanguages = @(
 			Del                      = "vymazat"
 			Enable                   = "Umožnit"
 			Disable                  = "Zakázat"
+			Setting                  = "Nastavit"
 			Done                     = "Dokončit"
 			Inoperable               = "Nefunkční"
 			FileFormatError          = "Formát souboru je nesprávný"
@@ -425,6 +415,7 @@ $AvailableLanguages = @(
 			Del                      = "slette"
 			Enable                   = "Aktivere"
 			Disable                  = "Deaktiver"
+			Setting                  = "Sætte op"
 			Done                     = "Slutte"
 			Inoperable               = "Ubrugelig"
 			FileFormatError          = "Filformatet er forkert"
@@ -500,6 +491,7 @@ $AvailableLanguages = @(
 			Del                      = "löschen"
 			Enable                   = "Ermöglichen"
 			Disable                  = "Behinderte"
+			Setting                  = "Einrichten"
 			Done                     = "Beenden"
 			Inoperable               = "Inoperabel"
 			FileFormatError          = "Das Dateiformat ist falsch"
@@ -575,6 +567,7 @@ $AvailableLanguages = @(
 			Del                      = "διαγράφω"
 			Enable                   = "Καθιστώ ικανό"
 			Disable                  = "Καθιστώ ανίκανο"
+			Setting                  = "Στήνω"
 			Done                     = "Φινίρισμα"
 			Inoperable               = "Μη χειρουργήσιμος"
 			FileFormatError          = "Η μορφή αρχείου είναι εσφαλμένη"
@@ -650,6 +643,7 @@ $AvailableLanguages = @(
 			Del                      = "Borrar"
 			Enable                   = "Activar"
 			Disable                  = "Desactivar"
+			Setting                  = "Configuración"
 			Done                     = "Finalizar"
 			Inoperable               = "Inoperable"
 			FileFormatError          = "Formato de archivo incorrecto"
@@ -725,6 +719,7 @@ $AvailableLanguages = @(
 			Del                      = "borrar"
 			Enable                   = "Permitir"
 			Disable                  = "Desactivar"
+			Setting                  = "Configuración"
 			Done                     = "Finalizar"
 			Inoperable               = "Inoperable"
 			FileFormatError          = "El formato del archivo es incorrecto"
@@ -800,6 +795,7 @@ $AvailableLanguages = @(
 			Del                      = "kustutada"
 			Enable                   = "Lubada"
 			Disable                  = "Keela"
+			Setting                  = "Üles seada"
 			Done                     = "Lõpeta"
 			Inoperable               = "Kasutuskõlbmatu"
 			FileFormatError          = "Failivorming on vale"
@@ -875,6 +871,7 @@ $AvailableLanguages = @(
 			Del                      = "poistaa"
 			Enable                   = "Ota käyttöön"
 			Disable                  = "Poista käytöstä"
+			Setting                  = "Perustaa"
 			Done                     = "Valmis"
 			Inoperable               = "Käyttökelvoton"
 			FileFormatError          = "Tiedostomuoto on väärä"
@@ -950,6 +947,7 @@ $AvailableLanguages = @(
 			Del                      = "supprimer"
 			Enable                   = "Activer"
 			Disable                  = "Désactiver"
+			Setting                  = "Installation"
 			Done                     = "Finition"
 			Inoperable               = "Inopérable"
 			FileFormatError          = "Le format de fichier est incorrect"
@@ -1025,6 +1023,7 @@ $AvailableLanguages = @(
 			Del                      = "Supprimer"
 			Enable                   = "Activer"
 			Disable                  = "Désactiver"
+			Setting                  = "Installation"
 			Done                     = "Complète"
 			Inoperable               = "Inopérable"
 			FileFormatError          = "Format de fichier incorrect"
@@ -1100,6 +1099,7 @@ $AvailableLanguages = @(
 			Del                      = "לִמְחוֹק"
 			Enable                   = "לְאַפשֵׁר"
 			Disable                  = "השבת"
+			Setting                  = "לְהַקִים"
 			Done                     = "סִיוּם"
 			Inoperable               = "בלתי ניתן להפעלה"
 			FileFormatError          = "פורמט הקובץ שגוי"
@@ -1175,6 +1175,7 @@ $AvailableLanguages = @(
 			Del                      = "izbrisati"
 			Enable                   = "Omogućiti"
 			Disable                  = "Onemogući"
+			Setting                  = "Postaviti"
 			Done                     = "Završiti"
 			Inoperable               = "Neoperabilan"
 			FileFormatError          = "Format datoteke nije ispravan"
@@ -1250,6 +1251,7 @@ $AvailableLanguages = @(
 			Del                      = "töröl"
 			Enable                   = "Engedélyezze"
 			Disable                  = "Letiltás"
+			Setting                  = "Felállítani"
 			Done                     = "Befejezés"
 			Inoperable               = "Működésképtelen"
 			FileFormatError          = "A fájl formátuma nem megfelelő"
@@ -1325,6 +1327,7 @@ $AvailableLanguages = @(
 			Del                      = "eliminare"
 			Enable                   = "Abilitare"
 			Disable                  = "Disabilita"
+			Setting                  = "Impostare"
 			Done                     = "Fine"
 			Inoperable               = "Inoperabile"
 			FileFormatError          = "Il formato del file non è corretto"
@@ -1400,6 +1403,7 @@ $AvailableLanguages = @(
 			Del                      = "消去"
 			Enable                   = "有効"
 			Disable                  = "無効"
+			Setting                  = "設定"
 			Done                     = "仕上げる"
 			Inoperable               = "動作不能"
 			FileFormatError          = "ファイル形式が正しくありません"
@@ -1475,6 +1479,7 @@ $AvailableLanguages = @(
 			Del                      = "삭제"
 			Enable                   = "할 수 있게 하다"
 			Disable                  = "장애가 있는"
+			Setting                  = "설정"
 			Done                     = "마치다"
 			Inoperable               = "작동불가"
 			FileFormatError          = "파일 형식이 잘못되었습니다."
@@ -1550,6 +1555,7 @@ $AvailableLanguages = @(
 			Del                      = "ištrinti"
 			Enable                   = "Įjungti"
 			Disable                  = "Išjungti"
+			Setting                  = "Nustatyti"
 			Done                     = "Baigti"
 			Inoperable               = "Neveikiantis"
 			FileFormatError          = "Failo formatas neteisingas"
@@ -1625,6 +1631,7 @@ $AvailableLanguages = @(
 			Del                      = "dzēst"
 			Enable                   = "Iespējot"
 			Disable                  = "Atspējot"
+			Setting                  = "Izveidot"
 			Done                     = "Pabeigt"
 			Inoperable               = "Nederīgs"
 			FileFormatError          = "Faila formāts nav pareizs"
@@ -1700,6 +1707,7 @@ $AvailableLanguages = @(
 			Del                      = "slette"
 			Enable                   = "Aktivere"
 			Disable                  = "Deaktiver"
+			Setting                  = "Sette opp"
 			Done                     = "Fullfør"
 			Inoperable               = "Ubrukelig"
 			FileFormatError          = "Filformatet er feil"
@@ -1775,6 +1783,7 @@ $AvailableLanguages = @(
 			Del                      = "verwijderen"
 			Enable                   = "Inschakelen"
 			Disable                  = "Uitzetten"
+			Setting                  = "Opgezet"
 			Done                     = "Finish"
 			Inoperable               = "Onbruikbaar"
 			FileFormatError          = "Bestandsformaat is onjuist"
@@ -1850,6 +1859,7 @@ $AvailableLanguages = @(
 			Del                      = "usuwać"
 			Enable                   = "Włączać"
 			Disable                  = "Wyłączyć"
+			Setting                  = "Organizować coś"
 			Done                     = "Skończyć"
 			Inoperable               = "Nieoperacyjny"
 			FileFormatError          = "Format pliku jest nieprawidłowy"
@@ -1925,6 +1935,7 @@ $AvailableLanguages = @(
 			Del                      = "excluir"
 			Enable                   = "Habilitar"
 			Disable                  = "Desativar"
+			Setting                  = "Configurar"
 			Done                     = "Terminar"
 			Inoperable               = "Inoperável"
 			FileFormatError          = "O formato do arquivo está incorreto"
@@ -2000,6 +2011,7 @@ $AvailableLanguages = @(
 			Del                      = "Excluir"
 			Enable                   = "Ativar"
 			Disable                  = "Desativar"
+			Setting                  = "Configurar"
 			Done                     = "Completo"
 			Inoperable               = "Inoperável"
 			FileFormatError          = "Formato de ficheiro incorreto"
@@ -2075,6 +2087,7 @@ $AvailableLanguages = @(
 			Del                      = "şterge"
 			Enable                   = "Permite"
 			Disable                  = "Dezactivați"
+			Setting                  = "Înființat"
 			Done                     = "Termina"
 			Inoperable               = "Inoperabil"
 			FileFormatError          = "Formatul fișierului este incorect"
@@ -2150,6 +2163,7 @@ $AvailableLanguages = @(
 			Del                      = "удалить"
 			Enable                   = "Давать возможность"
 			Disable                  = "Запрещать"
+			Setting                  = "Настраивать"
 			Done                     = "Заканчивать"
 			Inoperable               = "Неработоспособный"
 			FileFormatError          = "Формат файла неправильный"
@@ -2225,6 +2239,7 @@ $AvailableLanguages = @(
 			Del                      = "vymazať"
 			Enable                   = "Povoliť"
 			Disable                  = "Zakázať"
+			Setting                  = "Nastaviť"
 			Done                     = "Dokončiť"
 			Inoperable               = "Nefunkčné"
 			FileFormatError          = "Formát súboru je nesprávny"
@@ -2300,6 +2315,7 @@ $AvailableLanguages = @(
 			Del                      = "izbrisati"
 			Enable                   = "Omogočiti"
 			Disable                  = "Onemogoči"
+			Setting                  = "Postaviti"
 			Done                     = "Končaj"
 			Inoperable               = "Neoperabilen"
 			FileFormatError          = "Format datoteke ni pravilen"
@@ -2375,6 +2391,7 @@ $AvailableLanguages = @(
 			Del                      = "избрисати"
 			Enable                   = "Омогућити"
 			Disable                  = "Онемогући"
+			Setting                  = "Поставити"
 			Done                     = "Заврши"
 			Inoperable               = "Неоперабилан"
 			FileFormatError          = "Формат датотеке је нетачан"
@@ -2450,6 +2467,7 @@ $AvailableLanguages = @(
 			Del                      = "Ta bort"
 			Enable                   = "Aktivera"
 			Disable                  = "Inaktivera"
+			Setting                  = "Inrätta"
 			Done                     = "Fullständig"
 			Inoperable               = "Oanvändbar"
 			FileFormatError          = "Felaktigt filformat"
@@ -2525,6 +2543,7 @@ $AvailableLanguages = @(
 			Del                      = "ลบ"
 			Enable                   = "เปิดใช้งาน"
 			Disable                  = "ปิดการใช้งาน"
+			Setting                  = "ตั้งค่า"
 			Done                     = "เสร็จ"
 			Inoperable               = "ใช้ไม่ได้"
 			FileFormatError          = "รูปแบบไฟล์ไม่ถูกต้อง"
@@ -2600,6 +2619,7 @@ $AvailableLanguages = @(
 			Del                      = "silmek"
 			Enable                   = "Olanak vermek"
 			Disable                  = "Devre dışı bırakmak"
+			Setting                  = "Kurmak"
 			Done                     = "Sona ermek"
 			Inoperable               = "Ameliyat edilemez"
 			FileFormatError          = "Dosya formatı yanlış"
@@ -2675,6 +2695,7 @@ $AvailableLanguages = @(
 			Del                      = "видалити"
 			Enable                   = "Включити"
 			Disable                  = "Вимкнути"
+			Setting                  = "Налаштувати"
 			Done                     = "Закінчити"
 			Inoperable               = "Неоперабельний"
 			FileFormatError          = "Неправильний формат файлу"
@@ -2750,6 +2771,7 @@ $AvailableLanguages = @(
 			Del                      = "删除"
 			Enable                   = "启用"
 			Disable                  = "禁用"
+			Setting                  = "设置"
 			Done                     = "完成"
 			Inoperable               = "不可操作"
 			FileFormatError          = "文件格式不正确"
@@ -2825,6 +2847,7 @@ $AvailableLanguages = @(
 			Del                      = "刪除"
 			Enable                   = "啟用"
 			Disable                  = "禁用"
+			Setting                  = "設置"
 			Done                     = "完成"
 			Inoperable               = "不可操作"
 			FileFormatError          = "文件格式不正確"
@@ -3041,6 +3064,23 @@ Function Take_Ownership
 	}
 }
 
+Function Save_Safety_Warnings
+{
+	param (
+		[array]$New
+	)
+
+	$NewGroup = @()
+	foreach ($item in $New) {
+		$NewGroup += ".$($item.Replace('.', ''));"
+	}
+
+	if ($NewGroup.Count -gt 0) {
+		$Script:SafetyWarningsExclude = [string]$NewGroup
+		Save_Dynamic -regkey "Solutions\Get" -name "SafetyWarningsExclude" -value $New -Multi
+	}
+}
+
 <#
 	.Common file type safety warnings
 #>
@@ -3063,7 +3103,7 @@ Function Safety_Warnings
 	if ($Disable) {
 		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		if ((Test-Path -LiteralPath "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Associations") -ne $true) { New-Item "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Associations" -force -ErrorAction SilentlyContinue | Out-Null }
-		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Associations' -Name 'LowRiskFileTypes' -Value $SafetyWarningsExclude -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
+		New-ItemProperty -LiteralPath 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Associations' -Name 'LowRiskFileTypes' -Value $Script:SafetyWarningsExclude -PropertyType String -force -ErrorAction SilentlyContinue | Out-Null
 
 		RestartExplorer
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
@@ -3462,6 +3502,169 @@ Function Installation_interface_UI
 		FormBorderStyle = "Fixed3D"
 	}
 
+	<#
+		.Displays a hint mask
+		.显示提示蒙层
+	#>
+	$SettingSafetyWarnings_Mask = New-Object system.Windows.Forms.Panel -Property @{
+		BorderStyle    = 0
+		Height         = 720
+		Width          = 550
+		autoSizeMode   = 1
+		Padding        = "8,0,8,0"
+		Location       = '0,0'
+		Visible        = $False
+	}
+	$SettingSafetyWarningsName = New-Object system.Windows.Forms.Label -Property @{
+		Height         = 30
+		Width          = 510
+		Location       = "10,15"
+		Text           = $lang.SafetyWarnings
+	}
+	$SettingSafetyWarnings_List = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
+		BorderStyle    = 0
+		Height         = 545
+		Width          = 528
+		Location       = '0,45'
+		Padding        = "22,0,0,0"
+		autoScroll     = $True
+	}
+
+	foreach ($item in $SafetyWarningsExcludeFull) {
+		$NewItemName = $item.Replace('.', '')
+
+		$CheckBox   = New-Object System.Windows.Forms.CheckBox -Property @{
+			Height  = 35
+			Width   = 435
+			Text    = $NewItemName
+			Tag     = $NewItemName
+			add_Click = {
+				$SettingSafetyWarnings_Error.Text = ""
+			}
+		}
+
+		$SettingSafetyWarnings_List.controls.AddRange($CheckBox)
+	}
+
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\Yi\Solutions\Get" -Name "SafetyWarningsExclude" -ErrorAction SilentlyContinue) {
+		$GetNewSafetyWarnings = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Yi\Solutions\Get" -Name "SafetyWarningsExclude" -ErrorAction SilentlyContinue
+		$NewGetNewSafetyWarnings = @()
+		foreach ($item in $GetNewSafetyWarnings) {
+			$NewGetNewSafetyWarnings += $item.Replace(".", "")
+		}
+
+		foreach ($item in $NewGetNewSafetyWarnings) {
+			if ($SafetyWarningsExcludeFull -notcontains $item) {
+				$CheckBox   = New-Object System.Windows.Forms.CheckBox -Property @{
+					Height  = 35
+					Width   = 435
+					Text    = $item
+					Tag     = $item
+					add_Click = {
+						$SettingSafetyWarnings_Error.Text = ""
+					}
+				}
+
+				$SettingSafetyWarnings_List.controls.AddRange($CheckBox)
+			}
+		}
+
+		$SettingSafetyWarnings_List.Controls | ForEach-Object {
+			if ($_ -is [System.Windows.Forms.CheckBox]) {
+				if ($NewGetNewSafetyWarnings -contains $_.Tag) {
+					$_.Checked = $true
+				} else {
+					$_.Checked = $False
+				}
+			}
+		}
+
+		Save_Safety_Warnings -New $NewGetNewSafetyWarnings
+	} else {
+		$SettingSafetyWarnings_List.Controls | ForEach-Object {
+			if ($_ -is [System.Windows.Forms.CheckBox]) {
+				if ($SafetyWarningsExcludeSuggest -contains $_.Tag) {
+					$_.Checked = $true
+				} else {
+					$_.Checked = $False
+				}
+			}
+		}
+
+		Save_Safety_Warnings -New $SafetyWarningsExcludeSuggest
+	}
+
+	<#
+		.Add right-click menu: select all, clear button
+	#>
+	$SettingSafetyWarnings_List_Select = New-Object System.Windows.Forms.ContextMenuStrip
+	$SettingSafetyWarnings_List_Select.Items.Add($lang.AllSel).add_Click({
+		$SettingSafetyWarnings_List.Controls | ForEach-Object {
+			if ($_ -is [System.Windows.Forms.CheckBox]) {
+				if ($_.Enabled) {
+					$_.Checked = $true
+				}
+			}
+		}
+	})
+	$SettingSafetyWarnings_List_Select.Items.Add($lang.AllClear).add_Click({
+		$SettingSafetyWarnings_List.Controls | ForEach-Object {
+			if ($_ -is [System.Windows.Forms.CheckBox]) {
+				if ($_.Enabled) {
+					$_.Checked = $false
+				}
+			}
+		}
+	})
+	$SettingSafetyWarnings_List.ContextMenuStrip = $SettingSafetyWarnings_List_Select
+
+	$SettingSafetyWarnings_Error = New-Object system.Windows.Forms.Label -Property @{
+		Height         = 30
+		Width          = 510
+		Location       = "10,602"
+		Text           = ""
+	}
+	$SettingSafetyWarnings_Mask_OK = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Height         = 36
+		Width          = 255
+		Location       = "8,635"
+		Text           = $lang.OK
+		add_Click      = {
+			$UI_Main_Error.Text = ""
+			$SettingSafetyWarnings_Error.Text = ""
+
+			$SaveNewSW = @()
+			$SettingSafetyWarnings_List.Controls | ForEach-Object {
+				if ($_ -is [System.Windows.Forms.CheckBox]) {
+					if ($_.Checked) {
+						$SaveNewSW += $_.Text
+					}
+				}
+			}
+
+			if ($SaveNewSW.Count -gt 0) {
+				$UI_Main_Error.Text = "$($lang.Setting): $($lang.SafetyWarnings), $($lang.Done)"
+				Save_Safety_Warnings -New $SaveNewSW
+				$SettingSafetyWarnings_Mask.Visible = $False
+			} else {
+				$SettingSafetyWarnings_Error.Text = "$($lang.SafetyWarnings), $($lang.Failed)"
+			}
+		}
+	}
+	$SettingSafetyWarnings_Mask_Canel = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Height         = 36
+		Width          = 255
+		Location       = "268,635"
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main_Error.Text = ""
+			$SettingSafetyWarnings_Error.Text = ""
+			$SettingSafetyWarnings_Mask.Visible = $False
+		}
+	}
+
 	$UI_Main_Menu      = New-Object System.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
 		Height         = 565
@@ -3753,10 +3956,17 @@ Function Installation_interface_UI
 		}
 	}
 
-	$UI_Main_Adv_Safety_Warnings_Tips = New-Object system.Windows.Forms.Label -Property @{
+	$UI_Main_Adv_Setting_Safety_Warnings = New-Object system.Windows.Forms.LinkLabel -Property @{
 		AutoSize       = 1
 		margin         = "38,8,0,15"
-		Text           = "$($lang.SafetyWarningsTips): $($SafetyWarningsExclude)"
+		Text           = "$($lang.Setting): $($lang.SafetyWarningsTips)"
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$UI_Main_Error.Text = ""
+			$SettingSafetyWarnings_Mask.Visible = $True
+		}
 	}
 
 	$Safety_Warnings_Enable = New-Object system.Windows.Forms.LinkLabel -Property @{
@@ -3893,6 +4103,7 @@ Function Installation_interface_UI
 		}
 	}
 	$UI_Main.controls.AddRange((
+		$SettingSafetyWarnings_Mask,
 		$UI_Main_Menu,
 		$UI_Main_Error,
 		$UI_Main_OK,
@@ -3921,7 +4132,7 @@ Function Installation_interface_UI
 		$TakeOwnership_Delete,
 		$UI_Main_TakeOwnership_Wrap,
 		$UI_Main_Adv_Safety_Warnings,
-		$UI_Main_Adv_Safety_Warnings_Tips,
+		$UI_Main_Adv_Setting_Safety_Warnings,
 		$Safety_Warnings_Enable,
 		$Safety_Warnings_Disable,
 		$UI_Main_Adv_Safety_Warnings_Wrap,
@@ -3931,6 +4142,14 @@ Function Installation_interface_UI
 		$UI_Main_To_Name,
 		$UI_Main_To,
 		$UI_Main_End_Wrap
+	))
+
+
+	$SettingSafetyWarnings_Mask.controls.AddRange((
+		$SettingSafetyWarningsName,
+		$SettingSafetyWarnings_List,
+		$SettingSafetyWarnings_Mask_OK,
+		$SettingSafetyWarnings_Mask_Canel
 	))
 
 	ForEach ($item in $Update_Server) {
@@ -4089,8 +4308,48 @@ Function Installation_interface_UI
 		<#
 			.Common file type safety warnings
 		#>
-		if ($DSW) {
+		if ($Sw) {
 			$UI_Main_Adv_Safety_Warnings.Checked = $True
+
+			$SaveNewSW = @()
+			$SettingSafetyWarnings_List.Controls | ForEach-Object {
+				if ($_ -is [System.Windows.Forms.CheckBox]) {
+					$SaveNewSW += $_.Tag
+				}
+			}
+
+			$NewGetNewSafetyWarnings = @()
+			foreach ($item in $Sw) {
+				$NewGetNewSafetyWarnings += $item.Replace(".", "")
+			}
+
+			foreach ($item in $NewGetNewSafetyWarnings) {
+				if ($SaveNewSW -notcontains $item) {
+					$CheckBox   = New-Object System.Windows.Forms.CheckBox -Property @{
+						Height  = 35
+						Width   = 435
+						Text    = $item
+						Tag     = $item
+						add_Click = {
+							$SettingSafetyWarnings_Error.Text = ""
+						}
+					}
+
+					$SettingSafetyWarnings_List.controls.AddRange($CheckBox)
+				}
+			}
+
+			$SettingSafetyWarnings_List.Controls | ForEach-Object {
+				if ($_ -is [System.Windows.Forms.CheckBox]) {
+					if ($NewGetNewSafetyWarnings -contains $_.Tag) {
+						$_.Checked = $true
+					} else {
+						$_.Checked = $False
+					}
+				}
+			}
+
+			Save_Safety_Warnings -New $NewGetNewSafetyWarnings
 		} else {
 			if (Get-ItemProperty -Path "HKCU:\SOFTWARE\Yi\Solutions\Get" -Name "Safety_Warnings" -ErrorAction SilentlyContinue) {
 				switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Yi\Solutions\Get" -Name "Safety_Warnings" -ErrorAction SilentlyContinue) {
