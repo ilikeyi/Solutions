@@ -2,7 +2,7 @@
 	"Config": {
 		"Author":  "Yi",
 		"Url":     "https://fengyi.tel",
-		"Version": "1.0.0.9"
+		"Version": "1.0.1.0"
 	},
 	"Deploy": {
 		"ImageSource": {
@@ -19,9 +19,27 @@
 						"UniqueName":     true
 					},
 					"PublicDate": {
-						"Year":           true,
-						"Month":          true,
-						"MonthShort":     true
+						"Sorting": {
+							"GroupA": true,
+							"GroupB": false
+						},
+						"Year": {
+							"IsAllow": true,
+							"UseShortnames": {
+								"GroupA": true,
+								"GroupB": false
+							}
+						},
+						"Month": {
+							"IsAllow": true,
+							"UseShortnames": {
+								"GroupB": false
+							},
+							"UseNumber": {
+								"GroupA": true,
+								"GroupB": false
+							}
+						}
 					},
 					"WindowsVersion": {
 						"Enable":         true,
