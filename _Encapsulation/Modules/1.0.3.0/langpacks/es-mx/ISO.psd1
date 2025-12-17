@@ -51,7 +51,6 @@
 	Reconstruction                  = Reconstruir {0}.wim con máxima compresión
 	Reconstruction_Tips_Select      = Antes de reconstruir, solo se ejecutará cuando no esté cargado. Obligará a habilitar el guardado y luego desmontará el archivo montado.
 	ReconstructionTips              = Más de 520 MB, se recomienda reconstruir
-	EmptyDirectory                  = Eliminar el directorio de inicio de origen de la imagen
 	CreateASC                       = Agregar firma PGP a ISO
 	CreateASCPwd                    = Contraseña del certificado
 	CreateASCAuthor                 = Firmante

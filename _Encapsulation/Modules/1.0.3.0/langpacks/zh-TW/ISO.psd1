@@ -51,7 +51,6 @@
 	Reconstruction                  = 以最高壓縮重建 {0}.wim
 	Reconstruction_Tips_Select      = 重建前，僅在未載時執行，將強制開啟保存，再卸載已掛載。
 	ReconstructionTips              = 超過 520 建議重建
-	EmptyDirectory                  = 刪除 映像源主目錄
 	CreateASC                       = 給 ISO 添加 PGP 簽名
 	CreateASCPwd                    = 證書密碼
 	CreateASCAuthor                 = 簽署者

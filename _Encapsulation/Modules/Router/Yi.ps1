@@ -1637,7 +1637,6 @@ Function Help
 	write-host "  " -NoNewline
 	Write-Host " $($lang.Choose) " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ": " -NoNewline
-
 	$NewEnter = Read-Host
 
 	<#

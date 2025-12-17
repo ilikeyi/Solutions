@@ -2878,6 +2878,7 @@ Function Image_Select
 					$Global:MainImage = $_.Tag
 
 					$GUIImageSourceGroupMountFromPath.Text = $_.Name
+					$UI_ImageSources_Del_Path.Text = $_.Name
 
 					$Current_Image_Sources_Save_To_Reg_Path = "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)"
 
@@ -6995,7 +6996,7 @@ Function Image_Select
 		Width          = 460
 		Padding        = "18,0,0,0"
 		margin         = "0,8,0,0"
-		Text           = "$($lang.EmptyDirectory), $($lang.Functions_Rear): "
+		Text           = $lang.Del
 		LinkColor      = "GREEN"
 		ActiveLinkColor = "RED"
 		LinkBehavior   = "NeverUnderline"
@@ -7003,8 +7004,6 @@ Function Image_Select
 		add_Click      = {
 			if (-not [string]::IsNullOrEmpty($GUIImageSourceGroupMountFromPath.Text)) {
 				if (Test-Path -Path $GUIImageSourceGroupMountFromPath.Text -PathType Container) {
-					Remove_Tree -Path $GUIImageSourceGroupMountFromPath.Text
-
 					if ($GUIImageSourceGroupMountFromDelete_Custom.Enabled) {
 						if ($GUIImageSourceGroupMountFromDelete_Custom.Checked) {
 							if (Test-Path -Path $GUIImageSourceGroupMountFromDelete_Custom_Path.Text -PathType Container) {
@@ -7036,19 +7035,64 @@ Function Image_Select
 					$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板：其它信息
 					$UI_Main_Image_Sources.visible = $True               # 设置主界面
 
-					Image_Select_Refresh_Sources_List
+					if ($UI_ImageSources_Del.Checked) {
+						Remove_Tree -Path $GUIImageSourceGroupMountFromPath.Text
+						Image_Select_Refresh_Sources_List
 
-					if (Test-Path -Path $GUIImageSourceGroupMountFromPath.Text -PathType Container) {
-						$UI_Main_Error.Text = "$($lang.Del), $($lang.Failed): $($GUIImageSourceGroupMountFromPath.Text)"
-						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+						if (Test-Path -Path $GUIImageSourceGroupMountFromPath.Text -PathType Container) {
+							$UI_Main_Error.Text = "$($lang.Del), $($lang.Failed): $($GUIImageSourceGroupMountFromPath.Text)"
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+						} else {
+							$UI_Main_Error.Text = "$($lang.Del): $($GUIImageSourceGroupMountFromPath.Text), $($lang.Done)"
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+						}
 					} else {
-						$UI_Main_Error.Text = "$($lang.Del): $($GUIImageSourceGroupMountFromPath.Text), $($lang.Done)"
+						$UI_Main_Error.Text = "$($lang.Del): $($lang.RuleOther), $($lang.Done)"
 						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 					}
 				}
 			}
 		}
 	}
+
+		<#
+			.事件：映像源，主目录
+		#>
+		$UI_ImageSources_Del = New-Object System.Windows.Forms.CheckBox -Property @{
+			Height         = 30
+			Width          = 475
+			Padding        = "35,0,0,0"
+			Checked        = $True
+			Text           = $lang.SelectSettingImage
+		}
+		$UI_ImageSources_Del_Path = New-Object system.Windows.Forms.LinkLabel -Property @{
+			autoSize       = 1
+			Text           = ""
+			Padding        = "53,0,0,0"
+			Margin         = "0,0,0,20"
+			LinkColor      = "GREEN"
+			ActiveLinkColor = "RED"
+			LinkBehavior   = "NeverUnderline"
+			add_Click      = {
+				$UI_Mask_Image_Mount_To_Error.Text = ""
+				$UI_Mask_Image_Mount_To_Error_Icon.Image = $null
+
+				if ([string]::IsNullOrEmpty($GUIImageSourceGroupMountFromPath.Text)) {
+					$UI_Mask_Image_Mount_To_Error.Text = "$($lang.OpenFolder): $($lang.Inoperable)"
+					$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				} else {
+					if (Test-Path -Path $GUIImageSourceGroupMountFromPath.Text -PathType Container) {
+						Start-Process $GUIImageSourceGroupMountFromPath.Text
+
+						$UI_Mask_Image_Mount_To_Error.Text = "$($lang.OpenFolder): $($GUIImageSourceGroupMountFromPath.Text), $($lang.Done)"
+						$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+					} else {
+						$UI_Mask_Image_Mount_To_Error.Text = "$($lang.OpenFolder): $($GUIImageSourceGroupMountFromPath.Text), $($lang.Inoperable)"
+						$UI_Mask_Image_Mount_To_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+					}
+				}
+			}
+		}
 
 		<#
 			.事件：映像源，删除后清除自定义目录
@@ -10240,6 +10284,8 @@ Function Image_Select
 		$GUIImageSourceGroupMountFromOpenFolder,
 		$GUIImageSourceGroupMountFromPaste,
 		$GUIImageSourceGroupMountFromDelete,
+		$UI_ImageSources_Del,
+		$UI_ImageSources_Del_Path,
 		$GUIImageSourceGroupMountFromDelete_Custom,
 		$GUIImageSourceGroupMountFromDelete_Custom_Path,
 		$GUIImageSourceGroupMountFromDelete_Clear,

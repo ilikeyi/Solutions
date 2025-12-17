@@ -591,7 +591,6 @@ Function Mainpage
 	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host " PS * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ": " -NoNewline
-
 	$NewEnter = Read-Host
 
 	<#

@@ -51,7 +51,6 @@
 	Reconstruction                  = Taastage {0}.wim maksimaalse tihendusega
 	Reconstruction_Tips_Select      = Enne taastamist käivitatakse see ainult siis, kui seda ei laadita. See sunnib salvestamise sisse lülitama ja seejärel ühendatud faili lahti ühendama.
 	ReconstructionTips              = Üle 520 MB, soovitatav uuesti ehitada
-	EmptyDirectory                  = Kustutage pildiallika kodukataloog
 	CreateASC                       = Lisage ISO-le PGP-allkiri
 	CreateASCPwd                    = Sertifikaadi parool
 	CreateASCAuthor                 = Allakirjutaja

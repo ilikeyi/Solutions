@@ -51,7 +51,6 @@
 	Reconstruction                  = Rakenna {0}.wim uudelleen maksimipakkauksella
 	Reconstruction_Tips_Select      = Ennen uudelleen rakentamista se suoritetaan vain, kun sitä ei ladata. Se pakottaa tallennuksen ottamaan käyttöön ja poistamaan liitetyn tiedoston.
 	ReconstructionTips              = Yli 520 Mt, uudelleenrakennetta suositellaan
-	EmptyDirectory                  = Poista kuvalähteen kotihakemisto
 	CreateASC                       = Lisää PGP-allekirjoitus ISO:hon
 	CreateASCPwd                    = Sertifikaatin salasana
 	CreateASCAuthor                 = Allekirjoittaja

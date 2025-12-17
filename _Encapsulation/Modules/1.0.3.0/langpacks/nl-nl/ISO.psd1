@@ -51,7 +51,6 @@
 	Reconstruction                  = Herbouw {0}.wim met maximale compressie
 	Reconstruction_Tips_Select      = Voordat het opnieuw wordt opgebouwd, wordt het alleen uitgevoerd als het niet is geladen. Het zal het opslaan forceren en vervolgens het aangekoppelde bestand ontkoppelen.
 	ReconstructionTips              = Meer dan 520 MB, opnieuw opbouwen aanbevolen
-	EmptyDirectory                  = Verwijder de thuismap van de afbeeldingsbron
 	CreateASC                       = Voeg PGP-handtekening toe aan ISO
 	CreateASCPwd                    = Certificaatwachtwoord
 	CreateASCAuthor                 = Ondertekenaar

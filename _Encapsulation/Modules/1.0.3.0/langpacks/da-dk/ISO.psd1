@@ -51,7 +51,6 @@
 	Reconstruction                  = Genopbyg {0}.wim med maksimal komprimering
 	Reconstruction_Tips_Select      = Før genopbygning vil den kun blive udført, når den ikke er indlæst. Det vil tvinge lagringen til at blive aktiveret og derefter afmontere den monterede fil.
 	ReconstructionTips              = Over 520 MB, genopbygning anbefales
-	EmptyDirectory                  = Slet billedkildens hjemmemappe
 	CreateASC                       = Tilføj PGP signatur til ISO
 	CreateASCPwd                    = Certifikat adgangskode
 	CreateASCAuthor                 = Underskriver

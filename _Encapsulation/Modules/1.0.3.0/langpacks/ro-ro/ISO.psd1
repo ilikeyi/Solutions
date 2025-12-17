@@ -51,7 +51,6 @@
 	Reconstruction                  = Reconstruiți {0}.wim cu compresie maximă
 	Reconstruction_Tips_Select      = Înainte de reconstrucție, acesta va fi executat numai când nu este încărcat.
 	ReconstructionTips              = Peste 520 MB, reconstruire recomandată
-	EmptyDirectory                  = Ștergeți directorul de pornire a sursei imaginii
 	CreateASC                       = Adăugați semnătura PGP la ISO
 	CreateASCPwd                    = Parola certificatului
 	CreateASCAuthor                 = Semnatar

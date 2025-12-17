@@ -51,7 +51,6 @@
 	Reconstruction                  = Reconstruire {0}.wim avec compression maximale
 	Reconstruction_Tips_Select      = Avant la reconstruction, il ne sera exécuté que lorsqu'il n'est pas chargé.
 	ReconstructionTips              = Plus de 520 Mo, reconstruction recommandée
-	EmptyDirectory                  = Supprimer le répertoire personnel de la source de l'image
 	CreateASC                       = Ajouter la signature PGP à l'ISO
 	CreateASCPwd                    = Mot de passe du certificat
 	CreateASCAuthor                 = Signataire

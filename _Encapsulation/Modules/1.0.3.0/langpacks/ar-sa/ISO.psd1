@@ -51,7 +51,6 @@
 	Reconstruction                  = إعادة البناء بأعلى ضغط {0}.wim
 	Reconstruction_Tips_Select      = قبل إعادة البناء، سيتم تنفيذه فقط عندما لا يتم تحميله، وسيفرض تمكين الحفظ ثم إلغاء تحميل الملف المثبت.
 	ReconstructionTips              = أكثر من 520 ميجابايت، يوصى بإعادة البناء
-	EmptyDirectory                  = حذف الدليل الرئيسي لمصدر الصورة
 	CreateASC                       = أضف توقيع PGP إلى ISO
 	CreateASCPwd                    = كلمة مرور الشهادة
 	CreateASCAuthor                 = الموقع

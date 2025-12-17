@@ -51,7 +51,6 @@
 	Reconstruction                  = Gjenoppbygg {0}.wim med maksimal komprimering
 	Reconstruction_Tips_Select      = Før gjenoppbygging vil den bare bli utført når den ikke er lastet. Det vil tvinge lagringen til å bli aktivert og deretter avmontere den monterte filen.
 	ReconstructionTips              = Over 520 MB, ombygging anbefales
-	EmptyDirectory                  = Slett hjemmekatalogen for bildekilden
 	CreateASC                       = Legg til PGP-signatur til ISO
 	CreateASCPwd                    = Sertifikatpassord
 	CreateASCAuthor                 = Underskriver

@@ -51,7 +51,6 @@
 	Reconstruction                  = Építse újra a {0}.wim fájlt maximális tömörítéssel
 	Reconstruction_Tips_Select      = Újraépítés előtt csak akkor fut le, ha nincs betöltve. Engedélyezni fogja a mentést, majd leválasztja a csatolt fájlt.
 	ReconstructionTips              = Több mint 520 MB, újraépítés javasolt
-	EmptyDirectory                  = Törölje a képforrás kezdőkönyvtárát
 	CreateASC                       = PGP aláírás hozzáadása az ISO-hoz
 	CreateASCPwd                    = Tanúsítvány jelszava
 	CreateASCAuthor                 = Aláíró

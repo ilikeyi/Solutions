@@ -51,7 +51,6 @@
 	Reconstruction                  = Ponovno izgradite {0}.wim s maksimalnom kompresijom
 	Reconstruction_Tips_Select      = Prije ponovne izgradnje, izvršit će se samo ako se ne učita. Prisilno će se omogućiti spremanje i zatim demontirati montirana datoteka.
 	ReconstructionTips              = Preko 520 MB, preporučuje se obnova
-	EmptyDirectory                  = Izbriši matični direktorij izvora slike
 	CreateASC                       = Dodajte PGP potpis u ISO
 	CreateASCPwd                    = Lozinka certifikata
 	CreateASCAuthor                 = Potpisnik

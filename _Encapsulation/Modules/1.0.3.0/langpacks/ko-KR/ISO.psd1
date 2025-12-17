@@ -51,7 +51,6 @@
 	Reconstruction                  = 가장 높은 압축률로 {0}.wim 을 다시 빌드합니다
 	Reconstruction_Tips_Select      = 재구축하기 전에는 마운트되지 않았을 때만 실행되며 강제로 세이브를 연 다음 마운트된 마운트를 해제합니다.
 	ReconstructionTips              = 초과하다 520 MB, 재구축 권장
-	EmptyDirectory                  = 이미지 소스 홈 디렉토리 삭제
 	CreateASC                       = ISO 에 PGP 서명 추가
 	CreateASCPwd                    = 인증서 비밀번호
 	CreateASCAuthor                 = 서명자

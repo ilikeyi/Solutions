@@ -51,7 +51,6 @@
 	Reconstruction                  = Atjaunojiet {0}.wim ar maksimālu saspiešanu
 	Reconstruction_Tips_Select      = Pirms atjaunošanas tas tiks izpildīts tikai tad, kad tas netiks ielādēts. Tas liks iespējot saglabāšanu un pēc tam atvienot pievienoto failu.
 	ReconstructionTips              = Vairāk nekā 520 MB, ieteicams pārbūvēt
-	EmptyDirectory                  = Dzēsiet attēla avota mājas direktoriju
 	CreateASC                       = Pievienojiet PGP parakstu ISO
 	CreateASCPwd                    = Sertifikāta parole
 	CreateASCAuthor                 = Parakstītājs

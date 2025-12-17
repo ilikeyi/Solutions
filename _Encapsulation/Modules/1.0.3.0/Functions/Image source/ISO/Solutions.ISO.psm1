@@ -1530,7 +1530,7 @@ Function ISO_Create_UI
 		ActiveLinkColor = "RED"
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
-			$Verify_Language_New_Path = ISO_Local_Language_Calc
+			$Verify_Language_New_Path = ISO_Local_Language_Calc -Other
 
 			$GUIISOSetLang.Text = $Verify_Language_New_Path.Count
 			Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -name "AllowMarkLangSave" -value $GUIISOSetLang.Text -String
@@ -2281,8 +2281,7 @@ Function ISO_Create_UI
 	}
 	$GUIISORebuldBootTips = New-Object system.Windows.Forms.Label -Property @{
 		AutoSize       = 1
-		Padding        = "38,0,0,0"
-		margin         = "0,0,0,15"
+		Padding        = "34,0,0,0"
 		Text           = ""
 	}
 
@@ -2293,6 +2292,7 @@ Function ISO_Create_UI
 		Height         = 40
 		Width          = 455
 		Padding        = "20,0,0,0"
+		margin         = "0,20,0,0"
 		Text           = $lang.Reconstruction -f "install"
 		add_Click      = {
 			$UI_Main_Error.Text = ""
@@ -2301,8 +2301,7 @@ Function ISO_Create_UI
 	}
 	$GUIISORebuldInstallTips = New-Object system.Windows.Forms.Label -Property @{
 		AutoSize       = 1
-		Padding        = "38,0,0,0"
-		margin         = "0,0,0,30"
+		Padding        = "34,0,0,0"
 		Text           = ""
 	}
 
@@ -2312,6 +2311,7 @@ Function ISO_Create_UI
 	$GUIISOAfterRearTips = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 455
+		margin         = "0,50,0,0"
 		Text           = $lang.ISOCreateRear
 		add_Click      = {
 			$UI_Main_Error.Text = ""
@@ -2348,15 +2348,15 @@ Function ISO_Create_UI
 			}
 		}
 	} else {
-		if ($Global:ImageType -eq "Desktop") {
-			if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\MVS" -Name "Kernel" -ErrorAction SilentlyContinue) {
-				$GetSaveLabel = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\MVS" -Name "Kernel" -ErrorAction SilentlyContinue
-
-				if ($GetSaveLabel -eq "11") {
-					$GUIISOBypassTPM.Checked = $True
-				}
-			}
-		}
+#		if ($Global:ImageType -eq "Desktop") {
+#			if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\MVS" -Name "Kernel" -ErrorAction SilentlyContinue) {
+#				$GetSaveLabel = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\MVS" -Name "Kernel" -ErrorAction SilentlyContinue
+#
+#				if ($GetSaveLabel -eq "11") {
+#					$GUIISOBypassTPM.Checked = $True
+#				}
+#			}
+#		}
 	}
 	if (Test-Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\bypass11\Quick_11_iso_esd_wim_TPM_toggle.bat" -PathType Leaf -ErrorAction SilentlyContinue) {
 		$GUIISOBypassTPM.Enabled = $True
@@ -2369,16 +2369,6 @@ Function ISO_Create_UI
 		Width          = 455
 		Padding        = "20,0,0,0"
 		Text           = $lang.CreateSHA256
-		add_Click      = {
-			$UI_Main_Error.Text = ""
-			$UI_Main_Error_Icon.Image = $null
-		}
-	}
-	$GUIISOEmptyDirectory = New-Object System.Windows.Forms.CheckBox -Property @{
-		Height         = 40
-		Width          = 455
-		Padding        = "20,0,0,0"
-		Text           = $lang.EmptyDirectory
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
@@ -2439,6 +2429,45 @@ Function ISO_Create_UI
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
+		}
+	}
+
+	$GUIISOEmptyDirectory = New-Object System.Windows.Forms.CheckBox -Property @{
+		Height         = 40
+		Width          = 455
+		Padding        = "20,0,0,0"
+		Text           = "$($lang.Del): $($lang.SelectSettingImage)"
+		add_Click      = {
+			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
+		}
+	}
+	$GUIISOEmptyDirectory_Path = New-Object system.Windows.Forms.LinkLabel -Property @{
+		autoSize       = 1
+		Text           = $Global:Image_source
+		Padding        = "38,0,0,0"
+		Margin         = "0,0,0,20"
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
+
+			if ([string]::IsNullOrEmpty($This.Text)) {
+				$UI_Main_Error.Text = "$($lang.OpenFolder): $($lang.Inoperable)"
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+			} else {
+				if (Test-Path -Path $This.Text -PathType Container) {
+					Start-Process $This.Text
+
+					$UI_Main_Error.Text = "$($lang.OpenFolder): $($lang.Done)"
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+				} else {
+					$UI_Main_Error.Text = "$($lang.OpenFolder): $($lang.Inoperable)"
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				}
+			}
 		}
 	}
 
@@ -3163,9 +3192,10 @@ Function ISO_Create_UI
 		$GUIISOAfterRearTips,
 		$GUIISOBypassTPM,
 		$GUIISOCreateSHA256,
-		$GUIISOEmptyDirectory,
 		$GUIISOCreateASC,
-		$GUIISOCreateASCPanel
+		$GUIISOCreateASCPanel,
+		$GUIISOEmptyDirectory,
+		$GUIISOEmptyDirectory_Path
 	))
 
 	$GUIISOGroupPublicDate.controls.AddRange((
@@ -3424,7 +3454,7 @@ Function ISO_Create_UI
 		<#
 			.获取当前 ISO 是否多语言系列
 		#>
-		$Verify_Language_New_Path = ISO_Local_Language_Calc
+		$Verify_Language_New_Path = ISO_Local_Language_Calc -Other
 
 		if ($Verify_Language_New_Path.Count -ge 2) {
 			$GUIISOLabelMulti.Checked = $True
@@ -3441,7 +3471,7 @@ Function ISO_Create_UI
 	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -Name "AllowMarkLangSave" -ErrorAction SilentlyContinue) {
 		$GUIISOSetLang.Text = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -Name "AllowMarkLangSave" -ErrorAction SilentlyContinue
 	} else {
-		$Verify_Language_New_Path = ISO_Local_Language_Calc
+		$Verify_Language_New_Path = ISO_Local_Language_Calc -Other
 
 		$GUIISOSetLang.Text = $Verify_Language_New_Path.Count
 		Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -name "AllowMarkLangSave" -value $GUIISOSetLang.Text -String
@@ -4326,6 +4356,11 @@ Function Autopilot_ISO_Import
 #>
 Function ISO_Local_Language_Calc
 {
+	param
+	(
+		[switch]$Other
+	)
+
 	<#
 		.初始化：ISO 里的语言
 	#>
@@ -4364,56 +4399,58 @@ Function ISO_Local_Language_Calc
 	<#
 		.优先从主规则里搜索，仅搜索主项，不匹配扩展项，例如 WinRE
 	#>
-	$Region = Language_Region
-	ForEach ($item in $Global:Image_Rule) {
-		if ($item.Main.Suffix -eq "wim") {
-			$SearchMainPath = @(
-				Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($item.Main.ImageFileName)\Language\Add"
-				"$(Get_MainMasterFolder)\$($item.Main.ImageFileName)\$($item.Main.ImageFileName)\Language\Add"
-				Join-Path -Path $Global:MainMasterFolder -ChildPath "$($Global:ImageType)\_Custom\$($item.Main.ImageFileName)\$($item.Main.ImageFileName)\Language"
-			)
-			$SearchMainPath = $SearchMainPath | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
+	if ($Other) {
+	} else {
+		ForEach ($item in $Global:Image_Rule) {
+			if ($item.Main.Suffix -eq "wim") {
+				$SearchMainPath = @(
+					Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($item.Main.ImageFileName)\Language\Add"
+					"$(Get_MainMasterFolder)\$($item.Main.ImageFileName)\$($item.Main.ImageFileName)\Language\Add"
+					Join-Path -Path $Global:MainMasterFolder -ChildPath "$($Global:ImageType)\_Custom\$($item.Main.ImageFileName)\$($item.Main.ImageFileName)\Language"
+				)
+				$SearchMainPath = $SearchMainPath | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
-			ForEach ($itemRegion in $Region) {
-				ForEach ($ItemSearchMain in $SearchMainPath) {
-					if (Test-Path -Path "$($ItemSearchMain)\$($itemRegion.Region)" -PathType Container) {
-						$Init_Folder_All_File = @()
-						Get-ChildItem -Path "$($ItemSearchMain)\$($itemRegion.Region)" -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | ForEach-Object {
-							$Init_Folder_All_File += $_.FullName
-						}
+				ForEach ($itemRegion in $Region) {
+					ForEach ($ItemSearchMain in $SearchMainPath) {
+						if (Test-Path -Path "$($ItemSearchMain)\$($itemRegion.Region)" -PathType Container) {
+							$Init_Folder_All_File = @()
+							Get-ChildItem -Path "$($ItemSearchMain)\$($itemRegion.Region)" -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | ForEach-Object {
+								$Init_Folder_All_File += $_.FullName
+							}
 
-						ForEach ($Basic in $Search_Language_File_Custom) {
-							ForEach ($WildCard in $Init_Folder_All_File) {
-								if ([IO.Path]::GetFileName($WildCard) -like $Basic) {
-									$Language_Sources_ISO += $itemRegion.Region
+							ForEach ($Basic in $Search_Language_File_Custom) {
+								ForEach ($WildCard in $Init_Folder_All_File) {
+									if ([IO.Path]::GetFileName($WildCard) -like $Basic) {
+										$Language_Sources_ISO += $itemRegion.Region
+									}
 								}
 							}
 						}
 					}
 				}
-			}
 
-			if ($item.Expand.Count -gt 0) {
-				ForEach ($Expand in $item.Expand) {
-					$SearchExpandPath = @(
-						Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($Expand.ImageFileName)\Language\Add"
-						"$(Get_MainMasterFolder)\$($item.Main.ImageFileName)\$($Expand.ImageFileName)\Language\Add"
-						Join-Path -Path $Global:MainMasterFolder -ChildPath "$($Global:ImageType)\_Custom\$($item.Main.ImageFileName)\$($Expand.ImageFileName)\Language"
-					)
-					$SearchExpandPath = $SearchExpandPath | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
+				if ($item.Expand.Count -gt 0) {
+					ForEach ($Expand in $item.Expand) {
+						$SearchExpandPath = @(
+							Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName)\$($Expand.ImageFileName)\Language\Add"
+							"$(Get_MainMasterFolder)\$($item.Main.ImageFileName)\$($Expand.ImageFileName)\Language\Add"
+							Join-Path -Path $Global:MainMasterFolder -ChildPath "$($Global:ImageType)\_Custom\$($item.Main.ImageFileName)\$($Expand.ImageFileName)\Language"
+						)
+						$SearchExpandPath = $SearchExpandPath | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
-					ForEach ($itemRegion in $Region) {
-						ForEach ($ItemSearchExpand in $SearchExpandPath) {
-							if (Test-Path -Path "$($ItemSearchExpand)\$($itemRegion.Region)" -PathType Container) {
-								$Init_Folder_All_File = @()
-								Get-ChildItem -Path "$($ItemSearchExpand)\$($itemRegion.Region)" -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | ForEach-Object {
-									$Init_Folder_All_File += $_.FullName
-								}
+						ForEach ($itemRegion in $Region) {
+							ForEach ($ItemSearchExpand in $SearchExpandPath) {
+								if (Test-Path -Path "$($ItemSearchExpand)\$($itemRegion.Region)" -PathType Container) {
+									$Init_Folder_All_File = @()
+									Get-ChildItem -Path "$($ItemSearchExpand)\$($itemRegion.Region)" -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | ForEach-Object {
+										$Init_Folder_All_File += $_.FullName
+									}
 
-								ForEach ($Basic in $Search_Language_File_Custom) {
-									ForEach ($WildCard in $Init_Folder_All_File) {
-										if ([IO.Path]::GetFileName($WildCard) -like $Basic) {
-											$Language_Sources_ISO += $itemRegion.Region
+									ForEach ($Basic in $Search_Language_File_Custom) {
+										ForEach ($WildCard in $Init_Folder_All_File) {
+											if ([IO.Path]::GetFileName($WildCard) -like $Basic) {
+												$Language_Sources_ISO += $itemRegion.Region
+											}
 										}
 									}
 								}
@@ -4674,15 +4711,17 @@ Function ISO_Create_Process
 				.Processing: Empty the main directory
 				.处理：清空主目录
 			#>
-			Write-Host "`n  $($lang.EmptyDirectory)" -ForegroundColor Yellow
+			Write-Host "`n  $($lang.Del): $($lang.SelectSettingImage)" -ForegroundColor Yellow
+			Write-Host "  $($lang.Select_Path): " -NoNewline
+			Write-Host $Global:Image_source -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
+			Write-Host "  " -NoNewline
+			Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			if ($Global:EmptyDirectory) {
-				Write-Host "  " -NoNewline
-				Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				Remove_Tree $Global:Image_source
 				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
-				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+				Write-Host " $($lang.Inoperable) " -BackgroundColor DarkRed -ForegroundColor White
 			}
 		} else {
 			Write-Host "  $($lang.FailedCreateFolder)"

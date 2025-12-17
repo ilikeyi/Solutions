@@ -51,7 +51,6 @@
 	Reconstruction                  = 最大圧縮で {0}.wim を再構築します
 	Reconstruction_Tips_Select      = 再構築の前に, マウントされていない場合にのみ実行され, 強制的にセーブを開き, マウントされたものをアンマウントします。
 	ReconstructionTips              = 520 MB を超える場合は, 再構築をお勧めします
-	EmptyDirectory                  = イメージ ソース ホーム ディレクトリを削除します
 	CreateASC                       = ISO に PGP 署名を追加します
 	CreateASCPwd                    = 証明書のパスワード
 	CreateASCAuthor                 = 署名者

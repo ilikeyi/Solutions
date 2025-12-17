@@ -198,7 +198,7 @@
 						}
 					},
 					"After": {
-						"TPM":            true,
+						"TPM":            false,
 						"Sha256":         true,
 						"RemoveImage":    false,
 						"PGP": {

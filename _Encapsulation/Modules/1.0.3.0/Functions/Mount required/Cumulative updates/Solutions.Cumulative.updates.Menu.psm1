@@ -229,7 +229,6 @@ Function Update_Menu
 	Write-Host " $($lang.Short_Cmd) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host ": " -NoNewline
-
 	$NewEnter = Read-Host
 
 	<#

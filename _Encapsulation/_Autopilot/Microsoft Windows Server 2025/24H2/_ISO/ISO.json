@@ -59,7 +59,7 @@
 						}
 					},
 					"After": {
-						"TPM":            true,
+						"TPM":            false,
 						"Sha256":         false,
 						"RemoveImage":    false,
 						"PGP": {

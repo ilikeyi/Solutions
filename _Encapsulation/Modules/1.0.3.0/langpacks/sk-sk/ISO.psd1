@@ -51,7 +51,6 @@
 	Reconstruction                  = Obnovte súbor {0}.wim s maximálnou kompresiou
 	Reconstruction_Tips_Select      = Pred opätovným zostavením sa vykoná iba vtedy, keď nie je načítaný, vynúti si povolenie ukladania a potom odpojí pripojený súbor.
 	ReconstructionTips              = Viac ako 520 MB, odporúča sa prebudovanie
-	EmptyDirectory                  = Odstráňte domovský adresár zdroja obrázka
 	CreateASC                       = Pridajte podpis PGP do ISO
 	CreateASCPwd                    = Heslo certifikátu
 	CreateASCAuthor                 = Podpisovateľ

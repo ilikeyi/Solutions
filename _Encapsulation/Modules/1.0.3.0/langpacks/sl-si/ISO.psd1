@@ -51,7 +51,6 @@
 	Reconstruction                  = Znova zgradite {0}.wim z največjim stiskanjem
 	Reconstruction_Tips_Select      = Pred vnovično gradnjo se bo izvedel le, ko ni naložen. Omogočilo bo shranjevanje in nato odklopilo nameščeno datoteko.
 	ReconstructionTips              = Več kot 520 MB, priporočena vnovična izdelava
-	EmptyDirectory                  = Izbriši domači imenik vira slike
 	CreateASC                       = Dodajte podpis PGP v ISO
 	CreateASCPwd                    = Geslo za potrdilo
 	CreateASCAuthor                 = Podpisnik

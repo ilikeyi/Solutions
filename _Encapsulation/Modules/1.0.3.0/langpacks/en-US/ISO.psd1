@@ -51,7 +51,6 @@
 	Reconstruction                  = Rebuild {0}.wim with the highest compression
 	Reconstruction_Tips_Select      = Before rebuilding, it is only executed when it is not mounted, it will be forced to open the save, and then unmount the mounted.
 	ReconstructionTips              = Over 520 MB, it is recommended to rebuild
-	EmptyDirectory                  = Delete the image source home directory
 	CreateASC                       = Add PGP signature to ISO
 	CreateASCPwd                    = Certificate password
 	CreateASCAuthor                 = Signed by

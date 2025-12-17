@@ -9,17 +9,17 @@ Function Feature_More_Menu
 
 	Write-Host "  $($lang.Menu)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	Write-host "     " -NoNewline
+	Write-Host $(' ' * 7) -NoNewline
 	Write-Host " M " -NoNewline -BackgroundColor Green -ForegroundColor Black
-	Write-Host "  $($lang.MoreFeature)" -ForegroundColor Green
+	Write-Host " $($lang.MoreFeature)" -ForegroundColor Green
 
-	Write-host "     " -NoNewline
+	Write-Host $(' ' * 7) -NoNewline
 	Write-Host " A " -NoNewline -BackgroundColor Green -ForegroundColor Black
-	Write-Host "  $($lang.ViewMounted)" -ForegroundColor Green
+	Write-Host " $($lang.ViewMounted)" -ForegroundColor Green
 
-	Write-Host $(' ' * 3) -NoNewline
+	Write-Host $(' ' * 5) -NoNewline
 	Write-Host " Dev " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "  " -NoNewline
+	Write-Host " " -NoNewline
 	if ($Global:Developers_Mode) {
 		Write-Host $lang.Developers_Mode -ForegroundColor Green
 	} else {
@@ -28,26 +28,23 @@ Function Feature_More_Menu
 
 	Write-Host $(' ' * 2) -NoNewline
 	Write-Host " Unpack " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "  " -NoNewline
+	Write-Host " " -NoNewline
 	Write-Host $lang.UpBackup -ForegroundColor Green
 
-	Write-Host $(' ' * 3) -NoNewline
+	Write-Host $(' ' * 5) -NoNewline
 	Write-Host " Zip " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "  " -NoNewline
+	Write-Host " " -NoNewline
 	Write-Host $lang.ConvertToArchive -ForegroundColor Green
 
-	Write-Host $(' ' * 2) -NoNewline
+	Write-Host $(' ' * 4) -NoNewline
 	Write-Host " Ceup " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host "  " -NoNewline
+	Write-Host " " -NoNewline
 	Write-Host $lang.UpdateCreate -ForegroundColor Green
 
 	Write-Host
 	Solutions_Help_Command -Name "View" -Silent -IsVerify
-
 	Solutions_Help_Command -Name "Se" -Silent
-
 	Solutions_Help_Command -Name "Sel" -Silent -NoShowFile
-
 	Solutions_Open_Command -Help -Silent
 
 	Write-Host
@@ -61,7 +58,6 @@ Function Feature_More_Menu
 	Write-Host " $($lang.Short_Cmd) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " $($lang.Options) " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host ": " -NoNewline
-
 	$NewEnter = Read-Host
 
 	<#
@@ -737,11 +733,20 @@ Function Solutions_Open_Command
 			Write-Host "  $($lang.MountImageTo), $($lang.MainImageFolder)" -ForegroundColor Green
 
 			Write-Host "`n  $($lang.Select_Path): " -NoNewline
-			Write-Host $Global:Mount_To_Route -ForegroundColor Green
+			$OpenRTPath = $Global:Mount_To_Route
+			
+			if (Image_Is_Select_IAB) {
+				$TestNewFolder = Join-Path -Path $OpenRTPath -ChildPath "$($Global:Primary_Key_Image.Master).$($Global:Primary_Key_Image.MasterSuffix)\$($Global:Primary_Key_Image.ImageFileName).$($Global:Primary_Key_Image.Suffix)"
 
-			if (Test-Path -Path $Global:Mount_To_Route -PathType Container) {
+				if (Test-Path -Path $TestNewFolder -PathType Container) {
+					$OpenRTPath = $TestNewFolder
+				}
+			}
+			Write-Host $OpenRTPath -ForegroundColor Green
+
+			if (Test-Path -Path $OpenRTPath -PathType Container) {
 				Write-Host "  $($lang.OpenFolder): " -NoNewline
-				Start-Process $Global:Mount_To_Route
+				Start-Process $OpenRTPath
 				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			} else {
 				Write-Host "  $($lang.NoInstallImage)" -ForegroundColor Red

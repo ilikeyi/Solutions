@@ -51,7 +51,6 @@
 	Reconstruction                  = Odbuduj plik {0}.wim z maksymalną kompresją
 	Reconstruction_Tips_Select      = Przed przebudowaniem zostanie wykonany tylko wtedy, gdy nie jest załadowany. Wymusi to włączenie zapisu, a następnie odmontowanie zamontowanego pliku.
 	ReconstructionTips              = Ponad 520 MB, zalecana jest odbudowa
-	EmptyDirectory                  = Usuń katalog domowy źródła obrazu
 	CreateASC                       = Dodaj podpis PGP do ISO
 	CreateASCPwd                    = Hasło certyfikatu
 	CreateASCAuthor                 = Podpisujący

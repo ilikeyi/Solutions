@@ -51,7 +51,6 @@
 	Reconstruction                  = Erstellen Sie {0}.wim mit der höchsten Komprimierung neu
 	Reconstruction_Tips_Select      = Vor dem Neuaufbau wird es nur ausgeführt, wenn es nicht gemountet ist, es wird gezwungen, den Speicher zu öffnen und dann das gemountete zu unmounten.
 	ReconstructionTips              = Mehr als 520 MB, Neuaufbau empfohlen
-	EmptyDirectory                  = Home Verzeichnis der Bildquelle löschen
 	CreateASC                       = PGP Signatur zu ISO hinzufügen
 	CreateASCPwd                    = Zertifikatskennwort
 	CreateASCAuthor                 = Unterzeichner

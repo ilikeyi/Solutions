@@ -51,7 +51,6 @@
 	Reconstruction                  = בנה מחדש את {0}.wim עם דחיסה מקסימלית
 	Reconstruction_Tips_Select      = לפני הבנייה מחדש, זה יבוצע רק כאשר הוא לא נטען זה יאלץ את השמירה להיות מופעלת ולאחר מכן יבטל את הטעינה של הקובץ הרכוב.
 	ReconstructionTips              = מעל 520 MB, מומלץ לבנות מחדש
-	EmptyDirectory                  = מחק את ספריית הבית של מקור התמונה
 	CreateASC                       = הוסף חתימת PGP ל-ISO
 	CreateASCPwd                    = סיסמת אישור
 	CreateASCAuthor                 = חוֹתֵם

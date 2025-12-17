@@ -51,7 +51,6 @@
 	Reconstruction                  = Atkurkite {0}.wim su maksimaliu suspaudimu
 	Reconstruction_Tips_Select      = Prieš atkuriant, jis bus vykdomas tik tada, kai jis nebus įkeltas. Tai privers įjungti išsaugojimą ir atjungti prijungtą failą.
 	ReconstructionTips              = Daugiau nei 520 MB, rekomenduojama perdaryti
-	EmptyDirectory                  = Ištrinkite vaizdo šaltinio namų katalogą
 	CreateASC                       = Pridėkite PGP parašą prie ISO
 	CreateASCPwd                    = Sertifikato slaptažodis
 	CreateASCAuthor                 = Signataras

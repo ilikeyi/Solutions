@@ -51,7 +51,6 @@
 	Reconstruction                  = {0}.wim'i maksimum sıkıştırmayla yeniden oluşturun
 	Reconstruction_Tips_Select      = Yeniden oluşturmadan önce, yalnızca yüklenmediğinde yürütülecektir. Kaydetmenin etkinleştirilmesini zorlayacak ve ardından bağlanan dosyanın bağlantısını kesecektir.
 	ReconstructionTips              = 520 MB'ın üzerinde, yeniden oluşturma önerilir
-	EmptyDirectory                  = Resim kaynağı ana dizinini sil
 	CreateASC                       = ISO'ya PGP imzası ekleme
 	CreateASCPwd                    = Sertifika şifresi
 	CreateASCAuthor                 = Imzalayan
