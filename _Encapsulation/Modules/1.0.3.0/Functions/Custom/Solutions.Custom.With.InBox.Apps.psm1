@@ -412,7 +412,6 @@ $Global:Pre_Config_Rules = @(
 								"ProfessionalWorkstationN"
 								"EnterpriseN"
 								"EnterpriseGN"
-								"EnterpriseSN"
 								"CloudN"
 								"CloudEN"
 								"CloudEditionLN"
@@ -469,7 +468,6 @@ $Global:Pre_Config_Rules = @(
 						@{
 							Name = @(
 								"EnterpriseS"
-								"EnterpriseSN"
 								"IoTEnterpriseS"
 								"IoTEnterpriseSK"
 							)
@@ -905,7 +903,6 @@ $Global:Pre_Config_Rules = @(
 					SN = @{
 						Edition = @(
 							"EnterpriseS"
-							"EnterpriseSN"
 							"IoTEnterpriseS"
 						)
 					}
@@ -983,7 +980,6 @@ $Global:Pre_Config_Rules = @(
 							Name = @(
 								"EnterpriseN"
 								"EnterpriseGN"
-								"EnterpriseSN"
 								"ProfessionalN"
 								"CoreN"
 								"EducationN"
@@ -1289,7 +1285,6 @@ $Global:Pre_Config_Rules = @(
 						"CoreSingleLanguage"
 						"EnterpriseN"
 						"EnterpriseGN"
-						"EnterpriseSN"
 						"ProfessionalN"
 						"EducationN"
 						"ProfessionalWorkstationN"

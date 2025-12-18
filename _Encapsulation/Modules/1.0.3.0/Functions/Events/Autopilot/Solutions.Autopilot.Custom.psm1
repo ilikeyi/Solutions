@@ -568,13 +568,15 @@ Function Image_Assign_Autopilot_Master
 								ImageDescription   = $empDetail.DESCRIPTION
 								DISPLAYNAME        = $empDetail.DISPLAYNAME
 								DISPLAYDESCRIPTION = $empDetail.DISPLAYDESCRIPTION
+								EditionId          = $empDetail.FLAGS
 							}
 
 							$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
-								Height    = 105
+								Name      = $empDetail.FLAGS
+								Height    = 125
 								Width     = 448
 								Padding   = "16,0,0,0"
-								Text      = "$($lang.MountedIndex): $($empDetail.index)`n$($lang.Wim_Image_Name): $($empDetail.NAME)`n$($lang.Wim_Image_Description): $($empDetail.ImageDescription)`n$($lang.Wim_Display_Name): $($empDetail.DISPLAYNAME)`n$($lang.Wim_Display_Description): $($empDetail.DISPLAYDESCRIPTION)"
+								Text      = "$($lang.MountedIndex): $($empDetail.index)`n$($lang.Wim_Edition): $($empDetail.FLAGS)`n$($lang.Wim_Image_Name): $($empDetail.NAME)`n$($lang.Wim_Image_Description): $($empDetail.ImageDescription)`n$($lang.Wim_Display_Name): $($empDetail.DISPLAYNAME)`n$($lang.Wim_Display_Description): $($empDetail.DISPLAYDESCRIPTION)"
 								Tag       = $empDetail.index
 								Checked   = $True
 							}
@@ -588,12 +590,16 @@ Function Image_Assign_Autopilot_Master
 				} else {
 					try {
 						Get-WindowsImage -ImagePath $ImageFilePath -ErrorAction SilentlyContinue | ForEach-Object {
-							$TempQueueProcessImageSelect += @{
-								Name   = $_.ImageName
-								Index  = $_.ImageIndex
+							Get-WindowsImage -ImagePath $ImageFilePath -index $_.ImageIndex -ErrorAction SilentlyContinue | ForEach-Object {
+								$TempQueueProcessImageSelect += @{
+									Name      = $_.ImageName
+									Index     = $_.ImageIndex
+									EditionId = $_.EditionId
+								}
 							}
 
 							$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
+								Name      = $_.EditionId
 								Height    = 55
 								Width     = 448
 								Padding   = "16,0,0,0"
@@ -7267,7 +7273,8 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 								if ($NewTasks.IsAutoSelectIndex -eq "Auto") {
 									$_.Checked = $True
 								} else {
-									if ($NewTasks.IsAutoSelectIndex -contains $_.Tag) {
+									if (($NewTasks.IsAutoSelectIndex -contains $_.Tag) -or
+									    ($NewTasks.IsAutoSelectIndex -contains $_.Name)) {
 										$_.Checked = $True
 									} else {
 										$_.Checked = $False

@@ -131,7 +131,6 @@
                 Name = @(
                     "EnterpriseN"
                     "EnterpriseGN"
-                    "EnterpriseSN"
                     "ProfessionalN"
                     "CoreN"
                     "EducationN"
@@ -199,7 +198,7 @@
             @{ Name = "Microsoft.VCLibs.140.00.UWPDesktop";      Match = "VCLibs*Desktop";                    License = ""; }
             @{ Name = "Microsoft.Services.Store.Engagement";     Match = "Services.Store.Engagement";         License = ""; }
             @{ Name = "Microsoft.HEIFImageExtension";            Match = "HEIFImageExtension";                License = "HEIFImageExtension"; }
-            @{ Name = "Microsoft.WebpImageExtension";            Match = "WebpImageExtension",;               License = "WebpImageExtension"; }
+            @{ Name = "Microsoft.WebpImageExtension";            Match = "WebpImageExtension";                License = "WebpImageExtension"; }
             @{ Name = "Microsoft.VP9VideoExtensions";            Match = "VP9VideoExtensions";                License = "VP9VideoExtensions"; }
             @{ Name = "Microsoft.WindowsStore";                  Match = "WindowsStore";                      License = "WindowsStore"; }
             @{ Name = "Microsoft.Xbox.TCUI";                     Match = "Xbox.TCUI";                         License = "Microsoft.Xbox.TCUI_8wekyb3d8bbwe.xml"; }
