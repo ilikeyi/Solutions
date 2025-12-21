@@ -63,7 +63,7 @@
 		"ImageSource": {
 			"Tasks": {
 				"IsAutoSelect": [
-					"Convert"
+					"Image_Convert_UI"
 				],
 				"Solutions": {
 					"SaveTo": {
@@ -256,7 +256,7 @@
 						"Drive_Add_UI",
 						"Feature_More_UI"
 					],
-					"IsAutoSelectIndex": [
+					"IsAutoSelectIndexAndEditionID": [
 						"Auto"
 					],
 					"Tasks": {
@@ -522,7 +522,7 @@
 						"Drive_Add_UI",
 						"Feature_More_UI"
 					],
-					"IsAutoSelectIndex": [
+					"IsAutoSelectIndexAndEditionID": [
 						"Auto"
 					],
 					"Tasks": {
@@ -645,7 +645,7 @@
 						"Functions_Rear_UI",
 						"Feature_More_UI"
 					],
-					"IsAutoSelectIndex": [
+					"IsAutoSelectIndexAndEditionID": [
 						"2"
 					],
 					"Tasks": {
