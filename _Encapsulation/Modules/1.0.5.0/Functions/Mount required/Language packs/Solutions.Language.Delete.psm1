@@ -67,8 +67,8 @@ Function Language_Delete_UI
 				$UI_Main_Extract_Tips.Text = $lang.LangNewAutoNoSelect
 			}
 		} else {
-			New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $false -Force
-			New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $false -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Uid)" -Value $false -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Uid)" -Value $false -Force
 			$UI_Main_Extract_Tips.Text = ""
 		}
 	}
@@ -105,23 +105,23 @@ Function Language_Delete_UI
 		}
 
 		if ($Temp_Select_Del_New_Language_Sources.Count -gt 0) {
-			New-Variable -Scope global -Name "Queue_Is_Language_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-			New-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Select_Del_New_Language_Sources -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_Del_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value $Temp_Select_Del_New_Language_Sources -Force
 
 			<#
 				.同步语言包到安装程序
 			#>
-			New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			if ($UI_Main_Lang_Sync_To_Sources.Enabled) {
 				if ($UI_Main_Lang_Sync_To_Sources.Checked) {
-					New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+					New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 				}
 			}
 
-			New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			if ($UI_Main_Language_Ini_Rebuild.Enabled) {
 				if ($UI_Main_Language_Ini_Rebuild.Checked) {
-					New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+					New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 				}
 			}
 
@@ -139,7 +139,7 @@ Function Language_Delete_UI
 
 	Function Refres_Event_Tasks_Language_Del_UI
 	{
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		if ($Temp_Assign_Task_Select.Count -gt 0) {
@@ -148,7 +148,7 @@ Function Language_Delete_UI
 			$UI_Main_Dashboard_Event_Clear.Text = $lang.EventManagerNo
 		}
 
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Del_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Enable)"
 		} else {
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Disable)"
@@ -156,10 +156,10 @@ Function Language_Delete_UI
 	}
 
 	$UI_Main_Event_Clear_Click = {
-		New-Variable -Scope global -Name "Queue_Is_Language_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
-		New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Del_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 
 		Refres_Event_Tasks_Language_Del_UI
 
@@ -195,7 +195,7 @@ Function Language_Delete_UI
 		$UI_Main_Error_Icon.Image = $null
 		$UI_Main_Rule.controls.Clear()
 
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		<#
@@ -943,13 +943,13 @@ Function Language_Delete_UI
 			$UI_Main_Error_Icon.Image = $null
 
 			if ($this.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_Language_Del_Reverse_Order_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_Language_Del_Reverse_Order_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			} else {
-				New-Variable -Scope global -Name "Queue_Is_Language_Del_Reverse_Order_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Is_Language_Del_Reverse_Order_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			}
 		}
 	}
-	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Del_Reverse_Order_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Del_Reverse_Order_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$UI_Main_Is_Order_Rule_Lang.Checked = $True
 	} else {
 		$UI_Main_Is_Order_Rule_Lang.Checked = $False
@@ -1162,9 +1162,9 @@ Function Language_Delete_UI
 			$UI_Main_Error_Icon.Image = $null
 
 			if ($UI_Main_Lang_Sync_To_Sources.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			} else {
-				New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			}
 		}
 	}
@@ -1189,9 +1189,9 @@ Function Language_Delete_UI
 			$UI_Main_Error_Icon.Image = $null
 
 			if ($UI_Main_Language_Ini_Rebuild.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			} else {
-				New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			}
 		}
 	}
@@ -1376,7 +1376,7 @@ Function Language_Delete_UI
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "21" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "21" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -1483,7 +1483,7 @@ Function Language_Delete_UI
 
 				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				$Temp_Language_Del_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Temp_Language_Del_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Language_Del_Custom_Select.count -gt 0) {
 					ForEach ($item in $Temp_Language_Del_Custom_Select) {
 						Write-Host "  $($item)" -ForegroundColor Green
@@ -1639,7 +1639,7 @@ Function Language_Delete_UI
 			.同步语言包到安装程序
 		#>
 		$UI_Main_Lang_Sync_To_Sources.Enabled = $True
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Lang_Sync_To_Sources.Checked = $True
 		} else {
 			$UI_Main_Lang_Sync_To_Sources.Checked = $False
@@ -1649,7 +1649,7 @@ Function Language_Delete_UI
 			.重建 Lang.ini
 		#>
 		$UI_Main_Language_Ini_Rebuild.Enabled = $True
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Language_Ini_Rebuild.Checked = $True
 		} else {
 			$UI_Main_Language_Ini_Rebuild.Checked = $False
@@ -1866,7 +1866,7 @@ Function Language_Delete_UI
 			$UI_Main.ShowDialog() | Out-Null
 		}
 	} else {
-		$Temp_Language_Add_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Language_Add_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 
 		if ($Temp_Language_Add_Custom_Select.count -gt 0) {
 			$UI_Main_Rule.Controls | ForEach-Object {
@@ -1892,7 +1892,7 @@ Function Language_Delete_Process
 {
 	$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master).$($Global:Primary_Key_Image.MasterSuffix)\$($Global:Primary_Key_Image.ImageFileName).$($Global:Primary_Key_Image.Suffix)\Mount"
 
-	$Temp_Language_Del_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Language_Del_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Language_Del_Custom_Select.count -gt 0) {
 		Write-Host "  $($lang.YesWork)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -1914,7 +1914,7 @@ Function Language_Delete_Process
 				Sort-Object -Descending
 			#>
 			Write-Host "  $($lang.DescendingRuleLang)" -ForegroundColor Yellow
-			if ((Get-Variable -Scope global -Name "Queue_Is_Language_Del_Reverse_Order_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+			if ((Get-Variable -Scope global -Name "Queue_Is_Language_Del_Reverse_Order_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 				Write-Host "  $($lang.UpdateAvailable)`n" -ForegroundColor Green
 
 				Get-ChildItem $item -Recurse -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | Sort-Object -Descending | ForEach-Object {

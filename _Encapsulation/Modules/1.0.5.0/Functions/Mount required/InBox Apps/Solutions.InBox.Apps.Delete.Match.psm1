@@ -186,7 +186,7 @@ Function InBox_Apps_Match_Delete_UI
 	{
 		$UI_Main_Rule.controls.clear()
 
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		<#
@@ -292,7 +292,7 @@ Function InBox_Apps_Match_Delete_UI
 
 	Function Refres_Event_Tasks_InBox_Apps_Delete_Match
 	{
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		if ($Temp_Assign_Task_Select.Count -gt 0) {
@@ -305,7 +305,7 @@ Function InBox_Apps_Match_Delete_UI
 	}
 
 	$UI_Main_Event_Clear_Click = {
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 		Refres_Event_Tasks_InBox_Apps_Delete_Match
 
@@ -455,7 +455,7 @@ Function InBox_Apps_Match_Delete_UI
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "14" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "14" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -563,7 +563,7 @@ Function InBox_Apps_Match_Delete_UI
 				
 				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_Select.count -gt 0) {
 					ForEach ($item in $Temp_Assign_Task_Select) {
 						Write-Host "  $($item.Name)" -ForegroundColor Green
@@ -904,7 +904,7 @@ Function InBox_Apps_Match_Delete_UI
 		Write-Host "  " -NoNewline
 		Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
 
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 		if (-not ([string]::IsNullOrEmpty($Autopilot.Guid))) {
 			$UI_Main_Extract_Rule_Select_Sourcest.Controls | ForEach-Object {
@@ -948,7 +948,7 @@ Function InBox_Apps_Match_Delete_UI
 			$UI_Main.ShowDialog() | Out-Null
 		}
 	} else {
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 
 		$UI_Main_Rule.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.CheckBox]) {
@@ -1021,7 +1021,7 @@ Function InBox_Apps_Delete_Check_Match_Customize
 
 		if ($Queue_Inbox_Apps_Select.count -gt 0) {
 			if ($Save) {
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Queue_Inbox_Apps_Select -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Uid)" -Value $Queue_Inbox_Apps_Select -Force
 			}
 		} else {
 			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")

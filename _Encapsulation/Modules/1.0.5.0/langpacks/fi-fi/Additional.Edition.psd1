@@ -12,4 +12,7 @@
 	AE_Rename                       = Salli kaikkien tietojen uudelleennimeäminen
 	AE_Exclude                      = Sulje pois lisäosan versiot
 	AE_Replace_Name                 = Korvaa kielten nimet automaattisesti
+	AE_Add_Exclude_Nomount          = Lisää pois jätettäviksi pyytämättömistä kiinnityksistä
+	AE_ExcludeMount                 = Poista pois pyytämättömistä kiinnityksistä
+	AE_ExcludeMountTips             = Olet määrittämässä kohdetta pois jätettäväksi pyytämättömistä kiinnityksistä. Lisäämisen jälkeen versiotunnuksen tai sarjanumeron muutoksia ei enää pyydetä kiinnitystä varten.
 '@

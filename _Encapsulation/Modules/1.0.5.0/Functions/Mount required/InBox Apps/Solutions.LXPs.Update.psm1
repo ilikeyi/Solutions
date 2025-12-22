@@ -25,7 +25,7 @@ Function LXPs_Update_UI
 
 	Function Refres_Event_Tasks_LXPs_Update_UI
 	{
-		$Temp_Queue_Is_InBox_Apps_Update = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Queue_Is_InBox_Apps_Update = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		if ($Temp_Queue_Is_InBox_Apps_Update.Count -gt 0) {
 			$UI_Main_Dashboard_Event_Clear.Text = "$($lang.YesWork), $($lang.EventManagerCurrentClear)"
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Enable)"
@@ -36,7 +36,7 @@ Function LXPs_Update_UI
 	}
 
 	$UI_Main_Event_Clear_Click = {
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 		Refres_Event_Tasks_LXPs_Update_UI
 
@@ -69,7 +69,7 @@ Function LXPs_Update_UI
 			.验证标记：检查选择状态
 		#>
 		if ($TempSelectLXPsLanguage.count -gt 0) {
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $TempSelectLXPsLanguage -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Uid)" -Value $TempSelectLXPsLanguage -Force
 
 			Refres_Event_Tasks_LXPs_Update_UI
 
@@ -78,7 +78,7 @@ Function LXPs_Update_UI
 
 			return $true
 		} else {
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 			$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.NoChoose) ( $($lang.LXPsWaitAddUpdate) )"
 
@@ -232,7 +232,7 @@ Function LXPs_Update_UI
 				.浏览目录：确认
 			#>
 			if ($FolderBrowser.ShowDialog() -eq "OK") {
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_Select_Sources_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $FolderBrowser.SelectedPath -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_Select_Sources_$($Global:Primary_Key_Image.Uid)" -Value $FolderBrowser.SelectedPath -Force
 				Refresh_Add_InBox_Apps_New_Sources
 			} else {
 				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
@@ -243,7 +243,7 @@ Function LXPs_Update_UI
 
 	Function Refresh_Add_InBox_Apps_New_Sources
 	{
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_Select_Sources_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_Select_Sources_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		if (([string]::IsNullOrEmpty($Temp_Assign_Task_Select))) {
 			$UI_Main_Other_Rule_Not_Find = New-Object system.Windows.Forms.Label -Property @{
 				Height         = 30
@@ -253,7 +253,7 @@ Function LXPs_Update_UI
 
 			$UI_Main_Is_Wait_Add.controls.AddRange($UI_Main_Other_Rule_Not_Find)
 		} else {
-			$Temp_Queue_Is_InBox_Apps_Update = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+			$Temp_Queue_Is_InBox_Apps_Update = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 			if ($Temp_Queue_Is_InBox_Apps_Update.Count -gt 0) {
 				$GetSelectLXPsLanguage = $Temp_Queue_Is_InBox_Apps_Update
 			} else {
@@ -384,7 +384,7 @@ Function LXPs_Update_UI
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "822" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "822" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -489,7 +489,7 @@ Function LXPs_Update_UI
 
 				Write-Host "`n  $($lang.LXPsWaitAddUpdate)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_Select.count -gt 0) {
 					ForEach ($item in $Temp_Assign_Task_Select) {
 						Write-Host "  $($item)" -ForegroundColor Green
@@ -665,7 +665,7 @@ Function LXPs_Update_UI
 		Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
 
 		if (Test-Path -Path $Autopilot.Sources -PathType Container) {
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_Select_Sources_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Autopilot.Sources -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_Select_Sources_$($Global:Primary_Key_Image.Uid)" -Value $Autopilot.Sources -Force
 			Refresh_Add_InBox_Apps_New_Sources
 
 			$UI_Main_Is_Wait_Add.Controls | ForEach-Object {
@@ -687,7 +687,7 @@ Function LXPs_Update_UI
 			$UI_Main.ShowDialog() | Out-Null
 		}
 	} else {
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		$UI_Main_Is_Wait_Add.Controls | ForEach-Object {
@@ -709,7 +709,7 @@ Function LXPs_Update_UI
 #>
 Function InBox_Apps_LIPs_Add_Process
 {
-	$Temp_Queue_Is_InBox_Apps_Update = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Queue_Is_InBox_Apps_Update = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Queue_Is_InBox_Apps_Update.Count -gt 0) {
 		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"

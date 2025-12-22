@@ -205,7 +205,7 @@ Function Event_Completion_Start_Setting_UI
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "5" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "5" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}

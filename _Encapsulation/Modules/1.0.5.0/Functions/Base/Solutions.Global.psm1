@@ -463,13 +463,13 @@ Function Get_GPS_Location
 {
 	ForEach ($item in $Global:Image_Rule) {
 		if ($Global:Primary_Key_Image.Uid -eq $item.Main.Uid) {
-			return "$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
+			return $item.Main.Uid
 		}
 
 		if ($item.Expand.Count -gt 0) {
 			ForEach ($Expand in $item.Expand) {
 				if ($Global:Primary_Key_Image.Uid -eq $Expand.Uid) {
-					return "$($item.Main.ImageFileName)_$($Expand.ImageFileName)"
+					return $Expand.Uid
 				}
 			}
 		}

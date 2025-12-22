@@ -474,9 +474,9 @@ Function Language_Extract_UI
 							.不使用多级目录自定义规则
 						#>
 						if ($UI_Main_Dont_Use_Rules.Checked) {
-							$LocalLanguageFiles = "$($UI_Main_Extract_Rule_To_Result.Text)\$($WimLib_SplieNew_Rule_path[0])\$($WimLib_SplieNew_Rule_path[1])\$($SaveTo)\$($NewLanguage)\$($SearchNewFileName)"
+							$LocalLanguageFiles = "$($UI_Main_Extract_Rule_To_Result.Text)\$($WimLib_SplieNew_Rule_path[0])\$($WimLib_SplieNew_Rule_path[2])\$($SaveTo)\$($NewLanguage)\$($SearchNewFileName)"
 						} else {
-							$LocalLanguageFiles = "$($UI_Main_Extract_Rule_To_Result.Text)\$($WimLib_SplieNew_Rule_path[0])\$($WimLib_SplieNew_Rule_path[1])\Language\$($UI_Main_Multistage_Rule_Name_Custom.Text)\$($NewArchC)\$($SaveTo)\$($NewLanguage)\$($SearchNewFileName)"
+							$LocalLanguageFiles = "$($UI_Main_Extract_Rule_To_Result.Text)\$($WimLib_SplieNew_Rule_path[0])\$($WimLib_SplieNew_Rule_path[2])\Language\$($UI_Main_Multistage_Rule_Name_Custom.Text)\$($NewArchC)\$($SaveTo)\$($NewLanguage)\$($SearchNewFileName)"
 						}
 
 						$UI_Main_Extract_Rule_Need_Result.Text += "$($SearchNewFileName)`n"
@@ -498,11 +498,11 @@ Function Language_Extract_UI
 											.不使用多级目录自定义规则
 										#>
 										if ($UI_Main_Dont_Use_Rules.Checked) {
-											$CopyImportLication = "$($UI_Main_Extract_Rule_To_Result.Text)\$($WimLib_SplieNew_Rule_path[0])\$($WimLib_SplieNew_Rule_path[1])\Language\$($SaveTo)\$($NewLanguage)"
-											$ClearDuplication = "$($UI_Main_Extract_Rule_To_Result.Text)\$($WimLib_SplieNew_Rule_path[0])\$($WimLib_SplieNew_Rule_path[1])\Language\$($SaveTo)"
+											$CopyImportLication = "$($UI_Main_Extract_Rule_To_Result.Text)\$($WimLib_SplieNew_Rule_path[0])\$($WimLib_SplieNew_Rule_path[2])\Language\$($SaveTo)\$($NewLanguage)"
+											$ClearDuplication = "$($UI_Main_Extract_Rule_To_Result.Text)\$($WimLib_SplieNew_Rule_path[0])\$($WimLib_SplieNew_Rule_path[2])\Language\$($SaveTo)"
 										} else {
-											$CopyImportLication = "$($UI_Main_Extract_Rule_To_Result.Text)\$($WimLib_SplieNew_Rule_path[0])\$($WimLib_SplieNew_Rule_path[1])\Language\$($UI_Main_Multistage_Rule_Name_Custom.Text)\$($NewArchC)\$($SaveTo)\$($NewLanguage)"
-											$ClearDuplication = "$($UI_Main_Extract_Rule_To_Result.Text)\$($WimLib_SplieNew_Rule_path[0])\$($WimLib_SplieNew_Rule_path[1])\Language\$($UI_Main_Multistage_Rule_Name_Custom.Text)\$($NewArchC)\$($SaveTo)"
+											$CopyImportLication = "$($UI_Main_Extract_Rule_To_Result.Text)\$($WimLib_SplieNew_Rule_path[0])\$($WimLib_SplieNew_Rule_path[2])\Language\$($UI_Main_Multistage_Rule_Name_Custom.Text)\$($NewArchC)\$($SaveTo)\$($NewLanguage)"
+											$ClearDuplication = "$($UI_Main_Extract_Rule_To_Result.Text)\$($WimLib_SplieNew_Rule_path[0])\$($WimLib_SplieNew_Rule_path[2])\Language\$($UI_Main_Multistage_Rule_Name_Custom.Text)\$($NewArchC)\$($SaveTo)"
 										}
 										Check_Folder -chkpath $CopyImportLication
 										Copy-Item -Path $SearchTempFile -Destination $CopyImportLication -Recurse -Force -ErrorAction SilentlyContinue

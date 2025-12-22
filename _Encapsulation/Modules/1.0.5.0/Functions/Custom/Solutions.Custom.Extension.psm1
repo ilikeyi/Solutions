@@ -128,7 +128,7 @@ $Global:Custom_Rule = @(
 			Rule = @(
 				#region Boot
 				@{
-					Uid  = "Boot;Boot;Wim;"
+					Uid  = "Boot;wim;Boot;wim;"
 					Rule = @(
 						@{
 							Architecture = "Auto"
@@ -143,7 +143,7 @@ $Global:Custom_Rule = @(
 
 				#region Install
 				@{
-					Uid  = "Install;Install;Wim;"
+					Uid  = "Install;wim;Install;wim;"
 					Rule = @(
 						@{
 							Architecture = "Auto"
@@ -157,7 +157,7 @@ $Global:Custom_Rule = @(
 
 				#region WinRE
 				@{
-					Uid  = "Install;WinRE;Wim;"
+					Uid  = "Install;wim;WinRE;wim;"
 					Rule = @(
 						@{
 							Architecture = "Auto"

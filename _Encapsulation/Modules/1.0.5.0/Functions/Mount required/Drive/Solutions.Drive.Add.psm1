@@ -61,8 +61,8 @@ Function Drive_Add_UI
 		}
 
 		if ($Temp_Queue_Select_Item.Count -gt 0) {
-			New-Variable -Scope global -Name "Queue_Is_Drive_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-			New-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Queue_Select_Item -Force
+			New-Variable -Scope global -Name "Queue_Is_Drive_Add_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
+			New-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value $Temp_Queue_Select_Item -Force
 
 			Refres_Event_Tasks_Drive_Add_UI
 
@@ -78,7 +78,7 @@ Function Drive_Add_UI
 
 	Function Refres_Event_Tasks_Drive_Add_UI
 	{
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		if ($Temp_Assign_Task_Select.Count -gt 0) {
@@ -87,7 +87,7 @@ Function Drive_Add_UI
 			$UI_Main_Dashboard_Event_Clear.Text = $lang.EventManagerNo
 		}
 
-		if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Add_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Enable)"
 		} else {
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Disable)"
@@ -95,8 +95,8 @@ Function Drive_Add_UI
 	}
 
 	$UI_Main_Event_Clear_Click = {
-		New-Variable -Scope global -Name "Queue_Is_Drive_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_Drive_Add_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 		Refres_Event_Tasks_Drive_Add_UI
 
@@ -110,7 +110,7 @@ Function Drive_Add_UI
 		$UI_Main_Error_Icon.Image = $null
 		$UI_Main_Rule.controls.Clear()
 
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		<#
@@ -825,7 +825,7 @@ Function Drive_Add_UI
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "8" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "8" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -930,7 +930,7 @@ Function Drive_Add_UI
 
 				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_Select.count -gt 0) {
 					ForEach ($item in $Temp_Assign_Task_Select) {
 						Write-Host "  $($item)" -ForegroundColor Green
@@ -1066,7 +1066,7 @@ Function Drive_Add_UI
 
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
-		New-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 		$Temp_Assign_Task_Select_Is = @()
 		$UI_Main_Rule.Controls | ForEach-Object {
@@ -1100,7 +1100,7 @@ Function Drive_Add_UI
 
 			Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+			$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 			foreach ($item in $Temp_Assign_Task_Select) {
 				Write-Host "  $($item)" -ForegroundColor Green
 			}
@@ -1117,7 +1117,7 @@ Function Drive_Add_UI
 			}
 		}
 
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		foreach ($item in $Temp_Assign_Task_Select) {
@@ -1150,7 +1150,7 @@ Function Drive_Add_UI
 #>
 Function Drive_Add_Process
 {
-	$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Assign_Task_Select.count -gt 0) {
 		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"

@@ -12,4 +12,7 @@
 	AE_Rename                       = Tillåt namnbyte av alla detaljer
 	AE_Exclude                      = Uteslut tilläggsversioner
 	AE_Replace_Name                 = Ersätt språknamn automatiskt
+	AE_Add_Exclude_Nomount          = Lägg till i Undantag från monteringar Ej begärt
+	AE_ExcludeMount                 = Undantag från monteringar Ej begärt
+	AE_ExcludeMountTips             = Du tilldelar ett objekt att undanta från monteringar som inte begärts. Efter att det har lagts till kommer ändringar av versions-ID eller serienummer inte längre att begäras för montering.
 '@

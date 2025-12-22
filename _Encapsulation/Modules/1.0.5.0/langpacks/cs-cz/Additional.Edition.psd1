@@ -12,4 +12,7 @@
 	AE_Rename                       = Povolit přejmenování všech podrobností
 	AE_Exclude                      = Vyloučit verze doplňků
 	AE_Replace_Name                 = Automaticky nahradit názvy jazyků
+	AE_Add_Exclude_Nomount          = Přidat k vyloučení z nepožadovaných montáží
+	AE_ExcludeMount                 = Vyloučit z nepožadovaných montáží
+	AE_ExcludeMountTips             = Přiřazujete položku k vyloučení z nepožadovaných montáží. Po jejím přidání již nebudou pro montáž vyžadovány změny ID verze nebo sériového čísla.
 '@

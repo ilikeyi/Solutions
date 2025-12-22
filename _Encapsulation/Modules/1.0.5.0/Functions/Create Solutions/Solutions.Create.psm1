@@ -245,7 +245,7 @@ Function Solutions_Create_UI
 		$Script:init_To_GPS = "ISO"
 	} else {
 		if (Image_Is_Select_IAB) {
-			$Script:init_To_GPS = "$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)"
+			$Script:init_To_GPS = $Global:Primary_Key_Image.Uid
 		} else {
 			$Script:init_To_GPS = "ISO"
 		}
@@ -315,7 +315,7 @@ Function Solutions_Create_UI
 
 		if ($SolutionsToMount.Enabled) {
 			if ($SolutionsToMount.Checked) {
-				$Script:init_To_GPS = "$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)"
+				$Script:init_To_GPS = $Global:Primary_Key_Image.Uid
 			}
 		}
 
@@ -727,7 +727,7 @@ volume
 
 		if ($SolutionsToMount.Enabled) {
 			if ($SolutionsToMount.Checked) {
-				$Script:init_To_GPS = "$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)"
+				$Script:init_To_GPS = $Global:Primary_Key_Image.Uid
 				$CreateUnattendISO.Enabled = $False
 				$CreateUnattendISOSources.Enabled = $False
 				$CreateUnattendISOSourcesOEM.Enabled = $False
@@ -1058,7 +1058,7 @@ volume
 
 		if ($SolutionsToMount.Enabled) {
 			if ($SolutionsToMount.Checked) {
-				$Script:init_To_GPS = "$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)"
+				$Script:init_To_GPS = $Global:Primary_Key_Image.Uid
 				$init_Is_Select_Add_To = $True
 			}
 		}
@@ -4799,7 +4799,7 @@ volume
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "6" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "6" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -8223,14 +8223,14 @@ Function Solutions_Generate_Prerequisite
 
 	if ($Mount) {
 		if (Image_Is_Select_IAB) {
-			$Script:init_To_GPS = "$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)"
+			$Script:init_To_GPS = $Global:Primary_Key_Image.Uid
 			$Script:CopySolutionsToRoot = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master).$($Global:Primary_Key_Image.MasterSuffix)\$($Global:Primary_Key_Image.ImageFileName).$($Global:Primary_Key_Image.Suffix)\Mount"
 			$Script:CopySolutionsToWindows = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master).$($Global:Primary_Key_Image.MasterSuffix)\$($Global:Primary_Key_Image.ImageFileName).$($Global:Primary_Key_Image.Suffix)\Mount\Windows"
 
 			if (Test-Path -Path $Script:CopySolutionsToRoot -PathType Container) {
 				Write-Host "`n  $($lang.ClearOld), Mount"
 
-				$OSDefaultUserMount = (Get-Variable -Scope global -Name "Name_Engine_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$OSDefaultUserMount = (Get-Variable -Scope global -Name "Name_Engine_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 
 				$GroupCleanMountTo = @(
 					"$($OSDefaultUserMount)"

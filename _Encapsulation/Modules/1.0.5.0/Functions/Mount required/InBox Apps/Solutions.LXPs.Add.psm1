@@ -28,18 +28,18 @@ Function LXPs_Region_Add
 			.标记：检查选择状态
 		#>
 		if ($UI_Main_Is_Install_LXPs.Checked) {
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_LXPs_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_LXPs_Add_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 
-			New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-			New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+			New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
+			New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 			<#
 				.安装时跳过 en-US 添加，建议
 			#>
 			if ($UI_Main_Skip_English.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_English_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_English_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			} else {
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_English_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_English_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			}
 
 			<#
@@ -49,21 +49,21 @@ Function LXPs_Region_Add
 				<#
 					.启用添加主要事件
 				#>
-				New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 
 			} else {
-				New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $false -Force
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $false -Force
+				New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Global:Primary_Key_Image.Uid)" -Value $false -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Uid)" -Value $false -Force
 			}
 
 				<#
 					.按规则排除
 				#>
 				if ($UI_Main_InBox_Apps_Clear_Rule.Checked) {
-					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 				} else {
-					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $false -Force
+					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -Value $false -Force
 				}
 
 			Refres_Event_Tasks_InBox_Apps_Region_Add_UI
@@ -73,7 +73,7 @@ Function LXPs_Region_Add
 
 			Return $true
 		} else {
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_LXPs_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_LXPs_Add_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 
 			$Get_Temp_Select_Update_Add_Folder = @()
 			$UI_Main_Rule.Controls | ForEach-Object {
@@ -112,24 +112,24 @@ Function LXPs_Region_Add
 				.验证标记：检查选择状态
 			#>
 			if ($Temp_Select_Experience_Pack_Queue.count -gt 0) {
-				New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-				New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Select_Experience_Pack_Queue -Force
-				New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Select_Sources_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Get_Temp_Select_Update_Add_Folder -Force
+				New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value $Temp_Select_Experience_Pack_Queue -Force
+				New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Select_Sources_$($Global:Primary_Key_Image.Uid)" -Value $Get_Temp_Select_Update_Add_Folder -Force
 
 				<#
 					.强行删除已安装的所有预应用程序 ( InBox Apps )
 				#>
 				if ($UI_Main_InBox_Apps_Clear.Checked) {
-					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 
 					if ($UI_Main_InBox_Apps_Clear_Rule.Checked) {
-						New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+						New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 					} else {
-						New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $false -Force
+						New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -Value $false -Force
 					}
 				} else {
-					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $false -Force
-					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $false -Force
+					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Uid)" -Value $false -Force
+					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -Value $false -Force
 				}
 
 				Refres_Event_Tasks_InBox_Apps_Region_Add_UI
@@ -149,7 +149,7 @@ Function LXPs_Region_Add
 
 	Function Refres_Event_Tasks_InBox_Apps_Region_Add_UI
 	{
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		if ($Temp_Assign_Task_Select.Count -gt 0) {
@@ -159,14 +159,14 @@ Function LXPs_Region_Add
 		}
 
 		$Verify_Is_NewTasks = $False
-		if ((Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$Verify_Is_NewTasks = $True
 		}
 
 		<#
 			.验证是否有任务：强行删除已安装的所有预应用程序 ( InBox Apps )
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Dashboard_Event_InBox_Apps_Clear_Status.Text = "$($lang.InboxAppsClear): $($lang.Enable)"
 			$UI_Main_Dashboard_Event_InBox_Apps_Clear.Text = "$($lang.YesWork), $($lang.EventManagerCurrentClear)"
 		} else {
@@ -184,9 +184,9 @@ Function LXPs_Region_Add
 	}
 
 	$UI_Main_Event_Clear_Click = {
-		New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 
 		Refres_Event_Tasks_InBox_Apps_Region_Add_UI
 
@@ -196,7 +196,7 @@ Function LXPs_Region_Add
 
 	Function Refresh_LXPs_Engine_Local_Sources
 	{
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Select_Sources_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Select_Sources_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		$UI_Main_Error.Text = ""
@@ -602,7 +602,7 @@ Function LXPs_Region_Add
 
 		$FlagCheckSelectStatus = @()
 
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 
 		<#
 			.Search whether the selected directory has: LanguageExperiencePack.*.appx
@@ -963,8 +963,8 @@ Function LXPs_Region_Add
 		ActiveLinkColor = "RED"
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
-			New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-			New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+			New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 			Refres_Event_Tasks_InBox_Apps_Region_Add_UI
 
@@ -988,7 +988,7 @@ Function LXPs_Region_Add
 		ActiveLinkColor = "RED"
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 	
 			Refres_Event_Tasks_InBox_Apps_Region_Add_UI
 	
@@ -1027,7 +1027,7 @@ Function LXPs_Region_Add
 			}
 		}
 	}
-	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_LXPs_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_LXPs_Add_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$UI_Main_Is_Install_LXPs.Checked = $True
 	} else {
 		$UI_Main_Is_Install_LXPs.Checked = $False
@@ -1047,13 +1047,13 @@ Function LXPs_Region_Add
 			$UI_Main_Error_Icon.Image = $null
 
 			if ($This.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_English_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_English_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			} else {
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_English_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_English_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			}
 		}
 	}
-	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_English_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_English_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$UI_Main_Skip_English.Checked = $True
 	} else {
 		$UI_Main_Skip_English.Checked = $False
@@ -1084,7 +1084,7 @@ Function LXPs_Region_Add
 			$UI_Main_Error_Icon.Image = $null
 		}
 	}
-	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$UI_Main_InBox_Apps_Clear.Checked = $True
 	} else {
 		$UI_Main_InBox_Apps_Clear.Checked = $False
@@ -1101,7 +1101,7 @@ Function LXPs_Region_Add
 			$UI_Main_Error_Icon.Image = $null
 		}
 	}
-	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$UI_Main_InBox_Apps_Clear_Rule.Checked = $True
 	} else {
 		$UI_Main_InBox_Apps_Clear_Rule.Checked = $False
@@ -1194,7 +1194,7 @@ Function LXPs_Region_Add
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "15" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "15" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -1616,7 +1616,7 @@ Function LXPs_Region_Add
 					$UI_Main_Error.Text = $lang.Existed
 				} else {
 					$Script:Temp_Select_Language_Add_Folder += $FolderBrowser.SelectedPath
-					New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Select_Sources_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $FolderBrowser.SelectedPath -Force
+					New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Select_Sources_$($Global:Primary_Key_Image.Uid)" -Value $FolderBrowser.SelectedPath -Force
 					Refresh_LXPs_Engine_Local_Sources
 					Refres_Event_Tasks_InBox_Apps_Region_Add_UI
 
@@ -1683,7 +1683,7 @@ Function LXPs_Region_Add
 
 				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_Select.count -gt 0) {
 					ForEach ($item in $Temp_Assign_Task_Select) {
 						Write-Host "  $($item.Language)" -ForegroundColor Green
@@ -2034,7 +2034,7 @@ Function InBox_Apps_LIPs_Clean_Process
 				<#
 					.从设置里判断是否允许排除规则
 				#>
-				if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+				if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 					ForEach ($item in $Global:Exclude_InBox_Apps_Delete) {
 						$InitlUWPPrePakcageDelete += $item
 					}
@@ -2163,7 +2163,7 @@ Function InBox_Apps_LIPs_Clean_Process
 
 Function InBox_Apps_LIPs_Add_Mark_Process
 {
-	$Temp_Select_Queue_LXPs_Add_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Select_Queue_LXPs_Add_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Select_Queue_LXPs_Add_Custom_Select.count -gt 0) {
 		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -2177,7 +2177,7 @@ Function InBox_Apps_LIPs_Add_Mark_Process
 		ForEach ($item in $Temp_Select_Queue_LXPs_Add_Custom_Select) {
 			Write-Host "  $($item.Path)"
 
-			if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_English_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+			if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_English_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 				$shortname = [IO.Path]::GetFileName($item.Path)
 				if ($shortname -eq "en-US") {
 					Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red

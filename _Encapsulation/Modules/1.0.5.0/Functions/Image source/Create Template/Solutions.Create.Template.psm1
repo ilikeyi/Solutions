@@ -923,7 +923,7 @@ Function Create_Template_UI
 			if ($GUISelectTypeInstall.Checked) {
 				if (Create_Template_Verify_Install) {
 					$Mask_Install_WinRE_Boot += @{
-						Uid  = "Install;install;wim;";
+						Uid  = "Install;wim;Install;wim;";
 						Flag = $GUISelectTypeInstallCustomizeName.Text
 					}
 				} else {
@@ -934,7 +934,7 @@ Function Create_Template_UI
 			if ($GUISelectTypeWinRE.Checked) {
 				if (Create_Template_Verify_WinRE) {
 					$Mask_Install_WinRE_Boot += @{
-						Uid  = "Install;WinRE;wim;";
+						Uid  = "Install;wim;WinRE;wim;";
 						Flag = $GUISelectTypeWinRECustomizeName.Text
 					}
 				} else {
@@ -945,7 +945,7 @@ Function Create_Template_UI
 			if ($GUISelectTypeBoot.Checked) {
 				if (Create_Template_Verify_Boot) {
 					$Mask_Install_WinRE_Boot += @{
-						Uid  = "Boot;Boot;wim;";
+						Uid  = "Boot;wim;Boot;wim;";
 						Flag = $GUISelectTypeBootCustomizeName.Text
 					}
 				} else {

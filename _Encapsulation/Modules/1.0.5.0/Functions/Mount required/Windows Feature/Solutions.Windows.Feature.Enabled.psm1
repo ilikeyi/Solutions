@@ -19,7 +19,7 @@
 	{
 		$UI_Main_Wait_Add.controls.clear()
 
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		if ($Temp_Assign_Task_Select.Count -gt 0) {
@@ -55,8 +55,8 @@
 
 	$UI_Main_Event_Clear_Click = {
 		$Script:Init_Feature_Add_Queue = @()
-		New-Variable -Scope global -Name "Queue_Is_Feature_Enable_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Feature_Enable_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_Feature_Enable_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Feature_Enable_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 		Refres_Event_Tasks_Feature_Enabled
 
@@ -477,7 +477,7 @@
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "11" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "11" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -634,8 +634,8 @@
 				.验证标记：检查选择状态
 			#>
 			if ($Temp_Queue_Is_Feature_Enable_Select.Count -gt 0) {
-				New-Variable -Scope global -Name "Queue_Is_Feature_Enable_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-				New-Variable -Scope global -Name "Queue_Is_Feature_Enable_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Queue_Is_Feature_Enable_Select -Force
+				New-Variable -Scope global -Name "Queue_Is_Feature_Enable_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_Feature_Enable_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value $Temp_Queue_Is_Feature_Enable_Select -Force
 
 				Refres_Event_Tasks_Feature_Enabled
 
@@ -662,7 +662,7 @@
 
 				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				$Temp_Queue_Is_Feature_Enable_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Temp_Queue_Is_Feature_Enable_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Queue_Is_Feature_Enable_Custom_Select.count -gt 0) {
 					ForEach ($item in $Temp_Queue_Is_Feature_Enable_Custom_Select) {
 						Write-Host "  $($item)" -ForegroundColor Green
@@ -809,7 +809,7 @@
 #>
 Function Feature_Enabled_Process
 {
-	$Temp_Queue_Is_Feature_Enable_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Queue_Is_Feature_Enable_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Queue_Is_Feature_Enable_Custom_Select.count -gt 0) {
 		Write-Host "  $($lang.YesWork)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"

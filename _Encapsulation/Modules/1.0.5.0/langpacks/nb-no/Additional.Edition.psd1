@@ -12,4 +12,7 @@
 	AE_Rename                       = Tillat endring av navn på alle detaljer
 	AE_Exclude                      = Ekskluder tilleggsversjoner
 	AE_Replace_Name                 = Erstatt språknavn automatisk
+	AE_Add_Exclude_Nomount          = Legg til i Ekskluder fra monteringer Ikke forespurt
+	AE_ExcludeMount                 = Ekskluder fra monteringer Ikke forespurt
+	AE_ExcludeMountTips             = Du tilordner et element som skal ekskluderes fra monteringer som ikke er forespurt. Etter at det er lagt til, vil endringer i versjons-ID-en eller serienummeret ikke lenger bli forespurt for montering.
 '@

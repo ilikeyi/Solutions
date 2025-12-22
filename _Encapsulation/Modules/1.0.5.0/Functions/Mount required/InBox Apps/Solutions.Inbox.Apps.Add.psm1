@@ -38,18 +38,18 @@ Function InBox_Apps_Add_UI
 
 	Function Autopilot_InBox_Apps_Add_UI_Save
 	{
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Not_Dependency_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Group_Install_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Dependency_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Rule_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Not_Dependency_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Group_Install_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Dependency_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Auto_Assign_Editions_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Missing_Packer_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_DependencyPackage_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Optimize_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Auto_Assign_Editions_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Missing_Packer_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_DependencyPackage_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Optimize_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 
 		<#
 			.Verification mark: check selection status
@@ -64,11 +64,11 @@ Function InBox_Apps_Add_UI
 				}
 			}
 
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 
 			if ($UI_Main_Mask_Dependencies_DoNot_Tips.Checked) {
 			} else {
-				$Temp_Assign_Task_Custom_Select_Dependency = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Not_Dependency_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Temp_Assign_Task_Custom_Select_Dependency = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Not_Dependency_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_Custom_Select_Dependency.Count -gt 0) {
 					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					$UI_Main_Error.Text = "$($lang.RuleFindError -f $Temp_Assign_Task_Custom_Select_Dependency.count)"
@@ -80,9 +80,9 @@ Function InBox_Apps_Add_UI
 				.遇到错误时不允许保存
 			#>
 			if ($UI_Main_Dashboard_IsAllowSave.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_IsAllow_Error_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_IsAllow_Error_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			} else {
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_IsAllow_Error_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_IsAllow_Error_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			}
 
 			<#
@@ -90,29 +90,29 @@ Function InBox_Apps_Add_UI
 				.自动根据映像版本分配应用程序
 			#>
 			if ($UI_Main_Assign_Editions.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Auto_Assign_Editions_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Auto_Assign_Editions_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			} else {
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Auto_Assign_Editions_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Auto_Assign_Editions_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			}
 
 			<#
 				.Automatically search for missing packages from all disks
 				.自动从所有磁盘搜索缺少的软件包
 			#>
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Missing_Packer_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Missing_Packer_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			if ($UI_Main_Add_Missing_Apps.Enabled) {
 				if ($UI_Main_Add_Missing_Apps.Checked) {
-					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Missing_Packer_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Missing_Packer_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 				}
 			}
 
 			<#
 				.安装 InBox Apps 应用时，允许自动组合依赖包
 			#>
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_DependencyPackage_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_DependencyPackage_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			if ($UI_Main_Add_Dependency_Package.Enabled) {
 				if ($UI_Main_Add_Dependency_Package.Checked) {
-					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_DependencyPackage_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_DependencyPackage_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 				}
 			}
 
@@ -121,9 +121,9 @@ Function InBox_Apps_Add_UI
 				.优化预配 Appx 包，通过用硬链接替换相同的文件
 			#>
 			if ($UI_Main_Optimize_Hard_Link.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Optimize_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Optimize_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			} else {
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Optimize_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Optimize_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			}
 
 			Refres_Event_Tasks_InBox_Apps_Add_UI
@@ -137,7 +137,7 @@ Function InBox_Apps_Add_UI
 					}
 				}
 			}
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Not_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_InBox_Appx_User_No_Select -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Not_Select_$($Global:Primary_Key_Image.Uid)" -Value $Temp_InBox_Appx_User_No_Select -Force
 
 			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Error.Text = "$($lang.Save), $($lang.Done)"
@@ -289,7 +289,7 @@ Function InBox_Apps_Add_UI
 
 	Function Refres_Event_Tasks_InBox_Apps_Add_UI
 	{
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		if ($Temp_Assign_Task_Select.Count -gt 0) {
@@ -298,7 +298,7 @@ Function InBox_Apps_Add_UI
 			$UI_Main_Dashboard_Event_Clear.Text = $lang.EventManagerNo
 		}
 
-		if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Enable)"
 		} else {
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Disable)"
@@ -306,12 +306,12 @@ Function InBox_Apps_Add_UI
 	}
 
 	$UI_Main_Event_Clear_Click = {
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_IsAllow_Error_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Missing_Packer_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_DependencyPackage_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Optimize_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_IsAllow_Error_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Missing_Packer_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_DependencyPackage_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Optimize_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 
 		Refres_Event_Tasks_InBox_Apps_Add_UI
 
@@ -488,7 +488,7 @@ Function InBox_Apps_Add_UI
 		$UI_Main_Error_Icon.Image = $null
 		$UI_Main_Match_Select_Apps.controls.clear()
 
-		$SelectUWPExclude = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Not_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$SelectUWPExclude = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Not_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 
 		$MarkCheckedSelectRuleName = $False
 		$UI_Main_Extract_Rule_Select_Sourcest.Controls | ForEach-Object {
@@ -616,7 +616,7 @@ Function InBox_Apps_Add_UI
 			}
 		}
 
-		$Temp_Queue_Is_InBox_Apps_Add_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Queue_Is_InBox_Apps_Add_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Queue_Is_InBox_Apps_Add_Select = $Temp_Queue_Is_InBox_Apps_Add_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		ForEach ($item in $initlSearchTypeInboxApps) {
@@ -864,7 +864,7 @@ Function InBox_Apps_Add_UI
 		ActiveLinkColor = "RED"
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
-			$Temp_Assign_Task_Custom_Select_Dependency = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Dependency_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+			$Temp_Assign_Task_Custom_Select_Dependency = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Dependency_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 			if ($Temp_Assign_Task_Custom_Select_Dependency.Count -gt 0) {
 				ForEach ($item in $Temp_Assign_Task_Custom_Select_Dependency) {
 					$UI_Main_Match_Select_Apps.Controls | ForEach-Object {
@@ -956,7 +956,7 @@ Function InBox_Apps_Add_UI
 			$UI_Main_Error_Icon.Image = $null
 		}
 	}
-	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_IsAllow_Error_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_IsAllow_Error_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$UI_Main_Dashboard_IsAllowSave.Checked = $True
 	} else {
 		$UI_Main_Dashboard_IsAllowSave.Checked = $False
@@ -1005,7 +1005,7 @@ Function InBox_Apps_Add_UI
 			$UI_Main_Error_Icon.Image = $null
 		}
 	}
-	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Auto_Assign_Editions_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Auto_Assign_Editions_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$UI_Main_Assign_Editions.Checked = $True
 	} else {
 		$UI_Main_Assign_Editions.Checked = $False
@@ -1034,7 +1034,7 @@ Function InBox_Apps_Add_UI
 	<#
 		.初始化复选框：自动按架构补足其它 Apps
 	#>
-	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Missing_Packer_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Missing_Packer_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$UI_Main_Add_Missing_Apps.Checked = $True
 	} else {
 		$UI_Main_Add_Missing_Apps.Checked = $False
@@ -1064,7 +1064,7 @@ Function InBox_Apps_Add_UI
 	<#
 		.初始化复选框：安装 InBox Apps 应用时，允许自动组合依赖包
 	#>
-	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_DependencyPackage_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_DependencyPackage_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$UI_Main_Add_Dependency_Package.Checked = $True
 	} else {
 		$UI_Main_Add_Dependency_Package.Checked = $False
@@ -1088,7 +1088,7 @@ Function InBox_Apps_Add_UI
 	<#
 		.初始化复选框：硬链接
 	#>
-	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Optimize_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Optimize_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$UI_Main_Optimize_Hard_Link.Checked = $True
 	} else {
 		$UI_Main_Optimize_Hard_Link.Checked = $False
@@ -1224,7 +1224,7 @@ Function InBox_Apps_Add_UI
 			if (InBox_Apps_Check_Customize -RuleNaming -SelectApps -AddSources) {
 				$custom_array = @()
 
-				$Temp_Assign_Task_InBox_Apps = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_List_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Temp_Assign_Task_InBox_Apps = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_List_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_InBox_Apps.Count -gt 0) {
 					ForEach ($item in $Temp_Assign_Task_InBox_Apps){
 						$custom_array += [PSCustomObject]@{
@@ -1334,7 +1334,7 @@ Function InBox_Apps_Add_UI
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "13" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "13" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -1439,7 +1439,7 @@ Function InBox_Apps_Add_UI
 
 				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				$Temp_Queue_Is_InBox_Apps_Add_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Temp_Queue_Is_InBox_Apps_Add_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Queue_Is_InBox_Apps_Add_Select.Count -gt 0) {
 					ForEach ($item in $Temp_Queue_Is_InBox_Apps_Add_Select) {
 						Write-Host "  $($item)"
@@ -1943,7 +1943,7 @@ Function InBox_Apps_Add_UI
 			$UI_Main.ShowDialog() | Out-Null
 		}
 	} else {
-		$Temp_Queue_Is_InBox_Apps_Add_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Queue_Is_InBox_Apps_Add_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		if ($Temp_Queue_Is_InBox_Apps_Add_Select.count -gt 0) {
 			foreach ($item in $Temp_Queue_Is_InBox_Apps_Add_Select) {
 				Insert_InBox_Apps_Add_UI_Add_Sources -NewPath $item
@@ -1970,7 +1970,7 @@ Function InBox_Apps_Add_UI
 #>
 Function InBox_Apps_Add_Process
 {
-	$Temp_Queue_Is_InBox_Apps_Add_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Queue_Is_InBox_Apps_Add_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Queue_Is_InBox_Apps_Add_Select.count -gt 0) {
 		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -2016,7 +2016,7 @@ Function InBox_Apps_Add_To_Process
 	#>
 	Write-Host "`n  $($lang.Assign_Editions)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Auto_Assign_Editions_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Auto_Assign_Editions_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		try {
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
@@ -2045,13 +2045,13 @@ Function InBox_Apps_Add_To_Process
 		#>
 		Write-Host "`n  $($lang.LXPsWaitAssign)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
-		$Temp_Assign_Task_Select_Rule = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select_Rule = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Rule_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		if ($Temp_Assign_Task_Select_Rule.Count -gt 0) {
 			ForEach ($item in $Temp_Assign_Task_Select_Rule) {
 				if ($item.Name -eq $Current_Edition_Version) {
 					Write-Host "  $($Current_Edition_Version)" -ForegroundColor Green
 
-					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Group_Install_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $item.Apps -Force
+					New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Group_Install_$($Global:Primary_Key_Image.Uid)" -Value $item.Apps -Force
 					Write-Host "  $($lang.Done)" -ForegroundColor Green
 
 					$IsAllowSearchApps = $True
@@ -2064,9 +2064,9 @@ Function InBox_Apps_Add_To_Process
 	} else {
 		Write-Host "  $($lang.AfterFinishingNoProcess)" -ForegroundColor Green
 
-		$Temp_Assign_Task_Select_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		if ($Temp_Assign_Task_Select_Custom_Select.Count -gt 0) {
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Group_Install_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Assign_Task_Select_Custom_Select -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Group_Install_$($Global:Primary_Key_Image.Uid)" -Value $Temp_Assign_Task_Select_Custom_Select -Force
 			Write-Host "  $($lang.Done)" -ForegroundColor Green
 		} else {
 			Write-Host "  $($lang.Failed)" -ForegroundColor Red
@@ -2075,7 +2075,7 @@ Function InBox_Apps_Add_To_Process
 
 	Write-Host "`n  $($lang.LXPsWaitAdd)"
 	Write-Host "  $('-' * 80)"
-	$Temp_Assign_Task_Select_Group = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Group_Install_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Assign_Task_Select_Group = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Group_Install_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Assign_Task_Select_Group.Count -gt 0) {
 		ForEach ($item in $Temp_Assign_Task_Select_Group) {
 			Write-Host "  $($item)" -ForegroundColor Green
@@ -2089,7 +2089,7 @@ Function InBox_Apps_Add_To_Process
 	#>
 	Write-Host "`n  $($lang.InboxAppsManager)" -ForegroundColor Green
 	Write-Host "  $('-' * 80)"
-	$Temp_Assign_Task_InBox_Apps = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_List_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Assign_Task_InBox_Apps = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_List_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	[int]$SNTasks = "0"
 
 	if ($Temp_Assign_Task_InBox_Apps.Count -gt 0) {
@@ -2108,7 +2108,7 @@ Function InBox_Apps_Add_To_Process
 	Write-Host "`n  $($lang.UWPAutoMissingPacker)" -ForegroundColor Green
 	Write-Host "  $('-' * 80)"
 	if ($IsAllowSearchApps) {
-		if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Missing_Packer_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Missing_Packer_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			<#
 				.Windows 10 x64 删除所有 InBox Apps 预安装后，重新安装需要从 x86fre 里添加的依赖项
 			#>
@@ -2186,7 +2186,7 @@ Function InBox_Apps_Add_Match_Process
 	Write-Host "  $($lang.RuleFileType): ".PadRight(25) -NoNewline -ForegroundColor Yellow
 	Write-Host $Name -ForegroundColor Green
 
-	$Temp_Assign_Task_Select_Group = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Group_Install_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Assign_Task_Select_Group = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Group_Install_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Assign_Task_Select_Group -contains $Name) {
 		if (Test-Path -Path $AppxSource -PathType Leaf) {
 			Write-Host "  $($lang.LanguageRegionLink): ".PadRight(25) -NoNewline -ForegroundColor Yellow
@@ -2196,7 +2196,7 @@ Function InBox_Apps_Add_Match_Process
 				Write-Host $Region -ForegroundColor Green
 			}
 
-			if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_DependencyPackage_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+			if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_DependencyPackage_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 				Write-Host "  $($lang.DependencyPackage): ".PadRight(25) -NoNewline -ForegroundColor Yellow
 
 				if ($DependencyPackage.count -gt 0) {
@@ -2216,7 +2216,7 @@ Function InBox_Apps_Add_Match_Process
 						$FlagMatch = $True
 
 						if ($FlagMatch) {
-							$Temp_Assign_Task_InBox_Apps = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_List_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+							$Temp_Assign_Task_InBox_Apps = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_List_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 							ForEach ($item in $Temp_Assign_Task_InBox_Apps) {
 								if ($item.name -eq $itemdp) {
 									Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -2554,7 +2554,7 @@ Function InBox_Apps_Check_Customize
 	$MarkCheckedRuleNaming = $False
 	$MarkCheckedSelectApps = $False
 
-	New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+	New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 	$InBoxAppx = @()
 
@@ -2688,7 +2688,7 @@ Function InBox_Apps_Check_Customize
 					$UI_Main_Mask_Dependencies_Results.Text += "   $($item)`n"
 				}
 				
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Dependency_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $DependencyPackageSelect -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Dependency_$($Global:Primary_Key_Image.Uid)" -Value $DependencyPackageSelect -Force
 			} else {
 				$UI_Main_Mask_Dependencies_Results.Text += "   $($lang.NoWork)"
 			}
@@ -2710,7 +2710,7 @@ Function InBox_Apps_Check_Customize
 					$UI_Main_Mask_Dependencies_Results.Text += "   $($item)`n"
 				}
 
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Not_Dependency_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $InitlNoSelectUWPDependency -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Not_Dependency_Select_$($Global:Primary_Key_Image.Uid)" -Value $InitlNoSelectUWPDependency -Force
 			} else {
 				$UI_Main_Mask_Dependencies_Results.Text += "   $($lang.NoWork)"
 			}
@@ -2747,8 +2747,8 @@ Function InBox_Apps_Check_Customize
 				$NewArchCTag = "arm"
 			}
 
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Custom_Select_Add_Sources -Force
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Global:Primary_Key_Image.Uid)" -Value $Temp_Custom_Select_Add_Sources -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Rule_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 			if ($InBox_Apps_Rule_Select_Single.InboxApps.Rule.Count -gt 0) {
 				ForEach ($itemInBoxApps in $InBox_Apps_Rule_Select_Single.InboxApps.Rule){
@@ -2803,18 +2803,18 @@ Function InBox_Apps_Check_Customize
 					}
 				}
 
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_List_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $InBoxAppx -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_List_$($Global:Primary_Key_Image.Uid)" -Value $InBoxAppx -Force
 			}
 
 			<#
 				.获取 默认 规则
 			#>
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $InBox_Apps_Rule_Select_Single.InboxApps.Edition -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Rule_$($Global:Primary_Key_Image.Uid)" -Value $InBox_Apps_Rule_Select_Single.InboxApps.Edition -Force
 
 			<#
 				.InBox Apps: 添加, 用户选择的应用
 			#>
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $InBoxAppxUserSelect -Force
+			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value $InBoxAppxUserSelect -Force
 
 			if ($IsError_Match_InBox_Apps.Count -gt 0) {
 				$UI_Main_Dashboard_IsAllowSave.Tag = $IsError_Match_InBox_Apps.Count
@@ -2843,7 +2843,7 @@ Function InBox_Apps_Check_Customize
 	<#
 		.已选择状态，保存到注册表
 	#>
-	New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Not_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $InBoxAppxUserNoSelect -Force
+	New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Not_Select_$($Global:Primary_Key_Image.Uid)" -Value $InBoxAppxUserNoSelect -Force
 
 	return $True
 }

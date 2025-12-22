@@ -368,13 +368,13 @@ Function Event_Assign_Setting
 				Save_Dynamic -regkey "Solutions\Suggested\$($RuleName)" -name "NotMonutedExpand_Select" -value $Global:Queue_Assign_Not_Monuted_Expand_Select -Multi
 				Save_Dynamic -regkey "Solutions\Suggested\$($RuleName)" -name "IsEvent_Select" -value $Global:Queue_Assign_Available_Select -Multi
 			} else {
-				$Temp_Save_Has_Been_Run = (Get-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Temp_Save_Has_Been_Run = (Get-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 				ForEach ($item in $Temp_Save_Has_Been_Run) {
 					$Temp_Assign_Task_ing += $item
 				}
 
-				New-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Assign_Task_ing -Force
-				New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Assign_Task_Select -Force
+				New-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Uid)" -Value $Temp_Assign_Task_ing -Force
+				New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Uid)" -Value $Temp_Assign_Task_Select -Force
 
 				if ($UI_Main_Sync_To.Enabled) {
 					if ($UI_Main_Sync_To.Checked) {
@@ -437,8 +437,8 @@ Function Event_Assign_Setting
 
 		$Temp_Add_Not_Mounted_New += $RuleName
 	} else {
-		$Temp_Queue_Is_Mounted_Primary_Assign_Task = (Get-Variable -Scope global -Name "Queue_Is_Mounted_Primary_Assign_Task_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
-		$Temp_Queue_Is_Mounted_Expand_Assign_Task = (Get-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Queue_Is_Mounted_Primary_Assign_Task = (Get-Variable -Scope global -Name "Queue_Is_Mounted_Primary_Assign_Task_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
+		$Temp_Queue_Is_Mounted_Expand_Assign_Task = (Get-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		ForEach ($item in $Temp_Queue_Is_Mounted_Primary_Assign_Task) {
 			$Temp_Is_Mounted_Assign_Task_Check += $item
 		}
@@ -774,7 +774,7 @@ Function Event_Assign_Setting
 		<#
 			.正在执行或已执行，将字体变为绿色并禁用
 		#>
-		$Temp_Save_Has_Been_Run = (Get-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Save_Has_Been_Run = (Get-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$UI_Main_Menu.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.CheckBox]) {
 				if ($Temp_Save_Has_Been_Run -Contains $_.Tag) {
@@ -801,7 +801,7 @@ Function Event_Assign_Setting
 		#>
 		$Temp_Queue_Is_Mounted_Primary_Assign_Task = @()
 		$Temp_Queue_Is_Mounted_Primary_Assign_Task += $Global:Queue_Assign_Not_Monuted_Primary
-		ForEach ($item in (Get-Variable -Scope global -Name "Queue_Is_Mounted_Primary_Assign_Task_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		ForEach ($item in (Get-Variable -Scope global -Name "Queue_Is_Mounted_Primary_Assign_Task_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$Temp_Queue_Is_Mounted_Primary_Assign_Task += $item
 		}
 		$UI_Main_Menu.Controls | ForEach-Object {
@@ -826,7 +826,7 @@ Function Event_Assign_Setting
 		<#
 			.仅勾选已勾选的。
 		#>
-		$Temp_Queue_Is_Mounted_Primary_Assign_Task = (Get-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Queue_Is_Mounted_Primary_Assign_Task = (Get-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$UI_Main_Menu.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.CheckBox]) {
 				if ($Temp_Queue_Is_Mounted_Primary_Assign_Task -Contains $_.Tag) {

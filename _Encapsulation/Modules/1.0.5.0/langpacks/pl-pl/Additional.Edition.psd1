@@ -12,4 +12,7 @@
 	AE_Rename                       = Zezwalaj na zmianę nazw wszystkich szczegółów
 	AE_Exclude                      = Wyklucz wersje dodatku
 	AE_Replace_Name                 = Automatycznie zamień nazwy języków
+	AE_Add_Exclude_Nomount          = Dodaj do wykluczenia z montowań, które nie zostały zamówione
+	AE_ExcludeMount                 = Wyklucz z montowań, które nie zostały zamówione
+	AE_ExcludeMountTips             = Przypisujesz element do wykluczenia z montowań, które nie zostały zamówione. Po jego dodaniu zmiany identyfikatora wersji lub numeru seryjnego nie będą już wymagane do montowania.
 '@

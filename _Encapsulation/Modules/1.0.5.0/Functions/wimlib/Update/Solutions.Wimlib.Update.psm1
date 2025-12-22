@@ -205,6 +205,7 @@ Function Wimlib_Extract_And_Update
 		$UI_Main_Error.Text = ""
 		$UI_Main_Error_Icon.Image = $null
 		$UI_Main_Extract_Rule_Select_Apps.controls.clear()
+		return
 
 		<#
 			.计算公式：
@@ -932,9 +933,7 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 {
 	param
 	(
-		$NewUid,
-		$NewMaster,
-		$NewImageFileName,
+		$Uid,
 		$MasterFile,
 		$DevCode
 	)
@@ -943,7 +942,7 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 		.开始处理更新任务，WimLib
 	#>
 	#region 开始处理更新任务，WimLib
-	$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_Rule_$($NewMaster)_$($NewImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_Rule_$($Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Expand_Rule.Count -gt 0) {
 		Write-Host "`n  $($lang.Event_Allow_Update_Rule): " -NoNewline -ForegroundColor Yellow
 		Write-Host "$($Temp_Expand_Rule.Count) $($lang.EventManagerCount)" -ForegroundColor Green
@@ -961,7 +960,7 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 		<#
 			.判断是否允许更新
 		#>
-		$Temp_Queue_Is_Update_Rule = (Get-Variable -Scope global -Name "Queue_Is_Update_Rule_$($NewMaster)_$($NewImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Queue_Is_Update_Rule = (Get-Variable -Scope global -Name "Queue_Is_Update_Rule_$($Uid)" -ErrorAction SilentlyContinue).Value
 		if ($Temp_Queue_Is_Update_Rule) {
 			Write-Host "`n  $($lang.Event_Assign_Expand): " -NoNewline -ForegroundColor Yellow
 			Write-Host "$($Temp_Expand_Rule.Count) $($lang.EventManagerCount)" -ForegroundColor Green
@@ -984,8 +983,7 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 			#>
 			Write-Host "`n  $($lang.Event_Allow_Update_Rule)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  Queue_Is_Update_Rule_Expand_To_All_$($NewMaster)_$($NewImageFileName)"
-			if ((Get-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_To_All_$($NewMaster)_$($NewImageFileName)" -ErrorAction SilentlyContinue).Value) {
+			if ((Get-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_To_All_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 				Write-Host "  $($lang.Event_Allow_Update_To_All)" -ForegroundColor Green
 
 				$TempQueueProcessImageSelect = @()
@@ -1048,9 +1046,9 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 				Write-Host "  $($lang.Event_Allow_Update_Rule_Only)" -ForegroundColor Green
 
 				Write-Host "`n  $($lang.AddSources)" -ForegroundColor Yellow
-				Write-Host "  $($lang.Developers_Mode_Location): Queue_Process_Image_Select_Pending_$($NewMaster)_$($NewMaster)" -ForegroundColor Green
+				Write-Host "  $($lang.Developers_Mode_Location): Queue_Process_Image_Select_Pending_$($Uid)" -ForegroundColor Green
 				Write-Host "  $('-' * 80)"
-				ForEach ($wimlib_item_Mount in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($NewMaster)_$($NewMaster)" -ErrorAction SilentlyContinue).Value) {
+				ForEach ($wimlib_item_Mount in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 					Write-Host "  $($lang.MountedIndex): " -noNewline
 					Write-Host $wimlib_item_Mount.Index -ForegroundColor Yellow
 
@@ -1062,7 +1060,7 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 
 				Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				ForEach ($wimlib_item_Mount in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($NewMaster)_$($NewMaster)" -ErrorAction SilentlyContinue).Value) {
+				ForEach ($wimlib_item_Mount in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 					Write-Host "  $($lang.MountedIndex): " -noNewline
 					Write-Host $wimlib_item_Mount.Index -ForegroundColor Yellow
 
@@ -1086,13 +1084,13 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 		<#
 			.添加已执行过的任务，不再执行
 		#>
-		if ($Global:Extension_Has_been_Run -NotContains $NewUid) {
-			$Global:Extension_Has_been_Run += $NewUid
+		if ($Global:Extension_Has_been_Run -NotContains $Uid) {
+			$Global:Extension_Has_been_Run += $Uid
 		}
 
 		Write-Host "`n  $($lang.DeDuplication)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($NewUid)`n" -ForegroundColor Red
+		Write-Host "  $($Uid)`n" -ForegroundColor Red
 
 		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"

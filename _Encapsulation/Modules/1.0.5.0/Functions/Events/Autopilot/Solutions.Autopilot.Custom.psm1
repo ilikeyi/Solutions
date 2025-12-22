@@ -103,7 +103,6 @@ Function Image_Assign_Autopilot_Master
 				ForEach ($item in $InBox_Apps_Rule_Select_Single.Autopilot.Prerequisite.$NewInBoxAppsFolder.ISO.Language) {
 					if ($item.Count -gt 0) {
 						foreach ($ItemAlFile in $item) {
-							$IsEjectNewTasks = "Default"
 							Get-Volume | Where-Object DriveType -eq 'CD-ROM' | ForEach-Object {
 								Get-DiskImage -DevicePath $_.Path.trimend('\') -ErrorAction SilentlyContinue | ForEach-Object {
 									$NewFileName = [IO.Path]::GetFileName($_.ImagePath)
@@ -124,14 +123,11 @@ Function Image_Assign_Autopilot_Master
 	{
 		ForEach ($item in $Global:Image_Rule) {
 			if ($item.Main.Suffix -eq "wim") {
-				$NewFileFullPathMain = "$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)"
-				Image_Select_Public_Autopilot_Add -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -Uid $item.Main.Uid -MainUid $item.Main.Uid -ImageFilePath $NewFileFullPathMain 
+				Image_Select_Public_Autopilot_Add -Uid $item.Main.Uid -Group $item.Main.Group
 
 				if ($item.Expand.Count -gt 0) {
 					ForEach ($Expand in $item.Expand) {
-						$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)\$($item.Main.ImageFileName).$($item.Main.Suffix)\Mount\$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)"
-
-						Image_Select_Public_Autopilot_Add -Master $item.Main.ImageFileName -ImageName $Expand.ImageFileName -Uid $Expand.Uid -MainUid $item.Main.Uid -ImageFilePath $test_mount_folder_Current
+						Image_Select_Public_Autopilot_Add -Uid $Expand.Uid -Group $Expand.Group
 					}
 				}
 			}
@@ -144,12 +140,8 @@ Function Image_Assign_Autopilot_Master
 	{
 		param
 		(
-			$Master,
-			$ImageName,
-			$Group,
 			$Uid,
-			$MainUid,
-			$ImageFilePath
+			$Group
 		)
 
 		<#
@@ -170,7 +162,7 @@ Function Image_Assign_Autopilot_Master
 		$GUIImageSelectGroup = New-Object system.Windows.Forms.Label -Property @{
 			Height         = 55
 			Width          = 450
-			Text           = "$($lang.Event_Group): $($Master);$($Master)`n$($lang.Unique_Name): $($Uid)"
+			Text           = "$($lang.Event_Group): $($Group)`n$($lang.Unique_Name): $($Uid)"
 		}
 		$paneel.controls.AddRange($GUIImageSelectGroup)
 
@@ -299,7 +291,7 @@ Function Image_Assign_Autopilot_Master
 	{
 		ForEach ($item in $Global:Image_Rule) {
 			if ($item.Main.Suffix -eq "wim") {
-				$Tasks = Autopilot_Public_Event_Assign_Task_Verify -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -Uid $item.Main.Uid -MainUid $item.Main.Uid -ImageFilePath $NewFileFullPathMain
+				$Tasks = Autopilot_Public_Event_Assign_Task_Verify -Uid $item.Main.Uid
 
 				$UI_Main_Public_Select_Rule.Controls | ForEach-Object {
 					if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
@@ -319,7 +311,7 @@ Function Image_Assign_Autopilot_Master
 
 				if ($item.Expand.Count -gt 0) {
 					ForEach ($Expand in $item.Expand) {
-						$Tasks = Autopilot_Public_Event_Assign_Task_Verify -Master $item.Main.ImageFileName -ImageName $Expand.ImageFileName -Uid $Expand.Uid -MainUid $item.Main.Uid -ImageFilePath $test_mount_folder_Current
+						$Tasks = Autopilot_Public_Event_Assign_Task_Verify -Uid $Expand.Uid 
 
 						$UI_Main_Public_Select_Rule.Controls | ForEach-Object {
 							if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
@@ -346,11 +338,7 @@ Function Image_Assign_Autopilot_Master
 	{
 		param
 		(
-			$Master,
-			$ImageName,
-			$Uid,
-			$MainUid,
-			$ImageFilePath
+			$Uid
 		)
 
 		$FlagIsWait = @()
@@ -359,10 +347,10 @@ Function Image_Assign_Autopilot_Master
 			.Autopilot: Add update
 			.自动驾驶：添加更新
 		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Autopilot\Deploy\Update" -Name "$($Master)_$($ImageName)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Autopilot\Deploy\Update" -Name "$($Uid)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
 			$FlagIsWait += "Cumulative_updates_Add_UI_Autopilot"
 		}
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$($Master)_$($ImageName)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$($Uid)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
 			$FlagIsWait += "Cumulative_updates_Add_UI_Autopilot"
 		}
 
@@ -370,10 +358,10 @@ Function Image_Assign_Autopilot_Master
 			.Autopilot: Delete update
 			.自动驾驶：删除更新
 		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Autopilot\Deploy\Update" -Name "$($Master)_$($ImageName)_$(Get_Autopilot_Location)_$($Global:ImageType)_Del_Auto" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Autopilot\Deploy\Update" -Name "$($Uid)_$(Get_Autopilot_Location)_$($Global:ImageType)_Del_Auto" -ErrorAction SilentlyContinue) {
 			$FlagIsWait += "Cumulative_updates_Delete_UI_Autopilot"
 		}
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$($Master)_$($ImageName)_$(Get_Autopilot_Location)_$($Global:ImageType)_Del_Auto" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$($Uid)_$(Get_Autopilot_Location)_$($Global:ImageType)_Del_Auto" -ErrorAction SilentlyContinue) {
 			$FlagIsWait += "Cumulative_updates_Delete_UI_Autopilot"
 		}
 
@@ -381,10 +369,10 @@ Function Image_Assign_Autopilot_Master
 			.Autopilot: Add driver
 			.自动驾驶：添加驱动
 		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Autopilot\Deploy\Drive" -Name "$($Master)_$($ImageName)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Autopilot\Deploy\Drive" -Name "$($Uid)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
 			$FlagIsWait += "Drive_Add_UI_Autopilot"
 		}
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$($Master)_$($ImageName)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$($Uid)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
 			$FlagIsWait += "Drive_Add_UI_Autopilot"
 		}
 
@@ -392,10 +380,10 @@ Function Image_Assign_Autopilot_Master
 			.Autopilot: Remove driver
 			.自动驾驶：删除驱动
 		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Autopilot\Deploy\Drive" -Name "$($Master)_$($ImageName)_$(Get_Autopilot_Location)_$($Global:ImageType)_Del_Auto" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Autopilot\Deploy\Drive" -Name "$($Uid)_$(Get_Autopilot_Location)_$($Global:ImageType)_Del_Auto" -ErrorAction SilentlyContinue) {
 			$FlagIsWait += "Drive_Delete_UI_Autopilot"
 		}
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$($Master)_$($ImageName)_$(Get_Autopilot_Location)_$($Global:ImageType)_Del_Auto" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$($Uid)_$(Get_Autopilot_Location)_$($Global:ImageType)_Del_Auto" -ErrorAction SilentlyContinue) {
 			$FlagIsWait += "Drive_Delete_UI_Autopilot"
 		}
 
@@ -433,7 +421,7 @@ Function Image_Assign_Autopilot_Master
 		$GUIImageSelectGroup = New-Object system.Windows.Forms.Label -Property @{
 			Height         = 55
 			Width          = 450
-			Text           = "$($lang.Event_Group): $($Master);$($Master)`n$($lang.Unique_Name): $($Uid)"
+			Text           = "$($lang.Event_Group): $($Group)`n$($lang.Unique_Name): $($Uid)"
 		}
 
 		<#
@@ -449,7 +437,7 @@ Function Image_Assign_Autopilot_Master
 			$GUIImageSourceGroupMountFrom
 		))
 
-		if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Master)_$($ImageName)").Value) {
+		if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Uid)").Value) {
 #			Write-Host "已挂载"
 			<#
 				.未发现文件
@@ -488,7 +476,7 @@ Function Image_Assign_Autopilot_Master
 				<#
 					.显示当前控制对象
 				#>
-				$UI_Group_Image_Sources_Select_All = $UI_Main_Select_Assign_Group_Image_Sources.Items.Add("$($lang.Event_Group): $($Master);$($Master)")
+				$UI_Group_Image_Sources_Select_All = $UI_Main_Select_Assign_Group_Image_Sources.Items.Add("$($lang.Event_Group): $($Group)")
 				$UI_Group_Image_Sources_Select_All = $UI_Main_Select_Assign_Group_Image_Sources.Items.Add("$($lang.Unique_Name): $($Uid)")
 
 				<#
@@ -584,7 +572,7 @@ Function Image_Assign_Autopilot_Master
 							$Group_Image_Sources.controls.AddRange($CheckBox)
 						}
 
-						New-Variable -Scope global -Name "Queue_Process_Image_Select_$($Master)_$($ImageName)" -Value $TempQueueProcessImageSelect -Force
+						New-Variable -Scope global -Name "Queue_Process_Image_Select_$($Uid)" -Value $TempQueueProcessImageSelect -Force
 						Remove-Item -Path $Export_To_New_Xml
 					}
 				} else {
@@ -611,7 +599,7 @@ Function Image_Assign_Autopilot_Master
 							$Group_Image_Sources.controls.AddRange($CheckBox)
 						}
 
-						New-Variable -Scope global -Name "Queue_Process_Image_Select_$($Master)_$($ImageName)" -Value $TempQueueProcessImageSelect -Force
+						New-Variable -Scope global -Name "Queue_Process_Image_Select_$($Uid)" -Value $TempQueueProcessImageSelect -Force
 					} catch {
 						$UI_Main_Other_Rule_Not_Find = New-Object system.Windows.Forms.Label -Property @{
 							Height         = 40
@@ -1344,12 +1332,12 @@ Function Image_Assign_Autopilot_Master
 		$GUIImage_Select_Expand_Rule_To_All_Tips = New-Object system.Windows.Forms.Label -Property @{
 			AutoSize       = 1
 			margin         = "54,0,0,25"
-			Text           = $lang.Event_Allow_Update_To_All_Tips -f $ImageName, $Master, "$($Master);$($Master);"
+			Text           = $lang.Event_Allow_Update_To_All_Tips -f $ImageName, $Master, $Group
 		}
 
 		switch ($Uid) {
 			#region boot;boot;wim;
-			"boot;boot;wim;" {
+			"Boot;wim;Boot;wim;" {
 				if ($Global:Developers_Mode) {
 					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): Assign.0x2`n  Start"
 				}
@@ -1407,7 +1395,7 @@ Function Image_Assign_Autopilot_Master
 				<#
 					.挂载
 				#>
-				if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Master)_$($Master)").Value) {
+				if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Uid)").Value) {
 					$Group_Image_Sources_Console.controls.AddRange((
 						$UI_Image_Eject_Force_Main,
 						$UI_Main_Eject_Mount_Main
@@ -1444,7 +1432,7 @@ Function Image_Assign_Autopilot_Master
 			#endregion
 
 			#region Install;Install;wim;
-			"Install;Install;wim;" {
+			"Install;wim;Install;wim;" {
 				if ($Global:Developers_Mode) {
 					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): Assign.0x6`n  Start"
 				}
@@ -1503,7 +1491,7 @@ Function Image_Assign_Autopilot_Master
 				<#
 					.挂载
 				#>
-				if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Master)_$($Master)").Value) {
+				if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Uid)").Value) {
 					$Group_Image_Sources_Console.controls.AddRange((
 						$UI_Image_Eject_Force_Main,
 						$UI_Main_Eject_Mount_Main
@@ -1540,7 +1528,7 @@ Function Image_Assign_Autopilot_Master
 			#endregion
 
 				#region Install;WinRE;wim
-				"Install;WinRE;wim;" {
+				"Install;wim;WinRE;wim;" {
 					if ($Global:Developers_Mode) {
 						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): Assign.0x5`n  Start"
 					}
@@ -1601,7 +1589,7 @@ Function Image_Assign_Autopilot_Master
 					))
 
 					#region 挂载：当前
-					if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Master)_$($Master)").Value) {
+					if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Uid)").Value) {
 						$Group_Image_Sources_Console.controls.AddRange((
 							$UI_Image_Eject_Force_Expand,
 							$UI_Main_Eject_Mount_Expand
@@ -1633,7 +1621,7 @@ Function Image_Assign_Autopilot_Master
 					#endregion
 
 					#region 挂载：指定 Install
-					if ((Get-Variable -Scope global -Name "Mark_Is_Mount_install_install").Value) {
+					if ((Get-Variable -Scope global -Name "Mark_Is_Mount_install;wim;install;wim;").Value) {
 					} else {
 						$Group_Image_Sources_Console.controls.AddRange((
 							$GUIImageSelectImageEject_Tips_Main,
@@ -1936,7 +1924,7 @@ Function Image_Assign_Autopilot_Master
 							Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -Uid $item.Main.Uid -MainUid $item.Main.Uid -ImageFilePath $NewFileFullPathMain 
 
 							#region 获取是否挂载
-							if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)").Value) {
+							if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.Uid)").Value) {
 								$GUIImageSelectInstall.ForeColor = "Green"
 								$GUIImageSelectInstall.Checked = $True
 
@@ -1991,7 +1979,7 @@ Function Image_Assign_Autopilot_Master
 											if ($Verify_Expand_WIM.Count -gt 0) {
 												$UI_Main_Select_Wim.controls.AddRange($UI_Expand_Wrap)
 
-												if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.ImageFileName)_$($Expand.ImageFileName)").Value) {
+												if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Expand.Uid)").Value) {
 													$GUIImageSelectInstallExpand.ForeColor = "Green"
 													$GUIImageSelectInstallExpand.Checked = $True
 												}
@@ -2086,7 +2074,7 @@ Function Image_Assign_Autopilot_Master
 						if ($Verify_Main_WIM.Count -gt 0) {
 							Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -Uid $item.Main.Uid -MainUid $item.Main.Uid -ImageFilePath $NewFileFullPathMain
 
-							if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)").Value) {
+							if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.Uid)").Value) {
 								$GUIImageSelectInstall.ForeColor = "Red"
 							}
 
@@ -2131,7 +2119,7 @@ Function Image_Assign_Autopilot_Master
 										if ($Verify_Expand_WIM.Count -gt 0) {
 											Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Master $item.Main.ImageFileName -ImageName $Expand.ImageFileName -Uid $Expand.Uid -MainUid $item.Main.Uid -ImageFilePath $test_mount_folder_Current
 
-											if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.ImageFileName)_$($Expand.ImageFileName)").Value) {
+											if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Expand.Uid)").Value) {
 												$GUIImageSelectInstallExpand.ForeColor = "Red"
 											}
 										}
@@ -2295,7 +2283,7 @@ Function Image_Assign_Autopilot_Master
 			Height         = 55
 			Width          = 450
 			Padding        = "16,0,0,0"
-			Text           = "$($lang.Event_Group): $($Master);$($Master)`n$($lang.Unique_Name): $($Uid)"
+			Text           = "$($lang.Event_Group): $($Group)`n$($lang.Unique_Name): $($Uid)"
 			add_Click      = {
 				if ($This.Checked) {
 					$UI_Main_Export_Event_Custom_Menu.Controls | ForEach-Object {
@@ -2701,7 +2689,7 @@ Function Image_Assign_Autopilot_Master
 			}
 			$Group_Image_Sources_Console.controls.AddRange($GUIImageSourceGroupMountFrom)
 
-			if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Master)_$($ImageName)").Value) {
+			if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Uid)").Value) {
 #				Write-Host "已挂载"
 				<#
 					.未发现文件
@@ -2867,7 +2855,7 @@ Function Image_Assign_Autopilot_Master
 		<#
 			.显示当前控制对象
 		#>
-		$UI_Main_Panel_Select_All = $UI_Main_Select_Assign_MultitaskingSelectMenu.Items.Add("$($lang.Event_Group): $($Master);$($Master)")
+		$UI_Main_Panel_Select_All = $UI_Main_Select_Assign_MultitaskingSelectMenu.Items.Add("$($lang.Event_Group): $($Group)")
 		$UI_Main_Panel_Select_All = $UI_Main_Select_Assign_MultitaskingSelectMenu.Items.Add("$($lang.Unique_Name): $($Uid)")
 
 		<#
@@ -5076,7 +5064,7 @@ Function Image_Assign_Autopilot_Master
 
 		ForEach ($item in $Global:Image_Rule) {
 			if ($item.Main.Suffix -eq "wim") {
-				$Tasks = Autopilot_Event_Assign_Task_Verify -Master $item.Main.ImageFileName -MasterSuffix $item.main.Suffix -ImageName $item.Main.ImageFileName -Suffix $item.Main.Suffix -Uid $item.Main.Uid -MainUid $item.Main.Uid -ImageFilePath $NewFileFullPathMain
+				$Tasks = Autopilot_Event_Assign_Task_Verify -Uid $item.Main.Uid
 
 				$UI_Main_Select_Assign_Multitasking.Controls | ForEach-Object {
 					if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
@@ -5100,7 +5088,7 @@ Function Image_Assign_Autopilot_Master
 
 				if ($item.Expand.Count -gt 0) {
 					ForEach ($Expand in $item.Expand) {
-						$Tasks = Autopilot_Event_Assign_Task_Verify -Master $item.Main.ImageFileName -MasterSuffix $item.Main.Suffix -ImageName $Expand.ImageFileName -Suffix $Expand.Suffix -Uid $Expand.Uid -MainUid $item.Main.Uid -ImageFilePath $test_mount_folder_Current
+						$Tasks = Autopilot_Event_Assign_Task_Verify -Uid $Expand.Uid
 
 						$UI_Main_Select_Assign_Multitasking.Controls | ForEach-Object {
 							if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
@@ -5131,13 +5119,7 @@ Function Image_Assign_Autopilot_Master
 	{
 		param
 		(
-			$Master,
-			$MasterSuffix,
-			$ImageName,
-			$Suffix,
-			$Uid,
-			$MainUid,
-			$ImageFilePath
+			$Uid
 		)
 
 		$FlagIsWait = @()
@@ -5145,56 +5127,56 @@ Function Image_Assign_Autopilot_Master
 		<#
 			.生成解决方案
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Solutions_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Solutions_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Solutions_Create_UI"
 		}
 
 		<#
 			.语言添加
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Add_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Add_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Language_Add_UI"
 		}
 
 		<#
 			.语言删除
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Del_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Del_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Language_Delete_UI"
 		}
 
 		<#
 			.更改映像语言
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Change_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Change_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Language_Change_UI"
 		}
 
 		<#
 			.清理组件
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Language_Cleanup_Components_UI"
 		}
 
 		<#
 			.本地语言体验包：标记
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "LXPs_Region_Add"
 		}
 
 		<#
 			InBox Apps，添加
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "InBox_Apps_Add_UI"
 		}
 
 		<#
 			.本地语言体验（LXPs），更新
 		#>
-		$Temp_Queue_Is_InBox_Apps_Update = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Queue_Is_InBox_Apps_Update = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Uid)" -ErrorAction SilentlyContinue).Value
 		if ($Temp_Queue_Is_InBox_Apps_Update.Count -gt 0) {
 			$FlagIsWait += "LXPs_Update_UI"
 		}
@@ -5202,7 +5184,7 @@ Function Image_Assign_Autopilot_Master
 		<#
 			.本地语言体验（LXPs），删除
 		#>
-		$Temp_LXPs_Delete = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Delete_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value
+		$Temp_LXPs_Delete = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Delete_$($Uid)" -ErrorAction SilentlyContinue).Value
 		if ($Temp_LXPs_Delete.Count -gt 0) {
 			$FlagIsWait += "LXPs_Remove_UI"
 		}
@@ -5210,56 +5192,56 @@ Function Image_Assign_Autopilot_Master
 		<#
 			.按匹配规则删除 InBox Apps 预安装软件
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "InBox_Apps_Match_Delete_UI"
 		}
 
 		<#
 			.更新添加
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Update_Add_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Update_Add_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Cumulative_updates_Add_UI"
 		}
 
 		<#
 			.更新删除
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Update_Del_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Update_Del_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Cumulative_updates_Delete_UI"
 		}
 
 		<#
 			.驱动添加
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Add_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Add_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Drive_Add_UI"
 		}
 
 		<#
 			.驱动删除
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Delete_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Delete_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Drive_Delete_UI"
 		}
 
 		<#
 			.Windows 功能：启用，匹配
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_Match_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_Match_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Feature_Enabled_Match_UI"
 		}
 
 		<#
 			.Windows 功能：禁用，匹配
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Feature_Disable_Match_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Feature_Disable_Match_$($Uid)" -ErrorAction SilentlyContinue).Value) {
 			$FlagIsWait += "Feature_Disable_Match_UI"
 		}
 
 		<#
 			.运行 PowerShell 函数：有任务前
 		#>
-		$Temp_Functions_Before_Task = (Get-Variable -Scope global -Name "Queue_Functions_Before_Select_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Functions_Before_Task = (Get-Variable -Scope global -Name "Queue_Functions_Before_Select_$($Uid)" -ErrorAction SilentlyContinue).Value
 		if ($Temp_Functions_Before_Task.Count -gt 0) {
 			$FlagIsWait += "Functions_Before_UI"
 		}
@@ -5267,7 +5249,7 @@ Function Image_Assign_Autopilot_Master
 		<#
 			.运行 PowerShell 函数：完成任务后
 		#>
-		$Temp_Functions_Rear_Task = (Get-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Master)_$($ImageName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Functions_Rear_Task = (Get-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Uid)" -ErrorAction SilentlyContinue).Value
 		if ($Temp_Functions_Rear_Task.Count -gt 0) {
 			$FlagIsWait += "Functions_Rear_UI"
 		}
@@ -6769,17 +6751,17 @@ Function Image_Assign_Autopilot_Master
 				.初始化变量
 			#>
 			ForEach ($item in $Global:Image_Rule) {
-				New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $False -Force
-				New-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $False -Force
-				New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $False -Force
-				New-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($Master)_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.Uid)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($item.Main.Uid)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($item.Main.Uid)" -Value $False -Force
 
 				if ($item.Expand.Count -gt 0) {
 					ForEach ($itemExpandNew in $item.Expand) {
-						New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)" -Value $False -Force
-						New-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)" -Value $False -Force
-						New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)" -Value $False -Force
-						New-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)" -Value $False -Force
+						New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($itemExpandNew.Uid)" -Value $False -Force
+						New-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($itemExpandNew.Uid)" -Value $False -Force
+						New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpandNew.Uid)" -Value $False -Force
+						New-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($itemExpandNew.Uid)" -Value $False -Force
 					}
 				}
 			}
@@ -6879,7 +6861,7 @@ Function Image_Assign_Autopilot_Master
 
 										if ($MarkSelectIndexin.Count -gt 0) {
 											ForEach ($itemIndex in $MarkSelectIndexin) {
-												ForEach ($WildCard in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+												ForEach ($WildCard in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_$($item.Main.Uid)" -ErrorAction SilentlyContinue).Value) {
 													if ($itemIndex -eq $WildCard.Index) {
 														$TempQueueProcessImageSelectPending += @{
 															Name   = $WildCard.Name
@@ -6889,7 +6871,7 @@ Function Image_Assign_Autopilot_Master
 												}
 											}
 
-											New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $TempQueueProcessImageSelectPending -Force
+											New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($item.Main.Uid)" -Value $TempQueueProcessImageSelectPending -Force
 										}
 									}
 
@@ -6903,7 +6885,7 @@ Function Image_Assign_Autopilot_Master
 														#>
 														$Fix_Eject_Force_Expand = $True
 
-														New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
+														New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -Value $True -Force
 													}
 												}
 											}
@@ -6921,24 +6903,24 @@ Function Image_Assign_Autopilot_Master
 														if ($ItemNewTwo.Enabled) {
 															if ($ItemNewTwo.Checked) {
 																if ($ItemNewTwo.Tag -eq "Save") {
-																	New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
+																	New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.Uid)" -Value $True -Force
 
 																	if ($Global:Developers_Mode) {
 																		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectMain.101x1`n  Start"
 																		Write-Host "$($lang.Event_Assign_Main), " -NoNewline
 																		Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
-																		Write-Host "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
+																		Write-Host "Queue_Eject_Only_Save_$($item.Main.Uid)"
 																	}
 																}
 
 																if ($ItemNew.Tag -eq "DoNotSave") {
-																	New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
+																	New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -Value $True -Force
 
 																	if ($Global:Developers_Mode) {
 																		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectMain.200x1`n  Start"
 																		Write-Host "$($lang.Event_Assign_Main), " -NoNewline
 																		Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
-																		Write-Host "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
+																		Write-Host "Queue_Eject_Do_Not_Save_$($item.Main.Uid)"
 																	}
 																}
 															}
@@ -6996,7 +6978,7 @@ Function Image_Assign_Autopilot_Master
 
 												if ($MarkSelectIndexin.Count -gt 0) {
 													ForEach ($itemIndex in $MarkSelectIndexin) {
-														ForEach ($WildCard in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+														ForEach ($WildCard in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_$($itemExpand.Uid)" -ErrorAction SilentlyContinue).Value) {
 															if ($itemIndex -eq $WildCard.Index) {
 																$TempQueueProcessImageSelectPending += @{
 																	Name   = $WildCard.Name
@@ -7006,7 +6988,7 @@ Function Image_Assign_Autopilot_Master
 														}
 													}
 
-													New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $TempQueueProcessImageSelectPending -Force
+													New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($itemExpand.Uid)" -Value $TempQueueProcessImageSelectPending -Force
 												}
 											}
 
@@ -7014,7 +6996,7 @@ Function Image_Assign_Autopilot_Master
 												if ($_.Name -eq "EjectForce") {
 													if ($_.Enabled) {
 														if ($_.Checked) {
-															New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
+															New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)" -Value $True -Force
 														}
 													}
 												}
@@ -7025,7 +7007,7 @@ Function Image_Assign_Autopilot_Master
 													if ($ItemNew.Name -eq "EjectForce") {
 														if ($ItemNew.Enabled) {
 															if ($ItemNew.Checked) {
-																New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
+																New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)" -Value $True -Force
 															}
 														}
 													}
@@ -7042,24 +7024,24 @@ Function Image_Assign_Autopilot_Master
 																if ($ItemNewTwo.Enabled) {
 																	if ($ItemNewTwo.Checked) {
 																		if ($ItemNewTwo.Tag -eq "Save") {
-																			New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
+																			New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.Uid)" -Value $True -Force
 
 																			if ($Global:Developers_Mode) {
 																				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectMain.11200x1`n  Start"
 																				Write-Host "$($lang.Event_Assign_Main), " -NoNewline
 																				Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
-																				Write-Host "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
+																				Write-Host "Queue_Eject_Only_Save_$($item.Main.Uid)"
 																			}
 																		}
 
 																		if ($ItemNewTwo.Tag -eq "DoNotSave") {
-																			New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -Value $True -Force
+																			New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -Value $True -Force
 
 																			if ($Global:Developers_Mode) {
 																				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectMain.21200x1`n  Start"
 																				Write-Host "$($lang.Event_Assign_Main), " -NoNewline
 																				Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
-																				Write-Host "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
+																				Write-Host "Queue_Eject_Do_Not_Save_$($item.Main.Uid)"
 																			}
 																		}
 																	}
@@ -7079,24 +7061,24 @@ Function Image_Assign_Autopilot_Master
 																if ($ItemNewTwo.Enabled) {
 																	if ($ItemNewTwo.Checked) {
 																		if ($ItemNewTwo.Tag -eq "Save") {
-																			New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
+																			New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($itemExpand.Uid)" -Value $True -Force
 
 																			if ($Global:Developers_Mode) {
 																				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectExpand.200x1`n  Start"
 																				Write-Host "$($lang.Event_Assign_Expand), " -NoNewline
 																				Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
-																				Write-Host "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
+																				Write-Host "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)"
 																			}
 																		}
 
 																		if ($ItemNewTwo.Tag -eq "DoNotSave") {
-																			New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
+																			New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)" -Value $True -Force
 
 																			if ($Global:Developers_Mode) {
 																				Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectExpand.222x1`n  Start"
 																				Write-Host "$($lang.Event_Assign_Expand), " -NoNewline
 																				Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
-																				Write-Host "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
+																				Write-Host "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)"
 																			}
 																		}
 																	}
@@ -7109,7 +7091,7 @@ Function Image_Assign_Autopilot_Master
 															如果主要项选择了不保存，扩展项默认强制弹出。
 														#>
 														if ($Fix_Eject_Force_Expand) {
-															New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -Value $True -Force
+															New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)" -Value $True -Force
 														}
 													}
 													#endregion
@@ -7157,56 +7139,56 @@ Function Image_Assign_Autopilot_Master
 						Write-Host "  $('-' * 80)"
 						Write-Host "  $($lang.Event_Assign_Main)"
 						Write-Host "  $($lang.SaveTo)"
-						if ((Get-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-							Write-Host "  $($lang.Enable), Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ForegroundColor Green
+						if ((Get-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.Uid)" -ErrorAction SilentlyContinue).Value) {
+							Write-Host "  $($lang.Enable), Queue_Eject_Only_Save_$($item.Main.Uid)" -ForegroundColor Green
 						} else {
-							Write-Host "  $($lang.Disable), Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
+							Write-Host "  $($lang.Disable), Queue_Eject_Only_Save_$($item.Main.Uid)"
 						}
-						if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-							Write-Host "  $($lang.Enable), Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ForegroundColor Green
+						if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($item.Main.Uid)" -ErrorAction SilentlyContinue).Value) {
+							Write-Host "  $($lang.Enable), Queue_Expand_Eject_Only_Save_$($item.Main.Uid)" -ForegroundColor Green
 						} else {
-							Write-Host "  $($lang.Disable), Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
+							Write-Host "  $($lang.Disable), Queue_Expand_Eject_Only_Save_$($item.Main.Uid)"
 						}
 
 						Write-Host "`n  $($lang.DoNotSave)"
-						if ((Get-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-							Write-Host "  $($lang.Enable), Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ForegroundColor Green
+						if ((Get-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -ErrorAction SilentlyContinue).Value) {
+							Write-Host "  $($lang.Enable), Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -ForegroundColor Green
 						} else {
-							Write-Host "  $($lang.Disable), Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
+							Write-Host "  $($lang.Disable), Queue_Eject_Do_Not_Save_$($item.Main.Uid)"
 						}
-						if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-							Write-Host "  $($lang.Enable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)" -ForegroundColor Green
+						if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($item.Main.Uid)" -ErrorAction SilentlyContinue).Value) {
+							Write-Host "  $($lang.Enable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.Uid)" -ForegroundColor Green
 						} else {
-							Write-Host "  $($lang.Disable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)"
+							Write-Host "  $($lang.Disable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.Uid)"
 						}
 
 						Write-Host "`n  $($lang.Event_Assign_Expand)"
 						if ($item.Expand.Count -gt 0) {
 							ForEach ($itemExpand in $item.Expand) {
 								Write-Host "  $($lang.SaveTo)"
-								if ((Get-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-									Write-Host "  $($lang.Enable), Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ForegroundColor Green
+								if ((Get-Variable -Scope global -Name "Queue_Eject_Only_Save_$($itemExpand.Uid)" -ErrorAction SilentlyContinue).Value) {
+									Write-Host "  $($lang.Enable), Queue_Eject_Only_Save_$($itemExpand.Uid)" -ForegroundColor Green
 								} else {
-									Write-Host "  $($lang.Disable), Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
+									Write-Host "  $($lang.Disable), Queue_Eject_Only_Save_$($itemExpand.Uid)"
 								}
 
-								if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-									Write-Host "  $($lang.Enable), Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ForegroundColor Green
+								if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($itemExpand.Uid)" -ErrorAction SilentlyContinue).Value) {
+									Write-Host "  $($lang.Enable), Queue_Expand_Eject_Only_Save_$($itemExpand.Uid)" -ForegroundColor Green
 								} else {
-									Write-Host "  $($lang.Disable), Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
+									Write-Host "  $($lang.Disable), Queue_Expand_Eject_Only_Save_$($itemExpand.Uid)"
 								}
 
 								Write-Host "`n  $($lang.DoNotSave)"
-								if ((Get-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-									Write-Host "  $($lang.Enable), Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ForegroundColor Green
+								if ((Get-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)" -ErrorAction SilentlyContinue).Value) {
+									Write-Host "  $($lang.Enable), Queue_Eject_Do_Not_Save_$($itemExpand.Uid)" -ForegroundColor Green
 								} else {
-									Write-Host "  $($lang.Disable), Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
+									Write-Host "  $($lang.Disable), Queue_Eject_Do_Not_Save_$($itemExpand.Uid)"
 								}
 
-								if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-									Write-Host "  $($lang.Enable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)" -ForegroundColor Green
+								if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($itemExpand.Uid)" -ErrorAction SilentlyContinue).Value) {
+									Write-Host "  $($lang.Enable), Queue_Expand_Eject_Do_Not_Save_$($itemExpand.Uid)" -ForegroundColor Green
 								} else {
-									Write-Host "  $($lang.Disable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpand.ImageFileName)"
+									Write-Host "  $($lang.Disable), Queue_Expand_Eject_Do_Not_Save_$($itemExpand.Uid)"
 								}
 							}
 						} else {

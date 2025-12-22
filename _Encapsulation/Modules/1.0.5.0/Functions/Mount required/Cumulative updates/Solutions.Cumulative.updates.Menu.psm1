@@ -131,7 +131,7 @@ Function Update_Menu
 
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
-			$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+			$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 
 			Write-Host "`n   $($lang.SaveTo)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 79)"
@@ -265,9 +265,9 @@ Function Update_Menu
 				if (Verify_Is_Current_Same) {
 					Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 
-					New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+					New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 					Event_Process_Task_Need_Mount
-					New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+					New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 
 					Get_Next
 				} else {
@@ -290,9 +290,9 @@ Function Update_Menu
 				if (Verify_Is_Current_Same) {
 					Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 
-					New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+					New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 					Image_Clear_Superseded
-					New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+					New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 
 					Get_Next
 				} else {
@@ -315,11 +315,11 @@ Function Update_Menu
 				if (Verify_Is_Current_Same) {
 					Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 
-					New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-					New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+					New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
+					New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 					Image_Clear_Superseded
-					New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-					New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+					New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+					New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 
 					Get_Next
 				} else {
@@ -344,7 +344,7 @@ Function Update_Menu
 				if (Verify_Is_Current_Same) {
 					Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 
-					$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+					$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 					if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
 						$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master).$($Global:Primary_Key_Image.MasterSuffix)\$($Global:Primary_Key_Image.ImageFileName).$($Global:Primary_Key_Image.Suffix)\Report"
 					} else {
@@ -375,7 +375,7 @@ Function Update_Menu
 				if (Verify_Is_Current_Same) {
 					Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 
-					$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+					$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 					if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
 						$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master).$($Global:Primary_Key_Image.MasterSuffix)\$($Global:Primary_Key_Image.ImageFileName).$($Global:Primary_Key_Image.Suffix)\Report"
 					} else {

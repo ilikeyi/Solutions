@@ -6,35 +6,35 @@ Function Event_Process_Task_Need_Mount
 {
 	# 保存
 	$IsEjectAfterSave = $False
-	if ((Get-Variable -Scope global -Name "Queue_Eject_Only_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Eject_Only_Save_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$IsEjectAfterSave = $True
 	}
-	if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$IsEjectAfterSave = $True
 	}
 
 	# 不保存
 	$IsEjectAfterSaveNot = $False
-	if ((Get-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$IsEjectAfterSaveNot = $True
 
 		if ($Global:Developers_Mode) {
 			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x009000`n  Start"
-			Write-Host "Queue_Eject_Do_Not_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)"
+			Write-Host "Queue_Eject_Do_Not_Save_$($Global:Primary_Key_Image.Uid)"
 			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x009000`n  End"
 		}
 	}
-	if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$IsEjectAfterSaveNot = $True
 
 		if ($Global:Developers_Mode) {
 			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x009010`n  Start"
-			Write-Host "Queue_Expand_Eject_Do_Not_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)"
+			Write-Host "Queue_Expand_Eject_Do_Not_Save_$($Global:Primary_Key_Image.Uid)"
 			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x009010`n  End"
 		}
 	}
 
-	$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
 		$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master).$($Global:Primary_Key_Image.MasterSuffix)\$($Global:Primary_Key_Image.ImageFileName).$($Global:Primary_Key_Image.Suffix)\Report"
 	} else {
@@ -74,7 +74,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.SpecialFunction): $($lang.Functions_Before)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	$Temp_Functions_Before_Task = (Get-Variable -Scope global -Name "Queue_Functions_Before_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Functions_Before_Task = (Get-Variable -Scope global -Name "Queue_Functions_Before_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Functions_Before_Task.Count -gt 0) {
 		Write-Host "  $($lang.Choose)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -99,7 +99,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.Solution)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Solutions_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Solutions_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
 		<#
@@ -117,7 +117,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.WindowsFeature): $($lang.Enable), $($lang.MatchMode)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_Match_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_Match_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		Feature_Enabled_Match_Process
 	} else {
 		Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -130,7 +130,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.WindowsFeature): $($lang.Disable), $($lang.MatchMode)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Feature_Disable_Match_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Feature_Disable_Match_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		Feature_Disable_Match_Process
 	} else {
 		Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -144,7 +144,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.WindowsFeature): $($lang.Enable)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		Feature_Enabled_Process
 	} else {
 		Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -158,7 +158,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.WindowsFeature): $($lang.Disable)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Feature_Disable_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Feature_Disable_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		Feature_Disable_Process
 	} else {
 		Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -173,7 +173,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.Language): $($lang.AddTo)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Add_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$Script:LanguageAddTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:LanguageAddTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:LanguageAddTasksTime.Reset()
@@ -192,7 +192,7 @@ Function Event_Process_Task_Need_Mount
 
 		Write-Host "`n  $($lang.BootSyncToISO)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
 			Language_Sync_To_ISO_Process
@@ -208,7 +208,7 @@ Function Event_Process_Task_Need_Mount
 
 		Write-Host "`n  $($lang.LangIni)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			Language_Refresh_Ini
 		} else {
 			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -242,7 +242,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.SwitchLanguage)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
 		Language_Change_Process
@@ -258,7 +258,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.Language): $($lang.Del)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Del_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$Script:LanguageDelTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:LanguageDelTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:LanguageDelTasksTime.Reset()
@@ -277,7 +277,7 @@ Function Event_Process_Task_Need_Mount
 
 		Write-Host "`n  $($lang.BootSyncToISO)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
 			Language_Sync_To_ISO_Process
@@ -293,7 +293,7 @@ Function Event_Process_Task_Need_Mount
 
 		Write-Host "`n  $($lang.LangIni)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			Language_Refresh_Ini
 		} else {
 			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -327,7 +327,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.SwitchLanguage)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
 		Language_Change_Process
@@ -343,7 +343,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.OnlyLangCleanup)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$Script:ComponentsClearTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:ComponentsClearTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:ComponentsClearTasksTime.Reset()
@@ -389,7 +389,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.InboxAppsClear)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$Script:InBoxAppsDeletePreTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:InBoxAppsDeletePreTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:InBoxAppsDeletePreTasksTime.Reset()
@@ -429,7 +429,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.LocalExperiencePack) ( LXPs ): $($lang.AddTo)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$Script:InBoxAppsAddTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:InBoxAppsAddTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:InBoxAppsAddTasksTime.Reset()
@@ -469,7 +469,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.InboxAppsManager): $($lang.AddTo)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$Script:InBoxAppsInstallNewTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:InBoxAppsInstallNewTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:InBoxAppsInstallNewTasksTime.Reset()
@@ -509,7 +509,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.LocalExperiencePack) ( LXPs ): $($lang.Del)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	$Temp_LXPs_Delete = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Delete_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_LXPs_Delete = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Delete_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_LXPs_Delete.Count -gt 0) {
 		$Script:LXPsDelTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:LXPsDelTasksTime = New-Object System.Diagnostics.Stopwatch
@@ -550,7 +550,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.LocalExperiencePack) ( LXPs ): $($lang.Update)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	$Temp_Queue_Is_InBox_Apps_Update = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Queue_Is_InBox_Apps_Update = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Queue_Is_InBox_Apps_Update.Count -gt 0) {
 		$Script:LXPsAddTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:LXPsAddTasksTime = New-Object System.Diagnostics.Stopwatch
@@ -591,7 +591,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.LocalExperiencePack) ( LXPs ): $($lang.Del)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	$Temp_LXPs_Delete = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Delete_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_LXPs_Delete = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Delete_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_LXPs_Delete.Count -gt 0) {
 		$Script:LXPsDeleteOldTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:LXPsDeleteOldTasksTime = New-Object System.Diagnostics.Stopwatch
@@ -631,7 +631,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.InboxAppsMatchDel)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	$Temp_Functions_Before_Task = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Functions_Before_Task = (Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Functions_Before_Task.Count -gt 0) {
 		$Script:LXPsDeleteMatchTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:LXPsDeleteMatchTasksTime = New-Object System.Diagnostics.Stopwatch
@@ -672,7 +672,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.InboxAppsManager): $($lang.InboxAppsOfflineDel)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Mount_Rule_Delete_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Mount_Rule_Delete_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$Script:LXPsDeleteOfflineTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:LXPsDeleteOfflineTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:LXPsDeleteOfflineTasksTime.Reset()
@@ -712,7 +712,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.Optimize_Appx_Package)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Optimize_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Optimize_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$Script:InBoxAppsOptimizeTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:InBoxAppsOptimizeTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:InBoxAppsOptimizeTasksTime.Reset()
@@ -752,7 +752,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.CUpdate): $($lang.AddTo)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Update_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Update_Add_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$Script:OSUpdateAddTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:OSUpdateAddTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:OSUpdateAddTasksTime.Reset()
@@ -792,7 +792,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.CUpdate): $($lang.Del)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Update_Del_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Update_Del_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$Script:OSUpdateDelTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:OSUpdateDelTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:OSUpdateDelTasksTime.Reset()
@@ -832,7 +832,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.Drive): $($lang.AddTo)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Add_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$Script:DriveAddTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:DriveAddTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:DriveAddTasksTime.Reset()
@@ -872,7 +872,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.Drive): $($lang.Del)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Delete_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Delete_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$Script:DriveDelTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:DriveDelTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:DriveDelTasksTime.Reset()
@@ -912,7 +912,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.CuringUpdate)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$Script:CuringUpdateTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:CuringUpdateTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:CuringUpdateTasksTime.Reset()
@@ -976,7 +976,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.Superseded)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$Script:SupersededClearTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:SupersededClearTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:SupersededClearTasksTime.Reset()
@@ -1018,14 +1018,14 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.GetInBoxApps)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_View_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		Write-Host "  $($lang.ExportShow)" -ForegroundColor Yellow
 
 		Image_Get_Apps_Package -Save $Temp_Export_SaveTo -View
 	} else {
 		Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Yellow
 
-		if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_Logs_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			Image_Get_Apps_Package -Save $Temp_Export_SaveTo
 		} else {
 			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -1039,14 +1039,14 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.GetImagePackage)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_View_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		Write-Host "  $($lang.ExportShow)" -ForegroundColor Yellow
 
 		Image_Get_Components_Package -Save $Temp_Export_SaveTo -View
 	} else {
 		Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Yellow
 
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_Logs_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			Image_Get_Components_Package -Save $Temp_Export_SaveTo
 		} else {
 			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -1060,14 +1060,14 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.ViewDrive)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_View_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		Write-Host "  $($lang.ExportShow)" -ForegroundColor Yellow
 
 		Image_Get_Installed_Drive -Save $Temp_Export_SaveTo -View
 	} else {
 		Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Yellow
 
-		if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_Logs_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			Image_Get_Installed_Drive -Save $Temp_Export_SaveTo
 		} else {
 			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -1082,7 +1082,7 @@ Function Event_Process_Task_Need_Mount
 	Write-Host "`n  $($lang.ImageLanguage)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 	Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Yellow
-	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Report_Image_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Report_Image_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
 		$test_mount_Sources = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master).$($Global:Primary_Key_Image.MasterSuffix)\$($Global:Primary_Key_Image.ImageFileName).$($Global:Primary_Key_Image.Suffix)\Mount"
@@ -1119,7 +1119,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.Healthy)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	if ((Get-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$Script:HealthyTasksTimeStart = Get-Date -Format "yyyy/MM/dd HH:mm:ss tt"
 		$Script:HealthyTasksTime = New-Object System.Diagnostics.Stopwatch
 		$Script:HealthyTasksTime.Reset()
@@ -1140,7 +1140,7 @@ Function Event_Process_Task_Need_Mount
 			Write-Host "  $('-' * 80)"
 
 			Write-Host "  $($lang.Healthy_Save)`n" -ForegroundColor Red
-			if ((Get-Variable -Scope global -Name "Queue_Healthy_Dont_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+			if ((Get-Variable -Scope global -Name "Queue_Healthy_Dont_Save_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 				Write-Host "  $($lang.Operable)`n" -ForegroundColor Green
 
 				<#
@@ -1152,8 +1152,8 @@ Function Event_Process_Task_Need_Mount
 				<#
 					.清空所有任务
 				#>
-				New-Variable -Scope global -Name "Queue_Process_Image_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
-				New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+				New-Variable -Scope global -Name "Queue_Process_Image_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
+				New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 				$IsEjectAfterSave = $Flase
 			} else {
@@ -1188,7 +1188,7 @@ Function Event_Process_Task_Need_Mount
 
 	Write-Host "`n  $($lang.SpecialFunction): $($lang.Functions_Rear)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
-	$Temp_Functions_Rear_Task = (Get-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Functions_Rear_Task = (Get-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Functions_Rear_Task.Count -gt 0) {
 		Write-Host "  $($lang.Choose)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -1264,14 +1264,14 @@ Function Event_Process_Task_Need_Mount
 						#>
 						Write-Host "`n  $($lang.Mounted_Status)" -ForegroundColor Yellow
 						Write-Host "  $('-' * 80)"
-						if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)").Value) {
+						if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($itemExpandNew.Uid)").Value) {
 							Write-Host "  $($lang.Mounted)"
 
 							<#
 								.健康
 							#>
 							Write-Host "`n  $($lang.Healthy)" -ForegroundColor Yellow
-							if ((Get-Variable -Scope global -Name "Queue_Expand_Healthy_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)").Value) {
+							if ((Get-Variable -Scope global -Name "Queue_Expand_Healthy_$($itemExpandNew.Uid)").Value) {
 								<#
 									.触发此事件强制结束
 								#>
@@ -1285,7 +1285,7 @@ Function Event_Process_Task_Need_Mount
 										 因为映像内的文件不支持这功能，该功能在特定环境，仅支持 install.wim，
 									#>
 
-#									New-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)" -Value $False -Force
+#									New-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($itemExpandNew.Uid)" -Value $False -Force
 								}
 								Write-Host "  $($lang.Done)" -ForegroundColor Green
 							} else {
@@ -1298,7 +1298,7 @@ Function Event_Process_Task_Need_Mount
 							Write-Host "`n  $($lang.Save)" -ForegroundColor Yellow
 							Write-Host "  $('-' * 80)"
 							Write-Host "  $($Temp_Do_Not_Save_Path)" -ForegroundColor Green
-							if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)").Value) {
+							if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($itemExpandNew.Uid)").Value) {
 								$test_mount_Sources_Expand = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)\$($itemExpandNew.ImageFileName).$($itemExpandNew.Suffix)\Mount"
 
 								if ($Global:Developers_Mode) {
@@ -1332,12 +1332,12 @@ Function Event_Process_Task_Need_Mount
 								.判断是否主映像卸载
 							#>
 							$Mark_Is_Unmount_Current_Image = $False
-							$IsEjectAfterSaveNot = (Get-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+							$IsEjectAfterSaveNot = (Get-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 							if ($IsEjectAfterSaveNot) {
 								$Mark_Is_Unmount_Current_Image = $True
 							}
 
-							if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)").Value) {
+							if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($itemExpandNew.Uid)").Value) {
 								$Mark_Is_Unmount_Current_Image = $True
 							}
 
@@ -1391,7 +1391,7 @@ Function Event_Process_Task_Need_Mount
 							#>
 							Write-Host "`n  $($lang.Rebuilding)" -ForegroundColor Yellow
 							Write-Host "  $('-' * 80)"
-							if ((Get-Variable -Scope global -Name "Queue_Expand_Rebuild_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)").Value) {
+							if ((Get-Variable -Scope global -Name "Queue_Expand_Rebuild_$($itemExpandNew.Uid)").Value) {
 								Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
 								Write-Host "`n  $($lang.AE_IsCheck): " -NoNewline -ForegroundColor Yellow
@@ -1528,7 +1528,7 @@ Function Event_Process_Task_Need_Mount
 								.Determine if it is mounted
 								.判断是否已挂载
 							#>
-							if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)").Value) {
+							if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($itemExpandNew.Uid)").Value) {
 								Write-Host "  $($lang.Mounted), $($lang.DoNotSave)" -ForegroundColor Yellow
 								Write-Host "  $('-' * 80)"
 								Write-Host "  $($Temp_Do_Not_Save_Path)" -ForegroundColor Green
@@ -1598,7 +1598,7 @@ Function Event_Process_Task_Need_Mount
 		#>
 		Write-Host "`n  $($lang.Mounted_Status)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
-		if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)").Value) {
+		if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Global:Primary_Key_Image.Uid)").Value) {
 			Write-Host "  $($lang.Mounted)"
 
 			if ($Global:Developers_Mode) {
@@ -1698,7 +1698,7 @@ Function Event_Processing_Requires_Mounting
 		.处理：无需挂载项，主键
 	#>
 	$Temp_Save_Has_Been_Run = @()
-	$IsEjectAfterSave = (Get-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$IsEjectAfterSave = (Get-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	ForEach ($item in $IsEjectAfterSave) {
 		$Temp_Save_Has_Been_Run += $item
 	}
@@ -1707,7 +1707,7 @@ Function Event_Processing_Requires_Mounting
 		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003190`n  Start"
 	}
 
-	$Temp_Assign_Task = (Get-Variable -Scope global -Name "Queue_Is_Mounted_Primary_Assign_Task_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))}
+	$Temp_Assign_Task = (Get-Variable -Scope global -Name "Queue_Is_Mounted_Primary_Assign_Task_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))}
 	if ($Temp_Assign_Task.Count -gt 0) {
 		Write-Host "`n  $($lang.YesWork)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -1721,7 +1721,7 @@ Function Event_Processing_Requires_Mounting
 		}
 
 		ForEach ($item in $Temp_Assign_Task) {
-			$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Mounted_Primary_Assign_Task_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+			$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Mounted_Primary_Assign_Task_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 
 			if ($Temp_Assign_Task_Select -Contains $item) {
 				if ($Global:Developers_Mode) {
@@ -1729,7 +1729,7 @@ Function Event_Processing_Requires_Mounting
 				}
 
 				$Temp_Save_Has_Been_Run += $item
-				New-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Save_Has_Been_Run -Force
+				New-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Uid)" -Value $Temp_Save_Has_Been_Run -Force
 
 				Invoke-Expression -Command $item
 
@@ -1751,7 +1751,7 @@ Function Event_Processing_Requires_Mounting
 	<#
 		.扩展项
 	#>
-	$Temp_Assign_Task = (Get-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))}
+	$Temp_Assign_Task = (Get-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))}
 	Write-Host "`n  $($lang.User_Interaction): $($lang.AssignNeedMount): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($Temp_Assign_Task.Count) $($lang.EventManagerCount)" -ForegroundColor Green
 	Write-Host "  $('-' * 80)"
@@ -1765,10 +1765,10 @@ Function Event_Processing_Requires_Mounting
 		}
 
 		ForEach ($item in $Temp_Assign_Task) {
-			$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+			$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 			if ($Temp_Assign_Task_Select -Contains $item) {
 				$Temp_Save_Has_Been_Run += $item
-				New-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Save_Has_Been_Run -Force
+				New-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Uid)" -Value $Temp_Save_Has_Been_Run -Force
 
 				Invoke-Expression -Command $item
 			}
@@ -1796,7 +1796,7 @@ Function Event_Assign_Not_Allowed_UI
 		.处理：无需挂载项，主键
 	#>
 	$Temp_Save_Has_Been_Run = @()
-	$IsEjectAfterSave = (Get-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$IsEjectAfterSave = (Get-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	ForEach ($item in $IsEjectAfterSave) {
 		$Temp_Save_Has_Been_Run += $item
 	}
@@ -1811,7 +1811,7 @@ Function Event_Assign_Not_Allowed_UI
 
 		ForEach ($item in $Global:Queue_Assign_Not_Monuted_Primary) {
 			$Temp_Save_Has_Been_Run += $item
-			New-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Save_Has_Been_Run -Force
+			New-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Uid)" -Value $Temp_Save_Has_Been_Run -Force
 
 			Invoke-Expression -Command $item
 		}
@@ -1831,7 +1831,7 @@ Function Event_Assign_Not_Allowed_UI
 			if ($Global:Queue_Assign_Not_Monuted_Primary -NotContains $item) {
 				if ($Global:Queue_Assign_Not_Monuted_Expand_Select -Contains $item) {
 					$Temp_Save_Has_Been_Run += $item
-					New-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Save_Has_Been_Run -Force
+					New-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Uid)" -Value $Temp_Save_Has_Been_Run -Force
 
 					Invoke-Expression -Command $item
 				}
@@ -2078,9 +2078,9 @@ Function Eject_Forcibly_All
 					Write-Host $Eject_Expand_Do_Not_Save_Path -ForegroundColor Green
 					Write-Host "    $('-' * 78)"
 
-					Image_Get_Mount_Status_New -Master $item.Main.ImageFileName -MasterSuffix $item.Main.Suffix -ImageName $Expand.ImageFileName -Suffix $Expand.Suffix -ImageFile $test_mount_folder_Current -Silent $True
+					Image_Get_Mount_Status_New -Uid $Expand.Uid -Master $item.Main.ImageFileName -MasterSuffix $item.Main.Suffix -ImageName $Expand.ImageFileName -Suffix $Expand.Suffix -ImageFile $test_mount_folder_Current -Silent $True
 
-					if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.ImageFileName)_$($Expand.ImageFileName)").Value) {
+					if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Expand.Uid)").Value) {
 						Write-Host "    $($lang.Mounted)"
 
 						Write-Host "`n    $($lang.YesWork)" -ForegroundColor Yellow
@@ -2160,8 +2160,8 @@ Function Eject_Forcibly_All
 			Write-Host $Eject_Main_Do_Not_Save_Path -ForegroundColor Green
 			Write-Host "  $('-' * 80)"
 
-			Image_Get_Mount_Status_New -Master $item.Main.ImageFileName -MasterSuffix $item.Main.Suffix -ImageName $item.Main.ImageFileName -Suffix $item.Main.Suffix -ImageFile "$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)" -Silent $True
-			if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)").Value) {
+			Image_Get_Mount_Status_New -Uid $item.Main.Uid -Master $item.Main.ImageFileName -MasterSuffix $item.Main.Suffix -ImageName $item.Main.ImageFileName -Suffix $item.Main.Suffix -ImageFile "$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)" -Silent $True
+			if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.Uid)").Value) {
 				Write-Host "  $($lang.Mounted)"
 
 				Write-Host "`n  $($lang.Save)" -ForegroundColor Yellow

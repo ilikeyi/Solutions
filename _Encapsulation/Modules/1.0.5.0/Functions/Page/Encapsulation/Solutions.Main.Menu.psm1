@@ -151,8 +151,7 @@ Function Mainpage
 		Write-Host " iAE * " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 	}
 
-	Write-Host ", " -NoNewline
-	Write-Host " $($lang.Export_Image) " -NoNewline -ForegroundColor Green
+	Write-Host ", $($lang.Export_Image) " -NoNewline -ForegroundColor Green
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
 			Write-Host " Exp * " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
@@ -168,12 +167,8 @@ Function Mainpage
 	Write-Host "$($lang.Apply) " -NoNewline -ForegroundColor Green
 	Write-Host " App * " -BackgroundColor DarkMagenta -ForegroundColor White
 
-	Write-Host "       " -NoNewline
-	Write-Host " Euwl * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host ": $($lang.LanguageExtract)" -NoNewline -ForegroundColor Green
-	Write-Host ", " -NoNewline
-
-	Write-Host $lang.Update -ForegroundColor Green
+	Write-Host "       $($lang.Wim_Rule_Update) " -NoNewline -ForegroundColor Green
+	Write-Host " Euwl * " -BackgroundColor DarkMagenta -ForegroundColor White
 
 	Write-host "   " -NoNewline
 	Write-Host " 2 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
@@ -184,7 +179,7 @@ Function Mainpage
 	Write-Host " FF " -BackgroundColor DarkMagenta -ForegroundColor White
 
 	Write-host "   " -NoNewline
-	if (Image_Is_Mount_Specified -Master "Install" -ImageFileName "Install") {
+	if (Image_Is_Mount_Specified -Uid "Install;wim;Install;wim;") {
 		Write-Host " 3 " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
 		Write-Host " $($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm)" -ForegroundColor Red
 	} else {
@@ -1354,7 +1349,7 @@ Function Mainpage
 			$Global:AutopilotMode = $True
 
 			$Autopilot = Get-Content -Raw -Path "$($PSScriptRoot)\..\..\..\..\..\_Autopilot\Microsoft Windows 11\25H2\1.zh-CN.Additional.Edition.json" | ConvertFrom-Json
-			$GroupSelectAE = "install;install;wim;"
+			$GroupSelectAE = "Install;wim;Install;wim;"
 			if ($Autopilot.Deploy.ImageSource.Tasks.AdditionalEdition.Count -gt 0) {
 				foreach ($item in $Autopilot.Deploy.ImageSource.Tasks.AdditionalEdition) {
 					if ($GroupSelectAE -contains $item.Uid) {

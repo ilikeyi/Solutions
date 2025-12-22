@@ -81,7 +81,7 @@ Function ISO_Create_UI
 		$Script:init_To_GPS = "ISO"
 	} else {
 		if (Image_Is_Select_IAB) {
-			$Script:init_To_GPS = "$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)"
+			$Script:init_To_GPS = $Global:Primary_Key_Image.Uid
 		} else {
 			$Script:init_To_GPS = "ISO"
 		}
@@ -3321,7 +3321,7 @@ Function ISO_Create_UI
 		 检查前，优先检查是否已挂载 boot，已挂载强行关闭该功能
 	#>
 	#region 检查是否已挂载 boot
-	if ((Get-Variable -Scope global -Name "Mark_Is_Mount_Boot_Boot").Value) {
+	if ((Get-Variable -Scope global -Name "Mark_Is_Mount_Boot;wim;Boot;wim;").Value) {
 		$GUIISORebuldBootTips.Text = "$($lang.Inoperable), $($lang.Mounted)"
 
 		<#
@@ -3374,7 +3374,7 @@ Function ISO_Create_UI
 			.初始变量：添加选择的映像文件类型
 		#>
 		if (Image_Is_Select_Boot) {
-			if ((Get-Variable -Scope global -Name "Queue_Is_Language_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+			if ((Get-Variable -Scope global -Name "Queue_Is_Language_Add_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 				$GUIISORebuldBoot.Checked = $True
 			}
 		}
@@ -3388,7 +3388,7 @@ Function ISO_Create_UI
 	$Install_swm = Join-Path -Path $Global:Image_source -ChildPath "Sources\install.swm"
 
 	if (Test-Path -Path $Install_swm -PathType Leaf) {
-		if ((Get-Variable -Scope global -Name "Mark_Is_Mount_install_install").Value) {
+		if ((Get-Variable -Scope global -Name "Mark_Is_Mount_install;wim;install;wim;").Value) {
 			$GUIISORebuldInstallTips.Text = "$($lang.Inoperable), $($lang.Mounted)"
 
 			<#

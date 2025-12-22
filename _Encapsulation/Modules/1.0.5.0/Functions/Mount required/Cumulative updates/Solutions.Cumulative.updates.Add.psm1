@@ -65,32 +65,32 @@ Function Cumulative_updates_Add_UI
 		}
 
 		if ($Temp_Get_Select_Queue.Count -gt 0) {
-			New-Variable -Scope global -Name "Queue_Is_Update_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-			New-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Get_Select_Queue -Force
+			New-Variable -Scope global -Name "Queue_Is_Update_Add_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
+			New-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value $Temp_Get_Select_Queue -Force
 
 			<#
 				.固化更新
 			#>
-			New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			if ($GUIUpdateAddCuring.Enabled) {
 				if ($GUIUpdateAddCuring.Checked) {
-					New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+					New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 				}
 			}
 
 			<#
 				.清理取代的
 			#>
-			New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-			New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			if ($UI_Main_Superseded_Rule.Enabled) {
 				if ($UI_Main_Superseded_Rule.Checked) {
-					New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+					New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 				}
 
 				if ($UI_Main_Superseded_Rule_Exclude.Enabled) {
 					if ($UI_Main_Superseded_Rule_Exclude.Checked) {
-						New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+						New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 					}
 				}
 			}
@@ -109,7 +109,7 @@ Function Cumulative_updates_Add_UI
 
 	Function Refres_Event_Tasks_Cumulative_updates_Add_UI
 	{
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		if ($Temp_Assign_Task_Select.Count -gt 0) {
@@ -118,7 +118,7 @@ Function Cumulative_updates_Add_UI
 			$UI_Main_Dashboard_Event_Clear.Text = $lang.EventManagerNo
 		}
 
-		if ((Get-Variable -Scope global -Name "Queue_Is_Update_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Update_Add_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Enable)"
 		} else {
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Disable)"
@@ -126,8 +126,8 @@ Function Cumulative_updates_Add_UI
 	}
 
 	$UI_Main_Event_Clear_Click = {
-		New-Variable -Scope global -Name "Queue_Is_Update_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_Update_Add_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 		Refres_Event_Tasks_Cumulative_updates_Add_UI
 
@@ -159,7 +159,7 @@ Function Cumulative_updates_Add_UI
 		$UI_Main_Error_Icon.Image = $null
 		$UI_Main_Rule.controls.Clear()
 
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		<#
@@ -745,7 +745,7 @@ Function Cumulative_updates_Add_UI
 			$Sources
 		)
 
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		<#
@@ -1305,7 +1305,7 @@ Function Cumulative_updates_Add_UI
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "25" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "25" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -1412,7 +1412,7 @@ Function Cumulative_updates_Add_UI
 
 				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_Select.count -gt 0) {
 					ForEach ($item in $Temp_Assign_Task_Select) {
 						Write-Host "  $($item)" -ForegroundColor Green
@@ -1425,12 +1425,12 @@ Function Cumulative_updates_Add_UI
 					.固化更新
 				#>
 				Write-Host "`n  $($lang.CuringUpdate)" -ForegroundColor Yellow
-				New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 				if ($GUIUpdateAddCuring.Enabled) {
 					if ($GUIUpdateAddCuring.Checked) {
 						Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
-						New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+						New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 					} else {
 						Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 					}
@@ -1441,21 +1441,21 @@ Function Cumulative_updates_Add_UI
 				<#
 					.清理取代的
 				#>
-				New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-				New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 				Write-Host "`n  $($lang.Superseded)" -ForegroundColor Yellow
 				if ($UI_Main_Superseded_Rule.Enabled) {
 					if ($UI_Main_Superseded_Rule.Checked) {
 						Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
-						New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+						New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 					} else {
 						Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 					}
 
 					if ($UI_Main_Superseded_Rule_Exclude.Enabled) {
 						if ($UI_Main_Superseded_Rule_Exclude.Checked) {
-							New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+							New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 						}
 					}
 				} else {
@@ -1526,19 +1526,19 @@ Function Cumulative_updates_Add_UI
 		$GUIUpdateAddCuring.Enabled = $False
 	}
 
-	if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$UI_Main_Superseded_Rule.Checked = $True
 	} else {
 		$UI_Main_Superseded_Rule.Checked = $False
 	}
 
-	if ((Get-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$GUIUpdateAddCuring.Checked = $True
 	} else {
 		$GUIUpdateAddCuring.Checked = $False
 	}
 
-	if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$UI_Main_Superseded_Rule_Exclude.Checked = $True
 	} else {
 		$UI_Main_Superseded_Rule_Exclude.Checked = $False
@@ -1639,7 +1639,7 @@ Function Cumulative_updates_Add_UI
 
 	if ($Autopilot) {
 		Write-Host "  $($lang.Autopilot)" -ForegroundColor Green
-		New-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 		$Temp_Assign_Task_Select_Is = @()
 		$UI_Main_Rule.Controls | ForEach-Object {
@@ -1694,7 +1694,7 @@ Function Cumulative_updates_Add_UI
 
 			Write-Host "`n  $($lang.AddQueue)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+			$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 			foreach ($item in $Temp_Assign_Task_Select) {
 				Write-Host "  $($item)" -ForegroundColor Green
 			}
@@ -1711,7 +1711,7 @@ Function Cumulative_updates_Add_UI
 			}
 		}
 
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		foreach ($item in $Temp_Assign_Task_Select) {
@@ -1861,7 +1861,7 @@ Function Autopilot_Cumulative_updates_Add_UI_Import
 #>
 Function Update_Add_Process
 {
-	$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Assign_Task_Select.count -gt 0) {
 		Write-Host "`n  $($lang.AddSources)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"

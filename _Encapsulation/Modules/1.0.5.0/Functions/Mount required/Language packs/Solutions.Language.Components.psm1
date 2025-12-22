@@ -40,8 +40,8 @@ Function Language_Cleanup_Components_UI
 		}
 
 		if ($Temp_Queue_Is_Language_Components_Clean_Select.Count -gt 0) {
-			New-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-			New-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Queue_Is_Language_Components_Clean_Select -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value $Temp_Queue_Is_Language_Components_Clean_Select -Force
 
 			Refres_Event_Tasks_Language_Components
 
@@ -57,7 +57,7 @@ Function Language_Cleanup_Components_UI
 
 	Function Refres_Event_Tasks_Language_Components
 	{
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		if ($Temp_Assign_Task_Select.Count -gt 0) {
@@ -66,7 +66,7 @@ Function Language_Cleanup_Components_UI
 			$UI_Main_Dashboard_Event_Clear.Text = $lang.EventManagerNo
 		}
 
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Enable)"
 		} else {
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Disable)"
@@ -74,8 +74,8 @@ Function Language_Cleanup_Components_UI
 	}
 
 	$UI_Main_Event_Clear_Click = {
-		New-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 		Refres_Event_Tasks_Language_Components
 
@@ -89,7 +89,7 @@ Function Language_Cleanup_Components_UI
 		$UI_Main_Error_Icon.Image = $null
 		$GUILangCleanupComponentsSelectPanel.controls.Clear()
 
-		$Temp_Queue_Language_Components_Clean_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Queue_Language_Components_Clean_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 
 		$GetSelectCleanupComponentsLanguage = @()
 		ForEach ($item in $Temp_Queue_Language_Components_Clean_Select) {
@@ -200,7 +200,7 @@ Function Language_Cleanup_Components_UI
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "20" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "20" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -305,7 +305,7 @@ Function Language_Cleanup_Components_UI
 
 				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Assign_Task_Select.count -gt 0) {
 					ForEach ($item in $Temp_Assign_Task_Select) {
 						Write-Host "  $($item)" -ForegroundColor Green
@@ -435,8 +435,8 @@ Function Language_Cleanup_Components_UI
 		Write-Host "  " -NoNewline
 		Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
 
-		New-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 		$GUILangCleanupComponentsSelectPanel.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.CheckBox]) {
@@ -471,7 +471,7 @@ Function Cleanup_Components_Process
 	#>
 	$InitlClearLanguagePackage = @()
 
-	$Temp_Queue_Language_Components_Clean_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Queue_Language_Components_Clean_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	ForEach ($item in $Temp_Queue_Language_Components_Clean_Select) {
 		Write-Host "  $($item)" -ForegroundColor Green
 	}

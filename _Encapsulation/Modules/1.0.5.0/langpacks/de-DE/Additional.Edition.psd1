@@ -12,4 +12,7 @@
 	AE_Rename                       = Umbenennen aller Details zulassen
 	AE_Exclude                      = Add-on-Versionen ausschließen
 	AE_Replace_Name                 = Sprachnamen automatisch ersetzen
+	AE_Add_Exclude_Nomount          = Zu "Nicht angeforderte Mounts ausschließen" hinzufügen
+	AE_ExcludeMount                 = Von "Nicht angeforderten Mounts ausschließen" ausschließen
+	AE_ExcludeMountTips             = Sie fügen ein Element hinzu, das von "Nicht angeforderten Mounts" ausgeschlossen werden soll. Nach dem Hinzufügen werden Änderungen an der Versions-ID oder Seriennummer nicht mehr für die Mount-Vorbereitung angefordert.
 '@

@@ -541,10 +541,10 @@ Function Image_Additional_Edition_UI
 							$UI_Main_Rule_View_Detailed_Show.Text += "     $($lang.AE_New_EditionID): $($itemRule.NewEditionId)`n"
 							$UI_Main_Rule_View_Detailed_Show.Text += "     $($lang.KMSKey): $($itemRule.Productkey)`n"
 							$UI_Main_Rule_View_Detailed_Show.Text += "     $($lang.Detailed)`n"
-							$UI_Main_Rule_View_Detailed_Show.Text += "          $($lang.Wim_Image_Name): $($itemRule.Detailed.ImageName)`n"
-							$UI_Main_Rule_View_Detailed_Show.Text += "          $($lang.Wim_Image_Description): $($itemRule.Detailed.Description)`n"
-							$UI_Main_Rule_View_Detailed_Show.Text += "          $($lang.Wim_Display_Name): $($itemRule.Detailed.DisplayName)`n"
-							$UI_Main_Rule_View_Detailed_Show.Text += "          $($lang.Wim_Display_Description): $($itemRule.Detailed.DisplayDescription)`n`n`n"
+							$UI_Main_Rule_View_Detailed_Show.Text += "        $($lang.Wim_Image_Name): $($itemRule.Detailed.ImageName)`n"
+							$UI_Main_Rule_View_Detailed_Show.Text += "        $($lang.Wim_Image_Description): $($itemRule.Detailed.Description)`n"
+							$UI_Main_Rule_View_Detailed_Show.Text += "        $($lang.Wim_Display_Name): $($itemRule.Detailed.DisplayName)`n"
+							$UI_Main_Rule_View_Detailed_Show.Text += "        $($lang.Wim_Display_Description): $($itemRule.Detailed.DisplayDescription)`n`n`n"
 						}
 					} else {
 						$UI_Main_Rule_View_Detailed_Show.Text += "     $($lang.NoWork)`n"
@@ -773,7 +773,7 @@ Function Image_Additional_Edition_UI
 
 		$CheckboxGroup     = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 			Name           = $GUID
-			Height         = 565
+			Height         = 600
 			Width          = 470
 			BorderStyle    = 0
 			autoSizeMode   = 0
@@ -809,6 +809,52 @@ Function Image_Additional_Edition_UI
 			Padding        = "16,0,0,0"
 			Text           = "$($lang.AE_New_EditionID): $($NewEditionId)"
 			Tag            = $NewEditionId
+		}
+		$EditionId_Add_To_Exclude_Nomount = New-Object system.Windows.Forms.LinkLabel -Property @{
+			Height         = 30
+			Width          = 450
+			Padding        = "35,0,0,0"
+			Text           = $lang.AE_Add_Exclude_Nomount
+			Tag            = $NewEditionId
+			LinkColor      = "GREEN"
+			ActiveLinkColor = "RED"
+			LinkBehavior   = "NeverUnderline"
+			add_Click      = {
+				$UI_Main_Error.Text = ""
+				$UI_Main_Error_Icon.Image = $null
+
+				$Temp_Get_Select_Function = @()
+				$UI_Main_Select_Function.Controls | ForEach-Object {
+					if ($_ -is [System.Windows.Forms.CheckBox]) {
+						$Temp_Get_Select_Function += $_.Text
+					}
+				}
+
+				if ($Temp_Get_Select_Function -contains $this.Tag) {
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+					$UI_Main_Error.Text = "$($lang.Existed): $($This.Tag)"
+				} else {
+					$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
+						Height    = 40
+						Width     = 445
+						Text      = $this.Tag
+						Checked   = $true
+						add_Click = {
+							$UI_Main_Error.Text = ""
+							$UI_Main_Error_Icon.Image = $null
+						}
+					}
+
+					$UI_Main_Select_Function.controls.AddRange($CheckBox)
+
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+					$UI_Main_Error.Text = "$($lang.AddTo): $($This.Tag), $($lang.Done)"
+				}
+			}
+		}
+		$EditionId_Name_Wrap  = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 15
+			Width          = 450
 		}
 
 		$Productkey_Name   = New-Object System.Windows.Forms.Label -Property @{
@@ -912,6 +958,8 @@ Function Image_Additional_Edition_UI
 			$CheckBox,
 			$Requiredversion_Name,
 			$EditionId_Name,
+			$EditionId_Add_To_Exclude_Nomount,
+			$EditionId_Name_Wrap,
 			$Productkey_Name,
 			$Productkey_Custom,
 			$Details,
@@ -1250,7 +1298,7 @@ Function Image_Additional_Edition_UI
 		Height         = 30
 		Width          = 485
 		Location       = "15,15"
-		Text           = $lang.Functions_Wait_Assign
+		Text           = $lang.AE_ExcludeMount
 	}
 	$UI_Main_Exclude_Menu = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		Height         = 550
@@ -1316,7 +1364,7 @@ Function Image_Additional_Edition_UI
 		Location       = "560,520"
 		Height         = 50
 		Width          = 480
-		Text           = $lang.FunctionTips
+		Text           = $lang.AE_ExcludeMountTips
 	}
 
 	$UI_Main_Exclude_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{

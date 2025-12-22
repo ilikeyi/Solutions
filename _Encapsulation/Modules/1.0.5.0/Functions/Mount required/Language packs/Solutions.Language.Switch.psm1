@@ -31,14 +31,14 @@ Function Language_Change_UI
 				if ($_.Enabled) {
 					if ($_.Checked) {
 						$FlagCheckSelectLanguage = $True
-						New-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $_.Tag -Force
+						New-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value $_.Tag -Force
 					}
 				}
 			}
 		}
 
 		if ($FlagCheckSelectLanguage) {
-			New-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 
 			Refres_Event_Tasks_Language_Switch
 
@@ -54,10 +54,10 @@ Function Language_Change_UI
 
 	Function Refres_Event_Tasks_Language_Switch
 	{
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Enable)"
 
-			$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+			$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 			if ([string]::IsNullOrEmpty($Temp_Assign_Task_Select)) {
 				$UI_Main_Dashboard_Event_Clear.Text = $lang.EventManagerNo
 			} else {
@@ -70,8 +70,8 @@ Function Language_Change_UI
 	}
 
 	$UI_Main_Event_Clear_Click = {
-		New-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value "" -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value "" -Force
 
 		Refres_Event_Tasks_Language_Switch
 
@@ -178,7 +178,7 @@ Function Language_Change_UI
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "20" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "20" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -283,8 +283,8 @@ Function Language_Change_UI
 
 				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
-					$Temp_Queue_Language_Change_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
+					$Temp_Queue_Language_Change_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 					if ([string]::IsNullOrEmpty($Temp_Queue_Language_Change_Select)) {
 						Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 					} else {
@@ -323,7 +323,7 @@ Function Language_Change_UI
 		$GUILangChangeTipsErrorMsg
 	))
 
-	$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ([string]::IsNullOrEmpty($Temp_Assign_Task_Select)) {
 		$Temp_Assign_Task_Select = $Global:MainImageLang
 	}
@@ -423,8 +423,8 @@ Function Language_Change_UI
 		Write-Host "  " -NoNewline
 		Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
 
-		New-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value "" -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value "" -Force
 
 		$GUILangChangePanel.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.RadioButton]) {
@@ -455,7 +455,7 @@ Function Language_Change_UI
 Function Language_Change_Process
 {
 	$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master).$($Global:Primary_Key_Image.MasterSuffix)\$($Global:Primary_Key_Image.ImageFileName).$($Global:Primary_Key_Image.Suffix)\Mount"
-	$NewLanguage = (Get-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$NewLanguage = (Get-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 
 	if ([string]::IsNullOrEmpty($NewLanguage)) {
 		Write-Host "  $($lang.MatchMode), $($lang.Language), $($lang.Failed)`n" -ForegroundColor Red

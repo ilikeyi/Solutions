@@ -65,7 +65,7 @@ Function Event_Assign_Task_Customize
 
 				Write-Host
 
-				if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($WildCard.Main.ImageFileName)_$($WildCard.Main.ImageFileName)").Value) {
+				if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($WildCard.Main.Uid)").Value) {
 					if ($Global:Developers_Mode) {
 						Write-Host "  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x003020`n  Start"
 					}
@@ -99,7 +99,7 @@ Function Event_Assign_Task_Customize
 					#>
 #					Image_Select_Mul_UI -ImageFileName "$($WildCard.Main.Path)\$($WildCard.Main.ImageFileName).$($WildCard.Main.Suffix)"
 
-					$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($WildCard.Main.ImageFileName)_$($WildCard.Main.ImageFileName)" -ErrorAction SilentlyContinue).Value
+					$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($WildCard.Main.Uid)" -ErrorAction SilentlyContinue).Value
 					if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
 						Write-Host "`n  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 						Write-Host $WildCard.Main.Uid -ForegroundColor Green
@@ -212,7 +212,7 @@ Function Event_Assign_Task_Customize
 
 #							Image_Select_Mul_UI -ImageFileName $test_mount_folder_Current
 
-							$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($WildCard.Main.ImageFileName)_$($Expand.ImageFileName)" -ErrorAction SilentlyContinue).Value
+							$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Expand.Uid)" -ErrorAction SilentlyContinue).Value
 							if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
 								Write-Host "`n  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 								Write-Host $Expand.Uid -ForegroundColor Green
@@ -247,7 +247,7 @@ Function Event_Assign_Task_Customize
 							弹出选择主要项：索引号
 						#>
 						#region 弹出选择索引号
-						$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($WildCard.Main.ImageFileName)_$($WildCard.Main.ImageFileName)" -ErrorAction SilentlyContinue).Value
+						$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($WildCard.Main.Uid)" -ErrorAction SilentlyContinue).Value
 						if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
 							Write-Host "`n  $($lang.SelectSettingImage): $($lang.MountedIndexSelect)" -ForegroundColor Yellow
 							Write-Host "  $('-' * 80)"
@@ -282,7 +282,7 @@ Function Event_Assign_Task_Customize
 						<#
 							.判断是否选择主要扩展项索引号，重要。没有索引号，处理个什么？处理了个寂寞。
 						#>
-						$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($WildCard.Main.ImageFileName)_$($WildCard.Main.ImageFileName)" -ErrorAction SilentlyContinue).Value
+						$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($WildCard.Main.Uid)" -ErrorAction SilentlyContinue).Value
 						if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
 							<#
 								.弹出模拟名
@@ -290,7 +290,7 @@ Function Event_Assign_Task_Customize
 							Image_Select_Index_Custom_UI
 
 							#region 获取用户是否选择了分配事件
-							$Get_Current_Process_Type_Temp = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Is_Type_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+							$Get_Current_Process_Type_Temp = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Is_Type_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 							switch ($Get_Current_Process_Type_Temp) {
 								"Auto" {
 									#region Auto
@@ -353,7 +353,7 @@ Function Event_Assign_Task_Customize
 									<#
 										.预指定索引号
 									#>
-									$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($WildCard.Main.ImageFileName)_$($Expand.ImageFileName)" -ErrorAction SilentlyContinue).Value
+									$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Expand.Uid)" -ErrorAction SilentlyContinue).Value
 									if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
 										Write-Host "`n  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 										Write-Host $Expand.Uid -ForegroundColor Green
@@ -525,7 +525,7 @@ Function Event_Assign_Task_Customize
 					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x000330`n  Start" -ForegroundColor Green
 				}
 
-				$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($WildCard.Main.ImageFileName)_$($WildCard.Main.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($WildCard.Main.Uid)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
 					if ($Global:Developers_Mode) {
 						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002680`n  Start" -ForegroundColor Green
@@ -595,7 +595,7 @@ Function Event_Assign_Task_Customize
 
 							Write-Host "`n  $($lang.Mounted_Status)" -ForegroundColor Yellow
 							Write-Host "  $('-' * 80)"
-							if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($WildCard.Main.ImageFileName)_$($WildCard.Main.ImageFileName)").Value) {
+							if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($WildCard.Main.Uid)").Value) {
 								Write-Host "  $($lang.Mounted)"
 							} else {
 								Write-Host "  $($lang.NotMounted)"
@@ -604,7 +604,7 @@ Function Event_Assign_Task_Customize
 								Write-Host "  $('-' * 80)"
 								Write-Host "  $($lang.Mount)" -ForegroundColor Yellow
 
-								New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($WildCard.Main.ImageFileName)_$($WildCard.Main.ImageFileName)" -Value $True -Force # 不保存
+								New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($WildCard.Main.Uid)" -Value $True -Force # 不保存
 								Write-Host "  $($lang.DoNotSave)`n" -ForegroundColor Yellow
 
 								<#
@@ -638,7 +638,7 @@ Function Event_Assign_Task_Customize
 										Write-Host "`n  $($lang.Mounted_Status): $($lang.Unmount)" -ForegroundColor Yellow
 										Write-Host "  $('-' * 80)"
 
-										New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($WildCard.Main.ImageFileName)_$($ExpandWildcard.ImageFileName)" -Value $True -Force # 不保存
+										New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($ExpandWildcard.Uid)" -Value $True -Force # 不保存
 										Write-Host "  $($lang.DoNotSave)`n" -ForegroundColor Yellow
 
 										<#
@@ -696,7 +696,7 @@ Function Event_Assign_Task_Customize
 
 			Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($WildCard.Main.ImageFileName)_$($WildCard.Main.ImageFileName)").Value) {
+			if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($WildCard.Main.Uid)").Value) {
 				Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 			} else {
 				Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
@@ -712,12 +712,12 @@ Function Event_Assign_Task_Customize
 						Write-Host "  $($lang.Unique_Name): " -NoNewline -ForegroundColor Yellow
 						Write-Host "$($WildCard.Main.ImageFileName);$($itemExpandNew.ImageFileName);" -ForegroundColor Green
 
-						Image_Queue_Wimlib_Process_Wim_Main -NewUid $itemExpandNew.Uid -NewMaster $WildCard.Main.ImageFileName -NewImageFileName $itemExpandNew.ImageFileName -MasterFile "$($WildCard.Main.Path)\$($WildCard.Main.ImageFileName).$($WildCard.Main.Suffix)" -DevCode "3"
+						Image_Queue_Wimlib_Process_Wim_Main -Uid $itemExpandNew.Uid -MasterFile "$($WildCard.Main.Path)\$($WildCard.Main.ImageFileName).$($WildCard.Main.Suffix)" -DevCode "3"
 
 						<#
 							.清除任务
 						#>
-						New-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_Rule_$($WildCard.Main.ImageFileName)_$($itemExpandNew.ImageFileName)" -Value @() -Force
+						New-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_Rule_$($itemExpandNew.Uid)" -Value @() -Force
 					}
 				} else {
 					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
@@ -727,11 +727,11 @@ Function Event_Assign_Task_Customize
 					.完成所有后，重建
 				#>
 				Write-Host "`n  $($lang.Rebuilding)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Rebuild_$($WildCard.Main.ImageFileName)_$($WildCard.Main.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+				if ((Get-Variable -Scope global -Name "Queue_Rebuild_$($WildCard.Main.Uid)" -ErrorAction SilentlyContinue).Value) {
 					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
 					Rebuild_Image_File -Filename "$($WildCard.Main.Path)\$($WildCard.Main.ImageFileName).$($WildCard.Main.Suffix)"
-					New-Variable -Scope global -Name "Queue_Rebuild_$($WildCard.Main.ImageFileName)_$($WildCard.Main.ImageFileName)" -Value $False -Force
+					New-Variable -Scope global -Name "Queue_Rebuild_$($WildCard.Main.Uid)" -Value $False -Force
 				} else {
 					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
@@ -807,11 +807,11 @@ Function Expand_Process_abc
 		.完成所有后，重建
 	#>
 	Write-Host "`n  $($lang.Rebuilding): " -NoNewline -ForegroundColor Yellow
-	if ((Get-Variable -Scope global -Name "Queue_Rebuild_$($MainUid)_$($ExpandUid)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Rebuild_$($NewUid)" -ErrorAction SilentlyContinue).Value) {
 		Write-Host " $($lang.Operable) " -NoNewline -BackgroundColor White -ForegroundColor Black
 
 		Rebuild_Image_File -Filename $ImageFileMount
-		New-Variable -Scope global -Name "Queue_Rebuild_$($MainUid)_$($ExpandUid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Rebuild_$($NewUid)" -Value $False -Force
 	} else {
 		Write-Host " $($lang.Inoperable) " -BackgroundColor DarkRed -ForegroundColor White
 	}
@@ -822,7 +822,7 @@ Function Expand_Process_abc
 		备份制作完成的 WinRE.wim 后备份到 Wimlib 目录里
 	#>
 	Write-Host "`n  $($lang.Pri_Key_Template)" -ForegroundColor Yellow
-	if ((Get-Variable -Scope global -Name "Queue_Is_Update_Rule_$($MainUid)_$($ExpandUid)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Update_Rule_$($NewUid)" -ErrorAction SilentlyContinue).Value) {
 		Write-Host "  $($lang.Operable)`n" -ForegroundColor Green
 
 		<#
@@ -857,7 +857,7 @@ Function Expand_Process_abc
 				UpdatePath    = $NewUpdatePath
 			}
 
-			New-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_Rule_$($MainUid)_$($ExpandUid)" -Value $Temp_Queue_Temp_Save_Update_Rule_Task -Force
+			New-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_Rule_$($NewUid)" -Value $Temp_Queue_Temp_Save_Update_Rule_Task -Force
 
 			<#
 				.清空任务
@@ -972,7 +972,7 @@ Function Run_Expand_Assign
 				<#
 					.判断是否已选择分配扩展，索引号
 				#>
-				$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($NewMain.ImageFileName)_$($NewExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($NewExpand.Uid)" -ErrorAction SilentlyContinue).Value
 				Write-Host "`n  $($lang.SelectSettingImage): $($lang.MountedIndexSelect)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
 
@@ -988,7 +988,7 @@ Function Run_Expand_Assign
 					}
 
 					ForEach ($itemBB in $Temp_Queue_Process_Image_Select_Pending) {
-						$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($NewMain.ImageFileName)_$($NewExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value
+						$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($NewExpand.Uid)" -ErrorAction SilentlyContinue).Value
 
 						if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
 							$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($NewExpand.UID);, $($lang.MountedIndex): $($itemBB.Index), $($lang.Wim_Image_Name): $($itemBB.Name)"
@@ -1029,7 +1029,7 @@ Function Run_Expand_Assign
 					.未检查到用户已选择的分配索引号，继续执行
 				#>
 				#region 获取用户是否选择了分配事件
-				$Get_Current_Process_Type_Temp = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Is_Type_$($NewMain.ImageFileName)_$($NewExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Get_Current_Process_Type_Temp = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Is_Type_$($NewExpand.Uid)" -ErrorAction SilentlyContinue).Value
 				switch ($Get_Current_Process_Type_Temp) {
 					"Auto" {
 						Write-Host "`n  $($lang.Index_Process_All)" -ForegroundColor Yellow
@@ -1094,7 +1094,7 @@ Function Run_Expand_Assign
 						#>
 						Image_Select_Popup_UI -ImageFileName $MountFileName
 
-						$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Popup_Pending_$($NewMain.ImageFileName)_$($NewExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value
+						$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Popup_Pending_$($NewExpand.Uid)" -ErrorAction SilentlyContinue).Value
 
 						Write-Host "  $($lang.SelectSettingImage): $($lang.MountedIndexSelect)" -ForegroundColor Yellow
 						Write-Host "  $('-' * 80)"
@@ -1110,7 +1110,7 @@ Function Run_Expand_Assign
 							}
 
 							ForEach ($itemBB in $Temp_Queue_Process_Image_Select_Pending) {
-								$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Popup_Pending_$($NewMain.ImageFileName)_$($NewExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value
+								$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Popup_Pending_$($NewExpand.Uid)" -ErrorAction SilentlyContinue).Value
 
 								if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
 									$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($NewExpand.UID);, $($lang.MountedIndex): $($itemBB.Index), $($lang.Wim_Image_Name): $($itemBB.Name)"
@@ -1155,7 +1155,7 @@ Function Run_Expand_Assign
 						Write-Host "  $('-' * 80)"
 
 						Write-Host "  $($lang.Choose)" -ForegroundColor Green
-						$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($NewMain.ImageFileName)_$($NewExpand.ImageFileName)" -ErrorAction SilentlyContinue).Value
+						$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($NewExpand.Uid)" -ErrorAction SilentlyContinue).Value
 						if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
 							ForEach ($itemBB in $Temp_Queue_Process_Image_Select_Pending) {
 								Write-Host "  $($lang.MountedIndex): " -noNewline

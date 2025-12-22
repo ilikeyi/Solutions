@@ -260,13 +260,13 @@ Function Image_Get_Mount_Status
 
 	ForEach ($item in $Global:Image_Rule) {
 		if ($item.Main.Suffix -eq "wim") {
-			Image_Get_Mount_Status_New -Master $item.Main.ImageFileName -MasterSuffix $item.Main.Suffix -ImageName $item.Main.ImageFileName -Suffix $item.Main.Suffix -ImageFile "$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)" -Shortcuts $item.Main.Shortcuts -Silent $Silent
+			Image_Get_Mount_Status_New -Uid $item.Main.Uid -Master $item.Main.ImageFileName -MasterSuffix $item.Main.Suffix -ImageName $item.Main.ImageFileName -Suffix $item.Main.Suffix -ImageFile "$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)" -Shortcuts $item.Main.Shortcuts -Silent $Silent
 
 			if ($item.Expand.Count -gt 0) {
 				ForEach ($Expand in $item.Expand) {
 					$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)\$($item.Main.ImageFileName).$($item.Main.Suffix)\Mount\$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)"
 
-					Image_Get_Mount_Status_New -Master $item.Main.ImageFileName -MasterSuffix $item.Main.Suffix -ImageName $Expand.ImageFileName -Suffix $Expand.Suffix -ImageFile $test_mount_folder_Current -Shortcuts $Expand.Shortcuts -Silent $Silent
+					Image_Get_Mount_Status_New -Uid $Expand.Uid -Master $item.Main.ImageFileName -MasterSuffix $item.Main.Suffix -ImageName $Expand.ImageFileName -Suffix $Expand.Suffix -ImageFile $test_mount_folder_Current -Shortcuts $Expand.Shortcuts -Silent $Silent
 				}
 			}
 		}
@@ -277,6 +277,7 @@ Function Image_Get_Mount_Status_New
 {
 	param
 	(
+		$Uid,
 		$Master,
 		$MasterSuffix,
 		$ImageName,
@@ -289,12 +290,12 @@ Function Image_Get_Mount_Status_New
 	<#
 		.标记：全局：匹配的是否已挂载
 	#>
-	New-Variable -Scope global -Name "Mark_Is_Mount_$($Master)_$($ImageName)" -Value $False -Force
+	New-Variable -Scope global -Name "Mark_Is_Mount_$($Uid)" -Value $False -Force
  
 	<#
 		.标记：判断是否合法
 	#>
-	New-Variable -Name "Mark_Is_Legal_Sources_$($Master)_$($ImageName)" -Value $False -Force
+	New-Variable -Name "Mark_Is_Legal_Sources_$($Uid)" -Value $False -Force
 
 	<#
 		.判断 ISO 主要来源是否存在文件
@@ -341,7 +342,7 @@ Function Image_Get_Mount_Status_New
 					switch ($_.MountStatus) {
 						"Invalid" {
 							$MarkErrorMounted = $True
-							New-Variable -Scope global -Name "Mark_Is_Mount_$($Master)_$($ImageName)" -Value $True -Force
+							New-Variable -Scope global -Name "Mark_Is_Mount_$($Uid)" -Value $True -Force
 
 							if (-not $Silent) {
 								Write-Host "  $($lang.MountedIndex): $($ImageIndexNew) " -NoNewline -ForegroundColor Yellow
@@ -362,7 +363,7 @@ Function Image_Get_Mount_Status_New
 						}
 						"NeedsRemount" {
 							$MarkErrorMounted = $True
-							New-Variable -Scope global -Name "Mark_Is_Mount_$($Master)_$($ImageName)" -Value $True -Force
+							New-Variable -Scope global -Name "Mark_Is_Mount_$($Uid)" -Value $True -Force
 
 							if (-not $Silent) {
 								Write-Host "  $($lang.MountedIndex): $($ImageIndexNew) " -NoNewline -ForegroundColor Yellow
@@ -383,8 +384,8 @@ Function Image_Get_Mount_Status_New
 						}
 						"Ok" {
 							$MarkErrorMounted = $True
-							New-Variable -Name "Mark_Is_Legal_Sources_$($Master)_$($ImageName)" -Value $True -Force
-							New-Variable -Scope global -Name "Mark_Is_Mount_$($Master)_$($ImageName)" -Value $True -Force
+							New-Variable -Name "Mark_Is_Legal_Sources_$($Uid)" -Value $True -Force
+							New-Variable -Scope global -Name "Mark_Is_Mount_$($Uid)" -Value $True -Force
 
 							if (-not $Silent) {
 								Write-Host "  $($lang.MountedIndex): $($ImageIndexNew) " -NoNewline -ForegroundColor Yellow
@@ -401,7 +402,7 @@ Function Image_Get_Mount_Status_New
 						}
 						Default {
 							$MarkErrorMounted = $True
-							New-Variable -Scope global -Name "Mark_Is_Mount_$($Master)_$($ImageName)" -Value $True -Force
+							New-Variable -Scope global -Name "Mark_Is_Mount_$($Uid)" -Value $True -Force
 
 							if (-not $Silent) {
 								Write-Host "  $($lang.MountedIndexError)" -BackgroundColor Darkred -ForegroundColor White

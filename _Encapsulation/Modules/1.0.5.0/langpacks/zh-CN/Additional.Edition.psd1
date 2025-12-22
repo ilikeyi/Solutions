@@ -12,4 +12,7 @@
 	AE_Rename                       = 允许重命名所有详细
 	AE_Exclude                      = 排除附加版本
 	AE_Replace_Name                 = 自动替换语言名称
+	AE_Add_Exclude_Nomount          = 添加到排除不再请求挂载项
+	AE_ExcludeMount                 = 排除不再请求挂载项
+	AE_ExcludeMountTips             = 你正在分配排除不再请求挂载项，添加后更改版本 ID、更改序列号不再请求挂载。
 '@

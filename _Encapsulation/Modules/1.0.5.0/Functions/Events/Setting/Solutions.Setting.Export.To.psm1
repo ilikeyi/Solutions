@@ -72,7 +72,7 @@ Function Setting_Export_To_UI
 					if ($_.Checked) {
 						Write-Host "  $($lang.Setting): $($lang.SaveTo)"
 						Write-Host "  $($_.Text)"
-						New-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $_.Text -Force
+						New-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Uid)" -Value $_.Text -Force
 						Write-Host "  $($lang.Done)" -ForegroundColor Green
 
 						$UI_Main.Close()
@@ -119,7 +119,7 @@ Function Setting_Export_To_UI
 	#>
 	[int]$InitControlHeight = 35
 
-	$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	ForEach ($item in $SearchFolderRule) {
 		$InitLength = $item.Length
 		if ($InitLength -lt $InitCharacterLength) { $InitLength = $InitCharacterLength }

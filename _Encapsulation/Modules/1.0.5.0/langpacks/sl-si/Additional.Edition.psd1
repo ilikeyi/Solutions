@@ -12,4 +12,7 @@
 	AE_Rename                       = Dovoli preimenovanje vseh podrobnosti
 	AE_Exclude                      = Izključi različice dodatka
 	AE_Replace_Name                 = Samodejno zamenjaj imena jezikov
+	AE_Add_Exclude_Nomount          = Dodaj v izključevanje iz nezahtevanih nosilcev
+	AE_ExcludeMount                 = Izključi iz nezahtevanih nosilcev
+	AE_ExcludeMountTips             = Dodeljujete element, ki ga želite izključiti iz nezahtevanih nosilcev. Po dodajanju ne bodo več zahtevane spremembe ID-ja različice ali serijske številke za montažo.
 '@

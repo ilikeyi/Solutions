@@ -46,7 +46,7 @@ Function Image_Select_Popup_UI
 		Width          = 270
 		BorderStyle    = 0
 		Location       = "575,10"
-		Text           = $lang.Image_Popup_Tips -f "$($Global:Primary_Key_Image.Master);$($Global:Primary_Key_Image.ImageFileName);"
+		Text           = $lang.Image_Popup_Tips -f $Global:Primary_Key_Image.Uid
 		BackColor      = "#FFFFFF"
 		ReadOnly       = $True
 	}
@@ -118,12 +118,12 @@ Function Image_Select_Popup_UI
 						}
 					}
 				}
-				New-Variable -Scope global -Name "Queue_Process_Image_Select_Popup_Pending_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $TempQueueProcessImageSelectPending -Force
+				New-Variable -Scope global -Name "Queue_Process_Image_Select_Popup_Pending_$($Global:Primary_Key_Image.Uid)" -Value $TempQueueProcessImageSelectPending -Force
 
 				Write-Host "`n  $($lang.Image_Popup_Default)"
 				if ($UI_Main_Index_Default.Checked) {
 					Write-Host "  $($lang.Operable)" -ForegroundColor Green
-					New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $TempQueueProcessImageSelectPending -Force
+					New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Global:Primary_Key_Image.Uid)" -Value $TempQueueProcessImageSelectPending -Force
 				} else {
 					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
@@ -154,7 +154,7 @@ Function Image_Select_Popup_UI
 		Text           = $lang.Cancel
 		add_Click      = {
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			New-Variable -Scope global -Name "Queue_Process_Image_Select_Popup_Pending_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+			New-Variable -Scope global -Name "Queue_Process_Image_Select_Popup_Pending_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 			$UI_Main.Close()
 		}
 	}

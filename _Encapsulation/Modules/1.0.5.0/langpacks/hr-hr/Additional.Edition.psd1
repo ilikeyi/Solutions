@@ -12,4 +12,7 @@
 	AE_Rename                       = Dopusti preimenovanje svih detalja
 	AE_Exclude                      = Isključi verzije dodataka
 	AE_Replace_Name                 = Automatski zamijeni nazive jezika
+	AE_Add_Exclude_Nomount          = Dodaj u Isključi iz Nezahtjevanih Nosača
+	AE_ExcludeMount                 = Isključi iz Nezahtjevanih Nosača
+	AE_ExcludeMountTips             = Dodjeljujete stavku za izuzimanje iz Nezahtjevanih Nosača. Nakon što je dodate, promjene ID-a verzije ili serijskog broja više se neće tražiti za montiranje.
 '@

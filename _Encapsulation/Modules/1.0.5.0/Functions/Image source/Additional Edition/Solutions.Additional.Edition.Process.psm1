@@ -25,7 +25,7 @@ Function Image_Additional_Edition_Process
 
 	Image_Set_Global_Primary_Key -Uid $Uid -DevCode "Autopilot - 9000"
 
-	Write-Host "  $($lang.AE_IsCheck): " -NoNewline -ForegroundColor Yellow
+	Write-Host "`n  $($lang.AE_IsCheck): " -NoNewline -ForegroundColor Yellow
 	$Temp_Additional_Edition = (Get-Variable -Scope global -Name "Queue_Additional_Edition_Rule_$($Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Additional_Edition.Count -gt 0) {
 		Write-Host " $($lang.AE_IsRuning) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -302,7 +302,13 @@ Function Image_Additional_Edition_Process
 										$GetCurrentEditionVersion += $_.Edition
 									}
 
-									Write-Host "  $($lang.MatchMode): " -NoNewline
+									Write-Host "  $($lang.Editions), $($lang.Existed): "
+									Write-Host "  $('-' * 80)"
+									foreach ($itemNV in $GetCurrentEditionVersion) {
+										Write-Host "  $($itemNV)"
+									}
+
+									Write-Host "`n  $($lang.MatchMode): " -NoNewline
 									Write-Host " $($itemRule.NewEditionId) " -BackgroundColor DarkGreen -ForegroundColor White
 									Write-Host "  $('-' * 80)"
 									if ($GetCurrentEditionVersion -contains $itemRule.NewEditionId) {
@@ -551,7 +557,7 @@ Function Additional_Edition_Force_Eject_Mount
 					Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 					Write-Host $item.Main.Uid -ForegroundColor Green
 
-					if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)").Value) {
+					if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($itemExpandNew.Uid)").Value) {
 						Write-Host "  $($lang.Mounted)"
 
 						$Temp_Do_Not_Save_Path = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)\$($itemExpandNew.ImageFileName).$($itemExpandNew.Suffix)\Mount"
@@ -583,7 +589,7 @@ Function Additional_Edition_Force_Eject_Mount
 					Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 					Write-Host $itemExpandNew.Uid -ForegroundColor Green
 
-					if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)").Value) {
+					if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($itemExpandNew.Uid)").Value) {
 						Write-Host "  $($lang.Mounted)"
 
 						$Temp_Do_Not_Save_Path = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)\$($itemExpandNew.ImageFileName).$($itemExpandNew.Suffix)\Mount"
@@ -613,7 +619,7 @@ Function Additional_Edition_Force_Eject_Mount
 			Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
 			Write-Host $item.Main.Uid -ForegroundColor Green
 
-			if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.ImageFileName)_$($item.Main.ImageFileName)").Value) {
+			if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.Uid)").Value) {
 				Write-Host "  $($lang.Mounted)"
 				
 				$Temp_Do_Not_Save_Path = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)\$($item.Main.ImageFileName).$($item.Main.Suffix)\Mount"

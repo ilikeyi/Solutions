@@ -37,7 +37,7 @@
 		}
 
 		if ($TempSelectFunctionQueue.Count -gt 0) {
-			New-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $TempSelectFunctionQueue -Force
+			New-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Global:Primary_Key_Image.Uid)" -Value $TempSelectFunctionQueue -Force
 
 			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Error.Text = "$($lang.Save), $($lang.Done)"
@@ -53,7 +53,7 @@
 	{
 		$UI_Main_Select_Function.controls.clear()
 
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 
 		if ($Temp_Assign_Task_Select.Count -gt 0) {
 			$UI_Main_Dashboard_Event_Clear.Text = "$($lang.YesWork), $($lang.EventManagerCurrentClear)"
@@ -80,7 +80,7 @@
 	}
 
 	$UI_Main_Event_Clear_Click = {
-		New-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 		Refres_Event_Tasks_Functions_Rear
 
@@ -270,7 +270,7 @@
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "12" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "12" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -374,7 +374,7 @@
 
 				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				$Temp_Functions_Rear_Task = (Get-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Temp_Functions_Rear_Task = (Get-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Functions_Rear_Task.Count -gt 0) {
 					ForEach ($item in $Temp_Functions_Rear_Task) {
 						Write-Host "  $($item)"
@@ -610,7 +610,7 @@
 		Write-Host "  " -NoNewline
 		Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
 
-		New-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 		foreach ($item in $Autopilot) {
 			if ($PowerShell_Function_Tasks -contains $item) {

@@ -101,7 +101,7 @@ Function Drive_Menu
 
 	if (Image_Is_Select_IAB) {
 		if (Verify_Is_Current_Same) {
-			$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+			$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 
 			Write-Host "`n   $($lang.SaveTo)" -ForegroundColor Yellow
 			Write-Host "   $('-' * 79)"
@@ -237,7 +237,7 @@ Function Drive_Menu
 				if (Verify_Is_Current_Same) {
 					Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 
-					$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+					$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 					if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
 						$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master).$($Global:Primary_Key_Image.MasterSuffix)\$($Global:Primary_Key_Image.ImageFileName).$($Global:Primary_Key_Image.Suffix)\Report"
 					} else {
@@ -268,7 +268,7 @@ Function Drive_Menu
 				if (Verify_Is_Current_Same) {
 					Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 
-					$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+					$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 					if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
 						$Temp_Export_SaveTo = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master).$($Global:Primary_Key_Image.MasterSuffix)\$($Global:Primary_Key_Image.ImageFileName).$($Global:Primary_Key_Image.Suffix)\Report"
 					} else {

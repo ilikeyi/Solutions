@@ -26,9 +26,9 @@
 						}
 					},
 					"Scope": [
-						"Install;Install;wim;",
-						"Install;WinRE;wim;",
-						"Boot;Boot;wim;"
+						"Install;wim;Install;wim;",
+						"Install;wim;WinRE;wim;",
+						"Boot;wim;Boot;wim;"
 					],
 					"Region": [
 						"zh-CN"
@@ -50,9 +50,9 @@
 						}
 					},
 					"Scope": [
-						"Install;Install;wim;",
-						"Install;WinRE;wim;",
-						"Boot;Boot;wim;"
+						"Install;wim;Install;wim;",
+						"Install;wim;WinRE;wim;",
+						"Boot;wim;Boot;wim;"
 					],
 					"Region": [
 						"en-US"
@@ -205,7 +205,7 @@
 				"AdditionalEdition": [
 					{
 						"Group":  "Install;Install;",
-						"Uid":    "Install;Install;wim;",
+						"Uid":    "Install;wim;Install;wim;",
 						"Exclude": [
 							"Core",
 							"CoreN",
@@ -289,14 +289,14 @@
 		},
 		"Mount": {
 			"IsAutoSelect": [
-				"Install;Install;wim;",
-				"Install;WinRE;wim;",
-				"Boot;Boot;wim;"
+				"Install;wim;Install;wim;",
+				"Install;wim;WinRE;wim;",
+				"Boot;wim;Boot;wim;"
 			],
 			"Tasks": [
 				{
 					"Group": "Install;Install;",
-					"Uid":   "Install;Install;wim;",
+					"Uid":   "Install;wim;Install;wim;",
 					"IsAutoSelect": [
 						"Image_source_selection",
 						"Language_Add_UI",
@@ -615,7 +615,7 @@
 				},
 				{
 					"Group": "Install;WinRE;",
-					"Uid":   "Install;WinRE;wim;",
+					"Uid":   "Install;wim;WinRE;wim;",
 					"IsAutoSelect": [
 						"Image_source_selection",
 						"Language_Add_UI",
@@ -737,7 +737,7 @@
 				},
 				{
 					"Group": "Boot;Boot;",
-					"Uid":   "Boot;Boot;wim;",
+					"Uid":   "Boot;wim;Boot;wim;",
 					"IsAutoSelect": [
 						"Image_source_selection",
 						"Language_Add_UI",

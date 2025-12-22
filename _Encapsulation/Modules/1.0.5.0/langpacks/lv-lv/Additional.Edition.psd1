@@ -12,4 +12,7 @@
 	AE_Rename                       = Atļaut visu detaļu pārdēvēšanu
 	AE_Exclude                      = Izslēgt papildinājuma versijas
 	AE_Replace_Name                 = Automātiski aizstāt valodu nosaukumus
+	AE_Add_Exclude_Nomount          = Pievienot, lai izslēgtu no nepieprasītajiem stiprinājumiem
+	AE_ExcludeMount                 = Izslēgt no nepieprasītajiem stiprinājumiem
+	AE_ExcludeMountTips             = Jūs piešķirat elementu, lai to izslēgtu no nepieprasītajiem stiprinājumiem. Pēc tā pievienošanas vairs netiks pieprasītas izmaiņas versijas ID vai sērijas numurā, lai to varētu pievienot.
 '@

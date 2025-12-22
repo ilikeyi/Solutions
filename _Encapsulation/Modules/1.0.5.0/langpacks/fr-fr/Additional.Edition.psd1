@@ -12,4 +12,7 @@
 	AE_Rename                       = Autoriser le renommage de tous les détails
 	AE_Exclude                      = Exclure les versions des modules complémentaires
 	AE_Replace_Name                 = Remplacer automatiquement les noms de langue
+	AE_Add_Exclude_Nomount          = Ajouter à la liste des éléments à exclure des montages non demandés
+	AE_ExcludeMount                 = Exclure des montages non demandés
+	AE_ExcludeMountTips             = Vous ajoutez un élément à la liste des éléments à exclure des montages non demandés. Une fois ajouté, les modifications de l'identifiant de version ou du numéro de série ne seront plus demandées lors du montage.
 '@

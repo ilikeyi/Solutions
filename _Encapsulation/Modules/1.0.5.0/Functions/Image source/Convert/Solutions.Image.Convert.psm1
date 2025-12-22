@@ -30,7 +30,7 @@ Function Image_Convert
 
 		Image_Get_Mount_Status
 
-		if (Image_Is_Mount_Specified -Master "Install" -ImageFileName "Install") {
+		if (Image_Is_Mount_Specified -Uid "Install;wim;Install;wim;") {
 			Write-Host "`n  $($lang.AssignNeedMount)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
 			Write-Host "  $($lang.Inoperable)" -ForegroundColor Red

@@ -12,4 +12,7 @@
 	AE_Rename                       = Luba kõigi üksikasjade ümbernimetamine
 	AE_Exclude                      = Välista lisandmooduli versioonid
 	AE_Replace_Name                 = Asenda keelte nimed automaatselt
+	AE_Add_Exclude_Nomount          = Lisa taotlemata ühendustest väljajäetavate hulka
+	AE_ExcludeMount                 = Väljajäta taotlemata ühendustest
+	AE_ExcludeMountTips             = Määrate üksuse taotlemata ühendustest väljajäetavaks. Pärast selle lisamist ei küsita paigaldamiseks enam versiooni ID ega seerianumbri muudatusi.
 '@

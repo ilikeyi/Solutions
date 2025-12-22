@@ -14,7 +14,7 @@ Function Event_Reset_Suggest
 	)
 
 	foreach ($item in $GroupSuggest) {
-		New-Variable -Scope global -Name "$($item)_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "$($item)_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 	}
 }
 
@@ -26,8 +26,7 @@ Function Event_Reset_Suggest_Custom
 {
 	param
 	(
-		$NewMaster,
-		$NewImageFileName
+		$Uid
 	)
 
 	$GroupSuggest = @(
@@ -38,7 +37,7 @@ Function Event_Reset_Suggest_Custom
 	)
 
 	foreach ($item in $GroupSuggest) {
-		New-Variable -Scope global -Name "$($item)_$($NewMaster)_$($NewImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "$($item)_$($Uid)" -Value @() -Force
 	}
 }
 
@@ -154,14 +153,14 @@ Function Event_Reset_Specified_Variable
 	ForEach ($item in $Global:Image_Rule) {
 		if ($item.Main.Suffix -eq "wim") {
 			if ($Tasks -notcontains $item.main.Uid) {
-				Event_Reset_Suggest_Custom -NewMaster $item.main.ImageFileName -NewImageFileName $item.main.ImageFileName
+				Event_Reset_Suggest_Custom -Uid $item.main.Uid
 				Event_Need_Mount_Global_Variable -DevQueue "3999" -Uid $item.main.Uid -Master $item.main.ImageFileName -MasterSuffix $item.main.Suffix -ImageFileName $item.main.ImageFileName -Suffix $item.main.Suffix -Scope $Scope
 			}
 
 			if ($item.Expand.Count -gt 0) {
 				ForEach ($itemExpandNew in $item.Expand) {
 					if ($Tasks -notcontains $itemExpandNew.Uid) {
-						Event_Reset_Suggest_Custom -NewMaster $item.main.ImageFileName -NewImageFileName $itemExpandNew.ImageFileName
+						Event_Reset_Suggest_Custom -Uid $itemExpandNew.Uid
 						Event_Need_Mount_Global_Variable -DevQueue "3sss" -Uid $itemExpandNew.Uid -Master $item.main.ImageFileName -MasterSuffix $item.main.Suffix -ImageFileName $itemExpandNew.ImageFileName -Suffix $itemExpandNew.Suffix -Scope $Scope
 
 						<#
@@ -170,24 +169,24 @@ Function Event_Reset_Specified_Variable
 							<#
 								.保存，扩展项
 							#>
-							New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)" -Value $False -Force
-							New-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)" -Value $False -Force
+							New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($itemExpandNew.Uid)" -Value $False -Force
+							New-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($itemExpandNew.Uid)" -Value $False -Force
 
 							<#
 								.不保存，扩展项
 							#>
-							New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)" -Value $False -Force
-							New-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)" -Value $False -Force
+							New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpandNew.Uid)" -Value $False -Force
+							New-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($itemExpandNew.Uid)" -Value $False -Force
 
 							<#
 								.重建映像
 							#>
-							New-Variable -Scope global -Name "Queue_Expand_Rebuild_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)" -Value $False -Force
+							New-Variable -Scope global -Name "Queue_Expand_Rebuild_$($itemExpandNew.Uid)" -Value $False -Force
 
 							<#
 								.健康
 							#>
-							New-Variable -Scope global -Name "Queue_Expand_Healthy_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)" -Value $False -Force
+							New-Variable -Scope global -Name "Queue_Expand_Healthy_$($itemExpandNew.Uid)" -Value $False -Force
 
 						<#
 							。弹出后更新，已过时
@@ -195,13 +194,13 @@ Function Event_Reset_Specified_Variable
 						<#
 							.允许更新规则
 						#>
-#						New-Variable -Scope global -Name "Queue_Is_Update_Rule_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)" -Value $False -Force
+#						New-Variable -Scope global -Name "Queue_Is_Update_Rule_$($itemExpandNew.Uid)" -Value $False -Force
 
 						<#
 							.更新规则同步到所有索引号
 						#>
-#						New-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_To_All_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)" -Value $False -Force
-#						New-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_Rule_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)" -Value @() -Force
+#						New-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_To_All_$($itemExpandNew.Uid)" -Value $False -Force
+#						New-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_Rule_$($itemExpandNew.Uid)" -Value @() -Force
 					}
 				}
 			}
@@ -224,373 +223,144 @@ Function Event_Need_Mount_Global_Variable
 	)
 
 	if ($Global:Developers_Mode) {
-		Write-Host "`n  $('-' * 80)`n   Event_Need_Mount_Global_Variable, $($Master)_$($ImageFileName), $($lang.Developers_Mode_Location): $($DevQueue)"
+		Write-Host "`n  $('-' * 80)`n   Event_Need_Mount_Global_Variable, $($Uid), $($lang.Developers_Mode_Location): $($DevQueue)"
 	}
 
 	if ($Scope -contains "NoRefresh") {
 		<#
 			.保存已选择的映像源
 		#>
-		New-Variable -Scope global -Name "Queue_Process_Image_Select_$($Master)_$($ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Process_Image_Select_$($Uid)" -Value @() -Force
 
 		<#
 			.待批量处理的映像源
 		#>
-		New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Master)_$($ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Uid)" -Value @() -Force
 	}
 
 	<#
 		.保存到指定目录
 	#>
 	if ($Scope -contains "Init") {
-		New-Variable -Scope global -Name "Queue_Export_SaveTo_$($Master)_$($ImageFileName)" -Value "$(Get_MainMasterFolder)\$($Master)\$($ImageFileName)\Report" -Force
+		New-Variable -Scope global -Name "Queue_Export_SaveTo_$($Uid)" -Value "$(Get_MainMasterFolder)\$($Master)\$($ImageFileName)\Report" -Force
 	}
 
-	$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Master)_$($ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Uid)" -ErrorAction SilentlyContinue).Value
 	if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
-		New-Variable -Scope global -Name "Queue_Export_SaveTo_$($Master)_$($ImageFileName)" -Value "$(Get_MainMasterFolder)\$($Master)\$($ImageFileName)\Report" -Force
+		New-Variable -Scope global -Name "Queue_Export_SaveTo_$($Uid)" -Value "$(Get_MainMasterFolder)\$($Master)\$($ImageFileName)\Report" -Force
 	}
 
-	<#
-		.Build the solution
-		.生成解决方案
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Solutions_$($Master)_$($ImageFileName)" -Value $False -Force
+	$GroupSuggest = @(
+		@{ Name = "Queue_Is_Solutions";      Setting = $False; } # 生成解决方案
 
-		<#
-			判断是否启用并添加软件包
-		#>
-		New-Variable -Scope global -Name "SolutionsSoftwarePacker_$($Master)_$($ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "DeployFonts_$($Master)_$($ImageFileName)" -Value $False -Force
+		# 判断是否启用并添加软件包
+		@{ Name = "SolutionsSoftwarePacker"; Setting = $False; }
+		@{ Name = "DeployFonts";             Setting = $False; }
+		@{ Name = "SolutionsUnattend";                                  Setting = $False; } # 开启并添加应预答
 
-		<#
-			开启并添加应预答
-		#>
-		New-Variable -Scope global -Name "SolutionsUnattend_$($Master)_$($ImageFileName)" -Value $False -Force
+		# 打开主引擎总添加方案
+		@{ Name = "Queue_Is_Solutions_Engine"; Setting = $False; }
+		@{ Name = "DeployOfficeVersion"; Setting = "2024"; }
+		@{ Name = "QueueDeployLanguageExclue"; Setting = ""; }
+		@{ Name = "QueueDeploySelect"; Setting = ""; }
 
-		<#
-			打开主引擎总添加方案
-		#>
-		New-Variable -Scope global -Name "Queue_Is_Solutions_Engine_$($Master)_$($ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "DeployOfficeVersion_$($Master)_$($ImageFileName)" -Value "2024" -Force
-		New-Variable -Scope global -Name "QueueDeployLanguageExclue_$($Master)_$($ImageFileName)" -Value "" -Force
-		New-Variable -Scope global -Name "QueueDeployLanguageExclueFull_$($Master)_$($ImageFileName)" -Value "" -Force
-		New-Variable -Scope global -Name "QueueDeploySelect_$($Master)_$($ImageFileName)" -Value "" -Force
+		@{ Name = "Queue_Is_Feature_Enable";                             Setting = $False; } # Windows 功能启用
+		@{ Name = "Queue_Is_Feature_Enable_Custom_Select";               Setting = @(); }    # Windows 功能启用，用户选择
+		@{ Name = "Queue_Is_Feature_Enable_Match";                       Setting = $False; } # Windows 功能启用，匹配
+		@{ Name = "Queue_Is_Feature_Enable_Match_Custom_Select";         Setting = @(); }    # Windows 功能启用，匹配，用户选择
+		@{ Name = "Queue_Is_Feature_Disable";                            Setting = $False; } # Windows 功能禁用
+		@{ Name = "Queue_Is_Feature_Disable_Custom_Select";              Setting = @(); }    # Windows 功能禁用，用户选择
+		@{ Name = "Queue_Is_Feature_Disable_Match";                      Setting = $False; } # Windows 功能禁用，匹配
+		@{ Name = "Queue_Is_Feature_Disable_Match_Custom_Select";        Setting = @(); }    # Windows 功能禁用，匹配，用户选择
+		@{ Name = "Queue_Is_LXPs_Region_Add";                            Setting = $False; } # 本地语言体验包（LXPs）,标记
+		@{ Name = "Queue_Is_LXPs_Region_Add_Custom_Select";              Setting = @(); }    # 本地语言体验包（LXPs），标记，用户自选项
+		@{ Name = "Queue_Is_LXPs_Region_Add_Select_Sources";             Setting = @(); }    # 本地语言体验包（LXPs）,标记, 用户选择主要来源路径
+		@{ Name = "Queue_Is_InBox_Apps_Update";                          Setting = @(); }    # 添加本地语言体验包 (LXPs)：更新
+#		@{ Name = "Queue_Is_InBox_Apps_Update_Select_Sources";           Setting = @(); }    # 添加本地语言体验包 (LXPs)：更新, 用户选择主要来源路径
+		@{ Name = "Queue_Is_LXPs_Delete";                                Setting = @(); }    # 删除本地语言体验包 (LXPs)
+		@{ Name = "Queue_Is_InBox_Apps_Match_Rule_Delete";               Setting = @(); }    # 按匹配规则删除 InBox Apps 预安装软件
+		@{ Name = "Queue_Is_InBox_Apps_Mount_Rule_Delete";               Setting = $False; } # 离线删除已安装的 InBox Apps 预安装软件
+		@{ Name = "Queue_Is_InBox_Apps_Mount_Rule_Delete_Custom_Select"; Setting = @(); }    # 离线删除已安装的 InBox Apps 预安装软件, 用户选择主要来源路径
+		@{ Name = "Queue_Is_InBox_Apps_Add";                       Setting = $False; } # InBox Apps: 添加
+		@{ Name = "Queue_Is_InBox_Apps_List";                      Setting = @(); }       # 应用程序
+		@{ Name = "Queue_Is_InBox_Apps_Add_Select";                Setting = @(); }       # 来源
+		@{ Name = "Queue_Is_InBox_Apps_Add_Rule";                  Setting = @(); }       # 规则，读取所有应用程序完整的配置
+		@{ Name = "Queue_Is_InBox_Apps_Add_Custom_Select";         Setting = @(); }       # 用户选择的应用程序
+#		@{ Name = "Queue_Is_InBox_Apps_Add_Not_Select";            Setting = @(); }       # 未选择的应用程序
+		@{ Name = "Queue_Is_InBox_Apps_Add_Group_Install";         Setting = @(); }       # 用户选择的群
+		@{ Name = "Queue_Is_InBox_Apps_Add_Dependency";            Setting = @(); }       # 依赖
+		@{ Name = "Queue_Is_InBox_Apps_Add_Not_Dependency_Select"; Setting = @(); }       # 未选择依赖
+		@{ Name = "Queue_Is_InBox_Apps_IsAllow_Error";             Setting = $True; }     # 遇到错误时不允许保存
+		@{ Name = "Queue_Is_InBox_Apps_Auto_Assign_Editions";  Setting = $True; }         # 自动根据映像版本分配应用程序
+		@{ Name = "Queue_Is_InBox_Apps_Missing_Packer";        Setting = $True; }         # 自动从所有磁盘搜索缺少的软件包
+		@{ Name = "Queue_Is_InBox_Apps_DependencyPackage";     Setting = $True; }         # 安装 InBox Apps 应用时，允许自动组合依赖包
+		@{ Name = "Queue_Is_InBox_Apps_Report_Logs";           Setting = $False; }        # 打印 InBox Apps
+		@{ Name = "Queue_Is_InBox_Apps_Report_View";           Setting = $False; }        # 打印 InBox Apps 到 当前
+		@{ Name = "Queue_Is_InBox_Apps_Optimize";              Setting = $False; }        # 优化预配 Appx 包，通过用硬链接替换相同的文件
+		@{ Name = "Queue_Is_InBox_Apps_Clear";                 Setting = $False; }        # 清理旧的所有软件包
+		@{ Name = "Queue_Is_InBox_Apps_Clear_Allow_Rule";      Setting = $True; }         # 清理旧的所有软件包，规则
+		@{ Name = "Queue_Is_InBox_Apps_Skip_LXPs_Add";         Setting = $False; }        # 跳过本地语言体验包 ( LXPs ) 添加，执行其它
+		@{ Name = "Queue_Is_InBox_Apps_Skip_English";          Setting = $True; }         # 安装时跳过 en-US 添加，建议
+		@{ Name = "Queue_Is_Drive_Add";                        Setting = $False; }    # 添加驱动
+		@{ Name = "Queue_Is_Drive_Add_Custom_Select";          Setting = @(); }       # 添加驱动
+		@{ Name = "Queue_Is_Drive_Delete";                     Setting = $False; }    # 删除驱动
+		@{ Name = "Queue_Is_Drive_Delete_Custom_Select";       Setting = @(); }       # 删除驱动
+		@{ Name = "Queue_Is_Drive_Report_Logs";                Setting = $False; }    # 报告：驱动 到 LOG
+		@{ Name = "Queue_Is_Drive_Report_View";                Setting = $False; }    # 报告：驱动 到 当前
+		@{ Name = "Queue_Is_Language_Add";                     Setting = $False; }    # 添加语言
+		@{ Name = "Queue_Is_Language_Add_Custom_Select";       Setting = @(); }       # 添加语言
+		@{ Name = "Queue_Is_Language_Add_Category";            Setting = $True; }     # 按预规则顺序安装语言包
+		@{ Name = "Queue_Is_Is_Match_installed";               Setting = $True; }     # 安装语言包时，从已安装列表里通配
+		@{ Name = "Queue_Is_Language_Sync_To_ISO_Sources_Add"; Setting = $False; }    # 同步语言包到安装程序：添加
+		@{ Name = "Queue_Is_Language_Sync_To_ISO_Sources_Del"; Setting = $False; }    # 同步语言包到安装程序：删除
+		@{ Name = "Queue_Is_Language_INI_Rebuild_Add";         Setting = $False; }    # 重建 Lang.ini：添加
+		@{ Name = "Queue_Is_Language_INI_Rebuild_Del";         Setting = $False; }    # 重建 Lang.ini：删除
+		@{ Name = "Queue_Is_Language_Del";                     Setting = $False; }    # 删除语言
+		@{ Name = "Queue_Is_Language_Del_Custom_Select";       Setting = @(); }       # 删除语言
+		@{ Name = "Queue_Is_Language_Del_Reverse_Order";       Setting = $True; }     # 删除语言
+		@{ Name = "Queue_Is_Language_Change";                  Setting = $False; }    # 语言更改
+		@{ Name = "Queue_Is_Language_Components_Clean";        Setting = $False; }    # 清理组件
+		@{ Name = "Queue_Is_Language_Components_Clean_Custom_Select"; Setting = @(); } # 清理组件
+		@{ Name = "Queue_Is_Language_Report_Image";           Setting = $False; }     # 报告：映像语言
+		@{ Name = "Queue_Is_Language_Components_Report_Logs"; Setting = $False; }     # 报告：组件 到 LOG
+		@{ Name = "Queue_Is_Language_Components_Report_View"; Setting = $False; }     # 报告：组件 到 当前
+		@{ Name = "Queue_Is_Update_Add";                      Setting = $False; }     # 添加更新
+		@{ Name = "Queue_Is_Update_Add_Custom_Select";        Setting = @(); }        # 添加更新
+		@{ Name = "Queue_Is_Update_Del";                      Setting = $False; }     # 删除更新
+		@{ Name = "Queue_Is_Update_Del_Custom_Select";        Setting = @(); }        # 删除更新
+		@{ Name = "Queue_Is_Update_Curing";                   Setting = $False; }     # 固化更新
+		@{ Name = "Queue_Superseded_Clean";                   Setting = $False; }     # 清理取代的
+		@{ Name = "Queue_Superseded_Clean_Allow_Rule";        Setting = $True; }      # 清理取代的，规则
+		@{ Name = "Queue_Healthy";                            Setting = $False; }     # 健康
+		@{ Name = "Queue_Healthy_Dont_Save";                  Setting = $True; }      # 健康，不保存
+		@{ Name = "Queue_Functions_Before_Select";            Setting = @(); }        # 运行 PowerShell 函数 运行前
+		@{ Name = "Queue_Functions_Rear_Select";              Setting = @(); }        # 运行 PowerShell 函数 运行后
+		@{ Name = "Queue_Rebuild";                            Setting = $False; }     # 重建映像
+		@{ Name = "Queue_Process_Image_Select_Is_Type";       Setting = "Auto"; }     # 清除选择索引号类型
+		@{ Name = "Queue_Eject_Only_Save";                    Setting = $False; }     # 保存
+		@{ Name = "Queue_Expand_Eject_Only_Save";             Setting = $False; }     # 保存
+		@{ Name = "Queue_Eject_Do_Not_Save";                  Setting = $False; }     # 不保存
+		@{ Name = "Queue_Expand_Eject_Do_Not_Save";           Setting = $False; }     # 不保存
+	)
 
-	<#
-		.主要：Windows 功能
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Feature_Enable_Match_$($Master)_$($ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Feature_Enable_Match_Custom_Select_$($Master)_$($ImageFileName)" -Value @() -Force
+	if ($Global:Developers_Mode) {
+		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EF99xx00s`n  Start"
+	}
 
-	New-Variable -Scope global -Name "Queue_Is_Feature_Enable_$($Master)_$($ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Feature_Enable_Custom_Select_$($Master)_$($ImageFileName)" -Value @() -Force
+	foreach ($item in $GroupSuggest) {
+		New-Variable -Scope global -Name "$($item.Name)_$($Uid)" -Value $item.Setting -Force
 
-	New-Variable -Scope global -Name "Queue_Is_Feature_Disable_Match_$($Master)_$($ImageFileName)" -Value $False -Force
-	New-Variable -Scope global -Name "Queue_Is_Feature_Disable_Match_Custom_Select_$($Master)_$($ImageFileName)" -Value @() -Force
+		if ($Global:Developers_Mode) {
+			Write-Host "  $($lang.Unique_Name): " -NoNewline -ForegroundColor Yellow
+			write-host "$($item.Name)_$($Uid)" -ForegroundColor Green
 
-		New-Variable -Scope global -Name "Queue_Is_Feature_Disable_$($Master)_$($ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Feature_Disable_Custom_Select_$($Master)_$($ImageFileName)" -Value @() -Force
- 
-	<#
-		.InBox Apps
-	#>
-		<#
-			.本地语言体验包（LXPs）,标记
-		#>
-		New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_$($Master)_$($ImageFileName)" -Value $False -Force
+			Write-Host "  $($lang.Setting): " -NoNewline -ForegroundColor Yellow
+			write-host $item.Setting -ForegroundColor Green
+			Write-Host
+		}
+	}
 
-		<#
-			.本地语言体验包（LXPs），标记，用户自选项
-		#>
-		New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Master)_$($ImageFileName)" -Value @() -Force
-
-		<#
-			.本地语言体验包（LXPs）,标记, 用户选择主要来源路径
-		#>
-#		New-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Select_Sources_$($Master)_$($ImageFileName)" -Value @() -Force
-
-		<#
-			.添加本地语言体验包 (LXPs)：更新
-		#>
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_$($Master)_$($ImageFileName)" -Value @() -Force
-
-			<#
-				.添加本地语言体验包 (LXPs)：更新, 用户选择主要来源路径
-			#>
-#			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Update_Select_Sources_$($Master)_$($ImageFileName)" -Value "" -Force
-
-		<#
-			.删除本地语言体验包 (LXPs)
-		#>
-		New-Variable -Scope global -Name "Queue_Is_LXPs_Delete_$($Master)_$($ImageFileName)" -Value @() -Force
-
-		<#
-			.按匹配规则删除 InBox Apps 预安装软件
-		#>
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Match_Rule_Delete_$($Master)_$($ImageFileName)" -Value @() -Force
-
-		<#
-			.离线删除已安装的 InBox Apps 预安装软件
-		#>
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Mount_Rule_Delete_$($Master)_$($ImageFileName)" -Value $False -Force
-
-			<#
-				.离线删除已安装的 InBox Apps 预安装软件, 用户选择主要来源路径
-			#>
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Mount_Rule_Delete_Custom_Select_$($Master)_$($ImageFileName)" -Value @() -Force
-
-		<#
-			.InBox Apps: 添加
-		#>
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_$($Master)_$($ImageFileName)" -Value $False -Force
-
-			<#
-				.InBox Apps: 添加, 应用程序
-			#>
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_List_$($Master)_$($ImageFileName)" -Value @() -Force
-
-			<#
-				.InBox Apps: 添加, 来源
-			#>
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Select_$($Master)_$($ImageFileName)" -Value @() -Force
-
-			<#
-				.InBox Apps: 添加, 规则，读取所有应用程序完整的配置
-			#>
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Rule_$($Master)_$($ImageFileName)" -Value @() -Force
-
-			<#
-				.InBox Apps: 添加, 用户选择的应用程序
-			#>
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Custom_Select_$($Master)_$($ImageFileName)" -Value @() -Force
-
-			<#
-				.InBox Apps: 添加, 未选择的应用程序
-			#>
-#			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Not_Select_$($Master)_$($ImageFileName)" -Value @() -Force
-
-			<#
-				.InBox Apps: 添加, 用户选择的群
-			#>
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Group_Install_$($Master)_$($ImageFileName)" -Value @() -Force
-
-			<#
-				.InBox Apps: 添加, 依赖
-			#>
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Dependency_$($Master)_$($ImageFileName)" -Value @() -Force
-
-			<#
-				.InBox Apps: 添加, 未选择依赖
-			#>
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Add_Not_Dependency_Select_$($Master)_$($ImageFileName)" -Value @() -Force
-
-		<#
-			InBox Apps: 添加，可选功能	
-		#>
-			<#
-				.遇到错误时不允许保存
-			#>
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_IsAllow_Error_$($Master)_$($ImageFileName)" -Value $true -Force
-
-			<#
-				.自动根据映像版本分配应用程序
-			#>
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Auto_Assign_Editions_$($Master)_$($ImageFileName)" -Value $true -Force
-
-			<#
-				.自动从所有磁盘搜索缺少的软件包
-			#>
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Missing_Packer_$($Master)_$($ImageFileName)" -Value $true -Force
-
-			<#
-				.安装 InBox Apps 应用时，允许自动组合依赖包
-			#>
-			New-Variable -Scope global -Name "Queue_Is_InBox_Apps_DependencyPackage_$($Master)_$($ImageFileName)" -Value $true -Force
-
-		<#
-			.打印 InBox Apps
-		#>
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_Logs_$($Master)_$($ImageFileName)" -Value $False -Force
-
-		<#
-			.打印 InBox Apps 到 当前
-		#>
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_View_$($Master)_$($ImageFileName)" -Value $False -Force
-
-		<#
-			.优化预配 Appx 包，通过用硬链接替换相同的文件
-		#>
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Optimize_$($Master)_$($ImageFileName)" -Value $False -Force
-
-		<#
-			.清理旧的所有软件包
-		#>
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_$($Master)_$($ImageFileName)" -Value $False -Force
-
-		<#
-			.清理旧的所有软件包，规则
-		#>
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Clear_Allow_Rule_$($Master)_$($ImageFileName)" -Value $True -Force
-
-		<#
-			.跳过本地语言体验包 ( LXPs ) 添加，执行其它
-		#>
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_LXPs_Add_$($Master)_$($ImageFileName)" -Value $False -Force
-
-		<#
-			.安装时跳过 en-US 添加，建议
-		#>
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Skip_English_$($Master)_$($ImageFileName)" -Value $True -Force
-
-	<#
-		.添加驱动
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Drive_Add_$($Master)_$($ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Drive_Add_Custom_Select_$($Master)_$($ImageFileName)" -Value @() -Force
-
-	<#
-		.删除驱动
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Drive_Delete_$($Master)_$($ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Drive_Delete_Custom_Select_$($Master)_$($ImageFileName)" -Value @() -Force
-
-	<#
-		.报告：驱动 到 LOG
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Drive_Report_Logs_$($Master)_$($ImageFileName)" -Value $False -Force
-
-	<#
-		.报告：驱动 到 当前
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Drive_Report_View_$($Master)_$($ImageFileName)" -Value $False -Force
-
-	<#
-		.添加语言
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Language_Add_$($Master)_$($ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Master)_$($ImageFileName)" -Value @() -Force
-
-		<#
-			.按预规则顺序安装语言包
-		#>
-		New-Variable -Scope global -Name "Queue_Is_Language_Add_Category_$($Master)_$($ImageFileName)" -Value $True -Force
-
-		<#
-			.安装语言包时，从已安装列表里通配
-		#>
-		New-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Master)_$($ImageFileName)" -Value $True -Force
-
-	<#
-		.同步语言包到安装程序
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Master)_$($ImageFileName)" -Value $False -Force
-	New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Del_$($Master)_$($ImageFileName)" -Value $False -Force
-
-	<#
-		.重建 Lang.ini
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Master)_$($ImageFileName)" -Value $False -Force
-	New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Del_$($Master)_$($ImageFileName)" -Value $False -Force
-
-	<#
-		.删除语言
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Language_Del_$($Master)_$($ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Language_Del_Custom_Select_$($Master)_$($ImageFileName)" -Value @() -Force
-		New-Variable -Scope global -Name "Queue_Is_Language_Del_Reverse_Order_$($Master)_$($ImageFileName)" -Value $true -Force
-
-	<#
-		.语言更改
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Language_Change_$($Master)_$($ImageFileName)" -Value $False -Force
-
-	<#
-		.清理组件
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_$($Master)_$($ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Language_Components_Clean_Custom_Select_$($Master)_$($ImageFileName)" -Value @() -Force
-
-	<#
-		.报告：映像语言
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Language_Report_Image_$($Master)_$($ImageFileName)" -Value $False -Force
-
-	<#
-		.报告：组件 到 LOG
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Language_Components_Report_Logs_$($Master)_$($ImageFileName)" -Value $False -Force
-
-	<#
-		.报告：组件 到 当前
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Language_Components_Report_View_$($Master)_$($ImageFileName)" -Value $False -Force
-
-	<#
-		.添加更新
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Update_Add_$($Master)_$($ImageFileName)" -Value $False -Force
-	New-Variable -Scope global -Name "Queue_Is_Update_Add_Custom_Select_$($Master)_$($ImageFileName)" -Value @() -Force
-
-	<#
-		.删除更新
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Update_Del_$($Master)_$($ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Update_Del_Custom_Select_$($Master)_$($ImageFileName)" -Value @() -Force
-
-	<#
-		.固化更新
-	#>
-	New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Master)_$($ImageFileName)" -Value $False -Force
-
-	<#
-		.清理取代的
-	#>
-	New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Master)_$($ImageFileName)" -Value $False -Force
-
-	<#
-		.清理取代的，规则
-	#>
-	New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Master)_$($ImageFileName)" -Value $True -Force
-
-	<#
-		.健康
-	#>
-	New-Variable -Scope global -Name "Queue_Healthy_$($Master)_$($ImageFileName)" -Value $False -Force
-
-		<#
-			.健康，不保存
-		#>
-#		New-Variable -Scope global -Name "Queue_Healthy_Dont_Save_$($Master)_$($ImageFileName)" -Value $True -Force
-
-	<#
-		.运行 PowerShell 函数
-	#>
-	# 运行前
-	New-Variable -Scope global -Name "Queue_Functions_Before_Select_$($Master)_$($ImageFileName)" -Value @() -Force
-
-	# 运行后
-	New-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Master)_$($ImageFileName)" -Value @() -Force
-
-	<#
-		.重建映像
-	#>
-#	New-Variable -Scope global -Name "Queue_Rebuild_$($Master)_$($ImageFileName)" -Value $False -Force
-
-	<#
-		.清除选择索引号类型
-	#>
-	New-Variable -Scope global -Name "Queue_Process_Image_Select_Is_Type_$($Master)_$($ImageFileName)" -Value "Auto" -Force
-
-	<#
-		.保存
-	#>
-	New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($Master)_$($ImageFileName)" -Value $False -Force
-	New-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($Master)_$($ImageFileName)" -Value $False -Force
-
-	<#
-		.不保存
-	#>
-	New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($Master)_$($ImageFileName)" -Value $False -Force
-	New-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($Master)_$($ImageFileName)" -Value $False -Force
+	if ($Global:Developers_Mode) {
+		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EF99xx00s`n  End"
+	}
 }

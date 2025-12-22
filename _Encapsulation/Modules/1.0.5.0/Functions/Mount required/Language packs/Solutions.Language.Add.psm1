@@ -67,8 +67,8 @@ Function Language_Add_UI
 				$UI_Main_Extract_Tips.Text = $lang.LangNewAutoNoSelect
 			}
 		} else {
-			New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-			New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			$UI_Main_Extract_Tips.Text = ""
 		}
 	}
@@ -105,47 +105,47 @@ Function Language_Add_UI
 		}
 
 		if ($Temp_Select_Add_New_Language_Sources.Count -gt 0) {
-			New-Variable -Scope global -Name "Queue_Is_Language_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
-			New-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $Temp_Select_Add_New_Language_Sources -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_Add_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value $Temp_Select_Add_New_Language_Sources -Force
 
 			<#
 				.按预规则顺序安装语言包
 			#>
 			if ($UI_Main_Is_Order_Rule_Lang.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_Language_Add_Category_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_Language_Add_Category_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 				$UI_Main_Is_Match_installed_List.Enabled = $True
 			} else {
-				New-Variable -Scope global -Name "Queue_Is_Language_Add_Category_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Is_Language_Add_Category_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 				$UI_Main_Is_Match_installed_List.Enabled = $False
 			}
 
 			if ($UI_Main_Is_Match_installed_List.Enabled) {
 				if ($UI_Main_Is_Match_installed_List.Checked) {
-					New-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+					New-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 				} else {
-					New-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+					New-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 				}
 			} else {
-				New-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			}
 
 			<#
 				.同步语言包到安装程序
 			#>
-			New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			if ($UI_Main_Lang_Sync_To_Sources.Enabled) {
 			if ($UI_Main_Lang_Sync_To_Sources.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 				}
 			}
 
 			<#
 				.重建 Lang.ini
 			#>
-			New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			if ($UI_Main_Language_Ini_Rebuild.Enabled) {
 				if ($UI_Main_Language_Ini_Rebuild.Checked) {
-					New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+					New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 				}
 			}
 
@@ -163,7 +163,7 @@ Function Language_Add_UI
 
 	Function Refres_Event_Tasks_Language_Add_UI
 	{
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		if ($Temp_Assign_Task_Select.Count -gt 0) {
@@ -172,7 +172,7 @@ Function Language_Add_UI
 			$UI_Main_Dashboard_Event_Clear.Text = $lang.EventManagerNo
 		}
 
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Add_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Enable)"
 		} else {
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Disable)"
@@ -180,10 +180,10 @@ Function Language_Add_UI
 	}
 
 	$UI_Main_Event_Clear_Click = {
-		New-Variable -Scope global -Name "Queue_Is_Language_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
-		New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Add_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 
 		Refres_Event_Tasks_Language_Add_UI
 
@@ -219,7 +219,7 @@ Function Language_Add_UI
 		$UI_Main_Error_Icon.Image = $null
 		$UI_Main_Rule.controls.Clear()
 
-		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		<#
@@ -986,13 +986,13 @@ Function Language_Add_UI
 			$UI_Main_Error_Icon.Image = $null
 
 			if ($UI_Main_Is_Match_installed_List.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			} else {
-				New-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			}
 		}
 	}
-	if ((Get-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$UI_Main_Is_Match_installed_List.Checked = $True
 	} else {
 		$UI_Main_Is_Match_installed_List.Checked = $False
@@ -1007,7 +1007,7 @@ Function Language_Add_UI
 	<#
 		.初始化复选框：按预规则顺序安装语言包
 	#>
-	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Add_Category_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+	if ((Get-Variable -Scope global -Name "Queue_Is_Language_Add_Category_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 		$UI_Main_Is_Order_Rule_Lang.Checked = $True
 		$UI_Main_Is_Match_installed_List.Enabled = $True       # 安装语言包时，从已安装列表里通配
 	} else {
@@ -1217,9 +1217,9 @@ Function Language_Add_UI
 			$UI_Main_Error_Icon.Image = $null
 
 			if ($UI_Main_Lang_Sync_To_Sources.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			} else {
-				New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			}
 		}
 	}
@@ -1244,9 +1244,9 @@ Function Language_Add_UI
 			$UI_Main_Error_Icon.Image = $null
 
 			if ($UI_Main_Language_Ini_Rebuild.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			} else {
-				New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+				New-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 			}
 		}
 	}
@@ -1431,7 +1431,7 @@ Function Language_Add_UI
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "18" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "18" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -1538,7 +1538,7 @@ Function Language_Add_UI
 
 				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
-				$Temp_Language_Add_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+				$Temp_Language_Add_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 				if ($Temp_Language_Add_Custom_Select.count -gt 0) {
 					ForEach ($item in $Temp_Language_Add_Custom_Select) {
 						Write-Host "  $($item)" -ForegroundColor Green
@@ -1704,7 +1704,7 @@ Function Language_Add_UI
 			.同步语言包到安装程序
 		#>
 		$UI_Main_Lang_Sync_To_Sources.Enabled = $True
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Sync_To_ISO_Sources_Add_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Lang_Sync_To_Sources.Checked = $True
 		} else {
 			$UI_Main_Lang_Sync_To_Sources.Checked = $False
@@ -1714,7 +1714,7 @@ Function Language_Add_UI
 			.重建 Lang.ini
 		#>
 		$UI_Main_Language_Ini_Rebuild.Enabled = $True
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_INI_Rebuild_Add_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Language_Ini_Rebuild.Checked = $True
 		} else {
 			$UI_Main_Language_Ini_Rebuild.Checked = $False
@@ -1943,7 +1943,7 @@ Function Language_Add_UI
 			$UI_Main.ShowDialog() | Out-Null
 		}
 	} else {
-		$Temp_Language_Add_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		$Temp_Language_Add_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 
 		if ($Temp_Language_Add_Custom_Select.count -gt 0) {
 			$UI_Main_Rule.Controls | ForEach-Object {
@@ -1967,7 +1967,7 @@ Function Language_Add_UI
 #>
 Function Language_Add_Process
 {
-	$Temp_Language_Add_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Language_Add_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Language_Add_Custom_Select.count -gt 0) {
 		Write-Host "  $($lang.AddSources)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
@@ -1980,7 +1980,7 @@ Function Language_Add_Process
 		<#
 			.按预规则顺序安装语言包
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Add_Category_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Add_Category_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$Region = Language_Region
 			ForEach ($item in $Temp_Language_Add_Custom_Select) {
 				[int]$SNTasks = "0"
@@ -1994,7 +1994,7 @@ Function Language_Add_Process
 						<#
 							.安装语言包时，从已安装列表里通配
 						#>
-						if ((Get-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+						if ((Get-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 							Language_Add_Rule_Process -Sources $FullNewPath -NewLang "$($itemRegion.Region)"
 						} else {
 							Get-ChildItem -Path "$($FullNewPath)\*" -Include ($Global:Search_Language_File_Type) -ErrorAction SilentlyContinue | ForEach-Object {
@@ -2357,7 +2357,7 @@ Function Language_Add_Rule_Process
 		#>
 		Write-Host "`n  $($lang.Match_installed_List)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
-		if ((Get-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Is_Match_installed_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			Write-Host "  $($lang.UpdateAvailable)`n" -ForegroundColor Green
 
 			Language_Rule_Add_group

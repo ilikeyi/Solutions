@@ -127,7 +127,7 @@ Function Image_Select_Index_Custom_UI
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "23" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "23" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -176,14 +176,14 @@ Function Image_Select_Index_Custom_UI
 				.处理全部已知索引号
 			#>
 			if ($UI_Process_All.Checked) {
-				New-Variable -Scope global -Name "Queue_Process_Image_Select_Is_Type_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value "Auto" -Force
+				New-Variable -Scope global -Name "Queue_Process_Image_Select_Is_Type_$($Global:Primary_Key_Image.Uid)" -Value "Auto" -Force
 			}
 
 			<#
 				.有事件时，弹出选择索引号界面
 			#>
 			if ($UI_Is_Event_Popup_Select_Index.Checked) {
-				New-Variable -Scope global -Name "Queue_Process_Image_Select_Is_Type_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value "Popup" -Force
+				New-Variable -Scope global -Name "Queue_Process_Image_Select_Is_Type_$($Global:Primary_Key_Image.Uid)" -Value "Popup" -Force
 			}
 
 			<#
@@ -208,8 +208,8 @@ Function Image_Select_Index_Custom_UI
 				}
 
 				if ($TempQueueProcessImageSelectPending.Count -gt 0) {
-					New-Variable -Scope global -Name "Queue_Process_Image_Select_Is_Type_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value "Pre" -Force
-					New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $TempQueueProcessImageSelectPending -Force
+					New-Variable -Scope global -Name "Queue_Process_Image_Select_Is_Type_$($Global:Primary_Key_Image.Uid)" -Value "Pre" -Force
+					New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Global:Primary_Key_Image.Uid)" -Value $TempQueueProcessImageSelectPending -Force
 				} else {
 					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.NoChoose)"
@@ -259,7 +259,7 @@ Function Image_Select_Index_Custom_UI
 		$UI_Main_Menu.controls.AddRange($CheckBox)
 	}
 
-	$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
 		$UI_Main_Menu.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.CheckBox]) {
@@ -272,7 +272,7 @@ Function Image_Select_Index_Custom_UI
 		}
 	}
 
-	$Get_Current_Process_Type_Temp = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Is_Type_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Get_Current_Process_Type_Temp = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Is_Type_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	switch ($Get_Current_Process_Type_Temp) {
 		"Auto" {
 			$UI_Process_All.Checked = $True

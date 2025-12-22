@@ -553,7 +553,7 @@ Function Event_Assign_Task_Queue_Add
 	<#
 		.分配已运行过的 UI
 	#>
-	New-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+	New-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 	# ------------------------------11111111111111111111111---------------------------
 	<#
@@ -562,16 +562,16 @@ Function Event_Assign_Task_Queue_Add
 		<#
 			.主要项
 		#>
-		New-Variable -Scope global -Name "Queue_Is_Mounted_Primary_Assign_Task_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $IsMountedPrimary -Force
+		New-Variable -Scope global -Name "Queue_Is_Mounted_Primary_Assign_Task_$($Global:Primary_Key_Image.Uid)" -Value $IsMountedPrimary -Force
 
 		<#
 			.扩展项
 		#>
 		if ([string]::IsNullOrWhitespace($IsMountedExpand)) {
-			New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
-			New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+			New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
+			New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 		} else {
-			New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $IsMountedExpand -Force
+			New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_$($Global:Primary_Key_Image.Uid)" -Value $IsMountedExpand -Force
 
 			<#
 				.不再建议项
@@ -581,14 +581,14 @@ Function Event_Assign_Task_Queue_Add
 					"True" {
 						if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Suggested\$($Uid)" -Name "IsMountedExpand_Select" -ErrorAction SilentlyContinue) {
 							$SchemeVerSingle = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\Suggested\$($Uid)" -Name "IsMountedExpand_Select" -ErrorAction SilentlyContinue
-							New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $SchemeVerSingle -Force
+							New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Uid)" -Value $SchemeVerSingle -Force
 						} else {
 							Save_Dynamic -regkey "Solutions\Suggested\$($Uid)" -name "IsMountedExpand_Select" -value $IsMountedExpand -Multi
-							New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $IsMountedExpand -Force
+							New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Uid)" -Value $IsMountedExpand -Force
 						}
 					}
 					"False" {
-						New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+						New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 					}
 				}
 			}
@@ -702,7 +702,7 @@ Function Event_Assign_Task_Queue_Add_New
 	<#
 		.分配已运行过的 UI
 	#>
-	New-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+	New-Variable -Scope global -Name "Queue_Assign_Has_Been_Run_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 	# ------------------------------11111111111111111111111---------------------------
 	<#
@@ -711,13 +711,13 @@ Function Event_Assign_Task_Queue_Add_New
 		<#
 			.主要项。
 		#>
-		New-Variable -Scope global -Name "Queue_Is_Mounted_Primary_Assign_Task_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+		New-Variable -Scope global -Name "Queue_Is_Mounted_Primary_Assign_Task_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 		<#
 			扩展项
 		#>
-		New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $IsMountedExpand -Force
-		New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $IsMountedExpand -Force
+		New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_$($Global:Primary_Key_Image.Uid)" -Value $IsMountedExpand -Force
+		New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Uid)" -Value $IsMountedExpand -Force
 }
 
 Function Event_Track
@@ -767,7 +767,7 @@ Function Event_Assign_Task
 	<#
 		.生成唯一事件：GUID
 	#>
-	
+	Additional_Edition_Reset
 	Event_Track -Reset -Add
 	Event_Processing_Requires_Mounting
 
@@ -810,7 +810,7 @@ Function Event_Assign_Task
 
 		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
-		if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)").Value) {
+		if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Global:Primary_Key_Image.Uid)").Value) {
 			Write-Host "  $($lang.Mounted)" -ForegroundColor Green
 		} else {
 			Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
@@ -823,9 +823,9 @@ Function Event_Assign_Task
 								Write-Host "`n  $($lang.Unique_Name): " -NoNewline -ForegroundColor Yellow
 								Write-Host "$($item.Main.ImageFileName);$($itemExpandNew.ImageFileName);" -ForegroundColor Green
 
-								Image_Queue_Wimlib_Process_Wim_Main -NewUid $itemExpandNew.Uid -NewMaster $item.Main.ImageFileName -NewImageFileName $itemExpandNew.ImageFileName -MasterFile "$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)"  -DevCode "1"
+								Image_Queue_Wimlib_Process_Wim_Main -Uid $itemExpandNew.Uid -MasterFile "$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)"  -DevCode "1"
 
-								New-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_Rule_$($item.Main.ImageFileName)_$($itemExpandNew.ImageFileName)" -Value @() -Force
+								New-Variable -Scope global -Name "Queue_Is_Update_Rule_Expand_Rule_$($itemExpandNew.Uid)" -Value @() -Force
 							}
 						}
 					}
@@ -837,7 +837,7 @@ Function Event_Assign_Task
 			#>
 			Write-Host "`n  $($lang.Rebuilding)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			if ((Get-Variable -Scope global -Name "Queue_Rebuild_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+			if ((Get-Variable -Scope global -Name "Queue_Rebuild_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 				Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
 				Write-Host "`n  $($lang.AE_IsCheck): " -NoNewline -ForegroundColor Yellow
@@ -848,7 +848,7 @@ Function Event_Assign_Task
 					<#
 						强行关闭重建
 					#>
-					New-Variable -Scope global -Name "Queue_Rebuild_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+					New-Variable -Scope global -Name "Queue_Rebuild_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 				} else {
 					Write-Host " $($lang.AE_NoEvent) " -BackgroundColor DarkRed -ForegroundColor White
 
@@ -860,7 +860,7 @@ Function Event_Assign_Task
 					<#
 						强行关闭重建
 					#>
-					New-Variable -Scope global -Name "Queue_Rebuild_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+					New-Variable -Scope global -Name "Queue_Rebuild_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 				}
 			} else {
 				Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -905,6 +905,7 @@ Function Event_Assign_Task
 	#>
 	Event_Completion_Process
 
+	Additional_Edition_Reset
 	Event_Reset_Variable -Silent
 }
 
@@ -915,7 +916,7 @@ Function Init_Canel_Event
 		[switch]$All
 	)
 
-	New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+	New-Variable -Scope global -Name "Queue_Is_Mounted_Expand_Assign_Task_Select_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 	$Global:Queue_Assign_Not_Monuted_Expand_Select = @()
 	$Global:Queue_Assign_Available_Select = @()
 

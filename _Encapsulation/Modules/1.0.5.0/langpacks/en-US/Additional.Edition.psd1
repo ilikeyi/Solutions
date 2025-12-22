@@ -11,5 +11,8 @@
 	AE_NoEvent                      = No additional version events were detected
 	AE_Rename                       = Allow renaming all details
 	AE_Exclude                      = Exclude additional edition
-	AE_replace_Name                 = Automatically replace language names
+	AE_Replace_Name                 = Automatically replace language names
+	AE_Add_Exclude_Nomount          = Add to exclusions to stop requesting mount items
+	AE_ExcludeMount                 = Exclude items that are no longer requested for mounting
+	AE_ExcludeMountTips             = You are assigning exclusions for mount items that are no longer requested. After adding them: changing the version ID and changing the serial number will no longer trigger a mount request.
 '@

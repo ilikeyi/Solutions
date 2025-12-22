@@ -10894,7 +10894,7 @@ Function Image_Refresh_Init_GLobal_Rule
 			Main = @(
 				@{
 					Group         = "Install;Install;"
-					Uid           = "Install;Install;Wim;"
+					Uid           = "Install;Wim;Install;Wim;"
 					ImageFileName = "Install"
 					Suffix        = "wim"
 					Shortcuts     = "WI"
@@ -10904,7 +10904,7 @@ Function Image_Refresh_Init_GLobal_Rule
 			Expand = @(
 				@{
 					Group         = "Install;Install;"
-					Uid           = "Install;WinRE;Wim;"
+					Uid           = "Install;Wim;WinRE;Wim;"
 					ImageFileName = "WinRe"
 					Suffix        = "wim"
 					Shortcuts     = "WR"
@@ -10940,7 +10940,7 @@ Function Image_Refresh_Init_GLobal_Rule
 			Main = @(
 				@{
 					Group         = "Boot;Boot;"
-					Uid           = "Boot;Boot;Wim;"
+					Uid           = "Boot;Wim;Boot;Wim;"
 					ImageFileName = "Boot"
 					Suffix        = "wim"
 					Shortcuts     = "BW"
@@ -10953,7 +10953,7 @@ Function Image_Refresh_Init_GLobal_Rule
 			Main = @(
 				@{
 					Group         = "Install;Install;"
-					Uid           = "Install;Install;Swm;"
+					Uid           = "Install;Swm;Install;Swm;"
 					ImageFileName = "Install"
 					Suffix        = "swm"
 					Shortcuts     = "IS"

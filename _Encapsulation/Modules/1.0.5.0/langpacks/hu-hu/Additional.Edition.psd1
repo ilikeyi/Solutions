@@ -12,4 +12,7 @@
 	AE_Rename                       = Összes részlet átnevezésének engedélyezése
 	AE_Exclude                      = Kiegészítő verziók kizárása
 	AE_Replace_Name                 = Nyelvnevek automatikus cseréje
+	AE_Add_Exclude_Nomount          = Hozzáadás a nem kért szerelések kizárásához
+	AE_ExcludeMount                 = Kizárás a nem kért szerelések közül
+	AE_ExcludeMountTips             = Egy elemet rendel hozzá, hogy kizárja a nem kért szerelések közül. Hozzáadása után a verzióazonosító vagy sorozatszám módosítása többé nem lesz szükséges a szereléshez.
 '@

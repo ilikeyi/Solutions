@@ -12,4 +12,7 @@
 	AE_Rename                       = Leisti pervadinti visą informaciją
 	AE_Exclude                      = Neįtraukti priedo versijų
 	AE_Replace_Name                 = Automatiškai pakeisti kalbų pavadinimus
+	AE_Add_Exclude_Nomount          = Pridėti prie nepageidaujamų priedų pašalinimo
+	AE_ExcludeMount                 = Pašalinti iš nepageidaujamų priedų pašalinimo
+	AE_ExcludeMountTips             = Priskiriate elementą, kuris bus pašalintas iš nepageidaujamų priedų. Jį pridėjus, versijos ID ar serijos numerio pakeitimai nebebus prašomi montuojant.
 '@

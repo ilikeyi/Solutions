@@ -12,4 +12,7 @@
 	AE_Rename                       = Permite redenumirea tuturor detaliilor
 	AE_Exclude                      = Exclude versiuni supliment
 	AE_Replace_Name                 = Înlocuiește automat numele limbilor
+	AE_Add_Exclude_Nomount          = Adăugați la Excludeți din Montările Nesolicitate
+	AE_ExcludeMount                 = Excludeți din Montările Nesolicitate
+	AE_ExcludeMountTips             = Atribuiți un element pentru a fi exclus din montările nesolicitate. După adăugare, modificările ID-ului versiunii sau ale numărului de serie nu vor mai fi solicitate pentru montare.
 '@

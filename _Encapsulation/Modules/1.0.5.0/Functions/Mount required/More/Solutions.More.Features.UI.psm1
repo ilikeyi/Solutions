@@ -65,7 +65,7 @@ Function Feature_More_UI
 				if ($_.Enabled) {
 					if ($_.Checked) {
 						$Temp_Queue_Update_Add_Select += $_.Tag
-						New-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $_.Tag -Force
+						New-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Uid)" -Value $_.Tag -Force
 					}
 				}
 			}
@@ -81,69 +81,69 @@ Function Feature_More_UI
 		<#
 			.固化更新
 		#>
-		New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 		if ($UI_Main_Curing_Update.Enabled) {
 			if ($UI_Main_Curing_Update.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			}
 		}
 
 		<#
 			.清理取代的
 		#>
-		New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 		if ($UI_Main_Superseded_Rule.Enabled) {
 			if ($UI_Main_Superseded_Rule.Checked) {
-				New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			}
 
 			if ($UI_Main_Superseded_Rule_Exclude.Checked) {
-				New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			}
 		}
 
 		<#
 			.健康
 		#>
-		New-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 		if ($UI_Main_Healthy.Enabled) {
 			if ($UI_Main_Healthy.Checked) {
-				New-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			}
 		}
 
 		<#
 			.获取预安装应用 UWP
 		#>
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_Logs_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_View_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 		if ($UI_Main_UWP_To_Log.Enabled) {
 			if ($UI_Main_UWP_To_Log.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_Logs_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			}
 		}
 
 		if ($UI_Main_UWP_To_View.Enabled) {
 			if ($UI_Main_UWP_To_View.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_View_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			}
 		}
 
 		<#
 			.查看安装的所有软件包的列表
 		#>
-		New-Variable -Scope global -Name "Queue_Is_Language_Components_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Language_Components_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Components_Report_Logs_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Components_Report_View_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 		if ($UI_Main_Package_To_Log.Enabled) {
 			if ($UI_Main_Package_To_Log.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_Language_Components_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_Language_Components_Report_Logs_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			}
 		}
 
 		if ($UI_Main_Package_To_View.Enabled) {
 			if ($UI_Main_Package_To_View.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_Language_Components_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_Language_Components_Report_View_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			}
 		}
 
@@ -151,27 +151,27 @@ Function Feature_More_UI
 		<#
 			.查看已安装的驱动列表
 		#>
-		New-Variable -Scope global -Name "Queue_Is_Drive_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Drive_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Drive_Report_Logs_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Drive_Report_View_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 		if ($UI_Main_Drive_To_Log.Enabled) {
 			if ($UI_Main_Drive_To_Log.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_Drive_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_Drive_Report_Logs_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			}
 		}
 
 		if ($UI_Main_Drive_To_View.Enabled) {
 			if ($UI_Main_Drive_To_View.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_Drive_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_Drive_Report_View_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			}
 		}
 
 		<#
 			.映像语言
 		#>
-		New-Variable -Scope global -Name "Queue_Is_Language_Report_Image_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Report_Image_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 		if ($UI_Main_Language.Enabled) {
 			if ($UI_Main_Language.Checked) {
-				New-Variable -Scope global -Name "Queue_Is_Language_Report_Image_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $True -Force
+				New-Variable -Scope global -Name "Queue_Is_Language_Report_Image_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
 			}
 		}
 
@@ -188,7 +188,7 @@ Function Feature_More_UI
 		<#
 			.固化更新
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Curing_Update.Checked = $True
 			$UI_Main_Curing_Update.ForeColor = "Green"
 			$UI_Main_Curing_Update.Text = "$($lang.CuringUpdate): $($lang.Enable)"
@@ -201,7 +201,7 @@ Function Feature_More_UI
 		<#
 			.清理过期的组件
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Superseded_Rule.Checked = $True
 			$UI_Main_Superseded_Rule.ForeColor = "Green"
 			$UI_Main_Superseded_Rule.Text = "$($lang.Superseded): $($lang.Enable)"
@@ -211,7 +211,7 @@ Function Feature_More_UI
 			$UI_Main_Superseded_Rule.Text = "$($lang.Superseded): $($lang.Disable)"
 		}
 
-		if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Superseded_Rule_Exclude.Checked = $True
 			$UI_Main_Superseded_Rule_Exclude.ForeColor = "Green"
 			$UI_Main_Superseded_Rule_Exclude.Text = "$($lang.ExcludeItem): $($lang.Enable)"
@@ -224,7 +224,7 @@ Function Feature_More_UI
 		<#
 			.健康
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Healthy.Checked = $True
 			$UI_Main_Healthy.ForeColor = "Green"
 			$UI_Main_Healthy.Text = "$($lang.Healthy): $($lang.Enable)"
@@ -237,7 +237,7 @@ Function Feature_More_UI
 		<#
 			.获取预安装应用 UWP
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_Logs_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_UWP_To_Log.Checked = $True
 			$UI_Main_UWP_To_Log.ForeColor = "Green"
 			$UI_Main_UWP_To_Log.Text = "$($lang.ExportToLogs): $($lang.Enable)"
@@ -249,7 +249,7 @@ Function Feature_More_UI
 		<#
 			.获取预安装应用 UWP
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_View_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_UWP_To_View.Checked = $True
 			$UI_Main_UWP_To_View.ForeColor = "Green"
 			$UI_Main_UWP_To_View.Text = "$($lang.ExportShow): $($lang.Enable)"
@@ -262,7 +262,7 @@ Function Feature_More_UI
 		<#
 			.查看安装的所有软件包的列表
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_Logs_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Package_To_Log.Checked = $True
 			$UI_Main_Package_To_Log.ForeColor = "Green"
 			$UI_Main_Package_To_Log.Text = "$($lang.ExportToLogs): $($lang.Enable)"
@@ -271,7 +271,7 @@ Function Feature_More_UI
 			$UI_Main_Package_To_Log.ForeColor = "Red"
 			$UI_Main_Package_To_Log.Text = "$($lang.ExportToLogs): $($lang.Disable)"
 		}
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_View_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Package_To_View.Checked = $True
 			$UI_Main_Package_To_View.ForeColor = "Green"
 			$UI_Main_Package_To_View.Text = "$($lang.ExportShow): $($lang.Enable)"
@@ -284,7 +284,7 @@ Function Feature_More_UI
 		<#
 			.查看已安装的驱动列表
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_Logs_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Drive_To_Log.Checked = $True
 			$UI_Main_Drive_To_Log.ForeColor = "Green"
 			$UI_Main_Drive_To_Log.Text = "$($lang.ExportToLogs): $($lang.Enable)"
@@ -293,7 +293,7 @@ Function Feature_More_UI
 			$UI_Main_Drive_To_Log.ForeColor = "Red"
 			$UI_Main_Drive_To_Log.Text = "$($lang.ExportToLogs): $($lang.Disable)"
 		}
-		if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_View_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Drive_To_View.Checked = $True
 			$UI_Main_Drive_To_View.ForeColor = "Green"
 			$UI_Main_Drive_To_View.Text = "$($lang.ExportShow): $($lang.Enable)"
@@ -306,7 +306,7 @@ Function Feature_More_UI
 		<#
 			.映像语言
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Report_Image_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Is_Language_Report_Image_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Language.Checked = $True
 			$UI_Main_Language.ForeColor = "Green"
 			$UI_Main_Language.Text = "$($lang.ExportToLogs): $($lang.Enable)"
@@ -321,41 +321,41 @@ Function Feature_More_UI
 		<#
 			.固化更新
 		#>
-		New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 
 			<#
 				.清理取代的
 			#>
-			New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-			New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 
 		<#
 			.健康
 		#>
-		New-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 
 		<#
 			.获取预安装应用 UWP
 		#>
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_Logs_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_View_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 
 		<#
 			.查看安装的所有软件包的列表
 		#>
-		New-Variable -Scope global -Name "Queue_Is_Language_Components_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Language_Components_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Components_Report_Logs_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Components_Report_View_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 
 		<#
 			.查看已安装的驱动列表
 		#>
-		New-Variable -Scope global -Name "Queue_Is_Drive_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
-		New-Variable -Scope global -Name "Queue_Is_Drive_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Drive_Report_Logs_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Drive_Report_View_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 
 		<#
 			.映像语言
 		#>
-		New-Variable -Scope global -Name "Queue_Is_Language_Report_Image_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $False -Force
+		New-Variable -Scope global -Name "Queue_Is_Language_Report_Image_$($Global:Primary_Key_Image.Uid)" -Value $False -Force
 
 		Refres_Event_Tasks_Feature_More
 
@@ -666,7 +666,7 @@ Function Feature_More_UI
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "12" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "12" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -773,7 +773,7 @@ Function Feature_More_UI
 					.固化更新
 				#>
 				Write-Host "`n  $($lang.CuringUpdate)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+				if ((Get-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
 					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -783,11 +783,11 @@ Function Feature_More_UI
 					.清理取代的
 				#>
 				Write-Host "`n  $($lang.Superseded)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+				if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 
 					Write-Host "`n  $($lang.ExcludeItem)" -ForegroundColor Yellow
-					if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+					if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 						Write-Host "  $($lang.Operable)" -ForegroundColor Green
 					} else {
 						Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -800,7 +800,7 @@ Function Feature_More_UI
 					.健康
 				#>
 				Write-Host "`n  $($lang.Healthy)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+				if ((Get-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
 					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -812,14 +812,14 @@ Function Feature_More_UI
 				Write-Host "`n  $($lang.GetInBoxApps)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
 				Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+				if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_Logs_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
 					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
 				Write-Host "`n  $($lang.ExportShow)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+				if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_View_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
 					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -831,14 +831,14 @@ Function Feature_More_UI
 				Write-Host "`n  $($lang.GetImagePackage)" -ForegroundColor Yellow
 				Write-Host "  $('-' * 80)"
 				Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_Logs_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
 					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
 				Write-Host "`n  $($lang.ExportShow)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_View_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
 					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -849,14 +849,14 @@ Function Feature_More_UI
 				#>
 				Write-Host "`n  $($lang.ViewDrive)"
 				Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_Logs_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+				if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_Logs_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
 					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 				}
 
 				Write-Host "`n  $($lang.ExportShow)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_View_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+				if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_View_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
 					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -866,7 +866,7 @@ Function Feature_More_UI
 					.映像语言
 				#>
 				Write-Host "`n  $($lang.ImageLanguage)"
-				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Report_Image_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Report_Image_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 					Write-Host "  $($lang.Operable)" -ForegroundColor Green
 				} else {
 					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
@@ -932,10 +932,10 @@ Function Feature_More_UI
 	#>
 	[int]$InitControlHeight = 35
 
-	$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+	$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	if (([string]::IsNullOrEmpty($Temp_Expand_Rule))) {
-		New-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value "$(Get_MainMasterFolder)\$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report" -Force
-		$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value
+		New-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Uid)" -Value "$(Get_MainMasterFolder)\$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Report" -Force
+		$Temp_Expand_Rule = (Get-Variable -Scope global -Name "Queue_Export_SaveTo_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 	}
 
 	ForEach ($item in $SearchFolderRule) {
@@ -1036,11 +1036,11 @@ Function Feature_More_UI
 	<#
 		.判断 boot.wim，关闭部分不可用的选项
 	#>
-	switch ("$($Global:Primary_Key_Image.Master);$($Global:Primary_Key_Image.ImageFileName);") {
-		"Install;Install;wim;" {
+	switch ($Global:Primary_Key_Image.Uid) {
+		"Install;wim;Install;wim;" {
 
 		}
-			"Install;WinRE;wim;" {
+			"Install;wim;WinRE;wim;" {
 				$UI_Main_Curing_Update.Enabled = $False                 # 固化更新
 				$UI_Main_Superseded_Rule.Enabled = $False               # 清理取代的
 				$UI_Main_Superseded_Rule_Exclude.Enabled = $False       # 清理过时的，排除规则
@@ -1048,7 +1048,7 @@ Function Feature_More_UI
 				$UI_Main_UWP_To_Log.Enabled = $False                    # 获取预安装应用 UWP
 			}
 
-		"boot;boot;wim;" {
+		"Boot;wim;Boot;wim;" {
 			$UI_Main_Curing_Update.Enabled = $False                 # 固化更新
 			$UI_Main_Superseded_Rule.Enabled = $False               # 清理取代的
 			$UI_Main_Superseded_Rule_Exclude.Enabled = $False       # 清理过时的，排除规则
@@ -1260,7 +1260,7 @@ Function Image_Clear_Superseded
 		<#
 			.从设置里判断是否允许排除规则
 		#>
-		if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+		if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 			ForEach ($item in $Global:ExcludeClearSuperseded) {
 				$InitlClearSupersededDelete += $item
 			}

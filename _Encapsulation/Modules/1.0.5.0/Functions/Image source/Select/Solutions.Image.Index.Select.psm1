@@ -405,18 +405,12 @@ Function Image_Select_Index_UI
 			.非 install.wim 时，禁用其它功能，和显示解锁按钮
 		#>
 		switch ($Global:Primary_Key_Image.Uid) {
-			"boot;boot;wim;" {
+			"Boot;wim;Boot;wim;" {
 				$UI_Main_Image_Add.Enabled = $False           # 添加
 				$UI_Main_Image_Del.Enabled = $False           # 删除
 				$UI_Main_Tips.Visible = $True
 			}
-			"install;install;esd;" {
-				$UI_Main_Mount.Visible = $False
-				$UI_Main_Image_Add.Enabled = $False           # 添加
-				$UI_Main_Image_Del.Enabled = $True            # 删除
-				$UI_Main_Rebuild_All.Enabled = $False         # 重建
-			}
-			"install;install;swm;" {
+			"install;swm;install;swm;" {
 				$UI_Main_Mount.Visible = $False
 				$UI_Main_Image_Add.Enabled = $False           # 添加
 				$UI_Main_Image_Del.Enabled = $True            # 删除
@@ -1722,7 +1716,7 @@ Function Image_Select_Mul_UI
 		add_Click      = {
 			$UI_Main.Hide()
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Event_Need_Mount_Global_Variable -DevQueue "24" -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
+			Event_Need_Mount_Global_Variable -DevQueue "24" -Uid $Global:Primary_Key_Image.Uid -Master $Global:Primary_Key_Image.Master -MasterSuffix $Global:Primary_Key_Image.MasterSuffix -ImageFileName $Global:Primary_Key_Image.ImageFileName -Suffix $Global:Primary_Key_Image.Suffix
 			Event_Reset_Suggest
 			$UI_Main.Close()
 		}
@@ -1823,7 +1817,7 @@ Function Image_Select_Mul_UI
 				$UI_Main.Hide()
 
 				ForEach ($item in $MarkSelectIndexin) {
-					ForEach ($WildCard in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -ErrorAction SilentlyContinue).Value) {
+					ForEach ($WildCard in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
 						if ($item -eq $WildCard.Index) {
 							$TempQueueProcessImageSelectPending += @{
 								Name   = $WildCard.Name
@@ -1832,7 +1826,7 @@ Function Image_Select_Mul_UI
 						}
 					}
 				}
-				New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $TempQueueProcessImageSelectPending -Force
+				New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Global:Primary_Key_Image.Uid)" -Value $TempQueueProcessImageSelectPending -Force
 
 				ForEach ($item in $TempQueueProcessImageSelectPending) {
 					Write-Host "  $($lang.MountedIndex): " -NoNewline
@@ -1862,7 +1856,7 @@ Function Image_Select_Mul_UI
 		Text           = $lang.Cancel
 		add_Click      = {
 			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value @() -Force
+			New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Global:Primary_Key_Image.Uid)" -Value @() -Force
 
 			if ($UI_Main_Suggestion_Not.Checked) {
 				Init_Canel_Event
@@ -1925,7 +1919,7 @@ Function Image_Select_Mul_UI
 			return
 		}
 	}
-	New-Variable -Scope global -Name "Queue_Process_Image_Select_$($Global:Primary_Key_Image.Master)_$($Global:Primary_Key_Image.ImageFileName)" -Value $TempQueueProcessImageSelect -Force
+	New-Variable -Scope global -Name "Queue_Process_Image_Select_$($Global:Primary_Key_Image.Uid)" -Value $TempQueueProcessImageSelect -Force
 
 	<#
 		.Add right-click menu: select all, clear button
