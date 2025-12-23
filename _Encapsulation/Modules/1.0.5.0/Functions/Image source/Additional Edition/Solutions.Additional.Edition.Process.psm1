@@ -100,8 +100,9 @@ Function Image_Additional_Edition_Process
 		Write-Host "`n  $($lang.Detailed)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
 		$wimlib = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\wimlib")\wimlib-imagex.exe"
-		$Export_To_New_Xml = Join-Path -Path $env:TEMP -ChildPath "$($RandomGuid).xml"
 		if (Test-Path -Path $wimlib -PathType Leaf) {
+			$RandomGuid = [guid]::NewGuid()
+			$Export_To_New_Xml = Join-Path -Path $env:TEMP -ChildPath "$($RandomGuid).xml"
 			$Arguments = "info ""$($Global:Primary_Key_Image.FullPath)"" --extract-xml ""$($Export_To_New_Xml)"""
 			Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
 
@@ -110,8 +111,9 @@ Function Image_Additional_Edition_Process
 
 				ForEach ($empDetail in $empDetails.wim.IMAGE) {
 					$GroupImageFileDetailed += @{
-						Name               = $empDetail.NAME
 						Index              = $empDetail.index
+						Name               = $empDetail.NAME
+						ImageDescription   = $empDetail.DESCRIPTION
 						EditionId          = $empDetail.FLAGS
 					}
 				}
@@ -122,9 +124,10 @@ Function Image_Additional_Edition_Process
 				Get-WindowsImage -ImagePath $Global:Primary_Key_Image.FullPath -ErrorAction SilentlyContinue | ForEach-Object {
 					Get-WindowsImage -ImagePath $Global:Primary_Key_Image.FullPath -index $_.ImageIndex -ErrorAction SilentlyContinue | ForEach-Object {
 						$GroupImageFileDetailed += @{
-							Name      = $_.ImageName
-							Index     = $_.ImageIndex
-							EditionId = $_.EditionId
+							Index            = $_.ImageIndex
+							Name             = $_.ImageName
+							ImageDescription = $_.ImageDescription
+							EditionId        = $_.EditionId
 						}
 					}
 				}
@@ -141,6 +144,9 @@ Function Image_Additional_Edition_Process
 
 				write-host "  $($lang.Wim_Image_Name): " -NoNewline -ForegroundColor Yellow
 				write-host $item.Name -ForegroundColor Green
+
+				Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+				Write-Host $item.ImageDescription -ForegroundColor Yellow
 
 				write-host "  $($lang.Wim_Edition): " -NoNewline -ForegroundColor Yellow
 				write-host $item.EditionId -ForegroundColor Green
@@ -219,6 +225,9 @@ Function Image_Additional_Edition_Process
 
 						write-host "  $($lang.Wim_Image_Name): " -NoNewline -ForegroundColor Yellow
 						write-host $ExportOld.Name -ForegroundColor Green
+
+						Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+						Write-Host $ExportOld.ImageDescription -ForegroundColor Yellow
 
 						write-host "  $($lang.Wim_Edition): " -NoNewline -ForegroundColor Yellow
 						write-host $ExportOld.EditionId -ForegroundColor Green

@@ -692,7 +692,7 @@ Function Menu_Shortcuts_Image_Sources_Add
 			Write-Host "  $($lang.Mounted)" -ForegroundColor Red
 		} else {
 			Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "0429"
-			Image_Select_Add_UI
+			Image_Select_Append_UI
 			Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "0429e"
 		}
 	} else {
@@ -763,7 +763,7 @@ Function Menu_Shortcuts_Image_Sources_Add_IAB
 			Write-Host "  $($lang.Mounted)" -ForegroundColor Red
 		} else {
 			Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "0818"
-			Image_Select_Add_UI
+			Image_Select_Append_UI
 			Image_Set_Global_Primary_Key -Uid $Global:Primary_Key_Image.Uid -Detailed -DevCode "0818e"
 		}
 	} else {

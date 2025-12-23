@@ -21,6 +21,7 @@
 	Eject_Cdrom_Is_Other            = ติดตั้ง ISO อื่นๆ แล้ว
 	Eject_Cdrom_Not_Mount           = ไม่มีการติดตั้ง ISO อื่น ๆ
 	Eject_Cdrom                     = นำ ISO ที่ติดตั้งทั้งหมดออก
+	Eject_dependencies_ISO          = ISO ที่ขึ้นอยู่กับป๊อปอัพ
 
 	Import_Event_Public             = นำเข้ากิจกรรมสาธารณะ
 	Import_Event_Clear_Global       = เคลียร์กิจกรรมสาธารณะทั่วโลกทั้งหมด

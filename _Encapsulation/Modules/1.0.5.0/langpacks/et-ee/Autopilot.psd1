@@ -21,6 +21,7 @@
 	Eject_Cdrom_Is_Other            = Paigaldatud muud ISO-d
 	Eject_Cdrom_Not_Mount           = Muid ISO-sid pole paigaldatud
 	Eject_Cdrom                     = Eemaldage kõik paigaldatud ISO-d
+	Eject_dependencies_ISO          = Hüpikaken, mis näitab sõltuvat ISO-d
 
 	Import_Event_Public             = Importige avalikke üritusi
 	Import_Event_Clear_Global       = Kustutage kõik ülemaailmsed avalikud sündmused

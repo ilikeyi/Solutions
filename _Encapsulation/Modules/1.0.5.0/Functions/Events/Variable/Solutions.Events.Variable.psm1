@@ -58,7 +58,6 @@ Function Event_Reset_Variable
 		Write-Host "  $($lang.AllClear): " -NoNewline
 	}
 
-
 	if ($Global:AutopilotMode) {
 		$EventMaps = "Queue"
 
@@ -135,7 +134,7 @@ Function Event_Reset_Variable
 	$Global:Queue_ISO_Associated = $False                      # 关联 ISO 方案
 	$Global:Queue_ISO_Associated_Tasks = @()
 
-	Event_Reset_Specified_Variable -Scope "Init"
+	Event_Reset_Specified_Variable -Scope "Init", "NoRefresh"
 
 	if (-not $Silent) {
 		Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -147,7 +146,7 @@ Function Event_Reset_Specified_Variable
 	param
 	(
 		$Tasks,
-		$Scope
+		[array]$Scope
 	)
 
 	ForEach ($item in $Global:Image_Rule) {
@@ -219,7 +218,7 @@ Function Event_Need_Mount_Global_Variable
 		$MasterSuffix,
 		$ImageFileName,
 		$Suffix,
-		$Scope
+		[array]$Scope
 	)
 
 	if ($Global:Developers_Mode) {

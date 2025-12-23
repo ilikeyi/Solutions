@@ -31,6 +31,7 @@ $Global:Preconfigured_Rule_Language = @(
 			@{
 				ISO = "en-us_windows_server_2025_x64_dvd_b7ec10f3.iso"
 				AlternativeFilenames = @(
+					"26100.1742.240906-0331.ge_release_svc_refresh_SERVER_OEMRET_x64FRE_en-us.iso"
 					"X23-81958_26100.1742.240906-0331.ge_release_svc_refresh_SERVER_OEMRET_x64FRE_en-us.iso"
 				)
 				FileList = "https://files.rg-adguard.net/file/f415465a-71bd-3823-ecb5-f249f9bce844"
@@ -85,6 +86,8 @@ $Global:Preconfigured_Rule_Language = @(
 					AlternativeFilenames = @(
 						"mul_languages_and_optional_features_for_windows_server_2025_x64_dvd_762b4771.iso"
 						"mul_languages_and_optional_features_for_windows_server_2025_preview_x64_dvd_762b4771.iso"
+						"SW_DVD9_NTRL_Server_Languages_and_Optional_Features_24H2_64bit_Multilang_X23-69975.ISO"
+						"OPK_Server_2025_24H2_MUI_Langpack_LOF_X23_75880.iso"
 					)
 					FileList = "https://files.rg-adguard.net/file/8f17df69-94b4-b8d2-6430-560748cdb0ca"
 					CRCSHA = @{

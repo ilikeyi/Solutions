@@ -21,6 +21,7 @@
 	Eject_Cdrom_Is_Other            = Drugi ISO-i montirani
 	Eject_Cdrom_Not_Mount           = Nijedan drugi ISO nije montiran
 	Eject_Cdrom                     = Izbaci sve montirane ISO-ove
+	Eject_dependencies_ISO          = ISO ovisan o skočnom prozoru
 
 	Import_Event_Public             = Uvoz javnih događaja
 	Import_Event_Clear_Global       = Obrišite sve globalne javne događaje

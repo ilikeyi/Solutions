@@ -21,6 +21,7 @@
 	Eject_Cdrom_Is_Other            = 他の ISO がマウントされている
 	Eject_Cdrom_Not_Mount           = 他の ISO はマウントされていません
 	Eject_Cdrom                     = マウントされているすべての ISO を取り出します
+	Eject_dependencies_ISO          = ポップアップ依存 ISO
 
 	Import_Event_Public             = 公開イベントをインポートする
 	Import_Event_Clear_Global       = 全世界の公開イベントをすべてクリアする

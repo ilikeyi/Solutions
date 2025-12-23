@@ -917,12 +917,10 @@ Function Image_Set_Global_Primary_Key
 
 			if ($Detailed) {
 				if (Test-Path -Path "$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)" -PathType Leaf) {
-					$RandomGuid = [guid]::NewGuid()
 					$wimlib = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\wimlib")\wimlib-imagex.exe"
-
-					$Export_To_New_Xml = Join-Path -Path $env:TEMP -ChildPath "$($RandomGuid).xml"
-
 					if (Test-Path -Path $wimlib -PathType Leaf) {
+						$RandomGuid = [guid]::NewGuid()
+						$Export_To_New_Xml = Join-Path -Path $env:TEMP -ChildPath "$($RandomGuid).xml"
 						$Arguments = "info ""$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)"" --extract-xml ""$($Export_To_New_Xml)"""
 
 						if (-not $Silent) {

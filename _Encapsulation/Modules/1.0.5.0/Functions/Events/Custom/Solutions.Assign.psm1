@@ -97,7 +97,7 @@ Function Event_Assign_Task_Customize
 					<#
 						规则 1：选择索引号
 					#>
-#					Image_Select_Mul_UI -ImageFileName "$($WildCard.Main.Path)\$($WildCard.Main.ImageFileName).$($WildCard.Main.Suffix)"
+#					Image_Select_Mul_UI
 
 					$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($WildCard.Main.Uid)" -ErrorAction SilentlyContinue).Value
 					if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
@@ -210,7 +210,7 @@ Function Event_Assign_Task_Customize
 								Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): E0x002780`n  Start"
 							}
 
-#							Image_Select_Mul_UI -ImageFileName $test_mount_folder_Current
+#							Image_Select_Mul_UI
 
 							$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($Expand.Uid)" -ErrorAction SilentlyContinue).Value
 							if ($Temp_Queue_Process_Image_Select_Pending.Count -gt 0) {
@@ -259,6 +259,9 @@ Function Event_Assign_Task_Customize
 								Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 								Write-Host $itemBB.Name -ForegroundColor Yellow
 
+								Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+								Write-Host $itemBB.ImageDescription -ForegroundColor Yellow
+
 								Write-Host
 							}
 						} else {
@@ -270,7 +273,7 @@ Function Event_Assign_Task_Customize
 							<#
 								.弹出选择 Install.wim 索引号
 							#>
-							Image_Select_Mul_UI -ImageFileName "$($WildCard.Main.Path)\$($WildCard.Main.ImageFileName).$($WildCard.Main.Suffix)"
+							Image_Select_Mul_UI
 						}
 						#endregion 弹出选择索引号
 
@@ -540,6 +543,9 @@ Function Event_Assign_Task_Customize
 						Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 						Write-Host $WildCardBB.Name -ForegroundColor Yellow
 
+						Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+						Write-Host $WildCardBB.ImageDescription -ForegroundColor Yellow
+
 						Write-Host
 					}
 
@@ -586,6 +592,9 @@ Function Event_Assign_Task_Customize
 
 							Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 							Write-Host $WildCardBB.Name -ForegroundColor Yellow
+
+							Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+							Write-Host $WildCardBB.ImageDescription -ForegroundColor Yellow
 
 							Write-Host "  $($lang.Event_Primary_Key): " -NoNewline
 							Write-Host $WildCard.Main.Uid -ForegroundColor Yellow
@@ -959,8 +968,9 @@ Function Run_Expand_Assign
 
 					Get-WindowsImage -ImagePath $MountFileName -ErrorAction SilentlyContinue | ForEach-Object {
 						$TempQueueProcessImageSelect += @{
-							Name   = $_.ImageName
-							Index  = $_.ImageIndex
+							Index            = $_.ImageIndex
+							Name             = $_.ImageName
+							ImageDescription = $_.ImageDescription
 						}
 					}
 				} catch {
@@ -984,6 +994,9 @@ Function Run_Expand_Assign
 						Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 						Write-Host $itemBB.Name -ForegroundColor Yellow
 
+						Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+						Write-Host $itemBB.ImageDescription -ForegroundColor Yellow
+
 						Write-Host
 					}
 
@@ -998,6 +1011,9 @@ Function Run_Expand_Assign
 
 							Write-Host "  $($lang.Wim_Image_Name): " -noNewline
 							Write-Host $itemBB.Name -ForegroundColor Yellow
+
+							Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+							Write-Host $itemBB.ImageDescription -ForegroundColor Yellow
 
 							if (Event_Assign_Task_Verify -Mount) {
 								Write-Host "`n  $($lang.YesWork)" -ForegroundColor Yellow
@@ -1045,6 +1061,9 @@ Function Run_Expand_Assign
 								Write-Host "  $($lang.Wim_Image_Name): " -noNewline
 								Write-Host $item.Name -ForegroundColor Yellow
 
+								Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+								Write-Host $item.ImageDescription -ForegroundColor Yellow
+
 								Write-Host
 							}
 
@@ -1058,6 +1077,9 @@ Function Run_Expand_Assign
 
 								Write-Host "  $($lang.Wim_Image_Name): " -noNewline
 								Write-Host $item.Name -ForegroundColor Yellow
+
+								Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+								Write-Host $item.ImageDescription -ForegroundColor Yellow
 
 								if (Event_Assign_Task_Verify -Mount) {
 									Write-Host "`n  $($lang.YesWork)" -ForegroundColor Yellow
@@ -1092,7 +1114,7 @@ Function Run_Expand_Assign
 						<#
 							.读取用户自定义设置，默认，未指定时，弹出设置界面
 						#>
-						Image_Select_Popup_UI -ImageFileName $MountFileName
+						Image_Select_Popup_UI
 
 						$Temp_Queue_Process_Image_Select_Pending = (Get-Variable -Scope global -Name "Queue_Process_Image_Select_Popup_Pending_$($NewExpand.Uid)" -ErrorAction SilentlyContinue).Value
 
@@ -1105,6 +1127,9 @@ Function Run_Expand_Assign
 
 								Write-Host "  $($lang.Wim_Image_Name): " -noNewline
 								Write-Host $itemBB.Name -ForegroundColor Yellow
+
+								Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+								Write-Host $itemBB.ImageDescription -ForegroundColor Yellow
 
 								Write-Host
 							}
@@ -1123,6 +1148,9 @@ Function Run_Expand_Assign
 
 									Write-Host "  $($lang.Wim_Image_Name): " -noNewline
 									Write-Host $itemBB.Name -ForegroundColor Yellow
+
+									Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+									Write-Host $itemBB.ImageDescription -ForegroundColor Yellow
 
 									if (Event_Assign_Task_Verify -Mount) {
 										Write-Host "`n  $($lang.YesWork)" -ForegroundColor Yellow
@@ -1164,6 +1192,9 @@ Function Run_Expand_Assign
 								Write-Host "  $($lang.Wim_Image_Name): " -noNewline
 								Write-Host $itemBB.Name -ForegroundColor Yellow
 
+								Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+								Write-Host $itemBB.ImageDescription -ForegroundColor Yellow
+
 								Write-Host
 							}
 						}
@@ -1183,6 +1214,9 @@ Function Run_Expand_Assign
 								Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 								Write-Host $item.Name -ForegroundColor Yellow
 
+								Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+								Write-Host $item.ImageDescription -ForegroundColor Yellow
+
 								Write-Host
 							}
 
@@ -1194,6 +1228,9 @@ Function Run_Expand_Assign
 
 								Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 								Write-Host $item.Name -ForegroundColor Yellow
+
+								Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+								Write-Host $item.ImageDescription -ForegroundColor Yellow
 
 								if ($Temp_Queue_Process_Image_Select_Pending.Index -Contains $item.Index) {
 									if (Event_Assign_Task_Verify -Mount) {

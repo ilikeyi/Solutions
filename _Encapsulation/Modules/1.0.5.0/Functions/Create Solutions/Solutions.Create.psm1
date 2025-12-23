@@ -80,6 +80,12 @@ $SearchKMS = @(
 	@{ Type = "Desktop"; ProductKey = "6283C-4NH4W-GD3CJ-8JBCV-8HYP3"; Name = "Windows 11 IoT Enterprise LTSC 2024 Product Key Entry Activation (PKEA / ePKEA)"; }
 	@{ Type = "Desktop"; ProductKey = "CHCDD-NBFKY-M8DJM-MHYBQ-T6RFF"; Name = "Windows 11 IoT Enterprise Product Key Entry Activation (PKEA / ePKEA)"; }
 
+	# Windows Server IoT 2025
+	@{ Type = "Server";  ProductKey = "4C9CG-NTRHV-F6GRT-YXJTV-464GW"; Name = "Windows Server IoT 2025 Datacenter"; }
+	@{ Type = "Server";  ProductKey = "WJWHM-NWX4R-9D6R3-TV9YY-CWJ3T"; Name = "Windows Server IoT 2025 Standard"; }
+	@{ Type = "Server";  ProductKey = "WJWHM-NWX4R-9D6R3-TV9YY-CWJ3T"; Name = "Windows Storage Server Standard 2025"; }
+	@{ Type = "Server";  ProductKey = "WJWHM-NWX4R-9D6R3-TV9YY-CWJ3T"; Name = "Windows Storage Server Workgroup 2025"; }
+
 	# Windows Server 2025
 	@{ Type = "Server";  ProductKey = "D764K-2NDRG-47T6Q-P8T8W-YP6DF"; Name = "Windows Server vNext and 2025 Datacenter"; }
 	@{ Type = "Server";  ProductKey = "TVRH6-WHNXV-R9WG3-9XRFY-MY832"; Name = "Windows Server vnext and 2025 Standard"; }

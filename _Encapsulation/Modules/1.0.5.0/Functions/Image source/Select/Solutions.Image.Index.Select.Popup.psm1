@@ -3,11 +3,6 @@
 #>
 Function Image_Select_Popup_UI
 {
-	param
-	(
-		$ImageFileName
-	)
-
 	Write-Host "`n  $($lang.Index_Is_Event_Select)"
 
 	Add-Type -AssemblyName System.Windows.Forms
@@ -137,6 +132,9 @@ Function Image_Select_Popup_UI
 					Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 					Write-Host $item.Name -ForegroundColor Yellow
 
+					Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+					Write-Host $item.ImageDescription -ForegroundColor Yellow
+
 					Write-Host
 				}
 				$UI_Main.Close()
@@ -169,46 +167,166 @@ Function Image_Select_Popup_UI
 	))
 
 	$Script:TempQueueProcessImageSelect = @()
-	if (Test-Path -Path $ImageFileName -PathType Leaf) {
+	if (Test-Path -Path $Global:Primary_Key_Image.FullPath -PathType Leaf) {
 		if ($Global:Developers_Mode) {
 			Write-Host "`n  $($lang.Developers_Mode_Location): 88`n" -ForegroundColor Green
 		}
 
-		if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-			Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
-			Write-Host "  $('-' * 80)"
-			Write-Host "  Get-WindowsImage -ImagePath ""$($ImageFileName)""" -ForegroundColor Green
-			Write-Host "  $('-' * 80)`n"
-		}
+		$wimlib = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\wimlib")\wimlib-imagex.exe"
+		if (Test-Path -Path $wimlib -PathType Leaf) {
+			$RandomGuid = [guid]::NewGuid()
+			$Export_To_New_Xml = Join-Path -Path $env:TEMP -ChildPath "$($RandomGuid).xml"
+			$Arguments = "info ""$($Global:Primary_Key_Image.FullPath)"" --extract-xml ""$($Export_To_New_Xml)"""
+			Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
 
-		try {
-			Get-WindowsImage -ImagePath $ImageFileName -ErrorAction SilentlyContinue | ForEach-Object {
-				$Script:TempQueueProcessImageSelect += @{
-					Name   = $_.ImageName
-					Index  = $_.ImageIndex
-				}
+			if (Test-Path -Path $Export_To_New_Xml -PathType Leaf) {
+				[XML]$empDetails = Get-Content $Export_To_New_Xml
 
-				$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
-					Height    = 55
-					Width     = 450
-					margin    = "0,0,0,18"
-					Text      = "$($lang.MountedIndex): $($_.ImageIndex)`n$($lang.Wim_Image_Name): $($_.ImageName)"
-					Tag       = $_.ImageIndex
-					Checked   = $True
-					add_Click = {
-						$UI_Main_Error.Text = ""
-						$UI_Main_Error_Icon.Image = $null
+				ForEach ($empDetail in $empDetails.wim.IMAGE) {
+					$Script:TempQueueProcessImageSelect += @{
+						Name               = $empDetail.NAME
+						Index              = $empDetail.index
+						ImageDescription   = $empDetail.DESCRIPTION
+						DISPLAYNAME        = $empDetail.DISPLAYNAME
+						DISPLAYDESCRIPTION = $empDetail.DISPLAYDESCRIPTION
+						EditionId          = $empDetail.FLAGS
 					}
+
+					$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
+						Height    = 35
+						Width     = 448
+						Padding   = "16,0,0,0"
+						Text      = "$($lang.MountedIndex): $($empDetail.index)"
+						Tag       = $empDetail.index
+						Checked   = $True
+						add_Click = {
+							$UI_Main_Error.Text = ""
+							$UI_Main_Error_Icon.Image = $null
+						}
+					}
+
+					$New_Wim_Edition   = New-Object system.Windows.Forms.Label -Property @{
+						autosize       = 1
+						Padding        = "31,0,0,0"
+						Text           = "$($lang.Wim_Edition): $($empDetail.FLAGS) / $($empDetail.WINDOWS.EDITIONID)"
+					}
+					$New_Wim_Edition_Wrap = New-Object system.Windows.Forms.Label -Property @{
+						Height         = 2
+						Width          = 450
+					}
+					$New_Wim_Image_Name = New-Object system.Windows.Forms.Label -Property @{
+						autosize       = 1
+						Padding        = "31,0,0,0"
+						Text           = "$($lang.Wim_Image_Name): $($empDetail.NAME)"
+					}
+					$New_Wim_Image_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
+						Height         = 2
+						Width          = 450
+					}
+					$New_Wim_Image_Description = New-Object system.Windows.Forms.Label -Property @{
+						autosize       = 1
+						Padding        = "31,0,0,0"
+						Text           = "$($lang.Wim_Image_Description): $($empDetail.DESCRIPTION)"
+					}
+					$New_Wim_Image_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
+						Height         = 2
+						Width          = 450
+					}
+					$New_Wim_Display_Name = New-Object system.Windows.Forms.Label -Property @{
+						autosize       = 1
+						Padding        = "31,0,0,0"
+						Text           = "$($lang.Wim_Display_Name): $($empDetail.DISPLAYNAME)"
+					}
+					$New_Wim_Display_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
+						Height         = 2
+						Width          = 450
+					}
+					$New_Wim_Display_Description = New-Object system.Windows.Forms.Label -Property @{
+						autosize       = 1
+						Padding        = "31,0,0,0"
+						Text           = "$($lang.Wim_Display_Description): $($empDetail.DISPLAYDESCRIPTION)"
+					}
+					$New_Wim_Display_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
+						Height         = 25
+						Width          = 450
+					}
+
+					$UI_Main_Menu.controls.AddRange((
+						$CheckBox,
+						$New_Wim_Edition,
+						$New_Wim_Edition_Wrap,
+						$New_Wim_Image_Name,
+						$New_Wim_Image_Name_Wrap,
+						$New_Wim_Image_Description,
+						$New_Wim_Image_Description_Wrap,
+						$New_Wim_Display_Name,
+						$New_Wim_Display_Name_Wrap,
+						$New_Wim_Display_Description,
+						$New_Wim_Display_Description_Wrap
+					))
 				}
 
-				$UI_Main_Menu.controls.AddRange($CheckBox)
+				Remove-Item -Path $Export_To_New_Xml
 			}
-		} catch {
-			Write-Host "  $($lang.ConvertChk)"
-			Write-Host "  $($ImageFileName)"
-			Write-Host "  $($_)" -ForegroundColor Red
-			Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
-			return
+		} else {
+			try {
+				Get-WindowsImage -ImagePath $Global:Primary_Key_Image.FullPath -ErrorAction SilentlyContinue | ForEach-Object {
+					$Script:TempQueueProcessImageSelect += @{
+						Index            = $_.ImageIndex
+						Name             = $_.ImageName
+						ImageDescription = $_.ImageDescription
+					}
+
+					$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
+						Height    = 35
+						Width     = 448
+						Padding   = "16,0,0,0"
+						Text      = "$($lang.MountedIndex): $($_.ImageIndex)"
+						Tag       = $_.ImageIndex
+						Checked   = $True
+						add_Click = {
+							$UI_Main_Error.Text = ""
+							$UI_Main_Error_Icon.Image = $null
+						}
+					}
+
+					$New_Wim_Image_Name = New-Object system.Windows.Forms.Label -Property @{
+						autosize       = 1
+						Padding        = "31,0,0,0"
+						Text           = "$($lang.Wim_Image_Name): $($_.ImageName)"
+					}
+					$New_Wim_Image_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
+						Height         = 2
+						Width          = 450
+					}
+					$New_Wim_Image_Description = New-Object system.Windows.Forms.Label -Property @{
+						autosize       = 1
+						Padding        = "31,0,0,0"
+						Text           = "$($lang.Wim_Image_Description): $($_.ImageDescription)"
+					}
+					$New_Wim_Image_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
+						Height         = 25
+						Width          = 450
+					}
+
+					$UI_Main_Menu.controls.AddRange((
+						$CheckBox,
+						$New_Wim_Image_Name,
+						$New_Wim_Image_Name_Wrap,
+						$New_Wim_Image_Description,
+						$New_Wim_Image_Description_Wrap
+					))
+				}
+			} catch {
+				$UI_Main_Other_Rule_Not_Find = New-Object system.Windows.Forms.Label -Property @{
+					Height         = 40
+					Width          = 448
+					margin         = "16,0,0,0"
+					Text           = "$($lang.SelectFromError): $($lang.UpdateUnavailable)"
+				}
+
+				$UI_Main_Menu.controls.AddRange($UI_Main_Other_Rule_Not_Find)
+			}
 		}
 	}
 

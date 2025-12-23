@@ -21,6 +21,7 @@
 	Eject_Cdrom_Is_Other            = تم تركيب ISOs أخرى
 	Eject_Cdrom_Not_Mount           = لم يتم تركيب أي ISO أخرى
 	Eject_Cdrom                     = قم بإخراج جميع ملفات ISO المثبتة
+	Eject_dependencies_ISO          = نافذة منبثقة تعتمد على ISO
 
 	Import_Event_Public             = استيراد الأحداث العامة
 	Import_Event_Clear_Global       = مسح كافة الأحداث العامة العالمية

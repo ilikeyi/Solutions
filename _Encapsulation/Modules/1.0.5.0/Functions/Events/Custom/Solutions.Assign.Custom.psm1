@@ -183,11 +183,10 @@ Function Image_Assign_Event_Master
 				$Group_Image_Sources.ContextMenuStrip = $UI_Main_Select_Assign_Group_Image_Sources
 				$paneel.controls.AddRange($Group_Image_Sources)
 
-				$RandomGuid = [guid]::NewGuid()
 				$wimlib = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\wimlib")\wimlib-imagex.exe"
-				$Export_To_New_Xml = Join-Path -Path $env:TEMP -ChildPath "$($RandomGuid).xml"
-
 				if (Test-Path -Path $wimlib -PathType Leaf) {
+					$RandomGuid = [guid]::NewGuid()
+					$Export_To_New_Xml = Join-Path -Path $env:TEMP -ChildPath "$($RandomGuid).xml"
 					$Arguments = "info ""$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)"" --extract-xml ""$($Export_To_New_Xml)"""
 					Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
 
@@ -201,19 +200,77 @@ Function Image_Assign_Event_Master
 								ImageDescription   = $empDetail.DESCRIPTION
 								DISPLAYNAME        = $empDetail.DISPLAYNAME
 								DISPLAYDESCRIPTION = $empDetail.DISPLAYDESCRIPTION
-								EditionId          = $empDetail.FLAGS
 							}
 
 							$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
-								Height    = 105
+								Name      = $empDetail.FLAGS
+								Height    = 35
 								Width     = 448
 								Padding   = "16,0,0,0"
-								Text      = "$($lang.MountedIndex): $($empDetail.index)`n$($lang.Wim_Image_Name): $($empDetail.NAME)`n$($lang.Wim_Image_Description): $($empDetail.ImageDescription)`n$($lang.Wim_Display_Name): $($empDetail.DISPLAYNAME)`n$($lang.Wim_Display_Description): $($empDetail.DISPLAYDESCRIPTION)"
+								Text      = "$($lang.MountedIndex): $($empDetail.index)"
 								Tag       = $empDetail.index
 								Checked   = $True
 							}
 
-							$Group_Image_Sources.controls.AddRange($CheckBox)
+							$New_Wim_Edition   = New-Object system.Windows.Forms.Label -Property @{
+								autosize       = 1
+								Padding        = "31,0,0,0"
+								Text           = "$($lang.Wim_Edition): $($empDetail.FLAGS) / $($empDetail.WINDOWS.EDITIONID)"
+							}
+							$New_Wim_Edition_Wrap = New-Object system.Windows.Forms.Label -Property @{
+								Height         = 2
+								Width          = 450
+							}
+							$New_Wim_Image_Name = New-Object system.Windows.Forms.Label -Property @{
+								autosize       = 1
+								Padding        = "31,0,0,0"
+								Text           = "$($lang.Wim_Image_Name): $($empDetail.NAME)"
+							}
+							$New_Wim_Image_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
+								Height         = 2
+								Width          = 450
+							}
+							$New_Wim_Image_Description = New-Object system.Windows.Forms.Label -Property @{
+								autosize       = 1
+								Padding        = "31,0,0,0"
+								Text           = "$($lang.Wim_Image_Description): $($empDetail.DESCRIPTION)"
+							}
+							$New_Wim_Image_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
+								Height         = 2
+								Width          = 450
+							}
+							$New_Wim_Display_Name = New-Object system.Windows.Forms.Label -Property @{
+								autosize       = 1
+								Padding        = "31,0,0,0"
+								Text           = "$($lang.Wim_Display_Name): $($empDetail.DISPLAYNAME)"
+							}
+							$New_Wim_Display_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
+								Height         = 2
+								Width          = 450
+							}
+							$New_Wim_Display_Description = New-Object system.Windows.Forms.Label -Property @{
+								autosize       = 1
+								Padding        = "31,0,0,0"
+								Text           = "$($lang.Wim_Display_Description): $($empDetail.DISPLAYDESCRIPTION)"
+							}
+							$New_Wim_Display_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
+								Height         = 25
+								Width          = 450
+							}
+
+							$Group_Image_Sources.controls.AddRange((
+								$CheckBox,
+								$New_Wim_Edition,
+								$New_Wim_Edition_Wrap,
+								$New_Wim_Image_Name,
+								$New_Wim_Image_Name_Wrap,
+								$New_Wim_Image_Description,
+								$New_Wim_Image_Description_Wrap,
+								$New_Wim_Display_Name,
+								$New_Wim_Display_Name_Wrap,
+								$New_Wim_Display_Description,
+								$New_Wim_Display_Description_Wrap
+							))
 						}
 
 						New-Variable -Scope global -Name "Queue_Process_Image_Select_$($Uid)" -Value $TempQueueProcessImageSelect -Force
@@ -223,20 +280,46 @@ Function Image_Assign_Event_Master
 					try {
 						Get-WindowsImage -ImagePath $ImageFilePath -ErrorAction SilentlyContinue | ForEach-Object {
 							$TempQueueProcessImageSelect += @{
-								Name   = $_.ImageName
-								Index  = $_.ImageIndex
+								Index            = $_.ImageIndex
+								Name             = $_.ImageName
+								ImageDescription = $_.ImageDescription
 							}
 
 							$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
-								Height    = 55
+								Height    = 35
 								Width     = 448
 								Padding   = "16,0,0,0"
-								Text      = "$($lang.MountedIndex): $($_.ImageIndex)`n$($lang.Wim_Image_Name): $($_.ImageName)"
+								Text      = "$($lang.MountedIndex): $($_.ImageIndex)"
 								Tag       = $_.ImageIndex
 								Checked   = $True
 							}
 
-							$Group_Image_Sources.controls.AddRange($CheckBox)
+							$New_Wim_Image_Name = New-Object system.Windows.Forms.Label -Property @{
+								autosize       = 1
+								Padding        = "31,0,0,0"
+								Text           = "$($lang.Wim_Image_Name): $($_.ImageName)"
+							}
+							$New_Wim_Image_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
+								Height         = 2
+								Width          = 450
+							}
+							$New_Wim_Image_Description = New-Object system.Windows.Forms.Label -Property @{
+								autosize       = 1
+								Padding        = "31,0,0,0"
+								Text           = "$($lang.Wim_Image_Description): $($_.ImageDescription)"
+							}
+							$New_Wim_Image_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
+								Height         = 25
+								Width          = 450
+							}
+
+							$Group_Image_Sources.controls.AddRange((
+								$CheckBox,
+								$New_Wim_Image_Name,
+								$New_Wim_Image_Name_Wrap,
+								$New_Wim_Image_Description,
+								$New_Wim_Image_Description_Wrap
+							))
 						}
 
 						New-Variable -Scope global -Name "Queue_Process_Image_Select_$($Uid)" -Value $TempQueueProcessImageSelect -Force
@@ -1697,8 +1780,9 @@ Function Image_Assign_Event_Master
 						try {
 							Get-WindowsImage -ImagePath $NewFileFullPathMain -ErrorAction SilentlyContinue | ForEach-Object {
 								$Verify_Main_WIM += @{
-									Name   = $_.ImageName
-									Index  = $_.ImageIndex
+									Index            = $_.ImageIndex
+									Name             = $_.ImageName
+									ImageDescription = $_.ImageDescription
 								}
 							}
 						} catch {
@@ -1772,8 +1856,9 @@ Function Image_Assign_Event_Master
 											try {
 												Get-WindowsImage -ImagePath $test_mount_folder_Current -ErrorAction SilentlyContinue | ForEach-Object {
 													$Verify_Expand_WIM += @{
-														Name   = $_.ImageName
-														Index  = $_.ImageIndex
+														Name             = $_.ImageName
+														Index            = $_.ImageIndex
+														ImageDescription = $_.ImageDescription
 													}
 												}
 											} catch {
@@ -1913,8 +1998,9 @@ Function Image_Assign_Event_Master
 						try {
 							Get-WindowsImage -ImagePath $NewFileFullPathMain -ErrorAction SilentlyContinue | ForEach-Object {
 								$Verify_Main_WIM += @{
-									Name   = $_.ImageName
-									Index  = $_.ImageIndex
+									Index            = $_.ImageIndex
+									Name             = $_.ImageName
+									ImageDescription = $_.ImageDescription
 								}
 							}
 						} catch {
@@ -1975,8 +2061,9 @@ Function Image_Assign_Event_Master
 										try {
 											Get-WindowsImage -ImagePath $test_mount_folder_Current -ErrorAction SilentlyContinue | ForEach-Object {
 												$Verify_Expand_WIM += @{
-													Name   = $_.ImageName
-													Index  = $_.ImageIndex
+													Index            = $_.ImageIndex
+													Name             = $_.ImageName
+													ImageDescription = $_.ImageDescription
 												}
 											}
 										} catch {

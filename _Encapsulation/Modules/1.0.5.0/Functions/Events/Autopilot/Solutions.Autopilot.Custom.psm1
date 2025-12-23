@@ -538,11 +538,10 @@ Function Image_Assign_Autopilot_Master
 				$Group_Image_Sources.ContextMenuStrip = $UI_Main_Select_Assign_Group_Image_Sources
 				$paneel.controls.AddRange($Group_Image_Sources)
 
-				$RandomGuid = [guid]::NewGuid()
 				$wimlib = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\wimlib")\wimlib-imagex.exe"
-				$Export_To_New_Xml = Join-Path -Path $env:TEMP -ChildPath "$($RandomGuid).xml"
-
 				if (Test-Path -Path $wimlib -PathType Leaf) {
+					$RandomGuid = [guid]::NewGuid()
+					$Export_To_New_Xml = Join-Path -Path $env:TEMP -ChildPath "$($RandomGuid).xml"
 					$Arguments = "info ""$($item.Main.Path)\$($item.Main.ImageFileName).$($item.Main.Suffix)"" --extract-xml ""$($Export_To_New_Xml)"""
 					Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
 
@@ -551,8 +550,8 @@ Function Image_Assign_Autopilot_Master
 
 						ForEach ($empDetail in $empDetails.wim.IMAGE) {
 							$TempQueueProcessImageSelect += @{
-								Name               = $empDetail.NAME
 								Index              = $empDetail.index
+								Name               = $empDetail.NAME
 								ImageDescription   = $empDetail.DESCRIPTION
 								DISPLAYNAME        = $empDetail.DISPLAYNAME
 								DISPLAYDESCRIPTION = $empDetail.DISPLAYDESCRIPTION
@@ -561,15 +560,73 @@ Function Image_Assign_Autopilot_Master
 
 							$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
 								Name      = $empDetail.FLAGS
-								Height    = 125
+								Height    = 35
 								Width     = 448
 								Padding   = "16,0,0,0"
-								Text      = "$($lang.MountedIndex): $($empDetail.index)`n$($lang.Wim_Edition): $($empDetail.FLAGS)`n$($lang.Wim_Image_Name): $($empDetail.NAME)`n$($lang.Wim_Image_Description): $($empDetail.ImageDescription)`n$($lang.Wim_Display_Name): $($empDetail.DISPLAYNAME)`n$($lang.Wim_Display_Description): $($empDetail.DISPLAYDESCRIPTION)"
+								Text      = "$($lang.MountedIndex): $($empDetail.index)"
 								Tag       = $empDetail.index
 								Checked   = $True
 							}
 
-							$Group_Image_Sources.controls.AddRange($CheckBox)
+							$New_Wim_Edition   = New-Object system.Windows.Forms.Label -Property @{
+								autosize       = 1
+								Padding        = "31,0,0,0"
+								Text           = "$($lang.Wim_Edition): $($empDetail.FLAGS) / $($empDetail.WINDOWS.EDITIONID)"
+							}
+							$New_Wim_Edition_Wrap = New-Object system.Windows.Forms.Label -Property @{
+								Height         = 2
+								Width          = 450
+							}
+							$New_Wim_Image_Name = New-Object system.Windows.Forms.Label -Property @{
+								autosize       = 1
+								Padding        = "31,0,0,0"
+								Text           = "$($lang.Wim_Image_Name): $($empDetail.NAME)"
+							}
+							$New_Wim_Image_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
+								Height         = 2
+								Width          = 450
+							}
+							$New_Wim_Image_Description = New-Object system.Windows.Forms.Label -Property @{
+								autosize       = 1
+								Padding        = "31,0,0,0"
+								Text           = "$($lang.Wim_Image_Description): $($empDetail.DESCRIPTION)"
+							}
+							$New_Wim_Image_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
+								Height         = 2
+								Width          = 450
+							}
+							$New_Wim_Display_Name = New-Object system.Windows.Forms.Label -Property @{
+								autosize       = 1
+								Padding        = "31,0,0,0"
+								Text           = "$($lang.Wim_Display_Name): $($empDetail.DISPLAYNAME)"
+							}
+							$New_Wim_Display_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
+								Height         = 2
+								Width          = 450
+							}
+							$New_Wim_Display_Description = New-Object system.Windows.Forms.Label -Property @{
+								autosize       = 1
+								Padding        = "31,0,0,0"
+								Text           = "$($lang.Wim_Display_Description): $($empDetail.DISPLAYDESCRIPTION)"
+							}
+							$New_Wim_Display_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
+								Height         = 25
+								Width          = 450
+							}
+
+							$Group_Image_Sources.controls.AddRange((
+								$CheckBox,
+								$New_Wim_Edition,
+								$New_Wim_Edition_Wrap,
+								$New_Wim_Image_Name,
+								$New_Wim_Image_Name_Wrap,
+								$New_Wim_Image_Description,
+								$New_Wim_Image_Description_Wrap,
+								$New_Wim_Display_Name,
+								$New_Wim_Display_Name_Wrap,
+								$New_Wim_Display_Description,
+								$New_Wim_Display_Description_Wrap
+							))
 						}
 
 						New-Variable -Scope global -Name "Queue_Process_Image_Select_$($Uid)" -Value $TempQueueProcessImageSelect -Force
@@ -580,23 +637,49 @@ Function Image_Assign_Autopilot_Master
 						Get-WindowsImage -ImagePath $ImageFilePath -ErrorAction SilentlyContinue | ForEach-Object {
 							Get-WindowsImage -ImagePath $ImageFilePath -index $_.ImageIndex -ErrorAction SilentlyContinue | ForEach-Object {
 								$TempQueueProcessImageSelect += @{
-									Name      = $_.ImageName
-									Index     = $_.ImageIndex
-									EditionId = $_.EditionId
+									Index            = $_.ImageIndex
+									Name             = $_.ImageName
+									ImageDescription = $_.ImageDescription
+									EditionId        = $_.EditionId
 								}
 							}
 
 							$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
 								Name      = $_.EditionId
-								Height    = 55
+								Height    = 35
 								Width     = 448
 								Padding   = "16,0,0,0"
-								Text      = "$($lang.MountedIndex): $($_.ImageIndex)`n$($lang.Wim_Image_Name): $($_.ImageName)"
+								Text      = "$($lang.MountedIndex): $($_.ImageIndex)"
 								Tag       = $_.ImageIndex
 								Checked   = $True
 							}
 
-							$Group_Image_Sources.controls.AddRange($CheckBox)
+							$New_Wim_Image_Name = New-Object system.Windows.Forms.Label -Property @{
+								autosize       = 1
+								Padding        = "31,0,0,0"
+								Text           = "$($lang.Wim_Image_Name): $($_.ImageName)"
+							}
+							$New_Wim_Image_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
+								Height         = 2
+								Width          = 450
+							}
+							$New_Wim_Image_Description = New-Object system.Windows.Forms.Label -Property @{
+								autosize       = 1
+								Padding        = "31,0,0,0"
+								Text           = "$($lang.Wim_Image_Description): $($_.ImageDescription)"
+							}
+							$New_Wim_Image_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
+								Height         = 25
+								Width          = 450
+							}
+
+							$Group_Image_Sources.controls.AddRange((
+								$CheckBox,
+								$New_Wim_Image_Name,
+								$New_Wim_Image_Name_Wrap,
+								$New_Wim_Image_Description,
+								$New_Wim_Image_Description_Wrap
+							))
 						}
 
 						New-Variable -Scope global -Name "Queue_Process_Image_Select_$($Uid)" -Value $TempQueueProcessImageSelect -Force
@@ -3479,7 +3562,9 @@ Function Image_Assign_Autopilot_Master
 		<#
 			.获取选择的配置文件
 		#>
+		
 		$ConfigFile = ""
+		$Is_Eject_dependencies_ISO = $False
 		$UI_Main_Select_Sources_Config_Select.Controls | ForEach-Object {
 			if ($_ -is [System.Windows.Forms.RadioButton]) {
 				if ($_.Enabled) {
@@ -3524,7 +3609,7 @@ Function Image_Assign_Autopilot_Master
 				Height         = 35
 				Width          = 450
 				Padding        = "15,0,0,0"
-				Text           = $lang.Language
+				Text           = "$($lang.Language), $($lang.LanguageExtract): "
 			}
 			$UI_Main_Export_Event_Custom_Menu.controls.AddRange($GUIImageSelectFunctionLang)
 
@@ -3546,6 +3631,10 @@ Function Image_Assign_Autopilot_Master
 					}
 					$UI_Main_Export_Event_Custom_Menu.controls.AddRange($UI_Main_Pre_Rule_Not_Find)
 				} else {
+					if ($Autopilot.Deploy.Prerequisite.ExtractLanguage.Add.IsEjectISO) {
+						$Is_Eject_dependencies_ISO = $True
+					}
+
 					switch ($Autopilot.Deploy.Prerequisite.ExtractLanguage.Add.SaveTo.Schome) {
 						"Custom" {
 							#region Custom
@@ -3781,6 +3870,10 @@ Function Image_Assign_Autopilot_Master
 					}
 					$UI_Main_Export_Event_Custom_Menu.controls.AddRange($UI_Main_Pre_Rule_Not_Find)
 				} else {
+					if ($Autopilot.Deploy.Prerequisite.ExtractLanguage.Del.IsEjectISO) {
+						$Is_Eject_dependencies_ISO = $True
+					}
+
 					switch ($Autopilot.Deploy.Prerequisite.ExtractLanguage.Del.SaveTo.Schome) {
 						"Custom" {
 							#region Custom
@@ -3996,6 +4089,42 @@ Function Image_Assign_Autopilot_Master
 					}
 				}
 				#endregion
+
+			<#
+					.提取语言结束后
+			#>
+			$Autopilot_Assign_Extract_Reaf = New-Object system.Windows.Forms.Label -Property @{
+				Height         = 30
+				Width          = 435
+				Padding        = "31,0,0,0"
+				margin         = "0,25,0,0"
+				Text           = $lang.Functions_Rear
+			}
+
+			$Autopilot_Assign_Extract_Reaf_EJect = New-Object System.Windows.Forms.CheckBox -Property @{
+				Height    = 30
+				Width     = 435
+				Padding   = "55,0,0,0"
+				Text      = $lang.Eject_dependencies_ISO
+				Tag       = "Popup_Dependencies_ISO"
+			}
+			$Autopilot_Assign_Extract_Reaf_EJect_Tips = New-Object system.Windows.Forms.Label -Property @{
+				Height         = 35
+				Width          = 435
+				Padding        = "70,0,0,0"
+				Text           = "ISO: $($lang.Unzip_Language), $($lang.Unzip_Fod)"
+			}
+			$UI_Main_Export_Event_Custom_Menu.controls.AddRange((
+				$Autopilot_Assign_Extract_Reaf,
+				$Autopilot_Assign_Extract_Reaf_EJect,
+				$Autopilot_Assign_Extract_Reaf_EJect_Tips
+			))
+
+			if ($Is_Eject_dependencies_ISO) {
+				$Autopilot_Assign_Extract_Reaf_EJect.Checked = $true
+			} else {
+				$Autopilot_Assign_Extract_Reaf_EJect.Checked = $False
+			}
 
 		<#
 			.生成 ISO
@@ -4792,19 +4921,14 @@ Function Image_Assign_Autopilot_Master
 							.导入：语言，添加、删除后，判断是否：
 							 提取完成后弹出已挂载的 ISO，规则
 						#>
-							<#
-								.导入：语言：添加
-							#>
-							if ($Autopilot.Deploy.Prerequisite.ExtractLanguage.Add.IsEjectISO) {
-								Autopilot_Import_Eject_ISO -GUID $GetDefaultSelectLabel
-							}
-
-							<#
-								.导入：语言：删除
-							#>
-							if ($Autopilot.Deploy.Prerequisite.ExtractLanguage.Del.IsEjectISO) {
-								Autopilot_Import_Eject_ISO -GUID $GetDefaultSelectLabel
-							}
+						Write-Host "`n  $($lang.Eject_dependencies_ISO): $($lang.Unzip_Language), $($lang.Unzip_Fod)" -ForegroundColor Yellow
+						Write-Host "  $('-' * 80)"
+						if ($Select -contains "Popup_Dependencies_ISO") {
+							write-host "  $($lang.Prerequisite_satisfy)" -ForegroundColor Green
+							Autopilot_Import_Eject_ISO -GUID $GetDefaultSelectLabel
+						} else {
+							write-host "  $($lang.Prerequisite_Not_satisfied)" -ForegroundColor Red
+						}
 
 						<#
 							.刷新先决条件 ISO
@@ -4828,6 +4952,7 @@ Function Image_Assign_Autopilot_Master
 						Rule = ""
 					}
 				}
+
 
 				<#
 					.附加版本

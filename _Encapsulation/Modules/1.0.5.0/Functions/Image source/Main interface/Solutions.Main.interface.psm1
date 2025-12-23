@@ -2173,6 +2173,7 @@ Function Image_Select
 				@{ Path = @("Image_Select_Mount_Shortcuts");       Lang = "$($lang.Sel_Primary_Key): $($lang.Mount)"; }
 				@{ Path = @("Image_Eject_Save_Current");           Lang = "$($lang.Sel_Primary_Key): $($lang.Save)"; }
 				@{ Path = @("Image_Eject_Dont_Save_Current");      Lang = "$($lang.Sel_Primary_Key): $($lang.Unmount)"; }
+				@{ Path = @("Image_Additional_Edition_UI");        Lang = "$($lang.Sel_Primary_Key): $($lang.AdditionalEdition)"; }
 			)
 		}
 
@@ -3238,8 +3239,9 @@ Function Image_Select
 						try {
 							Get-WindowsImage -ImagePath $ImageFile -ErrorAction SilentlyContinue | ForEach-Object {
 								$Verify_New_WIM += @{
-									Name   = $_.ImageName
-									Index  = $_.ImageIndex
+									Index            = $_.ImageIndex
+									Name             = $_.ImageName
+									ImageDescription = $_.ImageDescription
 								}
 							}
 						} catch {
@@ -9919,7 +9921,7 @@ Function Image_Select
 						Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)" -name "MountToRouting" -value $Global:Mount_To_Route -String
 						Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)" -name "MountToRoutingTemp" -value $Global:Mount_To_RouteTemp -String
 
-						Event_Reset_Variable -Scope "Init"
+						Event_Reset_Variable -Scope "Init", "NoRefresh"
 
 						$UI_Main.Close()
 

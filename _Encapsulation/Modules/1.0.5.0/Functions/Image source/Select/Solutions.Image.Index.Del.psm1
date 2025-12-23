@@ -197,10 +197,10 @@ Function Image_Select_Del_UI
 	
 	ForEach ($item in $Global:Primary_Key_Image.Index) {
 		$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
-			Height    = 105
-			Width     = 450
-			margin    = "0,0,0,18"
-			Text      = "$($lang.MountedIndex): $($item.ImageIndex)`n$($lang.Wim_Image_Name): $($item.ImageName)`n$($lang.Wim_Image_Description): $($item.ImageDescription)`n$($lang.Wim_Display_Name): $($item.DISPLAYNAME)`n$($lang.Wim_Display_Description): $($item.DISPLAYDESCRIPTION)"
+			Height    = 35
+			Width     = 448
+			Padding   = "16,0,0,0"
+			Text      = "$($lang.MountedIndex): $($item.ImageIndex)"
 			Tag       = $item.ImageIndex
 			add_Click = {
 				$UI_Main_Error.Text = ""
@@ -208,7 +208,66 @@ Function Image_Select_Del_UI
 			}
 		}
 
-		$UI_Main_Menu.controls.AddRange($CheckBox)
+		$New_Wim_Edition   = New-Object system.Windows.Forms.Label -Property @{
+			autosize       = 1
+			Padding        = "31,0,0,0"
+			Text           = "$($lang.Wim_Edition): $($item.EditionId)"
+		}
+		$New_Wim_Edition_Wrap = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 2
+			Width          = 450
+		}
+		$New_Wim_Image_Name = New-Object system.Windows.Forms.Label -Property @{
+			autosize       = 1
+			Padding        = "31,0,0,0"
+			Text           = "$($lang.Wim_Image_Name): $($item.ImageName)"
+		}
+		$New_Wim_Image_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 2
+			Width          = 450
+		}
+		$New_Wim_Image_Description = New-Object system.Windows.Forms.Label -Property @{
+			autosize       = 1
+			Padding        = "31,0,0,0"
+			Text           = "$($lang.Wim_Image_Description): $($item.ImageDescription)"
+		}
+		$New_Wim_Image_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 2
+			Width          = 450
+		}
+		$New_Wim_Display_Name = New-Object system.Windows.Forms.Label -Property @{
+			autosize       = 1
+			Padding        = "31,0,0,0"
+			Text           = "$($lang.Wim_Display_Name): $($item.DISPLAYNAME)"
+		}
+		$New_Wim_Display_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 2
+			Width          = 450
+		}
+		$New_Wim_Display_Description = New-Object system.Windows.Forms.Label -Property @{
+			autosize       = 1
+			Padding        = "31,0,0,0"
+			Text           = "$($lang.Wim_Display_Description): $($item.DISPLAYDESCRIPTION)"
+		}
+		$New_Wim_Display_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 25
+			Width          = 450
+		}
+
+		$UI_Main_Menu.controls.AddRange((
+			$CheckBox,
+			$New_Wim_Edition,
+			$New_Wim_Edition_Wrap,
+			$New_Wim_Image_Name,
+			$New_Wim_Image_Name_Wrap,
+			$New_Wim_Image_Description,
+			$New_Wim_Image_Description_Wrap,
+			$New_Wim_Display_Name,
+			$New_Wim_Display_Name_Wrap,
+			$New_Wim_Display_Description,
+			$New_Wim_Display_Description_Wrap,
+			$UI_Main_Rule_Details_View
+		))
 	}
 
 	<#

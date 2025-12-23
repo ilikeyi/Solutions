@@ -21,6 +21,7 @@
 	Eject_Cdrom_Is_Other            = 已挂载其它 ISO
 	Eject_Cdrom_Not_Mount           = 没有挂载其它 ISO
 	Eject_Cdrom                     = 弹出所有已挂载 ISO
+	Eject_dependencies_ISO          = 弹出依赖的 ISO
 
 	Import_Event_Public             = 导入公共事件
 	Import_Event_Clear_Global       = 清除所有全局公共事件

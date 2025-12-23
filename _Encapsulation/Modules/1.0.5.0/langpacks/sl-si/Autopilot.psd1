@@ -21,6 +21,7 @@
 	Eject_Cdrom_Is_Other            = Drugi ISO-ji nameščeni
 	Eject_Cdrom_Not_Mount           = Noben drug ISO ni nameščen
 	Eject_Cdrom                     = Izvrzi vse nameščene ISO-je
+	Eject_dependencies_ISO          = Pojavno odvisen ISO
 
 	Import_Event_Public             = Uvoz javnih dogodkov
 	Import_Event_Clear_Global       = Počisti vse globalne javne dogodke

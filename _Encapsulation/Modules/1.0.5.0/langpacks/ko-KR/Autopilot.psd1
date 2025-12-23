@@ -21,6 +21,7 @@
 	Eject_Cdrom_Is_Other            = 기타 ISO가 탑재됨
 	Eject_Cdrom_Not_Mount           = 다른 ISO는 마운트되지 않습니다.
 	Eject_Cdrom                     = 마운트된 모든 ISO 꺼내기
+	Eject_dependencies_ISO          = 팝업 종속 ISO
 
 	Import_Event_Public             = 공개 이벤트 가져오기
 	Import_Event_Clear_Global       = 모든 글로벌 공개 이벤트 지우기

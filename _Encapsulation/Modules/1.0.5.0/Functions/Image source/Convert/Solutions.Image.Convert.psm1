@@ -1179,6 +1179,9 @@ Function Image_Convert_Process
 					Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 					Write-Host $_.ImageName -ForegroundColor Yellow
 
+					Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+					Write-Host $_.ImageDescription -ForegroundColor Yellow
+
 					Write-Host "  $($lang.Rebuilding): " -NoNewline
 					try {
 						Export-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Export.log" -SourceImagePath $Install_ESD -SourceIndex $_.ImageIndex -DestinationImagePath $Install_wim -CompressionType $Global:Queue_Convert_Tasks.Compression -CheckIntegrity -ErrorAction SilentlyContinue | Out-Null
@@ -1339,6 +1342,9 @@ Function Image_Convert_Process
 
 					Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 					Write-Host $_.ImageName -ForegroundColor Yellow
+
+					Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+					Write-Host $_.ImageDescription -ForegroundColor Yellow
 
 					Write-Host "  $($lang.Rebuilding): " -NoNewline
 
@@ -1517,6 +1523,9 @@ Function Image_Convert_Process
 
 					Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 					Write-Host $_.ImageName -ForegroundColor Yellow
+
+					Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+					Write-Host $_.ImageDescription -ForegroundColor Yellow
 
 					Write-Host "  $($lang.Rebuilding): " -NoNewline
 					$SaveFileToSwmFull = Join-Path -Path $Global:Image_source -ChildPath "Sources\install*.swm"

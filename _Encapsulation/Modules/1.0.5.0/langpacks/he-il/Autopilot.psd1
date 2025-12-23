@@ -21,6 +21,7 @@
 	Eject_Cdrom_Is_Other            = ISOs אחרים מותקן
 	Eject_Cdrom_Not_Mount           = לא מותקנות ISOs אחרים
 	Eject_Cdrom                     = הוצא את כל ה-ISO המותקנים
+	Eject_dependencies_ISO          = ISO תלוי קופץ
 
 	Import_Event_Public             = ייבוא אירועים ציבוריים
 	Import_Event_Clear_Global       = נקה את כל האירועים הציבוריים העולמיים

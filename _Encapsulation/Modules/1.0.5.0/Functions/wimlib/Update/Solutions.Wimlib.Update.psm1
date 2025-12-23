@@ -831,7 +831,7 @@ Function Wimlib_Extract_And_Update
 						.请选择需要同步的索引号
 					#> 
 					$UI_Main_Sync_To_Wim_Name = New-Object system.Windows.Forms.Label -Property @{
-						Height         = 40
+						Height         = 30
 						Width          = 530
 						margin         = "0,40,0,0"
 						Text           = $lang.Pri_Key_Update_To
@@ -841,8 +841,6 @@ Function Wimlib_Extract_And_Update
 						autosize       = 1
 						autoSizeMode   = 1
 						autoScroll     = $False
-						Padding        = "22,0,8,0"
-						margin         = "0,0,0,20"
 					}
 
 					<#
@@ -850,18 +848,77 @@ Function Wimlib_Extract_And_Update
 					#>
 					ForEach ($item in $Global:Primary_Key_Image.Index) {
 						$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
-							Height    = 105
-							Width     = 500
-							Text      = "$($lang.MountedIndex): $($item.ImageIndex)`n$($lang.Wim_Image_Name): $($item.ImageName)`n$($lang.Wim_Image_Description): $($item.ImageDescription)`n$($lang.Wim_Display_Name): $($item.DISPLAYNAME)`n$($lang.Wim_Display_Description): $($item.DISPLAYDESCRIPTION)"
+							Height    = 35
+							Width     = 448
+							Padding   = "16,0,0,0"
+							Text      = "$($lang.MountedIndex): $($item.ImageIndex)"
 							Tag       = $item.ImageIndex
-							margin    = "0,0,0,15"
 							add_Click = {
 								$UI_Main_Error.Text = ""
 								$UI_Main_Error_Icon.Image = $null
 							}
 						}
-
-						$UI_Main_Sync_To_Wim.controls.AddRange($CheckBox)
+					
+						$New_Wim_Edition   = New-Object system.Windows.Forms.Label -Property @{
+							autosize       = 1
+							Padding        = "31,0,0,0"
+							Text           = "$($lang.Wim_Edition): $($item.EditionId)"
+						}
+						$New_Wim_Edition_Wrap = New-Object system.Windows.Forms.Label -Property @{
+							Height         = 2
+							Width          = 450
+						}
+						$New_Wim_Image_Name = New-Object system.Windows.Forms.Label -Property @{
+							autosize       = 1
+							Padding        = "31,0,0,0"
+							Text           = "$($lang.Wim_Image_Name): $($item.ImageName)"
+						}
+						$New_Wim_Image_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
+							Height         = 2
+							Width          = 450
+						}
+						$New_Wim_Image_Description = New-Object system.Windows.Forms.Label -Property @{
+							autosize       = 1
+							Padding        = "31,0,0,0"
+							Text           = "$($lang.Wim_Image_Description): $($item.ImageDescription)"
+						}
+						$New_Wim_Image_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
+							Height         = 2
+							Width          = 450
+						}
+						$New_Wim_Display_Name = New-Object system.Windows.Forms.Label -Property @{
+							autosize       = 1
+							Padding        = "31,0,0,0"
+							Text           = "$($lang.Wim_Display_Name): $($item.DISPLAYNAME)"
+						}
+						$New_Wim_Display_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
+							Height         = 2
+							Width          = 450
+						}
+						$New_Wim_Display_Description = New-Object system.Windows.Forms.Label -Property @{
+							autosize       = 1
+							Padding        = "31,0,0,0"
+							Text           = "$($lang.Wim_Display_Description): $($item.DISPLAYDESCRIPTION)"
+						}
+						$New_Wim_Display_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
+							Height         = 25
+							Width          = 450
+						}
+					
+						$UI_Main_Sync_To_Wim.controls.AddRange((
+							$CheckBox,
+							$New_Wim_Edition,
+							$New_Wim_Edition_Wrap,
+							$New_Wim_Image_Name,
+							$New_Wim_Image_Name_Wrap,
+							$New_Wim_Image_Description,
+							$New_Wim_Image_Description_Wrap,
+							$New_Wim_Display_Name,
+							$New_Wim_Display_Name_Wrap,
+							$New_Wim_Display_Description,
+							$New_Wim_Display_Description_Wrap,
+							$UI_Main_Rule_Details_View
+						))
 					}
 
 					<#
@@ -997,8 +1054,9 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 
 					Get-WindowsImage -ImagePath $MasterFile -ErrorAction SilentlyContinue | ForEach-Object {
 						$TempQueueProcessImageSelect += @{
-							Name   = $_.ImageName
-							Index  = $_.ImageIndex
+							Index            = $_.ImageIndex
+							Name             = $_.ImageName
+							ImageDescription = $_.ImageDescription
 						}
 					}
 				} catch {
@@ -1018,6 +1076,9 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 						Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 						Write-Host $item.Name -ForegroundColor Yellow
 
+						Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+						Write-Host $item.ImageDescription -ForegroundColor Yellow
+
 						Write-Host
 					}
 
@@ -1029,6 +1090,9 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 
 						Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 						Write-Host $item.Name -ForegroundColor Yellow
+
+						Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+						Write-Host $item.ImageDescription -ForegroundColor Yellow
 
 						$Arguments = "update ""$($MasterFile)"" $($item.Index) --command=""add '$($Temp_Expand_Rule.FileName)' '$($Temp_Expand_Rule.UpdatePath)'"""
 						Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
@@ -1055,6 +1119,9 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 					Write-Host "  $($lang.Wim_Image_Name): " -noNewline
 					Write-Host $wimlib_item_Mount.IName -ForegroundColor Yellow
 
+					Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+					Write-Host $wimlib_item_Mount.ImageDescription -ForegroundColor Yellow
+
 					Write-Host
 				}
 
@@ -1066,6 +1133,9 @@ Function Image_Queue_Wimlib_Process_Wim_Main
 
 					Write-Host "  $($lang.Wim_Image_Name): " -noNewline
 					Write-Host $wimlib_item_Mount.IName -ForegroundColor Yellow
+
+					Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+					Write-Host $wimlib_item_Mount.ImageDescription -ForegroundColor Yellow
 
 					$Arguments = "update ""$($MasterFile)"" $($wimlib_item_Mount.Index) --command=""add '$($Temp_Expand_Rule.FileName)' '$($Temp_Expand_Rule.UpdatePath)'"""
 					Write-Host " $($lang.LXPsWaitAddUpdate) " -NoNewline -BackgroundColor White -ForegroundColor Black

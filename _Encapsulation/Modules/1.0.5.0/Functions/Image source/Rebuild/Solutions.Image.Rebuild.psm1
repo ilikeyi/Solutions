@@ -33,6 +33,9 @@ Function Rebuild_Image_File
 			Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 			Write-Host $_.ImageName -ForegroundColor Yellow
 
+			Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+			Write-Host $_.ImageDescription -ForegroundColor Yellow
+
 			Write-Host
 		}
 
@@ -46,6 +49,9 @@ Function Rebuild_Image_File
 
 			Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
 			Write-Host $_.ImageName -ForegroundColor Yellow
+
+			Write-Host "  $($lang.Wim_Image_Description): " -NoNewline
+			Write-Host $_.ImageDescription -ForegroundColor Yellow
 
 			if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 				Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow

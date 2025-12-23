@@ -21,6 +21,7 @@
 	Eject_Cdrom_Is_Other            = Uzstādīti citi ISO
 	Eject_Cdrom_Not_Mount           = Citi ISO nav uzstādīti
 	Eject_Cdrom                     = Izstumt visus uzstādītos ISO
+	Eject_dependencies_ISO          = Uznirstošais logs ar atkarību no ISO
 
 	Import_Event_Public             = Importēt publiskos pasākumus
 	Import_Event_Clear_Global       = Notīrīt visus globālos publiskos pasākumus
