@@ -8,6 +8,7 @@
 	IsNewScheme                     = Solución disponible
 	AE_IsCheck                      = Comprobar eventos de la versión del complemento
 	AE_IsRuning                     = Eventos de la versión del complemento disponibles
+	AE_Not_Match                    = No se encontró ningún ID de versión coincidente
 	AE_NoEvent                      = No se encontraron eventos de la versión del complemento
 	AE_Rename                       = Permitir renombrar todos los detalles
 	AE_Exclude                      = Excluir versiones del complemento

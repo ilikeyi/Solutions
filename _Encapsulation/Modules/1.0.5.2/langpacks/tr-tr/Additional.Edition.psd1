@@ -8,6 +8,7 @@
 	IsNewScheme                     = Mevcut Çözüm
 	AE_IsCheck                      = Eklenti Sürüm Olaylarını Kontrol Et
 	AE_IsRuning                     = Mevcut Eklenti Sürüm Olayları
+	AE_Not_Match                    = Eşleşen sürüm kimliği bulunamadı
 	AE_NoEvent                      = Eklenti Sürüm Olayı Bulunamadı
 	AE_Rename                       = Tüm Ayrıntıların Yeniden Adlandırılmasına İzin Ver
 	AE_Exclude                      = Eklenti Sürümlerini Hariç Tut

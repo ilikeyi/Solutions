@@ -8,6 +8,7 @@
 	IsNewScheme                     = Dostępne rozwiązanie
 	AE_IsCheck                      = Sprawdź zdarzenia dotyczące wersji dodatku
 	AE_IsRuning                     = Dostępne zdarzenia dotyczące wersji dodatku
+	AE_Not_Match                    = Nie znaleziono pasującego identyfikatora wersji
 	AE_NoEvent                      = Nie znaleziono zdarzeń dotyczących wersji dodatku
 	AE_Rename                       = Zezwalaj na zmianę nazw wszystkich szczegółów
 	AE_Exclude                      = Wyklucz wersje dodatku

@@ -3,11 +3,12 @@
 	# English (United States)
 
 	AdditionalEdition               = 附加版
-	AE_Required_EditionID           = 所需版本 ID
+	AE_Required_EditionID           = 所需版 ID
 	AE_New_EditionID                = 新版本 ID
 	IsNewScheme                     = 有可用的方案
 	AE_IsCheck                      = 检查是否有附加版事件
 	AE_IsRuning                     = 有可用的附加版事件
+	AE_Not_Match                    = 没有匹配到所需版 ID
 	AE_NoEvent                      = 未检查到有附加版本事件
 	AE_Rename                       = 允许重命名所有详细
 	AE_Exclude                      = 排除附加版本

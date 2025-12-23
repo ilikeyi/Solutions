@@ -8,6 +8,7 @@
 	IsNewScheme                     = Saadaval olev lahendus
 	AE_IsCheck                      = Kontrolli lisandmooduli versiooni sündmusi
 	AE_IsRuning                     = Saadaval olevad lisandmooduli versiooni sündmused
+	AE_Not_Match                    = Vastavat versiooni ID-d ei leitud
 	AE_NoEvent                      = Lisandmooduli versiooni sündmusi ei leitud
 	AE_Rename                       = Luba kõigi üksikasjade ümbernimetamine
 	AE_Exclude                      = Välista lisandmooduli versioonid

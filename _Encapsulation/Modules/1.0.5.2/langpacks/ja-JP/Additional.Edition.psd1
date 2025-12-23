@@ -8,6 +8,7 @@
 	IsNewScheme                     = 利用可能なソリューション
 	AE_IsCheck                      = アドオンバージョンイベントの確認
 	AE_IsRuning                     = 利用可能なアドオンバージョンイベント
+	AE_Not_Match                    = 一致するバージョンIDが見つかりません
 	AE_NoEvent                      = アドオンバージョンイベントが見つかりません
 	AE_Rename                       = すべての詳細の名前変更を許可
 	AE_Exclude                      = アドオンバージョンを除外

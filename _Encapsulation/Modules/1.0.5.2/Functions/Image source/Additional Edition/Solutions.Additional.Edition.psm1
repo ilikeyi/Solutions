@@ -773,7 +773,7 @@ Function Image_Additional_Edition_UI
 
 		$CheckboxGroup     = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 			Name           = $GUID
-			Height         = 600
+			Height         = 650
 			Width          = 470
 			BorderStyle    = 0
 			autoSizeMode   = 0
@@ -810,6 +810,20 @@ Function Image_Additional_Edition_UI
 			Text           = "$($lang.AE_New_EditionID): $($NewEditionId)"
 			Tag            = $NewEditionId
 		}
+
+		$EditionId_Name_Status = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 30
+			Width          = 450
+			Padding        = "35,0,0,0"
+			Text           = "$($lang.LXPsWaitAdd): "
+		}
+
+		if ($Script:GetEditionID -contains $NewEditionId) {
+			$EditionId_Name_Status.Text += $lang.Prerequisite_satisfy
+		} else {
+			$EditionId_Name_Status.Text += $lang.AE_Not_Match
+		}
+
 		$EditionId_Add_To_Exclude_Nomount = New-Object system.Windows.Forms.LinkLabel -Property @{
 			Height         = 30
 			Width          = 450
@@ -834,7 +848,7 @@ Function Image_Additional_Edition_UI
 					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
 					$UI_Main_Error.Text = "$($lang.Existed): $($This.Tag)"
 				} else {
-					$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
+					$CheckBoxNew = New-Object System.Windows.Forms.CheckBox -Property @{
 						Height    = 40
 						Width     = 445
 						Text      = $this.Tag
@@ -845,7 +859,7 @@ Function Image_Additional_Edition_UI
 						}
 					}
 
-					$UI_Main_Select_Function.controls.AddRange($CheckBox)
+					$UI_Main_Select_Function.controls.AddRange($CheckBoxNew)
 
 					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 					$UI_Main_Error.Text = "$($lang.AddTo): $($This.Tag), $($lang.Done)"
@@ -958,6 +972,7 @@ Function Image_Additional_Edition_UI
 			$CheckBox,
 			$Requiredversion_Name,
 			$EditionId_Name,
+			$EditionId_Name_Status,
 			$EditionId_Add_To_Exclude_Nomount,
 			$EditionId_Name_Wrap,
 			$Productkey_Name,
@@ -1656,7 +1671,7 @@ Function Image_Additional_Edition_UI
 		$GetSaveLabelGUID = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\MVS" -Name "Kernel" -ErrorAction SilentlyContinue
 		$UI_Main_Replace_Custom.Text = "Windows $($GetSaveLabelGUID)"
 	} else {
-
+		$UI_Main_Replace_Custom.Text = "Windows 11"
 	}
 	
 	$UI_Main_AdvOption = New-Object System.Windows.Forms.Label -Property @{
@@ -1867,6 +1882,35 @@ Function Image_Additional_Edition_UI
 	})
 	$UI_Main_Menu.ContextMenuStrip = $UI_Main_Menu_Select
 	#endregion
+
+	$Script:GetEditionID = @()
+	$wimlib = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\wimlib")\wimlib-imagex.exe"
+	if (Test-Path -Path $wimlib -PathType Leaf) {
+		$RandomGuid = [guid]::NewGuid()
+		$Export_To_New_Xml = Join-Path -Path $env:TEMP -ChildPath "$($RandomGuid).xml"
+		$Arguments = "info ""$($Global:Primary_Key_Image.FullPath)"" --extract-xml ""$($Export_To_New_Xml)"""
+		Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
+
+		if (Test-Path -Path $Export_To_New_Xml -PathType Leaf) {
+			[XML]$empDetails = Get-Content $Export_To_New_Xml
+
+			ForEach ($empDetail in $empDetails.wim.IMAGE) {
+				$Script:GetEditionID += $empDetail.FLAGS
+			}
+			Remove-Item -Path $Export_To_New_Xml
+		}
+	} else {
+		try {
+			Get-WindowsImage -ImagePath $Global:Primary_Key_Image.FullPath -ErrorAction SilentlyContinue | ForEach-Object {
+				Get-WindowsImage -ImagePath $Global:Primary_Key_Image.FullPath -index $_.ImageIndex -ErrorAction SilentlyContinue | ForEach-Object {
+					$Script:GetEditionID += $_.EditionId
+				}
+			}
+		} catch {
+			Write-hsot "$($lang.SelectFileFormatError): $($Global:Primary_Key_Image.FullPath)" -ForegroundColor Red
+			return
+		}
+	}
 
 	$AE_Exclude_Default_Tasks = @(
 		"Core"

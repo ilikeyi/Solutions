@@ -8,6 +8,7 @@
 	IsNewScheme                     = Solution disponible
 	AE_IsCheck                      = Rechercher les événements liés aux versions des modules complémentaires
 	AE_IsRuning                     = Événements liés aux versions des modules complémentaires disponibles
+	AE_Not_Match                    = Aucune version correspondante trouvée
 	AE_NoEvent                      = Aucun événement lié aux versions des modules complémentaires trouvé
 	AE_Rename                       = Autoriser le renommage de tous les détails
 	AE_Exclude                      = Exclure les versions des modules complémentaires

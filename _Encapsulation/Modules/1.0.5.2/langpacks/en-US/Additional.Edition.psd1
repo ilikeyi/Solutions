@@ -8,6 +8,7 @@
 	IsNewScheme                     = Solutions are available
 	AE_IsCheck                      = Check for any additional events
 	AE_IsRuning                     = Additional versions of the event are available
+	AE_Not_Match                    = No matching edition ID found
 	AE_NoEvent                      = No additional version events were detected
 	AE_Rename                       = Allow renaming all details
 	AE_Exclude                      = Exclude additional edition

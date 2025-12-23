@@ -8,6 +8,7 @@
 	IsNewScheme                     = Saatavilla oleva ratkaisu
 	AE_IsCheck                      = Tarkista lisäosan versiotapahtumat
 	AE_IsRuning                     = Saatavilla olevat lisäosan versiotapahtumat
+	AE_Not_Match                    = Vastaavaa versiotunnusta ei löytynyt
 	AE_NoEvent                      = Lisäosan versiotapahtumia ei löytynyt
 	AE_Rename                       = Salli kaikkien tietojen uudelleennimeäminen
 	AE_Exclude                      = Sulje pois lisäosan versiot

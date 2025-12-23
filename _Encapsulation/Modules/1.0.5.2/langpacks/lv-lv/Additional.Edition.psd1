@@ -8,6 +8,7 @@
 	IsNewScheme                     = Pieejamais risinājums
 	AE_IsCheck                      = Pārbaudīt papildinājuma versijas notikumus
 	AE_IsRuning                     = Pieejamie papildinājuma versijas notikumi
+	AE_Not_Match                    = Nav atrasts atbilstošs versijas ID
 	AE_NoEvent                      = Nav atrasts neviens papildinājuma versijas notikums
 	AE_Rename                       = Atļaut visu detaļu pārdēvēšanu
 	AE_Exclude                      = Izslēgt papildinājuma versijas

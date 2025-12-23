@@ -132,7 +132,7 @@ Function Image_Additional_Edition_Process
 					}
 				}
 			} catch {
-				Write-hsot "$($lang.SelectFileFormatError): $($ImageFiles)" -ForegroundColor Red
+				Write-hsot "$($lang.SelectFileFormatError): $($Global:Primary_Key_Image.FullPath)" -ForegroundColor Red
 				return
 			}
 		}
@@ -153,7 +153,7 @@ Function Image_Additional_Edition_Process
 				Write-Host
 			}
 		} else {
-			Write-hsot "$($lang.SelectFileFormatError): $($ImageFiles)" -ForegroundColor Red
+			Write-hsot "$($lang.SelectFileFormatError): $($Global:Primary_Key_Image.FullPath)" -ForegroundColor Red
 			return
 		}
 

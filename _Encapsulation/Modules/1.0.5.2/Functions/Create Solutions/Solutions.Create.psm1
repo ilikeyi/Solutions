@@ -980,7 +980,6 @@ volume
 			$Group_Add_Command_Windows_PE
 		))
 
-
 		ForEach ($item in $Global:Pre_Config_Command_Rules) {
 			if ($UI_Command_Not_Class.Checked) {
 				$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{

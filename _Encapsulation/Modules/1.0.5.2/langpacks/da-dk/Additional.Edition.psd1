@@ -8,6 +8,7 @@
 	IsNewScheme                     = Tilgængelig løsning
 	AE_IsCheck                      = Kontroller hændelser for tilføjelsesversioner
 	AE_IsRuning                     = Hændelser for tilgængelige tilføjelsesversioner
+	AE_Not_Match                    = Intet matchende versions-ID fundet
 	AE_NoEvent                      = Ingen hændelser for tilføjelsesversioner fundet
 	AE_Rename                       = Tillad omdøbning af alle detaljer
 	AE_Exclude                      = Udeluk tilføjelsesversioner

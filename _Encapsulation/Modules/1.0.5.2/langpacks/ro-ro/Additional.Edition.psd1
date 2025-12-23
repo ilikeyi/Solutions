@@ -8,6 +8,7 @@
 	IsNewScheme                     = Soluție disponibilă
 	AE_IsCheck                      = Verificare evenimente versiuni supliment
 	AE_IsRuning                     = Evenimente versiuni supliment disponibile
+	AE_Not_Match                    = Nu a fost găsit niciun ID de versiune potrivit
 	AE_NoEvent                      = Nu au fost găsite evenimente versiuni supliment
 	AE_Rename                       = Permite redenumirea tuturor detaliilor
 	AE_Exclude                      = Exclude versiuni supliment

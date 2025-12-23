@@ -2210,7 +2210,7 @@ Function InBox_Apps_Add_Match_Process
 					Write-Host "  $('.' * 80)"
 					foreach ($itemdp in $DependencyPackage) {
 						Write-Host "  $($lang.RuleFileType): ".PadRight(25) -NoNewline -ForegroundColor Yellow
-						Write-Host $itemdp -ForegroundColor Yellow
+						Write-Host $itemdp -ForegroundColor Green
 						Write-Host "  $($lang.Instl_Dependency_Package_Group): ".PadRight(25) -NoNewline -ForegroundColor Yellow
 
 						$FlagMatch = $True

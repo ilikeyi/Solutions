@@ -8,6 +8,7 @@
 	IsNewScheme                     = Dostupné riešenie
 	AE_IsCheck                      = Skontrolovať udalosti verzie doplnku
 	AE_IsRuning                     = Dostupné udalosti verzie doplnku
+	AE_Not_Match                    = Nenašlo sa žiadne zodpovedajúce ID verzie
 	AE_NoEvent                      = Nenašli sa žiadne udalosti verzie doplnku
 	AE_Rename                       = Povoliť premenovanie všetkých podrobností
 	AE_Exclude                      = Vylúčiť verzie doplnku

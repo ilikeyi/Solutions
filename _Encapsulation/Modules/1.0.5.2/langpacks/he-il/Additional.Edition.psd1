@@ -8,6 +8,7 @@
 	IsNewScheme                     = פתרון זמין
 	AE_IsCheck                      = בדוק אירועי גרסת תוסף
 	AE_IsRuning                     = אירועי גרסת תוסף זמינה
+	AE_Not_Match                    = לא נמצא מזהה גרסה תואם
 	AE_NoEvent                      = לא נמצאו אירועי גרסת תוסף
 	AE_Rename                       = אפשר שינוי שם של כל הפרטים
 	AE_Exclude                      = אל תכלול גרסאות תוספים

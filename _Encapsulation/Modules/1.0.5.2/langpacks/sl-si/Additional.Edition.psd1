@@ -8,6 +8,7 @@
 	IsNewScheme                     = Razpoložljiva rešitev
 	AE_IsCheck                      = Preveri dogodke različice dodatka
 	AE_IsRuning                     = Razpoložljivi dogodki različice dodatka
+	AE_Not_Match                    = Ni najdenega ujemajočega se ID-ja različice
 	AE_NoEvent                      = Ni najdenih dogodkov različice dodatka
 	AE_Rename                       = Dovoli preimenovanje vseh podrobnosti
 	AE_Exclude                      = Izključi različice dodatka

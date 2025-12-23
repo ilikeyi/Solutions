@@ -8,6 +8,7 @@
 	IsNewScheme                     = 有可用的方案
 	AE_IsCheck                      = 檢查是否有附加版事件
 	AE_IsRuning                     = 有可用的附加版事件
+	AE_Not_Match                    = 沒有符合所需版 ID
 	AE_NoEvent                      = 未檢查有附加版本事件
 	AE_Rename                       = 允許重命名所有詳細
 	AE_Exclude                      = 排除附加版本

@@ -8,6 +8,7 @@
 	IsNewScheme                     = Elérhető megoldás
 	AE_IsCheck                      = Kiegészítő verzió események keresése
 	AE_IsRuning                     = Elérhető kiegészítő verzió események
+	AE_Not_Match                    = Nem található egyező verzióazonosító
 	AE_NoEvent                      = Nem található kiegészítő verzió esemény
 	AE_Rename                       = Összes részlet átnevezésének engedélyezése
 	AE_Exclude                      = Kiegészítő verziók kizárása
