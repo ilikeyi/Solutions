@@ -189,7 +189,7 @@ Vector original file, document version Illustator 2020, open it with Adobe Illus
           <dl>
             <dd>2.2.1.&nbsp;&nbsp;No need to mount image
               <dl>
-                <dd>2.2.1.1.&nbsp;&nbsp;Append, delete, update files within the image, extract, rebuild, apply, capture</dd>
+                <dd>2.2.1.1.&nbsp;&nbsp;Append, Delete, Update files within the image, Extract, Rebuild, Apply, Capture, Additional edition</dd>
                 <dd>2.2.1.2.&nbsp;&nbsp;Extract language pack</dd>
                 <dd>2.2.1.3.&nbsp;&nbsp;Interchange Esd, Wim</dd>
                 <dd>2.2.1.4.&nbsp;&nbsp;Split Install.wim into Install.swm</dd>
