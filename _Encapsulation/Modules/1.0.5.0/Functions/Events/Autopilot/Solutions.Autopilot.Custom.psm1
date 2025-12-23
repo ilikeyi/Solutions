@@ -561,7 +561,7 @@ Function Image_Assign_Autopilot_Master
 							$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
 								Name      = $empDetail.FLAGS
 								Height    = 35
-								Width     = 448
+								Width     = 460
 								Padding   = "16,0,0,0"
 								Text      = "$($lang.MountedIndex): $($empDetail.index)"
 								Tag       = $empDetail.index
@@ -571,12 +571,37 @@ Function Image_Assign_Autopilot_Master
 							$New_Wim_Edition   = New-Object system.Windows.Forms.Label -Property @{
 								autosize       = 1
 								Padding        = "31,0,0,0"
-								Text           = "$($lang.Wim_Edition): $($empDetail.FLAGS) / $($empDetail.WINDOWS.EDITIONID)"
+								Text           = "$($lang.Wim_Edition): $($empDetail.FLAGS)"
 							}
 							$New_Wim_Edition_Wrap = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 2
-								Width          = 450
+								Width          = 460
 							}
+
+							$Group_Image_Sources.controls.AddRange((
+								$CheckBox,
+								$New_Wim_Edition,
+								$New_Wim_Edition_Wrap
+							))
+
+							if ($empDetail.FLAGS -eq $empDetail.WINDOWS.EDITIONID) {
+							} else {
+								$New_Wim_Edition_Error = New-Object system.Windows.Forms.Label -Property @{
+									autosize       = 1
+									Padding        = "31,0,0,0"
+									Text           = "$($lang.Wim_Edition): $($empDetail.WINDOWS.EDITIONID), $($lang.SelectFromError)"
+								}
+								$New_Wim_Edition_Error_Wrap = New-Object system.Windows.Forms.Label -Property @{
+									Height         = 2
+									Width          = 460
+								}
+
+								$Group_Image_Sources.controls.AddRange((
+									$New_Wim_Edition_Error,
+									$New_Wim_Edition_Error_Wrap
+								))
+							}
+
 							$New_Wim_Image_Name = New-Object system.Windows.Forms.Label -Property @{
 								autosize       = 1
 								Padding        = "31,0,0,0"
@@ -584,7 +609,7 @@ Function Image_Assign_Autopilot_Master
 							}
 							$New_Wim_Image_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 2
-								Width          = 450
+								Width          = 460
 							}
 							$New_Wim_Image_Description = New-Object system.Windows.Forms.Label -Property @{
 								autosize       = 1
@@ -593,7 +618,7 @@ Function Image_Assign_Autopilot_Master
 							}
 							$New_Wim_Image_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 2
-								Width          = 450
+								Width          = 460
 							}
 							$New_Wim_Display_Name = New-Object system.Windows.Forms.Label -Property @{
 								autosize       = 1
@@ -602,7 +627,7 @@ Function Image_Assign_Autopilot_Master
 							}
 							$New_Wim_Display_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 2
-								Width          = 450
+								Width          = 460
 							}
 							$New_Wim_Display_Description = New-Object system.Windows.Forms.Label -Property @{
 								autosize       = 1
@@ -611,13 +636,10 @@ Function Image_Assign_Autopilot_Master
 							}
 							$New_Wim_Display_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 25
-								Width          = 450
+								Width          = 460
 							}
 
 							$Group_Image_Sources.controls.AddRange((
-								$CheckBox,
-								$New_Wim_Edition,
-								$New_Wim_Edition_Wrap,
 								$New_Wim_Image_Name,
 								$New_Wim_Image_Name_Wrap,
 								$New_Wim_Image_Description,
@@ -647,7 +669,7 @@ Function Image_Assign_Autopilot_Master
 							$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
 								Name      = $_.EditionId
 								Height    = 35
-								Width     = 448
+								Width     = 460
 								Padding   = "16,0,0,0"
 								Text      = "$($lang.MountedIndex): $($_.ImageIndex)"
 								Tag       = $_.ImageIndex
@@ -661,7 +683,7 @@ Function Image_Assign_Autopilot_Master
 							}
 							$New_Wim_Image_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 2
-								Width          = 450
+								Width          = 460
 							}
 							$New_Wim_Image_Description = New-Object system.Windows.Forms.Label -Property @{
 								autosize       = 1
@@ -670,7 +692,7 @@ Function Image_Assign_Autopilot_Master
 							}
 							$New_Wim_Image_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 25
-								Width          = 450
+								Width          = 460
 							}
 
 							$Group_Image_Sources.controls.AddRange((
@@ -686,7 +708,7 @@ Function Image_Assign_Autopilot_Master
 					} catch {
 						$UI_Main_Other_Rule_Not_Find = New-Object system.Windows.Forms.Label -Property @{
 							Height         = 40
-							Width          = 448
+							Width          = 460
 							margin         = "16,0,0,0"
 							Text           = "$($lang.SelectFromError): $($lang.UpdateUnavailable)"
 						}
@@ -700,7 +722,7 @@ Function Image_Assign_Autopilot_Master
 				#>
 				$UI_Main_Autopoilot_Expand_Select_Index= New-Object system.Windows.Forms.LinkLabel -Property @{
 					Height         = 30
-					Width          = 448
+					Width          = 460
 					Text           = $lang.Index_Is_Event_Select
 					margin         = "16,0,0,35"
 					LinkColor      = "GREEN"

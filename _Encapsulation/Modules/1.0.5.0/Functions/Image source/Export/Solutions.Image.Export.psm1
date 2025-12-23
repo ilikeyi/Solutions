@@ -315,7 +315,7 @@ Function Image_Select_Export_UI
 	ForEach ($item in $Global:Primary_Key_Image.Index) {
 		$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
 			Height    = 35
-			Width     = 448
+			Width     = 460
 			Padding   = "16,0,0,0"
 			Text      = "$($lang.MountedIndex): $($item.ImageIndex)"
 			Tag       = $item.ImageIndex
@@ -332,7 +332,7 @@ Function Image_Select_Export_UI
 		}
 		$New_Wim_Edition_Wrap = New-Object system.Windows.Forms.Label -Property @{
 			Height         = 2
-			Width          = 450
+			Width          = 460
 		}
 		$New_Wim_Image_Name = New-Object system.Windows.Forms.Label -Property @{
 			autosize       = 1
@@ -341,7 +341,7 @@ Function Image_Select_Export_UI
 		}
 		$New_Wim_Image_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
 			Height         = 2
-			Width          = 450
+			Width          = 460
 		}
 		$New_Wim_Image_Description = New-Object system.Windows.Forms.Label -Property @{
 			autosize       = 1
@@ -350,7 +350,7 @@ Function Image_Select_Export_UI
 		}
 		$New_Wim_Image_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
 			Height         = 2
-			Width          = 450
+			Width          = 460
 		}
 		$New_Wim_Display_Name = New-Object system.Windows.Forms.Label -Property @{
 			autosize       = 1
@@ -359,7 +359,7 @@ Function Image_Select_Export_UI
 		}
 		$New_Wim_Display_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
 			Height         = 2
-			Width          = 450
+			Width          = 460
 		}
 		$New_Wim_Display_Description = New-Object system.Windows.Forms.Label -Property @{
 			autosize       = 1
@@ -368,7 +368,7 @@ Function Image_Select_Export_UI
 		}
 		$New_Wim_Display_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
 			Height         = 25
-			Width          = 450
+			Width          = 460
 		}
 
 		$UI_Main_Menu.controls.AddRange((

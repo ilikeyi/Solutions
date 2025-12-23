@@ -65,27 +65,33 @@ Detailed introduction
    <ul>
 <li>Image source, main interface
 
-![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Image.Sources_en-US.webp)
+![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Image.Sources.webp)
 </li>
 
 <li>Image source, primary key selected
 
-![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Image.Sources.Sel_en-US.webp)
+![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Image.Sources.Sel.webp)
 </li>
 
 <li>Setting
 
-![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Setting_en-US.webp)
+![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Setting.webp)
 </li>
 
 <li>API
 
-![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Api_en-US.webp)
+![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Api.webp)
 </li>
+
+<li>Additional Edition
+
+![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Additional.edition.webp)
+</li>
+
 
 <li>ISO
 
-![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/ISO_en-US.webp)
+![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/ISO.webp)
 </li>
 </ul>
  </li>
@@ -94,17 +100,17 @@ Detailed introduction
       <ul>
 <li>No primary key selected
 
-![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Menu_en-US.webp)
+![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Menu.webp)
 </li>
 
 <li>Primary key set
 
-![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Menu.Sel_en-US.webp)
+![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Menu.Sel.webp)
 </li>
 
 <li>Shortcuts User Guide
 
-![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Shortcut_en-US.webp)
+![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Shortcut.webp)
 
 Vector original file, document version Illustator 2020, open it with Adobe Illustrator 2024 or higher <a href="https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Shortcut.ai">Github</a> | <a href="https://fengyi.tel/download/solutions/Screenshots/Shortcut.ai">Yi</a>
 </li>

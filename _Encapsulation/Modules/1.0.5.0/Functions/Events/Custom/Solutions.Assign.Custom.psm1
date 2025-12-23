@@ -215,12 +215,36 @@ Function Image_Assign_Event_Master
 							$New_Wim_Edition   = New-Object system.Windows.Forms.Label -Property @{
 								autosize       = 1
 								Padding        = "31,0,0,0"
-								Text           = "$($lang.Wim_Edition): $($empDetail.FLAGS) / $($empDetail.WINDOWS.EDITIONID)"
+								Text           = "$($lang.Wim_Edition): $($empDetail.FLAGS)"
 							}
 							$New_Wim_Edition_Wrap = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 2
-								Width          = 450
+								Width          = 460
 							}
+							$Group_Image_Sources.controls.AddRange((
+								$CheckBox,
+								$New_Wim_Edition,
+								$New_Wim_Edition_Wrap
+							))
+
+							if ($empDetail.FLAGS -eq $empDetail.WINDOWS.EDITIONID) {
+							} else {
+								$New_Wim_Edition_Error = New-Object system.Windows.Forms.Label -Property @{
+									autosize       = 1
+									Padding        = "31,0,0,0"
+									Text           = "$($lang.Wim_Edition): $($empDetail.WINDOWS.EDITIONID), $($lang.SelectFromError)"
+								}
+								$New_Wim_Edition_Error_Wrap = New-Object system.Windows.Forms.Label -Property @{
+									Height         = 2
+									Width          = 460
+								}
+
+								$Group_Image_Sources.controls.AddRange((
+									$New_Wim_Edition_Error,
+									$New_Wim_Edition_Error_Wrap
+								))
+							}
+
 							$New_Wim_Image_Name = New-Object system.Windows.Forms.Label -Property @{
 								autosize       = 1
 								Padding        = "31,0,0,0"
@@ -228,7 +252,7 @@ Function Image_Assign_Event_Master
 							}
 							$New_Wim_Image_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 2
-								Width          = 450
+								Width          = 460
 							}
 							$New_Wim_Image_Description = New-Object system.Windows.Forms.Label -Property @{
 								autosize       = 1
@@ -237,7 +261,7 @@ Function Image_Assign_Event_Master
 							}
 							$New_Wim_Image_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 2
-								Width          = 450
+								Width          = 460
 							}
 							$New_Wim_Display_Name = New-Object system.Windows.Forms.Label -Property @{
 								autosize       = 1
@@ -246,7 +270,7 @@ Function Image_Assign_Event_Master
 							}
 							$New_Wim_Display_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 2
-								Width          = 450
+								Width          = 460
 							}
 							$New_Wim_Display_Description = New-Object system.Windows.Forms.Label -Property @{
 								autosize       = 1
@@ -255,13 +279,10 @@ Function Image_Assign_Event_Master
 							}
 							$New_Wim_Display_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 25
-								Width          = 450
+								Width          = 460
 							}
 
 							$Group_Image_Sources.controls.AddRange((
-								$CheckBox,
-								$New_Wim_Edition,
-								$New_Wim_Edition_Wrap,
 								$New_Wim_Image_Name,
 								$New_Wim_Image_Name_Wrap,
 								$New_Wim_Image_Description,
@@ -301,7 +322,7 @@ Function Image_Assign_Event_Master
 							}
 							$New_Wim_Image_Name_Wrap = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 2
-								Width          = 450
+								Width          = 460
 							}
 							$New_Wim_Image_Description = New-Object system.Windows.Forms.Label -Property @{
 								autosize       = 1
@@ -310,7 +331,7 @@ Function Image_Assign_Event_Master
 							}
 							$New_Wim_Image_Description_Wrap = New-Object system.Windows.Forms.Label -Property @{
 								Height         = 25
-								Width          = 450
+								Width          = 460
 							}
 
 							$Group_Image_Sources.controls.AddRange((
