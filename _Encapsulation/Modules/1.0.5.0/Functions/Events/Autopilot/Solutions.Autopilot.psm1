@@ -114,7 +114,7 @@ Function Event_Assign_Task_Customize_Autopilot
 					Write-Host "`n  $($lang.AddSources)" -ForegroundColor Yellow
 					Write-Host "  $('-' * 80)"
 					ForEach ($WildCardBB in $Temp_Queue_Process_Image_Select_Pending) {
-						Write-Host " 1 $($lang.MountedIndex): " -NoNewline
+						Write-Host "  $($lang.MountedIndex): " -NoNewline
 						Write-Host $WildCardBB.Index -ForegroundColor Yellow
 
 						Write-Host "  $($lang.Wim_Image_Name): " -NoNewline
