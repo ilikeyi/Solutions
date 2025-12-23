@@ -1,0 +1,137 @@
+﻿ConvertFrom-StringData -StringData @'
+	# he-IL
+	# Hebrew (Israel)
+
+	IsCreate                        = לִיצוֹר
+	Solution                        = פִּתָרוֹן
+	EnabledSoftwarePacker           = גְבִיָה
+	EnabledUnattend                 = צריך לענות מראש
+	EnabledEnglish                  = מנוע פריסה
+	UnattendSelectVer               = בחר בשפת הפתרון 'תשובה ל'
+	UnattendLangPack                = בחר בחבילת השפה 'פתרון'
+	UnattendSelectSingleInstl       = ריבוי שפות, אופציונלי במהלך ההתקנה
+	UnattendSelectMulti             = רב לשוני
+	UnattendSelectDisk              = בחר בפתרון Autounattend.xml
+	UnattendSelectSemi              = חצי אוטומטי תקף לכל שיטות ההתקנה
+	UnattendSelectUefi              = UEFI מותקן אוטומטית ויש לציין
+	UnattendSelectLegacy            = Legacy מותקן אוטומטית ויש לציין
+	NeedSpecified                   = נא לבחור מה צריך לציין:
+	OOBESetupOS                     = ממשק התקנה
+	OOBEProductKey                  = מפתח מוצר
+	OOBEOSImage                     = בחר את מערכת ההפעלה להתקנה
+	OOBEEula                        = קבל את תנאי הרישיון
+	OOBEDoNotServerManager          = מנהל השרת אינו מופעל אוטומטית בעת הכניסה
+	OOBEIE                          = תצורת אבטחה משופרת של Internet Explorer
+	OOBEIEAdmin                     = סגור את "מנהל מערכת"
+	OObeIEUser                      = סגור "משתמשים"
+
+	OOBE_Init_User                  = משתמש ראשוני במהלך חווית unboxing
+	OOBE_init_Create                = צור משתמשים מותאמים אישית
+	OOBE_init_Specified             = ציין משתמש
+	OOBE_Init_Autologin             = כניסה אוטומטית
+
+	InstlMode                       = שיטת התקנה
+	Business                        = גרסה עסקית
+	BusinessTips                    = תלוי ב EI.cfg, יש לציין את מספר האינדקס להתקנה אוטומטית.
+	Consumer                        = גרסה לצרכן
+	ConsumerTips                    = זה לא מסתמך על EI.cfg יש לציין את המספר הסידורי להתקנה אוטומטית.
+	CreateUnattendISO               = [ISO]:\\Autounattend.xml
+	CreateUnattendISOSources        = [ISO]:\\sources\\Unattend.xml
+	CreateUnattendISOSourcesOEM     = [ISO]:\\sources\\$OEM$\\$$\\Panther\\unattend.xml
+	CreateUnattendPanther           = [לעלות ל]:\\Windows\\Panther\\unattend.xml
+
+	VerifyName                      = הוסף לדיסק המערכת את שם ספריית הבית
+	VerifyNameUse                   = ודא ששם הספרייה אינו יכול להכיל
+	VerifyNameTips                  = מותר רק שילוב של אותיות ומספרים באנגלית, ואינו יכול להכיל: רווחים, אורך לא יכול להיות גדול מ-260 תווים, \\ / : * ? & @ ! "" < > |
+	VerifyNumberFailed              = האימות נכשל, נא להזין את המספר הנכון.
+	VerifyNameSync                  = הגדר את שם הספרייה כשם המשתמש הראשי
+	VerifyNameSyncTips              = כבר לא בשימוש administrator。
+	ManualKey                       = בחר או הזן את מפתח המוצר שלך באופן ידני
+	ManualKeyTips                   = הזן מפתח מוצר חוקי אם האזור שנבחר אינו זמין, אנא עבור לאתר הרשמי של Microsoft כדי לבדוק.
+	ManualKeyError                  = מפתח המוצר שהזנת אינו חוקי.
+	KMSLink1                        = מפתח הגדרות לקוח KMS
+	KMSUnlock                       = הצג את כל המספרים הסידוריים הידועים של KMS
+	KMSSelect                       = אנא בחר מספר סידורי VOL
+	KMSKey                          = מספר סידורי
+	KMSKeySelect                    = שנה את המספר הסידורי של המוצר
+	ClearOld                        = נקה קבצים ישנים
+	SolutionsSkip                   = דלג על יצירת פתרון
+	SolutionsTo                     = הוסף 'פתרון' ל:
+	SolutionsToMount                = מותקן או נוסף לתור
+	SolutionsToError                = חלק מהפונקציות הושבתו אם אתה צריך לאלץ אותן להשתמש, אנא לחץ על כפתור "בטל נעילה".\n\n
+	UnlockBoot                      = לִפְתוֹחַ
+	SolutionsToSources              = ספריית הבית, [ISO]:\\Sources\\$OEM$
+	SolutionsScript                 = בחר בגרסת 'מנוע פריסה'
+	SolutionsEngineRegionaUTF8      = בטא: תמיכה בשפה גלובלית באמצעות Unicode UTF-8
+	SolutionsEngineRegionaUTF8Tips  = נראה שהוא עלול לגרום לבעיות חדשות לאחר פתיחתו. לא מומלץ.
+	SolutionsEngineRegionaling      = שנה למקום חדש:
+	SolutionsEngineRegionalingTips  = שנה את מיקום המערכת, המשפיע על כל חשבונות המשתמש במחשב.
+	SolutionsEngineRegional         = שנה את מיקום המערכת
+	SolutionsEngineRegionalTips     = ברירת המחדל העולמית: {0}, השתנתה ל: {1}
+	SolutionsEngineCopyPublic       = העתק את {0} הציבורי לפריסה
+	SolutionsEngineCopyOpen         = עיין במיקום {0} במאגר הציבורי
+	EnglineDoneReboot               = הפעל מחדש את המחשב
+	SolutionsTipsArm64              = חבילת arm64 מועדפת, ואתה בוחר לפי הסדר: x64, x86.
+	SolutionsTipsAMD64              = העדיפו חבילות x64, לפי הסדר: x86.
+	SolutionsTipsX86                = רק חבילות x86 מתווספות.
+	SolutionsReport                 = צור דוח טרום פריסה
+	SolutionsDeployOfficeInstall    = פרוס את חבילת ההתקנה של Microsoft Office
+	SolutionsDeployOfficeChange     = שנה את תצורת הפריסה
+	SolutionsDeployOfficePre        = גרסת חבילה מותקנת מראש
+	SolutionsDeployOfficeNoSelect   = לא נבחרה חבילת התקנה מראש של Office
+	SolutionsDeployOfficeVersion    = גרסה {0}
+	SolutionsDeployOfficeOnly       = שמור על חבילות שפה שצוינו
+	SolutionsDeployOfficeSync       = שמור את סנכרון השפה לתצורת הפריסה
+	SolutionsDeployOfficeSyncTips   = לאחר הסנכרון, סקריפט ההתקנה לא יכול לקבוע את השפה המועדפת.
+	DeploySyncMainLanguage          = סנכרן עם השפה הראשית
+	SolutionsDeployOfficeTo         = פרוס את חבילת ההתקנה ל
+	SolutionsDeployOfficeToPublic   = שולחן עבודה ציבורי
+	DeployPackage                   = פרוס חבילת איסוף מותאמת אישית
+	DeployPackageSelect             = בחר חבילת איסוף מראש
+	DeployPackageTo                 = פרוס את חבילת האיסוף מראש ל
+	DeployPackageToRoot             = Package:\\חבילה
+	DeployPackageToSolutions        = בספריית הבית של הפתרון
+	DeployTimeZone                  = אזור זמן
+	DeployTimeZoneChange            = שנה אזור זמן
+	DeployTimeZoneChangeTips        = הגדר את אזור זמן ברירת המחדל שבו יש לענות על תשובות מוקדמות, לפי אזור שפה.
+
+	Deploy_Tags                     = תג פריסה
+	FirstExpProcess                 = ניסיון בפעם הראשונה, במהלך הפריסה דרישות מוקדמות:
+	FirstExpProcessTips             = לאחר השלמת התנאים המוקדמים, הפעל מחדש את המחשב כדי לפתור את הבעיה של דרישת הפעלה מחדש כדי להיכנס לתוקף.
+	FirstExpFinish                  = ניסיון ראשון, לאחר השלמת דרישות קדם
+	FirstExpSyncMark                = אפשר חיפוש גלובלי וסנכרון של תגי פריסה
+	FirstExpUpdate                  = אפשר עדכונים אוטומטיים
+	FirstExpDefender                = הוסף ספריית בית ל Defend ספריות שלא נכללו
+	FirstExpSyncLabel               = תווית נפח דיסק מערכת: שם ספריית הבית זהה
+	MultipleLanguages               = כאשר נתקלים במספר שפות:
+	NetworkLocationWizard           = אשף מיקום הרשת
+	PreAppxCleanup                  = חסום משימות תחזוקה של ניקוי Appx
+	LanguageComponents              = מנע ניקוי של חבילות שפה של תכונות לפי דרישה שאינן בשימוש
+	PreventCleaningUnusedLP         = מנע ניקוי של חבילות שפה שאינן בשימוש
+	FirstExpContextCustomize        = הוסף "תפריט הקשר" מותאם אישית
+	FirstExpContextCustomizeShift   = החזק את מקש Shift לחוץ ולחץ לחיצה ימנית
+
+	FirstExpFinishTips              = אין אירועים חשובים לאחר השלמת הפריסה. מומלץ לבטל.
+	FirstExpFinishPopup             = פתח את הממשק הראשי של מנוע הפריסה
+	FirstExpFinishOnDemand          = אפשר תצוגה מקדימה ראשונה, כמתוכנן
+	SolutionsEngineRestricted       = שחזור מדיניות ביצוע של Powershell: מוגבל
+	EnglineDoneClearFull            = מחק את כל הפתרון
+	EnglineDoneClear                = מחק את מנוע הפריסה ושמור את האחרים
+
+	Unattend_Auto_Fix_Next          = בפעם הבאה שאתה נתקל בו, בחר אוטומטית את הפריטים הדרושים כדי לתקן אותו באופן אוטומטי.
+	Unattend_Auto_Fix               = תקן אוטומטית כאשר לא נבחרו תנאים מוקדמים
+	Unattend_Auto_Fix_Tips          = כשמוסיפים את מנוע הפריסה ולא בוחרים בפקודת ההפעלה הראשונה, הוא מתוקן ונבחר אוטומטית: מדיניות ביצוע Powershell: הפעל את מנוע הפריסה ללא הגבלות כלשהן.
+	Unattend_Version_Tips           = אופציונלי לכלול בלבד, השתמש בברירת המחדל כדי לתמוך ב-ARM64, x64, x86.
+	First_Run_Commmand              = פקודות להפעלה בעת פריסה בפעם הראשונה
+	First_Run_Commmand_Setting      = בחר את הפקודה להפעלה
+	Command_Not_Class               = כבר לא מסווג אוטומטית בעת סינון
+	Command_WinSetup                = התקנת Windows
+	Command_WinPE                   = Windows PE
+	Command_Tips                    = אנא הקצה את אפליקציית ההפעלה הראשונה ל: Windows Installation, Windows PE\n\nשים לב שכאשר מתווסף מנוע פריסה, עליך לבדוק את הדברים הבאים בעת הפעלה בפעם הראשונה: מדיניות ביצוע Powershell: מוגבל, אפשר להפעיל סקריפטים של מנוע פריסה.
+	Waring_Not_Select_Command       = בעת הוספת מנוע פריסה, מדיניות ההפעלה של Powershell לא נבחרה: אל תגדיר הגבלות כלשהן ותאפשר לסקריפט של מנוע הפריסה לפעול אנא בחר אותו ונסה שוב, או לחץ על "תיקון מהיר לא נבחר".
+	Quic_Fix_Not_Select_Command     = תיקון מהיר לא אפשרות
+
+	PowerShell_Unrestricted         = מדיניות ביצוע Powershell: ללא הגבלות
+	Allow_Running_Deploy_Engine     = אפשר לסקריפטים של מנוע הפריסה לפעול
+	Bypass_TPM                      = עקיפת בדיקות TPM במהלך ההתקנה
+'@

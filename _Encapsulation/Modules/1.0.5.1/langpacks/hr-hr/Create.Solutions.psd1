@@ -1,0 +1,137 @@
+﻿ConvertFrom-StringData -StringData @'
+	# hr-HR
+	# Croatian (Croatia)
+
+	IsCreate                        = Stvoriti
+	Solution                        = Otopina
+	EnabledSoftwarePacker           = Kolekcija
+	EnabledUnattend                 = Treba odgovoriti unaprijed
+	EnabledEnglish                  = Motor za implementaciju
+	UnattendSelectVer               = Odaberite jezik rješenja 'Odgovor na'
+	UnattendLangPack                = Odaberite jezični paket 'Rješenje'
+	UnattendSelectSingleInstl       = Više jezika, opcija tijekom instalacije
+	UnattendSelectMulti             = Višejezičan
+	UnattendSelectDisk              = Odaberite rješenje Autounattend.xml
+	UnattendSelectSemi              = Poluautomatski vrijedi za sve načine ugradnje
+	UnattendSelectUefi              = UEFI se automatski instalira i treba ga specificirati
+	UnattendSelectLegacy            = Legacy se automatski instalira i treba ga specificirati
+	NeedSpecified                   = Odaberite što je potrebno navesti:
+	OOBESetupOS                     = Instalacijsko sučelje
+	OOBEProductKey                  = Ključ proizvoda
+	OOBEOSImage                     = Odaberite operativni sustav za instalaciju
+	OOBEEula                        = Prihvatite licencne uvjete
+	OOBEDoNotServerManager          = Server Manager se ne pokreće automatski nakon prijave
+	OOBEIE                          = Internet Explorer Enhanced Security Configuration
+	OOBEIEAdmin                     = Zatvori "Administrator"
+	OObeIEUser                      = Zatvori "Korisnici"
+
+	OOBE_Init_User                  = Početni korisnik tijekom iskustva raspakiranja
+	OOBE_init_Create                = Stvorite prilagođene korisnike
+	OOBE_init_Specified             = Navedite korisnika
+	OOBE_Init_Autologin             = Automatska prijava
+
+	InstlMode                       = Način ugradnje
+	Business                        = Poslovna verzija
+	BusinessTips                    = Ovisno o EI.cfg, potrebno je navesti indeksni broj za automatsku instalaciju.
+	Consumer                        = Potrošačka verzija
+	ConsumerTips                    = Ne oslanja se na EI.cfg za automatsku instalaciju, potrebno je navesti indeksni broj.
+	CreateUnattendISO               = [ISO]:\\Autounattend.xml
+	CreateUnattendISOSources        = [ISO]:\\sources\\Unattend.xml
+	CreateUnattendISOSourcesOEM     = [ISO]:\\sources\\$OEM$\\$$\\Panther\\unattend.xml
+	CreateUnattendPanther           = [montirati na]:\\Windows\\Panther\\unattend.xml
+
+	VerifyName                      = Dodaj nazivu matičnog direktorija diska sustava
+	VerifyNameUse                   = Provjerite da naziv direktorija ne može sadržavati
+	VerifyNameTips                  = Dopuštena je samo kombinacija engleskih slova i brojeva i ne može sadržavati: razmake, duljina ne može biti veća od 260 znakova, \\ / : * ? & @ ! "" < > |
+	VerifyNumberFailed              = Provjera nije uspjela, unesite točan broj.
+	VerifyNameSync                  = Postavite ime direktorija kao primarno korisničko ime
+	VerifyNameSyncTips              = Administrator se više ne koristi.
+	ManualKey                       = Ručno odaberite ili unesite svoj ključ proizvoda
+	ManualKeyTips                   = Unesite važeći ključ proizvoda Ako odabrana regija nije dostupna, idite na službenu web stranicu Microsofta da provjerite.
+	ManualKeyError                  = Ključ proizvoda koji ste unijeli nije valjan.
+	KMSLink1                        = Ključ postavki KMS klijenta
+	KMSUnlock                       = Prikaži sve poznate KMS serijske brojeve
+	KMSSelect                       = Odaberite serijski broj VOL
+	KMSKey                          = Serijski broj
+	KMSKeySelect                    = Promjena serijskog broja proizvoda
+	ClearOld                        = Očistite stare datoteke
+	SolutionsSkip                   = Preskoči stvaranje rješenja
+	SolutionsTo                     = Dodaj 'rješenje' u:
+	SolutionsToMount                = Montirano ili dodano u red čekanja
+	SolutionsToError                = Neke funkcije su onemogućene. Ako ih morate prisilno koristiti, kliknite gumb "Otključaj". \n\n
+	UnlockBoot                      = Otključati
+	SolutionsToSources              = Početni direktorij, [ISO]:\\Izvori\\$OEM$
+	SolutionsScript                 = Odaberite verziju "Deployment Engine".
+	SolutionsEngineRegionaUTF8      = Beta: Globalna jezična podrška pomoću Unicode UTF-8
+	SolutionsEngineRegionaUTF8Tips  = Čini se da bi mogao uzrokovati nove probleme nakon otvaranja. Ne preporučuje se.
+	SolutionsEngineRegionaling      = Promjena na novu lokaciju:
+	SolutionsEngineRegionalingTips  = Promijenite lokalizaciju sustava, što utječe na sve korisničke račune na računalu.
+	SolutionsEngineRegional         = Promijenite lokalizaciju sustava
+	SolutionsEngineRegionalTips     = Globalno zadano: {0}, promijenjeno u: {1}
+	SolutionsEngineCopyPublic       = Kopiraj javni {0} u implementaciju
+	SolutionsEngineCopyOpen         = Pregledaj lokaciju javnog spremišta {0}
+	EnglineDoneReboot               = Ponovno pokrenite računalo
+	SolutionsTipsArm64              = Poželjan je paket arm64, a vi birate redom: x64, x86.
+	SolutionsTipsAMD64              = Preferirajte x64 pakete, redom: x86.
+	SolutionsTipsX86                = Dodani su samo x86 paketi.
+	SolutionsReport                 = Generirajte izvješće prije implementacije
+	SolutionsDeployOfficeInstall    = Postavite instalacijski paket Microsoft Officea
+	SolutionsDeployOfficeChange     = Promjena konfiguracije implementacije
+	SolutionsDeployOfficePre        = Unaprijed instalirana verzija paketa
+	SolutionsDeployOfficeNoSelect   = Nije odabran predinstalacijski paket sustava Office
+	SolutionsDeployOfficeVersion    = {0} verzija
+	SolutionsDeployOfficeOnly       = Čuvajte navedene jezične pakete
+	SolutionsDeployOfficeSync       = Sačuvaj sinkronizaciju jezika s konfiguracijom implementacije
+	SolutionsDeployOfficeSyncTips   = Nakon sinkronizacije, instalacijska skripta ne može odrediti preferirani jezik.
+	DeploySyncMainLanguage          = Sinkronizirajte s glavnim jezikom
+	SolutionsDeployOfficeTo         = Postavite instalacijski paket na
+	SolutionsDeployOfficeToPublic   = Javna radna površina
+	DeployPackage                   = Postavite prilagođeni paket za prikupljanje
+	DeployPackageSelect             = Odaberite paket prije prikupljanja
+	DeployPackageTo                 = Postavite paket prije prikupljanja na
+	DeployPackageToRoot             = Disk sustava:\\Package
+	DeployPackageToSolutions        = U početnom direktoriju rješenja
+	DeployTimeZone                  = Vremenska zona
+	DeployTimeZoneChange            = Promjena vremenske zone
+	DeployTimeZoneChangeTips        = Postavite zadano vremensko područje u kojem se treba odgovoriti na predodgovore, po jezičnom području.
+
+	Deploy_Tags                     = Oznaka za implementaciju
+	FirstExpProcess                 = Prvo iskustvo, preduvjeti za implementaciju:
+	FirstExpProcessTips             = Nakon ispunjavanja preduvjeta, ponovno pokrenite računalo kako biste riješili problem potrebe za ponovnim pokretanjem da bi stupilo na snagu.
+	FirstExpFinish                  = Prvo iskustvo, nakon ispunjavanja preduvjeta
+	FirstExpSyncMark                = Dopusti globalno pretraživanje i sinkronizaciju oznaka za implementaciju
+	FirstExpUpdate                  = Dopusti automatska ažuriranja
+	FirstExpDefender                = Dodaj matični direktorij u Defend excluded directories
+	FirstExpSyncLabel               = Oznaka diska sustava: naziv matičnog direktorija je isti
+	MultipleLanguages               = Pri susretu s više jezika:
+	NetworkLocationWizard           = Čarobnjak za mrežnu lokaciju
+	PreAppxCleanup                  = Blokirajte zadatke održavanja čišćenja Appx-a
+	LanguageComponents              = Spriječite čišćenje neiskorištenih jezičnih paketa značajki na zahtjev
+	PreventCleaningUnusedLP         = Spriječite čišćenje neiskorištenih jezičnih paketa
+	FirstExpContextCustomize        = Dodajte personalizirani "kontekstualni izbornik"
+	FirstExpContextCustomizeShift   = Držite tipku Shift i kliknite desnom tipkom miša
+
+	FirstExpFinishTips              = Nema važnih događaja nakon što je implementacija dovršena. Preporučujemo da otkažete.
+	FirstExpFinishPopup             = Iskoči glavno sučelje mehanizma za implementaciju
+	FirstExpFinishOnDemand          = Dopusti prvi pregled, kao što je planirano
+	SolutionsEngineRestricted       = Vraćanje pravila izvršavanja Powershell-a: ograničeno
+	EnglineDoneClearFull            = Izbrišite cijelo rješenje
+	EnglineDoneClear                = Izbrišite mehanizam za implementaciju i zadržite ostale
+
+	Unattend_Auto_Fix_Next          = Sljedeći put kad ga naiđete, automatski odaberite potrebne stavke da biste ga automatski popravili.
+	Unattend_Auto_Fix               = Automatski popravi kada preduvjeti nisu odabrani
+	Unattend_Auto_Fix_Tips          = Kada dodate mehanizam za implementaciju i ne odaberete prvu naredbu za pokretanje, ona se automatski popravlja i odabire: Politika izvršavanja Powershell: pokrenite mehanizam za implementaciju bez ikakvih ograničenja.
+	Unattend_Version_Tips           = Opcionalno uključi samo, koristi zadano za podršku ARM64, x64, x86.
+	First_Run_Commmand              = Naredbe za pokretanje pri prvom postavljanju
+	First_Run_Commmand_Setting      = Odaberite naredbu za pokretanje
+	Command_Not_Class               = Više se ne kategorizira automatski prilikom filtriranja
+	Command_WinSetup                = Windows instalacija
+	Command_WinPE                   = Windows PE
+	Command_Tips                    = Dodijelite aplikaciju za prvo pokretanje na: Windows instalacija, Windows PE\n\nImajte na umu da kada se doda mehanizam za implementaciju, trebate provjeriti sljedeće kada se pokreće prvi put: Powershell Execution Policy: Ograničeno, dopustiti pokretanje skripti za razvojni mehanizam.
+	Waring_Not_Select_Command       = Prilikom dodavanja mehanizma za implementaciju nije odabrano pravilo izvršavanja Powershell: nemojte postavljati nikakva ograničenja i dopustite da se skripta za implementaciju pokrene i pokušajte ponovno ili kliknite "Brzi popravak nije odabran".
+	Quic_Fix_Not_Select_Command     = Brzi popravak nije opcija
+
+	PowerShell_Unrestricted         = Politika izvršavanja Powershell-a: nema ograničenja
+	Allow_Running_Deploy_Engine     = Dopusti pokretanje skripti mehanizma za implementaciju
+	Bypass_TPM                      = Zaobilaženje TPM provjera tijekom instalacije
+'@

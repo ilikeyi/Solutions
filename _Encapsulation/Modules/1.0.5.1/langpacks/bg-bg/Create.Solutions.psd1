@@ -1,0 +1,137 @@
+﻿ConvertFrom-StringData -StringData @'
+	# bg-bg
+	# Bulgarian (Bulgaria)
+
+	IsCreate                        = създавам
+	Solution                        = решение
+	EnabledSoftwarePacker           = Колекция
+	EnabledUnattend                 = Трябва да се отговори предварително
+	EnabledEnglish                  = Двигател за внедряване
+	UnattendSelectVer               = Изберете език на решението "Отговор на".
+	UnattendLangPack                = Изберете езиков пакет "Решение".
+	UnattendSelectSingleInstl       = Многоезичен, по избор по време на инсталацията
+	UnattendSelectMulti             = многоезичен
+	UnattendSelectDisk              = Изберете решението Autounattend.xml
+	UnattendSelectSemi              = Полуавтоматичното е валидно за всички методи на монтаж
+	UnattendSelectUefi              = UEFI се инсталира автоматично и трябва да бъде посочен
+	UnattendSelectLegacy            = Legacy се инсталира автоматично и трябва да се уточни
+	NeedSpecified                   = Моля, изберете какво трябва да се посочи:
+	OOBESetupOS                     = Инсталационен интерфейс
+	OOBEProductKey                  = продуктов ключ
+	OOBEOSImage                     = Изберете операционната система за инсталиране
+	OOBEEula                        = Приемете лицензионните условия
+	OOBEDoNotServerManager          = Мениджърът на сървъра не се стартира автоматично при влизане
+	OOBEIE                          = Конфигурация за подобрена защита на Internet Explorer
+	OOBEIEAdmin                     = Затворете "Администратор"
+	OObeIEUser                      = Затваряне на "Потребители"
+
+	OOBE_Init_User                  = Първоначален потребител по време на разопаковане
+	OOBE_init_Create                = Създайте персонализирани потребители
+	OOBE_init_Specified             = Посочете потребител
+	OOBE_Init_Autologin             = Автоматично влизане
+
+	InstlMode                       = Метод на инсталиране
+	Business                        = Бизнес версия
+	BusinessTips                    = Зависи от EI.cfg, номерът на индекса трябва да бъде указан за автоматична инсталация.
+	Consumer                        = Потребителска версия
+	ConsumerTips                    = Не зависи от EI.cfg. Трябва да посочите серийния номер за автоматична инсталация.
+	CreateUnattendISO               = [ISO]:\\Autounattend.xml
+	CreateUnattendISOSources        = [ISO]:\\sources\\Unattend.xml
+	CreateUnattendISOSourcesOEM     = [ISO]:\\sources\\$OEM$\\$$\\Panther\\unattend.xml
+	CreateUnattendPanther           = [монтиране към]:\\Windows\\Panther\\unattend.xml
+
+	VerifyName                      = Добавете към името на началната директория на системния диск
+	VerifyNameUse                   = Проверете дали името на директорията не може да съдържа
+	VerifyNameTips                  = Разрешена е само комбинация от английски букви и цифри и не може да съдържа: интервали, дължина не може да надвишава 260 знака, \\ / : * ? & @ ! "" < > |
+	VerifyNumberFailed              = Проверката е неуспешна, моля, въведете правилния номер.
+	VerifyNameSync                  = Задайте името на директорията като основно потребителско име
+	VerifyNameSyncTips              = Администраторът вече не се използва.
+	ManualKey                       = Изберете или въведете вашия продуктов ключ ръчно
+	ManualKeyTips                   = Въведете валиден продуктов ключ. Ако избраният регион не е наличен, моля, отидете на официалния уебсайт на Microsoft, за да проверите.
+	ManualKeyError                  = Въведеният от вас продуктов ключ е невалиден.
+	KMSLink1                        = Ключ за настройки на KMS клиент
+	KMSUnlock                       = Показване на всички известни серийни номера на KMS
+	KMSSelect                       = Моля, изберете сериен номер на VOL
+	KMSKey                          = сериен номер
+	KMSKeySelect                    = Променете серийния номер на продукта
+	ClearOld                        = Почистете старите файлове
+	SolutionsSkip                   = Пропуснете създаването на решение
+	SolutionsTo                     = Добавяне на "решение" към:
+	SolutionsToMount                = Монтиран или добавен към опашката
+	SolutionsToError                = Някои функции са деактивирани, ако трябва да ги използвате принудително, щракнете върху бутона "Отключване".\n\n
+	UnlockBoot                      = Отключи
+	SolutionsToSources              = Начална директория, [ISO]:\\Sources\\$OEM$
+	SolutionsScript                 = Изберете версията на "Deployment Engine".
+	SolutionsEngineRegionaUTF8      = Бета: Глобална езикова поддръжка с помощта на Unicode UTF-8
+	SolutionsEngineRegionaUTF8Tips  = Изглежда, че може да причини нови проблеми след отварянето му. Не се препоръчва.
+	SolutionsEngineRegionaling      = Промяна на нов локал:
+	SolutionsEngineRegionalingTips  = Променете локала на системата, което засяга всички потребителски акаунти на компютъра.
+	SolutionsEngineRegional         = Промяна на локала на системата
+	SolutionsEngineRegionalTips     = Глобално по подразбиране: {0}, променено на: {1}
+	SolutionsEngineCopyPublic       = Копирайте публично {0} за внедряване
+	SolutionsEngineCopyOpen         = Разгледайте местоположението на общественото хранилище {0}
+	EnglineDoneReboot               = Рестартирайте компютъра си
+	SolutionsTipsArm64              = Пакетът arm64 е за предпочитане и избирате в ред: x64, x86.
+	SolutionsTipsAMD64              = Предпочитайте x64 пакети, в ред: x86.
+	SolutionsTipsX86                = Добавят се само x86 пакети.
+	SolutionsReport                 = Генериране на отчет преди внедряването
+	SolutionsDeployOfficeInstall    = Разположете инсталационния пакет на Microsoft Office
+	SolutionsDeployOfficeChange     = Промяна на конфигурацията за внедряване
+	SolutionsDeployOfficePre        = Предварително инсталирана версия на пакета
+	SolutionsDeployOfficeNoSelect   = Няма избран пакет за предварително инсталиране на Office
+	SolutionsDeployOfficeVersion    = {0} версия
+	SolutionsDeployOfficeOnly       = Запазете определени езикови пакети
+	SolutionsDeployOfficeSync       = Запазете синхронизирането на езика с конфигурацията за внедряване
+	SolutionsDeployOfficeSyncTips   = След синхронизиране инсталационният скрипт не може да определи предпочитания език.
+	DeploySyncMainLanguage          = Синхронизирайте с основния език
+	SolutionsDeployOfficeTo         = Разположете инсталационния пакет на
+	SolutionsDeployOfficeToPublic   = обществен работен плот
+	DeployPackage                   = Разположете персонализиран пакет за събиране
+	DeployPackageSelect             = Изберете пакет преди събиране
+	DeployPackageTo                 = Разположете пакета за предварително събиране на
+	DeployPackageToRoot             = Системен диск:\\Пакет
+	DeployPackageToSolutions        = В началната директория на решението
+	DeployTimeZone                  = часова зона
+	DeployTimeZoneChange            = Смяна на часовата зона
+	DeployTimeZoneChangeTips        = Задайте зоната по подразбиране, където трябва да се отговаря на предварителните отговори, по езикова област.
+
+	Deploy_Tags                     = Етикет за внедряване
+	FirstExpProcess                 = Опит за първи път, предпоставки по време на внедряване:
+	FirstExpProcessTips             = След като изпълните предварителните условия, рестартирайте компютъра, за да разрешите проблема с необходимостта от рестартиране, за да влезе в сила.
+	FirstExpFinish                  = Опит за първи път, след попълване на предпоставки
+	FirstExpSyncMark                = Разрешаване на глобално търсене и синхронизиране на маркери за внедряване
+	FirstExpUpdate                  = Разрешаване на автоматични актуализации
+	FirstExpDefender                = Добавете домашна директория към Защита на изключените директории
+	FirstExpSyncLabel               = Етикет на тома на системния диск: Името на началната директория е същото
+	MultipleLanguages               = Когато срещнете няколко езика:
+	NetworkLocationWizard           = Съветник за мрежово местоположение
+	PreAppxCleanup                  = Блокирайте задачите за поддръжка на почистване на Appx
+	LanguageComponents              = Предотвратете почистването на неизползвани езикови пакети за функции при поискване
+	PreventCleaningUnusedLP         = Предотвратете почистването на неизползвани езикови пакети
+	FirstExpContextCustomize        = Добавете персонализирано "контекстно меню"
+	FirstExpContextCustomizeShift   = Задръжте клавиша Shift и щракнете с десния бутон
+
+	FirstExpFinishTips              = Няма важни събития след завършване на внедряването. Препоръчително е да отмените.
+	FirstExpFinishPopup             = Изскачане на основния интерфейс на машината за внедряване
+	FirstExpFinishOnDemand          = Разрешете първи преглед, както е планирано
+	SolutionsEngineRestricted       = Възстановяване на правилата за изпълнение на Powershell: ограничено
+	EnglineDoneClearFull            = Изтрийте цялото решение
+	EnglineDoneClear                = Изтрийте механизма за внедряване и запазете другите
+
+	Unattend_Auto_Fix_Next          = Следващият път, когато го срещнете, автоматично изберете необходимите елементи, за да го коригирате автоматично.
+	Unattend_Auto_Fix               = Автоматично поправяне, когато не са избрани предпоставки
+	Unattend_Auto_Fix_Tips          = Когато добавите машината за внедряване и не изберете първата команда за стартиране, тя автоматично се поправя и избира: Политика за изпълнение на Powershell: стартирайте машината за внедряване без никакви ограничения.
+	Unattend_Version_Tips           = По избор включете само, използвайте по подразбиране за поддръжка на ARM64, x64, x86.
+	First_Run_Commmand              = Команди за изпълнение при внедряване за първи път
+	First_Run_Commmand_Setting      = Изберете командата за изпълнение
+	Command_Not_Class               = Няма повече автоматична класификация при филтриране
+	Command_WinSetup                = Windows Инсталирайте
+	Command_WinPE                   = Windows PE
+	Command_Tips                    = Моля, задайте Първо стартирано приложение на: Windows Installation, Windows PE\n\nОбърнете внимание, че когато се добави механизъм за внедряване, трябва да проверите следното, когато стартирате за първи път: Правила за изпълнение на Powershell: Ограничено, позволявайте изпълнението на скриптове на двигателя за внедряване.
+	Waring_Not_Select_Command       = При добавяне на механизъм за внедряване не е избрана политиката за изпълнение на Powershell: Не задавайте никакви ограничения и позволявайте на скрипта за внедряване да се изпълнява. Моля, изберете го и опитайте отново или щракнете върху "Бърза корекция не е избрана".
+	Quic_Fix_Not_Select_Command     = Бърза корекция не опция
+
+	PowerShell_Unrestricted         = Политика за изпълнение на Powershell: без ограничения
+	Allow_Running_Deploy_Engine     = Разрешете изпълнението на скриптове на машината за внедряване
+	Bypass_TPM                      = Заобикаляне на проверките на TPM по време на инсталиране
+'@
