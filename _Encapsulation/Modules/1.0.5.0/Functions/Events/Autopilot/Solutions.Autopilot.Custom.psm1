@@ -6952,9 +6952,9 @@ Function Image_Assign_Autopilot_Master
 				.清除未选择的事件
 			#>
 			if ($UI_Main_Is_Select_Wim.Checked) {
-				Event_Reset_Specified_Variable -Scope "NoRefresh"
+				Event_Reset_Specified_Variable
 			} else {
-				Event_Reset_Specified_Variable -Scope "NoRefresh" -Tasks $Wait_Sync_Some_Select
+				Event_Reset_Specified_Variable -Tasks $Wait_Sync_Some_Select
 			}
 
 			ForEach ($item in $Global:Image_Rule) {
