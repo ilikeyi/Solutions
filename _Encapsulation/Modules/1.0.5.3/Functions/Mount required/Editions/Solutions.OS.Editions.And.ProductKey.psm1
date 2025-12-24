@@ -193,12 +193,12 @@ Function Editions_GUI
 							}
 						}
 					}
-				}
 
-				if (-not $MarkVerifyVersion) {
-					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
-					$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.NoChoose)"
-					return
+					if (-not $MarkVerifyVersion) {
+						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+						$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.NoChoose)"
+						return
+					}
 				}
 			}
 
