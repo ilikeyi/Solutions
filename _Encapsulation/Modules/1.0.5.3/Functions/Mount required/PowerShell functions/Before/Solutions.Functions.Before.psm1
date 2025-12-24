@@ -96,35 +96,10 @@
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $True
-		ControlBox     = $True
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
-		Add_FormClosed = {
-			$UI_Main.Hide()
-
-			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-
-				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "  $('-' * 80)"
-				$Temp_Functions_Before_Task = (Get-Variable -Scope global -Name "Queue_Functions_Before_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
-				if ($Temp_Functions_Before_Task.Count -gt 0) {
-					ForEach ($item in $Temp_Functions_Before_Task) {
-						Write-Host "  $($item)"
-					}
-				} else {
-					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
-				}
-			}
-
-			if ($UI_Main_Suggestion_Not.Checked) {
-				Init_Canel_Event
-			}
-
-			$UI_Main.Close()
-		}
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\..\Assets\icon\Yi.ico")
 	}
 
 	<#
@@ -369,20 +344,51 @@
 		UseVisualStyleBackColor = $True
 		Location       = "560,635"
 		Height         = 36
-		Width          = 240
+		Width          = 158
 		Text           = $lang.EventManagerCurrentClear
 		add_Click      = $UI_Main_Event_Clear_Click
 	}
 	$UI_Main_Save      = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "805,635"
+		Location       = "725,635"
 		Height         = 36
-		Width          = 240
+		Width          = 158
 		Text           = $lang.Save
 		add_Click      = {
 			if (Autopilot_Functions_Before_UI_Save) {
 
 			}
+		}
+	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "889,635"
+		Height         = 36
+		Width          = 158
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main.Hide()
+
+			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
+				$Temp_Functions_Before_Task = (Get-Variable -Scope global -Name "Queue_Functions_Before_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
+				if ($Temp_Functions_Before_Task.Count -gt 0) {
+					ForEach ($item in $Temp_Functions_Before_Task) {
+						Write-Host "  $($item)"
+					}
+				} else {
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
+				}
+			}
+
+			if ($UI_Main_Suggestion_Not.Checked) {
+				Init_Canel_Event
+			}
+
+			$UI_Main.Close()
 		}
 	}
 	$UI_Main.controls.AddRange((
@@ -400,7 +406,8 @@
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
 		$UI_Main_Event_Clear,
-		$UI_Main_Save
+		$UI_Main_Save,
+		$UI_Main_Canel
 	))
 
 	$PowerShell_Function_Tasks = @()

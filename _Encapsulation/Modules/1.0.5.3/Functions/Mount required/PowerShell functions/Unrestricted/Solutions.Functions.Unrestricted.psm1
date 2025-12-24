@@ -51,18 +51,10 @@
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $True
-		ControlBox     = $True
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
-		Add_FormClosed = {
-			$UI_Main.Hide()
-			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			$Global:Function_Unrestricted = @()
-
-			$UI_Main.Close()
-		}
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\..\Assets\icon\Yi.ico")
 	}
 
 	<#
@@ -199,7 +191,7 @@
 		UseVisualStyleBackColor = $True
 		Location       = "560,635"
 		Height         = 36
-		Width          = 485
+		Width          = 240
 		Text           = $lang.OK
 		add_Click      = {
 			if (Custom_Functions_Unrestricted_UI_Save) {
@@ -207,6 +199,20 @@
 				Functions_Unrestricted_Process_Tasks
 				$UI_Main.Close()
 			}
+		}
+	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "807,635"
+		Height         = 36
+		Width          = 240
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main.Hide()
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+			$Global:Function_Unrestricted = @()
+
+			$UI_Main.Close()
 		}
 	}
 	$UI_Main.controls.AddRange((
@@ -220,7 +226,8 @@
 		$UI_Main_Functions_AutoSelect,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_OK
+		$UI_Main_OK,
+		$UI_Main_Canel
 	))
 
 	$PowerShell_Function_Tasks = @()

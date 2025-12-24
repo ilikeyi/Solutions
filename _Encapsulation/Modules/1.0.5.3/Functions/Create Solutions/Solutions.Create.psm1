@@ -2129,11 +2129,10 @@ volume
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $True
-		ControlBox     = $True
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\Assets\icon\Yi.ico")
 	}
 	$GUISolutionsShowGlobal = New-Object System.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
@@ -4887,20 +4886,37 @@ volume
 		UseVisualStyleBackColor = $True
 		Location       = "560,635"
 		Height         = 36
-		Width          = 240
+		Width          = 158
 		Text           = $lang.EventManagerCurrentClear
 		add_Click      = { Solutions_Event_Clear -All }
 	}
 	$UI_Main_Save      = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "807,635"
+		Location       = "725,635"
 		Height         = 36
-		Width          = 240
+		Width          = 158
 		Text           = $lang.Save
 		add_Click      = {
 			if (Autopilot_Solutions_Save) {
 
 			}
+		}
+	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "889,635"
+		Height         = 36
+		Width          = 158
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main.Hide()
+
+			if ($UI_Main_Suggestion_Not.Checked) {
+				Init_Canel_Event
+			}
+
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+			$UI_Main.Close()
 		}
 	}
 	$UI_Main.controls.AddRange((
@@ -4914,7 +4930,8 @@ volume
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
 		$UI_Main_Event_Clear,
-		$UI_Main_Save
+		$UI_Main_Save,
+		$UI_Main_Canel
 	))
 
 	<#
@@ -7367,11 +7384,10 @@ Function Solutions_Index_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $True
-		ControlBox     = $True
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\Assets\icon\Yi.ico")
 	}
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		Height         = 550
@@ -7384,30 +7400,41 @@ Function Solutions_Index_UI
 	}
 
 	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "15,598"
+		Location       = "15,563"
 		Height         = 20
 		Width          = 20
 		SizeMode       = "StretchImage"
 	}
 	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
-		Location       = "40,600"
+		Location       = "40,565"
 		Height         = 30
 		Width          = 490
 		Text           = ""
 	}
 	$UI_Main_Save      = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "8,635"
+		Location       = "8,595"
 		Height         = 36
 		Width          = 515
 		Text           = $lang.OK
 		add_Click      = { Solutions_Index_Save }
 	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "8,635"
+		Height         = 36
+		Width          = 515
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main.Close()
+		}
+	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_Menu,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_Save
+		$UI_Main_Save,
+		$UI_Main_Canel
 	))
 
 	$Install_wim = Join-Path -Path $Global:Image_source -ChildPath "Sources\install.wim"
@@ -7426,9 +7453,9 @@ Function Solutions_Index_UI
 		try {
 			Get-WindowsImage -ImagePath $Install_wim -ErrorAction SilentlyContinue | ForEach-Object {
 				$CheckBox     = New-Object System.Windows.Forms.RadioButton -Property @{
-					Height    = 75
+					Height    = 55
 					Width     = 405
-					Text      = "$($lang.MountedIndex): $($_.ImageIndex)`n$($lang.Wim_Image_Name): $($_.ImageName)`n$($lang.Wim_Image_Description): $($_.ImageDescription)"
+					Text      = "$($lang.MountedIndex): $($_.ImageIndex)`n$($lang.Wim_Image_Name): $($_.ImageName)"
 					Tag       = $_.ImageIndex
 					add_Click = {
 						$UI_Main_Error.Text = ""
@@ -7575,12 +7602,11 @@ Function KMSkeys
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $True
-		ControlBox     = $True
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
 		TopMost        = $True
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\Assets\icon\Yi.ico")
 	}
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		Height         = 550
@@ -7667,20 +7693,20 @@ Function KMSkeys
 	}
 
 	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "422,598"
+		Location       = "422,563"
 		Height         = 20
 		Width          = 20
 		SizeMode       = "StretchImage"
 	}
 	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
-		Location       = "447,600"
+		Location       = "447,565"
 		Height         = 30
 		Width          = 404
 		Text           = ""
 	}
 	$UI_Main_Save      = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "420,635"
+		Location       = "420,595"
 		Height         = 36
 		Width          = 429
 		Text           = $lang.OK
@@ -7703,6 +7729,16 @@ Function KMSkeys
 			}
 		}
 	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "420,635"
+		Height         = 36
+		Width          = 429
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main.Close()
+		}
+	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_Menu,
 		$UI_Main_KMS_Custom_Name,
@@ -7712,7 +7748,8 @@ Function KMSkeys
 		$UI_Main_KMS_Show_All,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_Save
+		$UI_Main_Save,
+		$UI_Main_Canel
 	))
  
 	<#

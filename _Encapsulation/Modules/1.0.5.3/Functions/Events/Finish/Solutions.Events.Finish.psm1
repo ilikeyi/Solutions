@@ -64,11 +64,10 @@ Function Event_Completion_Setting_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $True
-		ControlBox     = $True
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 
 	<#
@@ -134,7 +133,7 @@ Function Event_Completion_Setting_UI
 	$UI_Main_Temp      = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 65
 		Width          = 280
-		Location       = '15,615'
+		Location       = '15,600'
 		Text           = $lang.AfterFinishCleanupTemp
 		Checked        = $True
 		add_Click      = {
@@ -244,20 +243,20 @@ Function Event_Completion_Setting_UI
 	}
 
 	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "360,598"
+		Location       = "360,560"
 		Height         = 20
 		Width          = 20
 		SizeMode       = "StretchImage"
 	}
 	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
-		Location       = "385,600"
+		Location       = "385,562"
 		Height         = 30
 		Width          = 255
 		Text           = ""
 	}
 	$UI_Main_Save      = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "360,635"
+		Location       = "360,595"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.Save
@@ -267,6 +266,16 @@ Function Event_Completion_Setting_UI
 			}
 		}
 	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "360,635"
+		Height         = 36
+		Width          = 280
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main.Close()
+		}
+	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_Tips,
 		$UI_Main_Not_Executed,
@@ -274,7 +283,8 @@ Function Event_Completion_Setting_UI
 		$UI_Main_Temp,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_Save
+		$UI_Main_Save,
+		$UI_Main_Canel
 	))
 
 	$UI_Main_After_Finishing.controls.AddRange((

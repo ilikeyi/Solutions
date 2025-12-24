@@ -905,38 +905,13 @@ Function Language_Add_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $true
-		ControlBox     = $true
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
 		AllowDrop      = $true
 		Add_DragOver   = $UI_Main_DragOver
 		Add_DragDrop   = $UI_Main_DragDrop
-		Add_FormClosed = {
-			$UI_Main.Hide()
-
-			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-
-				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "  $('-' * 80)"
-				$Temp_Language_Add_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
-				if ($Temp_Language_Add_Custom_Select.count -gt 0) {
-					ForEach ($item in $Temp_Language_Add_Custom_Select) {
-						Write-Host "  $($item)" -ForegroundColor Green
-					}
-				} else {
-					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
-				}
-			}
-
-			if ($UI_Main_Suggestion_Not.Checked) {
-				Init_Canel_Event
-			}
-
-			$UI_Main.Close()
-		}
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 	$UI_Main_Menu      = New-Object System.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
@@ -1093,7 +1068,7 @@ Function Language_Add_UI
 	#>
 	$UI_Main_Auto_select_Folder = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
-		Width          = 515
+		Width          = 512
 		margin         = "18,20,0,0"
 		Text           = $lang.RuleFindFolder
 	}
@@ -1531,7 +1506,7 @@ Function Language_Add_UI
 	}
 	$UI_Main_Event_Clear = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "620,595"
+		Location       = "620,555"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.EventManagerCurrentClear
@@ -1539,7 +1514,7 @@ Function Language_Add_UI
 	}
 	$UI_Main_Save      = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "620,635"
+		Location       = "620,595"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.Save
@@ -1547,6 +1522,37 @@ Function Language_Add_UI
 			if (Autopilot_Language_Add_UI_Save) {
 
 			}
+		}
+	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "620,635"
+		Height         = 36
+		Width          = 280
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main.Hide()
+
+			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
+				$Temp_Language_Add_Custom_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
+				if ($Temp_Language_Add_Custom_Select.count -gt 0) {
+					ForEach ($item in $Temp_Language_Add_Custom_Select) {
+						Write-Host "  $($item)" -ForegroundColor Green
+					}
+				} else {
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
+				}
+			}
+
+			if ($UI_Main_Suggestion_Not.Checked) {
+				Init_Canel_Event
+			}
+
+			$UI_Main.Close()
 		}
 	}
 	$UI_Main.controls.AddRange((
@@ -1559,7 +1565,8 @@ Function Language_Add_UI
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
 		$UI_Main_Event_Clear,
-		$UI_Main_Save
+		$UI_Main_Save,
+		$UI_Main_Canel
 	))
 	$UI_Main_Mask_Tips.controls.AddRange((
 		$UI_Main_Mask_Tips_Results,

@@ -316,7 +316,12 @@
 						"Feature_More_UI"
 					],
 					"IsAutoSelectIndexAndEditionID": [
-						"Auto"
+						"Core",
+						"CoreN",
+						"Professional",
+						"ProfessionalN",
+						"EnterpriseS",
+						"EnterpriseSN"
 					],
 					"Tasks": {
 						"Solutions": {

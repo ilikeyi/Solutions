@@ -66,6 +66,7 @@
 		"ImageSource": {
 			"Tasks": {
 				"IsAutoSelect": [
+					"Additional_Edition_Install;wim;Install;wim;",
 					"Image_Convert_UI"
 				],
 				"Solutions": {
@@ -311,7 +312,12 @@
 						"Feature_More_UI"
 					],
 					"IsAutoSelectIndexAndEditionID": [
-						"Auto"
+						"Core",
+						"CoreN",
+						"Professional",
+						"ProfessionalN",
+						"EnterpriseS",
+						"EnterpriseSN"
 					],
 					"Tasks": {
 						"Solutions": {

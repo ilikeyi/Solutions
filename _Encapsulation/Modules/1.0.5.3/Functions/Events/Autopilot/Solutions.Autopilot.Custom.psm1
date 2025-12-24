@@ -5961,23 +5961,10 @@ Function Image_Assign_Autopilot_Master
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $True
-		ControlBox     = $True
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
-		Add_FormClosed = {
-			$UI_Main.Hide()
-			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-
-			<#
-				.重置变量
-			#>
-			Additional_Edition_Reset
-			Event_Reset_Variable
-
-			$UI_Main.Close()
-		}
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 
 	<#
@@ -6164,6 +6151,25 @@ Function Image_Assign_Autopilot_Master
 		Width          = 460
 		Text           = ""
 	}
+	$UI_Main_Public_Canel = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "560,635"
+		Height         = 36
+		Width          = 158
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main.Hide()
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+
+			<#
+				.重置变量
+			#>
+			Additional_Edition_Reset
+			Event_Reset_Variable
+
+			$UI_Main.Close()
+		}
+	}
 	$UI_Main_Public_Hide = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
 		Location       = "889,635"
@@ -6318,6 +6324,26 @@ Function Image_Assign_Autopilot_Master
 		Width          = 460
 		Text           = ""
 	}
+
+	$UI_Main_Export_Detailed_Canel = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "560,635"
+		Height         = 36
+		Width          = 158
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main.Hide()
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+
+			<#
+				.重置变量
+			#>
+			Additional_Edition_Reset
+			Event_Reset_Variable
+
+			$UI_Main.Close()
+		}
+	}
 	$UI_Main_Export_Detailed_Import = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
 		Location       = "725,635"
@@ -6465,6 +6491,26 @@ Function Image_Assign_Autopilot_Master
 		Height         = 30
 		Width          = 460
 		Text           = ""
+	}
+
+	$UI_Main_Prerequisite_Canel_Close = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "560,635"
+		Height         = 36
+		Width          = 158
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main.Hide()
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+
+			<#
+				.重置变量
+			#>
+			Additional_Edition_Reset
+			Event_Reset_Variable
+
+			$UI_Main.Close()
+		}
 	}
 	$UI_Main_Prerequisite_Ok = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
@@ -6818,6 +6864,25 @@ Function Image_Assign_Autopilot_Master
 		Height         = 30
 		Width          = 455
 		Text           = ""
+	}
+	$UI_Main_Canel_Close = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "560,635"
+		Height         = 36
+		Width          = 158
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main.Hide()
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+
+			<#
+				.重置变量
+			#>
+			Additional_Edition_Reset
+			Event_Reset_Variable
+
+			$UI_Main.Close()
+		}
 	}
 	$UI_Main_Ok        = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
@@ -7304,6 +7369,7 @@ Function Image_Assign_Autopilot_Master
 		$UI_Main_Select_Wim,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
+		$UI_Main_Canel_Close,
 		$UI_Main_Ok
 	))
 	$UI_Main_Prerequisite_Detailed.controls.AddRange((
@@ -7315,6 +7381,7 @@ Function Image_Assign_Autopilot_Master
 		$UI_Main_Prerequisite_Eject_Cdrom,
 		$UI_Main_Prerequisite_Error_Icon,
 		$UI_Main_Prerequisite_Error,
+		$UI_Main_Prerequisite_Canel_Close,
 		$UI_Main_Prerequisite_Ok,
 		$UI_Main_Prerequisite_Canel
 	))
@@ -7341,6 +7408,7 @@ Function Image_Assign_Autopilot_Master
 		$UI_Main_Public_Error_Icon,
 		$UI_Main_Public_Error,
 		$UI_Main_Public_Auto_Hide,
+		$UI_Main_Public_Canel,
 		$UI_Main_Public_Hide
 	))
 
@@ -7373,6 +7441,7 @@ Function Image_Assign_Autopilot_Master
 
 		$UI_Main_Export_Error_Icon,
 		$UI_Main_Export_Error,
+		$UI_Main_Export_Detailed_Canel,
 		$UI_Main_Export_Detailed_Import,
 		$UI_Main_Export_Detailed_Hide
 	))

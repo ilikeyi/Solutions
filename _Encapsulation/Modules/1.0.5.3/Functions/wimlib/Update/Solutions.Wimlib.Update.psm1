@@ -368,11 +368,10 @@ Function Wimlib_Extract_And_Update
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $True
-		ControlBox     = $True
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 
 	$UI_Main_Menu      = New-Object System.Windows.Forms.FlowLayoutPanel -Property @{
@@ -660,7 +659,7 @@ Function Wimlib_Extract_And_Update
 	}
 	$UI_Main_Update    = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "620,635"
+		Location       = "620,595"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.Update
@@ -715,6 +714,18 @@ Function Wimlib_Extract_And_Update
 			}
 		}
 	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "620,635"
+		Height         = 36
+		Width          = 280
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main.Hide()
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+			$UI_Main.Close()
+		}
+	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_Mask_Report,
 		$UI_Main_Menu,
@@ -724,7 +735,8 @@ Function Wimlib_Extract_And_Update
 		$UI_Main_Extract_File_Tips,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_Update
+		$UI_Main_Update,
+		$UI_Main_Canel
 	))
 	$UI_Main_Mask_Report.controls.AddRange((
 		$UI_Main_Mask_Report_Menu,

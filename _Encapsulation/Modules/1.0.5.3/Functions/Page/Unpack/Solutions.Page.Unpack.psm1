@@ -102,11 +102,10 @@ Function UnPack_Create_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $True
-		ControlBox     = $True
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 	$GUIUnPackSources  = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 30
@@ -434,7 +433,7 @@ Function UnPack_Create_UI
 	$UI_Main_OK        = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
 		Height         = 36
-		Width          = 485
+		Width          = 240
 		Location       = "415,635"
 		Text           = $lang.OK
 		add_Click      = {
@@ -522,6 +521,17 @@ Function UnPack_Create_UI
 			}
 		}
 	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Height         = 36
+		Width          = 240
+		Location       = "662,635"
+		Text           = $lang.Cancel
+		add_Click      = {
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+			$UI_Main.Close()
+		}
+	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_View_Detailed,
 		$GUIUnPackSources,
@@ -537,7 +547,8 @@ Function UnPack_Create_UI
 		$GUIUnPackCreateSHA256Clean,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_OK
+		$UI_Main_OK,
+		$UI_Main_Canel
 	))
 
 	$UI_Main_View_Detailed.controls.AddRange((

@@ -994,7 +994,7 @@ Function Cumulative_updates_Delete_UI
 	#>
 	$UI_Main_Auto_select_Folder = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
-		Width          = 515
+		Width          = 512
 		margin         = "18,20,0,0"
 		Text           = $lang.RuleFindFolder
 	}

@@ -509,11 +509,10 @@ Function Image_Select_Index_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $True
-		ControlBox     = $True
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
@@ -1475,7 +1474,7 @@ Function Image_Select_Index_UI
 	}
 	$UI_Main_Apply     = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "620,595"
+		Location       = "620,555"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.Apply
@@ -1511,11 +1510,22 @@ Function Image_Select_Index_UI
 	}
 	$UI_Main_Mount     = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "620,635"
+		Location       = "620,595"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.Mount
 		add_Click      = { Verify_Is_Select_New_Mount_Index }
+	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "620,635"
+		Height         = 36
+		Width          = 280
+		Text           = $lang.Cancel
+		add_Click      = {
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+			$UI_Main.Close()
+		}
 	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_Mask_Rule_Detailed,
@@ -1530,7 +1540,8 @@ Function Image_Select_Index_UI
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
 		$UI_Main_Apply,
-		$UI_Main_Mount
+		$UI_Main_Mount,
+		$UI_Main_Canel
 	))
 	$UI_Main_Tips.controls.AddRange((
 		$UI_Main_Tips_Show,

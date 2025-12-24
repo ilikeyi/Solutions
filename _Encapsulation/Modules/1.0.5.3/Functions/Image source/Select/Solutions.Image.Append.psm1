@@ -1,6 +1,6 @@
 ﻿<#
-	.Append image source user interface
-	.追加映像源用户界面
+	.Add image source user interface
+	.添加映像源用户界面
 #>
 Function Image_Select_Append_UI
 {
@@ -21,11 +21,10 @@ Function Image_Select_Append_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $True
-		ControlBox     = $True
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		Height         = 550
@@ -307,7 +306,7 @@ Function Image_Select_Append_UI
 	}
 	$UI_Main_OK        = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "570,635"
+		Location       = "570,595"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.Wim_Append
@@ -379,6 +378,17 @@ Function Image_Select_Append_UI
 			}
 		}
 	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "570,635"
+		Height         = 36
+		Width          = 280
+		Text           = $lang.Cancel
+		add_Click      = {
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+			$UI_Main.Close()
+		}
+	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_Menu,
 		$UI_Main_Select_Custom_Sources,
@@ -387,7 +397,8 @@ Function Image_Select_Append_UI
 		$UI_Main_Select_Custom_File,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_OK
+		$UI_Main_OK,
+		$UI_Main_Canel
 	))
 
 	<#

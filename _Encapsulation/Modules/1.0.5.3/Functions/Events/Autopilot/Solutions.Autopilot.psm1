@@ -77,7 +77,7 @@ Function Event_Assign_Task_Customize_Autopilot
 							.判断是否排除运行
 						#>
 						if ($Global:Extension_Has_been_Run -Contains $ExpandWildcard.Uid) {
-							write-host "  " -NoNewline
+							write-host "  "
 							Write-Host " $($lang.Pri_key_Running) " -BackgroundColor DarkRed -ForegroundColor White
 						} else {
 							<#
@@ -137,7 +137,7 @@ Function Event_Assign_Task_Customize_Autopilot
 					if ($WildCard.Expand.Count -gt 0) {
 						ForEach ($ExpandWildcard in $WildCard.Expand) {
 							if ($Global:Extension_Has_been_Run -Contains $ExpandWildcard.Uid) {
-								write-host "  " -NoNewline
+								write-host "  "
 								Write-Host " $($lang.Pri_key_Running) " -BackgroundColor DarkRed -ForegroundColor White
 							} else {
 								Image_Set_Global_Primary_Key -Uid $ExpandWildcard.Uid -DevCode "19"
@@ -217,7 +217,7 @@ Function Event_Assign_Task_Customize_Autopilot
 										.判断是否排除运行
 									#>
 									if ($Global:Extension_Has_been_Run -Contains $ExpandWildcard.Uid) {
-										write-host "  " -NoNewline
+										write-host "  "
 										Write-Host " $($lang.Pri_key_Running) " -BackgroundColor DarkRed -ForegroundColor White
 									} else {
 										if ($Global:Developers_Mode) {

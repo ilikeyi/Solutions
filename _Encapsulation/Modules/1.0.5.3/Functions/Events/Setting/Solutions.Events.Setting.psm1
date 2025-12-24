@@ -30,12 +30,11 @@ Function Event_Assign_Setting
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $True
-		ControlBox     = $True
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
 		TopMost        = $True
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 	$UI_Main_Menu     = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		Height         = 532
@@ -310,7 +309,7 @@ Function Event_Assign_Setting
 	}
 	$UI_Main_OK        = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "807,635"
+		Location       = "560,635"
 		Height         = 36
 		Width          = 240
 		Text           = $lang.OK
@@ -388,11 +387,22 @@ Function Event_Assign_Setting
 			$UI_Main.Close()
 		}
 	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "807,635"
+		Height         = 36
+		Width          = 240
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main.Close()
+		}
+	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_Menu,
 		$UI_Main_Select_No_Mounting_Group,
 		$UI_Main_Sync_To,
-		$UI_Main_OK
+		$UI_Main_OK,
+		$UI_Main_Canel
 	))
 	$UI_Main_Menu.controls.AddRange((
 		$UI_Main_Need_Mount_Name

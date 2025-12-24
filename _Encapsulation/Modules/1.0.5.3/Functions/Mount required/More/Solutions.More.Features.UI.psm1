@@ -381,126 +381,10 @@ Function Feature_More_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $True
-		ControlBox     = $True
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
-		add_Click      = {
-			$UI_Main.Hide()
-
-			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-
-				<#
-					.固化更新
-				#>
-				Write-Host "`n  $($lang.CuringUpdate)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "  $($lang.Operable)" -ForegroundColor Green
-				} else {
-					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-				}
-
-				<#
-					.清理取代的
-				#>
-				Write-Host "`n  $($lang.Superseded)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "  $($lang.Operable)" -ForegroundColor Green
-
-					Write-Host "`n  $($lang.ExcludeItem)" -ForegroundColor Yellow
-					if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
-						Write-Host "  $($lang.Operable)" -ForegroundColor Green
-					} else {
-						Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-					}
-				} else {
-					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-				}
-
-				<#
-					.健康
-				#>
-				Write-Host "`n  $($lang.Healthy)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "  $($lang.Operable)" -ForegroundColor Green
-				} else {
-					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-				}
-
-				<#
-					.获取预安装应用 UWP
-				#>
-				Write-Host "`n  $($lang.GetInBoxApps)" -ForegroundColor Yellow
-				Write-Host "  $('-' * 80)"
-				Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_Logs_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "  $($lang.Operable)" -ForegroundColor Green
-				} else {
-					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-				}
-
-				Write-Host "`n  $($lang.ExportShow)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_View_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "  $($lang.Operable)" -ForegroundColor Green
-				} else {
-					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-				}
-
-				<#
-					.查看安装的所有软件包的列表
-				#>
-				Write-Host "`n  $($lang.GetImagePackage)" -ForegroundColor Yellow
-				Write-Host "  $('-' * 80)"
-				Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_Logs_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "  $($lang.Operable)" -ForegroundColor Green
-				} else {
-					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-				}
-
-				Write-Host "`n  $($lang.ExportShow)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_View_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "  $($lang.Operable)" -ForegroundColor Green
-				} else {
-					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-				}
-
-				<#
-					.查看已安装的驱动列表
-				#>
-				Write-Host "`n  $($lang.ViewDrive)"
-				Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_Logs_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "  $($lang.Operable)" -ForegroundColor Green
-				} else {
-					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-				}
-
-				Write-Host "`n  $($lang.ExportShow)" -ForegroundColor Yellow
-				if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_View_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "  $($lang.Operable)" -ForegroundColor Green
-				} else {
-					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-				}
-
-				<#
-					.映像语言
-				#>
-				Write-Host "`n  $($lang.ImageLanguage)"
-				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Report_Image_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
-					Write-Host "  $($lang.Operable)" -ForegroundColor Green
-				} else {
-					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-				}
-			}
-
-			if ($UI_Main_Suggestion_Not.Checked) {
-				Init_Canel_Event
-			}
-			$UI_Main.Close()
-		}
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
@@ -855,7 +739,7 @@ Function Feature_More_UI
 
 	$UI_Main_Event_Clear = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "620,595"
+		Location       = "620,555"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.EventManagerCurrentClear
@@ -865,12 +749,134 @@ Function Feature_More_UI
 		UseVisualStyleBackColor = $True
 		Height         = 36
 		Width          = 280
-		Location       = "620,635"
+		Location       = "620,595"
 		Text           = $lang.Save
 		add_Click      = {
 			if (Autopilot_Feature_More_UI_Save) {
 				
 			}
+		}
+	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "620,635"
+		Height         = 36
+		Width          = 280
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main.Hide()
+
+			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+
+				<#
+					.固化更新
+				#>
+				Write-Host "`n  $($lang.CuringUpdate)" -ForegroundColor Yellow
+				if ((Get-Variable -Scope global -Name "Queue_Is_Update_Curing_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
+				} else {
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+				}
+
+				<#
+					.清理取代的
+				#>
+				Write-Host "`n  $($lang.Superseded)" -ForegroundColor Yellow
+				if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
+
+					Write-Host "`n  $($lang.ExcludeItem)" -ForegroundColor Yellow
+					if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_Allow_Rule_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
+						Write-Host "  $($lang.Operable)" -ForegroundColor Green
+					} else {
+						Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+					}
+				} else {
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+				}
+
+				<#
+					.健康
+				#>
+				Write-Host "`n  $($lang.Healthy)" -ForegroundColor Yellow
+				if ((Get-Variable -Scope global -Name "Queue_Healthy_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
+				} else {
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+				}
+
+				<#
+					.获取预安装应用 UWP
+				#>
+				Write-Host "`n  $($lang.GetInBoxApps)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
+				Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Yellow
+				if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_Logs_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
+				} else {
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+				}
+
+				Write-Host "`n  $($lang.ExportShow)" -ForegroundColor Yellow
+				if ((Get-Variable -Scope global -Name "Queue_Is_InBox_Apps_Report_View_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
+				} else {
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+				}
+
+				<#
+					.查看安装的所有软件包的列表
+				#>
+				Write-Host "`n  $($lang.GetImagePackage)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
+				Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Yellow
+				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_Logs_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
+				} else {
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+				}
+
+				Write-Host "`n  $($lang.ExportShow)" -ForegroundColor Yellow
+				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Components_Report_View_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
+				} else {
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+				}
+
+				<#
+					.查看已安装的驱动列表
+				#>
+				Write-Host "`n  $($lang.ViewDrive)"
+				Write-Host "  $($lang.ExportToLogs)" -ForegroundColor Yellow
+				if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_Logs_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
+				} else {
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+				}
+
+				Write-Host "`n  $($lang.ExportShow)" -ForegroundColor Yellow
+				if ((Get-Variable -Scope global -Name "Queue_Is_Drive_Report_View_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
+				} else {
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+				}
+
+				<#
+					.映像语言
+				#>
+				Write-Host "`n  $($lang.ImageLanguage)"
+				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Report_Image_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
+					Write-Host "  $($lang.Operable)" -ForegroundColor Green
+				} else {
+					Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+				}
+			}
+
+			if ($UI_Main_Suggestion_Not.Checked) {
+				Init_Canel_Event
+			}
+			$UI_Main.Close()
 		}
 	}
 	$UI_Main.controls.AddRange((
@@ -879,7 +885,8 @@ Function Feature_More_UI
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
 		$UI_Main_Event_Clear,
-		$UI_Main_Save
+		$UI_Main_Save,
+		$UI_Main_Canel
 	))
 	$UI_Main_View_Detailed.controls.AddRange((
 		$UI_Main_View_Detailed_Show,

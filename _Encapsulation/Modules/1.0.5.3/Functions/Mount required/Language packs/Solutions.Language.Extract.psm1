@@ -900,11 +900,10 @@ Function Language_Extract_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $True
-		ControlBox     = $True
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 
 	<#
@@ -1504,6 +1503,17 @@ Function Language_Extract_UI
 		Location       = "655,450"
 		Text           = ""
 	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Height         = 36
+		Width          = 280
+		Location       = "620,635"
+		Text           = $lang.Cancel
+		add_Click      = {
+			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+			$UI_Main.Close()
+		}
+	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_View_Return,
 		$UI_Main_View_Detailed,
@@ -1513,7 +1523,8 @@ Function Language_Extract_UI
 		$UI_Main_Extract_Import,
 		$UI_Main_Extract_View,
 		$UI_Main_Error_Icon,
-		$UI_Main_Error
+		$UI_Main_Error,
+		$UI_Main_Canel
 	))
 	$UI_Main_View_Detailed.controls.AddRange((
 		$UI_Main_View_Detailed_Show,

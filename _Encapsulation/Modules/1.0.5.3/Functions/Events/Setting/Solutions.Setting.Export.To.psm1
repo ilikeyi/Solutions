@@ -26,11 +26,10 @@ Function Setting_Export_To_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $True
-		ControlBox     = $True
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 
 	$UI_Main_Path      = New-Object system.Windows.Forms.Label -Property @{
@@ -65,7 +64,7 @@ Function Setting_Export_To_UI
 		UseVisualStyleBackColor = $True
 		Height         = 36
 		Width          = 280
-		Location       = "620,635"
+		Location       = "620,595"
 		Text           = $lang.OK
 		add_Click      = {
 			$UI_Main_Menu.Controls | ForEach-Object {
@@ -84,12 +83,24 @@ Function Setting_Export_To_UI
 			$UI_Main_Error.Text = $lang.NoChoose
 		}
 	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "620,635"
+		Height         = 36
+		Width          = 280
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main.Hide()
+			$UI_Main.Close()
+		}
+	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_Path,
 		$UI_Main_Menu,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_OK
+		$UI_Main_OK,
+		$UI_Main_Canel
 	))
 
 	<#
