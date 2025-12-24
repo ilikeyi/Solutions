@@ -100,10 +100,34 @@ Function Feature_Enabled_Match_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $True
+		ControlBox     = $True
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
+		Add_FormClosed = {
+			$UI_Main.Hide()
+
+			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
+				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_Match_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
+				if ($Temp_Assign_Task_Select.count -gt 0) {
+					ForEach ($item in $Temp_Assign_Task_Select) {
+						Write-Host "  $($item)" -ForegroundColor Green
+					}
+				} else {
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
+				}
+			}
+
+			if ($UI_Main_Suggestion_Not.Checked) {
+				Init_Canel_Event
+			}
+			$UI_Main.Close()
+		}
+		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		Height         = 538
@@ -263,7 +287,7 @@ Function Feature_Enabled_Match_UI
 
 	$UI_Main_Event_Clear = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "620,555"
+		Location       = "620,595"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.EventManagerCurrentClear
@@ -271,41 +295,11 @@ Function Feature_Enabled_Match_UI
 	}
 	$UI_Main_Save      = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "620,595"
+		Location       = "620,635"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.Save
 		add_Click      = { Autopilot_Feature_Enabled_Match_UI_Save }
-	}
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "620,635"
-		Height         = 36
-		Width          = 280
-		Text           = $lang.Cancel
-		add_Click      = {
-			$UI_Main.Hide()
-
-			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-
-				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "  $('-' * 80)"
-				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_Feature_Enable_Match_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
-				if ($Temp_Assign_Task_Select.count -gt 0) {
-					ForEach ($item in $Temp_Assign_Task_Select) {
-						Write-Host "  $($item)" -ForegroundColor Green
-					}
-				} else {
-					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
-				}
-			}
-
-			if ($UI_Main_Suggestion_Not.Checked) {
-				Init_Canel_Event
-			}
-			$UI_Main.Close()
-		}
 	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_Menu,
@@ -313,8 +307,7 @@ Function Feature_Enabled_Match_UI
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
 		$UI_Main_Event_Clear,
-		$UI_Main_Save,
-		$UI_Main_Canel
+		$UI_Main_Save
 	))
 	$UI_Main_Menu.controls.AddRange((
 		$UI_Main_Dashboard,

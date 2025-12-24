@@ -87,10 +87,37 @@ Function Language_Change_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $True
+		ControlBox     = $True
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
+		add_Click      = {
+			$UI_Main.Hide()
+
+			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
+				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
+					$Temp_Queue_Language_Change_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
+					if ([string]::IsNullOrEmpty($Temp_Queue_Language_Change_Select)) {
+						Write-Host "  $($lang.NoWork)" -ForegroundColor Red
+					} else {
+						Write-Host "  $($lang.Change), $($lang.SwitchLanguage): " -NoNewline
+						Write-Host $Temp_Queue_Language_Change_Select -ForegroundColor Green
+					}
+				} else {
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
+				}
+			}
+
+			if ($UI_Main_Suggestion_Not.Checked) {
+				Init_Canel_Event
+			}
+			$UI_Main.Close()
+		}
+		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 
 	$UI_Main_Menu      = New-Object System.Windows.Forms.FlowLayoutPanel -Property @{
@@ -253,53 +280,20 @@ Function Language_Change_UI
 		UseVisualStyleBackColor = $True
 		Location       = "375,635"
 		Height         = 36
-		Width          = 170
+		Width          = 258
 		Text           = $lang.EventManagerCurrentClear
 		add_Click      = $UI_Main_Event_Clear_Click
 	}
 	$UI_Main_Save      = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "552,635"
+		Location       = "642,635"
 		Height         = 36
-		Width          = 170
+		Width          = 258
 		Text           = $lang.Save
 		add_Click      = {
 			if (Autopilot_Language_Change_UI_Save) {
 				
 			}
-		}
-	}
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "728,635"
-		Height         = 36
-		Width          = 170
-		Text           = $lang.Cancel
-		add_Click      = {
-			$UI_Main.Hide()
-
-			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-
-				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "  $('-' * 80)"
-				if ((Get-Variable -Scope global -Name "Queue_Is_Language_Change_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
-					$Temp_Queue_Language_Change_Select = (Get-Variable -Scope global -Name "Queue_Is_Language_Change_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
-					if ([string]::IsNullOrEmpty($Temp_Queue_Language_Change_Select)) {
-						Write-Host "  $($lang.NoWork)" -ForegroundColor Red
-					} else {
-						Write-Host "  $($lang.Change), $($lang.SwitchLanguage): " -NoNewline
-						Write-Host $Temp_Queue_Language_Change_Select -ForegroundColor Green
-					}
-				} else {
-					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
-				}
-			}
-
-			if ($UI_Main_Suggestion_Not.Checked) {
-				Init_Canel_Event
-			}
-			$UI_Main.Close()
 		}
 	}
 	$UI_Main.controls.AddRange((
@@ -310,8 +304,7 @@ Function Language_Change_UI
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
 		$UI_Main_Event_Clear,
-		$UI_Main_Save,
-		$UI_Main_Canel
+		$UI_Main_Save
 	))
 	$UI_Main_Menu.controls.AddRange((
 		$UI_Main_Dashboard,

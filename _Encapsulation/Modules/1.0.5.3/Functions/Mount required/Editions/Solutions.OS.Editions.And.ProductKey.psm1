@@ -34,10 +34,11 @@ Function Editions_GUI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $True
+		ControlBox     = $True
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
+		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 
 	$UI_Main_Change_Version = New-Object System.Windows.Forms.CheckBox -Property @{
@@ -172,7 +173,7 @@ Function Editions_GUI
 		UseVisualStyleBackColor = $True
 		Location       = "500,635"
 		Height         = 36
-		Width          = 222
+		Width          = 458
 		Text           = $lang.OK
 		add_Click      = {
 			$UI_Main_Error.Text = ""
@@ -257,17 +258,6 @@ Function Editions_GUI
 			$UI_Main.Close()
 		}
 	}
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "735,635"
-		Height         = 36
-		Width          = 222
-		Text           = $lang.Cancel
-		add_Click      = {
-			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			$UI_Main.Close()
-		}
-	}
 
 	$UI_Main.controls.AddRange((
 		$UI_Main_Change_Version,
@@ -276,8 +266,7 @@ Function Editions_GUI
 		$UI_Main_Menu_Change_Key,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_OK,
-		$UI_Main_Canel
+		$UI_Main_OK
 	))
 
 	$UI_Main_Menu_Change_Key.controls.AddRange((

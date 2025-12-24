@@ -220,7 +220,7 @@
 							"ServerRdsh"
 						],
 						"NoSelMatch":  false,
-						"Rebuild":     true,
+						"Rebuild":     false,
 						"Compression": "Max",
 						"CustomReplace": "Windows 11",
 						"Schome":      "Custom",

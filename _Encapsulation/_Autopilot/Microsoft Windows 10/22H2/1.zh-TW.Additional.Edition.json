@@ -218,7 +218,8 @@
 							"EnterpriseSN",
 							"ServerRdsh"
 						],
-						"Rebuild":     true,
+						"NoSelMatch":  false,
+						"Rebuild":     false,
 						"Compression": "Max",
 						"CustomReplace": "Windows 10",
 						"Schome":      "Custom",

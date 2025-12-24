@@ -372,10 +372,11 @@ Function Create_Template_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $True
+		ControlBox     = $True
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
+		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
@@ -898,20 +899,20 @@ Function Create_Template_UI
 	}
 
 	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "620,523"
+		Location       = "620,568"
 		Height         = 20
 		Width          = 20
 		SizeMode       = "StretchImage"
 	}
 	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
-		Location       = "645,525"
-		Height         = 30
+		Location       = "645,570"
+		Height         = 60
 		Width          = 255
 		Text           = ""
 	}
 	$UI_Main_Ok        = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "620,595"
+		Location       = "620,635"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.OK
@@ -1090,18 +1091,6 @@ Function Create_Template_UI
 			$UI_Main_View_Detailed.Visible = $True
 		}
 	}
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "620,635"
-		Height         = 36
-		Width          = 280
-		Text           = $lang.Cancel
-		add_Click      = {
-			$UI_Main.Hide()
-			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			$UI_Main.Close()
-		}
-	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_View_Detailed,
 		$UI_Public_Name,
@@ -1124,8 +1113,7 @@ Function Create_Template_UI
 		$UI_Main_View_Detailed_History,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_Ok,
-		$UI_Main_Canel
+		$UI_Main_Ok
 	))
 	$UI_Main_View_Detailed.controls.AddRange((
 		$UI_Main_View_Detailed_Show,

@@ -17,4 +17,6 @@
 	AE_ExcludeMount                 = 排除不再请求挂载项
 	AE_ExcludeMountTips             = 你正在分配排除不再请求挂载项，添加后更改版本 ID、更改序列号不再请求挂载。
 	AE_Is_Auto_Sel_Exclude          = 不选择未匹配的附加版
+	AE_Setting_Order                = 托动设置附加版顺序
+	AE_Setting_Order_Tips           = 可托动版本设置添加顺序。
 '@

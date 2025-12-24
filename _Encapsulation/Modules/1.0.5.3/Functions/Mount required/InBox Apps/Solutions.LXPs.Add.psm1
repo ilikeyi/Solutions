@@ -729,13 +729,37 @@ Function LXPs_Region_Add
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $true
+		ControlBox     = $true
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
 		AllowDrop      = $true
 		Add_DragOver   = $UI_Main_DragOver
 		Add_DragDrop   = $UI_Main_DragDrop
+		add_Click      = {
+			$UI_Main.Hide()
+
+			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
+				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+
+				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
+				Write-Host "  $('-' * 80)"
+				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
+				if ($Temp_Assign_Task_Select.count -gt 0) {
+					ForEach ($item in $Temp_Assign_Task_Select) {
+						Write-Host "  $($item.Language)" -ForegroundColor Green
+					}
+				} else {
+					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
+				}
+			}
+
+			if ($UI_Main_Suggestion_Not.Checked) {
+				Init_Canel_Event
+			}
+			$UI_Main.Close()
+		}
+		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 
 	$UI_Main_Menu      = New-Object System.Windows.Forms.FlowLayoutPanel -Property @{
@@ -1651,7 +1675,7 @@ Function LXPs_Region_Add
 
 	$UI_Main_Event_Clear = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "620,555"
+		Location       = "620,595"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.EventManagerCurrentClear
@@ -1659,7 +1683,7 @@ Function LXPs_Region_Add
 	}
 	$UI_Main_Save      = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "620,595"
+		Location       = "620,635"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.Save
@@ -1667,36 +1691,6 @@ Function LXPs_Region_Add
 			if (Autopilot_LXPs_Region_Add_Save) {
 				
 			}
-		}
-	}
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "620,635"
-		Height         = 36
-		Width          = 280
-		Text           = $lang.Cancel
-		add_Click      = {
-			$UI_Main.Hide()
-
-			if (-not $Global:AutopilotMode -xor $Global:EventQueueMode) {
-				Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-
-				Write-Host "`n  $($lang.WaitQueue)" -ForegroundColor Yellow
-				Write-Host "  $('-' * 80)"
-				$Temp_Assign_Task_Select = (Get-Variable -Scope global -Name "Queue_Is_LXPs_Region_Add_Custom_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
-				if ($Temp_Assign_Task_Select.count -gt 0) {
-					ForEach ($item in $Temp_Assign_Task_Select) {
-						Write-Host "  $($item.Language)" -ForegroundColor Green
-					}
-				} else {
-					Write-Host "  $($lang.NoWork)" -ForegroundColor Red
-				}
-			}
-
-			if ($UI_Main_Suggestion_Not.Checked) {
-				Init_Canel_Event
-			}
-			$UI_Main.Close()
 		}
 	}
 	$UI_Main.controls.AddRange((
@@ -1712,8 +1706,7 @@ Function LXPs_Region_Add
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
 		$UI_Main_Event_Clear,
-		$UI_Main_Save,
-		$UI_Main_Canel
+		$UI_Main_Save
 	))
 	$UI_Main_View_Detailed.controls.AddRange((
 		$UI_Main_View_Detailed_Show,

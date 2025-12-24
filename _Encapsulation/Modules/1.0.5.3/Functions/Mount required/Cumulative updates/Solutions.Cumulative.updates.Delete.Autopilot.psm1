@@ -864,13 +864,14 @@ Function Cumulative_updates_Delete_UI_Autopilot
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $true
+		ControlBox     = $true
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
 		AllowDrop      = $true
 		Add_DragOver   = $UI_Main_DragOver
 		Add_DragDrop   = $UI_Main_DragDrop
+		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
@@ -989,7 +990,7 @@ Function Cumulative_updates_Delete_UI_Autopilot
 	#>
 	$UI_Main_Auto_select_Folder = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
-		Width          = 512
+		Width          = 515
 		margin         = "18,20,0,0"
 		Text           = $lang.RuleFindFolder
 	}
@@ -1213,7 +1214,7 @@ Function Cumulative_updates_Delete_UI_Autopilot
 	$UI_Main_Event_Sync_To_Global = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 30
 		Width          = 280
-		Location       = "625,555"
+		Location       = "625,595"
 		Text           = "$($lang.SaveTo): $($lang.Autopilot_Sync_To_Global)"
 		add_Click      = {
 			if ($UI_Main_Event_Sync_To_Global.Checked) {
@@ -1238,7 +1239,7 @@ Function Cumulative_updates_Delete_UI_Autopilot
 
 	$UI_Main_Save      = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "620,595"
+		Location       = "620,635"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.Save
@@ -1276,16 +1277,6 @@ Function Cumulative_updates_Delete_UI_Autopilot
 			}
 		}
 	}
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "620,635"
-		Height         = 36
-		Width          = 280
-		Text           = $lang.Cancel
-		add_Click      = {
-			$UI_Main.Close()
-		}
-	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_View_Detailed,
 		$UI_Main_Menu,
@@ -1295,8 +1286,7 @@ Function Cumulative_updates_Delete_UI_Autopilot
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
 		$UI_Main_Event_Sync_To_Global,
-		$UI_Main_Save,
-		$UI_Main_Canel
+		$UI_Main_Save
 	))
 	$UI_Main_View_Detailed.controls.AddRange((
 		$UI_Main_View_Detailed_Show,

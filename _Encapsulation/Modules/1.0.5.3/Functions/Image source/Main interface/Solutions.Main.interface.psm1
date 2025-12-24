@@ -4238,13 +4238,14 @@ Function Image_Select
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $True
+		ControlBox     = $True
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
 		AllowDrop      = $true
 		Add_DragOver   = $UI_Main_DragOver
 		Add_DragDrop   = $UI_Main_DragDrop
+		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 
 	<#
@@ -9877,13 +9878,13 @@ Function Image_Select
 	}
 
 	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "15,640"
+		Location       = "15,680"
 		Height         = 20
 		Width          = 20
 		SizeMode       = "StretchImage"
 	}
 	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
-		Location       = "40,642"
+		Location       = "40,682"
 		Height         = 30
 		Width          = 655
 		Text           = ""
@@ -9892,7 +9893,7 @@ Function Image_Select
 	$UI_Main_To        = New-Object system.Windows.Forms.ComboBox -Property @{
 		Height         = 30
 		Width          = 280
-		Location       = "764,560"
+		Location       = "764,600"
 		Text           = ""
 		DropDownStyle  = "DropDownList"
 		Visible        = $False
@@ -9906,7 +9907,7 @@ Function Image_Select
 
 	$UI_Main_Ok        = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "764,595"
+		Location       = "764,635"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.OK
@@ -10039,18 +10040,6 @@ Function Image_Select
 		}
 	}
 
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "764,635"
-		Height         = 36
-		Width          = 280
-		Text           = $lang.Cancel
-		add_Click      = {
-			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Stop-Process $PID
-			$UI_Main.Close()
-		}
-	}
 	$UI_Main.controls.AddRange((
 		<#
 			.蒙板：设置 API
@@ -10143,8 +10132,7 @@ Function Image_Select
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
 		$UI_Main_To,
-		$UI_Main_Ok,
-		$UI_Main_Canel
+		$UI_Main_Ok
 	))
 
 	$GUIImageSourceGroupAPI.controls.AddRange((

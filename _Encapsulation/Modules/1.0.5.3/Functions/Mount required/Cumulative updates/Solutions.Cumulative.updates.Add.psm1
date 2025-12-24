@@ -922,6 +922,7 @@ Function Cumulative_updates_Add_UI
 		AllowDrop      = $true
 		Add_DragOver   = $UI_Main_DragOver
 		Add_DragDrop   = $UI_Main_DragDrop
+		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
@@ -1001,7 +1002,7 @@ Function Cumulative_updates_Add_UI
 	#>
 	$UI_Main_Auto_select_Folder = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
-		Width          = 512
+		Width          = 515
 		margin         = "18,20,0,0"
 		Text           = $lang.RuleFindFolder
 	}

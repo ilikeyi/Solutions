@@ -53,10 +53,11 @@ Function Event_Completion_Start_Setting_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $True
+		ControlBox     = $True
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
+		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 
 	<#
@@ -278,7 +279,7 @@ Function Event_Completion_Start_Setting_UI
 	}
 
 	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "360,563"
+		Location       = "360,598"
 		Height         = 20
 		Width          = 20
 		SizeMode       = "StretchImage"
@@ -286,26 +287,16 @@ Function Event_Completion_Start_Setting_UI
 	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 255
-		Location       = "385,565"
+		Location       = "385,600"
 		Text           = ""
 	}
 	$UI_Main_Save      = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "360,595"
+		Location       = "360,635"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.OK
 		add_Click      = { Autopilot_Event_Completion_Save }
-	}
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "360,635"
-		Height         = 36
-		Width          = 280
-		Text           = $lang.Cancel
-		add_Click      =  {
-			$UI_Main.Close()
-		}
 	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_Time_Execute,
@@ -313,8 +304,7 @@ Function Event_Completion_Start_Setting_UI
 		$UI_Main_Tips,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_Save,
-		$UI_Main_Canel
+		$UI_Main_Save
 	))
 	
 	$UI_Main_Menu.controls.AddRange((
