@@ -10,9 +10,11 @@
 				"Prerequisite_Extract_Language_Add"
 			],
 			"ExtractLanguage": {
+				"Adv": {
+					"IsEjectISO": true
+				},
 				"Add": {
 					"Guid": "67b30543-6bdf-4d35-b5cd-edeed1b20333",
-					"IsEjectISO": true,
 					"CleanDuplicate": false,
 					"NoExtractEnglish": true,
 					"SaveTo": {
@@ -42,7 +44,6 @@
 				},
 				"Del": {
 					"Guid": "67b30543-6bdf-4d35-b5cd-edeed1b20333",
-					"IsEjectISO": true,
 					"CleanDuplicate": false,
 					"NoExtractEnglish": true,
 					"SaveTo": {
@@ -224,6 +225,7 @@
 							"EnterpriseSN",
 							"ServerRdsh"
 						],
+						"NoSelMatch":  false,
 						"Rebuild":     true,
 						"Compression": "Max",
 						"CustomReplace": "Windows 11",

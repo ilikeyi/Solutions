@@ -10,9 +10,11 @@
 				"Prerequisite_Extract_Language_Add"
 			],
 			"ExtractLanguage": {
+				"Adv": {
+					"IsEjectISO": true
+				},
 				"Add": {
 					"Guid": "a70389a7-bb7b-4774-91c7-2507c1472db0",
-					"IsEjectISO": true,
 					"CleanDuplicate": false,
 					"NoExtractEnglish": true,
 					"SaveTo": {
@@ -39,7 +41,6 @@
 				},
 				"Del": {
 					"Guid": "a70389a7-bb7b-4774-91c7-2507c1472db0",
-					"IsEjectISO": true,
 					"CleanDuplicate": false,
 					"NoExtractEnglish": true,
 					"SaveTo": {
