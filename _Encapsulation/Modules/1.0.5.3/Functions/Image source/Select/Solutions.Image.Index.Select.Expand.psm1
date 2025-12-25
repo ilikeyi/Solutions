@@ -60,10 +60,11 @@ Function Image_Select_Index_Custom_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $True
+		ControlBox     = $True
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
+		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 
 	$UI_Process_All = New-Object System.Windows.Forms.RadioButton -Property @{
@@ -104,7 +105,7 @@ Function Image_Select_Index_Custom_UI
 	#>
 	$UI_Main_Tips   = New-Object System.Windows.Forms.RichTextBox -Property @{
 		Height         = 330
-		Width          = 270
+		Width          = 265
 		BorderStyle    = 0
 		Location       = "575,10"
 		Text           = $lang.Index_Select_Tips -f $Global:Primary_Key_Image.Master
@@ -144,13 +145,13 @@ Function Image_Select_Index_Custom_UI
 	}
 
 	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "570,560"
+		Location       = "570,598"
 		Height         = 20
 		Width          = 20
 		SizeMode       = "StretchImage"
 	}
 	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
-		Location       = "595,562"
+		Location       = "595,600"
 		Height         = 30
 		Width          = 255
 		Text           = ""
@@ -158,7 +159,7 @@ Function Image_Select_Index_Custom_UI
 
 	$UI_Main_Save      = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "570,595"
+		Location       = "570,635"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.Save
@@ -221,16 +222,6 @@ Function Image_Select_Index_Custom_UI
 			$UI_Main_Error.Text = "$($lang.Save), $($lang.Done)"
 		}
 	}
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "570,635"
-		Height         = 36
-		Width          = 280
-		Text           = $lang.Cancel
-		add_Click      = {
-			$UI_Main.Close()
-		}
-	}
 	$UI_Main.controls.AddRange((
 		$UI_Process_All,
 		$UI_Is_Event_Popup_Select_Index,
@@ -239,8 +230,7 @@ Function Image_Select_Index_Custom_UI
 		$UI_Main_Tips,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_Save,
-		$UI_Main_Canel
+		$UI_Main_Save
 	))
 
 	for($i=1; $i -le 12; $i++) {

@@ -2231,7 +2231,7 @@ volume
 		Height         = 36
 		Width          = 240
 		Location       = "807,635"
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			$GUISolutionsRegional.visible = $False
 		}
@@ -2522,7 +2522,7 @@ volume
 		Height         = 36
 		Width          = 240
 		Location       = "807,635"
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			$GUISolutionsCollectionChange.visible = $False
 		}
@@ -2717,7 +2717,7 @@ volume
 		Height         = 36
 		Width          = 240
 		Location       = "807,635"
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			$GUISolutionsOfficeChange.visible = $False
 		}
@@ -4042,7 +4042,7 @@ volume
 		Location       = "807,635"
 		Height         = 36
 		Width          = 240
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			$UIUnzipPanel_Select_Rule.visible = $False
 		}
@@ -4092,7 +4092,7 @@ volume
 		Location       = "807,635"
 		Height         = 36
 		Width          = 240
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			$GUISolutionsUnattendChange.visible = $False
 		}
@@ -7384,10 +7384,11 @@ Function Solutions_Index_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $True
+		ControlBox     = $True
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
+		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\Assets\icon\Yi.ico")
 	}
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		Height         = 550
@@ -7400,41 +7401,30 @@ Function Solutions_Index_UI
 	}
 
 	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "15,563"
+		Location       = "15,598"
 		Height         = 20
 		Width          = 20
 		SizeMode       = "StretchImage"
 	}
 	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
-		Location       = "40,565"
+		Location       = "40,600"
 		Height         = 30
 		Width          = 490
 		Text           = ""
 	}
 	$UI_Main_Save      = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "8,595"
+		Location       = "8,635"
 		Height         = 36
 		Width          = 515
 		Text           = $lang.OK
 		add_Click      = { Solutions_Index_Save }
 	}
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "8,635"
-		Height         = 36
-		Width          = 515
-		Text           = $lang.Cancel
-		add_Click      = {
-			$UI_Main.Close()
-		}
-	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_Menu,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_Save,
-		$UI_Main_Canel
+		$UI_Main_Save
 	))
 
 	$Install_wim = Join-Path -Path $Global:Image_source -ChildPath "Sources\install.wim"
@@ -7602,11 +7592,12 @@ Function KMSkeys
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $True
+		ControlBox     = $True
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
 		TopMost        = $True
+		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\Assets\icon\Yi.ico")
 	}
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		Height         = 550
@@ -7693,20 +7684,20 @@ Function KMSkeys
 	}
 
 	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "422,563"
+		Location       = "422,598"
 		Height         = 20
 		Width          = 20
 		SizeMode       = "StretchImage"
 	}
 	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
-		Location       = "447,565"
+		Location       = "447,600"
 		Height         = 30
 		Width          = 404
 		Text           = ""
 	}
 	$UI_Main_Save      = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "420,595"
+		Location       = "420,635"
 		Height         = 36
 		Width          = 429
 		Text           = $lang.OK
@@ -7729,16 +7720,6 @@ Function KMSkeys
 			}
 		}
 	}
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "420,635"
-		Height         = 36
-		Width          = 429
-		Text           = $lang.Cancel
-		add_Click      = {
-			$UI_Main.Close()
-		}
-	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_Menu,
 		$UI_Main_KMS_Custom_Name,
@@ -7748,8 +7729,7 @@ Function KMSkeys
 		$UI_Main_KMS_Show_All,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_Save,
-		$UI_Main_Canel
+		$UI_Main_Save
 	))
  
 	<#

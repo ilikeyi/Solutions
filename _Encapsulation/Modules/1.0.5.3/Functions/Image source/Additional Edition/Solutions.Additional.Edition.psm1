@@ -1174,10 +1174,19 @@ Function Image_Additional_Edition_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $True
+		ControlBox     = $True
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
+		Add_FormClosed = {
+			$UI_Main.Hide()
+
+			if ($UI_Main_Suggestion_Not.Checked) {
+				Init_Canel_Event
+			}
+			$UI_Main.Close()
+		}
+		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 
 	$UI_Main_Menu_Name  = New-Object system.Windows.Forms.LinkLabel -Property @{
@@ -1272,10 +1281,10 @@ Function Image_Additional_Edition_UI
 	}
 
 	$UI_Main_Import_Name = New-Object system.Windows.Forms.Label -Property @{
-		Location       = "560,10"
+		Location       = "560,15"
 		Height         = 30
 		Width          = 455
-		Text           = "$($lang.Import), $($lang.PleaseChoose): "
+		Text           = $lang.Import
 	}
 
 	<#
@@ -1303,26 +1312,11 @@ Function Image_Additional_Edition_UI
 		Text           = ""
 	}
 
-	$UI_Main_Import_Canel = New-Object system.Windows.Forms.Button -Property @{
+	$UI_Main_Import_Import = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
 		Location       = "560,635"
 		Height         = 36
-		Width          = 158
-		Text           = $lang.Cancel
-		add_Click      = {
-			$UI_Main.Hide()
-
-			if ($UI_Main_Suggestion_Not.Checked) {
-				Init_Canel_Event
-			}
-			$UI_Main.Close()
-		}
-	}
-	$UI_Main_Import_Import = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "725,635"
-		Height         = 36
-		Width          = 158
+		Width          = 240
 		Text           = $lang.Import
 		add_Click      = {
 			Image_Additional_Edition_Import_Save
@@ -1331,9 +1325,9 @@ Function Image_Additional_Edition_UI
 	}
 	$UI_Main_Import_Hide = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "889,635"
+		Location       = "805,635"
 		Height         = 36
-		Width          = 158
+		Width          = 240
 		Text           = $lang.Hide
 		add_Click      = {
 			$UI_Main_Import_Detailed.visible = $False
@@ -1443,26 +1437,11 @@ Function Image_Additional_Edition_UI
 		Text           = ""
 	}
 
-	$UI_Main_Exclude_Canel = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "560,635"
-		Height         = 36
-		Width          = 158
-		Text           = $lang.Cancel
-		add_Click      = {
-			$UI_Main.Hide()
-
-			if ($UI_Main_Suggestion_Not.Checked) {
-				Init_Canel_Event
-			}
-			$UI_Main.Close()
-		}
-	}
 	$UI_Main_Exclude_Hide = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "889,635"
+		Location       = "805,635"
 		Height         = 36
-		Width          = 158
+		Width          = 240
 		Text           = $lang.Hide
 		add_Click      = {
 			$UI_Main_Exclude.visible = $False
@@ -1528,7 +1507,7 @@ Function Image_Additional_Edition_UI
 		Height         = 30
 		Width          = 460
 		Location       = "565,560"
-		Text           = "$($lang.AdditionalEdition), $($lang.Import)"
+		Text           = $lang.Import
 		Tag            = $item.GUID
 		LinkColor      = "GREEN"
 		ActiveLinkColor = "RED"
@@ -1636,36 +1615,21 @@ Function Image_Additional_Edition_UI
 		UseVisualStyleBackColor = $True
 		Location       = "560,635"
 		Height         = 36
-		Width          = 158
+		Width          = 240
 		Text           = $lang.EventManagerCurrentClear
 		add_Click      = $UI_Main_Event_Clear_Click
 	}
 	$UI_Main_Save      = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "725,635"
+		Location       = "805,635"
 		Height         = 36
-		Width          = 158
+		Width          = 240
 		Text           = $lang.Save
 		add_Click      = {
 			if (Image_Additional_Edition_Save) {
 			}
 
 			Refres_Event_Tasks_Image_Additional_Edition
-		}
-	}
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "889,635"
-		Height         = 36
-		Width          = 158
-		Text           = $lang.Cancel
-		add_Click      = {
-			$UI_Main.Hide()
-
-			if ($UI_Main_Suggestion_Not.Checked) {
-				Init_Canel_Event
-			}
-			$UI_Main.Close()
 		}
 	}
 
@@ -1797,8 +1761,7 @@ Function Image_Additional_Edition_UI
 		$UI_Main_Exclude_UI,
 		$UI_Main_View_Import_UI,
 		$UI_Main_Event_Clear,
-		$UI_Main_Save,
-		$UI_Main_Canel
+		$UI_Main_Save
 	))
 
 	$UI_Main_Rule_View_Detailed.controls.AddRange((
@@ -1816,9 +1779,7 @@ Function Image_Additional_Edition_UI
 
 		$UI_Main_Exclude_Error_Icon,
 		$UI_Main_Exclude_Error,
-		$UI_Main_Exclude_Canel,
 		$UI_Main_Exclude_Hide
-
 	))
 
 	$UI_Main_Import_Detailed.controls.AddRange((
@@ -1827,7 +1788,6 @@ Function Image_Additional_Edition_UI
 		$UI_Main_Import_Menu,
 		$UI_Main_Import_Error,
 		$UI_Main_Import_Error_Icon,
-		$UI_Main_Import_Canel,
 		$UI_Main_Import_Import,
 		$UI_Main_Import_Hide
 	))

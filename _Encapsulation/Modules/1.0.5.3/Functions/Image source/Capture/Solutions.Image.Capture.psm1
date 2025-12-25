@@ -60,13 +60,14 @@ Function Image_Capture_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $True
+		ControlBox     = $True
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
 		AllowDrop      = $true
 		Add_DragOver   = $UI_Main_DragOver
 		Add_DragDrop   = $UI_Main_DragDrop
+		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
@@ -740,7 +741,7 @@ Function Image_Capture_UI
 
 	$UI_Main_Capture_OK = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "620,595"
+		Location       = "620,635"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.Wim_Capture
@@ -978,24 +979,12 @@ Function Image_Capture_UI
 			Get_Next
 		}
 	}
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "620,635"
-		Height         = 36
-		Width          = 280
-		Text           = $lang.Cancel
-		add_Click      = {
-			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			$UI_Main.Close()
-		}
-	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_Menu,
 		$UI_Main_Tips,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_Capture_OK,
-		$UI_Main_Canel
+		$UI_Main_Capture_OK
 	))
 	$UI_Main_Menu.controls.AddRange((
 		$UI_Main_Capture_Sources,

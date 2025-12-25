@@ -4239,13 +4239,14 @@ Function Image_Select
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $True
+		ControlBox     = $True
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
-		AllowDrop      = $true
+		AllowDrop      = $True
 		Add_DragOver   = $UI_Main_DragOver
 		Add_DragDrop   = $UI_Main_DragDrop
+		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
 
 	<#
@@ -4659,7 +4660,7 @@ Function Image_Select
 		Location       = "890,635"
 		Height         = 36
 		Width          = 153
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			if ($Page) {
 				$UI_Main.Close()
@@ -6858,7 +6859,7 @@ Function Image_Select
 		Location       = "814,635"
 		Height         = 36
 		Width          = 230
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			$UI_Main.Text = $lang.SelectSettingImage
 			$GUIImageSourceGroupSettingErrorMsg_Icon.Image = $null
@@ -6969,7 +6970,7 @@ Function Image_Select
 		Location       = "764,635"
 		Height         = 36
 		Width          = 280
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			$UI_Main.Text = $lang.SelectSettingImage
 			$GUIImageSourceGroupAPI.visible = $False             # 蒙板：设置 API
@@ -7959,7 +7960,7 @@ Function Image_Select
 		Location       = "764,635"
 		Height         = 36
 		Width          = 280
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			$UI_Main.Text = $lang.SelectSettingImage
 
@@ -8364,7 +8365,7 @@ Function Image_Select
 		Location       = "764,635"
 		Height         = 36
 		Width          = 280
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			$UI_Main.Text = $lang.SelectSettingImage
 			$GUIImageSourceGroupAPI.visible = $False             # 蒙板：设置 API
@@ -8493,7 +8494,7 @@ Function Image_Select
 		Location       = "764,635"
 		Height         = 36
 		Width          = 280
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			$UI_Main.Text = $lang.Rule_Show_Only_Select
 
@@ -8580,7 +8581,7 @@ Function Image_Select
 		Location       = "807,635"
 		Height         = 36
 		Width          = 240
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			$UI_Main.Text = $lang.ISO_File
 
@@ -9229,7 +9230,7 @@ Function Image_Select
 		Location       = "764,635"
 		Height         = 36
 		Width          = 280
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			if ($Page) {
 				$UI_Main.Close()
@@ -9893,7 +9894,7 @@ Function Image_Select
 	$UI_Main_To        = New-Object system.Windows.Forms.ComboBox -Property @{
 		Height         = 30
 		Width          = 280
-		Location       = "764,560"
+		Location       = "764,600"
 		Text           = ""
 		DropDownStyle  = "DropDownList"
 		Visible        = $False
@@ -9907,7 +9908,7 @@ Function Image_Select
 
 	$UI_Main_Ok        = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "764,595"
+		Location       = "764,635"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.OK
@@ -10040,18 +10041,6 @@ Function Image_Select
 		}
 	}
 
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "764,635"
-		Height         = 36
-		Width          = 280
-		Text           = $lang.Cancel
-		add_Click      = {
-			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			Stop-Process $PID
-			$UI_Main.Close()
-		}
-	}
 	$UI_Main.controls.AddRange((
 		<#
 			.蒙板：设置 API
@@ -10144,8 +10133,7 @@ Function Image_Select
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
 		$UI_Main_To,
-		$UI_Main_Ok,
-		$UI_Main_Canel
+		$UI_Main_Ok
 	))
 
 	$GUIImageSourceGroupAPI.controls.AddRange((
