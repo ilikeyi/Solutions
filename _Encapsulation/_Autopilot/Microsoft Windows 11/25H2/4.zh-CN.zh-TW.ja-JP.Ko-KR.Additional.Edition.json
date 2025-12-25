@@ -69,7 +69,7 @@
 		"ImageSource": {
 			"Tasks": {
 				"IsAutoSelect": [
-					"AE_Install;wim;install;wim",
+					"Additional_Edition_Install;wim;Install;wim;",
 					"Image_Convert_UI"
 				],
 				"Solutions": {

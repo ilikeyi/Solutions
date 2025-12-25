@@ -2026,7 +2026,7 @@ Function Image_Assign_Autopilot_Master
 
 						#region 获取到主文件里有映像内容
 						if ($Verify_Main_WIM.Count -gt 0) {
-							Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -Uid $item.Main.Uid -MainUid $item.Main.Uid -ImageFilePath $NewFileFullPathMain 
+							Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -Uid $item.Main.Uid -MainUid $item.Main.Uid -Group $item.Main.Group -ImageFilePath $NewFileFullPathMain 
 
 							#region 获取是否挂载
 							if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.Uid)").Value) {
@@ -2064,7 +2064,7 @@ Function Image_Assign_Autopilot_Master
 
 										#region 已挂载是存在文件
 										if (Test-Path -Path $test_mount_folder_Current -PathType Leaf) {
-											Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Master $item.Main.ImageFileName -ImageName $Expand.ImageFileName -Uid $Expand.Uid -MainUid $item.Main.Uid -ImageFilePath $test_mount_folder_Current
+											Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Tasks $Expand -Master $item.Main.ImageFileName -ImageName $Expand.ImageFileName -Uid $Expand.Uid -MainUid $item.Main.Uid -Group $Expand.Group -ImageFilePath $test_mount_folder_Current
 
 											$Verify_Expand_WIM = @()
 
@@ -2105,7 +2105,7 @@ Function Image_Assign_Autopilot_Master
 									ForEach ($Expand in $item.Expand) {
 										$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)\$($item.Main.ImageFileName).$($item.Main.Suffix)\Mount\$($Expand.Path)\$($Expand.ImageFileName).$($Expand.Suffix)"
 
-										Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Master $item.Main.ImageFileName -ImageName $Expand.ImageFileName -Uid $Expand.Uid -MainUid $item.Main.Uid -ImageFilePath $test_mount_folder_Current
+										Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Tasks $Expand -Master $item.Main.ImageFileName -ImageName $Expand.ImageFileName -Uid $Expand.Uid -MainUid $item.Main.Uid -Group $Expand.Group -ImageFilePath $test_mount_folder_Current
 
 										$GUIImageSelectInstallExpand = New-Object System.Windows.Forms.CheckBox -Property @{
 											Name               = $item.Main.Uid
@@ -2177,7 +2177,7 @@ Function Image_Assign_Autopilot_Master
 						}
 
 						if ($Verify_Main_WIM.Count -gt 0) {
-							Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -Uid $item.Main.Uid -MainUid $item.Main.Uid -ImageFilePath $NewFileFullPathMain
+							Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Tasks $item.Main -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -Uid $item.Main.Uid -MainUid $item.Main.Uid -Group $item.Main.Group -ImageFilePath $NewFileFullPathMain
 
 							if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.Uid)").Value) {
 								$GUIImageSelectInstall.ForeColor = "Red"
@@ -2222,7 +2222,7 @@ Function Image_Assign_Autopilot_Master
 										}
 
 										if ($Verify_Expand_WIM.Count -gt 0) {
-											Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Master $item.Main.ImageFileName -ImageName $Expand.ImageFileName -Uid $Expand.Uid -MainUid $item.Main.Uid -ImageFilePath $test_mount_folder_Current
+											Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Tasks $Expand -Master $item.Main.ImageFileName -ImageName $Expand.ImageFileName -Uid $Expand.Uid -MainUid $item.Main.Uid -Group $Expand.Group -ImageFilePath $test_mount_folder_Current
 
 											if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($Expand.Uid)").Value) {
 												$GUIImageSelectInstallExpand.ForeColor = "Red"
@@ -4615,7 +4615,7 @@ Function Image_Assign_Autopilot_Master
 					if (-not [string]::IsNullOrEmpty($Autopilot.Deploy.Mount.Tasks)) {
 						foreach ($itemDeploy in $Autopilot.Deploy.Mount.Tasks) {
 							if ($itemDeploy.Uid -eq $item.Main.uid) {
-								Refresh_Config_Rule_Global -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -Uid $item.Main.Uid -MainUid $item.Main.Uid -ImageFilePath $NewFileFullPathMain -NewTasks $itemDeploy -NewTasksFull $itemDeploy -SelectUid $Autopilot.Deploy.Mount.IsAutoSelect
+								Refresh_Config_Rule_Global -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -Uid $item.Main.Uid -MainUid $item.Main.Uid -Group $item.main.Group -ImageFilePath $NewFileFullPathMain -NewTasks $itemDeploy -NewTasksFull $itemDeploy -SelectUid $Autopilot.Deploy.Mount.IsAutoSelect
 							}
 						}
 					}
@@ -4627,7 +4627,7 @@ Function Image_Assign_Autopilot_Master
 							if (-not [string]::IsNullOrEmpty($Autopilot.Deploy.Mount.Tasks)) {
 								foreach ($itemDeploy in $Autopilot.Deploy.Mount.Tasks) {
 									if ($itemDeploy.Uid -eq $Expand.uid) {
-										Refresh_Config_Rule_Global -Master $item.Main.ImageFileName -ImageName $Expand.ImageFileName -Uid $Expand.Uid -MainUid $item.Main.Uid -ImageFilePath $test_mount_folder_Current -NewTasks $itemDeploy -NewTasksFull $itemDeploy -SelectUid $Autopilot.Deploy.Mount.IsAutoSelect
+										Refresh_Config_Rule_Global -Master $item.Main.ImageFileName -ImageName $Expand.ImageFileName -Uid $Expand.Uid -MainUid $item.Main.Uid -Group $Expand.Group -ImageFilePath $test_mount_folder_Current -NewTasks $itemDeploy -NewTasksFull $itemDeploy -SelectUid $Autopilot.Deploy.Mount.IsAutoSelect
 									}
 								}
 							}
@@ -4825,7 +4825,7 @@ Function Image_Assign_Autopilot_Master
 		}
 
 		if ($Wait_Assign_To_New_Button.Count -gt 0) {
-			Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Export_Add -Master $Master -ImageName $ImageName -Uid $Uid -MainUid $MainUid -ImageFilePath $ImageFilePath -Tasks $Wait_Assign_To_New_Button -NewTasksFull $NewTasksFull -SelectUid $SelectUid
+			Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Export_Add -Master $Master -ImageName $ImageName -Uid $Uid -MainUid $MainUid -Group $Group -ImageFilePath $ImageFilePath -Tasks $Wait_Assign_To_New_Button -NewTasksFull $NewTasksFull -SelectUid $SelectUid
 		}
 	}
 
