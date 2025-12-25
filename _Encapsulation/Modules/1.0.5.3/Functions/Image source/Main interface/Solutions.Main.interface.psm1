@@ -2929,6 +2929,7 @@ Function Image_Select
 	Function Refresh_Click_Image_Sources
 	{
 		$UI_Main_Ok.Visible = $False                    # 隐藏: 确定按钮
+		$UI_Main_To.Visible = $False                    # 显示：前往到
 
 		$UI_Main_Error.Text = ""
 		$UI_Main_Error_Icon.Image = $null
@@ -3249,17 +3250,17 @@ Function Image_Select
 					#>
 					$UI_Main_To.SelectedIndex = $UI_Main_To.FindString($lang.Ok_Go_To_No)
 				}
+
+				$UI_Main_Ok.Visible = $True                    # 显示: 确定按钮
+				$UI_Main_To.Visible = $True                    # 显示：前往到
+				$GUIImageSourceGroupMount.Visible = $True      # 动态显示：挂载到
+				$GUIImageSourceGroupLang.Visible = $True       # 动态显示：更改语言
+				$GUIImageSourceGroupOther.Visible = $True      # 动态显示：详细
+
+				$UI_Main_Error.Text = "$($lang.Ok_Go_To): $($lang.Autopilot), $($lang.OnDemandPlanTask), $($lang.MoreFeature)"
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Info.ico")
 			}
 		}
-
-		$UI_Main_Ok.Visible = $True                    # 显示: 确定按钮
-		$UI_Main_To.Visible = $True                    # 显示：前往到
-		$GUIImageSourceGroupMount.Visible = $True      # 动态显示：挂载到
-		$GUIImageSourceGroupLang.Visible = $True       # 动态显示：更改语言
-		$GUIImageSourceGroupOther.Visible = $True      # 动态显示：详细
-
-		$UI_Main_Error.Text = "$($lang.Ok_Go_To): $($lang.Autopilot), $($lang.OnDemandPlanTask), $($lang.MoreFeature)"
-		$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Info.ico")
 	}
 
 	Function Image_Select_New_Sources
