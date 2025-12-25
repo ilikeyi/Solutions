@@ -11,7 +11,6 @@
 	AE_Not_Match                    = Ni najdenega ujemajočega se ID-ja različice
 	AE_NoEvent                      = Ni najdenih dogodkov različice dodatka
 	AE_Rename                       = Dovoli preimenovanje vseh podrobnosti
-	AE_Exclude                      = Izključi različice dodatka
 	AE_Replace_Name                 = Samodejno zamenjaj imena jezikov
 	AE_Add_Exclude_Nomount          = Dodaj v izključevanje iz nezahtevanih nosilcev
 	AE_ExcludeMount                 = Izključi iz nezahtevanih nosilcev

@@ -915,8 +915,8 @@ Function Image_Additional_Edition_UI
 			$NewImageName_Custom = New-Object System.Windows.Forms.TextBox -Property @{
 				Name           = "ImageName"
 				Height         = 30
-				Width          = 400
-				Margin         = "40,5,0,20"
+				Width          = 395
+				Margin         = "45,5,0,20"
 				Text           = $NewImageName
 				add_Click      = {
 					$UI_Main_Error.Text = ""
@@ -933,8 +933,8 @@ Function Image_Additional_Edition_UI
 			$NewImage_Description_Custom = New-Object System.Windows.Forms.TextBox -Property @{
 				Name           = "Description"
 				Height         = 30
-				Width          = 400
-				Margin         = "40,5,0,20"
+				Width          = 395
+				Margin         = "45,5,0,20"
 				Text           = $NewDescription
 				add_Click      = {
 					$UI_Main_Error.Text = ""
@@ -951,8 +951,8 @@ Function Image_Additional_Edition_UI
 			$NewDisplayName_Custom = New-Object System.Windows.Forms.TextBox -Property @{
 				Name           = "DisplayName"
 				Height         = 30
-				Width          = 400
-				Margin         = "40,5,0,20"
+				Width          = 395
+				Margin         = "45,5,0,20"
 				Text           = $NewDisplayName
 				add_Click      = {
 					$UI_Main_Error.Text = ""
@@ -969,8 +969,8 @@ Function Image_Additional_Edition_UI
 			$NewDisplayDescription_Custom = New-Object System.Windows.Forms.TextBox -Property @{
 				Name           = "DisplayDescription"
 				Height         = 30
-				Width          = 400
-				Margin         = "40,5,0,20"
+				Width          = 395
+				Margin         = "45,5,0,20"
 				Text           = $NewDisplayDescription
 				add_Click      = {
 					$UI_Main_Error.Text = ""
@@ -1245,11 +1245,38 @@ Function Image_Additional_Edition_UI
 	#>
 	$UI_Main_Import_Adv = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
-		Height         = 100
-		Width          = 475
-		autoSizeMode   = 0
+		autosize       = 1
+		autoSizeMode   = 1
 		Padding        = "15,15,0,0"
+		margin         = "0,0,0,30"
 		autoScroll     = $False
+	}
+
+	<#
+		.自动替换语言名称
+	#>
+	$UI_Main_Replace_Name = New-Object System.Windows.Forms.Label -Property @{
+		Height         = 30
+		Width          = 455
+		Text           = $lang.AE_Replace_Name
+	}
+	$UI_Main_Replace_Custom = New-Object System.Windows.Forms.TextBox -Property @{
+		Height         = 30
+		Width          = 400
+		margin         = "26,0,0,40"
+		Text           = ""
+		add_Click      = {
+			$This.BackColor = "#FFFFFF"
+			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
+		}
+	}
+	
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\MVS" -Name "Kernel" -ErrorAction SilentlyContinue) {
+		$GetSaveLabelGUID = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\MVS" -Name "Kernel" -ErrorAction SilentlyContinue
+		$UI_Main_Replace_Custom.Text = "Windows $($GetSaveLabelGUID)"
+	} else {
+		$UI_Main_Replace_Custom.Text = "Windows 11"
 	}
 
 	<#
@@ -1258,7 +1285,7 @@ Function Image_Additional_Edition_UI
 
 	$UI_Main_Import_Adv_Name = New-Object System.Windows.Forms.Label -Property @{
 		Height         = 30
-		Width          = 460
+		Width          = 455
 		Text           = $lang.AdvOption
 	}
 
@@ -1267,7 +1294,7 @@ Function Image_Additional_Edition_UI
 	#>
 	$UI_Main_Import_Adv_Exclude = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 30
-		Width          = 460
+		Width          = 455
 		Padding        = "22,0,0,0"
 		Text           = $lang.AE_Is_Auto_Sel_Exclude
 	}
@@ -1490,7 +1517,7 @@ Function Image_Additional_Edition_UI
 		Height         = 30
 		Width          = 460
 		Location       = "565,530"
-		Text           = $lang.AE_Exclude
+		Text           = $lang.AE_ExcludeMount
 		Tag            = $item.GUID
 		LinkColor      = "GREEN"
 		ActiveLinkColor = "RED"
@@ -1636,20 +1663,20 @@ Function Image_Additional_Edition_UI
 	$UI_Main_Dashboard = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 530
-		Location       = "570,15"
+		Location       = "560,15"
 		Text           = $lang.Dashboard
 	}
 	$UI_Main_Dashboard_Event_Status = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 530
-		Location       = "570,45"
+		Location       = "560,45"
 		Padding        = "16,0,0,0"
 		Text           = "$($lang.EventManager): $($lang.Failed)"
 	}
 	$UI_Main_Dashboard_Event_Clear = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 30
 		Width          = 530
-		Location       = "570,80"
+		Location       = "560,80"
 		Padding        = "32,0,0,0"
 		Text           = $lang.EventManagerCurrentClear
 		LinkColor      = "GREEN"
@@ -1658,49 +1685,11 @@ Function Image_Additional_Edition_UI
 		add_Click      = $UI_Main_Event_Clear_Click
 	}
 
-	<#
-		.自动替换语言名称
-	#>
-	$UI_Main_Replace_Name = New-Object System.Windows.Forms.Label -Property @{
-		Height         = 30
-		Width          = 485
-		Location       = '560,140'
-		Text           = $lang.AE_Replace_Name
-	}
-	$UI_Main_Replace_Custom = New-Object System.Windows.Forms.TextBox -Property @{
-		Height         = 30
-		Width          = 430
-		Text           = ""
-		Location       = '585,170'
-		add_Click      = {
-			$This.BackColor = "#FFFFFF"
-			$UI_Main_Error.Text = ""
-			$UI_Main_Error_Icon.Image = $null
-		}
-	}
-	
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\MVS" -Name "Kernel" -ErrorAction SilentlyContinue) {
-		$GetSaveLabelGUID = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\ImageSources\$($Global:MainImage)\MVS" -Name "Kernel" -ErrorAction SilentlyContinue
-		$UI_Main_Replace_Custom.Text = "Windows $($GetSaveLabelGUID)"
-	} else {
-		$UI_Main_Replace_Custom.Text = "Windows 11"
-	}
-	
 	$UI_Main_AdvOption = New-Object System.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 485
-		Location       = '560,230'
+		Location       = '560,150'
 		Text           = $lang.AdvOption
-	}
-
-	<#
-		.重建
-	#>
-	$UI_Main_Rebuild   = New-Object System.Windows.Forms.CheckBox -Property @{
-		Height         = 30
-		Width          = 533
-		Location       = '585,260'
-		Text           = $lang.Rebuild
 	}
 
 	<#
@@ -1709,13 +1698,13 @@ Function Image_Additional_Edition_UI
 	$UI_Main_CompressionType = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 533
-		Location       = '585,300'
+		Location       = '585,180'
 		Text           = $lang.CompressionType
 	}
 	$UI_Main_Capture_Type_Select = New-Object system.Windows.Forms.ComboBox -Property @{
 		Height         = 30
 		Width          = 220
-		Location       = '602,335'
+		Location       = '602,215'
 		Text           = ""
 		DropDownStyle  = "DropDownList"
 		Add_SelectedValueChanged = {
@@ -1737,6 +1726,26 @@ Function Image_Additional_Edition_UI
 	$UI_Main_Capture_Type_Select.ValueMember = "CompressionType"
 	$UI_Main_Capture_Type_Select.DisplayMember = "Lang"
 
+	<#
+		.完成后
+	#>
+	$UI_Main_After = New-Object system.Windows.Forms.Label -Property @{
+		Height         = 30
+		Width          = 533
+		Location       = '560,275'
+		Text           = $lang.Functions_Rear
+	}
+
+		<#
+			.重建
+		#>
+		$UI_Main_Rebuild   = New-Object System.Windows.Forms.CheckBox -Property @{
+			Height         = 30
+			Width          = 533
+			Location       = '585,300'
+			Text           = $lang.Rebuild
+		}
+
 	$UI_Main.controls.AddRange((
 		$UI_Main_Rule_View_Detailed,
 		$UI_Main_Import_Detailed,
@@ -1750,13 +1759,12 @@ Function Image_Additional_Edition_UI
 		$UI_Main_Dashboard_Event_Status,
 		$UI_Main_Dashboard_Event_Clear,
 
-		$UI_Main_Replace_Name,
-		$UI_Main_Replace_Custom,
-
 		$UI_Main_AdvOption,
-		$UI_Main_Rebuild,
 		$UI_Main_CompressionType,
 		$UI_Main_Capture_Type_Select,
+
+		$UI_Main_After,
+		$UI_Main_Rebuild,
 
 		$UI_Main_Exclude_UI,
 		$UI_Main_View_Import_UI,
@@ -1796,6 +1804,8 @@ Function Image_Additional_Edition_UI
 		$UI_Main_Select_Rule
 	))
 	$UI_Main_Import_Adv.controls.AddRange((
+		$UI_Main_Replace_Name,
+		$UI_Main_Replace_Custom,
 		$UI_Main_Import_Adv_Name,
 		$UI_Main_Import_Adv_Exclude
 	))

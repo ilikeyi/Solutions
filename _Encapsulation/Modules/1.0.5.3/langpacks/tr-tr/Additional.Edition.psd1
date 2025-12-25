@@ -11,7 +11,6 @@
 	AE_Not_Match                    = Eşleşen sürüm kimliği bulunamadı
 	AE_NoEvent                      = Eklenti Sürüm Olayı Bulunamadı
 	AE_Rename                       = Tüm Ayrıntıların Yeniden Adlandırılmasına İzin Ver
-	AE_Exclude                      = Eklenti Sürümlerini Hariç Tut
 	AE_Replace_Name                 = Dil Adlarını Otomatik Olarak Değiştir
 	AE_Add_Exclude_Nomount          = İstemediğiniz Montajlardan Hariç Tut'a Ekle
 	AE_ExcludeMount                 = İstenen Olmayan Montajlardan Hariç Tut

@@ -11,7 +11,6 @@
 	AE_Not_Match                    = Nu a fost găsit niciun ID de versiune potrivit
 	AE_NoEvent                      = Nu au fost găsite evenimente versiuni supliment
 	AE_Rename                       = Permite redenumirea tuturor detaliilor
-	AE_Exclude                      = Exclude versiuni supliment
 	AE_Replace_Name                 = Înlocuiește automat numele limbilor
 	AE_Add_Exclude_Nomount          = Adăugați la Excludeți din Montările Nesolicitate
 	AE_ExcludeMount                 = Excludeți din Montările Nesolicitate

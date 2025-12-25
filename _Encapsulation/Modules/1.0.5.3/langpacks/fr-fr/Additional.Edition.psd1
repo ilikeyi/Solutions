@@ -11,7 +11,6 @@
 	AE_Not_Match                    = Aucune version correspondante trouvée
 	AE_NoEvent                      = Aucun événement lié aux versions des modules complémentaires trouvé
 	AE_Rename                       = Autoriser le renommage de tous les détails
-	AE_Exclude                      = Exclure les versions des modules complémentaires
 	AE_Replace_Name                 = Remplacer automatiquement les noms de langue
 	AE_Add_Exclude_Nomount          = Ajouter à la liste des éléments à exclure des montages non demandés
 	AE_ExcludeMount                 = Exclure des montages non demandés

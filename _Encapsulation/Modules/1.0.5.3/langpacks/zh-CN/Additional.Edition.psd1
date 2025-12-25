@@ -11,7 +11,6 @@
 	AE_Not_Match                    = 没有匹配到所需版 ID
 	AE_NoEvent                      = 未检查到有附加版本事件
 	AE_Rename                       = 允许重命名所有详细
-	AE_Exclude                      = 排除附加版本
 	AE_Replace_Name                 = 自动替换语言名称
 	AE_Add_Exclude_Nomount          = 添加到排除不再请求挂载项
 	AE_ExcludeMount                 = 排除不再请求挂载项

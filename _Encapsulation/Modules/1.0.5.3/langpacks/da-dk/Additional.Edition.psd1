@@ -11,7 +11,6 @@
 	AE_Not_Match                    = Intet matchende versions-ID fundet
 	AE_NoEvent                      = Ingen hændelser for tilføjelsesversioner fundet
 	AE_Rename                       = Tillad omdøbning af alle detaljer
-	AE_Exclude                      = Udeluk tilføjelsesversioner
 	AE_Replace_Name                 = Erstat automatisk sprognavne
 	AE_Add_Exclude_Nomount          = Tilføj til Udeladelse fra monteringer Ikke anmodet
 	AE_ExcludeMount                 = Udeladelse fra monteringer Ikke anmodet

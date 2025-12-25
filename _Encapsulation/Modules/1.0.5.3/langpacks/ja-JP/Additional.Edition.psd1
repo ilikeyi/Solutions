@@ -11,7 +11,6 @@
 	AE_Not_Match                    = 一致するバージョンIDが見つかりません
 	AE_NoEvent                      = アドオンバージョンイベントが見つかりません
 	AE_Rename                       = すべての詳細の名前変更を許可
-	AE_Exclude                      = アドオンバージョンを除外
 	AE_Replace_Name                 = 言語名を自動的に置換
 	AE_Add_Exclude_Nomount          = 要求されていないマウントから除外するアイテムを追加
 	AE_ExcludeMount                 = 要求されていないマウントから除外

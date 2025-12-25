@@ -5962,6 +5962,24 @@ Function Image_Select
 	}
 
 	<#
+		.附加版
+	#>
+	$GUIImageSourceSettingSuggestedAdditionalEdition = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 40
+		Width          = 465
+		Padding        = "12,0,0,0"
+		Text           = $lang.AdditionalEdition
+		Tag            = "Image_Additional_Edition_UI"
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			Event_Assign -Rule $This.Tag
+			Event_Assign_Setting -Setting -RuleName $This.Tag
+		}
+	}
+
+	<#
 		.生成解决方案
 	#>
 	$GUIImageSourceSettingSuggestedSoltions = New-Object system.Windows.Forms.LinkLabel -Property @{
@@ -10276,6 +10294,7 @@ Function Image_Select
 	))
 
 	$GUIImageSourceSettingSuggestedPanel.controls.AddRange((
+		$GUIImageSourceSettingSuggestedAdditionalEdition,
 		$GUIImageSourceSettingSuggestedSoltions,
 
 		$GUIImageSourceSettingSuggestedLang,

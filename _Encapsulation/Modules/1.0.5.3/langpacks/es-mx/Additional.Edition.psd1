@@ -11,7 +11,6 @@
 	AE_Not_Match                    = No se encontró ningún ID de versión coincidente
 	AE_NoEvent                      = No se encontraron eventos de la versión del complemento
 	AE_Rename                       = Permitir renombrar todos los detalles
-	AE_Exclude                      = Excluir versiones del complemento
 	AE_Replace_Name                 = Reemplazar automáticamente los nombres de los idiomas
 	AE_Add_Exclude_Nomount          = Añadir para excluir de montajes no solicitados
 	AE_ExcludeMount                 = Excluir de montajes no solicitados

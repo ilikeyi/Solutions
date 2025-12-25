@@ -11,7 +11,6 @@
 	AE_Not_Match                    = Nerasta atitinkamos versijos ID
 	AE_NoEvent                      = Nerasta jokių priedo versijos įvykių
 	AE_Rename                       = Leisti pervadinti visą informaciją
-	AE_Exclude                      = Neįtraukti priedo versijų
 	AE_Replace_Name                 = Automatiškai pakeisti kalbų pavadinimus
 	AE_Add_Exclude_Nomount          = Pridėti prie nepageidaujamų priedų pašalinimo
 	AE_ExcludeMount                 = Pašalinti iš nepageidaujamų priedų pašalinimo

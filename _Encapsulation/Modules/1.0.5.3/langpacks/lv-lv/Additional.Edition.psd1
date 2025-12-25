@@ -11,7 +11,6 @@
 	AE_Not_Match                    = Nav atrasts atbilstošs versijas ID
 	AE_NoEvent                      = Nav atrasts neviens papildinājuma versijas notikums
 	AE_Rename                       = Atļaut visu detaļu pārdēvēšanu
-	AE_Exclude                      = Izslēgt papildinājuma versijas
 	AE_Replace_Name                 = Automātiski aizstāt valodu nosaukumus
 	AE_Add_Exclude_Nomount          = Pievienot, lai izslēgtu no nepieprasītajiem stiprinājumiem
 	AE_ExcludeMount                 = Izslēgt no nepieprasītajiem stiprinājumiem

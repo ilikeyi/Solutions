@@ -11,7 +11,6 @@
 	AE_Not_Match                    = Ingen samsvarende versjons-ID funnet
 	AE_NoEvent                      = Ingen hendelser for tilleggsversjon funnet
 	AE_Rename                       = Tillat endring av navn på alle detaljer
-	AE_Exclude                      = Ekskluder tilleggsversjoner
 	AE_Replace_Name                 = Erstatt språknavn automatisk
 	AE_Add_Exclude_Nomount          = Legg til i Ekskluder fra monteringer Ikke forespurt
 	AE_ExcludeMount                 = Ekskluder fra monteringer Ikke forespurt

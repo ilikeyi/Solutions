@@ -11,7 +11,6 @@
 	AE_Not_Match                    = 일치하는 버전 ID를 찾을 수 없습니다
 	AE_NoEvent                      = 추가 기능 버전 이벤트 없음
 	AE_Rename                       = 모든 세부 정보 이름 변경 허용
-	AE_Exclude                      = 추가 기능 버전 제외
 	AE_Replace_Name                 = 언어 이름 자동 바꾸기
 	AE_Add_Exclude_Nomount          = 마운트 요청 제외 항목에 추가
 	AE_ExcludeMount                 = 마운트 요청 제외 항목에 추가

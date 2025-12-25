@@ -11,7 +11,6 @@
 	AE_Not_Match                    = Vastaavaa versiotunnusta ei löytynyt
 	AE_NoEvent                      = Lisäosan versiotapahtumia ei löytynyt
 	AE_Rename                       = Salli kaikkien tietojen uudelleennimeäminen
-	AE_Exclude                      = Sulje pois lisäosan versiot
 	AE_Replace_Name                 = Korvaa kielten nimet automaattisesti
 	AE_Add_Exclude_Nomount          = Lisää pois jätettäviksi pyytämättömistä kiinnityksistä
 	AE_ExcludeMount                 = Poista pois pyytämättömistä kiinnityksistä

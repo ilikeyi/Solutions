@@ -11,7 +11,6 @@
 	AE_Not_Match                    = Vastavat versiooni ID-d ei leitud
 	AE_NoEvent                      = Lisandmooduli versiooni sündmusi ei leitud
 	AE_Rename                       = Luba kõigi üksikasjade ümbernimetamine
-	AE_Exclude                      = Välista lisandmooduli versioonid
 	AE_Replace_Name                 = Asenda keelte nimed automaatselt
 	AE_Add_Exclude_Nomount          = Lisa taotlemata ühendustest väljajäetavate hulka
 	AE_ExcludeMount                 = Väljajäta taotlemata ühendustest

@@ -11,7 +11,6 @@
 	AE_Not_Match                    = Nem található egyező verzióazonosító
 	AE_NoEvent                      = Nem található kiegészítő verzió esemény
 	AE_Rename                       = Összes részlet átnevezésének engedélyezése
-	AE_Exclude                      = Kiegészítő verziók kizárása
 	AE_Replace_Name                 = Nyelvnevek automatikus cseréje
 	AE_Add_Exclude_Nomount          = Hozzáadás a nem kért szerelések kizárásához
 	AE_ExcludeMount                 = Kizárás a nem kért szerelések közül

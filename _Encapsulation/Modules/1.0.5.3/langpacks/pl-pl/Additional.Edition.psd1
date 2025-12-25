@@ -11,7 +11,6 @@
 	AE_Not_Match                    = Nie znaleziono pasującego identyfikatora wersji
 	AE_NoEvent                      = Nie znaleziono zdarzeń dotyczących wersji dodatku
 	AE_Rename                       = Zezwalaj na zmianę nazw wszystkich szczegółów
-	AE_Exclude                      = Wyklucz wersje dodatku
 	AE_Replace_Name                 = Automatycznie zamień nazwy języków
 	AE_Add_Exclude_Nomount          = Dodaj do wykluczenia z montowań, które nie zostały zamówione
 	AE_ExcludeMount                 = Wyklucz z montowań, które nie zostały zamówione

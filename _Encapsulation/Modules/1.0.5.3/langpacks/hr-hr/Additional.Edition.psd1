@@ -11,7 +11,6 @@
 	AE_Not_Match                    = Nije pronađen odgovarajući ID verzije
 	AE_NoEvent                      = Nisu pronađeni događaji verzije dodatka
 	AE_Rename                       = Dopusti preimenovanje svih detalja
-	AE_Exclude                      = Isključi verzije dodataka
 	AE_Replace_Name                 = Automatski zamijeni nazive jezika
 	AE_Add_Exclude_Nomount          = Dodaj u Isključi iz Nezahtjevanih Nosača
 	AE_ExcludeMount                 = Isključi iz Nezahtjevanih Nosača

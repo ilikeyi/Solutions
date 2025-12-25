@@ -11,7 +11,6 @@
 	AE_Not_Match                    = Nenalezeno žádné odpovídající ID verze
 	AE_NoEvent                      = Nenalezeny žádné události verzí doplňku
 	AE_Rename                       = Povolit přejmenování všech podrobností
-	AE_Exclude                      = Vyloučit verze doplňků
 	AE_Replace_Name                 = Automaticky nahradit názvy jazyků
 	AE_Add_Exclude_Nomount          = Přidat k vyloučení z nepožadovaných montáží
 	AE_ExcludeMount                 = Vyloučit z nepožadovaných montáží

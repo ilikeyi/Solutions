@@ -11,7 +11,6 @@
 	AE_Not_Match                    = Keine passende Versions-ID gefunden
 	AE_NoEvent                      = Keine Add-on-Versionsereignisse gefunden
 	AE_Rename                       = Umbenennen aller Details zulassen
-	AE_Exclude                      = Add-on-Versionen ausschließen
 	AE_Replace_Name                 = Sprachnamen automatisch ersetzen
 	AE_Add_Exclude_Nomount          = Zu "Nicht angeforderte Mounts ausschließen" hinzufügen
 	AE_ExcludeMount                 = Von "Nicht angeforderten Mounts ausschließen" ausschließen
