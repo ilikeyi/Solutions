@@ -1295,18 +1295,18 @@ Function Get_Arch_Path
 
 	switch ($env:PROCESSOR_ARCHITECTURE) {
 		"arm64" {
-			if (Test-Path -Path "$($Path)\$($arm64)" -PathType Container) {
-				return Convert-Path -Path "$($Path)\$($arm64)" -ErrorAction SilentlyContinue
+			if (Test-Path -Path "$($Path)\arm64" -PathType Container) {
+				return Convert-Path -Path "$($Path)\arm64" -ErrorAction SilentlyContinue
 			}
 		}
 		"AMD64" {
-			if (Test-Path -Path "$($Path)\$($AMD64)" -PathType Container) {
-				return Convert-Path -Path "$($Path)\$($AMD64)" -ErrorAction SilentlyContinue
+			if (Test-Path -Path "$($Path)\AMD64" -PathType Container) {
+				return Convert-Path -Path "$($Path)\AMD64" -ErrorAction SilentlyContinue
 			}
 		}
 		"x86" {
-			if (Test-Path -Path "$($Path)\$($x86)" -PathType Container) {
-				return Convert-Path -Path "$($Path)\$($x86)" -ErrorAction SilentlyContinue
+			if (Test-Path -Path "$($Path)\x86" -PathType Container) {
+				return Convert-Path -Path "$($Path)\x86" -ErrorAction SilentlyContinue
 			}
 		}
 	}

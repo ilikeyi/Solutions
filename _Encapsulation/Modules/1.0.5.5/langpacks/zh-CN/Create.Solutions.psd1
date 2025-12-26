@@ -1,0 +1,137 @@
+﻿ConvertFrom-StringData -StringData @'
+	# zh-CN
+	# Chinese (Simplified, China)
+
+	IsCreate                        = 创建
+	Solution                        = 解决方案
+	EnabledSoftwarePacker           = 合集
+	EnabledUnattend                 = 应预答
+	EnabledEnglish                  = 部署引擎
+	UnattendSelectVer               = 选择 '应预答' 解决方案语言
+	UnattendLangPack                = 选择 '解决方案' 语言包
+	UnattendSelectSingleInstl       = 多语言，安装时可选
+	UnattendSelectMulti             = 多语言
+	UnattendSelectDisk              = 选择 Autounattend.xml 解决方案
+	UnattendSelectSemi              = 半自动对所有安装方式有效
+	UnattendSelectUefi              = UEFI 自动安装，需要指定
+	UnattendSelectLegacy            = Legacy 自动安装，需要指定
+	NeedSpecified                   = 请选择需要指定的：
+	OOBESetupOS                     = 安装界面
+	OOBEProductKey                  = 产品密钥
+	OOBEOSImage                     = 选择要安装的操作系统
+	OOBEEula                        = 接受许可条款
+	OOBEDoNotServerManager          = 登录时不自动启动服务器管理器
+	OOBEIE                          = Internet Explorer 增强的安全配置
+	OOBEIEAdmin                     = 关闭“管理员”
+	OObeIEUser                      = 关闭“用户”
+
+	OOBE_Init_User                  = 开箱体验时初始用户
+	OOBE_init_Create                = 自定义创建用户
+	OOBE_init_Specified             = 指定用户
+	OOBE_Init_Autologin             = 自动登录
+
+	InstlMode                       = 安装方式
+	Business                        = 商业版
+	BusinessTips                    = 依赖 EI.cfg，自动安装需指定索引号。
+	Consumer                        = 消费者版
+	ConsumerTips                    = 不依赖 EI.cfg，自动安装需指定序列号，暂停在选择版本界面时，需指定索引号。
+	CreateUnattendISO               = [ISO]:\\Autounattend.xml
+	CreateUnattendISOSources        = [ISO]:\\sources\\Unattend.xml
+	CreateUnattendISOSourcesOEM     = [ISO]:\\sources\\$OEM$\\$$\\Panther\\unattend.xml
+	CreateUnattendPanther           = [挂载到]:\\Windows\\Panther\\unattend.xml
+
+	VerifyName                      = 添加到系统盘主目录名称
+	VerifyNameUse                   = 验证目录名不能包含的
+	VerifyNameTips                  = 只允许英文字母和数字组合，不能包含：空格、长度不能大于 260 字符、\\ / : * ? & @ ! "" < > |
+	VerifyNumberFailed              = 验证失败，请输入正确的数字。
+	VerifyNameSync                  = 将目录名设置为主用户名
+	VerifyNameSyncTips              = 不再使用 administrator。
+	ManualKey                       = 选择或手动输入产品密钥
+	ManualKeyTips                   = 输入有效产品密钥，选择区域没有请前往微软官方查阅。
+	ManualKeyError                  = 你输入的产品密钥无效。
+	KMSLink1                        = KMS 客户端设置密钥
+	KMSUnlock                       = 显示已知所有 KMS 序列号
+	KMSSelect                       = 请选择 VOL 序列号
+	KMSKey                          = 序列号
+	KMSKeySelect                    = 更改产品序列号
+	ClearOld                        = 清理旧文件
+	SolutionsSkip                   = 跳过创建解决方案
+	SolutionsTo                     = 将 '解决方案' 添加到：
+	SolutionsToMount                = 已挂载或添加到队列中
+	SolutionsToError                = 已禁用部分功能，如需强行使用，请点“解除锁定”按钮。\n\n
+	UnlockBoot                      = 解除锁定
+	SolutionsToSources              = 主目录，[ISO]:\\Sources\\$OEM$
+	SolutionsScript                 = 选择 '部署引擎' 版本
+	SolutionsEngineRegionaUTF8      = Beta 版：使用 Unicode UTF-8 提供全球语言支持
+	SolutionsEngineRegionaUTF8Tips  = 开启后仿佛、有可能会引发新的问题。不建议。
+	SolutionsEngineRegionaling      = 更改为新的区域设置：
+	SolutionsEngineRegionalingTips  = 更改系统区域设置，这个设置对计算机上的所有用户帐号都有影响。
+	SolutionsEngineRegional         = 更改系统区域设置
+	SolutionsEngineRegionalTips     = 全局默认：{0}，更改为：{1}
+	SolutionsEngineCopyPublic       = 复制公共 {0} 到部署里
+	SolutionsEngineCopyOpen         = 浏览公共存放 {0} 位置
+	EnglineDoneReboot               = 重新启动计算机
+	SolutionsTipsArm64              = 首选 arm64 软件包，依次按顺序选择：x64、x86。
+	SolutionsTipsAMD64              = 首选 x64 软件包，依次按顺序选择：x86。
+	SolutionsTipsX86                = 仅添加 x86 软件包。
+	SolutionsReport                 = 生成预部署报告
+	SolutionsDeployOfficeInstall    = 部署 Microsoft Office 安装包
+	SolutionsDeployOfficeChange     = 更改部署配置
+	SolutionsDeployOfficePre        = 预安装包版本
+	SolutionsDeployOfficeNoSelect   = 未选择 Office 预安装包
+	SolutionsDeployOfficeVersion    = {0} 版本
+	SolutionsDeployOfficeOnly       = 保留指定的语言包
+	SolutionsDeployOfficeSync       = 保留语言同步到部署配置
+	SolutionsDeployOfficeSyncTips   = 同步后，安装脚本无法判断首选语言。
+	DeploySyncMainLanguage          = 同步与主语言一致
+	SolutionsDeployOfficeTo         = 将安装包部署到
+	SolutionsDeployOfficeToPublic   = 公共桌面
+	DeployPackage                   = 部署自定义合集包
+	DeployPackageSelect             = 选择预合集包
+	DeployPackageTo                 = 部署预合集包到
+	DeployPackageToRoot             = 系统盘:\\Package
+	DeployPackageToSolutions        = 解决方案主目录下
+	DeployTimeZone                  = 时间区域
+	DeployTimeZoneChange            = 更改时间区域
+	DeployTimeZoneChangeTips        = 设置应预答默认时间区域，按语言区域。
+
+	Deploy_Tags                     = 部署标记
+	FirstExpProcess                 = 首次体验，部署先决条件过程中：
+	FirstExpProcessTips             = 完成先决条件后重启计算机，解决需重启才生效问题。
+	FirstExpFinish                  = 首次体验，完成先决条件后
+	FirstExpSyncMark                = 允许全盘搜索并同步部署标记
+	FirstExpUpdate                  = 允许自动更新
+	FirstExpDefender                = 添加主目录到 Defend 排除目录
+	FirstExpSyncLabel               = 系统盘卷标：主目录名相同
+	MultipleLanguages               = 遇到多语言时：
+	NetworkLocationWizard           = 网络位置向导
+	PreAppxCleanup                  = 阻止 Appx 清理维护任务
+	LanguageComponents              = 阻止清理未使用的按需功能语言包
+	PreventCleaningUnusedLP         = 阻止清理未使用的语言包
+	FirstExpContextCustomize        = 添加个性化“上下文菜单”
+	FirstExpContextCustomizeShift   = 按住 Shift 键后点击右键
+
+	FirstExpFinishTips              = 部署完成后没有重要的事件，建议您取消。
+	FirstExpFinishPopup             = 弹出部署引擎主界面
+	FirstExpFinishOnDemand          = 允许首次预体验，按计划
+	SolutionsEngineRestricted       = 恢复 Powershell 执行策略：受限
+	EnglineDoneClearFull            = 删除整个解决方案
+	EnglineDoneClear                = 删除部署引擎，保留其它
+
+	Unattend_Auto_Fix_Next          = 下次遇到时，自动选择必备项时自动修复
+	Unattend_Auto_Fix               = 未选择必备项时自动修复
+	Unattend_Auto_Fix_Tips          = 添加部署引擎时未选择首次运行命令时，自动修复并选择：Powershell 执行策略：不设任何的限制、运行部署引擎。
+	Unattend_Version_Tips           = 可选择仅包含，使用默认可支持 ARM64、x64、x86。
+	First_Run_Commmand              = 首次部署时运行的命令
+	First_Run_Commmand_Setting      = 选择待运行的命令
+	Command_Not_Class               = 筛选时不再自动分类
+	Command_WinSetup                = Windows 安装
+	Command_WinPE                   = Windows PE
+	Command_Tips                    = 请分配首次运行应用于：Windows 安装、Windows PE\n\n注意，添加了部署引擎时，首次运行时需要勾选：Powershell 执行策略：受限、允许运行部署引擎脚本。
+	Waring_Not_Select_Command       = 添加部署引擎时，未选择 Powershell 执行策略：不设任何的限制、允许运行部署引擎脚本，请选择后重试，或点击“快速修复未选项”。
+	Quic_Fix_Not_Select_Command     = 快速修复未选项
+
+	PowerShell_Unrestricted         = Powershell 执行策略：不设任何的限制
+	Allow_Running_Deploy_Engine     = 允许运行部署引擎脚本
+	Bypass_TPM                      = 安装时绕过 TPM 检查
+'@

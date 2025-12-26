@@ -2,7 +2,7 @@
 	"Config": {
 		"Author":  "Yi",
 		"Url":     "https://fengyi.tel",
-		"Version": "1.0.1.0"
+		"Version": "1.0.1.1"
 	},
 	"Deploy": {
 		"Prerequisite": {
@@ -216,8 +216,7 @@
 							"Professional",
 							"ProfessionalN",
 							"EnterpriseS",
-							"EnterpriseSN",
-							"ServerRdsh"
+							"EnterpriseSN"
 						],
 						"NoSelMatch":  false,
 						"Rebuild":     true,

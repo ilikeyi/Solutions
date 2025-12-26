@@ -1,0 +1,137 @@
+﻿ConvertFrom-StringData -StringData @'
+	# fr-FR
+	# French (France)
+
+	IsCreate                        = Créer
+	Solution                        = Solutions
+	EnabledSoftwarePacker           = Collection
+	EnabledUnattend                 = Il faudrait répondre à l'avance
+	EnabledEnglish                  = Moteur de déploiement
+	UnattendSelectVer               = Sélectionnez la langue de la solution "Réponse à"
+	UnattendLangPack                = Sélectionnez le pack de langue "Solution"
+	UnattendSelectSingleInstl       = Multilingue, en option lors de l'installation
+	UnattendSelectMulti             = Multilingue
+	UnattendSelectDisk              = Sélectionnez la solution Autounattend.xml
+	UnattendSelectSemi              = Le semi-automatique est valable pour toutes les méthodes d'installation
+	UnattendSelectUefi              = UEFI s'installe automatiquement et doit être spécifié
+	UnattendSelectLegacy            = Legacy est automatiquement installé et doit être spécifié
+	NeedSpecified                   = Veuillez sélectionner ce qui doit être spécifié:
+	OOBESetupOS                     = Interface d'installation
+	OOBEProductKey                  = Clé de produit
+	OOBEOSImage                     = Sélectionnez le système d'exploitation à installer
+	OOBEEula                        = Accepter les termes de la licence
+	OOBEDoNotServerManager          = Le gestionnaire de serveur ne démarre pas automatiquement lors de la connexion
+	OOBEIE                          = Configuration de sécurité améliorée d'Internet Explorer
+	OOBEIEAdmin                     = Fermer "Administrateur"
+	OObeIEUser                      = Fermer "Utilisateurs"
+
+	OOBE_Init_User                  = Utilisateur initial lors de l'expérience de déballage
+	OOBE_init_Create                = Créer des utilisateurs personnalisés
+	OOBE_init_Specified             = Spécifier l'utilisateur
+	OOBE_Init_Autologin             = Connexion automatique
+
+	InstlMode                       = Méthode d'installation
+	Business                        = Version professionnelle
+	BusinessTips                    = Dépend de EI.cfg, le numéro d'index doit être spécifié pour l'installation automatique.
+	Consumer                        = Version grand public
+	ConsumerTips                    = Il ne repose pas sur EI.cfg. Le numéro de série doit être spécifié pour l'installation automatique. Lors d'une pause dans l'interface de sélection de version, le numéro d'index doit être spécifié.
+	CreateUnattendISO               = [ISO]:\\Autounattend.xml
+	CreateUnattendISOSources        = [ISO]:\\sources\\Unattend.xml
+	CreateUnattendISOSourcesOEM     = [ISO]:\\sources\\$OEM$\\$$\\Panther\\unattend.xml
+	CreateUnattendPanther           = [monter à]:\\Windows\\Panther\\unattend.xml
+
+	VerifyName                      = Ajouter au nom du répertoire de base du disque système
+	VerifyNameUse                   = Vérifiez que le nom du répertoire ne peut pas contenir
+	VerifyNameTips                  = Seule une combinaison de lettres et de chiffres anglais est autorisée, et ne peut pas contenir : des espaces, la longueur ne peut pas être supérieure à 260 caractères, \\ / : * ? & @ ! "" < > |
+	VerifyNumberFailed              = La vérification a échoué, veuillez saisir le numéro correct.
+	VerifyNameSync                  = Définir le nom du répertoire comme nom d'utilisateur principal
+	VerifyNameSyncTips              = L'administrateur n'est plus utilisé.
+	ManualKey                       = Sélectionnez ou saisissez votre clé de produit manuellement
+	ManualKeyTips                   = Entrez une clé de produit valide. Si la région sélectionnée n'est pas disponible, veuillez vous rendre sur le site officiel de Microsoft pour vérifier.
+	ManualKeyError                  = La clé de produit que vous avez saisie n'est pas valide.
+	KMSLink1                        = Clé des paramètres du client KMS
+	KMSUnlock                       = Afficher tous les numéros de série KMS connus
+	KMSSelect                       = Veuillez sélectionner le numéro de série VOL
+	KMSKey                          = Numéro de série
+	KMSKeySelect                    = Changer le numéro de série du produit
+	ClearOld                        = Nettoyer les anciens fichiers
+	SolutionsSkip                   = Ignorer la création d'une solution
+	SolutionsTo                     = Ajoutez "solution" à:
+	SolutionsToMount                = Monté ou ajouté à la file d'attente
+	SolutionsToError                = Certaines fonctions ont été désactivées. Si vous devez forcer leur utilisation, veuillez cliquer sur le bouton "Déverrouiller".\n\n
+	UnlockBoot                      = Ouvrir
+	SolutionsToSources              = Répertoire personnel, [ISO]:\\Sources\\$OEM$
+	SolutionsScript                 = Sélectionnez la version "Moteur de déploiement"
+	SolutionsEngineRegionaUTF8      = Bêta: prise en charge des langues mondiales à l'aide d'Unicode UTF-8
+	SolutionsEngineRegionaUTF8Tips  = Il semble que cela puisse causer de nouveaux problèmes après son ouverture. Non recommandé.
+	SolutionsEngineRegionaling      = Passer aux nouveaux paramètres régionaux:
+	SolutionsEngineRegionalingTips  = Modifiez les paramètres régionaux du système, qui affectent tous les comptes d'utilisateurs sur l'ordinateur.
+	SolutionsEngineRegional         = Changer les paramètres régionaux du système
+	SolutionsEngineRegionalTips     = Valeur par défaut globale: {0}, remplacé par: {1}
+	SolutionsEngineCopyPublic       = Copier le {0} public dans le déploiement
+	SolutionsEngineCopyOpen         = Parcourir l'emplacement du référentiel public {0}
+	EnglineDoneReboot               = Redémarrez votre ordinateur
+	SolutionsTipsArm64              = Le package arm64 est préféré et vous sélectionnez dans l'ordre: x64, x86.
+	SolutionsTipsAMD64              = Préférez les packages x64, dans l'ordre : x86.
+	SolutionsTipsX86                = Seuls les packages x86 sont ajoutés.
+	SolutionsReport                 = Générer un rapport de pré-déploiement
+	SolutionsDeployOfficeInstall    = Déployer le package d'installation de Microsoft Office
+	SolutionsDeployOfficeChange     = Modifier la configuration du déploiement
+	SolutionsDeployOfficePre        = Version du package préinstallé
+	SolutionsDeployOfficeNoSelect   = Aucun package de préinstallation Office sélectionné
+	SolutionsDeployOfficeVersion    = {0} version
+	SolutionsDeployOfficeOnly       = Conserver les modules linguistiques spécifiés
+	SolutionsDeployOfficeSync       = Préserver la synchronisation linguistique avec la configuration du déploiement
+	SolutionsDeployOfficeSyncTips   = Après la synchronisation, le script d'installation ne peut pas déterminer la langue préférée.
+	DeploySyncMainLanguage          = Synchroniser avec la langue principale
+	SolutionsDeployOfficeTo         = Déployez le package d'installation sur
+	SolutionsDeployOfficeToPublic   = Bureau public
+	DeployPackage                   = Déployer un package de collecte personnalisé
+	DeployPackageSelect             = Sélectionnez un forfait de pré-collecte
+	DeployPackageTo                 = Déployez le package de pré-collecte sur
+	DeployPackageToRoot             = Disque système:\\Package
+	DeployPackageToSolutions        = Dans le répertoire de base de la solution
+	DeployTimeZone                  = Fuseau horaire
+	DeployTimeZoneChange            = Changer de fuseau horaire
+	DeployTimeZoneChangeTips        = Définissez la zone horaire par défaut dans laquelle les réponses préalables doivent être répondues, par zone linguistique.
+
+	Deploy_Tags                     = Balise de déploiement
+	FirstExpProcess                 = Première expérience, lors du déploiement
+	FirstExpProcessTips             = Après avoir rempli les conditions préalables, redémarrez l'ordinateur pour résoudre le problème du redémarrage nécessaire pour prendre effet.
+	FirstExpFinish                  = Première expérience, après avoir complété les prérequis
+	FirstExpSyncMark                = Autoriser la recherche globale et la synchronisation des balises de déploiement
+	FirstExpUpdate                  = Autoriser les mises à jour automatiques
+	FirstExpDefender                = Ajouter un répertoire personnel pour défendre les répertoires exclus
+	FirstExpSyncLabel               = Étiquette du volume du disque système: le nom du répertoire personnel est le même
+	MultipleLanguages               = Lorsque vous rencontrez plusieurs langues:
+	NetworkLocationWizard           = Assistant de localisation réseau
+	PreAppxCleanup                  = Bloquer les tâches de maintenance de nettoyage Appx
+	LanguageComponents              = Empêcher le nettoyage des modules linguistiques de fonctionnalités à la demande inutilisés
+	PreventCleaningUnusedLP         = Empêcher le nettoyage des modules linguistiques inutilisés
+	FirstExpContextCustomize        = Ajouter un "menu contextuel" personnalisé
+	FirstExpContextCustomizeShift   = Maintenez la touche Maj enfoncée et faites un clic droit
+
+	FirstExpFinishTips              = Il n'y a aucun événement important une fois le déploiement terminé. Il est recommandé d'annuler.
+	FirstExpFinishPopup             = Afficher l'interface principale du moteur de déploiement
+	FirstExpFinishOnDemand          = Autoriser le premier aperçu, comme prévu
+	SolutionsEngineRestricted       = Politique d'exécution de restauration Powershell: restreinte
+	EnglineDoneClearFull            = Supprimer toute la solution
+	EnglineDoneClear                = Supprimez le moteur de déploiement et conservez les autres
+
+	Unattend_Auto_Fix_Next          = La prochaine fois que vous le rencontrerez, sélectionnez automatiquement les éléments nécessaires pour le réparer automatiquement.
+	Unattend_Auto_Fix               = Réparer automatiquement lorsque les conditions préalables ne sont pas sélectionnées
+	Unattend_Auto_Fix_Tips          = Lors de l'ajout du moteur de déploiement et de la non sélection de la première commande d'exécution, il est automatiquement réparé et sélectionné: Politique d'exécution Powershell: exécutez le moteur de déploiement sans aucune restriction.
+	Unattend_Version_Tips           = Incluez uniquement en option, utilisez la valeur par défaut pour prendre en charge ARM64, x64, x86.
+	First_Run_Commmand              = Commandes à exécuter lors du premier déploiement
+	First_Run_Commmand_Setting      = Sélectionnez la commande à exécuter
+	Command_Not_Class               = N'est plus automatiquement catégorisé lors du filtrage
+	Command_WinSetup                = Installation de Windows
+	Command_WinPE                   = Windows PE
+	Command_Tips                    = Veuillez attribuer l'application First Run à: Installation Windows, Windows PE\n\nNotez que lorsqu'un moteur de déploiement est ajouté, vous devez vérifier les éléments suivants lors de la première exécution : Politique d'exécution Powershell: restreinte, autoriser l'exécution des scripts du moteur de déploiement.
+	Waring_Not_Select_Command       = Lors de l'ajout d'un moteur de déploiement, la politique d'exécution Powershell n'a pas été sélectionnée: ne définissez aucune restriction et autorisez l'exécution du script du moteur de déploiement. Veuillez le sélectionner et réessayer, ou cliquez sur "Le correctif rapide n'est pas sélectionné".
+	Quic_Fix_Not_Select_Command     = Solution rapide, pas d'option
+
+	PowerShell_Unrestricted         = Politique d'exécution Powershell: aucune restriction
+	Allow_Running_Deploy_Engine     = Autoriser l'exécution des scripts du moteur de déploiement
+	Bypass_TPM                      = Contourner les contrôles TPM lors de l'installation
+'@

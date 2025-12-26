@@ -3150,34 +3150,6 @@ Function Save_Dynamic
 	}
 }
 
-Function Get_Arch_Path
-{
-	param
-	(
-		[string]$Path
-	)
-
-	switch ($env:PROCESSOR_ARCHITECTURE) {
-		"arm64" {
-			if (Test-Path -Path "$($Path)\$($arm64)" -PathType Container) {
-				return Convert-Path -Path "$($Path)\$($arm64)" -ErrorAction SilentlyContinue
-			}
-		}
-		"AMD64" {
-			if (Test-Path -Path "$($Path)\$($AMD64)" -PathType Container) {
-				return Convert-Path -Path "$($Path)\$($AMD64)" -ErrorAction SilentlyContinue
-			}
-		}
-		"x86" {
-			if (Test-Path -Path "$($Path)\$($x86)" -PathType Container) {
-				return Convert-Path -Path "$($Path)\$($x86)" -ErrorAction SilentlyContinue
-			}
-		}
-	}
-
-	return $Path
-}
-
 Function Join_MainFolder
 {
 	param
@@ -4500,6 +4472,27 @@ Function Download_Process
 		if (TestArchive -Path $NewFilePath) {
 			Archive -filename $NewFilePath -to $UI_Main_Save_To_Path.Text
 			remove-item -path $Temp_Main_Path -force -Recurse | Out-Null
+
+			# Wimlib
+			$WimlibSync = @(
+				"_Learn\Packaging.tutorial\OS.11\24H2\Expand"
+				"_Learn\Packaging.tutorial\OS.10\22H2\Expand"
+			)
+		
+			foreach ($item in $WimlibSync) {
+				$PathOneFUll = "$($UI_Main_Save_To_Path.Text)\$($item)"
+				if (Test-Path -Path $PathOneFUll -PathType Container) {
+					$PathTwoFUll = "$($PathOneFUll)\Wimlib"
+
+					if (Test-Path -Path $PathTwoFUll -PathType Container) {
+					} else {
+						$PublicWimlibPath = "$($UI_Main_Save_To_Path.Text)\_Encapsulation\Modules\AIO\Wimlib"
+						if (Test-Path -Path $PublicWimlibPath -PathType Container) {
+							Copy-Item -Path $PublicWimlibPath -Destination $PathTwoFUll -Recurse -Force -ErrorAction SilentlyContinue
+						}
+					}
+				}
+			}
 
 			Write-Host "`n  $($lang.TakeOwnership)" -ForegroundColor Yellow
 			write-host "  $('-' * 80)"

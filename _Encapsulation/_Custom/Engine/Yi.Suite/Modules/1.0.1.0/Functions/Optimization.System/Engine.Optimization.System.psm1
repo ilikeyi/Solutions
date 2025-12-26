@@ -4075,9 +4075,9 @@ Function Privacy_Share_Unpaired_Devices
 			if ($key.PSChildName -EQ "LooselyCoupled") {
 				continue
 			}
-			Set-ItemProperty -Path ("HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\" + $key.PSChildName) "Type" "InterfaceClass" -ErrorAction SilentlyContinue | Out-Null
-			Set-ItemProperty -Path ("HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\" + $key.PSChildName) "Value" "Deny" -ErrorAction SilentlyContinue | Out-Null
-			Set-ItemProperty -Path ("HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\" + $key.PSChildName) "InitialAppValue" "Unspecified" -ErrorAction SilentlyContinue | Out-Null
+			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\$($key.PSChildName)" "Type" "InterfaceClass" -ErrorAction SilentlyContinue | Out-Null
+			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\$($key.PSChildName)" "Value" "Deny" -ErrorAction SilentlyContinue | Out-Null
+			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeviceAccess\Global\$($key.PSChildName)" "InitialAppValue" "Unspecified" -ErrorAction SilentlyContinue | Out-Null
 		}
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -4340,7 +4340,7 @@ Function Privacy_Background_Access
 	if ($Enabled) {
 		write-host "  $($lang.Enable)".PadRight(22) -NoNewline
 		ForEach ($key in (Get-ChildItem "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications")) {
-			Remove-ItemProperty -Path ("HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\" + $key.PSChildName) -Name 'Disabled' -Force -ErrorAction SilentlyContinue | out-null
+			Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\$($key.PSChildName)" -Name 'Disabled' -Force -ErrorAction SilentlyContinue | out-null
 		}
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
@@ -4348,7 +4348,7 @@ Function Privacy_Background_Access
 	if ($Disable) {
 		write-host "  $($lang.Disable)".PadRight(22) -NoNewline
 		ForEach ($key in (Get-ChildItem "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications")) {
-			Set-ItemProperty -Path ("HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\" + $key.PSChildName) "Disabled" 1 -ErrorAction SilentlyContinue | Out-Null
+			Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\$($key.PSChildName)" "Disabled" 1 -ErrorAction SilentlyContinue | Out-Null
 		}
 		Write-Host "$($lang.Done)`n" -ForegroundColor Green
 	}
