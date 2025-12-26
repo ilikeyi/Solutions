@@ -200,10 +200,8 @@
 					"After": {
 						"TPM":            false,
 						"CRCSHA": {
-							"SHA256": {
-								"IsAllow": true,
-								"Rename": true
-							}
+							"Schome":     "SHA1",
+							"Rename":     true
 						},
 						"PGP": {
 							"Schome":     "Auto",

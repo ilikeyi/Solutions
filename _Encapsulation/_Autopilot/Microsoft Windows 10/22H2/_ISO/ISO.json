@@ -63,10 +63,8 @@
 					"After": {
 						"TPM":            false,
 						"CRCSHA": {
-							"SHA256": {
-								"IsAllow": false,
-								"Rename": false
-							}
+							"Schome":     "",
+							"Rename":     false
 						},
 						"PGP": {
 							"Schome":     "Auto",
