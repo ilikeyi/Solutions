@@ -729,12 +729,12 @@ Function Prerequisite
 
 	# Wimlib
 	$WimlibSync = @(
-		"_Learn\Packaging.tutorial\OS.11\24H2\Expand"
-		"_Learn\Packaging.tutorial\OS.10\22H2\Expand"
+		"OS.11\24H2\Expand"
+		"OS.10\22H2\Expand"
 	)
 
 	foreach ($item in $WimlibSync) {
-		$PathOneFUll = "$($PSScriptRoot)\..\..\..\..\..\..\$($item)"
+		$PathOneFUll = "$($PSScriptRoot)\..\..\..\..\..\..\_Learn\Packaging.tutorial\$($item)"
 		if (Test-Path -Path $PathOneFUll -PathType Container) {
 			$PathTwoFUll = "$($PathOneFUll)\Wimlib"
 
@@ -743,6 +743,41 @@ Function Prerequisite
 				$PublicWimlibPath = "$($PSScriptRoot)\..\..\..\..\AIO\Wimlib"
 				if (Test-Path -Path $PublicWimlibPath -PathType Container) {
 					Copy-Item -Path $PublicWimlibPath -Destination $PathTwoFUll -Recurse -Force -ErrorAction SilentlyContinue
+				}
+			}
+		}
+	}
+
+	# 7Zip
+	$ZipSync = @(
+		"LXPs"
+		"Multilingual"
+		"Yi.Suite"
+	)
+
+	foreach ($item in $ZipSync) {
+		$PathOneFUll = "$($PSScriptRoot)\..\..\..\..\..\_Custom\Engine\$($item)"
+		if (Test-Path -Path $PathOneFUll -PathType Container) {
+			$PathTwoFUll = "$($PathOneFUll)\AIO\7zPacker"
+
+			if (Test-Path -Path $PathTwoFUll -PathType Container) {
+			} else {
+				$PublicWimlibPath = "$($PSScriptRoot)\..\..\..\..\AIO\7zPacker"
+				if (Test-Path -Path $PublicWimlibPath -PathType Container) {
+					Copy-Item -Path $PublicWimlibPath -Destination $PathTwoFUll -Recurse -Force -ErrorAction SilentlyContinue
+
+					$Remove = @(
+						"AMD64"
+						"arm64"
+						"x86"
+					)
+
+					foreach ($itemRemove in $Remove) {
+						$NewFilepath = "$($PathTwoFUll)\$($itemRemove)\7zG.exe"
+						if (Test-Path -Path $NewFilepath -PathType leaf) {
+							Remove-Item -path $NewFilepath -Force -ErrorAction SilentlyContinue
+						}
+					}
 				}
 			}
 		}
