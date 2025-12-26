@@ -829,6 +829,60 @@ Function ISO_Create_UI
 		}
 	}
 
+	Function ISO_Create_Refresh_Mul_Version
+	{
+		[int]$MarkInitVer = 0
+
+		$Install_swm = Join-Path -Path $Global:Image_source -ChildPath "Sources\install.swm"
+		$Install_ESD = Join-Path -Path $Global:Image_source -ChildPath "Sources\install.esd"
+		$Install_wim = Join-Path -Path $Global:Image_source -ChildPath "Sources\install.wim"
+
+		if (Test-Path -Path $Install_wim -PathType Leaf) {
+			try {
+				Get-WindowsImage -ImagePath $Install_wim -ErrorAction SilentlyContinue | ForEach-Object {
+					$MarkInitVer++
+				}
+
+				return $MarkInitVer
+			} catch {
+				Write-Host "  $($lang.ConvertChk)"
+				Write-Host "  $($Install_wim)"
+				Write-Host "  $($_)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
+			}
+		}
+
+		if (Test-Path -Path $Install_ESD -PathType Leaf) {
+			try {
+				Get-WindowsImage -ImagePath $Install_ESD -ErrorAction SilentlyContinue | ForEach-Object {
+					$MarkInitVer++
+				}
+
+				return $MarkInitVer
+			} catch {
+				Write-Host "  $($lang.ConvertChk)"
+				Write-Host "  $($Install_ESD)"
+				Write-Host "  $($_)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
+			}
+		}
+
+		if (Test-Path -Path $Install_SWM -PathType Leaf) {
+			try {
+				Get-WindowsImage -ImagePath $Install_SWM -ErrorAction SilentlyContinue | ForEach-Object {
+					$MarkInitVer++
+				}
+
+				return $MarkInitVer
+			} catch {
+				Write-Host "  $($lang.ConvertChk)"
+				Write-Host "  $($Install_SWM)"
+				Write-Host "  $($_)" -ForegroundColor Red
+				Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
+			}
+		}
+	}
+
 	$UI_Main           = New-Object system.Windows.Forms.Form -Property @{
 		autoScaleMode  = 2
 		Height         = 720
@@ -1591,58 +1645,10 @@ Function ISO_Create_UI
 		ActiveLinkColor = "RED"
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
-			[int]$MarkInitVer = 0
+			$NewGetMulver = ISO_Create_Refresh_Mul_Version
 
-			$MarkGetInstallFile = $False
-
-			$Install_swm = Join-Path -Path $Global:Image_source -ChildPath "Sources\install.swm"
-			$Install_ESD = Join-Path -Path $Global:Image_source -ChildPath "Sources\install.esd"
-			$Install_wim = Join-Path -Path $Global:Image_source -ChildPath "Sources\install.wim"
-
-			if (Test-Path -Path $Install_wim -PathType Leaf) {
-				try {
-					Get-WindowsImage -ImagePath $Install_wim -ErrorAction SilentlyContinue | ForEach-Object {
-						$MarkGetInstallFile = $True
-						$MarkInitVer++
-					}
-				} catch {
-					Write-Host "  $($lang.ConvertChk)"
-					Write-Host "  $($Install_wim)"
-					Write-Host "  $($_)" -ForegroundColor Red
-					Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
-				}
-			}
-
-			if (Test-Path -Path $Install_ESD -PathType Leaf) {
-				try {
-					Get-WindowsImage -ImagePath $Install_ESD -ErrorAction SilentlyContinue | ForEach-Object {
-						$MarkGetInstallFile = $True
-						$MarkInitVer++
-					}
-				} catch {
-					Write-Host "  $($lang.ConvertChk)"
-					Write-Host "  $($Install_ESD)"
-					Write-Host "  $($_)" -ForegroundColor Red
-					Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
-				}
-			}
-
-			if (Test-Path -Path $Install_SWM -PathType Leaf) {
-				try {
-					Get-WindowsImage -ImagePath $Install_SWM -ErrorAction SilentlyContinue | ForEach-Object {
-						$MarkGetInstallFile = $True
-						$MarkInitVer++
-					}
-				} catch {
-					Write-Host "  $($lang.ConvertChk)"
-					Write-Host "  $($Install_SWM)"
-					Write-Host "  $($_)" -ForegroundColor Red
-					Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
-				}
-			}
-
-			if ($MarkGetInstallFile) {
-				$GUIISOSetVer.Text = $MarkInitVer
+			if ($NewGetMulver.Count -gt 0) {
+				$GUIISOSetVer.Text = $NewGetMulver
 				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -name "AllowMarkVersionSave" -value $GUIISOSetVer.Text -String
 			} else {
 				$UI_Main_Error.Text = "$($lang.NoInstallImage): install.wim, install.swm, install.esd"
@@ -3960,6 +3966,23 @@ Function ISO_Create_UI
 		Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
 
 		<#
+			.强制重新刷新
+		#>
+		<#
+			.刷新多少语言
+		#>
+		$Verify_Language_New_Path = ISO_Local_Language_Calc -Other
+		$GUIISOSetLang.Text = $Verify_Language_New_Path.Count
+
+		<#
+			.刷新有多少个版本
+		#>
+		$NewGetMulver = ISO_Create_Refresh_Mul_Version
+		if ($NewGetMulver.Count -gt 0) {
+			$GUIISOSetVer.Text = $NewGetMulver
+		}
+
+		<#
 			.发行日期：排序
 		#>
 		if ($Autopilot.PublicDate.Sorting.GroupA) {
@@ -4306,6 +4329,12 @@ Function ISO_Create_UI
 			Write-Host " $($lang.Autopilot_Scheme) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			switch ($Autopilot.After.PGP.Schome) {
 				"Auto" {
+					if ($GUIISOCreateASC.Enabled) {
+						$GUIISOCreateASC.Checked = $True
+						$GUIISOCreateASCPanel.Enabled = $True
+						$GUIISOCreateASCPanel.Visible = $True
+					}
+
 					Write-Host " $($lang.Auto) " -BackgroundColor DarkGreen -ForegroundColor White
 					write-host
 				}

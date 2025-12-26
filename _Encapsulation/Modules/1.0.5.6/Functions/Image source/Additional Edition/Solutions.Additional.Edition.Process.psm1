@@ -38,11 +38,6 @@ Function Image_Additional_Edition_Process
 		$GroupImageFileDetailed = @()
 
 		<#
-			.添加匹配所需版本时错误的记录
-		#>
-		$AERequired_EditionID_Not = @()
-
-		<#
 			.AE 生成的临时文件
 		#>
 		$TempSaveAEFileTo = Join-Path -Path $Global:Image_source -ChildPath "Sources\install.AE.Temp.wim"
@@ -248,7 +243,8 @@ Function Image_Additional_Edition_Process
 							Write-Host "  $('-' * 80)`n"
 						}
 
-						Write-Host "  $($lang.Rebuilding): " -NoNewline
+						#region Rebuild
+						Write-Host "  $($lang.Export_Image): " -NoNewline
 						try {
 							Export-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\AE.log" -SourceImagePath $Global:Primary_Key_Image.FullPath -SourceIndex $ExportOld.Index -DestinationImagePath $TempSaveAEFileTo -CompressionType Max -ErrorAction SilentlyContinue | Out-Null	
 							Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
@@ -258,183 +254,199 @@ Function Image_Additional_Edition_Process
 							Get-WindowsImage -ImagePath $TempSaveAEFileTo -ErrorAction SilentlyContinue | ForEach-Object {
 								$GetLastIndex += $_.ImageIndex
 							}
+						} catch {
+							Write-Host "  $($_)" -ForegroundColor Red
+							Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
+						}
+						#endregion
 
-							$GetLastIndex = $GetLastIndex | Select-Object -Last 1
-							Write-Host $GetLastIndex -ForegroundColor Yellow
+						#region Get last index
+						$GetLastIndex = $GetLastIndex | Select-Object -Last 1
+						Write-Host $GetLastIndex -ForegroundColor Yellow
+						if (Test-Path -Path $wimlib -PathType Leaf) {
+							$Arguments = "info ""$($TempSaveAEFileTo)"" $($GetLastIndex) --image-property NAME=""$($itemRule.Detailed.ImageName)"" --image-property DESCRIPTION=""$($itemRule.Detailed.Description)"" --image-property DISPLAYNAME=""$($itemRule.Detailed.DisplayName)"" --image-property DISPLAYDESCRIPTION=""$($itemRule.Detailed.DisplayDescription)"" --image-property FLAGS=""$($itemRule.NewEditionId)"""
+							Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
+						}
+						#endregion
 
-							$wimlib = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\wimlib")\wimlib-imagex.exe"
-							if (Test-Path -Path $wimlib -PathType Leaf) {
-								$Arguments = "info ""$($TempSaveAEFileTo)"" $($GetLastIndex) --image-property NAME=""$($itemRule.Detailed.ImageName)"" --image-property DESCRIPTION=""$($itemRule.Detailed.Description)"" --image-property DISPLAYNAME=""$($itemRule.Detailed.DisplayName)"" --image-property DISPLAYDESCRIPTION=""$($itemRule.Detailed.DisplayDescription)"" --image-property FLAGS=""$($itemRule.NewEditionId)"""
-								Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
-							}
+						<#
+							.排除项：是否排除挂载
+						#>
+						#region Exclude mount
+						write-host "`n  $($lang.Mounted_Status): " -NoNewline -ForegroundColor Yellow
+						if ($Temp_Additional_Edition.Exclude -contains $itemRule.NewEditionId) {
+							Write-Host " $($lang.ExcludeItem) " -BackgroundColor DarkRed -ForegroundColor White
+						} else {
+							Write-Host " $($lang.Mount) " -BackgroundColor DarkGreen -ForegroundColor White
+							Write-Host
+
+							Image_Mount_Check -MountFileName $TempSaveAEFileTo -Index $GetLastIndex
+							$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master).$($Global:Primary_Key_Image.MasterSuffix)\$($Global:Primary_Key_Image.ImageFileName).$($Global:Primary_Key_Image.Suffix)\Mount"
 
 							<#
-								.排除项：是否排除挂载
+								.更改映像版本
 							#>
-							write-host "`n  $($lang.Mounted_Status): " -NoNewline -ForegroundColor Yellow
-							if ($Temp_Additional_Edition.Exclude -contains $itemRule.NewEditionId) {
-								Write-Host " $($lang.ExcludeItem) " -BackgroundColor DarkRed -ForegroundColor White
-							} else {
-								Write-Host " $($lang.Mount) " -BackgroundColor DarkGreen -ForegroundColor White
-								Write-Host
+							#region Editions change
+							Write-Host "`n  $($lang.Editions), $($lang.Change): " -ForegroundColor Yellow
+							Write-Host "  $('-' * 80)"
+							Write-Host "  $($lang.AE_New_EditionID): " -NoNewline
+							Write-Host " $($itemRule.NewEditionId) " -BackgroundColor DarkGreen -ForegroundColor White
 
-								Image_Mount_Check -MountFileName $TempSaveAEFileTo -Index $GetLastIndex
-								$test_mount_folder_Current = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master).$($Global:Primary_Key_Image.MasterSuffix)\$($Global:Primary_Key_Image.ImageFileName).$($Global:Primary_Key_Image.Suffix)\Mount"
-
-								<#
-									.更改映像版本
-								#>
-								Write-Host "`n  $($lang.Editions), $($lang.Change): " -ForegroundColor Yellow
-								Write-Host "  $('-' * 80)"
-								Write-Host "  $($lang.AE_New_EditionID): " -NoNewline
-								Write-Host " $($itemRule.NewEditionId) " -BackgroundColor DarkGreen -ForegroundColor White
-
-								$GetCurrentEditionVersion = @()
-								try {
-									if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-										Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
-										Write-Host "  $('-' * 80)"
-										Write-Host "  (Get-WindowsEdition -Path $($test_mount_folder_Current)).Edition" -ForegroundColor Green
-										Write-Host "  $('-' * 80)"
-									}
-
-									$CurrentEdition = (Get-WindowsEdition -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Get.log" -Path $test_mount_folder_Current).Edition
-									$GetCurrentEditionVersion += $CurrentEdition
-								
-									if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-										Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
-										Write-Host "  $('-' * 80)"
-										Write-Host "  Get-WindowsEdition -Path ""$($test_mount_folder_Current)"" -Target" -ForegroundColor Green
-										Write-Host "  $('-' * 80)"
-									}
-
-									Get-WindowsEdition -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Get.log" -Path $test_mount_folder_Current -Target | ForEach-Object {
-										$GetCurrentEditionVersion += $_.Edition
-									}
-
-									Write-Host "  $($lang.Editions), $($lang.Existed): "
+							$GetCurrentEditionVersion = @()
+							try {
+								if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
+									Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 									Write-Host "  $('-' * 80)"
-									foreach ($itemNV in $GetCurrentEditionVersion) {
-										Write-Host "  $($itemNV)"
-									}
-
-									Write-Host "`n  $($lang.MatchMode): " -NoNewline
-									Write-Host " $($itemRule.NewEditionId) " -BackgroundColor DarkGreen -ForegroundColor White
+									Write-Host "  (Get-WindowsEdition -Path $($test_mount_folder_Current)).Edition" -ForegroundColor Green
 									Write-Host "  $('-' * 80)"
-									if ($GetCurrentEditionVersion -contains $itemRule.NewEditionId) {
-										write-host "  $($lang.UpdateAvailable)" -ForegroundColor Green
-
-										if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-											Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
-											Write-Host "  $('-' * 80)"
-											Write-Host "  Set-WindowsEdition -Path ""$($test_mount_folder_Current)"" -Edition ""$($itemRule.NewEditionId)""" -ForegroundColor Green
-											Write-Host "  $('-' * 80)`n"
-										}
-
-										Write-Host "  " -NoNewline
-										Write-Host " $($lang.Change) " -NoNewline -BackgroundColor White -ForegroundColor Black
-										try {
-											Set-WindowsEdition -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Set.log" -Path $test_mount_folder_Current -Edition $itemRule.NewEditionId
-											Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
-										} catch {
-											Write-Host "  $($_)" -ForegroundColor Red
-											Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
-											Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-										}
-									} else {
-										Write-Host "  $($lang.MatchDownloadNoNewitem)" -ForegroundColor Red
-									}
-								} catch {
-									Write-Host "  $($_)" -ForegroundColor Red
-									Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
-									Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 								}
 
-								<#
-									.更改序列号
-								#>
-								Write-Host "`n  $($lang.EditionsProductKey), $($lang.Change): " -ForegroundColor Yellow
+								$CurrentEdition = (Get-WindowsEdition -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Get.log" -Path $test_mount_folder_Current).Edition
+								$GetCurrentEditionVersion += $CurrentEdition
+								
+								if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
+									Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+									Write-Host "  $('-' * 80)"
+									Write-Host "  Get-WindowsEdition -Path ""$($test_mount_folder_Current)"" -Target" -ForegroundColor Green
+									Write-Host "  $('-' * 80)"
+								}
+
+								Get-WindowsEdition -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Get.log" -Path $test_mount_folder_Current -Target | ForEach-Object {
+									$GetCurrentEditionVersion += $_.Edition
+								}
+
+								Write-Host "  $($lang.Editions), $($lang.Existed): "
 								Write-Host "  $('-' * 80)"
-								if ([string]::IsNullOrEmpty($itemRule.Productkey)) {
-									Write-Host "  $($lang.Inoperable) " -ForegroundColor Red
-								} else {
-									Write-Host "  $($lang.Setting): $($lang.EditionsProductKey): " -NoNewline
-									Write-Host " $($itemRule.Productkey) " -BackgroundColor DarkGreen -ForegroundColor White
+								foreach ($itemNV in $GetCurrentEditionVersion) {
+									if ($CurrentEdition -eq $itemNV) {
+										Write-Host "  $($itemNV)" -ForegroundColor Green
+									} else {
+										Write-Host "  $($itemNV)"
+									}
+								}
+
+								Write-Host "`n  $($lang.MatchMode): " -NoNewline
+								Write-Host " $($itemRule.NewEditionId) " -BackgroundColor DarkGreen -ForegroundColor White
+								Write-Host "  $('-' * 80)"
+								if ($GetCurrentEditionVersion -contains $itemRule.NewEditionId) {
+									write-host "  $($lang.UpdateAvailable)" -ForegroundColor Green
 
 									if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
 										Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
 										Write-Host "  $('-' * 80)"
-										Write-Host "  Set-WindowsProductKey -Path ""$($test_mount_folder_Current)"" -ProductKey ""$($itemRule.Productkey)""" -ForegroundColor Green
+										Write-Host "  Set-WindowsEdition -Path ""$($test_mount_folder_Current)"" -Edition ""$($itemRule.NewEditionId)""" -ForegroundColor Green
 										Write-Host "  $('-' * 80)`n"
 									}
 
 									Write-Host "  " -NoNewline
 									Write-Host " $($lang.Change) " -NoNewline -BackgroundColor White -ForegroundColor Black
 									try {
-										Set-WindowsProductKey -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Set.log" -Path $test_mount_folder_Current -ProductKey $itemRule.Productkey
+										Set-WindowsEdition -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Set.log" -Path $test_mount_folder_Current -Edition $itemRule.NewEditionId
 										Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 									} catch {
 										Write-Host "  $($_)" -ForegroundColor Red
 										Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
 										Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 									}
+								} else {
+									Write-Host "  $($lang.MatchDownloadNoNewitem)" -ForegroundColor Red
+								}
+							} catch {
+								Write-Host "  $($_)" -ForegroundColor Red
+								Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
+								Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+							}
+							#endregion
+
+							<#
+								.更改序列号
+							#>
+							#region product key
+							Write-Host "`n  $($lang.EditionsProductKey), $($lang.Change): " -ForegroundColor Yellow
+							Write-Host "  $('-' * 80)"
+							if ([string]::IsNullOrEmpty($itemRule.Productkey)) {
+								Write-Host "  $($lang.Inoperable) " -ForegroundColor Red
+							} else {
+								Write-Host "  $($lang.Setting): $($lang.EditionsProductKey): " -NoNewline
+								Write-Host " $($itemRule.Productkey) " -BackgroundColor DarkGreen -ForegroundColor White
+
+								if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
+									Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+									Write-Host "  $('-' * 80)"
+									Write-Host "  Set-WindowsProductKey -Path ""$($test_mount_folder_Current)"" -ProductKey ""$($itemRule.Productkey)""" -ForegroundColor Green
+									Write-Host "  $('-' * 80)`n"
 								}
 
-								<#
-									.保存
-								#>
-								Write-Host "`n  $($lang.Save)" -ForegroundColor Yellow
-								Write-Host "  $('-' * 80)"
-								Write-Host "  $($test_mount_folder_Current)" -ForegroundColor Green
-								if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
-									if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-										Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
-										Write-Host "  $('-' * 80)"
-										Write-Host "  Save-WindowsImage -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
-										Write-Host "  $('-' * 80)"
-									}
-
-									Write-Host
-									Write-Host "  " -NoNewline
-									Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
-									Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $test_mount_folder_Current | Out-Null
+								Write-Host "  " -NoNewline
+								Write-Host " $($lang.Change) " -NoNewline -BackgroundColor White -ForegroundColor Black
+								try {
+									Set-WindowsProductKey -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Set.log" -Path $test_mount_folder_Current -ProductKey $itemRule.Productkey
 									Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
-								} else {
-									Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
-								}
-
-								<#
-									.不保存
-								#>
-								Write-Host "`n  $($lang.DoNotSave)" -ForegroundColor Yellow
-								Write-Host "  $('-' * 80)"
-								Write-Host "  $($test_mount_folder_Current)" -ForegroundColor Green
-								if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
-									if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
-										Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
-										Write-Host "  $('-' * 80)"
-										Write-Host "  Dismount-WindowsImage -Path ""$($test_mount_folder_Current)"" -Discard" -ForegroundColor Green
-										Write-Host "  $('-' * 80)"
-									}
-
-									Write-Host "  " -NoNewline
-									Write-Host " $($lang.Unmount) " -NoNewline -BackgroundColor White -ForegroundColor Black
-									Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($test_mount_folder_Current)" -Discard -ErrorAction SilentlyContinue | Out-Null
-									Image_Mount_Force_Del -NewPath "$($test_mount_folder_Current)"
-									Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
-								} else {
+								} catch {
+									Write-Host "  $($_)" -ForegroundColor Red
+									Write-Host "  $($lang.SelectFromError)" -ForegroundColor Red
 									Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
 								}
 							}
-						} catch {
-							Write-Host "  $($_)" -ForegroundColor Red
-							Write-Host "  $($lang.Inoperable)`n" -ForegroundColor Red
+							#endregion
+
+							<#
+								.保存
+							#>
+							#region Save
+							Write-Host "`n  $($lang.Save)" -ForegroundColor Yellow
+							Write-Host "  $('-' * 80)"
+							Write-Host "  $($test_mount_folder_Current)" -ForegroundColor Green
+							if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
+								if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
+									Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+									Write-Host "  $('-' * 80)"
+									Write-Host "  Save-WindowsImage -Path ""$($test_mount_folder_Current)""" -ForegroundColor Green
+									Write-Host "  $('-' * 80)"
+								}
+
+								Write-Host
+								Write-Host "  " -NoNewline
+								Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
+								Save-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Save.log" -Path $test_mount_folder_Current | Out-Null
+								Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+							} else {
+								Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+							}
+							#endregion
+
+							<#
+								.不保存
+							#>
+							#region Do not save
+							Write-Host "`n  $($lang.DoNotSave)" -ForegroundColor Yellow
+							Write-Host "  $('-' * 80)"
+							Write-Host "  $($test_mount_folder_Current)" -ForegroundColor Green
+							if (Test-Path -Path $test_mount_folder_Current -PathType Container) {
+								if ((Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -ErrorAction SilentlyContinue).'ShowCommand' -eq "True") {
+									Write-Host "`n  $($lang.Command)" -ForegroundColor Yellow
+									Write-Host "  $('-' * 80)"
+									Write-Host "  Dismount-WindowsImage -Path ""$($test_mount_folder_Current)"" -Discard" -ForegroundColor Green
+									Write-Host "  $('-' * 80)"
+								}
+
+								Write-Host "  " -NoNewline
+								Write-Host " $($lang.Unmount) " -NoNewline -BackgroundColor White -ForegroundColor Black
+								Dismount-WindowsImage -ScratchDirectory "$(Get_Mount_To_Temp)" -LogPath "$(Get_Mount_To_Logs)\Dismount.log" -Path "$($test_mount_folder_Current)" -Discard -ErrorAction SilentlyContinue | Out-Null
+								Image_Mount_Force_Del -NewPath "$($test_mount_folder_Current)"
+								Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+							} else {
+								Write-Host "  $($lang.Inoperable)" -ForegroundColor Red
+							}
+							#endregion
 						}
+						#endregion
+					} else {
+						write-host "  $($lang.AE_Not_Match)" -ForegroundColor Red
+						
 					}
 				}
 			} else {
-				$AERequired_EditionID_Not += $itemRule.Requiredversion
-
 				write-host "`n  $($lang.AE_Required_EditionID): " -NoNewline -ForegroundColor Yellow
 				write-host $itemRule.Requiredversion -NoNewline -ForegroundColor Green
 

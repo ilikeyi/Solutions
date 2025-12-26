@@ -306,7 +306,7 @@ Function Image_Get_Mount_Status_New
 			<#
 				.自动选择主键
 			#>
-			if ($Global:Primary_Key_Image.ImageFileName -eq $ImageName) {
+			if ($Global:Primary_Key_Image.Uid -eq $Uid) {
 				Write-Host "  [*]" -NoNewline -ForegroundColor Green
 			} else {
 				Write-Host "     " -NoNewline
