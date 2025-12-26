@@ -29,7 +29,7 @@
 											"No"             = Do not go
 
 
-	 PS C:\> .\_get.ps1 -SW ".iso", ".Other" | Disable security warnings for common file types
+	 PS C:\> .\_get.ps1 -SW "iso", "Other" | Disable security warnings for common file types
 	 PS C:\> .\_get.ps1 -AddRouter        | Add routing functionality
 	 PS C:\> .\_get.ps1 -AddTakeOwnership | Add context menu: Take Ownership
 	 PS C:\> .\_get.ps1 -Silent           | After customizing the interactive mode, you can add a silent installation command to perform the installation.
@@ -63,7 +63,7 @@ param
 
 $Default_directory_name = "YiSolutions"
 $Script:SafetyWarningsExclude = @()
-$SafetyWarningsExcludeSuggest = @( "exe"; "reg"; "msi"; "bat"; "cmd"; "com"; "vbs"; "hta"; "scr"; "pif"; "js"; "iso"; )
+$SafetyWarningsExcludeSuggest = @( "iso"; )
 $SafetyWarningsExcludeFull = @( "exe"; "reg"; "msi"; "bat"; "cmd"; "com"; "vbs"; "hta"; "scr"; "pif"; "js"; "iso"; "zip"; "rar"; "nfo"; "htm"; "html"; )
 
 $Update_Server = @(
