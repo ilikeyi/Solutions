@@ -24,12 +24,12 @@
 	)
 }
 
-$InstallFilename = "D:\OS_11\Sources\install.wim"
-$TempSaveAEFileTo = "D:\OS_11\Sources\install.AE.Temp.wim"
-$Mount = "D:\OS_11_Custom\Install\Install\Mount"
+$InstallFilename = "D:\OS_10\Sources\install.wim"
+$TempSaveAEFileTo = "D:\OS_10\Sources\install.AE.Temp.wim"
+$Mount = "D:\OS_10_Custom\Install\Install\Mount"
 
 $RandomGuid = [guid]::NewGuid()
-$BackupInstallTo = "D:\OS_11_Custom\_Backup\Additional edition\$($RandomGuid)"
+$BackupInstallTo = "D:\OS_10_Custom\_Backup\Additional edition\$($RandomGuid)"
 
 if (Test-Path -Path $InstallFilename -PathType Leaf) {
 	Write-Host "The main Install.wim file path has been set: " -ForegroundColor Yellow
@@ -44,7 +44,7 @@ if (Test-Path -Path $InstallFilename -PathType Leaf) {
 remove-item -path $TempSaveAEFileTo -force -ErrorAction SilentlyContinue
 if (Test-Path $TempSaveAEFileTo -PathType Leaf) {
 	$RandomGuid = [guid]::NewGuid()
-	$TempSaveAEFileTo = "D:\OS_11\Sources\install.AE.Temp.$($RandomGuid).wim"
+	$TempSaveAEFileTo = "D:\OS_10\Sources\install.AE.Temp.$($RandomGuid).wim"
 }
 
 if((Get-ChildItem $Mount -Recurse -ErrorAction SilentlyContinue | Measure-Object).Count -gt 0) {
@@ -371,7 +371,7 @@ Get-WindowsImage -ImagePath $TempSaveAEFileTo -ErrorAction SilentlyContinue | Fo
 
 Write-Host "`n  Add Queue" -ForegroundColor Yellow
 Write-Host "  $('-' * 80)"
-$Save_To_Temp_Folder_Path = "D:\OS_11\Sources\install.temp.wim"
+$Save_To_Temp_Folder_Path = "D:\OS_10\Sources\install.temp.wim"
 
 Get-WindowsImage -ImagePath $TempSaveAEFileTo -ErrorAction SilentlyContinue | ForEach-Object {
 	Write-Host "  Index: " -NoNewline; Write-Host $_.ImageIndex -ForegroundColor Yellow;

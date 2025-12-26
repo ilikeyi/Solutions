@@ -2,7 +2,7 @@
 	"Config": {
 		"Author":  "Yi",
 		"Url":     "https://fengyi.tel",
-		"Version": "1.0.1.1"
+		"Version": "1.0.2.0"
 	},
 	"Deploy": {
 		"ImageSource": {
@@ -199,15 +199,21 @@
 					},
 					"After": {
 						"TPM":            false,
-						"Sha256":         true,
-						"RemoveImage":    false,
+						"CRCSHA": {
+							"SHA256": {
+								"IsAllow": true,
+								"Rename": true
+							}
+						},
 						"PGP": {
-							"Enable":     false,
-							"Config": {
+							"Schome":     "Auto",
+							"Custom": {
+								"IsAllow": true,
 								"Pwd":    "",
 								"KeyID":  "0FEBF674EAD23E05"
 							}
-						}
+						},
+						"RemoveImage":    false
 					}
 				}
 			}

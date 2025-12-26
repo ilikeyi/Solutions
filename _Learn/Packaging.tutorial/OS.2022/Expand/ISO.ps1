@@ -9,7 +9,7 @@ $Arguments = @(
     "-udfver102",
     "-l""$($Volume)""",
     "-bootdata:2#p0,e,b""$($ISO)\boot\etfsboot.com""#pEF,e,b""$($ISO)\efi\microsoft\boot\efisys.bin""",
-    $ISO,
-    $FileName
+    """$($ISO)""",
+    """$($FileName)"""
 )
 Start-Process -FilePath $Oscdimg -ArgumentList $Arguments -wait -nonewwindow
