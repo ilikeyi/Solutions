@@ -4002,23 +4002,6 @@ Function ISO_Create_UI
 		Write-Host " $($lang.Save) " -NoNewline -BackgroundColor White -ForegroundColor Black
 
 		<#
-			.强制重新刷新
-		#>
-		<#
-			.刷新多少语言
-		#>
-		$Verify_Language_New_Path = ISO_Local_Language_Calc -Other
-		$GUIISOSetLang.Text = $Verify_Language_New_Path.Count
-
-		<#
-			.刷新有多少个版本
-		#>
-		$NewGetMulver = ISO_Create_Refresh_Mul_Version
-		if ($NewGetMulver.Count -gt 0) {
-			$GUIISOSetVer.Text = $NewGetMulver
-		}
-
-		<#
 			.发行日期：排序
 		#>
 		if ($Autopilot.PublicDate.Sorting.GroupA) {
@@ -4178,6 +4161,9 @@ Function ISO_Create_UI
 		if ($Autopilot.ImageLanguage) {
 			$GUIISOSetLangOK.Checked = $True
 			$GUIISOSetLangShow.Enabled = $True
+
+			$Verify_Language_New_Path = ISO_Local_Language_Calc -Other
+			$GUIISOSetLang.Text = $Verify_Language_New_Path.Count
 		} else {
 			$GUIISOSetLangOK.Checked = $False
 			$GUIISOSetLangShow.Enabled = $False
@@ -4189,6 +4175,11 @@ Function ISO_Create_UI
 		if ($Autopilot.imageVersions) {
 			$GUIISOSetVerOK.Checked = $True
 			$GUIISOSetVerShow.Enabled = $True
+			
+			$NewGetMulver = ISO_Create_Refresh_Mul_Version
+			if ($NewGetMulver.Count -gt 0) {
+				$GUIISOSetVer.Text = $NewGetMulver
+			}
 		} else {
 			$GUIISOSetVerOK.Checked = $False
 			$GUIISOSetVerShow.Enabled = $False

@@ -2,7 +2,7 @@
 	"Config": {
 		"Author":  "Yi",
 		"Url":     "https://fengyi.tel",
-		"Version": "1.0.2.0"
+		"Version": "1.0.2.1"
 	},
 	"Deploy": {
 		"Prerequisite": {
@@ -233,9 +233,7 @@
 				},
 				"ISO": {
 					"Association": [
-						"ISO.Multilingual",
-						"ISO.Multilingual.With.Office.2024",
-						"ISO.Multilingual.With.Office.365"
+						"ISO.Multilingual"
 					]
 				}
 			}
@@ -254,7 +252,7 @@
 						"Image_source_selection",
 						"Language_Add_UI",
 						"Cumulative_updates_Add_UI",
-						"Drive_Add_UI",
+						"Drive_Delete_UI",
 						"Feature_More_UI"
 					],
 					"IsAutoSelectIndexAndEditionID": [
@@ -520,7 +518,7 @@
 						"Image_source_selection",
 						"Language_Add_UI",
 						"Cumulative_updates_Add_UI",
-						"Drive_Add_UI",
+						"Drive_Delete_UI",
 						"Feature_More_UI"
 					],
 					"IsAutoSelectIndexAndEditionID": [
@@ -642,7 +640,7 @@
 						"Image_source_selection",
 						"Language_Add_UI",
 						"Cumulative_updates_Add_UI",
-						"Drive_Add_UI",
+						"Drive_Delete_UI",
 						"Functions_Rear_UI",
 						"Feature_More_UI"
 					],
