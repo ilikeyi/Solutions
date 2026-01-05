@@ -1,0 +1,137 @@
+﻿ConvertFrom-StringData -StringData @'
+	# ko-KR
+	# Korean (Korea)
+
+	IsCreate                        = 만들다
+	Solution                        = 해결책
+	EnabledSoftwarePacker           = 수집
+	EnabledUnattend                 = 미리 대답해야지
+	EnabledEnglish                  = 배포 엔진
+	UnattendSelectVer               = '답변' 솔루션 언어 선택
+	UnattendLangPack                = '솔루션' 언어 팩 선택
+	UnattendSelectSingleInstl       = 다국어, 설치 시 선택 사항
+	UnattendSelectMulti             = 다국어
+	UnattendSelectDisk              = Autounattend.xml 솔루션 선택
+	UnattendSelectSemi              = 모든 설치 방법에 반자동 유효
+	UnattendSelectUefi              = UEFI 자동 설치, 지정해야 함
+	UnattendSelectLegacy            = Legacy 자동 설치, 지정해야 함
+	NeedSpecified                   = 지정해야 할 항목을 선택하십시오.
+	OOBESetupOS                     = 설치 인터페이스
+	OOBEProductKey                  = 제품 키
+	OOBEOSImage                     = 설치할 운영 체제 선택
+	OOBEEula                        = 사용 조건에 동의
+	OOBEDoNotServerManager          = 로그인 시 서버 관리자를 자동으로 시작하지 않음
+	OOBEIE                          = Internet Explorer 보안 강화 구성
+	OOBEIEAdmin                     = "관리자" 닫기
+	OObeIEUser                      = "사용자" 닫기
+
+	OOBE_Init_User                  = 언박싱 경험 중 초기 사용자
+	OOBE_init_Create                = 맞춤 사용자 만들기
+	OOBE_init_Specified             = 지정된 사용자
+	OOBE_Init_Autologin             = 자동 로그인
+
+	InstlMode                       = 설치 방법
+	Business                        = 상용 버전
+	BusinessTips                    = EI.cfg 에 따라 자동 설치는 인덱스 번호를 지정해야 합니다.
+	Consumer                        = 소비자용
+	ConsumerTips                    = EI.cfg 에 의존하지 않으며 자동 설치를 위해 일련 번호를 지정해야 하며 버전 선택 인터페이스를 일시 중단할 때 색인 번호를 지정해야 합니다.
+	CreateUnattendISO               = [ISO]:\\Autounattend.xml
+	CreateUnattendISOSources        = [ISO]:\\sources\\Unattend.xml
+	CreateUnattendISOSourcesOEM     = [ISO]:\\sources\\$OEM$\\$$\\Panther\\unattend.xml
+	CreateUnattendPanther           = [마운트]:\\Windows\\Panther\\unattend.xml
+
+	VerifyName                      = 시스템 디스크 홈 디렉토리 이름에 추가
+	VerifyNameUse                   = 디렉토리 이름에 다음을 포함할 수 없는지 확인하십시오
+	VerifyNameTips                  = 영문자와 숫자의 조합만 허용되며 다음을 포함할 수 없습니다. 공백, 길이는 260자를 초과할 수 없습니다, \\ / : * ? & @ ! "" < > |
+	VerifyNumberFailed              = 인증에 실패했습니다. 정확한 번호를 입력해 주세요.
+	VerifyNameSync                  = 디렉토리 이름을 기본 사용자 이름으로 설정
+	VerifyNameSyncTips              = 더 이상 사용하지 않음 administrator.
+	ManualKey                       = 제품 키 선택 또는 수동 입력
+	ManualKeyTips                   = 유효한 제품 키를 입력하십시오.선택한 영역을 사용할 수 없는 경우 Microsoft 공식으로 이동하여 확인하십시오.
+	ManualKeyError                  = 입력한 제품 키가 잘못되었습니다.
+	KMSLink1                        = KMS 클라이언트 설정 키
+	KMSUnlock                       = 알려진 모든 KMS 일련 번호 표시
+	KMSSelect                       = VOL 일련 번호를 선택하십시오
+	KMSKey                          = 일련 번호
+	KMSKeySelect                    = 제품 일련 번호 변경
+	ClearOld                        = 오래된 파일 정리
+	SolutionsSkip                   = 솔루션 생성 건너뛰기
+	SolutionsTo                     = 다음에 '솔루션'을 추가: \
+	SolutionsToMount                = 큐에 마운트되거나 추가됨
+	SolutionsToError                = 일부 기능이 비활성화되었습니다. 강제로 사용하려면 "잠금 해제" 버튼을 클릭하세요.\n\n
+	UnlockBoot                      = 터놓다
+	SolutionsToSources              = 메인 디렉토리, [ISO]:\\Sources\\$OEM$
+	SolutionsScript                 = '배포 엔진' 버전 선택
+	SolutionsEngineRegionaUTF8      = Beta 버전: 유니코드 UTF-8을 사용한 글로벌 언어 지원
+	SolutionsEngineRegionaUTF8Tips  = 개봉 후에는 새로운 문제를 일으킬 수 있을 것 같습니다. 제안되지 않았습니다.
+	SolutionsEngineRegionaling      = 새 로케일로 변경: \
+	SolutionsEngineRegionalingTips  = 컴퓨터의 모든 사용자 계정에 영향을 주는 시스템 로캘을 변경합니다.
+	SolutionsEngineRegional         = 시스템 로케일 변경
+	SolutionsEngineRegionalTips     = 전역 기본값: {0}, 다음으로 변경됨: {1}
+	SolutionsEngineCopyPublic       = 배포에 공개 {0} 복사
+	SolutionsEngineCopyOpen         = 공용 저장소 {0} 위치 찾아보기
+	EnglineDoneReboot               = 컴퓨터를 다시 시작
+	SolutionsTipsArm64              = arm64 패키지는 x64, x86 순으로 선호됩니다.
+	SolutionsTipsAMD64              = 선호하는 x64 패키지, x86 순서.
+	SolutionsTipsX86                = x86 패키지만 추가하십시오.
+	SolutionsReport                 = 사전 배포 보고서 생성
+	SolutionsDeployOfficeInstall    = Microsoft Office 설치 패키지 배포
+	SolutionsDeployOfficeChange     = 배포 구성 변경
+	SolutionsDeployOfficePre        = 사전 설치된 패키지 버전
+	SolutionsDeployOfficeNoSelect   = Office 사전 설치 패키지가 선택되지 않았습니다
+	SolutionsDeployOfficeVersion    = {0} 버전
+	SolutionsDeployOfficeOnly       = 지정된 언어 팩 유지
+	SolutionsDeployOfficeSync       = 배포 구성에 언어 동기화 유지
+	SolutionsDeployOfficeSyncTips   = 동기화 후 설치 스크립트는 기본 언어를 결정할 수 없습니다.
+	DeploySyncMainLanguage          = 동기화는 기본 언어와 일치합니다
+	SolutionsDeployOfficeTo         = 다음 위치에 설치 패키지 배포
+	SolutionsDeployOfficeToPublic   = 공용 데스크탑
+	DeployPackage                   = 사용자 지정 컬렉션 패키지 배포
+	DeployPackageSelect             = 사전 컬렉션 패키지 선택
+	DeployPackageTo                 = 사전 조립된 패키지를 다음 위치에 배포합니다
+	DeployPackageToRoot             = 시스템 디스크: 시스템 디스크: \\Package
+	DeployPackageToSolutions        = 솔루션 홈 디렉토리
+	DeployTimeZone                  = 시간대
+	DeployTimeZoneChange            = 시간대 변경
+	DeployTimeZoneChangeTips        = 언어 영역별로 사전 응답의 기본 시간대를 설정합니다.
+
+	Deploy_Tags                     = 배포 태그
+	FirstExpProcess                 = 배포 전제 조건 중 처음 경험:
+	FirstExpProcessTips             = 적용하려면 다시 시작해야 하는 문제를 해결하려면 전제 조건을 완료한 후 컴퓨터를 다시 시작하십시오.
+	FirstExpFinish                  = 첫 경험, 전제 조건 완료 후
+	FirstExpSyncMark                = 전체 디스크 검색 및 배포 태그 동기화 허용
+	FirstExpUpdate                  = 자동 업데이트 허용
+	FirstExpDefender                = Defend 제외 디렉토리에 홈 디렉토리 추가
+	FirstExpSyncLabel               = 시스템 디스크 볼륨 레이블: 홈 디렉토리 이름과 동일
+	MultipleLanguages               = 여러 언어를 접할 때:
+	NetworkLocationWizard           = 네트워크 위치 마법사
+	PreAppxCleanup                  = Appx 가 유지 관리 작업을 정리하지 못하도록 방지
+	LanguageComponents              = 사용하지 않는 주문형 기능 언어 팩 정리 방지
+	PreventCleaningUnusedLP         = 사용하지 않는 언어 팩 정리 방지
+	FirstExpContextCustomize        = 개인화된 "상황에 맞는 메뉴" 추가
+	FirstExpContextCustomizeShift   = Shift 키를 누른 상태에서 마우스 오른쪽 버튼 클릭
+
+	FirstExpFinishTips              = 배포가 완료된 후에는 중요한 이벤트가 없으므로 취소하는 것이 좋습니다.
+	FirstExpFinishPopup             = 배포 엔진의 기본 인터페이스가 나타납니다
+	FirstExpFinishOnDemand          = 계획대로 첫 사전 체험 허용
+	SolutionsEngineRestricted       = Powershell 실행 정책 복원: 제한됨
+	EnglineDoneClearFull            = 전체 솔루션 삭제
+	EnglineDoneClear                = 배포 엔진 삭제, 다른 엔진 유지
+
+	Unattend_Auto_Fix_Next          = 다음에 만날 때, 필수 구성 요소를 선택하지 않은 경우 자동 복구
+	Unattend_Auto_Fix               = 필수 구성 요소를 선택하지 않은 경우 자동 복구
+	Unattend_Auto_Fix_Tips          = 배치 엔진 추가 시 첫 번째 실행 명령을 선택하지 않으면 자동으로 복구되어 선택됩니다. Powershell 실행 전략: 제한 없이 배치 엔진을 실행합니다.
+	Unattend_Version_Tips           = 포함만 선택 가능하며 기본적으로 ARM64, x64, x86 을 지원할 수 있다.
+	First_Run_Commmand              = 첫 배포 시 실행할 명령
+	First_Run_Commmand_Setting      = 실행할 명령 선택
+	Command_Not_Class               = 필터링 시 더 이상 자동 분류하지 않음
+	Command_WinSetup                = Windows 설치하다
+	Command_WinPE                   = Windows PE
+	Command_Tips                    = 첫 번째 실행을 다음에 지정하십시오：Windows 설치하다、Windows PE\n\n배치 엔진을 추가할 때 Powershell 실행 정책: 제한됨, 처음 실행할 때 배치 엔진 스크립트 실행 허용을 확인해야 합니다.
+	Waring_Not_Select_Command       = 배치 엔진을 추가할 때 Powershell 실행 정책이 선택되지 않았습니다：제한을 설정하지 말고 배치 엔진 스크립트 실행을 허용하십시오. 선택하고 다시 시도하거나 "빠른 수정이 선택되지 않음"을 클릭하십시오.
+	Quic_Fix_Not_Select_Command     = 빠른 수정이 선택되지 않음
+
+	PowerShell_Unrestricted         = Powershell 실행 정책: 제한 없음
+	Allow_Running_Deploy_Engine     = 배포 엔진 스크립트 실행 허용
+	Bypass_TPM                      = 설치 중 TPM 검사 우회
+'@
