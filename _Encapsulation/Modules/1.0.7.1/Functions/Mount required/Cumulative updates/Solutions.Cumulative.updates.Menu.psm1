@@ -40,6 +40,11 @@ Function Update_Menu
 
 	Write-Host "`n  $($lang.CUpdate)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
+	Write-host "   " -NoNewline
+	Write-Host " CT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host "  $($lang.RuleNewTempate)" -ForegroundColor Green
+
+
 	Write-host "    " -NoNewline
 	Write-Host " 1 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	if (Image_Is_Select_IAB) {
@@ -245,6 +250,11 @@ Function Update_Menu
 
 	switch -Wildcard ($NewEnter)
 	{
+		"ct" {
+			Create_Template_UI
+			ToWait -wait 2
+			Update_Menu
+		}
 		"1" {
 			Update_Menu_Shortcuts_Add
 			ToWait -wait 2

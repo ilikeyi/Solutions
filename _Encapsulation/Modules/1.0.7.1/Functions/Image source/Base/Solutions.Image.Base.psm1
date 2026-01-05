@@ -1499,9 +1499,6 @@ Function Menu_Shortcuts_Cumulative_updates_CU
 	Write-host $NewRuleName -ForegroundColor Green
 
 	switch ($NewRuleName) {
-		"c" {
-			Create_Template_UI
-		}
 		"a" {
 			Update_Menu_Shortcuts_Add
 		}

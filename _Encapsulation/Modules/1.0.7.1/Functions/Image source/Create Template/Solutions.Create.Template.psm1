@@ -862,7 +862,6 @@ Function Create_Template_UI
 		Text           = $lang.MountedIndex
 	}
 	$UI_Main_Group_Add_Index = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
-		Name           = "Index"
 		BorderStyle    = 0
 		autosize       = 1
 		autoSizeMode   = 1
@@ -925,7 +924,6 @@ Function Create_Template_UI
 		Text           = $lang.Wim_Edition
 	}
 	$UI_Main_Group_Add_Edition = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
-		Name           = "EditionID"
 		BorderStyle    = 0
 		autosize       = 1
 		autoSizeMode   = 1

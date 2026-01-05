@@ -425,7 +425,7 @@ Function Mainpage
 	Write-Host " 22 " -NoNewline -BackgroundColor Green -ForegroundColor Black
 	Write-Host " $($lang.CUpdate): " -NoNewline -ForegroundColor Yellow
 	Write-Host "$($lang.RuleNewTempate) " -NoNewline -ForegroundColor Green
-	Write-Host " CU C " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " CT " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-Host ", " -NoNewline
 
 	if (Image_Is_Select_IAB) {
@@ -1063,6 +1063,13 @@ Function Mainpage
 			"CU *" {
 				Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
 				Menu_Shortcuts_Cumulative_updates_CU -Command $PSItem
+				ToWait -wait 2
+				Mainpage
+			}
+
+			"ct" {
+				Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
+				Create_Template_UI
 				ToWait -wait 2
 				Mainpage
 			}
