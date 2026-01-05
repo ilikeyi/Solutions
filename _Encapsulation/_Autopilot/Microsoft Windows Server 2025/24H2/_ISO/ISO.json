@@ -1,0 +1,81 @@
+{
+	"Config": {
+		"Author":  "Yi",
+		"Url":     "https://fengyi.tel",
+		"Version": "1.0.2.1"
+	},
+	"Deploy": {
+		"ImageSource": {
+			"Tasks": {
+				"ISO": {
+					"SaveTo":             "",
+					"Structure": {
+						"InstallType":    true,
+						"UniqueName":     true,
+						"Group":          "Windows Server 2025",
+						"Event":           false,
+						"EngineVersion":  ""
+					},
+					"PublicDate": {
+						"Sorting": {
+							"GroupA": true,
+							"GroupB": false
+						},
+						"Year": {
+							"IsAllow": true,
+							"UseShortnames": {
+								"GroupA": true,
+								"GroupB": false
+							}
+						},
+						"Month": {
+							"IsAllow": true,
+							"UseShortnames": {
+								"GroupB": false
+							},
+							"UseNumber": {
+								"GroupA": true,
+								"GroupB": false
+							}
+						}
+					},
+					"WindowsVersion": {
+						"Enable":         true,
+						"Version":        "Auto",
+						"InitialRelease": "10"
+					},
+					"WindowsCode": {
+						"Enable":         true,
+						"Code":           "Auto"
+					},
+					"Random":             false,
+					"ImageLanguage":      false,
+					"imageVersions":      false,
+					"imageVersionsType":  false,
+					"Before": {
+						"Rebuild": {
+							"Install":    false,
+							"Boot":       false
+						}
+					},
+					"After": {
+						"TPM":            false,
+						"CRCSHA": {
+							"Schome":     "SHA256",
+							"Rename":     false
+						},
+						"PGP": {
+							"Schome":     "Auto",
+							"Custom": {
+								"IsAllow": true,
+								"Pwd":    "",
+								"KeyID":  "0FEBF674EAD23E05"
+							}
+						},
+						"RemoveImage":    false
+					}
+				}
+			}
+		}
+	}
+}

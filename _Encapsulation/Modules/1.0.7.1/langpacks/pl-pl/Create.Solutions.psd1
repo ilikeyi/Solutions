@@ -1,0 +1,137 @@
+﻿ConvertFrom-StringData -StringData @'
+	# pl-PL
+	# Polish (Poland)
+
+	IsCreate                        = Tworzyć
+	Solution                        = Rozwiązanie
+	EnabledSoftwarePacker           = Kolekcja
+	EnabledUnattend                 = Powinien odpowiedzieć wcześniej
+	EnabledEnglish                  = Silnik wdrażania
+	UnattendSelectVer               = Wybierz język rozwiązania "Odpowiedz na".
+	UnattendLangPack                = Wybierz pakiet językowy "Rozwiązanie".
+	UnattendSelectSingleInstl       = Wielojęzyczny, opcjonalny podczas instalacji
+	UnattendSelectMulti             = Wielojęzyczny
+	UnattendSelectDisk              = Wybierz rozwiązanie Autounattend.xml
+	UnattendSelectSemi              = Półautomat jest ważny dla wszystkich metod instalacji
+	UnattendSelectUefi              = UEFI instaluje się automatycznie i należy go określić
+	UnattendSelectLegacy            = Starsza wersja jest instalowana automatycznie i należy ją określić
+	NeedSpecified                   = Proszę wybrać, co należy określić:
+	OOBESetupOS                     = Interfejs instalacyjny
+	OOBEProductKey                  = Klucz produktu
+	OOBEOSImage                     = Wybierz system operacyjny do zainstalowania
+	OOBEEula                        = Zaakceptuj warunki licencji
+	OOBEDoNotServerManager          = Menedżer serwera nie uruchamia się automatycznie po zalogowaniu
+	OOBEIE                          = Konfiguracja zwiększonych zabezpieczeń przeglądarki Internet Explorer
+	OOBEIEAdmin                     = Zamknij "Administratora"
+	OObeIEUser                      = Zamknij "Użytkownicy"
+
+	OOBE_Init_User                  = Pierwszy użytkownik podczas rozpakowywania
+	OOBE_init_Create                = Twórz niestandardowych użytkowników
+	OOBE_init_Specified             = Określ użytkownika
+	OOBE_Init_Autologin             = Automatyczne logowanie
+
+	InstlMode                       = Metoda instalacji
+	Business                        = Wersja biznesowa
+	BusinessTips                    = W zależności od pliku EI.cfg, w przypadku automatycznej instalacji należy określić numer indeksu.
+	Consumer                        = Wersja konsumencka
+	ConsumerTips                    = Nie opiera się na pliku EI.cfg. Aby przeprowadzić instalację automatyczną, należy podać numer seryjny. Podczas pauzy w interfejsie wyboru wersji należy określić numer indeksu.
+	CreateUnattendISO               = [ISO]:\\Autounattend.xml
+	CreateUnattendISOSources        = [ISO]:\\sources\\Unattend.xml
+	CreateUnattendISOSourcesOEM     = [ISO]:\\sources\\$OEM$\\$$\\Panther\\unattend.xml
+	CreateUnattendPanther           = [zamontować do]:\\Windows\\Panther\\unattend.xml
+
+	VerifyName                      = Dodaj do dysku systemowego nazwę katalogu domowego
+	VerifyNameUse                   = Sprawdź, czy nazwa katalogu nie może zawierać
+	VerifyNameTips                  = Dozwolona jest wyłącznie kombinacja angielskich liter i cyfr, która nie może zawierać: spacji, długość nie może być większa niż 260 znaków, \\ / : * ? & @ ! "" < > |
+	VerifyNumberFailed              = Weryfikacja nie powiodła się. Proszę wprowadzić poprawny numer.
+	VerifyNameSync                  = Ustaw nazwę katalogu jako podstawową nazwę użytkownika
+	VerifyNameSyncTips              = Administrator nie jest już używany.
+	ManualKey                       = Wybierz lub wprowadź ręcznie klucz produktu
+	ManualKeyTips                   = Wprowadź prawidłowy klucz produktu. Jeśli wybrany region nie jest dostępny, przejdź do oficjalnej witryny firmy Microsoft, aby to sprawdzić.
+	ManualKeyError                  = Wprowadzony klucz produktu jest nieprawidłowy.
+	KMSLink1                        = Klucz ustawień klienta KMS
+	KMSUnlock                       = Pokaż wszystkie znane numery seryjne KMS
+	KMSSelect                       = Proszę wybrać numer seryjny VOL
+	KMSKey                          = Numer seryjny
+	KMSKeySelect                    = Zmień numer seryjny produktu
+	ClearOld                        = Wyczyść stare pliki
+	SolutionsSkip                   = Pomiń tworzenie rozwiązania
+	SolutionsTo                     = Dodaj "rozwiązanie" do:
+	SolutionsToMount                = Zamontowany lub dodany do kolejki
+	SolutionsToError                = Niektóre funkcje zostały wyłączone. Jeśli chcesz wymusić ich użycie, kliknij przycisk "Odblokuj".\n\n
+	UnlockBoot                      = Odblokować
+	SolutionsToSources              = Katalog domowy, [ISO]:\\Sources\\$OEM$
+	SolutionsScript                 = Wybierz wersję "Silnika wdrażania".
+	SolutionsEngineRegionaUTF8      = Beta: Globalna obsługa języków przy użyciu Unicode UTF-8
+	SolutionsEngineRegionaUTF8Tips  = Wygląda na to, że po otwarciu może powodować nowe problemy. Niezalecane.
+	SolutionsEngineRegionaling      = Zmień na nowe ustawienia regionalne:
+	SolutionsEngineRegionalingTips  = Zmień ustawienia regionalne systemu, co ma wpływ na wszystkie konta użytkowników na komputerze.
+	SolutionsEngineRegional         = Zmień ustawienia regionalne systemu
+	SolutionsEngineRegionalTips     = Globalna wartość domyślna: {0}, zmieniona na: {1}
+	SolutionsEngineCopyPublic       = Skopiuj publiczny {0} do wdrożenia
+	SolutionsEngineCopyOpen         = Przeglądaj lokalizację repozytorium publicznego {0}
+	EnglineDoneReboot               = Uruchom ponownie komputer
+	SolutionsTipsArm64              = Preferowany jest pakiet arm64 i wybierasz w kolejności: x64, x86.
+	SolutionsTipsAMD64              = Preferuj pakiety x64, w kolejności: x86.
+	SolutionsTipsX86                = Dodawane są tylko pakiety x86.
+	SolutionsReport                 = Wygeneruj raport przed wdrożeniem
+	SolutionsDeployOfficeInstall    = Wdróż pakiet instalacyjny pakietu Microsoft Office
+	SolutionsDeployOfficeChange     = Zmień konfigurację wdrożenia
+	SolutionsDeployOfficePre        = Preinstalowana wersja pakietu
+	SolutionsDeployOfficeNoSelect   = Nie wybrano pakietu preinstalacyjnego pakietu Office
+	SolutionsDeployOfficeVersion    = Wersja {0}
+	SolutionsDeployOfficeOnly       = Zachowaj określone pakiety językowe
+	SolutionsDeployOfficeSync       = Zachowaj synchronizację języka z konfiguracją wdrożenia
+	SolutionsDeployOfficeSyncTips   = Po synchronizacji skrypt instalacyjny nie może określić preferowanego języka.
+	DeploySyncMainLanguage          = Synchronizuj z językiem głównym
+	SolutionsDeployOfficeTo         = Wdróż pakiet instalacyjny w
+	SolutionsDeployOfficeToPublic   = Publiczny pulpit
+	DeployPackage                   = Wdróż niestandardowy pakiet kolekcji
+	DeployPackageSelect             = Wybierz pakiet przedodbiorowy
+	DeployPackageTo                 = Wdróż pakiet przed kolekcją w
+	DeployPackageToRoot             = Dysk systemowy:\\Pakiet
+	DeployPackageToSolutions        = W katalogu domowym rozwiązania
+	DeployTimeZone                  = Strefa czasowa
+	DeployTimeZoneChange            = Zmień strefę czasową
+	DeployTimeZoneChangeTips        = Ustaw domyślny obszar czasowy, w którym powinny być udzielane odpowiedzi wstępne, według obszaru językowego.
+
+	Deploy_Tags                     = Znacznik wdrożenia
+	FirstExpProcess                 = Doświadczenie po raz pierwszy podczas wdrażania. Wymagania wstępne:
+	FirstExpProcessTips             = Po spełnieniu wymagań wstępnych uruchom ponownie komputer, aby rozwiązać problem polegający na konieczności ponownego uruchomienia komputera.
+	FirstExpFinish                  = Doświadczenie po raz pierwszy, po spełnieniu wymagań wstępnych
+	FirstExpSyncMark                = Zezwalaj na globalne wyszukiwanie i synchronizację tagów wdrożeniowych
+	FirstExpUpdate                  = Zezwalaj na automatyczne aktualizacje
+	FirstExpDefender                = Dodaj katalog domowy do ochrony wykluczonych katalogów
+	FirstExpSyncLabel               = Etykieta woluminu dysku systemowego: nazwa katalogu domowego jest taka sama
+	MultipleLanguages               = W przypadku napotkania wielu języków:
+	NetworkLocationWizard           = Kreator lokalizacji sieciowej
+	PreAppxCleanup                  = Blokuj zadania konserwacyjne związane z czyszczeniem Appx
+	LanguageComponents              = Zapobiegaj czyszczeniu nieużywanych pakietów językowych funkcji na żądanie
+	PreventCleaningUnusedLP         = Zapobiegaj czyszczeniu nieużywanych pakietów językowych
+	FirstExpContextCustomize        = Dodaj spersonalizowane "menu kontekstowe"
+	FirstExpContextCustomizeShift   = Przytrzymaj klawisz Shift i kliknij prawym przyciskiem myszy
+
+	FirstExpFinishTips              = Po zakończeniu wdrożenia nie ma żadnych ważnych wydarzeń. Zaleca się anulowanie.
+	FirstExpFinishPopup             = Wyświetl główny interfejs silnika wdrażania
+	FirstExpFinishOnDemand          = Zezwól na pierwszy podgląd zgodnie z planem
+	SolutionsEngineRestricted       = Przywróć zasady wykonywania Powershell: ograniczone
+	EnglineDoneClearFull            = Usuń całe rozwiązanie
+	EnglineDoneClear                = Usuń silnik wdrażania i zachowaj pozostałe
+
+	Unattend_Auto_Fix_Next          = Następnym razem, gdy go napotkasz, automatycznie wybierz niezbędne elementy, aby automatycznie go naprawić.
+	Unattend_Auto_Fix               = Napraw automatycznie, jeśli nie wybrano wymagań wstępnych
+	Unattend_Auto_Fix_Tips          = Podczas dodawania mechanizmu wdrażania i nie wybierania pierwszego polecenia uruchomienia zostanie on automatycznie naprawiony i wybrany: Zasady wykonywania programu PowerShell: uruchom silnik wdrażania bez żadnych ograniczeń.
+	Unattend_Version_Tips           = Opcjonalnie uwzględnij tylko, użyj domyślnej obsługi ARM64, x64, x86.
+	First_Run_Commmand              = Polecenia do uruchomienia podczas pierwszego wdrożenia
+	First_Run_Commmand_Setting      = Wybierz polecenie do uruchomienia
+	Command_Not_Class               = Nie jest już automatycznie kategoryzowana podczas filtrowania
+	Command_WinSetup                = Instalacja Windowsa
+	Command_WinPE                   = Windows PE
+	Command_Tips                    = Proszę przypisać aplikację First Run do: Instalacja Windows, Windows PE\n\nNależy pamiętać, że po dodaniu aparatu wdrażania należy przy pierwszym uruchomieniu sprawdzić następujące elementy: Zasady wykonywania programu PowerShell: Ograniczone, zezwalaj na uruchamianie skryptów silnika wdrażania.
+	Waring_Not_Select_Command       = Podczas dodawania silnika wdrażania nie wybrano zasady wykonywania Powershell: Nie ustawiaj żadnych ograniczeń i zezwól na uruchomienie skryptu silnika wdrażania. Wybierz go i spróbuj ponownie lub kliknij "Nie wybrano szybkiej poprawki".
+	Quic_Fix_Not_Select_Command     = Szybka naprawa nie jest opcją
+
+	PowerShell_Unrestricted         = Polityka wykonywania programu PowerShell: brak ograniczeń
+	Allow_Running_Deploy_Engine     = Zezwalaj na uruchamianie skryptów mechanizmu wdrażania
+	Bypass_TPM                      = Pomijanie kontroli modułu TPM podczas instalacji
+'@
