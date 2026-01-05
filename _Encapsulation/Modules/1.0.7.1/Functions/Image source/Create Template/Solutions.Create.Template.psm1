@@ -681,7 +681,7 @@ Function Create_Template_UI
 	}
 	$GUISelectTypeInstallCustomizeName = New-Object System.Windows.Forms.TextBox -Property @{
 		Height         = 30
-		Width          = 390
+		Width          = 470
 		Text           = ""
 		margin         = "45,5,0,15"
 		add_Click      = {
@@ -715,7 +715,7 @@ Function Create_Template_UI
 		}
 		$GUISelectTypeWinRECustomizeName = New-Object System.Windows.Forms.TextBox -Property @{
 			Height         = 30
-			Width          = 370
+			Width          = 450
 			Text           = ""
 			margin         = "65,5,0,15"
 			add_Click      = {
@@ -747,7 +747,7 @@ Function Create_Template_UI
 	}
 	$GUISelectTypeBootCustomizeName = New-Object System.Windows.Forms.TextBox -Property @{
 		Height         = 30
-		Width          = 390
+		Width          = 470
 		Text           = ""
 		margin         = "45,5,0,15"
 		add_Click      = {
@@ -1051,14 +1051,77 @@ Function Create_Template_UI
 		}
 	}
 
+	<#
+		.显示提示蒙层
+	#>
+	$UI_Main_Mask_Tips = New-Object system.Windows.Forms.Panel -Property @{
+		BorderStyle    = 0
+		Height         = 678
+		Width          = 1006
+		autoSizeMode   = 1
+		Padding        = "8,8,8,8"
+		Location       = '0,0'
+		Visible        = $False
+	}
+	$UI_Main_Mask_Tips_Results = New-Object System.Windows.Forms.RichTextBox -Property @{
+		Height         = 555
+		Width          = 885
+		BorderStyle    = 0
+		Location       = "15,15"
+		Text           = $lang.SearchOrderTips
+		BackColor      = "#FFFFFF"
+		ReadOnly       = $True
+	}
+	$UI_Main_Mask_Tips_Do_Not = New-Object System.Windows.Forms.CheckBox -Property @{
+		Location       = "20,635"
+		Height         = 40
+		Width          = 550
+		Text           = $lang.LXPsAddDelTips
+		add_Click      = {
+			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
+
+			if ($UI_Main_Mask_Tips_Do_Not.Checked) {
+				Save_Dynamic -regkey "Solutions" -name "Tips_Warning_CT_Global" -value "False" -String
+			} else {
+				Save_Dynamic -regkey "Solutions" -name "Tips_Warning_CT_Global" -value "True" -String
+			}
+		}
+	}
+	$UI_Main_Mask_Tips_Canel = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "620,635"
+		Height         = 36
+		Width          = 280
+		Text           = $lang.Cancel
+		add_Click      = {
+			$UI_Main_Mask_Tips.Visible = $False
+		}
+	}
+	$UI_Main_Tips_New  = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 530
+		Location       = "620,515"
+		Text           = $lang.LXPsAddDelTipsView
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
+
+			$UI_Main_Mask_Tips.Visible = $True
+		}
+	}
+
 	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "620,523"
+		Location       = "620,563"
 		Height         = 20
 		Width          = 20
 		SizeMode       = "StretchImage"
 	}
 	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
-		Location       = "645,525"
+		Location       = "645,565"
 		Height         = 30
 		Width          = 255
 		Text           = ""
@@ -1282,6 +1345,7 @@ Function Create_Template_UI
 		}
 	}
 	$UI_Main.controls.AddRange((
+		$UI_Main_Mask_Tips,
 		$UI_Main_View_Detailed,
 		$UI_Public_Name,
 		$UI_Public_Name_CustomizeName,
@@ -1301,6 +1365,7 @@ Function Create_Template_UI
 
 		$UI_Main_Menu,
 		$UI_Main_View_Detailed_History,
+		$UI_Main_Tips_New,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
 		$UI_Main_Ok
@@ -1339,7 +1404,31 @@ Function Create_Template_UI
 		$UI_Main_Extract_Save_To_Del,
 		$UI_Main_End_Wrap
 	))
-	
+	$UI_Main_Mask_Tips.controls.AddRange((
+		$UI_Main_Mask_Tips_Results,
+		$UI_Main_Mask_Tips_Do_Not,
+		$UI_Main_Mask_Tips_Canel
+	))
+
+	<#
+		.提示
+	#>
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -Name "Tips_Warning_CT_Global" -ErrorAction SilentlyContinue) {
+		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions" -Name "Tips_Warning_CT_Global" -ErrorAction SilentlyContinue) {
+			"True" {
+				$UI_Main_Mask_Tips.Visible = $True
+				$UI_Main_Mask_Tips_Do_Not.Checked = $false
+			}
+			"False" {
+				$UI_Main_Mask_Tips.Visible = $False
+				$UI_Main_Mask_Tips_Do_Not.Checked = $True
+			}
+		}
+	} else {
+		$UI_Main_Mask_Tips_Do_Not.Checked = $True
+		$UI_Main_Mask_Tips.Visible = $True
+	}
+
 	$RandomGuid = "Example_$(Get-RandomHexNumber -length 5).$(Get-RandomHexNumber -length 3)"
 	$UI_Public_Name_CustomizeName.Text = $RandomGuid
 	$GUISelectTypeInstallCustomizeName.Text = $RandomGuid
