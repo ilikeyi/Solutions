@@ -858,7 +858,6 @@ Function Menu_Shortcuts_Remove_Index
 
 	if ([string]::IsNullOrEmpty($NewImageIndex)) {
 		Write-host $lang.NoChoose -ForegroundColor Red
-		$Global:Primary_Key_Image = @()
 	} else {
 		Write-Host $NewImageIndex -ForegroundColor Green
 		Image_Set_Primary_Key_Shortcuts -Name $NewImageIndex
@@ -981,7 +980,6 @@ Function Menu_Shortcuts_Mount_Index
 
 	if ([string]::IsNullOrEmpty($NewImageIndex)) {
 		Write-host $lang.NoChoose -ForegroundColor Red
-		$Global:Primary_Key_Image = @()
 	} else {
 		Write-Host $NewImageIndex -ForegroundColor Green
 		Image_Set_Primary_Key_Shortcuts -Name $NewImageIndex
