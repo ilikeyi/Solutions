@@ -1,0 +1,137 @@
+﻿ConvertFrom-StringData -StringData @'
+	# tr-TR
+	# Turkish (Turkey)
+
+	IsCreate                        = Yaratmak
+	Solution                        = Çözüm
+	EnabledSoftwarePacker           = Koleksiyon
+	EnabledUnattend                 = Önceden cevap vermeli
+	EnabledEnglish                  = Dağıtım motoru
+	UnattendSelectVer               = 'Yanıtla' çözüm dilini seçin
+	UnattendLangPack                = 'Çözüm' dil paketini seçin
+	UnattendSelectSingleInstl       = Çoklu dil, kurulum sırasında isteğe bağlı
+	UnattendSelectMulti             = Çok dilli
+	UnattendSelectDisk              = Autounattend.xml çözümünü seçin
+	UnattendSelectSemi              = Yarı otomatik tüm kurulum yöntemleri için geçerlidir
+	UnattendSelectUefi              = UEFI otomatik olarak yüklenir ve belirtilmesi gerekir
+	UnattendSelectLegacy            = Eski otomatik olarak yüklenir ve belirtilmesi gerekir
+	NeedSpecified                   = Lütfen neyin belirtilmesi gerektiğini seçin:
+	OOBESetupOS                     = Kurulum arayüzü
+	OOBEProductKey                  = Ürün anahtarı
+	OOBEOSImage                     = Yüklenecek işletim sistemini seçin
+	OOBEEula                        = Lisans koşullarını kabul edin
+	OOBEDoNotServerManager          = Sunucu Yöneticisi oturum açıldığında otomatik olarak başlamıyor
+	OOBEIE                          = Internet Explorer Gelişmiş Güvenlik Yapılandırması
+	OOBEIEAdmin                     = "Yönetici"yi kapat
+	OObeIEUser                      = "Kullanıcılar"ı kapat
+
+	OOBE_Init_User                  = Kutu açma deneyimi sırasında ilk kullanıcı
+	OOBE_init_Create                = Özel kullanıcılar oluşturun
+	OOBE_init_Specified             = Kullanıcıyı belirtin
+	OOBE_Init_Autologin             = Otomatik giriş
+
+	InstlMode                       = Kurulum yöntemi
+	Business                        = İşletme sürümü
+	BusinessTips                    = EI.cfg'ye bağlı olarak otomatik kurulum için indeks numarasının belirtilmesi gerekir.
+	Consumer                        = Tüketici sürümü
+	ConsumerTips                    = EI.cfg'ye bağlı değildir. Otomatik kurulum için seri numarasının belirtilmesi gerekmektedir. Versiyon seçim arayüzünde duraklatıldığında indeks numarasının belirtilmesi gerekmektedir.
+	CreateUnattendISO               = [ISO]:\\Autounattend.xml
+	CreateUnattendISOSources        = [ISO]:\\sources\\Unattend.xml
+	CreateUnattendISOSourcesOEM     = [ISO]:\\sources\\$OEM$\\$$\\Panther\\unattend.xml
+	CreateUnattendPanther           = [monte etmek]:\\Windows\\Panther\\unattend.xml
+
+	VerifyName                      = Sistem diski giriş dizini adına ekle
+	VerifyNameUse                   = Dizin adının içeremeyeceğini doğrulayın
+	VerifyNameTips                  = Yalnızca İngilizce harf ve rakamlardan oluşan bir kombinasyona izin verilir ve aşağıdakileri içeremez: boşluk, uzunluk 260 karakterden fazla olamaz, \\ / : * ? & @ ! "" < > |
+	VerifyNumberFailed              = Doğrulama başarısız oldu, lütfen doğru numarayı girin.
+	VerifyNameSync                  = Dizin adını birincil kullanıcı adı olarak ayarla
+	VerifyNameSyncTips              = Yönetici artık administrator.
+	ManualKey                       = Ürün anahtarınızı manuel olarak seçin veya girin
+	ManualKeyTips                   = Geçerli bir ürün anahtarı girin. Seçilen bölge mevcut değilse lütfen kontrol etmek için Microsoft resmi web sitesine gidin.
+	ManualKeyError                  = Girdiğiniz ürün anahtarı geçersiz.
+	KMSLink1                        = KMS istemci ayarları anahtarı
+	KMSUnlock                       = Bilinen tüm KMS seri numaralarını göster
+	KMSSelect                       = Lütfen VOL seri numarasını seçin
+	KMSKey                          = Seri numarası
+	KMSKeySelect                    = Ürün seri numarasını değiştirin
+	ClearOld                        = Eski dosyaları temizle
+	SolutionsSkip                   = Çözüm oluşturmayı atla
+	SolutionsTo                     = Şuna 'çözüm' ekleyin:
+	SolutionsToMount                = Eklendi veya kuyruğa eklendi
+	SolutionsToError                = Bazı işlevler devre dışı bırakıldı. Bunları kullanmaya zorlamanız gerekiyorsa lütfen "Kilidi Aç" düğmesine tıklayın.\n\n
+	UnlockBoot                      = Kilidi aç
+	SolutionsToSources              = Ana dizin, [ISO]:\\Sources\\$OEM$
+	SolutionsScript                 = 'Dağıtım Motoru' sürümünü seçin
+	SolutionsEngineRegionaUTF8      = Beta: Unicode UTF-8 kullanan küresel dil desteği
+	SolutionsEngineRegionaUTF8Tips  = Açıldıktan sonra yeni sorunlara yol açabilecek gibi görünüyor. Tavsiye edilmez.
+	SolutionsEngineRegionaling      = Yeni yerel ayara geçin:
+	SolutionsEngineRegionalingTips  = Bilgisayardaki tüm kullanıcı hesaplarını etkileyen sistem yerel ayarını değiştirin.响。
+	SolutionsEngineRegional         = Sistem yerel ayarını değiştir
+	SolutionsEngineRegionalTips     = Genel varsayılan: {0}, şu şekilde değiştirildi: {1}
+	SolutionsEngineCopyPublic       = Genel {0}'ı dağıtıma kopyalayın
+	SolutionsEngineCopyOpen         = Genel veri havuzunun {0} konumuna göz atın
+	EnglineDoneReboot               = Bilgisayarınızı yeniden başlatın
+	SolutionsTipsArm64              = Arm64 paketi tercih edilir ve sırayla seçersiniz: x64, x86.
+	SolutionsTipsAMD64              = X64 paketlerini sırasıyla tercih edin: x86.
+	SolutionsTipsX86                = Yalnızca x86 paketleri eklenir.
+	SolutionsReport                 = Dağıtım öncesi rapor oluşturun
+	SolutionsDeployOfficeInstall    = Microsoft Office yükleme paketini dağıtma
+	SolutionsDeployOfficeChange     = Dağıtım yapılandırmasını değiştir
+	SolutionsDeployOfficePre        = Önceden yüklenmiş paket sürümü
+	SolutionsDeployOfficeNoSelect   = Hiçbir Office ön yükleme paketi seçilmedi
+	SolutionsDeployOfficeVersion    = {0} sürümü
+	SolutionsDeployOfficeOnly       = Belirtilen dil paketlerini sakla
+	SolutionsDeployOfficeSync       = Dağıtım yapılandırmasıyla dil senkronizasyonunu koruyun
+	SolutionsDeployOfficeSyncTips   = Senkronizasyondan sonra kurulum komut dosyası tercih edilen dili belirleyemiyor.
+	DeploySyncMainLanguage          = Ana dille senkronize edin
+	SolutionsDeployOfficeTo         = Kurulum paketini şuraya dağıtın:
+	SolutionsDeployOfficeToPublic   = Genel masaüstü
+	DeployPackage                   = Özel bir koleksiyon paketi dağıtın
+	DeployPackageSelect             = Bir ön tahsilat paketi seçin
+	DeployPackageTo                 = Ön toplama paketini şuraya dağıtın:
+	DeployPackageToRoot             = Sistem diski:\\Package
+	DeployPackageToSolutions        = Çözüm ana dizininde
+	DeployTimeZone                  = Saat dilimi
+	DeployTimeZoneChange            = Saat dilimini değiştir
+	DeployTimeZoneChangeTips        = Ön yanıtların yanıtlanacağı varsayılan zaman alanını dil alanına göre ayarlayın.
+
+	Deploy_Tags                     = Dağıtım etiketi
+	FirstExpProcess                 = Dağıtım önkoşulları sırasında ilk kez deneyim:
+	FirstExpProcessTips             = Önkoşulları tamamladıktan sonra, yeniden başlatmanın etkili olması sorununu çözmek için bilgisayarı yeniden başlatın.
+	FirstExpFinish                  = Önkoşulları tamamladıktan sonra ilk kez deneyim
+	FirstExpSyncMark                = Dağıtım etiketlerinin genel aranmasına ve senkronizasyonuna izin ver
+	FirstExpUpdate                  = Otomatik güncellemelere izin ver
+	FirstExpDefender                = Hariç tutulan dizinleri savunmak için ana dizini ekleyin
+	FirstExpSyncLabel               = Sistem diski birim etiketi: Ana dizin adı aynı
+	MultipleLanguages               = Birden fazla dille karşılaştığınızda:
+	NetworkLocationWizard           = Ağ Konumu Sihirbazı
+	PreAppxCleanup                  = Appx temizleme bakım görevlerini engelle
+	LanguageComponents              = Kullanılmayan isteğe bağlı özellik dil paketlerinin temizlenmesini önleyin
+	PreventCleaningUnusedLP         = Kullanılmayan dil paketlerinin temizlenmesini önleyin
+	FirstExpContextCustomize        = Kişiselleştirilmiş bir "bağlam menüsü" ekleyin
+	FirstExpContextCustomizeShift   = Shift tuşunu basılı tutun ve sağ tıklayın
+
+	FirstExpFinishTips              = Dağıtım tamamlandıktan sonra önemli bir etkinlik yoktur. İptal etmeniz önerilir.
+	FirstExpFinishPopup             = Dağıtım motoru ana arayüzünü açın
+	FirstExpFinishOnDemand          = Planlandığı gibi ilk önizlemeye izin ver
+	SolutionsEngineRestricted       = Powershell yürütme politikasını geri yükle: kısıtlı
+	EnglineDoneClearFull            = Çözümün tamamını silin
+	EnglineDoneClear                = Dağıtım motorunu silin ve diğerlerini saklayın
+
+	Unattend_Auto_Fix_Next          = Bir dahaki sefere bu sorunla karşılaştığınızda, sorunu otomatik olarak düzeltmek için gerekli öğeleri otomatik olarak seçin.
+	Unattend_Auto_Fix               = Önkoşullar seçilmediğinde otomatik olarak onar
+	Unattend_Auto_Fix_Tips          = Dağıtım motorunu eklerken ve ilk çalıştırma komutunu seçmeden otomatik olarak onarılır ve seçilir: Powershell yürütme ilkesi: dağıtım motorunu herhangi bir kısıtlama olmadan çalıştırın.
+	Unattend_Version_Tips           = İsteğe bağlı olarak yalnızca dahil edin, ARM64, x64, x86'yı desteklemek için varsayılanı kullanın.
+	First_Run_Commmand              = İlk kez konuşlandırma sırasında çalıştırılacak komutlar
+	First_Run_Commmand_Setting      = Çalıştırılacak komutu seçin
+	Command_Not_Class               = Filtreleme sırasında artık otomatik olarak kategorilere ayrılmıyor
+	Command_WinSetup                = Windows kurulumu
+	Command_WinPE                   = Windows PE
+	Command_Tips                    = Lütfen uygulanacak ilk çalıştırmayı atayın: Windows kurulumu, Windows PE\n\nBir dağıtım motoru eklendiğinde ilk çalıştırmayı işaretlemeniz gerektiğini unutmayın: Powershell yürütme politikası: Kısıtlı, dağıtım motoru komut dosyalarının çalıştırılmasına izin ver.
+	Waring_Not_Select_Command       = Dağıtım motoru eklerken Powershell yürütme politikası seçilmedi: Herhangi bir kısıtlama ayarlamayın ve dağıtım motoru komut dosyasının çalışmasına izin verin. Lütfen seçip tekrar deneyin veya "Hızlı düzeltme seçili değil" seçeneğini tıklayın.
+	Quic_Fix_Not_Select_Command     = Hızlı düzeltme seçeneği değil
+
+	PowerShell_Unrestricted         = Powershell yürütme politikası: kısıtlama yok
+	Allow_Running_Deploy_Engine     = Dağıtım motoru komut dosyalarının çalıştırılmasına izin ver
+	Bypass_TPM                      = Kurulum sırasında TPM kontrollerini atlamak
+'@
