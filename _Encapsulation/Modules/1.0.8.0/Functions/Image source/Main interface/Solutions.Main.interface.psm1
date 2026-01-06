@@ -1164,6 +1164,36 @@ Function Image_Select
 					Padding    = "16,5,0,15"
 				}
 
+				$Checkbox_Path_OpenFile = New-Object system.Windows.Forms.LinkLabel -Property @{
+					Height         = 35
+					Width          = 425
+					Padding        = "16,0,0,0"
+					Text           = $lang.OpenFile
+					Tag            = $GetImportFileName
+					LinkColor      = "GREEN"
+					ActiveLinkColor = "RED"
+					LinkBehavior   = "NeverUnderline"
+					add_Click      = {
+						$GUIImageSourceGroupAPIErrorMsg.Text = ""
+						$GUIImageSourceGroupAPIErrorMsg_Icon.Image = $null
+					
+						if ([string]::IsNullOrEmpty($This.Tag)) {
+							$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+							$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.OpenFile), $($lang.Inoperable)"
+						} else {
+							if (Test-Path -Path $This.Tag -PathType Leaf) {
+								Start-Process -FilePath $This.Tag
+							
+								$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+								$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.OpenFile): $($UI_Main_Save_To.Text), $($lang.Done)"
+							} else {
+								$GUIImageSourceGroupAPIErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+								$GUIImageSourceGroupAPIErrorMsg.Text = "$($lang.OpenFile): $($UI_Main_Save_To.Text), $($lang.Inoperable)"
+							}
+						}
+					}
+				}
+
 				$CheckboxPathCopy  = New-Object system.Windows.Forms.LinkLabel -Property @{
 					Height         = 35
 					Width          = 425
@@ -1191,6 +1221,7 @@ Function Image_Select
 
 				$GUIImageSourceGroupAPI_Shortcut_Panel.controls.AddRange((
 					$CheckboxPath,
+					$Checkbox_Path_OpenFile,
 					$CheckboxPathCopy
 				))
 

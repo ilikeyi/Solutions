@@ -19,6 +19,95 @@
 		$UI_Main.Close()
 	}
 
+	Function Refresh_API_Before_UI
+	{
+		$UI_Main_Menu.controls.Clear()
+
+		$API_Function_Tasks = @()
+		Get-ChildItem -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Custom" -ErrorAction SilentlyContinue | ForEach-Object {
+			$API_Function_Tasks += $([System.IO.Path]::GetFileNameWithoutExtension($_.Name))
+		}
+
+		if ($API_Function_Tasks.Count -gt 0) {
+			foreach ($item in $API_Function_Tasks) {
+				$LinkLabel          = New-Object system.Windows.Forms.LinkLabel -Property @{
+					Height         = 30
+					Width          = 445
+					Text           = $item
+					LinkColor      = "GREEN"
+					ActiveLinkColor = "RED"
+					LinkBehavior   = "NeverUnderline"
+					add_Click      = {
+						$UI_Main_Error.Text = ""
+						$UI_Main_Error_Icon.Image = $null
+
+						if ($UI_Main_API_Duplicate.Checked) {
+							$Temp_Get_Select_Function = @()
+							$UI_Main_Select_Function.Controls | ForEach-Object {
+								if ($_ -is [System.Windows.Forms.CheckBox]) {
+									$Temp_Get_Select_Function += $_.Text
+								}
+							}
+
+							if ($Temp_Get_Select_Function -contains $this.Text) {
+								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.ico")
+								$UI_Main_Error.Text = "$($lang.Existed): $($This.Text)"
+							} else {
+								$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
+									Height    = 40
+									Width     = 445
+									Text      = $this.Text
+									add_Click = {
+										$UI_Main_Error.Text = ""
+										$UI_Main_Error_Icon.Image = $null
+									}
+								}
+
+								if ($UI_Main_API_AutoSelect.Checked) {
+									$CheckBox.Checked = $True
+								}
+
+								$UI_Main_Select_Function.controls.AddRange($CheckBox)
+
+								$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
+								$UI_Main_Error.Text = "$($lang.AddTo): $($This.Text), $($lang.Done)"
+							}
+						} else {
+							$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
+								Height    = 40
+								Width     = 445
+								Text      = $this.Text
+								add_Click = {
+									$UI_Main_Error.Text = ""
+									$UI_Main_Error_Icon.Image = $null
+								}
+							}
+
+							if ($UI_Main_API_AutoSelect.Checked) {
+								$CheckBox.Checked = $True
+							}
+
+							$UI_Main_Select_Function.controls.AddRange($CheckBox)
+
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
+							$UI_Main_Error.Text = "$($lang.AddTo): $($This.Text), $($lang.Done)"
+						}
+					}
+				}
+
+				$LinkLabel_Wrap = New-Object system.Windows.Forms.Label -Property @{
+					Height         = 15
+					Width          = 445
+				}
+
+				$UI_Main_Menu.controls.AddRange((
+					$LinkLabel,
+					$LinkLabel_Wrap
+				))
+			}
+		}
+	}
+
 	Function Autopilot_API_Before_UI_Save
 	{
 		<#
@@ -105,14 +194,23 @@
 	<#
 		.待分配
 	#>
-	$UI_Main_Wait_Assign = New-Object system.Windows.Forms.Label -Property @{
+	$UI_Main_Wait_Assign = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 30
 		Width          = 485
 		Location       = "15,15"
 		Text           = $lang.Functions_Wait_Assign
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			Refresh_API_Before_UI
+
+			$UI_Main_Error.Text = "$($lang.Refresh): $($lang.Done)"
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
+		}
 	}
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
-		Height         = 465
+		Height         = 435
 		Width          = 500
 		Location       = '0,55'
 		Padding        = "31,0,0,0"
@@ -127,7 +225,7 @@
 	$UI_Main_Adv       = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 485
-		Location       = '15,555'
+		Location       = '15,525'
 		Text           = $lang.AdvOption
 	}
 
@@ -137,7 +235,7 @@
 	$UI_Main_API_Duplicate = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 35
 		Width          = 485
-		Location       = '35,585'
+		Location       = '35,555'
 		Text           = $lang.Functions_Duplicate
 		add_Click      = {
 			$UI_Main_Error.Text = ""
@@ -169,7 +267,7 @@
 	$UI_Main_API_AutoSelect = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 35
 		Width          = 485
-		Location       = '35,620'
+		Location       = '35,585'
 		Text           = $lang.Functions_AutoSelect
 		add_Click      = {
 			$UI_Main_Error.Text = ""
@@ -195,6 +293,23 @@
 		$UI_Main_API_AutoSelect.Checked = $True
 	}
 
+	$UI_Main_Setting_API = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Location       = "35,630"
+		Height         = 35
+		Width          = 480
+		Text           = "$($lang.Setting): $($lang.API)"
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
+
+			Image_Select -Page "API"
+			Refresh_API_Before_UI
+		}
+	}
+
 	<#
 		.选择函数
 	#>
@@ -213,7 +328,7 @@
 		autoScroll     = $True
 		Padding        = "16,0,0,0"
 	}
-	$UI_Main_Select_Function_Tips = New-Object system.Windows.Forms.Label -Property @{
+	$UI_Main_Select_API_Tips = New-Object system.Windows.Forms.Label -Property @{
 		Location       = "560,310"
 		Height         = 50
 		Width          = 480
@@ -394,7 +509,7 @@
 	$UI_Main.controls.AddRange((
 		$UI_Main_Select_Function_Name,
 		$UI_Main_Select_Function,
-		$UI_Main_Select_Function_Tips,
+		$UI_Main_Select_API_Tips,
 		$UI_Main_Wait_Assign,
 		$UI_Main_Menu,
 		$UI_Main_Dashboard,
@@ -403,6 +518,7 @@
 		$UI_Main_Adv,
 		$UI_Main_API_Duplicate,
 		$UI_Main_API_AutoSelect,
+		$UI_Main_Setting_API,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
 		$UI_Main_Event_Clear,
@@ -410,96 +526,7 @@
 		$UI_Main_Canel
 	))
 
-	$API_Function_Tasks = @()
-	Get-ChildItem -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Custom" -ErrorAction SilentlyContinue | ForEach-Object {
-		$API_Function_Tasks += $([System.IO.Path]::GetFileNameWithoutExtension($_.Name))
-	}
-
-	if ($API_Function_Tasks.Count -gt 0) {
-		foreach ($item in $API_Function_Tasks) {
-			$LinkLabel          = New-Object system.Windows.Forms.LinkLabel -Property @{
-				Height         = 30
-				Width          = 445
-				Text           = $item
-				LinkColor      = "GREEN"
-				ActiveLinkColor = "RED"
-				LinkBehavior   = "NeverUnderline"
-				add_Click      = {
-					$UI_Main_Error.Text = ""
-					$UI_Main_Error_Icon.Image = $null
-
-					if ($UI_Main_API_Duplicate.Checked) {
-						$Temp_Get_Select_Function = @()
-						$UI_Main_Select_Function.Controls | ForEach-Object {
-							if ($_ -is [System.Windows.Forms.CheckBox]) {
-								$Temp_Get_Select_Function += $_.Text
-							}
-						}
-
-						if ($Temp_Get_Select_Function -contains $this.Text) {
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.ico")
-							$UI_Main_Error.Text = "$($lang.Existed): $($This.Text)"
-						} else {
-							$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
-								Height    = 40
-								Width     = 445
-								Text      = $this.Text
-								add_Click = {
-									$UI_Main_Error.Text = ""
-									$UI_Main_Error_Icon.Image = $null
-								}
-							}
-
-							if ($UI_Main_API_AutoSelect.Checked) {
-								$CheckBox.Checked = $True
-							}
-
-							$UI_Main_Select_Function.controls.AddRange($CheckBox)
-
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
-							$UI_Main_Error.Text = "$($lang.AddTo): $($This.Text), $($lang.Done)"
-						}
-					} else {
-						$CheckBox     = New-Object System.Windows.Forms.CheckBox -Property @{
-							Height    = 40
-							Width     = 445
-							Text      = $this.Text
-							add_Click = {
-								$UI_Main_Error.Text = ""
-								$UI_Main_Error_Icon.Image = $null
-							}
-						}
-
-						if ($UI_Main_API_AutoSelect.Checked) {
-							$CheckBox.Checked = $True
-						}
-
-						$UI_Main_Select_Function.controls.AddRange($CheckBox)
-
-						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
-						$UI_Main_Error.Text = "$($lang.AddTo): $($This.Text), $($lang.Done)"
-					}
-				}
-			}
-
-			$LinkLabel_Tips = New-Object system.Windows.Forms.Label -Property @{
-				autosize       = 1
-				Padding        = "16,0,20,0"
-				Text           = $($lang.$($item))
-			}
-
-			$LinkLabel_Wrap = New-Object system.Windows.Forms.Label -Property @{
-				Height         = 30
-				Width          = 445
-			}
-
-			$UI_Main_Menu.controls.AddRange((
-				$LinkLabel,
-				$LinkLabel_Tips,
-				$LinkLabel_Wrap
-			))
-		}
-	}
+	Refresh_API_Before_UI
 
 	if ($Global:AutopilotMode) {
 		$UI_Main.Text = "$($UI_Main.Text) [ $($lang.Autopilot), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
