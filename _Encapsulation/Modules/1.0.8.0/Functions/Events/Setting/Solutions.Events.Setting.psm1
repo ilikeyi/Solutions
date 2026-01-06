@@ -222,6 +222,24 @@ Function Event_Assign_Setting
 	}
 
 	<#
+		.运行 API
+	#>
+	$GUIImage_API_Before = New-Object System.Windows.Forms.CheckBox -Property @{
+		Height         = 35
+		Width          = 450
+		Padding        = "31,0,0,0"
+		Text           = $lang.Functions_Before
+		Tag            = "API_Before_UI"
+	}
+	$GUIImage_API_Rear = New-Object System.Windows.Forms.CheckBox -Property @{
+		Height         = 35
+		Width          = 450
+		Padding        = "31,0,0,0"
+		Text           = $lang.Functions_Rear
+		Tag            = "API_Rear_UI"
+	}
+
+	<#
 		.无需挂载时
 	#>
 	$UI_Main_Select_No_Mounting_Group = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
@@ -668,6 +686,29 @@ Function Event_Assign_Setting
 
 		if ($Temp_Is_Mounted_Assign_Task_Check -Contains "Functions_Before_UI") { $UI_Main_Menu.controls.AddRange($GUIImage_Functions_Before) }
 		if ($Temp_Is_Mounted_Assign_Task_Check -Contains "Functions_Rear_UI") { $UI_Main_Menu.controls.AddRange($GUIImage_Functions_Rear) }
+
+		$UI_Main_Need_Mount_Lang_Wrap = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 30
+			Width          = 460
+		}
+		$UI_Main_Menu.controls.AddRange($UI_Main_Need_Mount_Lang_Wrap)
+	}
+
+	$MarkAPIGroup = $False
+	if ($Temp_Is_Mounted_Assign_Task_Check -Contains "API_Before_UI") { $MarkAPIGroup = $True }
+	if ($Temp_Is_Mounted_Assign_Task_Check -Contains "API_Rear_UI") { $MarkAPIGroup = $True }
+
+	if ($MarkAPIGroup) {
+		$UI_Main_Need_Mount_API = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 30
+			Width          = 450
+			Padding        = "16,0,0,0"
+			Text           = $lang.API
+		}
+		$UI_Main_Menu.controls.AddRange($UI_Main_Need_Mount_API)
+
+		if ($Temp_Is_Mounted_Assign_Task_Check -Contains "API_Before_UI") { $UI_Main_Menu.controls.AddRange($GUIImage_API_Before) }
+		if ($Temp_Is_Mounted_Assign_Task_Check -Contains "API_Rear_UI") { $UI_Main_Menu.controls.AddRange($GUIImage_API_Rear) }
 
 		$UI_Main_Need_Mount_Lang_Wrap = New-Object system.Windows.Forms.Label -Property @{
 			Height         = 30

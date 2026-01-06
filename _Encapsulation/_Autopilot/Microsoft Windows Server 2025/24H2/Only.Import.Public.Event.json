@@ -2,7 +2,7 @@
 	"Config": {
 		"Author":  "Yi",
 		"Url":     "https://fengyi.tel",
-		"Version": "1.0.2.1"
+		"Version": "1.0.8.0"
 	},
 	"Deploy": {
 		"ImageSource": {
@@ -33,7 +33,9 @@
 						"Cumulative_updates_Delete_UI",
 						"Drive_Add_UI",
 						"Drive_Delete_UI",
-						"Feature_More_UI"
+						"Feature_More_UI",
+						"API_Before_UI",
+						"API_Rear_UI"
 					],
 					"IsAutoSelectIndexAndEditionID": [
 						"Auto"
@@ -122,7 +124,9 @@
 						"Cumulative_updates_Delete_UI",
 						"Drive_Add_UI",
 						"Drive_Delete_UI",
-						"Feature_More_UI"
+						"Feature_More_UI",
+						"API_Before_UI",
+						"API_Rear_UI"
 					],
 					"IsAutoSelectIndexAndEditionID": [
 						"Auto"
@@ -215,7 +219,9 @@
 						"Cumulative_updates_Delete_UI",
 						"Drive_Add_UI",
 						"Drive_Delete_UI",
-						"Feature_More_UI"
+						"Feature_More_UI",
+						"API_Before_UI",
+						"API_Rear_UI"
 					],
 					"IsAutoSelectIndexAndEditionID": [
 						"2"

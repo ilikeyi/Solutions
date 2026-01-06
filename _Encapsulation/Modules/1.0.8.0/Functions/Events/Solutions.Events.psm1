@@ -484,6 +484,40 @@ Function Event_Assign
 				"Event_Completion_Start_Setting_UI"
 			)
 		}
+		@{
+			Uid         = "API_Before_UI"
+			IsMounted   = @{
+				Primary = "API_Before_UI"
+				Expand  = @(
+					"API_Rear_UI"
+				)
+			}
+			NotMonuted  = @{
+				Primary = ""
+				Expand  = @()
+			}
+			IsEvent = @(
+				"Event_Completion_Setting_UI"
+				"Event_Completion_Start_Setting_UI"
+			)
+		}
+		@{
+			Uid         = "API_Rear_UI"
+			IsMounted   = @{
+				Primary = "API_Rear_UI"
+				Expand  = @(
+					"API_Before_UI"
+				)
+			}
+			NotMonuted  = @{
+				Primary = ""
+				Expand  = @()
+			}
+			IsEvent = @(
+				"Event_Completion_Setting_UI"
+				"Event_Completion_Start_Setting_UI"
+			)
+		}
 	)
 
 	if ($Run) {
@@ -896,6 +930,24 @@ Function Event_Assign_Task
 		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Global:Function_Unrestricted) {
 			Invoke-Expression -Command $item
+		}
+	} else {
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
+	}
+
+	Write-Host "`n  $($lang.API): $($lang.Function_Unrestricted)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
+	if ($Global:API_Unrestricted.Count -gt 0) {
+		Write-Host "  $($lang.Choose)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		ForEach ($item in $Global:API_Unrestricted) {
+			Write-Host "  $($item)"
+		}
+
+		Write-Host "`n  $($lang.LXPsWaitAdd)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		ForEach ($item in $Global:API_Unrestricted) {
+			API_Process_Rule_Name -RuleName $item
 		}
 	} else {
 		Write-Host "  $($lang.NoWork)" -ForegroundColor Red

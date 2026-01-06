@@ -587,6 +587,46 @@ Function Mainpage
 		Write-Host " FX * " -BackgroundColor DarkMagenta -ForegroundColor White
 	}
 
+	Write-host "  " -NoNewline
+	Write-Host " AA " -NoNewline -BackgroundColor Green -ForegroundColor Black
+	Write-Host " API: " -NoNewline -ForegroundColor Yellow
+	if (Image_Is_Select_IAB) {
+		if (Verify_Is_Current_Same) {
+			Write-Host "$($lang.Functions_Before) " -NoNewline -ForegroundColor Green
+			Write-Host " API B " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host ", " -NoNewline
+
+			Write-Host "$($lang.Functions_Rear) " -NoNewline -ForegroundColor Green
+			Write-Host " API A " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+			Write-Host ", " -NoNewline
+
+			Write-Host "$($lang.Function_Unrestricted) " -NoNewline -ForegroundColor Green
+			Write-Host " API * " -BackgroundColor DarkMagenta -ForegroundColor White
+		} else {
+			Write-Host "$($lang.Functions_Before) " -NoNewline -ForegroundColor Red
+			Write-Host " API B " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host ", " -NoNewline
+
+			Write-Host "$($lang.Functions_Rear) " -NoNewline -ForegroundColor Red
+			Write-Host " API A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+			Write-Host ", " -NoNewline
+
+			Write-Host "$($lang.Function_Unrestricted) " -NoNewline -ForegroundColor Green
+			Write-Host " API * " -BackgroundColor DarkMagenta -ForegroundColor White
+		}
+	} else {
+		Write-Host "$($lang.Functions_Before) " -NoNewline -ForegroundColor Red
+		Write-Host " API B " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host ", " -NoNewline
+
+		Write-Host "$($lang.Functions_Rear) " -NoNewline -ForegroundColor Red
+		Write-Host " API A " -NoNewline -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host ", " -NoNewline
+
+		Write-Host "$($lang.Function_Unrestricted) " -NoNewline -ForegroundColor Green
+		Write-Host " API * " -BackgroundColor DarkMagenta -ForegroundColor White
+	}
+
 	Write-Host
 	Write-Host "  " -NoNewline
 	Write-Host " $($lang.RefreshModules) " -NoNewline -BackgroundColor White -ForegroundColor Black
@@ -1305,9 +1345,14 @@ Function Mainpage
 			Mainpage
 		}
 
+		"aa" {
+			API_Menu
+			ToWait -wait 2
+			Mainpage
+		}
 		"API" {
 			Write-Host "`n  $($lang.Short_Cmd)" -ForegroundColor Yellow
-			Solutions_API_Help
+			API_Unrestricted_UI
 			ToWait -wait 2
 			Mainpage
 		}

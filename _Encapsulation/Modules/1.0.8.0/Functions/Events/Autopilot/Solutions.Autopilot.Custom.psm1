@@ -1163,6 +1163,52 @@ Function Image_Assign_Autopilot_Master
 			Width          = 450
 		}
 
+		<#
+			.运行 API
+		#>
+		$GUIImage_Special_API = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 35
+			Width          = 450
+			Padding        = "15,0,0,0"
+			Text           = $lang.API
+		}
+		$GUIImage_APIs_Before = New-Object system.Windows.Forms.LinkLabel -Property @{
+			Height         = 35
+			Width          = 450
+			Padding        = "31,0,0,0"
+			Text           = $lang.Functions_Before
+			Tag            = "API_Before_UI"
+			LinkColor      = "GREEN"
+			ActiveLinkColor = "RED"
+			LinkBehavior   = "NeverUnderline"
+			add_Click      = {
+				Image_Set_Global_Primary_Key -Uid $this.Parent.Parent.Name -Silent -DevCode "Autopilot - 900"
+
+				API_Before_UI
+				Autopilot_Refresh_Event_All
+			}
+		}
+		$GUIImage_API_Rear = New-Object system.Windows.Forms.LinkLabel -Property @{
+			Height         = 35
+			Width          = 450
+			Padding        = "31,0,0,0"
+			Text           = $lang.Functions_Rear
+			Tag            = "API_Rear_UI"
+			LinkColor      = "GREEN"
+			ActiveLinkColor = "RED"
+			LinkBehavior   = "NeverUnderline"
+			add_Click      = {
+				Image_Set_Global_Primary_Key -Uid $this.Parent.Parent.Name -Silent -DevCode "Autopilot - 910"
+
+				API_Rear_UI
+				Autopilot_Refresh_Event_All
+			}
+		}
+		$GUIImage_Special_API_Wrap = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 30
+			Width          = 450
+		}
+
 		$UI_Image_Eject_Force_Main = New-Object System.Windows.Forms.CheckBox -Property @{
 			Name           = "EjectForce"
 			Height         = 35
@@ -1488,6 +1534,11 @@ Function Image_Assign_Autopilot_Master
 							$GUIImage_Functions_Rear,
 							$GUIImage_Special_Function_Wrap,
 
+						$GUIImage_Special_API,
+							$GUIImage_APIs_Before,
+							$GUIImage_API_Rear,
+							$GUIImage_Special_API_Wrap,
+
 						$GUIImageSelectFeature_More_UI
 				))
 				$Group_Image_Sources_Console.controls.AddRange($GUIImage_Select_Expand_Group)
@@ -1582,6 +1633,11 @@ Function Image_Assign_Autopilot_Master
 							$GUIImage_Functions_Before,
 							$GUIImage_Functions_Rear,
 							$GUIImage_Special_Function_Wrap,
+
+						$GUIImage_Special_API,
+							$GUIImage_APIs_Before,
+							$GUIImage_API_Rear,
+							$GUIImage_Special_API_Wrap,
 
 						$GUIImageSelectFeature_More_UI,
 
@@ -1679,7 +1735,12 @@ Function Image_Assign_Autopilot_Master
 								$GUIImage_Functions_Rear,
 								$GUIImage_Special_Function_Wrap,
 
-								$GUIImageSelectFeature_More_UI
+							$GUIImage_Special_API,
+								$GUIImage_APIs_Before,
+								$GUIImage_API_Rear,
+								$GUIImage_Special_API_Wrap,
+
+							$GUIImageSelectFeature_More_UI
 					))
 
 					$Group_Image_Sources_Console.controls.AddRange($GUIImage_Select_Expand_Group)
@@ -2779,6 +2840,44 @@ Function Image_Assign_Autopilot_Master
 		}
 
 		<#
+			.运行 API
+		#>
+		$GUIImage_API_Function = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 30
+			Width          = 412
+			Padding        = "15,0,0,0"
+			Text           = $lang.API
+		}
+		$GUIImage_API_Before = New-Object System.Windows.Forms.CheckBox -Property @{
+			Name           = "IsAssign"
+			Height         = 35
+			Width          = 412
+			Padding        = "31,0,0,0"
+			Text           = $lang.Functions_Before
+			Tag            = "API_Before_UI"
+		}
+		if ($NewTasksFull.IsAutoSelect -contains "API_Before_UI") {
+			$GUIImage_API_Before.Checked = $True
+		}
+
+		$GUIImage_API_Rear = New-Object System.Windows.Forms.CheckBox -Property @{
+			Name           = "IsAssign"
+			Height         = 35
+			Width          = 412
+			Padding        = "31,0,0,0"
+			Text           = $lang.Functions_Rear
+			Tag            = "API_Rear_UI"
+		}
+		if ($NewTasksFull.IsAutoSelect -contains "API_Rear_UI") {
+			$GUIImage_API_Rear.Checked = $True
+		}
+
+		$GUIImage_API_Function_Wrap = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 20
+			Width          = 412
+		}
+
+		<#
 			.映像源
 		#>
 		if ($Tasks -contains "Image_source_selection") {
@@ -2943,6 +3042,19 @@ Function Image_Assign_Autopilot_Master
 			if ($Tasks -contains "Functions_Rear_UI") { $Group_Image_Sources_Console.controls.AddRange($GUIImage_Functions_Rear) }
 
 			$Group_Image_Sources_Console.controls.AddRange($GUIImage_Special_Function_Wrap)
+		}
+
+		$MarkAPIGroup = $False
+		if ($Tasks -contains "API_Before_UI") { $MarkAPIGroup = $True }
+		if ($Tasks -contains "API_Rear_UI") { $MarkAPIGroup = $True }
+
+		if ($MarkAPIGroup) {
+			$Group_Image_Sources_Console.controls.AddRange($GUIImage_API_Function)
+
+			if ($Tasks -contains "API_Before_UI") { $Group_Image_Sources_Console.controls.AddRange($GUIImage_API_Before) }
+			if ($Tasks -contains "API_Rear_UI") { $Group_Image_Sources_Console.controls.AddRange($GUIImage_API_Rear) }
+
+			$Group_Image_Sources_Console.controls.AddRange($GUIImage_API_Function_Wrap)
 		}
 
 		if ($Tasks -contains "Feature_More_UI") {
@@ -4838,6 +4950,24 @@ Function Image_Assign_Autopilot_Master
 			}
 
 		<#
+			.导入：API
+		#>
+
+			<#
+				.运行前
+			#>
+			if (-not [string]::IsNullOrEmpty($NewTasks.Tasks.API.Before)) {
+				$Wait_Assign_To_New_Button += "API_Before_UI"
+			}
+
+			<#
+				.运行后
+			#>
+			if (-not [string]::IsNullOrEmpty($NewTasks.Tasks.API.After)) {
+				$Wait_Assign_To_New_Button += "API_Rear_UI"
+			}
+
+		<#
 			.导入：更多
 		#>
 		if (-not [string]::IsNullOrEmpty($NewTasks.Tasks.More)) {
@@ -5422,6 +5552,22 @@ Function Image_Assign_Autopilot_Master
 		$Temp_Functions_Rear_Task = (Get-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Uid)" -ErrorAction SilentlyContinue).Value
 		if ($Temp_Functions_Rear_Task.Count -gt 0) {
 			$FlagIsWait += "Functions_Rear_UI"
+		}
+
+		<#
+			.运行 API：有任务前
+		#>
+		$Temp_API_Before_Task = (Get-Variable -Scope global -Name "Queue_API_Before_Select_$($Uid)" -ErrorAction SilentlyContinue).Value
+		if ($Temp_API_Before_Task.Count -gt 0) {
+			$FlagIsWait += "API_Before_UI"
+		}
+
+		<#
+			.运行 API：完成任务后
+		#>
+		$Temp_API_Rear_Task = (Get-Variable -Scope global -Name "Queue_API_Rear_Select_$($Uid)" -ErrorAction SilentlyContinue).Value
+		if ($Temp_API_Rear_Task.Count -gt 0) {
+			$FlagIsWait += "API_Rear_UI"
 		}
 
 		return $FlagIsWait
@@ -7843,6 +7989,27 @@ Function Autopilot_Refresh_Export_Event_To_WIM
 			Write-Host "`n`n  $($lang.Import): $($lang.SpecialFunction): $($lang.Functions_Rear)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
 			Functions_Rear_UI -Autopilot $NewTasks.Tasks.PSFunctions.After
+		}
+
+	<#
+		.导入：API
+	#>
+		<#
+			.运行前
+		#>
+		if ($SelectEvent -contains "API_Before_UI") {
+			Write-Host "`n  $($lang.Import): $($lang.API): $($lang.Functions_Before)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+			API_Before_UI -Autopilot $NewTasks.Tasks.API.Before
+		}
+
+		<#
+			.运行后
+		#>
+		if ($SelectEvent -contains "API_Rear_UI") {
+			Write-Host "`n`n  $($lang.Import): $($lang.API): $($lang.Functions_Rear)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+			API_Rear_UI -Autopilot $NewTasks.Tasks.API.After
 		}
 
 	<#

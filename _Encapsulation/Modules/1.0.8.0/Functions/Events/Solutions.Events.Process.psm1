@@ -92,6 +92,31 @@ Function Event_Process_Task_Need_Mount
 	}
 
 	<#
+		.Running API: Before Tasks
+		.运行 API：有任务前
+	#>
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.API): $($lang.Functions_Before)"
+
+	Write-Host "`n  $($lang.API): $($lang.Functions_Before)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
+	$Temp_API_Before_Task = (Get-Variable -Scope global -Name "Queue_API_Before_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
+	if ($Temp_API_Before_Task.Count -gt 0) {
+		Write-Host "  $($lang.Choose)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		ForEach ($item in $Temp_API_Before_Task) {
+			Write-Host "  $($item)"
+		}
+
+		Write-Host "`n  $($lang.LXPsWaitAdd)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		ForEach ($item in $Temp_API_Before_Task) {
+			API_Process_Rule_Name -RuleName $item
+		}
+	} else {
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
+	}
+
+	<#
 		.Generate solution
 		.生成解决方案
 	#>
@@ -1200,6 +1225,31 @@ Function Event_Process_Task_Need_Mount
 		Write-Host "  $('-' * 80)"
 		ForEach ($item in $Temp_Functions_Rear_Task) {
 			Invoke-Expression -Command $item
+		}
+	} else {
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
+	}
+
+	<#
+		.Running API: After Completing a Task
+		.运行 API：完成任务后
+	#>
+	$Host.UI.RawUI.WindowTitle = "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.UID), $($lang.MountedIndex): $(Image_Get_Mount_Index), $($lang.API): $($lang.Functions_Rear)"
+
+	Write-Host "`n  $($lang.API): $($lang.Functions_Rear)" -ForegroundColor Yellow
+	Write-Host "  $('-' * 80)"
+	$Temp_API_Rear_Task = (Get-Variable -Scope global -Name "Queue_API_Rear_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
+	if ($Temp_API_Rear_Task.Count -gt 0) {
+		Write-Host "  $($lang.Choose)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		ForEach ($item in $Temp_API_Rear_Task) {
+			Write-Host "  $($item)"
+		}
+
+		Write-Host "`n  $($lang.LXPsWaitAdd)" -ForegroundColor Yellow
+		Write-Host "  $('-' * 80)"
+		ForEach ($item in $Temp_API_Rear_Task) {
+			API_Process_Rule_Name -RuleName $item
 		}
 	} else {
 		Write-Host "  $($lang.NoWork)" -ForegroundColor Red

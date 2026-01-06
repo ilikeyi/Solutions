@@ -100,6 +100,7 @@ Function Event_Reset_Variable
 	New-Variable -Scope global -Name "SolutionsUnattend_ISO" -Value $False -Force
 
 	$Global:Function_Unrestricted = @()
+	$Global:API_Unrestricted = @()
 
 	<#
 		.分配 2 ：无需要挂载项
@@ -572,6 +573,15 @@ Function Event_Need_Mount_Global_Variable
 
 	# 运行后
 	New-Variable -Scope global -Name "Queue_Functions_Rear_Select_$($Uid)" -Value @() -Force
+
+	<#
+		.运行 PowerShell 函数
+	#>
+	# 运行前
+	New-Variable -Scope global -Name "Queue_API_Before_Select_$($Uid)" -Value @() -Force
+
+	# 运行后
+	New-Variable -Scope global -Name "Queue_API_Rear_Select_$($Uid)" -Value @() -Force
 
 	<#
 		.重建映像

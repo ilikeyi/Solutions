@@ -108,45 +108,14 @@ Function Solutions_API_Command
 		"Set" {
 			Image_Select -Page "API"
 		}
+		"A" {
+			API_Menu_Shortcuts_PFB
+		}
+		"B" {
+			API_Menu_Shortcuts_PFA
+		}
 		default {
-			Write-Host "  $($lang.RuleName): " -NoNewline -ForegroundColor Yellow
-			Write-Host $Name -ForegroundColor Green
-
-			if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Custom\$($Name)" -Name "Path" -ErrorAction SilentlyContinue) {
-				$GetImportFileName = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Custom\$($Name)" -Name "Path" -ErrorAction SilentlyContinue
-
-				Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
-				
-				If ([String]::IsNullOrEmpty($GetImportFileName)) {
-					Write-Host "$($lang.Select_Path), $($lang.UpdateUnavailable)" -BackgroundColor DarkRed -ForegroundColor White
-				} else {
-					Write-Host $GetImportFileName -ForegroundColor Green
-
-					Write-Host "  $($lang.Import): " -NoNewline
-
-					if (Test-Path -Path $GetImportFileName -PathType leaf) {
-						Write-Host $lang.UpdateAvailable -BackgroundColor DarkGreen -ForegroundColor White
-						Write-Host "  $('-' * 80)"
-
-						Import-Module -Name $GetImportFileName -Scope Global -Force | Out-Null
-
-						Write-Host
-						Write-Host "  $('-' * 80)"
-						Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
-						Write-Host $GetImportFileName -ForegroundColor Green
-
-						Write-Host "  " -NoNewline
-						Write-Host " $($lang.Running) " -NoNewline -BackgroundColor White -ForegroundColor Black
-						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
-
-						Get_Next
-					} else {
-						Write-Host $lang.NoInstallImage -BackgroundColor DarkRed -ForegroundColor White
-					}
-				}
-			} else {
-				Write-Host "  $($lang.NoWork)" -ForegroundColor Red
-			}
+			API_Process_Rule_Name -RuleName $Name
 		}
 	}
 }
@@ -175,9 +144,65 @@ Function Solutions_API_Help
 
 	write-host
 	write-host "  " -NoNewline
+	Write-host " API B " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-host "    $($lang.Functions_Before)"
+
+	write-host
+	write-host "  " -NoNewline
+	Write-host " API A " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-host "    $($lang.Functions_Rear)"
+
+	write-host
+	write-host "  " -NoNewline
 	Write-host " API * " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 	Write-host "    $($lang.Running), $($lang.RuleName)"
 	Write-host "             API Yi" -ForegroundColor Green
 
 	Get_Next
+}
+
+Function API_Process_Rule_Name
+{
+	param (
+		$RuleName
+	)
+	
+	Write-Host "  $($lang.RuleName): " -NoNewline -ForegroundColor Yellow
+	Write-Host $RuleName -ForegroundColor Green
+
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Custom\$($RuleName)" -Name "Path" -ErrorAction SilentlyContinue) {
+		$GetImportFileName = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\API\Custom\$($RuleName)" -Name "Path" -ErrorAction SilentlyContinue
+
+		Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+		
+		If ([String]::IsNullOrEmpty($GetImportFileName)) {
+			Write-Host "$($lang.Select_Path), $($lang.UpdateUnavailable)" -BackgroundColor DarkRed -ForegroundColor White
+		} else {
+			Write-Host $GetImportFileName -ForegroundColor Green
+
+			Write-Host "  $($lang.Import): " -NoNewline
+
+			if (Test-Path -Path $GetImportFileName -PathType leaf) {
+				Write-Host $lang.UpdateAvailable -BackgroundColor DarkGreen -ForegroundColor White
+				Write-Host "  $('-' * 80)"
+
+				Import-Module -Name $GetImportFileName -Scope Global -Force | Out-Null
+
+				Write-Host
+				Write-Host "  $('-' * 80)"
+				Write-Host "  $($lang.Filename): " -NoNewline -ForegroundColor Yellow
+				Write-Host $GetImportFileName -ForegroundColor Green
+
+				Write-Host "  " -NoNewline
+				Write-Host " $($lang.Running) " -NoNewline -BackgroundColor White -ForegroundColor Black
+				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+
+				Get_Next
+			} else {
+				Write-Host $lang.NoInstallImage -BackgroundColor DarkRed -ForegroundColor White
+			}
+		}
+	} else {
+		Write-Host "  $($lang.NoWork)" -ForegroundColor Red
+	}
 }

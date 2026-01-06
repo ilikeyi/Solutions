@@ -966,7 +966,7 @@ Function Image_Select
 	}
 
 	<#
-		.API：验证规则名
+		.API: Validation rule name
 		.API：验证规则名
 	#>
 	Function Verify_New_RuleName
@@ -6358,6 +6358,45 @@ Function Image_Select
 	}
 
 	<#
+		.组，运行 API
+	#>
+	$GUIImage_API_Function = New-Object system.Windows.Forms.Label -Property @{
+		Height         = 40
+		Width          = 468
+		Padding        = "16,0,0,0"
+		margin         = "0,25,0,0"
+		Text           = $lang.API
+	}
+	$GUIImage_API_Before = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 45
+		Width          = 465
+		Padding        = "26,0,0,0"
+		Text           = $lang.Functions_Before
+		Tag            = "API_Before_UI"
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			Event_Assign -Rule $This.Tag
+			Event_Assign_Setting -Setting -RuleName $This.Tag
+		}
+	}
+	$GUIImage_API_Rear = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 45
+		Width          = 465
+		Padding        = "26,0,0,0"
+		Text           = $lang.Functions_Rear
+		Tag            = "API_Rear_UI"
+		LinkColor      = "GREEN"
+		ActiveLinkColor = "RED"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			Event_Assign -Rule $This.Tag
+			Event_Assign_Setting -Setting -RuleName $This.Tag
+		}
+	}
+
+	<#
 		.组，无挂载时可用事件
 	#>
 	$GUIImageSourceSettingSuggestedNeedMount = New-Object system.Windows.Forms.Label -Property @{
@@ -10412,6 +10451,10 @@ Function Image_Select
 		$GUIImage_Special_Function,
 		$GUIImage_Functions_Before,
 		$GUIImage_Functions_Rear,
+
+		$GUIImage_API_Function,
+		$GUIImage_API_Before,
+		$GUIImage_API_Rear,
 
 		$GUIImageSourceSettingSuggestedNeedMount,
 		$GUIImageSourceSettingSuggestedAdditionalEdition,

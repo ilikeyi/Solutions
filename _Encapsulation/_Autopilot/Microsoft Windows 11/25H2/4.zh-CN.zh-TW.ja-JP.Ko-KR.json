@@ -2,7 +2,7 @@
 	"Config": {
 		"Author":  "Yi",
 		"Url":     "https://fengyi.tel",
-		"Version": "1.0.2.1"
+		"Version": "1.0.8.0"
 	},
 	"Deploy": {
 		"Prerequisite": {
@@ -269,7 +269,9 @@
 						"InBox_Apps_Add_UI",
 						"Cumulative_updates_Add_UI",
 						"Drive_Delete_UI",
-						"Feature_More_UI"
+						"Feature_More_UI",
+						"API_Before_UI",
+						"API_Rear_UI"
 					],
 					"IsAutoSelectIndexAndEditionID": [
 						"Auto"
@@ -566,6 +568,10 @@
 							"Before": [],
 							"After": []
 						},
+						"API": {
+							"Before": [],
+							"After": []
+						},
 						"More": {
 							"CuringUpdate": false,
 							"Superseded": {
@@ -598,7 +604,9 @@
 						"Language_Add_UI",
 						"Cumulative_updates_Add_UI",
 						"Drive_Delete_UI",
-						"Feature_More_UI"
+						"Feature_More_UI",
+						"API_Before_UI",
+						"API_Rear_UI"
 					],
 					"IsAutoSelectIndexAndEditionID": [
 						"Auto"
@@ -720,8 +728,11 @@
 						"Language_Add_UI",
 						"Cumulative_updates_Add_UI",
 						"Drive_Delete_UI",
+						"Functions_Before_UI",
 						"Functions_Rear_UI",
-						"Feature_More_UI"
+						"Feature_More_UI",
+						"API_Before_UI",
+						"API_Rear_UI"
 					],
 					"IsAutoSelectIndexAndEditionID": [
 						"2"
@@ -810,6 +821,10 @@
 							"After": [
 								"Other_Tasks_TPM"
 							]
+						},
+						"API": {
+							"Before": [],
+							"After": []
 						},
 						"More": {
 							"CuringUpdate": false,

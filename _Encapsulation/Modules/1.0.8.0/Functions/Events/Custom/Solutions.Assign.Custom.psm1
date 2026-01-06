@@ -658,6 +658,38 @@ Function Image_Assign_Event_Master
 			Width          = 445
 		}
 
+		<#
+			.运行 API
+		#>
+		$GUIImage_Special_API = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 30
+			Width          = 445
+			Padding        = "15,0,0,0"
+			Text           = $lang.API
+		}
+		$GUIImage_API_Before = New-Object System.Windows.Forms.CheckBox -Property @{
+			Name           = "IsAssign"
+			Height         = 35
+			Width          = 445
+			Padding        = "31,0,0,0"
+			Text           = $lang.Functions_Before
+			Tag            = "API_Before_UI"
+			Checked        = $True
+		}
+		$GUIImage_API_Rear = New-Object System.Windows.Forms.CheckBox -Property @{
+			Name           = "IsAssign"
+			Height         = 35
+			Width          = 445
+			Padding        = "31,0,0,0"
+			Text           = $lang.Functions_Rear
+			Tag            = "API_Rear_UI"
+			Checked        = $True
+		}
+		$GUIImage_Special_API_Wrap = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 20
+			Width          = 445
+		}
+
 		$UI_Image_Eject_Force_Main = New-Object System.Windows.Forms.CheckBox -Property @{
 			Name           = "EjectForce"
 			Height         = 35
@@ -991,6 +1023,11 @@ Function Image_Assign_Event_Master
 								$GUIImage_Functions_Rear,
 								$GUIImage_Special_Function_Wrap,
 
+							$GUIImage_Special_API,
+								$GUIImage_API_Before,
+								$GUIImage_API_Rear,
+								$GUIImage_Special_API_Wrap,
+
 							$GUIImageSelectFeature_More_UI
 					))
 				} else {
@@ -1023,6 +1060,11 @@ Function Image_Assign_Event_Master
 								$GUIImage_Functions_Before,
 								$GUIImage_Functions_Rear,
 								$GUIImage_Special_Function_Wrap,
+
+							$GUIImage_Special_API,
+								$GUIImage_API_Before,
+								$GUIImage_API_Rear,
+								$GUIImage_Special_API_Wrap,
 
 							$GUIImageSelectFeature_More_UI
 					))
@@ -1120,6 +1162,11 @@ Function Image_Assign_Event_Master
 							$GUIImage_Functions_Before,
 							$GUIImage_Functions_Rear,
 							$GUIImage_Special_Function_Wrap,
+
+						$GUIImage_Special_API,
+							$GUIImage_API_Before,
+							$GUIImage_API_Rear,
+							$GUIImage_Special_API_Wrap,
 
 						$GUIImageSelectFeature_More_UI,
 
@@ -1219,6 +1266,11 @@ Function Image_Assign_Event_Master
 									$GUIImage_Functions_Rear,
 									$GUIImage_Special_Function_Wrap,
 
+									$GUIImage_Special_API,
+										$GUIImage_API_Before,
+										$GUIImage_API_Rear,
+										$GUIImage_Special_API_Wrap,
+
 									$GUIImageSelectFeature_More_UI
 						))
 					} else {
@@ -1251,6 +1303,11 @@ Function Image_Assign_Event_Master
 								$GUIImage_Functions_Before,
 								$GUIImage_Functions_Rear,
 								$GUIImage_Special_Function_Wrap,
+
+							$GUIImage_Special_API,
+								$GUIImage_API_Before,
+								$GUIImage_API_Rear,
+								$GUIImage_Special_API_Wrap,
 
 							$GUIImageSelectFeature_More_UI
 						))

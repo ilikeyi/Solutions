@@ -259,6 +259,22 @@ Function Event_Assign_Task_Verify
 		}
 
 		<#
+			.运行 API：有任务前
+		#>
+		$Temp_API_Before_Task = (Get-Variable -Scope global -Name "Queue_API_Before_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
+		if ($Temp_API_Before_Task.Count -gt 0) {
+			$FlagIsWait = $True
+		}
+
+		<#
+			.运行 API：完成任务后
+		#>
+		$Temp_API_Rear_Task = (Get-Variable -Scope global -Name "Queue_API_Rear_Select_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
+		if ($Temp_API_Rear_Task.Count -gt 0) {
+			$FlagIsWait = $True
+		}
+
+		<#
 			.清理取代的
 		#>
 		if ((Get-Variable -Scope global -Name "Queue_Superseded_Clean_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
