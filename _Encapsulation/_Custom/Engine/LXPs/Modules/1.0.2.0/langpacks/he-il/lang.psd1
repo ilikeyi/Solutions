@@ -16,6 +16,7 @@
 	AllClear                  = לנקות הכל
 	Operable                  = נָתִיחַ
 	Inoperable                = בלתי ניתן להפעלה
+	Hide                      = לְהַסתִיר
 	SwitchLanguage            = להחליף שפה
 	LanguageReset             = אפס את הגדרות השפה
 	LanguageCode              = סימן אזור

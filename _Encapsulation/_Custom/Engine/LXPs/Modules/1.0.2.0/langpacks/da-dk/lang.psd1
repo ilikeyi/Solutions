@@ -16,6 +16,7 @@
 	AllClear                  = Ryd alt
 	Operable                  = Kan betjenes
 	Inoperable                = Ubrugelig
+	Hide                      = Skjule
 	SwitchLanguage            = Skifte sprog
 	LanguageReset             = Nulstil sprogindstillinger
 	LanguageCode              = Zonemærke

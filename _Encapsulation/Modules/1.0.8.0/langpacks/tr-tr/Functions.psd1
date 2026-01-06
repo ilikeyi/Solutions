@@ -8,7 +8,6 @@
 	Functions_Running_Order         = Tahsisten sonra çalıştırma sırası
 	Functions_Duplicate             = Kopyalar varsa eklemeyin
 	Functions_AutoSelect            = Yeni öğeleri ekledikten sonra otomatik olarak kontrol et
-	FunctionTips                    = Eklenecek öğeleri atıyorsunuz. Eklenecek adları seçin ve sırayla çalıştırın.
 	Function_Unrestricted           = Sınırsız
 
 	Other_Tasks_CTD                 = Bosala répertoire ya test, nzela ya munene sima ya montage hors ligne

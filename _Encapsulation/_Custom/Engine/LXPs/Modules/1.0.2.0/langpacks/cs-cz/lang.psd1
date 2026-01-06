@@ -16,6 +16,7 @@
 	AllClear                  = Vymazat vše
 	Operable                  = Operativní
 	Inoperable                = Nefunkční
+	Hide                      = Skrýt
 	SwitchLanguage            = Přepnout jazyk
 	LanguageReset             = Obnovit nastavení jazyka
 	LanguageCode              = Značka zóny

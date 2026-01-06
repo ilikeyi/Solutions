@@ -16,6 +16,7 @@
 	AllClear                  = Jasno sve
 	Operable                  = Operabilan
 	Inoperable                = Neoperabilan
+	Hide                      = Elrejt
 	SwitchLanguage            = Promijeniti jezik
 	LanguageReset             = Ponovno postavljanje jezičnih postavki
 	LanguageCode              = Oznaka zone

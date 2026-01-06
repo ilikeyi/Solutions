@@ -16,6 +16,7 @@
 	AllClear                  = Cancella tutto
 	Operable                  = Operabile
 	Inoperable                = Inoperabile
+	Hide                      = Nascondere
 	SwitchLanguage            = Cambiare lingua
 	LanguageReset             = Ripristina le impostazioni della lingua
 	LanguageCode              = Contrassegno di zona

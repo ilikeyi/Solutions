@@ -8,7 +8,6 @@
 	Functions_Running_Order         = Zaženi zaporedje po dodelitvi
 	Functions_Duplicate             = Ne dodajajte, če obstajajo dvojniki
 	Functions_AutoSelect            = Samodejno preveri nove elemente po dodajanju
-	FunctionTips                    = Dodeljujete elemente, ki jih želite dodati. Izberite imena, ki jih želite dodati, in jih zaženite zaporedno.
 	Function_Unrestricted           = Neomejeno
 
 	Other_Tasks_CTD                 = Ustvarite testni imenik, glavno pot po namestitvi brez povezave

@@ -1563,8 +1563,8 @@ Function Update_Setting_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $True
+		ControlBox     = $True
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
 	}
@@ -1572,7 +1572,7 @@ Function Update_Setting_UI
 		Height         = 22
 		Width          = 505
 		Text           = $lang.UpdateServerSelect
-		Location       = '10,6'
+		Location       = '15,15'
 		Checked        = $True
 		add_Click      = {
 			if ($GUIUpdateAuto.Checked) {
@@ -1583,18 +1583,18 @@ Function Update_Setting_UI
 		}
 	}
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
-		Height         = 415
+		Height         = 535
 		Width          = 530
 		BorderStyle    = 0
 		autoSizeMode   = 0
 		autoScroll     = $True
 		Padding        = "24,0,8,0"
 		Dock           = 0
-		Location       = "0,28"
+		Location       = "0,45"
 		Enabled        = $False
 	}
 	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
-		Location       = "10,570"
+		Location       = "10,595"
 		Height         = 22
 		Width          = 490
 		Text           = ""
@@ -1602,7 +1602,7 @@ Function Update_Setting_UI
 	$UI_Main_OK        = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
 		Height         = 36
-		Width          = 255
+		Width          = 515
 		Location       = "8,635"
 		Text           = $lang.OK
 		add_Click      = {
@@ -1630,29 +1630,16 @@ Function Update_Setting_UI
 					Update_Process
 					$UI_Main.Close()
 				} else {
-					$UI_Main_Error.Text = $lang.UpdateServerNoSelect
+					$UI_Main_Error.Text = $lang.UpdateUnavailable
 				}
 			}
-		}
-	}
-	$UI_Main_Canel    = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Height         = 36
-		Width          = 255
-		Text           = $lang.Cancel
-		Location       = "268,635"
-		add_Click      = {
-			$UI_Main.Hide()
-			$Script:ServerList = @()
-			$UI_Main.Close()
 		}
 	}
 	$UI_Main.controls.AddRange((
 		$GUIUpdateAuto,
 		$UI_Main_Menu,
 		$UI_Main_Error,
-		$UI_Main_OK,
-		$UI_Main_Canel
+		$UI_Main_OK
 	))
 
 	ForEach ($item in $Script:ServerListSelect) {
@@ -1918,9 +1905,10 @@ function Instl_Save
 		Width          = 825
 		Text           = $lang.Instl
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
-		MaximizeBox    = $False
 		StartPosition  = "CenterScreen"
-		MinimizeBox    = $false
+		MaximizeBox    = $False
+		MinimizeBox    = $True
+		ControlBox     = $True
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
 	}
@@ -2169,7 +2157,7 @@ function Instl_Save
 			}
 		}
 	}
-	$UIUnzipPanelCanel = New-Object system.Windows.Forms.Button -Property @{
+	$UIUnzipPanelHide = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
 		Location       = "575,635"
 		Height         = 36
@@ -2188,7 +2176,7 @@ function Instl_Save
 	}
 	$UI_Main_Ok        = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "575,595"
+		Location       = "575,635"
 		Height         = 36
 		Width          = 220
 		Text           = $lang.OK
@@ -2196,17 +2184,6 @@ function Instl_Save
 			if (Instl_Save) {
 
 			}
-		}
-	}
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "575,635"
-		Height         = 36
-		Width          = 220
-		Text           = $lang.Cancel
-		add_Click      = {
-			$UI_Main.Hide()
-			$UI_Main.Close()
 		}
 	}
 	$UI_Main.controls.AddRange((
@@ -2218,8 +2195,7 @@ function Instl_Save
 		$UI_Main_Refresh_Sources,
 		$UIUpdateConfig,
 		$UI_Main_Error,
-		$UI_Main_Ok,
-		$UI_Main_Canel
+		$UI_Main_Ok
 	))
 
 	$UI_Main_Menu.controls.AddRange((
@@ -2239,7 +2215,7 @@ function Instl_Save
 		#>
 		$UIUnzipPanelErrorMsg,
 		$UIUnzipPanelOK,
-		$UIUnzipPanelCanel
+		$UIUnzipPanelHide
 	))
 	$UIUnzipPanel_Menu.controls.AddRange((
 		$ArchitectureTitle,

@@ -16,6 +16,7 @@
 	AllClear                  = เคลียร์ทั้งหมด
 	Operable                  = ใช้งานได้
 	Inoperable                = ใช้ไม่ได้
+	Hide                      = ซ่อน
 	SwitchLanguage            = เปลี่ยนภาษา
 	LanguageReset             = รีเซ็ตการตั้งค่าภาษา
 	LanguageCode              = เครื่องหมายโซน

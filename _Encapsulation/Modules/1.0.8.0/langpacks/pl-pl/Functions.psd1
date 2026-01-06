@@ -8,7 +8,6 @@
 	Functions_Running_Order         = Uruchom sekwencję po alokacji
 	Functions_Duplicate             = Nie dodawaj, jeśli występują duplikaty
 	Functions_AutoSelect            = Automatycznie sprawdzaj nowe pozycje po dodaniu
-	FunctionTips                    = Przypisujesz elementy do dodania. Wybierz nazwy, które chcesz dodać, i uruchom je po kolei.
 	Function_Unrestricted           = Nieograniczony
 
 	Other_Tasks_CTD                 = Utwórz katalog testowy, główną ścieżkę po zamontowaniu offline

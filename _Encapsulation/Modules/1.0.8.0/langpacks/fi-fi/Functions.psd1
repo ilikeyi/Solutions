@@ -8,7 +8,6 @@
 	Functions_Running_Order         = Suorita sekvenssi allokoinnin jälkeen
 	Functions_Duplicate             = Älä lisää, jos on kaksoiskappaleita
 	Functions_AutoSelect            = Tarkista uudet kohteet automaattisesti lisäämisen jälkeen
-	FunctionTips                    = Olet määrittämässä lisättäviä kohteita. Valitse lisättävien kohteiden nimet ja suorita ne peräkkäin.
 	Function_Unrestricted           = Rajoittamaton
 
 	Other_Tasks_CTD                 = Luo testihakemisto, pääpolku offline asennuksen jälkeen

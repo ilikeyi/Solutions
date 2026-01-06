@@ -16,6 +16,7 @@
 	AllClear                  = 모두 지우기
 	Operable                  = 실시 가능한
 	Inoperable                = 작동 불가
+	Hide                      = 숨다
 	SwitchLanguage            = 언어 전환
 	LanguageReset             = 언어 설정 재설정
 	LanguageCode              = 구역 마커

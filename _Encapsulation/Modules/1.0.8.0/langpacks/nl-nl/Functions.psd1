@@ -8,7 +8,6 @@
 	Functions_Running_Order         = Voervolgorde na toewijzing uit
 	Functions_Duplicate             = Voeg niet toe als er duplicaten zijn
 	Functions_AutoSelect            = Controleer automatisch nieuwe items na het toevoegen
-	FunctionTips                    = U wijst items toe die moeten worden toegevoegd. Selecteer de namen die u wilt toevoegen en voer ze in de juiste volgorde uit.
 	Function_Unrestricted           = Onbeperkt
 
 	Other_Tasks_CTD                 = Maak een testmap, het hoofdpad na offline montage

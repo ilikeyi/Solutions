@@ -16,6 +16,7 @@
 	AllClear                  = tyhjentää kaikki
 	Operable                  = Toimiva
 	Inoperable                = Käyttökelvoton
+	Hide                      = Piilottaa
 	SwitchLanguage            = vaihtaa kieltä
 	LanguageReset             = Palauta kieliasetukset
 	LanguageCode              = vyöhykemerkki

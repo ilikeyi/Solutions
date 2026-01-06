@@ -8,7 +8,6 @@
 	Functions_Running_Order         = Post-allocation running order
 	Functions_Duplicate             = No more duplicates
 	Functions_AutoSelect            = Automatically check off additions after adding
-	FunctionTips                    = You are assigning items to be added; after selecting the names to add, they will be processed sequentially.
 	Function_Unrestricted           = Unrestricted
 
 	Other_Tasks_CTD                 = Create a test directory, mount the main path offline

@@ -8,7 +8,6 @@
 	Functions_Running_Order         = 分配后运行顺序
 	Functions_Duplicate             = 有重复时不再添加
 	Functions_AutoSelect            = 添加后自动勾选新增项
-	FunctionTips                    = 您正在分配待添加项，选择添加的名称后按顺序依次运行。
 	Function_Unrestricted           = 不受限制
 
 	Other_Tasks_CTD                 = 创建测试目录，脱机挂载后主路径

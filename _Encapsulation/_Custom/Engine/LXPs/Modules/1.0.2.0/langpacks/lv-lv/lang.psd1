@@ -16,6 +16,7 @@
 	AllClear                  = Notīrīt visu
 	Operable                  = Darbināms
 	Inoperable                = Nederīgs
+	Hide                      = Paslēpties
 	SwitchLanguage            = Mainīt valodu
 	LanguageReset             = Atiestatīt valodas iestatījumus
 	LanguageCode              = Zonas atzīme

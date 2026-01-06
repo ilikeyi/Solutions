@@ -16,6 +16,7 @@
 	AllClear                  = очистити все
 	Operable                  = Працездатний
 	Inoperable                = Неоперабельний
+	Hide                      = Приховати
 	SwitchLanguage            = змінити мову
 	LanguageReset             = Скинути налаштування мови
 	LanguageCode              = знак зони

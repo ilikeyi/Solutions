@@ -16,6 +16,7 @@
 	AllClear                  = Rensa allt
 	Operable                  = Manövrerbar
 	Inoperable                = Inoperabel
+	Hide                      = Dölja
 	SwitchLanguage            = Byta språk
 	LanguageReset             = Återställ språkinställningar
 	LanguageCode              = Zonmärke

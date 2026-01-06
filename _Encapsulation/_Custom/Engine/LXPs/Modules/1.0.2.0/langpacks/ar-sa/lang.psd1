@@ -16,6 +16,7 @@
 	AllClear                  = مسح الكل
 	Operable                  = قابلة للتشغيل
 	Inoperable                = غير صالح للعمل
+	Hide                      = يخفي
 	SwitchLanguage            = تبديل اللغة
 	LanguageReset             = إعادة ضبط إعدادات اللغة
 	LanguageCode              = علامة المنطقة

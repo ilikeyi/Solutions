@@ -16,6 +16,7 @@
 	AllClear                  = Καθαρίστε όλα
 	Operable                  = Εγχειρήσιμος
 	Inoperable                = Μη χειρουργήσιμος
+	Hide                      = Κρύβω
 	SwitchLanguage            = Αλλαγή γλώσσας
 	LanguageReset             = Επαναφορά ρυθμίσεων γλώσσας
 	LanguageCode              = Σήμα ζώνης

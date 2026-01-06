@@ -16,6 +16,7 @@
 	AllClear                  = Șterge totul
 	Operable                  = Operabil
 	Inoperable                = Inoperabil
+	Hide                      = ascunde
 	SwitchLanguage            = Schimba limba
 	LanguageReset             = Resetați setările de limbă
 	LanguageCode              = Marcajul zonei

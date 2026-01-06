@@ -16,6 +16,7 @@
 	AllClear                  = Изчисти всичко
 	Operable                  = Оперативен
 	Inoperable                = Неработоспособен
+	Hide                      = Скрий се
 	SwitchLanguage            = Превключване на езика
 	LanguageReset             = Нулиране на езиковите настройки
 	LanguageCode              = Знак за зона

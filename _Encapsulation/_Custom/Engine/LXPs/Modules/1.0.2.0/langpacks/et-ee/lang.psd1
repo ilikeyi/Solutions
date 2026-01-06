@@ -16,6 +16,7 @@
 	AllClear                  = Tühjenda kõik
 	Operable                  = Kasutatav
 	Inoperable                = Kasutuskõlbmatu
+	Hide                      = Peita
 	SwitchLanguage            = Keelt vahetada
 	LanguageReset             = Keeleseadete lähtestamine
 	LanguageCode              = Tsooni märk

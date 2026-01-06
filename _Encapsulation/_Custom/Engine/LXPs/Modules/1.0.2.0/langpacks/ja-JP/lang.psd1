@@ -16,6 +16,7 @@
 	AllClear                  = すべてクリア
 	Operable                  = 操作可能
 	Inoperable                = 動作不能
+	Hide                      = 隠れる
 	SwitchLanguage            = 言語を切り替える
 	LanguageReset             = 言語設定をリセットする
 	LanguageCode              = ゾーンマーカー

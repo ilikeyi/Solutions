@@ -8,7 +8,6 @@
 	Functions_Running_Order         = Reihenfolge nach Zuteilung ausführen
 	Functions_Duplicate             = Nicht hinzufügen, wenn Duplikate vorhanden sind
 	Functions_AutoSelect            = Überprüfen Sie neue Elemente nach dem Hinzufügen automatisch
-	FunctionTips                    = Sie weisen Elemente zum Hinzufügen zu. Wählen Sie die hinzuzufügenden Namen aus und führen Sie die Schritte nacheinander aus.
 	Function_Unrestricted           = Uneingeschränkt
 
 	Other_Tasks_CTD                 = Erstellen Sie ein Testverzeichnis, den Hauptpfad nach der Offline Montage

@@ -276,19 +276,13 @@
 		Location       = '560,15'
 	}
 	$UI_Main_Select_Function = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
-		Height         = 350
+		Height         = 525
 		Width          = 485
 		Location       = '560,50'
 		BorderStyle    = 0
 		autoSizeMode   = 0
 		autoScroll     = $True
 		Padding        = "16,0,0,0"
-	}
-	$UI_Main_Select_API_Tips = New-Object system.Windows.Forms.Label -Property @{
-		Location       = "560,420"
-		Height         = 50
-		Width          = 480
-		Text           = $lang.FunctionTips
 	}
 
 	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
@@ -334,7 +328,6 @@
 	$UI_Main.controls.AddRange((
 		$UI_Main_Select_Function_Name,
 		$UI_Main_Select_Function,
-		$UI_Main_Select_API_Tips,
 		$UI_Main_Wait_Assign,
 		$UI_Main_Menu,
 		$UI_Main_Adv,

@@ -16,6 +16,7 @@
 	AllClear                  = Clear all
 	Operable                  = Operable
 	Inoperable                = Inoperable
+	Hide                      = Hide
 	SwitchLanguage            = Switch language
 	LanguageReset             = Reset language settings
 	LanguageCode              = Region tag

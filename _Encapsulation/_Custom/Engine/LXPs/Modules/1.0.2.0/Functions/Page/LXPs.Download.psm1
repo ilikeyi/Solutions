@@ -166,10 +166,11 @@ Function LXPs_Download
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $True
+		ControlBox     = $True
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
+		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\Assets\icon\Yi.ico")
 	}
 
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
@@ -241,12 +242,12 @@ Function LXPs_Download
 		.Event, hide show rule details
 		.事件，隐藏显示规则详细
 	#>
-	$UI_Main_Languages_Detailed_View_Mask_Canel = New-Object system.Windows.Forms.Button -Property @{
+	$UI_Main_Languages_Detailed_View_Mask_Hide = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
 		Location       = "620,635"
 		Height         = 36
 		Width          = 280
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
@@ -435,12 +436,12 @@ Function LXPs_Download
 			LXPs_Refresh_Sources_To_Event
 		}
 	}
-	$UI_Main_Download_Match_Version_Canel = New-Object system.Windows.Forms.Button -Property @{
+	$UI_Main_Download_Match_Version_Hide = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
 		Location       = "620,635"
 		Height         = 36
 		Width          = 280
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			$UI_Main_Download_Match_Version.Controls | ForEach-Object {
 				if ($_ -is [System.Windows.Forms.RadioButton]) { $_.Checked = $false }
@@ -1125,12 +1126,12 @@ Function LXPs_Download
 			}
 		}
 	}
-	$UI_Main_Mask_Report_Canel = New-Object system.Windows.Forms.Button -Property @{
+	$UI_Main_Mask_Report_Hide = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
 		Location       = "620,635"
 		Height         = 36
 		Width          = 280
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
@@ -1173,12 +1174,12 @@ Function LXPs_Download
 			}
 		}
 	}
-	$UI_Main_Tips_Mask_Canel = New-Object system.Windows.Forms.Button -Property @{
+	$UI_Main_Tips_Mask_Hide = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
 		Location       = "620,635"
 		Height         = 36
 		Width          = 280
-		Text           = $lang.Cancel
+		Text           = $lang.Hide
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
@@ -1226,20 +1227,20 @@ Function LXPs_Download
 	}
 
 	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "620,543"
+		Location       = "620,593"
 		Height         = 20
 		Width          = 20
 		SizeMode       = "StretchImage"
 	}
 	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
-		Location       = "645,545"
-		Height         = 45
+		Location       = "645,595"
+		Height         = 30
 		Width          = 255
 		Text           = ""
 	}
 	$UI_Main_OK        = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "620,595"
+		Location       = "620,635"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.StartVerify
@@ -1291,18 +1292,6 @@ Function LXPs_Download
 			$UI_Main.Close()
 		}
 	}
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "620,635"
-		Height         = 36
-		Width          = 280
-		Text           = $lang.Cancel
-		add_Click      = {
-			write-host "  $($lang.UserCancel)" -ForegroundColor Red
-			$Script:Queue_Language_Download_Select = @()
-			$UI_Main.Close()
-		}
-	}
 	$UI_Main.controls.AddRange((
 		$UI_Main_Languages_Detailed_View_Mask,
 		$UI_Main_Tips_Mask,
@@ -1313,8 +1302,7 @@ Function LXPs_Download
 		$UI_Main_Tips_Mask_View,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
-		$UI_Main_OK,
-		$UI_Main_Canel
+		$UI_Main_OK
 	))
 
 	<#
@@ -1323,7 +1311,7 @@ Function LXPs_Download
 	#>
 	$UI_Main_Languages_Detailed_View_Mask.controls.AddRange((
 		$UI_Main_Languages_Detailed_View_Mask_Results,
-		$UI_Main_Languages_Detailed_View_Mask_Canel
+		$UI_Main_Languages_Detailed_View_Mask_Hide
 	))
 
 	<#
@@ -1333,7 +1321,7 @@ Function LXPs_Download
 	$UI_Main_Tips_Mask.controls.AddRange((
 		$UI_Main_Tips_Mask_Results,
 		$UI_Main_Tips_Mask_DoNot,
-		$UI_Main_Tips_Mask_Canel
+		$UI_Main_Tips_Mask_Hide
 	))
 
 	<#
@@ -1345,7 +1333,7 @@ Function LXPs_Download
 		$UI_Main_Mask_Report_Error_Icon,
 		$UI_Main_Mask_Report_Error,
 		$UI_Main_Mask_Report_OK,
-		$UI_Main_Mask_Report_Canel
+		$UI_Main_Mask_Report_Hide
 	))
 	$UI_Main_Mask_Report_Menu.controls.AddRange((
 		$UI_Main_Mask_Report_Sources_Name,
@@ -1470,7 +1458,7 @@ Function LXPs_Download
 		$UI_Main_Download_Match_Version_Error_Icon,
 		$UI_Main_Download_Match_Version_Error,
 		$UI_Main_Download_Match_Version_OK,
-		$UI_Main_Download_Match_Version_Canel
+		$UI_Main_Download_Match_Version_Hide
 	))
 
 	<#

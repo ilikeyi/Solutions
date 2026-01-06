@@ -16,6 +16,7 @@
 	AllClear                  = 清除所有
 	Operable                  = 可操作
 	Inoperable                = 不可操作
+	Hide                      = 隐藏
 	SwitchLanguage            = 切换语言
 	LanguageReset             = 重置语言设置
 	LanguageCode              = 区域标记

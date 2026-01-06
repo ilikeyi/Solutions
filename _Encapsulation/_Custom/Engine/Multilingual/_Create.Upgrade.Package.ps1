@@ -169,11 +169,17 @@ Function Update_Create_UI
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $False
-		ControlBox     = $False
+		MinimizeBox    = $True
+		ControlBox     = $True
 		BackColor      = "#ffffff"
 		FormBorderStyle = "Fixed3D"
 	}
+
+	$IconYi = "$($PSScriptRoot)\Modules\$((Get-Module -Name Engine).Version.ToString())\Assets\icon\Yi.ico"
+	if (Test-Path $IconYi -PathType Leaf) {
+		$GUIUpdate.Icon = [System.Drawing.Icon]::ExtractAssociatedIcon($IconYi)
+	}
+
 	$GUIUpdateVersion  = New-Object system.Windows.Forms.Label -Property @{
 		Location       = "12,15"
 		Height         = 30
@@ -268,7 +274,7 @@ Function Update_Create_UI
 	$GUIUpdateOK       = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
 		Height         = 36
-		Width          = 255
+		Width          = 515
 		Location       = "8,635"
 		Text           = $lang.OK
 		add_Click      = {
@@ -307,25 +313,13 @@ Function Update_Create_UI
 			$GUIUpdate.Close()
 		}
 	}
-	$GUIUpdateCanel = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Height         = 36
-		Width          = 255
-		Location       = "268,635"
-		Text           = $lang.Cancel
-		add_Click      = {
-			write-host "  $($lang.UserCancel)" -ForegroundColor Red
-			$GUIUpdate.Close()
-		}
-	}
 	$GUIUpdate.controls.AddRange((
 		$GUIUpdateVersion,
 		$GUIUpdateLowVersion,
 		$GUIUpdateRearTips,
 		$GUIUpdateGroupASC,
 		$GUIUpdateErrorMsg,
-		$GUIUpdateOK,
-		$GUIUpdateCanel
+		$GUIUpdateOK
 	))
 
 	$GUIUpdateGroupASC.controls.AddRange((

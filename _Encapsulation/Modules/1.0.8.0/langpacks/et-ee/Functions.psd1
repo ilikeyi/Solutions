@@ -8,7 +8,6 @@
 	Functions_Running_Order         = Käivita jada pärast jaotamist
 	Functions_Duplicate             = Ärge lisage, kui on duplikaate
 	Functions_AutoSelect            = Pärast lisamist kontrollige uusi üksusi automaatselt
-	FunctionTips                    = Sa määrad lisatavaid üksusi. Vali lisatavate üksuste nimed ja käivita need järjest.
 	Function_Unrestricted           = Piiramatu
 
 	Other_Tasks_CTD                 = Looge testkataloog, peamine tee pärast võrguühenduseta ühendamist

@@ -16,6 +16,7 @@
 	AllClear                  = Alles wissen
 	Operable                  = Bedienbaar
 	Inoperable                = Onbruikbaar
+	Hide                      = Verbergen
 	SwitchLanguage            = Van taal wisselen
 	LanguageReset             = Taalinstellingen resetten
 	LanguageCode              = Zonemarkering

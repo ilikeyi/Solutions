@@ -16,6 +16,7 @@
 	AllClear                  = Fjern alt
 	Operable                  = Brukbar
 	Inoperable                = Ubrukelig
+	Hide                      = Gjemme
 	SwitchLanguage            = Bytte språk
 	LanguageReset             = Tilbakestill språkinnstillinger
 	LanguageCode              = Sonemerke

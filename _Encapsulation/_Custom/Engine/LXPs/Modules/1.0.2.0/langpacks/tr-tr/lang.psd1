@@ -16,6 +16,7 @@
 	AllClear                  = Hepsini temizle
 	Operable                  = Çalıştırılabilir
 	Inoperable                = Ameliyat edilemez
+	Hide                      = Saklamak
 	SwitchLanguage            = Dili değiştir
 	LanguageReset             = Dil ayarlarını sıfırla
 	LanguageCode              = Bölge işareti

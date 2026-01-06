@@ -16,6 +16,7 @@
 	AllClear                  = Počisti vse
 	Operable                  = Operabilno
 	Inoperable                = Neoperabilen
+	Hide                      = Skriti
 	SwitchLanguage            = Preklopi jezik
 	LanguageReset             = Ponastavite jezikovne nastavitve
 	LanguageCode              = Conska oznaka

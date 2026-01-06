@@ -8,7 +8,6 @@
 	Functions_Running_Order         = Pokreni niz nakon dodjele
 	Functions_Duplicate             = Nemojte dodavati ako postoje duplikati
 	Functions_AutoSelect            = Automatski provjeravajte nove stavke nakon dodavanja
-	FunctionTips                    = Dodjeljujete stavke koje će se dodati. Odaberite imena koja želite dodati i pokrenite ih redom.
 	Function_Unrestricted           = Neograničen
 
 	Other_Tasks_CTD                 = Stvorite testni direktorij, glavni put nakon izvanmrežnog montiranja

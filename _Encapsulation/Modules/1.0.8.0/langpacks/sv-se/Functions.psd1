@@ -8,7 +8,6 @@
 	Functions_Running_Order         = Kör sekvens efter tilldelning
 	Functions_Duplicate             = Lägg inte till om det finns dubbletter
 	Functions_AutoSelect            = Kontrollera automatiskt nya objekt efter tillägg
-	FunctionTips                    = Du tilldelar objekt som ska läggas till. Markera namnen som ska läggas till och kör dem i ordning.
 	Function_Unrestricted           = Obegränsad
 
 	Other_Tasks_CTD                 = Skapa en testkatalog, huvudsökvägen efter offlinemontering

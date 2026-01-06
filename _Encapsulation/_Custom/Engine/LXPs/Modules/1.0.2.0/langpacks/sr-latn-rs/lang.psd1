@@ -16,6 +16,7 @@
 	AllClear                  = Очисти све
 	Operable                  = Операабле
 	Inoperable                = Неоперабилан
+	Hide                      = Сакрити
 	SwitchLanguage            = Промени језик
 	LanguageReset             = Ресетујте подешавања језика
 	LanguageCode              = Ознака зоне

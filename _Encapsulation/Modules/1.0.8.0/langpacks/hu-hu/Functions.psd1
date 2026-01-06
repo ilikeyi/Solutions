@@ -8,7 +8,6 @@
 	Functions_Running_Order         = Futtassa a sorozatot az elosztás után
 	Functions_Duplicate             = Ne adja hozzá, ha ismétlődések vannak
 	Functions_AutoSelect            = Az új elemek automatikus ellenőrzése hozzáadása után
-	FunctionTips                    = Hozzáadandó elemeket rendelsz hozzá. Jelöld ki a hozzáadandó neveket, és futtasd őket sorban.
 	Function_Unrestricted           = Korlátlan
 
 	Other_Tasks_CTD                 = Hozzon létre egy tesztkönyvtárat, a fő elérési utat az offline csatlakoztatás után

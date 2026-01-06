@@ -320,7 +320,7 @@
 		Location       = '560,15'
 	}
 	$UI_Main_Select_Function = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
-		Height         = 250
+		Height         = 280
 		Width          = 485
 		Location       = '560,50'
 		BorderStyle    = 0
@@ -328,30 +328,24 @@
 		autoScroll     = $True
 		Padding        = "16,0,0,0"
 	}
-	$UI_Main_Select_API_Tips = New-Object system.Windows.Forms.Label -Property @{
-		Location       = "560,310"
-		Height         = 50
-		Width          = 480
-		Text           = $lang.FunctionTips
-	}
 
 	$UI_Main_Dashboard = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 35
 		Width          = 530
-		Location       = "560,380"
+		Location       = "560,370"
 		Text           = $lang.Dashboard
 	}
 	$UI_Main_Dashboard_Event_Status = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 35
 		Width          = 530
 		Padding        = "16,0,0,0"
-		Location       = "560,415"
+		Location       = "560,405"
 		Text           = "$($lang.EventManager): $($lang.Failed)"
 	}
 	$UI_Main_Dashboard_Event_Clear = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 35
 		Width          = 530
-		Location       = "560,450"
+		Location       = "560,440"
 		Text           = $lang.EventManagerCurrentClear
 		Padding        = "32,0,0,0"
 		LinkColor      = "GREEN"
@@ -509,7 +503,6 @@
 	$UI_Main.controls.AddRange((
 		$UI_Main_Select_Function_Name,
 		$UI_Main_Select_Function,
-		$UI_Main_Select_API_Tips,
 		$UI_Main_Wait_Assign,
 		$UI_Main_Menu,
 		$UI_Main_Dashboard,

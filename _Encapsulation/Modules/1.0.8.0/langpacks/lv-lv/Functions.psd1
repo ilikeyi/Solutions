@@ -8,7 +8,6 @@
 	Functions_Running_Order         = Palaist secību pēc piešķiršanas
 	Functions_Duplicate             = Nepievienot, ja ir dublikāti
 	Functions_AutoSelect            = Pēc pievienošanas automātiski pārbaudiet jaunos vienumus
-	FunctionTips                    = Jūs piešķirat pievienojamus vienumus. Atlasiet pievienojamo vienumu nosaukumus un palaidiet tos secīgi.
 	Function_Unrestricted           = Neierobežots
 
 	Other_Tasks_CTD                 = Izveidojiet testa direktoriju, galveno ceļu pēc uzstādīšanas bezsaistē

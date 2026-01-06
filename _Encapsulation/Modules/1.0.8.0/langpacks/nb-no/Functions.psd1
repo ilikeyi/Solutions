@@ -8,7 +8,6 @@
 	Functions_Running_Order         = Kjør sekvens etter tildeling
 	Functions_Duplicate             = Ikke legg til hvis det er duplikater
 	Functions_AutoSelect            = Sjekk automatisk nye elementer etter å ha lagt til
-	FunctionTips                    = Du tilordner elementer som skal legges til. Velg navnene som skal legges til, og kjør dem i rekkefølge.
 	Function_Unrestricted           = Ubegrenset
 
 	Other_Tasks_CTD                 = Opprett en testkatalog, hovedbanen etter offline montering

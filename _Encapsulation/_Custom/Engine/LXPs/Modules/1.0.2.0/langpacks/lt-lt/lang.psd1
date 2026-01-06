@@ -16,6 +16,7 @@
 	AllClear                  = Išvalyti viską
 	Operable                  = Veikiantis
 	Inoperable                = Neveikiantis
+	Hide                      = paslėpti
 	SwitchLanguage            = Pakeisti kalbą
 	LanguageReset             = Iš naujo nustatykite kalbos nustatymus
 	LanguageCode              = Zonos ženklas

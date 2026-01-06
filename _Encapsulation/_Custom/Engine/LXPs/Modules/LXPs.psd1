@@ -21,7 +21,7 @@
 			)
 #			IconUri      = ''
 #			ReleaseNotes = ''
-			Buildstring    = 'Yi_release.2025.11.28'
+			Buildstring    = 'Yi_release.2026.01.26'
 			MinimumVersion = '1.0.0.0'
 			UpdateServer = @(
 				"https://fengyi.tel/download/solutions/update/LXPs/latest.json"

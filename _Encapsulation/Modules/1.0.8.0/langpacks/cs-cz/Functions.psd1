@@ -8,7 +8,6 @@
 	Functions_Running_Order         = Spustit sekvenci po přidělení
 	Functions_Duplicate             = Nepřidávejte, pokud existují duplikáty
 	Functions_AutoSelect            = Automaticky kontrolovat nové položky po přidání
-	FunctionTips                    = Přiřazujete položky, které chcete přidat. Vyberte názvy, které chcete přidat, a spusťte je postupně.
 	Function_Unrestricted           = Neomezený
 
 	Other_Tasks_CTD                 = Vytvořte testovací adresář, hlavní cestu po offline připojení
