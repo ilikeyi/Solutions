@@ -693,7 +693,7 @@ Function Image_Primary_Key_Shortcuts_File_View
 #>
 Function Menu_Shortcuts_Image_Sources_Append
 {
-	Write-Host "`n  $($lang.Append)"
+	Write-Host "`n  $($lang.Wim_Append)"
 	Write-Host "  $('-' * 80)"
 	if (Image_Is_Select_IAB) {
 		Write-Host "  $($lang.Mounted_Status)" -ForegroundColor Yellow
@@ -923,6 +923,14 @@ Function Menu_Shortcuts_Remove_Index
 			Write-Host "  $($lang.SelectSettingImage): $($lang.Del)" -ForegroundColor Green
 
 			Image_Select_Del_UI
+		} else {
+			Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
+
+			Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+			Write-Host "  $($lang.SelectSettingImage): $($lang.Del)" -ForegroundColor Green
+
+			Image_Select_Tasks_UI -Go "Image_Select_Del_UI"
 		}
 	}
 }
@@ -1036,7 +1044,6 @@ Function Menu_Shortcuts_Mount_Index
 
 			Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.SelectSettingImage): $($lang.MountedIndexSelect)" -ForegroundColor Green
 
 			Image_Select_Tasks_UI -Go "Image_Select_Index_UI"
 		}
@@ -1046,9 +1053,15 @@ Function Menu_Shortcuts_Mount_Index
 		if (Image_Is_Select_IAB) {
 			Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.SelectSettingImage): $($lang.MountedIndexSelect)" -ForegroundColor Green
 
 			Image_Select_Index_UI
+		} else {
+			Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
+
+			Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+
+			Image_Select_Tasks_UI -Go "Image_Select_Index_UI"
 		}
 	}
 }
@@ -1342,10 +1355,12 @@ Function Menu_Shortcuts_Rebuild_Key
 
 		Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
 		Write-Host "  $('-' * 80)"
-		Write-Host "  $($lang.SelectSettingImage): $($lang.Wim_Append)" -ForegroundColor Green
+		Write-Host "  $($lang.Rebuild)" -ForegroundColor Green
 
 		Image_Select_Tasks_UI -Go "Rebuild_Image_File"
 	} else {
+		Image_Set_Global_Primary_Key -Uid $NewUid -Detailed -DevCode "0601" -Silent
+
 		Write-Host "`n  $($lang.Rebuild)"
 		Write-Host "  $('-' * 80)"
 		if (Image_Is_Select_IAB) {
@@ -1366,7 +1381,7 @@ Function Menu_Shortcuts_Rebuild_Key
 
 			Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"
-			Write-Host "  $($lang.OnDemandPlanTask)" -ForegroundColor Green
+			Write-Host "  $($lang.Rebuild)" -ForegroundColor Green
 
 			Image_Select_Tasks_UI -Go "Rebuild_Image_File"
 		}

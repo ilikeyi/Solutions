@@ -4,7 +4,7 @@
 #>
 Function Image_Select_Append_UI
 {
-	Write-Host "`n  $($lang.SelectSettingImage)" -ForegroundColor Yellow
+	Write-Host "`n  $($lang.SelectSettingImage): $($lang.Wim_Append)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 
 	$Script:Temp_Save_Select_WIMFile = @()
@@ -161,9 +161,20 @@ Function Image_Select_Append_UI
 		Dock           = 3
 	}
 
+	$UI_Main_Setting_ISO = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Height         = 36
+		Width          = 280
+		Location       = "620,10"
+		Text           = $lang.ISO_File
+		add_Click      = {
+			Image_Select -Page "ISO"
+		}
+	}
+
 	$UI_Main_Select_Custom_Sources = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "620,10"
+		Location       = "620,50"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.SelFile
@@ -472,7 +483,7 @@ Function Image_Select_Append_UI
 
 	$UI_Main_SearchAllDrive = New-Object system.Windows.Forms.Button -Property @{
 		UseVisualStyleBackColor = $True
-		Location       = "620,50"
+		Location       = "620,90"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.SearchAllDrives
@@ -825,7 +836,7 @@ Function Image_Select_Append_UI
 		Width          = 280
 		autoSizeMode   = 1
 		Padding        = "16,0,0,0"
-		Location       = '620,90'
+		Location       = '620,130'
 		autoScroll     = $True
 	}
 
@@ -833,7 +844,7 @@ Function Image_Select_Append_UI
 		Height         = 30
 		Width          = 280
 		Text           = $lang.DeDuplication
-		Location       = '622,375'
+		Location       = '622,415'
 		Checked        = $True
 		add_Click      = {
 			$UI_Main_Error.Text = ""
@@ -843,7 +854,7 @@ Function Image_Select_Append_UI
 	$UI_Main_Duplication_Unlock = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 40
 		Width          = 260
-		Location       = "638,410"
+		Location       = "638,450"
 		Text           = $lang.DeDuplication_Unlock
 		LinkColor      = "GREEN"
 		ActiveLinkColor = "RED"
@@ -1145,13 +1156,13 @@ Function Image_Select_Append_UI
 	#endregion
 
 	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "620,498"
+		Location       = "620,528"
 		Height         = 20
 		Width          = 20
 		SizeMode       = "StretchImage"
 	}
 	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
-		Location       = "645,500"
+		Location       = "645,530"
 		Height         = 55
 		Width          = 255
 		Text           = ""
@@ -1260,6 +1271,7 @@ Function Image_Select_Append_UI
 		$UI_Main_Menu,
 		$UI_Main_Duplication,
 		$UI_Main_Duplication_Unlock,
+		$UI_Main_Setting_ISO,
 		$UI_Main_Select_Custom_Sources,
 		$UI_Main_SearchAllDrive,
 		$UI_Main_SearchAllDrive_Select,
