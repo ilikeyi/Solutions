@@ -5,11 +5,10 @@
 	SpecialFunction                 = PowerShell funkcijos
 	Functions_Before                = Prieš bėgimą
 	Functions_Rear                  = Baigus
-	Functions_Wait_Assign           = Priskirtinas funkcijos pavadinimas
 	Functions_Running_Order         = Vykdymo seka po paskirstymo
 	Functions_Duplicate             = Nepridėkite, jei yra dublikatų
 	Functions_AutoSelect            = Pridėjus naujus elementus automatiškai patikrinkite
-	FunctionTips                    = Priskiriate "PowerShell" funkciją Pasirinkite priskirtos funkcijos pavadinimą ir paleiskite ją eilės tvarka.
+	FunctionTips                    = Priskiriate elementus, kuriuos reikia pridėti. Pasirinkite norimus pridėti pavadinimus ir paleiskite juos iš eilės.
 	Function_Unrestricted           = Neribojama
 
 	Other_Tasks_CTD                 = Sukurkite bandomąjį katalogą, pagrindinį kelią prijungus neprisijungus

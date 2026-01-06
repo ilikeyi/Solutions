@@ -5,11 +5,10 @@
 	SpecialFunction                 = PowerShell funkcijas
 	Functions_Before                = Pirms skriešanas
 	Functions_Rear                  = Pēc pabeigšanas
-	Functions_Wait_Assign           = Piešķiramais funkcijas nosaukums
 	Functions_Running_Order         = Palaist secību pēc piešķiršanas
 	Functions_Duplicate             = Nepievienot, ja ir dublikāti
 	Functions_AutoSelect            = Pēc pievienošanas automātiski pārbaudiet jaunos vienumus
-	FunctionTips                    = Jūs piešķirat PowerShell funkciju, lūdzu, atlasiet piešķiramās funkcijas nosaukumu un palaidiet to secībā.
+	FunctionTips                    = Jūs piešķirat pievienojamus vienumus. Atlasiet pievienojamo vienumu nosaukumus un palaidiet tos secīgi.
 	Function_Unrestricted           = Neierobežots
 
 	Other_Tasks_CTD                 = Izveidojiet testa direktoriju, galveno ceļu pēc uzstādīšanas bezsaistē

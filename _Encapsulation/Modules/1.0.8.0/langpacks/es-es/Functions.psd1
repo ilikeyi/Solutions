@@ -5,11 +5,10 @@
 	SpecialFunction                 = Funciones de PowerShell
 	Functions_Before                = Antes de correr
 	Functions_Rear                  = Después de la finalización
-	Functions_Wait_Assign           = Nombre de la función que se asignará
 	Functions_Running_Order         = Ejecutar secuencia después de la asignación
 	Functions_Duplicate             = No agregar si hay duplicados
 	Functions_AutoSelect            = Verificar automáticamente nuevos elementos después de agregarlos
-	FunctionTips                    = Está asignando una función de PowerShell. Seleccione el nombre de la función que desea asignar y ejecútela en orden.
+	FunctionTips                    = Estás asignando elementos para agregar. Selecciona los nombres que deseas agregar y ejecútalos en secuencia.
 	Function_Unrestricted           = Irrestricto
 
 	Other_Tasks_CTD                 = Cree un directorio de prueba, la ruta principal después del montaje sin conexión

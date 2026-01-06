@@ -64,7 +64,7 @@
 		Height         = 30
 		Width          = 485
 		Location       = "15,15"
-		Text           = $lang.Functions_Wait_Assign
+		Text           = $lang.LXPsWaitAssign
 	}
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		Height         = 465
@@ -448,7 +448,7 @@ Function Functions_Unrestricted_Process_Tasks
 
 Function Functions_Tasks_List
 {
-	Write-Host "`n  $($lang.Functions_Wait_Assign)" -ForegroundColor Yellow
+	Write-Host "`n  $($lang.LXPsWaitAssign)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 
 	$PowerShell_Function_Tasks = @()

@@ -5,11 +5,10 @@
 	SpecialFunction                 = وظيفة PowerShell
 	Functions_Before                = قبل الجري
 	Functions_Rear                  = بعد الانتهاء
-	Functions_Wait_Assign           = اسم الوظيفة المراد تعيينها
 	Functions_Running_Order         = تشغيل التسلسل بعد التخصيص
 	Functions_Duplicate             = لا تضيف إذا كان هناك التكرارات
 	Functions_AutoSelect            = التحقق تلقائيًا من العناصر الجديدة بعد إضافتها
-	FunctionTips                    = أنت تقوم بتعيين وظيفة PowerShell يرجى تحديد اسم الوظيفة التي سيتم تعيينها وتشغيلها بالترتيب.
+	FunctionTips                    = أنت بصدد تعيين العناصر المراد إضافتها. حدد الأسماء المراد إضافتها وقم بتشغيلها بالتسلسل.
 	Function_Unrestricted           = غير مقيد
 
 	Other_Tasks_CTD                 = قم بإنشاء دليل اختبار، وهو المسار الرئيسي بعد التثبيت دون اتصال بالإنترنت

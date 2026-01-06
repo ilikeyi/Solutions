@@ -5,11 +5,10 @@
 	SpecialFunction                 = PowerShell 函数
 	Functions_Before                = 运行前
 	Functions_Rear                  = 完成后
-	Functions_Wait_Assign           = 待分配的函数名称
 	Functions_Running_Order         = 分配后运行顺序
 	Functions_Duplicate             = 有重复时不再添加
 	Functions_AutoSelect            = 添加后自动勾选新增项
-	FunctionTips                    = 您正在分配 PowerShell 函数，请选择待分配的函数名称，按顺序依次运行。
+	FunctionTips                    = 您正在分配待添加项，选择添加的名称后按顺序依次运行。
 	Function_Unrestricted           = 不受限制
 
 	Other_Tasks_CTD                 = 创建测试目录，脱机挂载后主路径

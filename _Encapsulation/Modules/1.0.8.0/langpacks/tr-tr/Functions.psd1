@@ -5,11 +5,10 @@
 	SpecialFunction                 = PowerShell işlevleri
 	Functions_Before                = Koşmadan önce
 	Functions_Rear                  = Tamamlandıktan sonra
-	Functions_Wait_Assign           = Atanacak fonksiyon adı
 	Functions_Running_Order         = Tahsisten sonra çalıştırma sırası
 	Functions_Duplicate             = Kopyalar varsa eklemeyin
 	Functions_AutoSelect            = Yeni öğeleri ekledikten sonra otomatik olarak kontrol et
-	FunctionTips                    = Bir PowerShell fonksiyonu atıyorsunuz. Lütfen atanacak fonksiyonun adını seçin ve sırasıyla çalıştırın.
+	FunctionTips                    = Eklenecek öğeleri atıyorsunuz. Eklenecek adları seçin ve sırayla çalıştırın.
 	Function_Unrestricted           = Sınırsız
 
 	Other_Tasks_CTD                 = Bosala répertoire ya test, nzela ya munene sima ya montage hors ligne

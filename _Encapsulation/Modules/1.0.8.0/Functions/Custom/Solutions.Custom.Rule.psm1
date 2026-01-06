@@ -6,6 +6,7 @@ $Global:Search_Language_File_Type = @(
 	"*.esd"
 	"*.cab"
 )
+
 <#
 	.Exclusions when removing all InBox apps
 	.删除所有 InBox Apps  应用时排除项

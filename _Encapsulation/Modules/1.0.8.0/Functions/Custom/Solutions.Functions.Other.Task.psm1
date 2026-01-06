@@ -26,7 +26,7 @@ Function Other_Tasks_Clear
 		if (Verify_Is_Current_Same) {
 			$Local_Regedit_File_System = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master).$($Global:Primary_Key_Image.MasterSuffix)\$($Global:Primary_Key_Image.ImageFileName).$($Global:Primary_Key_Image.Suffix)\Mount\$((Get-Module -Name Solutions).Author)"
 			Write-Host "  $($Local_Regedit_File_System)" -ForegroundColor Green
-			
+
 			Write-Host "  " -NoNewline
 			Write-Host " $($lang.Del) " -NoNewline -BackgroundColor White -ForegroundColor Black
 			if (Test-Path -Path $Local_Regedit_File_System -PathType Container) {

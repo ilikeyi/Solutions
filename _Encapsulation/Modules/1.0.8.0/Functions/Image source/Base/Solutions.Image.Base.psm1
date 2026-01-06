@@ -2120,7 +2120,7 @@ Function Menu_Shortcuts_PS_Cmd
 		}
 	}
 
-	Write-Host "`n  $($lang.Functions_Wait_Assign)" -ForegroundColor Yellow
+	Write-Host "`n  $($lang.LXPsWaitAssign)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 	if ($IsFunction.Count -gt 0) {
 		ForEach ($item in $IsFunction) {

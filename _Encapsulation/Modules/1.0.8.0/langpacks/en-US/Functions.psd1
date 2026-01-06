@@ -5,11 +5,10 @@
 	SpecialFunction                 = PowerShell functions
 	Functions_Before                = Before running
 	Functions_Rear                  = After finishing
-	Functions_Wait_Assign           = Name of the function to be allocated
 	Functions_Running_Order         = Post-allocation running order
 	Functions_Duplicate             = No more duplicates
 	Functions_AutoSelect            = Automatically check off additions after adding
-	FunctionTips                    = You are assigning PowerShell functions, select the names of the functions to be assigned and run them in order.
+	FunctionTips                    = You are assigning items to be added; after selecting the names to add, they will be processed sequentially.
 	Function_Unrestricted           = Unrestricted
 
 	Other_Tasks_CTD                 = Create a test directory, mount the main path offline

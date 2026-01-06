@@ -5,11 +5,10 @@
 	SpecialFunction                 = PowerShell 函數
 	Functions_Before                = 運行前
 	Functions_Rear                  = 完成後
-	Functions_Wait_Assign           = 待指派的函數名稱
 	Functions_Running_Order         = 分配後運行順序
 	Functions_Duplicate             = 重複時不再添加
 	Functions_AutoSelect            = 新增後自動勾選新增項
-	FunctionTips                    = 您正在指派 PowerShell 函數，請選擇待指派的函數名稱，依序依序執行。
+	FunctionTips                    = 您正在指派待新增項，選擇新增的名稱後依序執行。
 	Function_Unrestricted           = 不受限制
 
 	Other_Tasks_CTD                 = 建立測試目錄，離線掛載後主路徑

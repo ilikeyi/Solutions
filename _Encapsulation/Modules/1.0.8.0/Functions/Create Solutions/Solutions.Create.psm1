@@ -203,7 +203,7 @@ Function Solutions_Create_UI
 		} else {
 			New-Variable -Scope global -Name "Queue_Is_Solutions_$($Script:init_To_GPS)" -Value $False -Force
 		}
-		
+
 		if ((Get-Variable -Scope global -Name "Queue_Is_Solutions_$($Script:init_To_GPS)" -ErrorAction SilentlyContinue).Value) {
 			$UI_Main_Dashboard_Event_Status.Text = "$($lang.EventManager): $($lang.Enable)"
 			$UI_Main_Dashboard_Event_Clear.Text = "$($lang.YesWork), $($lang.EventManagerCurrentClear)"
@@ -2368,7 +2368,7 @@ volume
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
-			
+
 			$Verify_Language_New_Path = ISO_Local_Language_Calc
 
 			$GUISolutionsCollectionChangeShowLanguage.Controls | ForEach-Object {
@@ -2576,7 +2576,7 @@ volume
 		add_Click      = {
 			$GUISolutionsOfficeChange_Error.Text = ""
 			$GUISolutionsOfficeChange_Error_Icon.Image = $null
-			
+
 			$SolutionsOfficeToShow.Text = $lang.SolutionsDeployOfficeToPublic
 			Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Office" -name "$($Script:init_To_GPS)_CopyTo" -value 1 -String
 		}
@@ -2740,7 +2740,7 @@ volume
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
-			
+
 			if ($SolutionsPackage.Checked) {
 				$SolutionsPackageShow.Enabled = $True
 				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Package" -name "$($Script:init_To_GPS)_AllowDeployCollection" -value "True" -String
@@ -2776,7 +2776,7 @@ volume
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
-			
+
 			Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Package" -name "$($Script:init_To_GPS)_DeployCollectionSelect" -value "1" -String
 		}
 	}
@@ -2788,7 +2788,7 @@ volume
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
-			
+
 			Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Package" -name "$($Script:init_To_GPS)_DeployCollectionSelect" -value "2" -String
 		}
 	}
@@ -2832,7 +2832,7 @@ volume
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
-			
+
 			if ($GroupSoftwareListTitle.Checked) {
 				$GroupSoftwareList.Enabled = $True
 				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Create" -name "$($Script:init_To_GPS)_IsSoftware" -value "True" -String
@@ -2891,7 +2891,7 @@ volume
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
-			
+
 			if ($SolutionsUnattend.Checked) {
 				$GroupSolutionsUnattend.Enabled = $True
 				$GUISolutionsVerifySync.Enabled = $True
@@ -3142,7 +3142,7 @@ volume
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
-			
+
 			if ($this.Checked) {
 				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\OOBE" -name "$($Script:init_To_GPS)_Is_Autorun" -value "True" -String
 			} else {
@@ -3182,7 +3182,7 @@ volume
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
-			
+
 			$UIUnzipPanel_Error_Tips.visible = $False
 			$UIUnzipPanel_Select_Rule.visible = $True
 		}
@@ -3342,7 +3342,7 @@ volume
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
-			
+
 			$SchemeDiskSpecifiedIndex.Enabled = $True
 
 			if ($SchemeDiskSpecifiedIndex.Checked) {
@@ -3376,7 +3376,7 @@ volume
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
-			
+
 			Solutions_Index_UI
 
 			if ([string]::IsNullOrEmpty($Global:UnattendSelectIndex)) {
@@ -3419,7 +3419,7 @@ volume
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
-			
+
 			$SchemeDiskSpecifiedKEY.Enabled = $True
 
 			if ($SchemeDiskSpecifiedKEY.Checked) {
@@ -3792,7 +3792,7 @@ volume
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
-			
+
 			$GUISolutionsUnattendChange.visible = $True
 		}
 	}
@@ -3905,7 +3905,7 @@ volume
 		add_Click      = {
 			$UI_Main_Error.Text = ""
 			$UI_Main_Error_Icon.Image = $null
-			
+
 			<#
 				.选择复选框：未选择必备项时自动修复
 			#>
@@ -5028,7 +5028,7 @@ volume
 
 		$SolutionsOther_Initl,
 		$SolutionsOtherSelectUserGroup,
-		
+
 		$First_Command_Title,
 		$First_Command_Select,
 		$GroupUnattendVer,
@@ -5545,7 +5545,7 @@ volume
 				add_Click = {
 					$UI_Main_Error.Text = ""
 					$UI_Main_Error_Icon.Image = $null
-					
+
 					$SolutionsPackageSelList.Controls | ForEach-Object {
 						if ($_ -is [System.Windows.Forms.RadioButton]) {
 							if ($_.Enabled) {
@@ -7474,7 +7474,7 @@ Function Solutions_Index_UI
 				}
 			}
 		}
-	
+
 		$UI_Main.Close()
 	} else {
 		$UI_Main.ShowDialog() | Out-Null
@@ -7577,7 +7577,7 @@ Function KMSkeys
 					add_Click = {
 						$UI_Main_Error.Text = ""
 						$UI_Main_Error_Icon.Image = $null
-						
+
 						$UI_Main_KMS_Custom.BackColor = "#FFFFFF"
 						$UI_Main_Error.Text = ""
 						$UI_Main_Error_Icon.Image = $null
@@ -7971,7 +7971,7 @@ Function Solutions_Replace_Unattend
 	if ($Get_Queue_Command_WinSetup.Count -gt 0) {
 		$Save_Microsoft_Windows_Setup = @()
 		[int]$Init_Microsoft_Windows_Setup = 0
-	
+
 		ForEach ($item in $Global:Pre_Config_Command_Rules) {
 			if ($Get_Queue_Command_WinSetup -Contains $item.GUID) {
 				foreach ($itemCommand in $item.Command) {

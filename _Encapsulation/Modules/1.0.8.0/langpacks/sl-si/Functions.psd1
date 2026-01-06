@@ -5,11 +5,10 @@
 	SpecialFunction                 = Funkcije PowerShell
 	Functions_Before                = Pred tekom
 	Functions_Rear                  = Po zaključku
-	Functions_Wait_Assign           = Ime funkcije, ki bo dodeljeno
 	Functions_Running_Order         = Zaženi zaporedje po dodelitvi
 	Functions_Duplicate             = Ne dodajajte, če obstajajo dvojniki
 	Functions_AutoSelect            = Samodejno preveri nove elemente po dodajanju
-	FunctionTips                    = Dodeljujete funkcijo PowerShell. Izberite ime funkcije, ki jo želite dodeliti, in jo zaženite po vrstnem redu.
+	FunctionTips                    = Dodeljujete elemente, ki jih želite dodati. Izberite imena, ki jih želite dodati, in jih zaženite zaporedno.
 	Function_Unrestricted           = Neomejeno
 
 	Other_Tasks_CTD                 = Ustvarite testni imenik, glavno pot po namestitvi brez povezave

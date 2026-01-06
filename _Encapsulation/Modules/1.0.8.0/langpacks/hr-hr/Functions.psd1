@@ -5,11 +5,10 @@
 	SpecialFunction                 = PowerShell funkcije
 	Functions_Before                = Prije trčanja
 	Functions_Rear                  = Nakon završetka
-	Functions_Wait_Assign           = Naziv funkcije koji će se dodijeliti
 	Functions_Running_Order         = Pokreni niz nakon dodjele
 	Functions_Duplicate             = Nemojte dodavati ako postoje duplikati
 	Functions_AutoSelect            = Automatski provjeravajte nove stavke nakon dodavanja
-	FunctionTips                    = Dodjeljujete funkciju PowerShell-a Odaberite naziv funkcije koju želite dodijeliti i pokrenite je redom.
+	FunctionTips                    = Dodjeljujete stavke koje će se dodati. Odaberite imena koja želite dodati i pokrenite ih redom.
 	Function_Unrestricted           = Neograničen
 
 	Other_Tasks_CTD                 = Stvorite testni direktorij, glavni put nakon izvanmrežnog montiranja

@@ -198,7 +198,7 @@
 		Height         = 30
 		Width          = 485
 		Location       = "15,15"
-		Text           = $lang.Functions_Wait_Assign
+		Text           = $lang.LXPsWaitAssign
 		LinkColor      = "GREEN"
 		ActiveLinkColor = "RED"
 		LinkBehavior   = "NeverUnderline"

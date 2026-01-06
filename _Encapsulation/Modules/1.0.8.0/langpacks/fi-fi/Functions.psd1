@@ -5,11 +5,10 @@
 	SpecialFunction                 = PowerShell toiminnot
 	Functions_Before                = Ennen juoksua
 	Functions_Rear                  = Valmistumisen jälkeen
-	Functions_Wait_Assign           = Määritettävä toiminnon nimi
 	Functions_Running_Order         = Suorita sekvenssi allokoinnin jälkeen
 	Functions_Duplicate             = Älä lisää, jos on kaksoiskappaleita
 	Functions_AutoSelect            = Tarkista uudet kohteet automaattisesti lisäämisen jälkeen
-	FunctionTips                    = Olet määrittämässä PowerShell funktiota Valitse määritettävän toiminnon nimi ja suorita se järjestyksessä.
+	FunctionTips                    = Olet määrittämässä lisättäviä kohteita. Valitse lisättävien kohteiden nimet ja suorita ne peräkkäin.
 	Function_Unrestricted           = Rajoittamaton
 
 	Other_Tasks_CTD                 = Luo testihakemisto, pääpolku offline asennuksen jälkeen

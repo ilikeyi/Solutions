@@ -109,7 +109,7 @@
 		Height         = 30
 		Width          = 485
 		Location       = "15,15"
-		Text           = $lang.Functions_Wait_Assign
+		Text           = $lang.LXPsWaitAssign
 	}
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		Height         = 465

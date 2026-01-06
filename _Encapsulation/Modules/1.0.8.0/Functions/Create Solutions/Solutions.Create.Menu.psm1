@@ -590,7 +590,6 @@ Function Solutions_Remove_Source_ISO
 	}
 }
 
-
 Function Solutions_Remove_Mount_OEM
 {
 	Write-Host "`n  $($lang.Del): $($lang.Mounted)"
@@ -628,7 +627,7 @@ Function Solutions_Remove_Mount_OEM
 			} else {
 				Write-Host " $($lang.Failed) " -BackgroundColor DarkRed -ForegroundColor White
 			}
-		
+
 			$File_Path_Office = Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master).$($Global:Primary_Key_Image.MasterSuffix)\$($Global:Primary_Key_Image.ImageFileName).$($Global:Primary_Key_Image.Suffix)\Mount\Users\Public\Desktop\Office"
 			Write-Host "`n  $($File_Path_Office)" -ForegroundColor Yellow
 			Write-Host "  $('-' * 80)"

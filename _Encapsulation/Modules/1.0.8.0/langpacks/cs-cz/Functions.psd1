@@ -5,11 +5,10 @@
 	SpecialFunction                 = Funkce PowerShellu
 	Functions_Before                = Před běháním
 	Functions_Rear                  = Po dokončení
-	Functions_Wait_Assign           = Název funkce, která má být přiřazena
 	Functions_Running_Order         = Spustit sekvenci po přidělení
 	Functions_Duplicate             = Nepřidávejte, pokud existují duplikáty
 	Functions_AutoSelect            = Automaticky kontrolovat nové položky po přidání
-	FunctionTips                    = Přiřazujete funkci prostředí PowerShell Vyberte název funkce, která má být přiřazena, a spusťte ji v daném pořadí.
+	FunctionTips                    = Přiřazujete položky, které chcete přidat. Vyberte názvy, které chcete přidat, a spusťte je postupně.
 	Function_Unrestricted           = Neomezený
 
 	Other_Tasks_CTD                 = Vytvořte testovací adresář, hlavní cestu po offline připojení
