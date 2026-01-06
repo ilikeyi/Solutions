@@ -196,8 +196,6 @@ Function API_Process_Rule_Name
 				Write-Host "  " -NoNewline
 				Write-Host " $($lang.Running) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
-
-				Get_Next
 			} else {
 				Write-Host $lang.NoInstallImage -BackgroundColor DarkRed -ForegroundColor White
 			}
