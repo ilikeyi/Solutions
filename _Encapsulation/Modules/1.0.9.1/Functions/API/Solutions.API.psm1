@@ -8,10 +8,10 @@ Function Api_Create_Template
 		$NewFile
 	)
 
+	$RandomGuid = [guid]::NewGuid()
 	$ThisFileType = $([System.IO.Path]::GetExtension($NewFile))
 	switch -WildCard ($ThisFileType) {
 		".psd1" {
-			$RandomGuid = [guid]::NewGuid()
 			$NewPsmFile = [System.IO.Path]::GetFileNameWithoutExtension($NewFile)
 			$NewPsFile = "$([System.IO.Path]::GetDirectoryName($NewFile))\$($NewPsmFile).psm1"
 @"
@@ -44,12 +44,12 @@ Function Api_Create_Template
 "@ | Out-File -FilePath $NewFile -Encoding utf8 -ErrorAction SilentlyContinue
 
 @"
-Write-Host "  Test $($RandomGuid)"
+Write-Host "  Test $($NewPsmFile).psm1 $($RandomGuid)"
 "@ | Out-File -FilePath $NewPsFile -Encoding utf8 -ErrorAction SilentlyContinue
 		}
 		default {
 @"
-Write-Host "  Test"
+Write-Host "  Test $($NewFile) $($RandomGuid)"
 "@ | Out-File -FilePath $NewFile -Encoding utf8 -ErrorAction SilentlyContinue
 		}
 	}
@@ -115,6 +115,7 @@ Function Solutions_API_Command
 			API_Menu_Shortcuts_PFA
 		}
 		default {
+
 			API_Process_Rule_Name -RuleName $Name
 		}
 	}
@@ -181,12 +182,12 @@ Function API_Process_Rule_Name
 			Write-Host $GetImportFileName -ForegroundColor Green
 
 			Write-Host "  $($lang.Import): " -NoNewline
-
 			if (Test-Path -Path $GetImportFileName -PathType leaf) {
 				Write-Host $lang.UpdateAvailable -BackgroundColor DarkGreen -ForegroundColor White
 				Write-Host "  $('-' * 80)"
 
-				Import-Module -Name $GetImportFileName -Scope Global -Force | Out-Null
+				Import-Module -Name $GetImportFileName -Force | Out-Null
+				Remove-Module -Name $GetImportFileName -Force -ErrorAction Ignore | Out-Null
 
 				Write-Host
 				Write-Host "  $('-' * 80)"
