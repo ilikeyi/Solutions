@@ -1,0 +1,137 @@
+﻿ConvertFrom-StringData -StringData @'
+	# cs-cz
+	# Czech (Czech Republic)
+
+	IsCreate                        = Vytvořit
+	Solution                        = Řešení
+	EnabledSoftwarePacker           = Sbírka
+	EnabledUnattend                 = Je třeba odpovědět předem
+	EnabledEnglish                  = Rozmístění motoru
+	UnattendSelectVer               = Vyberte jazyk řešení "Odpovědět".
+	UnattendLangPack                = Vyberte jazykový balíček 'Solution'
+	UnattendSelectSingleInstl       = Vícejazyčný, volitelný během instalace
+	UnattendSelectMulti             = Vícejazyčný
+	UnattendSelectDisk              = Vyberte řešení Autounattend.xml
+	UnattendSelectSemi              = Poloautomatický je platný pro všechny způsoby instalace
+	UnattendSelectUefi              = UEFI se nainstaluje automaticky a je třeba jej specifikovat
+	UnattendSelectLegacy            = Legacy se nainstaluje automaticky a je třeba ji specifikovat
+	NeedSpecified                   = Vyberte, co je třeba specifikovat:
+	OOBESetupOS                     = Instalační rozhraní
+	OOBEProductKey                  = Produktový klíč
+	OOBEOSImage                     = Vyberte operační systém, který chcete nainstalovat
+	OOBEEula                        = Přijměte licenční podmínky
+	OOBEDoNotServerManager          = Správce serveru se nespustí automaticky při přihlášení
+	OOBEIE                          = Konfigurace rozšířeného zabezpečení aplikace Internet Explorer
+	OOBEIEAdmin                     = Zavřete "Administrátor"
+	OObeIEUser                      = Zavřít "Uživatelé"
+
+	OOBE_Init_User                  = První uživatel během rozbalování
+	OOBE_init_Create                = Vytvořte si vlastní uživatele
+	OOBE_init_Specified             = Zadejte uživatele
+	OOBE_Init_Autologin             = Automatické přihlášení
+
+	InstlMode                       = Způsob instalace
+	Business                        = Obchodní verze
+	BusinessTips                    = V závislosti na EI.cfg je třeba pro automatickou instalaci zadat číslo indexu.
+	Consumer                        = Spotřebitelská verze
+	ConsumerTips                    = Nespoléhá se na EI.cfg Pro automatickou instalaci je nutné zadat sériové číslo.
+	CreateUnattendISO               = [ISO]:\\Autounattend.xml
+	CreateUnattendISOSources        = [ISO]:\\sources\\Unattend.xml
+	CreateUnattendISOSourcesOEM     = [ISO]:\\sources\\$OEM$\\$$\\Panther\\unattend.xml
+	CreateUnattendPanther           = [připojit k]:\\Windows\\Panther\\unattend.xml
+
+	VerifyName                      = Přidat na systémový disk název domovského adresáře
+	VerifyNameUse                   = Ověřte, že název adresáře nemůže obsahovat
+	VerifyNameTips                  = Je povolena pouze kombinace anglických písmen a číslic a nesmí obsahovat: mezery, délka nesmí být větší než 260 znaků, \\ / : * ?
+	VerifyNumberFailed              = Ověření se nezdařilo, zadejte prosím správné číslo.
+	VerifyNameSync                  = Nastavit název adresáře jako primární uživatelské jméno
+	VerifyNameSyncTips              = Již nepoužívané administrator。
+	ManualKey                       = Vyberte nebo zadejte kód Product Key ručně
+	ManualKeyTips                   = Zadejte platný kód Product Key Pokud vybraný region není k dispozici, přejděte na oficiální web společnosti Microsoft a zkontrolujte.
+	ManualKeyError                  = Zadaný kód Product Key je neplatný.
+	KMSLink1                        = Klíč nastavení klienta KMS
+	KMSUnlock                       = Zobrazit všechna známá sériová čísla KMS
+	KMSSelect                       = Vyberte sériové číslo VOL
+	KMSKey                          = Sériové číslo
+	KMSKeySelect                    = Změňte sériové číslo produktu
+	ClearOld                        = Vyčistěte staré soubory
+	SolutionsSkip                   = Přeskočit vytváření řešení
+	SolutionsTo                     = Přidat "řešení" do:
+	SolutionsToMount                = Připojeno nebo přidáno do fronty
+	SolutionsToError                = Některé funkce byly deaktivovány, pokud je potřebujete vynutit, klikněte na tlačítko "Odemknout".\n\n
+	UnlockBoot                      = Odemknout
+	SolutionsToSources              = Domovský adresář, [ISO]:\\Sources\\$OEM$
+	SolutionsScript                 = Vyberte verzi 'Deployment Engine'
+	SolutionsEngineRegionaUTF8      = Beta: Globální podpora jazyků pomocí Unicode UTF-8
+	SolutionsEngineRegionaUTF8Tips  = Zdá se, že po otevření může způsobit nové problémy. Nedoporučuje se.
+	SolutionsEngineRegionaling      = Změnit na nové národní prostředí:
+	SolutionsEngineRegionalingTips  = Změňte národní prostředí systému, což ovlivní všechny uživatelské účty v počítači.
+	SolutionsEngineRegional         = Změňte národní prostředí systému
+	SolutionsEngineRegionalTips     = Globální výchozí: {0}, změněno na: {1}
+	SolutionsEngineCopyPublic       = Zkopírujte veřejné {0} do nasazení
+	SolutionsEngineCopyOpen         = Procházet umístění veřejného úložiště {0}
+	EnglineDoneReboot               = Restartujte počítač
+	SolutionsTipsArm64              = Upřednostňuje se balíček arm64, který vybíráte v pořadí: x64, x86.
+	SolutionsTipsAMD64              = Preferujte balíčky x64 v pořadí: x86.
+	SolutionsTipsX86                = Jsou přidány pouze balíčky x86.
+	SolutionsReport                 = Vygenerujte zprávu před nasazením
+	SolutionsDeployOfficeInstall    = Nasaďte instalační balíček Microsoft Office
+	SolutionsDeployOfficeChange     = Změnit konfiguraci nasazení
+	SolutionsDeployOfficePre        = Předinstalovaná verze balíčku
+	SolutionsDeployOfficeNoSelect   = Není vybrán žádný předinstalační balíček Office
+	SolutionsDeployOfficeVersion    = Verze {0}
+	SolutionsDeployOfficeOnly       = Ponechejte si určené jazykové balíčky
+	SolutionsDeployOfficeSync       = Zachovat synchronizaci jazyka s konfigurací nasazení
+	SolutionsDeployOfficeSyncTips   = Po synchronizaci nemůže instalační skript určit preferovaný jazyk.
+	DeploySyncMainLanguage          = Synchronizujte s hlavním jazykem
+	SolutionsDeployOfficeTo         = Nasaďte instalační balíček do
+	SolutionsDeployOfficeToPublic   = Veřejná plocha
+	DeployPackage                   = Nasaďte vlastní sbírkový balíček
+	DeployPackageSelect             = Vyberte si předsběrný balíček
+	DeployPackageTo                 = Nasaďte předsbírkový balíček do
+	DeployPackageToRoot             = Systémový disk:\\Package
+	DeployPackageToSolutions        = V domovském adresáři řešení
+	DeployTimeZone                  = Časové pásmo
+	DeployTimeZoneChange            = Změnit časové pásmo
+	DeployTimeZoneChangeTips        = Nastavte výchozí časovou oblast, ve které by měly být zodpovězeny předběžné odpovědi, podle jazykové oblasti.
+
+	Deploy_Tags                     = Deployment tag
+	FirstExpProcess                 = První zkušenost, během nasazení předpoklady:
+	FirstExpProcessTips             = Po splnění předpokladů restartujte počítač, abyste vyřešili problém vyžadující restartování, aby se projevil.
+	FirstExpFinish                  = První zkušenost po splnění předpokladů
+	FirstExpSyncMark                = Povolit globální vyhledávání a synchronizaci značek nasazení
+	FirstExpUpdate                  = Povolit automatické aktualizace
+	FirstExpDefender                = Přidat domovský adresář do Defend vyloučených adresářů
+	FirstExpSyncLabel               = Jmenovka svazku systémového disku: Název domovského adresáře je stejný
+	MultipleLanguages               = Při setkání s více jazyky: 
+	NetworkLocationWizard           = Průvodce umístěním v síti
+	PreAppxCleanup                  = Blokujte úlohy údržby vyčištěním Appx
+	LanguageComponents              = Zabraňte vyčištění nepoužívaných jazykových balíčků funkcí na vyžádání
+	PreventCleaningUnusedLP         = Zabraňte čištění nepoužívaných jazykových balíčků
+	FirstExpContextCustomize        = Přidat personalizovanou "kontextovou nabídku"
+	FirstExpContextCustomizeShift   = Podržte klávesu Shift a klikněte pravým tlačítkem
+
+	FirstExpFinishTips              = Po dokončení nasazení neprobíhají žádné důležité události. Doporučuje se zrušit.
+	FirstExpFinishPopup             = Otevřete hlavní rozhraní modulu nasazení
+	FirstExpFinishOnDemand          = Povolit první náhled podle plánu
+	SolutionsEngineRestricted       = Zásady provádění obnovení Powershell: omezeno
+	EnglineDoneClearFull            = Smažte celé řešení
+	EnglineDoneClear                = Odstraňte modul nasazení a ponechte ostatní
+
+	Unattend_Auto_Fix_Next          = Až se s tím příště setkáte, automaticky vyberte potřebné položky, abyste to automaticky opravili.
+	Unattend_Auto_Fix               = Automaticky opravit, pokud nejsou vybrány předpoklady
+	Unattend_Auto_Fix_Tips          = Když přidáte modul nasazení a nevyberete první příkaz spuštění, automaticky se opraví a vybere: Zásady provádění Powershell: spouštějte modul nasazení bez jakýchkoli omezení.
+	Unattend_Version_Tips           = Volitelně zahrnout pouze, použít výchozí pro podporu ARM64, x64, x86.
+	First_Run_Commmand              = Příkazy, které se mají spustit při prvním nasazení
+	First_Run_Commmand_Setting      = Vyberte příkaz ke spuštění
+	Command_Not_Class               = Již žádná automatická klasifikace při filtrování
+	Command_WinSetup                = Windows Instalovat
+	Command_WinPE                   = Windows PE
+	Command_Tips                    = Přiřaďte aplikaci First Run App k: Instalace Windows, Windows PE\n\nVšimněte si, že když je přidán modul nasazení, musíte při prvním spuštění zkontrolovat následující: Zásady spouštění prostředí Powershell: Omezeno, povolit spouštění skriptů modulu nasazení.
+	Waring_Not_Select_Command       = Při přidávání modulu nasazení nebyla vybrána zásada provádění Powershell: Nenastavujte žádná omezení a povolte spuštění skriptu modulu nasazení, vyberte jej a zkuste to znovu, nebo klikněte na "Rychlá oprava není vybrána".
+	Quic_Fix_Not_Select_Command     = Rychlá oprava není možnost
+
+	PowerShell_Unrestricted         = Zásady provádění Powershell: žádná omezení
+	Allow_Running_Deploy_Engine     = Povolit spouštění skriptů modulu nasazení
+	Bypass_TPM                      = Vynechání kontrol TPM během instalace
+'@
