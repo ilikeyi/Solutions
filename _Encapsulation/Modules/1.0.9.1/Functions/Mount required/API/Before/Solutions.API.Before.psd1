@@ -1,7 +1,7 @@
 ﻿@{
 	RootModule        = 'Solutions.API.Before.psm1'
 	ModuleVersion     = '1.0.0.0'
-	GUID              = '90acc234-d495-4c90-9d66-dc457ab892be'
+	GUID              = '4d0da6d1-0aec-40e4-ac36-85b1bf779efd'
 	Author            = 'Yi'
 	Copyright         = 'FengYi, Inc. All rights reserved.'
 	Description       = ''

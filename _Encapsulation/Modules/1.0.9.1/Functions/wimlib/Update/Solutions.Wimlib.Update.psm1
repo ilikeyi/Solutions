@@ -204,8 +204,15 @@ Function Wimlib_Extract_And_Update
 
 		$UI_Main_Error.Text = ""
 		$UI_Main_Error_Icon.Image = $null
-		$UI_Main_Extract_Rule_Select_Apps.controls.clear()
-		return
+		
+		$UI_Main_Menu.Controls | ForEach-Object {
+			if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
+				if ($_.Name -eq "SelectFile") {
+					$_.controls.clear()
+				}
+			}
+		}
+
 
 		<#
 			.计算公式：
@@ -980,6 +987,11 @@ Function Wimlib_Extract_And_Update
 						Text           = $lang.NoWork
 					}
 					$UI_Main_Menu.controls.AddRange($UI_Main_Rule_Available_No)
+
+					$UI_Main_Refresh_Sources.Enabled = $False
+					$UI_Main_Select_Custom_Sources.Enabled = $False
+					$UI_Main_Extract_File.Enabled = $False
+					$UI_Main_Update.Enabled = $False
 				}
 
 				break
