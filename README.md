@@ -110,9 +110,9 @@ Detailed introduction
 
 <li>Shortcuts User Guide
 
-![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Shortcut.webp)
+![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Shortcut/Shortcut.webp)
 
-Vector original file, document version Illustator 2020, open it with Adobe Illustrator 2024 or higher <a href="https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Shortcut.ai">Github</a> | <a href="https://fengyi.tel/download/solutions/Screenshots/Shortcut.ai">Yi</a>
+Vector original file, document version Illustator 2020, open it with Adobe Illustrator 2024 or higher <a href="https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Shortcut/Shortcut.ai">Github</a> | <a href="https://fengyi.tel/download/solutions/Screenshots/Shortcut/Shortcut.ai">Yi</a>
 </li>
 
  <li>Technique
