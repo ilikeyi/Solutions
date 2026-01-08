@@ -114,6 +114,15 @@ Detailed introduction
 
 Vector original file, document version Illustator 2020, open it with Adobe Illustrator 2024 or higher <a href="https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Shortcut.ai">Github</a> | <a href="https://fengyi.tel/download/solutions/Screenshots/Shortcut.ai">Yi</a>
 </li>
+
+ <li>Technique
+      <ul>
+<li>What is the fastest way to obtain a report from Install.wim
+
+![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Technique/Technique.Report.webp)
+</li>
+      </ul>
+ </li>
  </li>
 </ul>
 </details>
