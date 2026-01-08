@@ -117,7 +117,7 @@ Vector original file, document version Illustator 2020, open it with Adobe Illus
 
  <li>Technique
       <ul>
-<li>How can you quickly discard resources that are no longer needed after completing an encapsulation event?
+<li>How to quickly discard unused resources after completing an encapsulated event
 
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Technique/Technique.Abandon.webp)
 </li>
