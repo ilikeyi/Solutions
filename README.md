@@ -117,6 +117,11 @@ Vector original file, document version Illustator 2020, open it with Adobe Illus
 
  <li>Technique
       <ul>
+<li>How can you quickly discard resources that are no longer needed after completing an encapsulation event?
+
+![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Technique/Technique.Abandon.webp)
+</li>
+
 <li>What is the fastest way to obtain a report from Install.wim
 
 ![Image.Sources](https://github.com/ilikeyi/Solutions/raw/refs/heads/main/_Learn/Screenshots/Technique/Technique.Report.webp)
