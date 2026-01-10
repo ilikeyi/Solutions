@@ -1,0 +1,16 @@
+{
+	"author": {
+		"name": "Yi",
+		"url":  "https://fengyi.tel"
+	},
+	"version": {
+		"buildstring": "yi_release.1.26.2025",
+		"version":     "1.1.0.0",
+		"minau":       "1.0.0.0"
+	},
+	"changelog": {
+		"title": "Yi's Solutions - Change log",
+		"log":   "  - Mounting of Install.esd is now supported; DISM version must be greater than 26100.2454; *New\n  - Allows adding 'search sources, directories, and RAMDISK' to Windows Defender exclusions; *New\n  - Added Windows 11 25H2 video tutorials, autonomous driving solutions, and packaging scripts. * New\n  - Deleted the outdated 23H2 packaging tutorials. * Del\n  - Routing function: self-healing sequence after adding * New\n  - API: Application Programming Interface, Shortcut: (API *) * New\n  - New shortcut commands and dynamic UI * New"
+	},
+	"url": "https://fengyi.tel/download/solutions/latest.zip"
+}

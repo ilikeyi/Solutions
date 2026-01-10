@@ -410,8 +410,19 @@ Function Image_Select_Tasks_UI
 		param (
 			$Uid,
 			$Group,
-			$Filename
+			$Filename,
+			[switch]$Mainquests
 		)
+
+		$MainquestsNew = New-Object System.Windows.Forms.Label -Property @{
+			Height    = 30
+			Width     = 245
+		}
+		if ($Mainquests) {
+			$MainquestsNew.Text = "$($lang.Autopilot_Scheme): $($lang.Main_quests)"
+		} else {
+			$MainquestsNew.Text = "$($lang.Autopilot_Scheme): $($lang.Side_quests)"
+		}
 
 		$NewFilenameName = New-Object System.Windows.Forms.Label -Property @{
 			Height    = 30
@@ -483,6 +494,7 @@ Function Image_Select_Tasks_UI
 		}
 
 		$UI_Primary_Key_Select.controls.AddRange((
+			$MainquestsNew,
 			$NewFilenameName,
 			$UI_Main_Pri_Key_Setting_Pri,
 			$NewOkGoTo,
@@ -516,7 +528,7 @@ Function Image_Select_Tasks_UI
 
 	$UI_Primary_Key_Select = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
-		Height         = 585
+		Height         = 575
 		Width          = 280
 		autoSizeMode   = 1
 		Location       = '620,15'
@@ -755,13 +767,13 @@ Function Image_Select_Tasks_UI
 	#endregion
 
 	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "620,613"
+		Location       = "620,603"
 		Height         = 20
 		Width          = 20
 		SizeMode       = "StretchImage"
 	}
 	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
-		Location       = "645,615"
+		Location       = "645,605"
 		Height         = 60
 		Width          = 255
 		Text           = ""
@@ -812,7 +824,7 @@ Function Image_Select_Tasks_UI
 			}
 			$UI_Primary_Key_Select.controls.AddRange($GUIImageSelectInstall)
 
-			New_Image_Select_Tasks_Set -Uid $item.Main.Uid -Group $item.Main.Group -Filename "$($item.Main.ImageFileName).$($item.Main.Suffix)"
+			New_Image_Select_Tasks_Set -Uid $item.Main.Uid -Group $item.Main.Group -Filename "$($item.Main.ImageFileName).$($item.Main.Suffix)" -Mainquests
 			New_Image_Select_Tasks_View -ImageFilePath $TestWimFile
 		}
 

@@ -123,7 +123,7 @@ Function Image_Assign_Autopilot_Master
 	{
 		ForEach ($item in $Global:Image_Rule) {
 			if ($Global:SMExt -contains $item.Main.Suffix) {
-				Image_Select_Public_Autopilot_Add -Uid $item.Main.Uid -Group $item.Main.Group
+				Image_Select_Public_Autopilot_Add -Uid $item.Main.Uid -Group $item.Main.Group -Mainquests
 
 				if ($item.Expand.Count -gt 0) {
 					ForEach ($Expand in $item.Expand) {
@@ -141,7 +141,8 @@ Function Image_Assign_Autopilot_Master
 		param
 		(
 			$Uid,
-			$Group
+			$Group,
+			[switch]$Mainquests
 		)
 
 		<#
@@ -159,11 +160,17 @@ Function Image_Assign_Autopilot_Master
 			autoScroll     = $True
 		}
 
-		$GUIImageSelectGroup = New-Object system.Windows.Forms.Label -Property @{
-			Height         = 55
-			Width          = 450
-			Text           = "$($lang.Event_Group): $($Group)`n$($lang.Unique_Name): $($Uid)"
+		if ($Mainquests) {
+			$MainquestsNew = $lang.Main_quests
+		} else {
+			$MainquestsNew = $lang.Side_quests
 		}
+		$GUIImageSelectGroup = New-Object system.Windows.Forms.Label -Property @{
+			Height         = 70
+			Width          = 450
+			Text           = "$($lang.Event_Group): $($Group)`n$($lang.Unique_Name): $($Uid)`n$($lang.Autopilot_Scheme): $($MainquestsNew)"
+		}
+
 		$paneel.controls.AddRange($GUIImageSelectGroup)
 
 		<#
@@ -399,7 +406,8 @@ Function Image_Assign_Autopilot_Master
 			$Group,
 			$Uid,
 			$MainUid,
-			$ImageFilePath
+			$ImageFilePath,
+			[switch]$Mainquests
 		)
 
 		<#
@@ -418,10 +426,16 @@ Function Image_Assign_Autopilot_Master
 			Enabled        = $False
 		}
 
+		if ($Mainquests) {
+			$MainquestsNew = $lang.Main_quests
+		} else {
+			$MainquestsNew = $lang.Side_quests
+		}
+
 		$GUIImageSelectGroup = New-Object system.Windows.Forms.Label -Property @{
-			Height         = 55
+			Height         = 70
 			Width          = 450
-			Text           = "$($lang.Event_Group): $($Group)`n$($lang.Unique_Name): $($Uid)"
+			Text           = "$($lang.Event_Group): $($Group)`n$($lang.Unique_Name): $($Uid)`n$($lang.Autopilot_Scheme): $($MainquestsNew)"
 		}
 
 		<#
@@ -2180,7 +2194,7 @@ Function Image_Assign_Autopilot_Master
 
 						#region 获取到主文件里有映像内容
 						if ($Verify_Main_WIM.Count -gt 0) {
-							Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -Uid $item.Main.Uid -MainUid $item.Main.Uid -Group $item.Main.Group -ImageFilePath $NewFileFullPathMain 
+							Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -Uid $item.Main.Uid -MainUid $item.Main.Uid -Group $item.Main.Group -ImageFilePath $NewFileFullPathMain -Mainquests
 
 							#region 获取是否挂载
 							if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.Uid)").Value) {
@@ -2331,7 +2345,7 @@ Function Image_Assign_Autopilot_Master
 						}
 
 						if ($Verify_Main_WIM.Count -gt 0) {
-							Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Tasks $item.Main -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -Uid $item.Main.Uid -MainUid $item.Main.Uid -Group $item.Main.Group -ImageFilePath $NewFileFullPathMain
+							Image_Select_Refresh_Install_Boot_WinRE_Autopilot_Add -Tasks $item.Main -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -Uid $item.Main.Uid -MainUid $item.Main.Uid -Group $item.Main.Group -ImageFilePath $NewFileFullPathMain -Mainquests
 
 							if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.Uid)").Value) {
 								$GUIImageSelectInstall.ForeColor = "Red"

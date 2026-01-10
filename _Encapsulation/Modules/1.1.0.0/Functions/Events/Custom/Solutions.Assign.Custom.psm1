@@ -44,7 +44,8 @@ Function Image_Assign_Event_Master
 			$Group,
 			$Uid,
 			$MainUid,
-			$ImageFilePath
+			$ImageFilePath,
+			[switch]$Mainquests
 		)
 
 		<#
@@ -63,10 +64,16 @@ Function Image_Assign_Event_Master
 			Enabled        = $False
 		}
 
+		if ($Mainquests) {
+			$MainquestsNew = $lang.Main_quests
+		} else {
+			$MainquestsNew = $lang.Side_quests
+		}
+
 		$GUIImageSelectGroup = New-Object system.Windows.Forms.Label -Property @{
-			Height         = 55
+			Height         = 70
 			Width          = 450
-			Text           = "$($lang.Event_Group): $($Group)`n$($lang.Unique_Name): $($Uid)"
+			Text           = "$($lang.Event_Group): $($Group)`n$($lang.Unique_Name): $($Uid)`n$($lang.Autopilot_Scheme): $($MainquestsNew)"
 		}
 
 		<#
@@ -1964,7 +1971,7 @@ Function Image_Assign_Event_Master
 						#region 获取到主文件里有映像内容
 						if ($Verify_Main_WIM.Count -gt 0) {
 							$UI_Main_Select_Wim.controls.AddRange($UI_Main_Pri_Key_Setting_Pri)
-							Image_Select_Refresh_Install_Boot_WinRE_Add -Uid $item.Main.Uid -Group $item.Main.Group -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -MainUid $item.Main.Uid -ImageFilePath $NewFileFullPathMain 
+							Image_Select_Refresh_Install_Boot_WinRE_Add -Uid $item.Main.Uid -Group $item.Main.Group -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -MainUid $item.Main.Uid -ImageFilePath $NewFileFullPathMain -Mainquests
 
 							#region 获取是否挂载
 							if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.Uid)").Value) {
@@ -2181,7 +2188,7 @@ Function Image_Assign_Event_Master
 
 						if ($Verify_Main_WIM.Count -gt 0) {
 							$UI_Main_Select_Wim.controls.AddRange($UI_Main_Pri_Key_Setting_Pri)
-							Image_Select_Refresh_Install_Boot_WinRE_Add -Uid $item.Main.Uid -Group $item.Main.Group -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -MainUid $item.Main.Uid -ImageFilePath $NewFileFullPathMain
+							Image_Select_Refresh_Install_Boot_WinRE_Add -Uid $item.Main.Uid -Group $item.Main.Group -Master $item.Main.ImageFileName -ImageName $item.Main.ImageFileName -MainUid $item.Main.Uid -ImageFilePath $NewFileFullPathMain -Mainquests
 
 							if ((Get-Variable -Scope global -Name "Mark_Is_Mount_$($item.Main.Uid)").Value) {
 								$GUIImageSelectInstall.ForeColor = "Red"
