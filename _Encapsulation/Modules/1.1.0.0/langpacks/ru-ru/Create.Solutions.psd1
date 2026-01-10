@@ -1,0 +1,137 @@
+﻿ConvertFrom-StringData -StringData @'
+	# ru-RU
+	# Russian (Russia)
+
+	IsCreate                        = Создавать
+	Solution                        = Решение
+	EnabledSoftwarePacker           = Коллекция
+	EnabledUnattend                 = Надо ответить заранее
+	EnabledEnglish                  = Механизм развертывания
+	UnattendSelectVer               = Выберите язык решения "Ответить на"
+	UnattendLangPack                = Выберите языковой пакет "Решение"
+	UnattendSelectSingleInstl       = Многоязычность, опционально во время установки
+	UnattendSelectMulti             = Многоязычный
+	UnattendSelectDisk              = Выберите решение Autounattend.xml.
+	UnattendSelectSemi              = Полуавтоматический режим действителен для всех способов установки.
+	UnattendSelectUefi              = UEFI устанавливается автоматически, и его необходимо указать.
+	UnattendSelectLegacy            = Legacy устанавливается автоматически, и его необходимо указать.
+	NeedSpecified                   = Пожалуйста, выберите, что необходимо указать:
+	OOBESetupOS                     = Интерфейс установки
+	OOBEProductKey                  = Ключ продукта
+	OOBEOSImage                     = Выберите операционную систему для установки
+	OOBEEula                        = Примите условия лицензии
+	OOBEDoNotServerManager          = Диспетчер серверов не запускается автоматически при входе в систему
+	OOBEIE                          = Конфигурация усиленной безопасности Internet Explorer
+	OOBEIEAdmin                     = Закройте "Администратор"
+	OObeIEUser                      = Закройте "Пользователи".
+
+	OOBE_Init_User                  = Первоначальный пользователь во время распаковки
+	OOBE_init_Create                = Создание индивидуальных пользователей
+	OOBE_init_Specified             = Укажите пользователя
+	OOBE_Init_Autologin             = Автоматический вход
+
+	InstlMode                       = Способ установки
+	Business                        = Бизнес-версия
+	BusinessTips                    = Зависит от EI.cfg, для автоматической установки необходимо указать индексный номер.
+	Consumer                        = Потребительская версия
+	ConsumerTips                    = Он не зависит от EI.cfg. Для автоматической установки необходимо указать серийный номер. При паузе в интерфейсе выбора версии необходимо указать индексный номер.
+	CreateUnattendISO               = [ISO]:\\Autounattend.xml
+	CreateUnattendISOSources        = [ISO]:\\sources\\Unattend.xml
+	CreateUnattendISOSourcesOEM     = [ISO]:\\sources\\$OEM$\\$$\\Panther\\unattend.xml
+	CreateUnattendPanther           = [Подключиться к]:\\Windows\\Panther\\unattend.xml
+
+	VerifyName                      = Добавить имя домашнего каталога системного диска
+	VerifyNameUse                   = Убедитесь, что имя каталога не может содержать
+	VerifyNameTips                  = Допускается только сочетание английских букв и цифр и не может содержать: пробелов, длина не может превышать 260 символов, \\ / : * ? & @ ! "" < > |
+	VerifyNumberFailed              = Проверка не удалась, пожалуйста, введите правильный номер.
+	VerifyNameSync                  = Установить имя каталога в качестве основного имени пользователя
+	VerifyNameSyncTips              = Больше не используется administrator
+	ManualKey                       = Выберите или введите ключ продукта вручную
+	ManualKeyTips                   = Введите действительный ключ продукта. Если выбранный регион недоступен, перейдите на официальный сайт Microsoft и проверьте.
+	ManualKeyError                  = Введенный вами ключ продукта недействителен.
+	KMSLink1                        = Ключ настроек клиента KMS
+	KMSUnlock                       = Показать все известные серийные номера KMS
+	KMSSelect                       = Пожалуйста, выберите серийный номер VOL
+	KMSKey                          = Серийный номер
+	KMSKeySelect                    = Изменить серийный номер продукта
+	ClearOld                        = Очистите старые файлы
+	SolutionsSkip                   = Пропустить создание решения
+	SolutionsTo                     = Добавьте "решение" к:
+	SolutionsToMount                = Установлено или добавлено в очередь
+	SolutionsToError                = Некоторые функции отключены. Если вам нужно принудительно их использовать, нажмите кнопку "Разблокировать". \n\n
+	UnlockBoot                      = Разблокировать
+	SolutionsToSources              = Домашний каталог,[ISO]:\\Sources\\$OEM$
+	SolutionsScript                 = Выберите версию "Механизм развертывания".
+	SolutionsEngineRegionaUTF8      = Бета-версия: глобальная языковая поддержка с использованием Unicode UTF-8.
+	SolutionsEngineRegionaUTF8Tips  = Похоже, что после открытия это может вызвать новые проблемы. Не рекомендуется.
+	SolutionsEngineRegionaling      = Перейдите на новую локаль:
+	SolutionsEngineRegionalingTips  = Измените языковой стандарт системы, что повлияет на все учетные записи пользователей на компьютере.
+	SolutionsEngineRegional         = Изменить локаль системы
+	SolutionsEngineRegionalTips     = Глобальное значение по умолчанию: {0}, изменено на: {1}.
+	SolutionsEngineCopyPublic       = Скопируйте общедоступный {0} в развертывание.
+	SolutionsEngineCopyOpen         = Просмотрите местоположение общедоступного репозитория {0}
+	EnglineDoneReboot               = Перезагрузите компьютер
+	SolutionsTipsArm64              = Пакет Arm64 является предпочтительным, и вы выбираете по порядку: x64, x86.
+	SolutionsTipsAMD64              = Предпочитайте пакеты x64 в следующем порядке: x86.
+	SolutionsTipsX86                = Добавляются только пакеты x86.
+	SolutionsReport                 = Создать отчет перед развертыванием
+	SolutionsDeployOfficeInstall    = Развертывание установочного пакета Microsoft Office
+	SolutionsDeployOfficeChange     = Изменение конфигурации развертывания
+	SolutionsDeployOfficePre        = Предустановленная версия пакета
+	SolutionsDeployOfficeNoSelect   = Пакет предустановки Office не выбран
+	SolutionsDeployOfficeVersion    = {0} версия
+	SolutionsDeployOfficeOnly       = Сохранять указанные языковые пакеты
+	SolutionsDeployOfficeSync       = Сохранять языковую синхронизацию с конфигурацией развертывания.
+	SolutionsDeployOfficeSyncTips   = После синхронизации сценарий установки не может определить предпочтительный язык.
+	DeploySyncMainLanguage          = Синхронизировать с основным языком
+	SolutionsDeployOfficeTo         = Разверните установочный пакет на
+	SolutionsDeployOfficeToPublic   = Общедоступный рабочий стол
+	DeployPackage                   = Развертывание пользовательского пакета сбора
+	DeployPackageSelect             = Выберите пакет предварительной коллекции
+	DeployPackageTo                 = Разверните пакет предварительного сбора в
+	DeployPackageToRoot             = Системный диск:\\Package
+	DeployPackageToSolutions        = В домашнем каталоге решения
+	DeployTimeZone                  = Часовой пояс
+	DeployTimeZoneChange            = Изменить часовой пояс
+	DeployTimeZoneChangeTips        = Установите временной интервал по умолчанию, в котором следует отвечать на предварительные ответы, в зависимости от языкового региона.
+
+	Deploy_Tags                     = Тег развертывания
+	FirstExpProcess                 = Первый опыт во время развертывания. Предварительные условия:
+	FirstExpProcessTips             = После выполнения предварительных условий перезагрузите компьютер, чтобы решить проблему, требующую перезагрузки для вступления в силу.
+	FirstExpFinish                  = Первый опыт после выполнения предварительных требований
+	FirstExpSyncMark                = Разрешить глобальный поиск и синхронизацию тегов развертывания
+	FirstExpUpdate                  = Разрешить автоматические обновления
+	FirstExpDefender                = Добавить домашний каталог для защиты исключенных каталогов
+	FirstExpSyncLabel               = Метка тома системного диска: имя домашнего каталога такое же.
+	MultipleLanguages               = При обнаружении нескольких языков:
+	NetworkLocationWizard           = Мастер сетевого расположения
+	PreAppxCleanup                  = Блокировать задачи обслуживания очистки Appx
+	LanguageComponents              = Запретить очистку неиспользуемых языковых пакетов функций по требованию.
+	PreventCleaningUnusedLP         = Запретить очистку неиспользуемых языковых пакетов
+	FirstExpContextCustomize        = Добавьте персонализированное "контекстное меню"
+	FirstExpContextCustomizeShift   = Удерживайте клавишу Shift и щелкните правой кнопкой мыши
+
+	FirstExpFinishTips              = После завершения развертывания нет важных событий. Рекомендуется отменить.
+	FirstExpFinishPopup             = Откройте основной интерфейс механизма развертывания.
+	FirstExpFinishOnDemand          = Разрешить первый предварительный просмотр, как и планировалось
+	SolutionsEngineRestricted       = Восстановление политики выполнения Powershell: ограничено
+	EnglineDoneClearFull            = Удалить все решение
+	EnglineDoneClear                = Удалите механизм развертывания и сохраните остальные.
+
+	Unattend_Auto_Fix_Next          = В следующий раз, когда вы столкнетесь с этим, автоматически выберите необходимые элементы, чтобы автоматически исправить это.
+	Unattend_Auto_Fix               = Автоматическое восстановление, если не выбраны предварительные условия.
+	Unattend_Auto_Fix_Tips          = При добавлении механизма развертывания и отсутствии выбора команды первого запуска она автоматически исправляется и выбирается: Политика выполнения Powershell: запускать механизм развертывания без каких-либо ограничений.
+	Unattend_Version_Tips           = Необязательно включать, используйте значение по умолчанию для поддержки ARM64, x64, x86.
+	First_Run_Commmand              = Команды, которые необходимо выполнить при первом развертывании
+	First_Run_Commmand_Setting      = Выберите команду для запуска
+	Command_Not_Class               = Больше не классифицируется автоматически при фильтрации.
+	Command_WinSetup                = Установка Windows
+	Command_WinPE                   = Windows PE
+	Command_Tips                    = Назначьте приложение первого запуска для: установки Windows, Windows PE\n\nОбратите внимание, что при добавлении механизма развертывания при первом запуске необходимо проверить следующее: Политика выполнения Powershell: Ограничено, разрешить запуск сценариев механизма развертывания.
+	Waring_Not_Select_Command       = При добавлении механизма развертывания не была выбрана политика выполнения Powershell: Не устанавливайте никаких ограничений и разрешите запуск сценария механизма развертывания. Выберите ее и повторите попытку или нажмите "Быстрое исправление не выбрано".
+	Quic_Fix_Not_Select_Command     = Быстрое исправление не вариант
+
+	PowerShell_Unrestricted         = Политика выполнения Powershell: нет ограничений
+	Allow_Running_Deploy_Engine     = Разрешить запуск сценариев механизма развертывания
+	Bypass_TPM                      = Обход проверок TPM во время установки
+'@
