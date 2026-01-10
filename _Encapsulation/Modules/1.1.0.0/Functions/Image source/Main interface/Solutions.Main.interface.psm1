@@ -10261,6 +10261,8 @@ Function Image_Select
 
 						$UI_Main.Close()
 
+						Refresh_Eject_Abandon_Compatibility
+
 						Write-Host "`n  $($lang.Ok_Go_To)" -ForegroundColor Yellow
 						Write-Host "  $('-' * 80)"
 						if ([string]::IsNullOrEmpty($UI_Main_To.SelectedItem.Path)) {
@@ -10273,7 +10275,6 @@ Function Image_Select
 							}
 						}
 
-						Refresh_Eject_Abandon_Compatibility
 						ToWait -wait 2
 						Mainpage
 					}
