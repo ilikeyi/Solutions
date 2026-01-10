@@ -510,9 +510,10 @@ Function Refresh_Eject_Abandon_Compatibility
 					if ($WaitFormatTasks.Count -gt 0) {
 						if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\RAMDisk" -Name "Tips_Abandon_Terms" -ErrorAction SilentlyContinue) {
 							switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\RAMDisk" -Name "Tips_Abandon_Terms" -ErrorAction SilentlyContinue) {
-								"False" {
+								"True" {
 									Eject_Abandon_Agreement
 								}
+								"False" {}
 							}
 						} else {
 							Eject_Abandon_Agreement

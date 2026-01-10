@@ -812,7 +812,7 @@ Function Image_Assign_Event_Master
 		}
 
 		<#
-			.允许自动开启快速抛弃方式
+			.允许开启快速抛弃方式
 		#>
 		$UI_Main_Eject_Mount_Abandon_Allow = New-Object System.Windows.Forms.CheckBox -Property @{
 			Height         = 55

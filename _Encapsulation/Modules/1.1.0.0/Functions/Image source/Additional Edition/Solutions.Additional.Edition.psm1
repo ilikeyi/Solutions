@@ -106,6 +106,16 @@ Function Image_Additional_Edition_UI
 			}
 			New-Variable -Scope global -Name "Queue_Additional_Edition_Rule_$($Global:Primary_Key_Image.Uid)" -Value $NewGroup -Force
 
+			Write-Host "`n  $($lang.Abandon_Allow)" -ForegroundColor Yellow
+			Write-Host "  $('-' * 80)"
+			if ($UI_Main_Abandon_Allow.Checked) {
+				Write-Host "  $($lang.Operable)" -ForegroundColor Green
+
+				New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_Abandon_Allow_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
+			} else {
+				Write-Host "  $($lang.NoWork)" -ForegroundColor Red
+			}
+
 			$UI_Main_Error.Text = "$($lang.Save), $($lang.Done)"
 			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
 			return $True
@@ -2279,7 +2289,7 @@ Function Image_Additional_Edition_UI
 	$UI_Main_AdvOption = New-Object System.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 485
-		Location       = '560,150'
+		Location       = '560,130'
 		Text           = $lang.AdvOption
 	}
 
@@ -2289,13 +2299,13 @@ Function Image_Additional_Edition_UI
 	$UI_Main_CompressionType = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 533
-		Location       = '585,180'
+		Location       = '585,160'
 		Text           = $lang.CompressionType
 	}
 	$UI_Main_Capture_Type_Select = New-Object system.Windows.Forms.ComboBox -Property @{
 		Height         = 30
 		Width          = 220
-		Location       = '602,215'
+		Location       = '602,195'
 		Text           = ""
 		DropDownStyle  = "DropDownList"
 		Add_SelectedValueChanged = {
@@ -2318,12 +2328,22 @@ Function Image_Additional_Edition_UI
 	$UI_Main_Capture_Type_Select.DisplayMember = "Lang"
 
 	<#
+		.允许使用快速抛弃方式
+	#>
+	$UI_Main_Abandon_Allow = New-Object System.Windows.Forms.CheckBox -Property @{
+		Height         = 40
+		Width          = 495
+		Location       = '588,235'
+		Text           = $lang.Abandon_Allow
+	}
+
+	<#
 		.完成后
 	#>
 	$UI_Main_After = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 533
-		Location       = '560,275'
+		Location       = '560,305'
 		Text           = $lang.Functions_Rear
 	}
 
@@ -2333,7 +2353,7 @@ Function Image_Additional_Edition_UI
 		$UI_Main_Rebuild   = New-Object System.Windows.Forms.CheckBox -Property @{
 			Height         = 30
 			Width          = 533
-			Location       = '585,300'
+			Location       = '585,330'
 			Text           = $lang.Rebuild
 		}
 
@@ -2509,6 +2529,22 @@ Function Image_Additional_Edition_UI
 	})
 	$UI_Main_Menu.ContextMenuStrip = $UI_Main_Menu_Select
 	#endregion
+
+	<#
+		.Allow automatic activation of the quick discard method
+		.允许自动开启快速抛弃方式
+	#>
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\RAMDisk" -Name "RAMDisk" -ErrorAction SilentlyContinue) {
+		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\RAMDisk" -Name "RAMDisk" -ErrorAction SilentlyContinue) {
+			"True" {
+				$UI_Main.controls.AddRange($UI_Main_Abandon_Allow)
+
+				if ((Get-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_Abandon_Allow_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value) {
+					$UI_Main_Abandon_Allow.Checked = $True
+				}
+			}
+		}
+	}
 
 	$Script:GetEditionID = @()
 	$wimlib = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\wimlib")\wimlib-imagex.exe"
