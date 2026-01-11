@@ -235,8 +235,6 @@ Function Other_Tasks_RAMDISK
 
 	Refresh_Eject_Abandon_Agreement
 
-	Refresh_Eject_Abandon_Agreement
-
 	Write-Host "  " -NoNewline
 	Write-Host " $($lang.Abandon_Allow) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$((Get-Module -Name Solutions).Author)\Solutions\RAMDisk" -Name "RAMDisk_Accept" -ErrorAction SilentlyContinue) {

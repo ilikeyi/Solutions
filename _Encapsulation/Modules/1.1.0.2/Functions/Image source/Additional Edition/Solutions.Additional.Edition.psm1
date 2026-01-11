@@ -106,14 +106,8 @@ Function Image_Additional_Edition_UI
 			}
 			New-Variable -Scope global -Name "Queue_Additional_Edition_Rule_$($Global:Primary_Key_Image.Uid)" -Value $NewGroup -Force
 
-			Write-Host "`n  $($lang.Abandon_Allow)" -ForegroundColor Yellow
-			Write-Host "  $('-' * 80)"
 			if ($UI_Main_Abandon_Allow.Checked) {
-				Write-Host "  $($lang.Operable)" -ForegroundColor Green
-
 				New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_Abandon_Allow_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
-			} else {
-				Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 			}
 
 			$UI_Main_Error.Text = "$($lang.Save), $($lang.Done)"
