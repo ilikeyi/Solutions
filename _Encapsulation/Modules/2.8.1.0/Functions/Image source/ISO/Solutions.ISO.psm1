@@ -436,6 +436,19 @@ Function ISO_Create_UI
 		$MarkISOLabel = ""
 		$MarkFolderLabel = ""
 
+		if ($GUIISO_SP.Enabled) {
+			if ($GUIISO_SP.Checked) {
+				if ([string]::IsNullOrEmpty($GUIISO_SP_Version.Text)) {
+					$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.NoSetLabel)"
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.ico")
+					$GUIISO_SP_Version.BackColor = "LightPink"
+				} else {
+					$MarkFolderLabel += "$($GUIISO_SP_Version.Text)_"
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -name "AddWindowsVersionNumber" -value $GUIISO_SP_Version.Text
+				}
+			}
+		}
+
 		<#
 			.添加语言标签
 		#>
@@ -449,7 +462,7 @@ Function ISO_Create_UI
 				
 				$Region = Language_Region
 				ForEach ($itemRegion in $Region) {
-					if ($itemRegion.Region -eq "$($GUIISOLabelSingleISO.Text)") {
+					if ($itemRegion.Region -eq $GUIISOLabelSingleISO.Text) {
 						$MarkSelectISOLanguage = $True
 						$TempMainImageLangShort = $itemRegion.Tag
 						break
@@ -468,7 +481,11 @@ Function ISO_Create_UI
 		<#
 			.添加目录名（作者）
 		#>
-		$MarkFolderLabel += "_$($Global:Author)"
+		if ($GUIISO_Add_Author.Enabled) {
+			if ($GUIISO_Add_Author.Checked) {
+				$MarkFolderLabel += "_$($Global:Author)"
+			}
+		}
 
 		if ($GUIISOSelectOSVersion.Enabled) {
 			if ($GUIISOSelectOSVersion.Checked) {
@@ -766,6 +783,26 @@ Function ISO_Create_UI
 	}
 
 	<#
+		.事件：添加操作系统版本号
+	#>
+	$GUIISO_SP_Click = {
+		if ($GUIISO_SP.Checked) {
+			$GUIISO_SP_Version.Enabled = $True
+			Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -name "AddWindowsVersion" -value "True"
+		} else {
+			$GUIISO_SP_Version.Enabled = $False
+			Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -name "AddWindowsVersion" -value "False"
+		}
+
+		if ([string]::IsNullOrEmpty($GUIISO_SP_Version.Text)) {
+		} else {
+			Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -name "AddWindowsVersionNumber" -value $GUIISOSelectOSVersion_Select.Text
+		}
+
+		ISO_Create_Refresh_Label
+	}
+
+	<#
 		.事件：选择 Windows 版本
 	#>
 	$GUIISOSelectOSVersionClick = {
@@ -785,9 +822,8 @@ Function ISO_Create_UI
 		ISO_Create_Refresh_Label
 	}
 
-
 	<#
-		.事件：选择 Windows 版本
+		.事件：选择 代号
 	#>
 	$GUIISOSelectManualClick = {
 		if ($GUIISOSelectManual.Checked) {
@@ -1397,6 +1433,64 @@ Function ISO_Create_UI
 	}
 
 	<#
+		.添加操作系统版本号
+	#>
+	$GUIISO_SP         = New-Object System.Windows.Forms.CheckBox -Property @{
+		Height         = 30
+		Width          = 455
+		Padding        = "32,0,0,0"
+		Text           = $lang.OS_SP_Version
+		add_Click      = $GUIISO_SP_Click
+	}
+	$GUIISO_SP_Version = New-Object System.Windows.Forms.TextBox -Property @{
+		Height         = 30
+		Width          = 400
+		margin         = "53,0,0,15"
+		Text           = ""
+		BackColor      = "#FFFFFF"
+		add_Click      = {
+			ISO_Create_Not_Refresh_Label
+		}
+	}
+	$GUIISO_SP_Get     = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 35
+		Width          = 455
+		Text           = $lang.OS_SP_Get
+		Padding        = "48,0,0,0"
+		LinkColor      = "#008000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$UI_Main_Error.Text = ""
+			$UI_Main_Error_Icon.Image = $null
+
+			$GUIISO_SP_Version.Text = Auto_Get_Image_Index
+
+			if ([string]::IsNullOrEmpty($GUIISO_SP_Version.Text)) {
+				$GUIISO_SP_Version.Enabled = $False
+				$GUIISO_SP.Checked = $False
+
+				$UI_Main_Error.Text = "$($lang.OS_SP_Get), $($lang.Failed)"
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.ico")
+			} else {
+				$GUIISO_SP_Version.Enabled = $True
+				$GUIISO_SP.Checked = $True
+
+				$UI_Main_Error.Text = "$($lang.OS_SP_Get), $($lang.Done)"
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
+			}
+		}
+	}
+	$GUIISO_SP_Wrap = New-Object system.Windows.Forms.Label -Property @{
+		Height         = 30
+		Width          = 455
+	}
+
+	<#
+		.添加作者名
+	#>
+
+	<#
 		.选择 Windows 版本号
 	#>
 	$GUIISOSelectOSVersion = New-Object System.Windows.Forms.CheckBox -Property @{
@@ -1561,12 +1655,43 @@ Function ISO_Create_UI
 	}
 
 	<#
+		.添加作者名
+	#>
+	$GUIISO_Add_Author = New-Object System.Windows.Forms.CheckBox -Property @{
+		Height         = 30
+		Width          = 455
+		Margin         = "0,20,0,0"
+		Padding        = "32,0,0,0"
+		Text           = "$($lang.CreateASCAuthor): $($Global:Author)"
+		add_Click      = {
+			if ($GUIISO_Add_Author.Checked) {
+				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -name "IsISOAuthor" -value "True"
+			} else {
+				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -name "IsISOAuthor" -value "False"
+			}
+
+			ISO_Create_Not_Refresh_Label
+		}
+	}
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -Name "IsISOAuthor" -ErrorAction SilentlyContinue) {
+		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -Name "IsISOAuthor" -ErrorAction SilentlyContinue) {
+			"True" {
+				$GUIISO_Add_Author.Checked = $True
+			}
+			"False" {
+				$GUIISO_Add_Author.Checked = $False
+			}
+		}
+	} else {
+		$GUIISO_Add_Author.Checked = $False
+	}
+
+	<#
 		.添加多语言标记
 	#>
 	$GUIISOSetLangOK   = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 30
 		Width          = 455
-		Margin         = "0,20,0,0"
 		Padding        = "32,0,0,0"
 		Text           = $lang.ISOAddFlagsLang
 		Checked        = $False
@@ -3464,6 +3589,14 @@ Function ISO_Create_UI
 
 		$GUIISOAdv,
 
+		<#
+			.获取 SP 号
+		#>
+		$GUIISO_SP,
+		$GUIISO_SP_Version,
+		$GUIISO_SP_Get,
+		$GUIISO_SP_Wrap,
+
 		$GUIISOSelectOSVersion,
 		$GUIISOSelectOSVersion_Select,
 		$GUIISOSelectManual,
@@ -3477,6 +3610,7 @@ Function ISO_Create_UI
 		$GUIISOLabelMulti,
 		$GUIISOLabelSingleTitle,
 		$GUIISOLabelSingleISO,
+		$GUIISO_Add_Author,
 		$GUIISOSetLangOK,
 		$GUIISOSetLangShow,
 		$GUIISOSetVerOK,
@@ -3857,6 +3991,39 @@ Function ISO_Create_UI
 	} else {
 		$GUIISOSetVerOK.Checked = $False
 		$GUIISOSetVerShow.Enabled = $False
+	}
+
+	<#
+		.添加操作系统版本号
+	#>
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -Name "AddWindowsVersion" -ErrorAction SilentlyContinue) {
+		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -Name "AddWindowsVersion" -ErrorAction SilentlyContinue) {
+			"True" {
+				$GUIISO_SP.Checked = $True
+				$GUIISO_SP_Version.Enabled = $True
+			}
+			"False" {
+				$GUIISO_SP.Checked = $False
+				$GUIISO_SP_Version.Enabled = $False
+			}
+		}
+	} else {
+		$GUIISO_SP.Checked = $False
+		$GUIISO_SP_Version.Enabled = $False
+	}
+
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -Name "AddWindowsVersionNumber" -ErrorAction SilentlyContinue) {
+		$GUIISO_SP_Version.Text = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\ISO" -Name "AddWindowsVersionNumber" -ErrorAction SilentlyContinue
+	} else {
+		$GUIISO_SP_Version.Text = Auto_Get_Image_Index
+
+		if ([string]::IsNullOrEmpty($GUIISO_SP_Version.Text)) {
+			$GUIISO_SP_Version.Enabled = $False
+			$GUIISO_SP.Checked = $False
+		} else {
+			$GUIISO_SP_Version.Enabled = $True
+			$GUIISO_SP.Checked = $True
+		}
 	}
 
 	<#
@@ -4306,6 +4473,34 @@ Function ISO_Create_UI
 			}
 
 		<#
+			.添加操作系统版本号
+		#>
+		if ($Autopilot.VersionNumber.Enable) {
+			$GUIISO_SP.Checked = $True
+			$GUIISO_SP_Version.Enabled = $True
+
+			if ($Autopilot.VersionNumber.Code -eq "Auto") {
+				$GUIISO_SP_Version.Text = Auto_Get_Image_Index
+			} else {
+				if ([string]::IsNullOrEmpty($Autopilot.VersionNumber.InitialRelease)) {
+				} else {
+					$GUIISO_SP_Version.Text = $Autopilot.VersionNumber.InitialRelease
+				}
+			}
+
+			if ([string]::IsNullOrEmpty($GUIISO_SP_Version.Text)) {
+				$GUIISO_SP.Checked = $False
+				$GUIISO_SP_Version.Enabled = $False
+			} else {
+				$GUIISO_SP.Checked = $True
+				$GUIISO_SP_Version.Enabled = $True
+			}
+		} else {
+			$GUIISO_SP.Checked = $False
+			$GUIISO_SP_Version.Enabled = $False
+		}
+
+		<#
 			.选择 Windows 版本号
 		#>
 		if ($Autopilot.WindowsVersion.Enable) {
@@ -4461,6 +4656,15 @@ Function ISO_Create_UI
 			$GUIISO_Engline_Language_Know_Group.Checked = $True
 		} else {
 			$GUIISO_Engline_Language_Know_Group.Checked = $False
+		}
+
+		<#
+			.添加作者名
+		#>
+		if ($Autopilot.Author) {
+			$GUIISO_Add_Author.Checked = $True
+		} else {
+			$GUIISO_Add_Author.Checked = $False
 		}
 
 		<#
@@ -5198,6 +5402,56 @@ Function ISO_Create_Process
 		}
 	} else {
 		Write-Host "  $($lang.UserCanel)" -ForegroundColor Red
+	}
+}
+
+Function Auto_Get_Image_Index
+{
+	ForEach ($item in $Global:Image_Rule) {
+		if ($item.Main.Group -eq "install;install;") {
+			$TestWimFile = Join-Path -Path $item.Main.Path -ChildPath "$($item.Main.ImageFileName).$($item.Main.Suffix)"
+			if (Test-Path -Path $TestWimFile -PathType leaf) {
+				$newversionNumber = Auto_Get_Image_Index_File -ImageFilePath $TestWimFile
+				return $newversionNumber
+			}
+		}
+	}
+}
+
+Function Auto_Get_Image_Index_File
+{
+	param
+	(
+		$ImageFilePath
+	)
+
+	$wimlib = "$(Get_Arch_Path -Path "$($PSScriptRoot)\..\..\..\..\AIO\wimlib")\wimlib-imagex.exe"
+	if (Test-Path -Path $wimlib -PathType Leaf) {
+		$RandomGuid = [guid]::NewGuid()
+		$Export_To_New_Xml = Join-Path -Path $env:TEMP -ChildPath "$($RandomGuid).xml"
+		$Arguments = "info ""$($ImageFilePath)"" --extract-xml ""$($Export_To_New_Xml)"""
+		Start-Process -FilePath $wimlib -ArgumentList $Arguments -wait -nonewwindow
+
+		if (Test-Path -Path $Export_To_New_Xml -PathType Leaf) {
+			[XML]$empDetails = Get-Content $Export_To_New_Xml
+
+			ForEach ($empDetail in $empDetails.wim.IMAGE) {
+				Remove-Item -Path $Export_To_New_Xml
+				return "$($empDetail.WINDOWS.VERSION.BUILD).$($empDetail.WINDOWS.VERSION.SPBUILD)"
+			}
+
+			Remove-Item -Path $Export_To_New_Xml
+		}
+	} else {
+		try {
+			Get-WindowsImage -ImagePath $ImageFilePath -ErrorAction SilentlyContinue | ForEach-Object {
+				Get-WindowsImage -ImagePath $ImageFilePath -index $_.ImageIndex -ErrorAction SilentlyContinue | ForEach-Object {
+					return $_.Version
+				}
+			}
+		} catch {
+			return ""
+		}
 	}
 }
 

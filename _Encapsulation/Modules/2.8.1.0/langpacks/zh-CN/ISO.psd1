@@ -64,4 +64,6 @@
 	ISO_Sparse_Rename               = 将哈稀添加到文件名后缀
 	GenerateRandom                  = 生成随机数
 	RandomNumberReset               = 重新生成
+	OS_SP_Version                   = 添加系统版本号
+	OS_SP_Get                       = 从映像文件里获取
 '@

@@ -64,4 +64,6 @@
 	ISO_Sparse_Rename               = Add the hash to the filename extension.
 	GenerateRandom                  = Generate random numbers
 	RandomNumberReset               = Regenerate
+	OS_SP_Version                   = Add system version number
+	OS_SP_Get                       = Obtain from the image file
 '@

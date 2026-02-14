@@ -14,6 +14,6 @@
 	SelectFromError           = 错误
 	Uping                     = 正在生成
 	SkipCreate                = 跳过生成，未找到
-	SoftIsInstl                 = 未安装 Gpg4win。
+	SoftIsInstl               = 未安装 Gpg4win。
 	ShowPassword              = 显示密码
 '@

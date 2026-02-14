@@ -2,7 +2,7 @@
 	"Config": {
 		"Author":  "Yi",
 		"Url":     "https://fengyi.tel",
-		"Version": "1.1.5.0"
+		"Version": "1.1.8.0"
 	},
 	"Deploy": {
 		"ImageSource": {
@@ -145,7 +145,8 @@
 					}
 				},
 				"ISO": {
-					"SaveTo":             "",
+					"Author": true,
+					"SaveTo": "",
 					"Structure": {
 						"InstallType":    true,
 						"Group":          "Windows Server 2025",
@@ -177,6 +178,11 @@
 								"GroupB": false
 							}
 						}
+					},
+					"VersionNumber": {
+						"Enable":         true,
+						"Version":        "Auto",
+						"InitialRelease": "26100"
 					},
 					"WindowsVersion": {
 						"Enable":         true,
