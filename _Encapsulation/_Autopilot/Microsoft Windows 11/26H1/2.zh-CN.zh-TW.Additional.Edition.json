@@ -1,0 +1,967 @@
+{
+	"Config": {
+		"Author":  "Yi",
+		"Url":     "https://fengyi.tel",
+		"Version": "1.1.5.0"
+	},
+	"Deploy": {
+		"Prerequisite": {
+			"IsAutoSelect": [
+				"Prerequisite_Extract_Language_Add"
+			],
+			"ExtractLanguage": {
+				"Adv": {
+					"IsEjectISO": true
+				},
+				"Add": {
+					"Guid": "8eee5b05-9c27-4ac3-a70c-4f0ae84c35be",
+					"CleanDuplicate": false,
+					"NoExtractEnglish": true,
+					"SaveTo": {
+						"Schome": "Custom",
+						"Custom": {
+							"Path": "{Image_source}_Custom"
+						},
+						"Multi": {
+							"Path": "{MainMasterFolder}\\{ImageType}\\_Custom",
+							"Name": "2_11_zh-CN_zh-TW"
+						}
+					},
+					"Scope": [
+						"Install;wim;Install;wim;",
+						"Install;wim;WinRE;wim;",
+						"Install;esd;Install;esd;",
+						"Install;esd;WinRE;wim;",
+						"Boot;wim;Boot;wim;"
+					],
+					"Region": [
+						"zh-CN",
+						"zh-TW"
+					],
+					"RegionAssoc": [
+						"zh-HK"
+					]
+				},
+				"Del": {
+					"Guid": "8eee5b05-9c27-4ac3-a70c-4f0ae84c35be",
+					"CleanDuplicate": false,
+					"NoExtractEnglish": true,
+					"SaveTo": {
+						"Schome": "Custom",
+						"Custom": {
+							"Path": "{Image_source}_Custom"
+						},
+						"Multi": {
+							"Name": "2_11_zh-CN_zh-TW"
+						}
+					},
+					"Scope": [
+						"Install;wim;Install;wim;",
+						"Install;wim;WinRE;wim;",
+						"Install;esd;Install;esd;",
+						"Install;esd;WinRE;wim;",
+						"Boot;wim;Boot;wim;"
+					],
+					"Region": [
+						"en-US"
+					]
+				}
+			}
+		},
+		"ImageSource": {
+			"Tasks": {
+				"IsAutoSelect": [
+					"Additional_Edition_Install;wim;Install;wim;",
+					"Additional_Edition_Install;esd;Install;esd;",
+					"Image_Convert_UI"
+				],
+				"Solutions": {
+					"SaveTo": {
+						"FolderName": "",
+						"Path":       "ISO"
+					},
+					"Account": {
+						"Schome": "Designated",
+						"Custom": {},
+						"Designated": {
+							"UserName":       "Administrator",
+							"SyncMainFolder": false,
+							"AutoLogin":      true
+						}
+					},
+					"Schome": {
+						"Engine": {
+							"Enable":  true,
+							"Version": "Multilingual",
+							"OptAdv": {
+								"AutoFix": true
+							},
+							"FirstExperience": {
+								"Prerequisite": {
+									"FirstExpSyncMark":      true,
+									"FirstExpDefender":      false,
+									"NetworkLocationWizard": true,
+									"FirstExpSyncLabel":     false,
+									"IsMulti": {
+										"PreAppxCleanup":     false,
+										"LanguageComponents": false,
+										"PreventCleaningUnusedLP": false
+									},
+									"DesktopMenu": {
+										"Enable": false,
+										"Right":  false
+									},
+									"Time": {
+										"Enable": false,
+										"UTF8":   false,
+										"Region": "en-US"
+									},
+									"Restart": true
+								},
+								"Finish": {
+									"FirstExpFinishPopup":    false,
+									"FirstExpFinishOnDemand": false,
+									"ResetExecutionPolicy":   true,
+									"ClearFull":              true,
+									"OnlyClearEngine":        true,
+									"Restart":                false
+								}
+							}
+						},
+						"Unattend": {
+							"Enable":  true,
+							"Version": "11",
+							"Command": {
+								"WindowsSetup": [
+									"a94cc882-a451-494d-8d94-523e06470f68",
+									"f6ba749e-3a36-4a2e-bc28-674073cb973b"
+								],
+								"WindowsPE": []
+							},
+							"IsMulti":       "Auto",
+							"InstallMethod": "Auto",
+							"Schome": {
+								"Version":   "Auto",
+								"Semi": {},
+								"UEFI": {
+									"ImageIndex": "1"
+								},
+								"Legacy": {
+									"ProductKey": "TX9XD-98N7V-6WMQ6-BX7FG-H8Q99"
+								}
+							},
+							"AddTo": {
+								"ISOAutounattend": true,
+								"ISOSourcesUnattend": true,
+								"ISOPantherUnattendOEM": true,
+								"ISOPantherUnattendOS": true
+							},
+							"InstallInterface": {
+								"OOBEProductKey": false,
+								"OOBEOSImage": false,
+								"OOBEEula": true
+							},
+							"Server": {
+								"ServerManager": false,
+								"InternetExplorer": {
+									"Administrator": false,
+									"User": false
+								}
+							},
+							"Time": {
+								"Enable": false,
+								"Region": "en-US"
+							}
+						},
+						"Collection": {
+							"Enable": true,
+							"OptAdv": {
+								"GenerateReport": true
+							},
+							"Language": {
+								"IsMulti": "Auto",
+								"Multi": [
+									"en-US",
+									"zh-CN",
+									"zh-TW"
+								],
+								"Single": "en-US"
+							},
+							"Architecture": "Auto",
+							"Office": {
+								"IsDeploy": false,
+								"Version":  "",
+								"Language": [
+									"Auto"
+								],
+								"DeployTo": "PublicDektop"
+							},
+							"Custom": {
+								"IsDeploy": false,
+								"DeployTo": "SystemDisk",
+								"Version":  "Template"
+							},
+							"Software": {
+								"IsDeploy": false,
+								"App": [],
+								"DeployTo": "SystemDisk"
+							},
+							"Fonts": {
+								"IsDeploy": false,
+								"Package": []
+							}
+						}
+					}
+				},
+				"AdditionalEdition": [
+					{
+						"Group":  "Install;Install;",
+						"Uid": [
+							"Install;wim;Install;wim;",
+							"Install;esd;Install;esd;"
+						],
+						"Exclude": [
+							"Core",
+							"CoreN",
+							"Professional",
+							"ProfessionalN",
+							"EnterpriseS",
+							"EnterpriseSN"
+						],
+						"NoSelMatch":  false,
+						"AbandonAllow": true,
+						"Healthy": {
+							"isAllow": true,
+							"ErrorNoSave": true
+						},
+						"Rebuild":     true,
+						"Compression": "Max",
+						"CustomReplace": "Windows 11",
+						"Schome":      "Custom",
+						"Import": {
+							"Guid": "8eee5b05-9c27-4ac3-a70c-4f0ae84c35be",
+							"Schome": "Auto"
+						},
+						"Custom": {
+							"Schome": "Default",
+							"Default": [
+								{ "GUID": "858d57d9-c327-4fa1-9dba-06177c4a8df9", "Name": "Windows 11 Home",                             "Requiredversion": "Core",          "NewEditionId": "Core",                     "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "d3ee6165-6e82-4cca-92a3-3616e67f31dd", "Name": "Windows 11 Home N",                           "Requiredversion": "CoreN",         "NewEditionId": "CoreN",                    "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "297c0899-24f1-4ea6-8f71-1688f34d3548", "Name": "Windows 11 Home Single Language",             "Requiredversion": "Core",          "NewEditionId": "CoreSingleLanguage",       "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "b4785146-45d2-4503-be26-781d17ec4d7b", "Name": "Windows 11 Education",                        "Requiredversion": "Professional",  "NewEditionId": "Education",                "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "7da6e1c1-01e8-4566-8a3d-a41c5b60f413", "Name": "Windows 11 Education N",                      "Requiredversion": "ProfessionalN", "NewEditionId": "EducationN",               "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "5cab48b9-523a-4d51-b9e1-4904b25fc970", "Name": "Windows 11 Pro",                              "Requiredversion": "Professional",  "NewEditionId": "Professional",             "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "54961b58-95fa-4325-be7f-3bf396aef193", "Name": "Windows 11 Pro N",                            "Requiredversion": "ProfessionalN", "NewEditionId": "ProfessionalN",            "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "6bc6318b-f147-4634-b6fb-3bd290ccb6f1", "Name": "Windows 11 Pro Education",                    "Requiredversion": "Professional",  "NewEditionId": "ProfessionalEducation",    "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "75c26102-213c-42e6-bbef-befc7bdc1dbb", "Name": "Windows 11 Pro Education N",                  "Requiredversion": "ProfessionalN", "NewEditionId": "ProfessionalEducationN",   "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "1f8f95a3-7d99-4916-9a9f-dbf5597fcbbe", "Name": "Windows 11 Pro for Workstations",             "Requiredversion": "Professional",  "NewEditionId": "ProfessionalWorkstation",  "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "48a5eb6c-870d-48b4-8d70-319d180a3bee", "Name": "Windows 11 Pro N for Workstations",           "Requiredversion": "ProfessionalN", "NewEditionId": "ProfessionalWorkstationN", "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "cb46f0d8-364d-4890-80b7-f4d2808dd7d9", "Name": "Windows 11 Enterprise",                       "Requiredversion": "Professional",  "NewEditionId": "Enterprise",               "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "2559778e-1ec4-4979-b696-040d709fae1f", "Name": "Windows 11 Enterprise multi-session",         "Requiredversion": "Professional",  "NewEditionId": "ServerRdsh",               "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "74b1544e-7738-4e04-8efa-15312baaa933", "Name": "Windows 11 Enterprise N",                     "Requiredversion": "ProfessionalN", "NewEditionId": "EnterpriseN",              "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "f4903e31-40fc-4bd1-b79b-0930a4720383", "Name": "Windows 11 IoT Enterprise",                   "Requiredversion": "Professional",  "NewEditionId": "IoTEnterprise",            "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "858f7630-7d19-460f-9a1c-c9869a5ec1da", "Name": "Windows 11 IoT Enterprise Subscription",      "Requiredversion": "Professional",  "NewEditionId": "IoTEnterpriseK",           "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "b0c28aef-5136-4bcf-bad8-bbdebae31db5", "Name": "Windows 11 Enterprise LTSC",                  "Requiredversion": "EnterpriseS",   "NewEditionId": "EnterpriseS",              "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "105ae0a1-dfdf-46c0-bb4b-cb502cc3012e", "Name": "Windows 11 Enterprise N LTSC",                "Requiredversion": "EnterpriseSN",  "NewEditionId": "EnterpriseSN",             "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "c3ed31bf-5d00-417f-951c-217ca8e36ddc", "Name": "Windows 11 IoT Enterprise LTSC",              "Requiredversion": "EnterpriseS",   "NewEditionId": "IoTEnterpriseS",           "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } },
+								{ "GUID": "aea1a92b-079a-4998-9560-eb4ca6cdbe55", "Name": "Windows 11 IoT Enterprise Subscription LTSC", "Requiredversion": "EnterpriseS",   "NewEditionId": "IoTEnterpriseSK",          "Productkey": "", "Detailed": { "ImageName": "Auto", "Description": "Auto", "DisplayName": "Auto", "DisplayDescription": "Auto" } }
+							]
+						}
+					}
+				],
+				"Convert": {
+					"IsBackup":              true,
+					"Schome":                "SplitWim",
+					"Config": {
+						"SplitWim": {
+							"Compression":   "Max",
+							"Rebuild":       false,
+							"Split": {
+								"Enabled":   true,
+								"Size":      "4096"
+							}
+						},
+						"WimToEsd": {
+							"Compression":   "Max",
+							"Rebuild":       false
+						},
+						"EsdToWim": {
+							"Compression":   "Fast",
+							"Split": {
+								"Enabled":   true,
+								"Size":      "4096"
+							}
+						},
+						"MergedSWM": {
+							"Compression":   "Fast"
+						}
+					}
+				},
+				"ISO": {
+					"Association": [
+						"ISO.Multilingual"
+					]
+				}
+			}
+		},
+		"Mount": {
+			"IsAutoSelect": [
+				"Install;wim;Install;wim;",
+				"Install;wim;WinRE;wim;",
+				"Install;esd;Install;esd;",
+				"Install;esd;WinRE;wim;",
+				"Boot;wim;Boot;wim;"
+			],
+			"Tasks": [
+				{
+					"Group": "Install;Install;",
+					"Uid":   "Install;wim;Install;wim;",
+					"IsAutoSelect": [
+						"Image_source_selection",
+						"Language_Add_UI",
+						"LXPs_Region_Add",
+						"InBox_Apps_Add_UI",
+						"Cumulative_updates_Add_UI",
+						"Drive_Delete_UI",
+						"Feature_More_UI",
+						"API_Before_UI",
+						"API_Rear_UI"
+					],
+					"IsAutoSelectIndexAndEditionID": [
+						"Core",
+						"CoreN",
+						"Professional",
+						"ProfessionalN",
+						"EnterpriseS",
+						"EnterpriseSN"
+					],
+					"Tasks": {
+						"Solutions": {
+							"SaveTo": {
+								"FolderName": "",
+								"Path":       "ISO"
+							},
+							"Account": {
+								"Schome": "Designated",
+								"Custom": {},
+								"Designated": {
+									"UserName":       "Administrator",
+									"SyncMainFolder": false,
+									"AutoLogin":      true
+								}
+							},
+							"Schome": {
+								"Engine": {
+									"Enable":  true,
+									"Version": "Multilingual",
+									"OptAdv": {
+										"AutoFix": true
+									},
+									"FirstExperience": {
+										"Prerequisite": {
+											"FirstExpSyncMark":      true,
+											"FirstExpDefender":      false,
+											"NetworkLocationWizard": true,
+											"FirstExpSyncLabel":     false,
+											"IsMulti": {
+												"PreAppxCleanup":     false,
+												"LanguageComponents": false,
+												"PreventCleaningUnusedLP": false
+											},
+											"DesktopMenu": {
+												"Enable": false,
+												"Right":  false
+											},
+											"Time": {
+												"Enable": false,
+												"UTF8":   false,
+												"Region": "en-US"
+											},
+											"Restart": true
+										},
+										"Finish": {
+											"FirstExpFinishPopup":    false,
+											"FirstExpFinishOnDemand": false,
+											"ResetExecutionPolicy":   true,
+											"ClearFull":              true,
+											"OnlyClearEngine":        true,
+											"Restart":                false
+										}
+									}
+								},
+								"Unattend": {
+									"Enable":  true,
+									"Version": "11",
+									"Command": {
+										"WindowsSetup": [
+											"a94cc882-a451-494d-8d94-523e06470f68",
+											"f6ba749e-3a36-4a2e-bc28-674073cb973b"
+										],
+										"WindowsPE": []
+									},
+									"IsMulti":       "Auto",
+									"InstallMethod": "Auto",
+									"Schome": {
+										"Version":   "Auto",
+										"Semi": {},
+										"UEFI": {
+											"ImageIndex": "1"
+										},
+										"Legacy": {
+											"ProductKey": "TX9XD-98N7V-6WMQ6-BX7FG-H8Q99"
+										}
+									},
+									"AddTo": {
+										"ISOAutounattend": true,
+										"ISOSourcesUnattend": true,
+										"ISOPantherUnattendOEM": true,
+										"ISOPantherUnattendOS": true
+									},
+									"InstallInterface": {
+										"OOBEProductKey": false,
+										"OOBEOSImage": false,
+										"OOBEEula": true
+									},
+									"Server": {
+										"ServerManager": false,
+										"InternetExplorer": {
+											"Administrator": false,
+											"User": false
+										}
+									},
+									"Time": {
+										"Enable": false,
+										"Region": "en-US"
+									}
+								},
+								"Collection": {
+									"Enable": true,
+									"OptAdv": {
+										"GenerateReport": true
+									},
+									"Language": {
+										"IsMulti": "Auto",
+										"Multi": [
+											"en-US",
+											"zh-CN",
+											"zh-TW"
+										],
+										"Single": "en-US"
+									},
+									"Architecture": "Auto",
+									"Office": {
+										"IsDeploy": true,
+										"Version":  "365",
+										"Language": [
+											"Auto"
+										],
+										"DeployTo": "PublicDektop"
+									},
+									"Custom": {
+										"IsDeploy": false,
+										"DeployTo": "SystemDisk",
+										"Version":  "Template"
+									},
+									"Software": {
+										"IsDeploy": false,
+										"App": [],
+										"DeployTo": "SystemDisk"
+									},
+									"Fonts": {
+										"IsDeploy": false,
+										"Package": []
+									}
+								}
+							}
+						},
+						"Language": {
+							"Add": {
+								"Source": "{Image_source}_Custom\\{Master}\\{Image}\\Language\\Add",
+								"Adv": {
+									"PreRuleOrder": true,
+									"WildcardList": true,
+									"NoCheckFileType": false,
+									"AutoSuggestions": true,
+									"SetupFixMissing": false,
+									"LangSyncToSources": false,
+									"LangIniRebuild": false
+								}
+							},
+							"Del": {
+								"Source": "{Image_source}_Custom\\{Master}\\{Image}\\Language\\Del",
+								"Adv": {
+									"DescendingRuleLang": true,
+									"NoCheckFileType": false,
+									"AutoSuggestions": true,
+									"BootSyncToISO": false,
+									"LangIniRebuild": false
+								}
+							},
+							"Change": "en-US",
+							"Cleanup": [
+								"en-US"
+							]
+						},
+						"InBoxApps": {
+							"Mark": {
+								"Schome": "Skip",
+								"Skip": {
+									"RemoveAll": {
+										"IsDel": true,
+										"IsExclude": true
+									}
+								},
+								"Custom": {
+									"SkipenUS": true,
+									"RemoveAll": {
+										"IsDel": true,
+										"IsExclude": true
+									},
+									"Version": "26200",
+									"Region": [
+										"zh-CN",
+										"zh-TW"
+									]
+								}
+							},
+							"Add": {
+								"Schome": "Custom",
+								"Custom": {
+									"ErrorNoSave": true,
+									"AutoEditions": true,
+									"AutoSearch": false,
+									"DependencyPackage": true,
+									"OptimizeHardLink": true,
+									"Source": "auto",
+									"Guid": "8eee5b05-9c27-4ac3-a70c-4f0ae84c35be",
+									"Apps": "auto"
+								},
+								"Assign": {}
+							},
+							"Update": {
+								"Sources": "Auto",
+								"Region": [
+									"zh-CN",
+									"zh-TW"
+								]
+							},
+							"Remove": {
+								"Region": [
+									"zh-CN",
+									"zh-TW"
+								]
+							},
+							"MatchRemove": {
+								"Guid": "8eee5b05-9c27-4ac3-a70c-4f0ae84c35be",
+								"Apps": ""
+							}
+						},
+						"CumulativeUpdate": {
+							"Add": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Update\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Update\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Update\\Add"
+								],
+								"IsEvent": {
+									"CuringUpdate": {
+										"isAllow": true,
+										"ResetBase": true,
+										"Defer": false
+									},
+									"Superseded": {
+										"IsSuperseded": true,
+										"ExcludeRules": true
+									}
+								}
+							},
+							"Del": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Update\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Update\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Update\\Add"
+								],
+								"IsEvent": {
+									"CuringUpdate": {
+										"isAllow": true,
+										"ResetBase": true,
+										"Defer": false
+									},
+									"Superseded": {
+										"IsSuperseded": true,
+										"ExcludeRules": true
+									}
+								}
+							}
+						},
+						"Drive": {
+							"Add": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Drive\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Drive\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Drive\\Add"
+								]
+							},
+							"Del": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Drive\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Drive\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Drive\\Add"
+								]
+							}
+						},
+						"WindowsFeatures": {
+							"Enable": [
+								"NetFx3",
+								"TelnetClient"
+							],
+							"Disable": [
+								"TelnetClient"
+							]
+						},
+						"PSFunctions": {
+							"Before": [],
+							"After": []
+						},
+						"API": {
+							"Before": [],
+							"After": []
+						},
+						"More": {
+							"CuringUpdate": {
+								"isAllow": false,
+								"ResetBase": true,
+								"Defer": false
+							},
+							"Superseded": {
+								"IsSuperseded": true,
+								"ExcludeRules": true
+							},
+							"Healthy": {
+								"isAllow": true,
+								"ErrorNoSave": true
+							},
+							"Report": {
+								"InboxApps": true,
+								"Components": true,
+								"Drive": true,
+								"ImageLangue": true
+							},
+							"SaveTo": "{Image_source}_Custom\\{Master}\\{Image}\\Report"
+						},
+						"Expand": {
+							"Rebuild": false
+						},
+						"Eject": {
+							"Schome": "Save",
+							"ForectEject": true
+						}
+					}
+				},
+				{
+					"Group": "Install;WinRE;",
+					"Uid":   "Install;wim;WinRE;wim;",
+					"IsAutoSelect": [
+						"Image_source_selection",
+						"Language_Add_UI",
+						"Cumulative_updates_Add_UI",
+						"Drive_Delete_UI",
+						"Feature_More_UI",
+						"API_Before_UI",
+						"API_Rear_UI"
+					],
+					"IsAutoSelectIndexAndEditionID": [
+						"Auto"
+					],
+					"Tasks": {
+						"Language": {
+							"Add": {
+								"Saveto": true,
+								"Source": "{Image_source}_Custom\\{Master}\\{Image}\\Language\\Add",
+								"Adv": {
+									"PreRuleOrder": true,
+									"WildcardList": true,
+									"NoCheckFileType": false,
+									"AutoSuggestions": true,
+									"SetupFixMissing": false,
+									"LangSyncToSources": false,
+									"LangIniRebuild": false
+								}
+							},
+							"Del": {
+								"Saveto": false,
+								"Source": "{Image_source}_Custom\\{Master}\\{Image}\\Language\\Del",
+								"Adv": {
+									"DescendingRuleLang": true,
+									"NoCheckFileType": false,
+									"AutoSuggestions": true,
+									"BootSyncToISO": false,
+									"LangIniRebuild": false
+								}
+							},
+							"Change": "en-US",
+							"Cleanup": [
+								"en-US"
+							]
+						},
+						"CumulativeUpdate": {
+							"Add": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Update\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Update\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Update\\Add"
+								],
+								"IsEvent": {
+									"CuringUpdate": {
+										"isAllow": true,
+										"ResetBase": true,
+										"Defer": true
+									},
+									"Superseded": {
+										"IsSuperseded": true,
+										"ExcludeRules": true
+									}
+								}
+							},
+							"Del": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Update\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Update\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Update\\Add"
+								],
+								"IsEvent": {
+									"CuringUpdate": {
+										"isAllow": true,
+										"ResetBase": true,
+										"Defer": true
+									},
+									"Superseded": {
+										"IsSuperseded": true,
+										"ExcludeRules": true
+									}
+								}
+							}
+						},
+						"Drive": {
+							"Add": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Drive\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Drive\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Drive\\Add"
+								]
+							},
+							"Del": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Drive\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Drive\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Drive\\Add"
+								]
+							}
+						},
+						"More": {
+							"CuringUpdate": {
+								"isAllow": false,
+								"ResetBase": true,
+								"Defer": true
+							},
+							"Superseded": {
+								"IsSuperseded": true,
+								"ExcludeRules": true
+							},
+							"Healthy": {
+								"isAllow": false,
+								"ErrorNoSave": true
+							},
+							"Report": {
+								"InboxApps": false,
+								"Components": true,
+								"Drive": true,
+								"ImageLangue": true
+							},
+							"SaveTo": "{Image_source}_Custom\\{Master}\\{Image}\\Report"
+						},
+						"Expand": {
+							"Rebuild": true,
+							"Rules": {
+								"isUpdate": true,
+								"UpdateToAll": true
+							}
+						},
+						"Eject": {
+							"Schome": "Save",
+							"ForectEject": true
+						}
+					}
+				},
+				{
+					"Group": "Boot;Boot;",
+					"Uid":   "Boot;wim;Boot;wim;",
+					"IsAutoSelect": [
+						"Image_source_selection",
+						"Language_Add_UI",
+						"Cumulative_updates_Add_UI",
+						"Drive_Delete_UI",
+						"Functions_Before_UI",
+						"Functions_Rear_UI",
+						"Feature_More_UI",
+						"API_Before_UI",
+						"API_Rear_UI"
+					],
+					"IsAutoSelectIndexAndEditionID": [
+						"2"
+					],
+					"Tasks": {
+						"Language": {
+							"Add": {
+								"Source": "{Image_source}_Custom\\{Master}\\{Image}\\Language\\Add",
+								"Adv": {
+									"PreRuleOrder": true,
+									"WildcardList": true,
+									"NoCheckFileType": false,
+									"AutoSuggestions": true,
+									"SetupFixMissing": false,
+									"LangSyncToSources": false,
+									"LangIniRebuild": false
+								}
+							},
+							"Del": {
+								"Source": "{Image_source}_Custom\\{Master}\\{Image}\\Language\\Del",
+								"Adv": {
+									"DescendingRuleLang": true,
+									"NoCheckFileType": false,
+									"AutoSuggestions": true,
+									"BootSyncToISO": false,
+									"LangIniRebuild": false
+								}
+							},
+							"Change": "en-US",
+							"Cleanup": [
+								"en-US"
+							]
+						},
+						"CumulativeUpdate": {
+							"Add": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Update\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Update\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Update\\Add"
+								],
+								"IsEvent": {
+									"CuringUpdate": {
+										"isAllow": true,
+										"ResetBase": true,
+										"Defer": true
+									},
+									"Superseded": {
+										"IsSuperseded": true,
+										"ExcludeRules": true
+									}
+								}
+							},
+							"Del": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Update\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Update\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Update\\Add"
+								],
+								"IsEvent": {
+									"CuringUpdate": {
+										"isAllow": true,
+										"ResetBase": true,
+										"Defer": true
+									},
+									"Superseded": {
+										"IsSuperseded": true,
+										"ExcludeRules": true
+									}
+								}
+							}
+						},
+						"Drive": {
+							"Add": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Drive\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Drive\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Drive\\Add"
+								]
+							},
+							"Del": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Drive\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Drive\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Drive\\Add"
+								]
+							}
+						},
+						"PSFunctions": {
+							"Before": [],
+							"After": [
+								"Other_Tasks_TPM"
+							]
+						},
+						"API": {
+							"Before": [],
+							"After": []
+						},
+						"More": {
+							"CuringUpdate": {
+								"isAllow": false,
+								"ResetBase": true,
+								"Defer": true
+							},
+							"Superseded": {
+								"IsSuperseded": true,
+								"ExcludeRules": true
+							},
+							"Healthy": {
+								"isAllow": false,
+								"ErrorNoSave": true
+							},
+							"Report": {
+								"InboxApps": false,
+								"Components": true,
+								"Drive": true,
+								"ImageLangue": true
+							},
+							"SaveTo": "{Image_source}_Custom\\{Master}\\{Image}\\Report"
+						},
+						"Expand": {
+							"Rebuild": true
+						},
+						"Eject": {
+							"Schome": "Save",
+							"ForectEject": true
+						}
+					}
+				}
+			]
+		},
+		"IsEvent": {
+			"Scheduled": {
+				"Schome": "Instantly",
+				"Instantly": {},
+				"Custom": {
+					"Sky":    "0",
+					"Hour":   "0",
+					"Minute": "1"
+				}
+			},
+			"AfterCompletion": {
+				"IsCleanupTemp": true,
+				"Finish": "Pause"
+			}
+		}
+	}
+}

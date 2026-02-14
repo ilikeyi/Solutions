@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	   Created by: Yi's Solutions
+			Learn: https://fengyi.tel/solutions
+				   https://github.com/ilikeyi/solutions
+
+	 Architecture: x86
+	Applicable to: Server
+	Language type: Single
+	     Solution: Consumer.Legacy.xml
+
+	Template GUID: f2c938f3-a6bc-45ed-85ee-967df9fe1d66
+	GUID: {GUID}
+-->
+<unattend xmlns="urn:schemas-microsoft-com:unattend">
+	<settings pass="windowsPE">
+		<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<SetupUILanguage>
+				<UILanguage>{ImageLanguage}</UILanguage>
+				<WillShowUI>OnError</WillShowUI>
+			</SetupUILanguage>
+			<InputLocale>{ImageLanguage}</InputLocale>
+			<SystemLocale>{ImageLanguage}</SystemLocale>
+			<UILanguage>{ImageLanguage}</UILanguage>
+			<UILanguageFallback>{ImageLanguage}</UILanguageFallback>
+			<UserLocale>{ImageLanguage}</UserLocale>
+		</component>
+		<component name="Microsoft-Windows-Setup" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<DiskConfiguration>
+				<Disk wcm:action="add">
+					<CreatePartitions>
+						<CreatePartition wcm:action="add">
+							<Order>1</Order>
+							<Type>Primary</Type>
+							<Size>100</Size>
+						</CreatePartition>
+						<CreatePartition wcm:action="add">
+							<Extend>true</Extend>
+							<Order>2</Order>
+							<Type>Primary</Type>
+						</CreatePartition>
+					</CreatePartitions>
+					<ModifyPartitions>
+						<ModifyPartition wcm:action="add">
+							<Active>true</Active>
+							<Format>NTFS</Format>
+							<Label>System Reserved</Label>
+							<Order>1</Order>
+							<PartitionID>1</PartitionID>
+							<TypeID>0x27</TypeID>
+						</ModifyPartition>
+						<ModifyPartition wcm:action="add">
+							<Active>true</Active>
+							<Format>NTFS</Format>
+							<Label>OS</Label>
+							<Letter>C</Letter>
+							<Order>2</Order>
+							<PartitionID>2</PartitionID>
+						</ModifyPartition>
+					</ModifyPartitions>
+					<DiskID>0</DiskID>
+					<WillWipeDisk>true</WillWipeDisk>
+				</Disk>
+			</DiskConfiguration>
+			<ImageInstall>
+				<OSImage>
+					<InstallTo>
+						<DiskID>0</DiskID>
+						<PartitionID>4</PartitionID>
+					</InstallTo>
+					{UnattendIndex}
+				</OSImage>
+			</ImageInstall>
+			<Diagnostics>
+				<OptIn>false</OptIn>
+			</Diagnostics>
+			<DynamicUpdate>
+				<Enable>false</Enable>
+				<WillShowUI>OnError</WillShowUI>
+			</DynamicUpdate>
+			<UserData>
+				<ProductKey>
+					{InitProductKey}
+					<WillShowUI>OnError</WillShowUI>
+				</ProductKey>
+				<AcceptEula>true</AcceptEula>
+			</UserData>
+
+			<!-- Local PE deployment Command -->
+{WindowsPESetupFirstLogonCommands}
+
+		</component>
+	</settings>
+	<settings pass="specialize">
+		<component name="Microsoft-Windows-IE-ESC" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<IEHardenAdmin>{OSIEAdmin}</IEHardenAdmin>
+			<IEHardenUser>{OSIEUser}</IEHardenUser>
+		</component>
+		<component name="Microsoft-Windows-ServerManager-SvrMgrNc" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<DoNotOpenServerManagerAtLogon>{OSServerManager}</DoNotOpenServerManagerAtLogon>
+		</component>
+	</settings>
+	<settings pass="oobeSystem">
+		<component name="Microsoft-Windows-International-Core" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<InputLocale>{ImageLanguage}</InputLocale>
+			<SystemLocale>{ImageLanguage}</SystemLocale>
+			<UILanguage>{ImageLanguage}</UILanguage>
+			<UILanguageFallback>{ImageLanguage}</UILanguageFallback>
+			<UserLocale>{ImageLanguage}</UserLocale>
+		</component>
+		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="x86" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+			<OOBE>
+{InitOOBESetting}
+			</OOBE>
+
+			<!-- initial account -->
+{InitUsers}
+
+			<!-- Automatic login by default -->
+{InitAutoLogon}
+
+			<!-- Local deployment Command -->
+{WindowsShellSetupFirstLogonCommands}
+
+{TimeZone}
+		</component>
+	</settings>
+</unattend>

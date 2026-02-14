@@ -1,0 +1,83 @@
+{
+	"Config": {
+		"Author":  "Yi",
+		"Url":     "https://fengyi.tel",
+		"Version": "1.1.5.0"
+	},
+	"Deploy": {
+		"ImageSource": {
+			"Tasks": {
+				"ISO": {
+					"SaveTo":              "",
+					"Structure": {
+						"InstallType":     true,
+						"Group":           "Windows 11 26H1",
+						"Event":           false,
+						"EngineVersion":   "",
+						"MulTags":         true,
+						"VerTags":         true,
+						"UniqueName":      true
+					},
+					"PublicDate": {
+						"Sorting": {
+							"GroupA": true,
+							"GroupB": false
+						},
+						"Year": {
+							"IsAllow": true,
+							"UseShortnames": {
+								"GroupA": true,
+								"GroupB": false
+							}
+						},
+						"Month": {
+							"IsAllow": true,
+							"UseShortnames": {
+								"GroupB": true
+							},
+							"UseNumber": {
+								"GroupA": true,
+								"GroupB": false
+							}
+						}
+					},
+					"WindowsVersion": {
+						"Enable":          true,
+						"Version":         "Auto",
+						"InitialRelease":  "11"
+					},
+					"WindowsCode": {
+						"Enable":          true,
+						"Code":            "26H1"
+					},
+					"Random":              false,
+					"ImageLanguage":       false,
+					"imageVersions":       false,
+					"imageVersionsType":   false,
+					"Before": {
+						"Rebuild": {
+							"Install":    false,
+							"Boot":       false
+						}
+					},
+					"After": {
+						"CRCSHA": {
+							"Schome":     "",
+							"Rename":     false
+						},
+						"PGP": {
+							"Schome":     "Auto",
+							"Custom": {
+								"IsAllow": true,
+								"Pwd":    "",
+								"KeyID":  "DBBC8D7BB64C4648A70AEA180FEBF674EAD23E05"
+							}
+						},
+						"RemoveImage": false,
+						"RemoveImageCustom": false
+					}
+				}
+			}
+		}
+	}
+}

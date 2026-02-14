@@ -1,0 +1,367 @@
+{
+	"Config": {
+		"Author":  "Yi",
+		"Url":     "https://fengyi.tel",
+		"Version": "1.1.5.0"
+	},
+	"Deploy": {
+		"ImageSource": {
+			"Tasks": {
+				"IsAutoSelect": [],
+				"ISO": {
+					"Association": [
+						"ISO"
+					]
+				}
+			}
+		},
+		"Mount": {
+			"IsAutoSelect": [
+				"Install;wim;Install;wim;",
+				"Install;wim;WinRE;wim;",
+				"Install;esd;Install;esd;",
+				"Install;esd;WinRE;wim;",
+				"Boot;wim;Boot;wim;"
+			],
+			"Tasks": [
+				{
+					"Group": "Install;Install;",
+					"Uid":   "Install;wim;Install;wim;",
+					"IsAutoSelect": [
+						"Image_source_selection",
+						"Cumulative_updates_Add_UI",
+						"Cumulative_updates_Delete_UI",
+						"Drive_Add_UI",
+						"Drive_Delete_UI",
+						"Feature_More_UI",
+						"API_Before_UI",
+						"API_Rear_UI"
+					],
+					"IsAutoSelectIndexAndEditionID": [
+						"Auto"
+					],
+					"Tasks": {
+						"CumulativeUpdate": {
+							"Add": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Update\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Update\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Update\\Add"
+								],
+								"IsEvent": {
+									"CuringUpdate": {
+										"isAllow": true,
+										"ResetBase": true,
+										"Defer": false
+									},
+									"Superseded": {
+										"IsSuperseded": true,
+										"ExcludeRules": true
+									}
+								}
+							},
+							"Del": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Update\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Update\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Update\\Add"
+								],
+								"IsEvent": {
+									"CuringUpdate": {
+										"isAllow": true,
+										"ResetBase": true,
+										"Defer": false
+									},
+									"Superseded": {
+										"IsSuperseded": true,
+										"ExcludeRules": true
+									}
+								}
+							}
+						},
+						"Drive": {
+							"Add": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Drive\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Drive\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Drive\\Add"
+								]
+							},
+							"Del": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Drive\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Drive\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Drive\\Add"
+								]
+							}
+						},
+						"More": {
+							"CuringUpdate": {
+								"isAllow": false,
+								"ResetBase": true,
+								"Defer": false
+							},
+							"Superseded": {
+								"IsSuperseded": true,
+								"ExcludeRules": true
+							},
+							"Healthy": {
+								"isAllow": true,
+								"ErrorNoSave": true
+							},
+							"Report": {
+								"InboxApps": true,
+								"Components": true,
+								"Drive": true,
+								"ImageLangue": true
+							},
+							"SaveTo": "{Image_source}_Custom\\{Master}\\{Image}\\Report"
+						},
+						"Expand": {
+							"Rebuild": true
+						},
+						"Eject": {
+							"Schome": "Save",
+							"ForectEject": true
+						}
+					}
+				},
+				{
+					"Group": "Install;WinRE;",
+					"Uid":   "Install;wim;WinRE;wim;",
+					"IsAutoSelect": [
+						"Image_source_selection",
+						"Cumulative_updates_Add_UI",
+						"Cumulative_updates_Delete_UI",
+						"Drive_Add_UI",
+						"Drive_Delete_UI",
+						"Feature_More_UI",
+						"API_Before_UI",
+						"API_Rear_UI"
+					],
+					"IsAutoSelectIndexAndEditionID": [
+						"Auto"
+					],
+					"Tasks": {
+						"CumulativeUpdate": {
+							"Add": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Update\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Update\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Update\\Add"
+								],
+								"IsEvent": {
+									"CuringUpdate": {
+										"isAllow": true,
+										"ResetBase": true,
+										"Defer": true
+									},
+									"Superseded": {
+										"IsSuperseded": true,
+										"ExcludeRules": true
+									}
+								}
+							},
+							"Del": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Update\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Update\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Update\\Add"
+								],
+								"IsEvent": {
+									"CuringUpdate": {
+										"isAllow": true,
+										"ResetBase": true,
+										"Defer": true
+									},
+									"Superseded": {
+										"IsSuperseded": true,
+										"ExcludeRules": true
+									}
+								}
+							}
+						},
+						"Drive": {
+							"Add": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Drive\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Drive\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Drive\\Add"
+								]
+							},
+							"Del": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Drive\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Drive\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Drive\\Add"
+								]
+							}
+						},
+						"More": {
+							"CuringUpdate": {
+								"isAllow": false,
+								"ResetBase": true,
+								"Defer": true
+							},
+							"Superseded": {
+								"IsSuperseded": true,
+								"ExcludeRules": true
+							},
+							"Healthy": {
+								"isAllow": false,
+								"ErrorNoSave": true
+							},
+							"Report": {
+								"InboxApps": false,
+								"Components": true,
+								"Drive": true,
+								"ImageLangue": true
+							},
+							"SaveTo": "{Image_source}_Custom\\{Master}\\{Image}\\Report"
+						},
+						"Expand": {
+							"Rebuild": true,
+							"Rules": {
+								"isUpdate": true,
+								"UpdateToAll": true
+							}
+						},
+						"Eject": {
+							"Schome": "Save",
+							"ForectEject": true
+						}
+					}
+				},
+				{
+					"Group": "Boot;Boot;",
+					"Uid":   "Boot;wim;Boot;wim;",
+					"IsAutoSelect": [
+						"Image_source_selection",
+						"Cumulative_updates_Add_UI",
+						"Cumulative_updates_Delete_UI",
+						"Drive_Add_UI",
+						"Drive_Delete_UI",
+						"Feature_More_UI",
+						"API_Before_UI",
+						"API_Rear_UI"
+					],
+					"IsAutoSelectIndexAndEditionID": [
+						"2"
+					],
+					"Tasks": {
+						"CumulativeUpdate": {
+							"Add": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Update\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Update\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Update\\Add"
+								],
+								"IsEvent": {
+									"CuringUpdate": {
+										"isAllow": true,
+										"ResetBase": true,
+										"Defer": true
+									},
+									"Superseded": {
+										"IsSuperseded": true,
+										"ExcludeRules": true
+									}
+								}
+							},
+							"Del": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Update\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Update\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Update\\Add"
+								],
+								"IsEvent": {
+									"CuringUpdate": {
+										"isAllow": true,
+										"ResetBase": true,
+										"Defer": true
+									},
+									"Superseded": {
+										"IsSuperseded": true,
+										"ExcludeRules": true
+									}
+								}
+							}
+						},
+						"Drive": {
+							"Add": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Drive\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Drive\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Drive\\Add"
+								]
+							},
+							"Del": {
+								"Schome": "Auto",
+								"Custom": [
+									"{MainMasterFolder}\\{ImageType}\\_Custom\\{Master}\\{Image}\\Drive\\{ArchC}\\Add",
+									"{Mount_To_Route}\\{Master}\\{Image}\\Drive\\Add",
+									"{Image_source}_Custom\\{Master}\\{Image}\\Drive\\Add"
+								]
+							}
+						},
+						"More": {
+							"CuringUpdate": {
+								"isAllow": false,
+								"ResetBase": true,
+								"Defer": true
+							},
+							"Superseded": {
+								"IsSuperseded": true,
+								"ExcludeRules": true
+							},
+							"Healthy": {
+								"isAllow": false,
+								"ErrorNoSave": true
+							},
+							"Report": {
+								"InboxApps": false,
+								"Components": true,
+								"Drive": true,
+								"ImageLangue": true
+							},
+							"SaveTo": "{Image_source}_Custom\\{Master}\\{Image}\\Report"
+						},
+						"Expand": {
+							"Rebuild": true
+						},
+						"Eject": {
+							"Schome": "Save",
+							"ForectEject": true
+						}
+					}
+				}
+			]
+		},
+		"IsEvent": {
+			"Scheduled": {
+				"Schome": "Instantly",
+				"Instantly": {},
+				"Custom": {
+					"Sky":    "0",
+					"Hour":   "0",
+					"Minute": "1"
+				}
+			},
+			"AfterCompletion": {
+				"IsCleanupTemp": true,
+				"Finish": "Pause"
+			}
+		}
+	}
+}

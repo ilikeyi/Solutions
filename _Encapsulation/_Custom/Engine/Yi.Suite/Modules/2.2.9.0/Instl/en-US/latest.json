@@ -1,0 +1,507 @@
+﻿{
+	"Config": {
+		"Authon":  "Yi Feng",
+		"Website": "https://fengyi.tel",
+		"LatestTime": "1/1/2026",
+		"DefaultSelect": [
+			"5512e164-3969-488f-a48e-1dd24145c633",
+			"1da42d07-876c-4134-9b22-c2608634e8d8"
+		]
+	},
+	"App": [
+		{
+			"Group": "Theme pack",
+			"App": [
+				{
+					"GUID":      "7404a4fc-e59d-4bf0-86a5-33e3e8e1b3b1",
+					"Name":      "Yi's Dark Personality Theme Pack",
+					"Action":    "Install",
+					"Manner":    "Fast",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Theme pack",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "",
+						"x86":   "https://fengyi.tel/Yi.deskthemepack"
+					},
+					"FindFile":  "Yi.deskthemepack",
+					"param":     "",
+					"PS": [],
+					"Command": []
+				},
+				{
+					"GUID":      "bf3d7282-a23d-4e28-818e-005d7fcbeb22",
+					"Name":      "Yi's Light Personality Theme Pack",
+					"Action":    "Install",
+					"Manner":    "Fast",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Theme pack",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "",
+						"x86":   "https://fengyi.tel/Yi.Light.deskthemepack"
+					},
+					"FindFile":  "Yi.Light.deskthemepack",
+					"param":     "",
+					"PS": [],
+					"Command": []
+				}
+			]
+	    },
+		{
+			"Group": "Compression software",
+			"App": [
+				{
+					"GUID":      "a1f51cf8-32c8-431c-8b2e-f7f8ad208863",
+					"Name":      "7Zip",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Compression software",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "https://www.7-zip.org/a/7z2600-arm64.exe",
+						"x64":   "https://www.7-zip.org/a/7z2600-x64.exe",
+						"x86":   "https://www.7-zip.org/a/7z2600.exe"
+					},
+					"FindFile":  "7z*",
+					"param":     "/S",
+					"PS": [],
+					"Command": []
+				},
+				{
+					"GUID":      "fff5fb9c-1ee2-4e74-865e-7e416ef13b68",
+					"Name":      "WinRAR",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Compression software",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "https://www.rarlab.com/rar/winrar-x64-720.exe",
+						"x86":   "https://www.rarlab.com/rar/winrar-x32-713.exe"
+					},
+					"FindFile":  "winrar*",
+					"param":     "/S",
+					"PS": [],
+					"Command": []
+				}
+			]
+		},
+		{
+			"Group": "Social application",
+			"App": [
+				{
+					"GUID":      "5512e164-3969-488f-a48e-1dd24145c633",
+					"Name":      "QQ",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Social application",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "https://dldir1v6.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.26_260116_arm64_01.exe",
+						"x64":   "https://dldir1v6.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.26_260116_x64_01.exe",
+						"x86":   "https://dldir1v6.qq.com/qqfile/qq/QQNT/Windows/QQ_9.9.26_260116_x86_01.exe"
+					},
+					"FindFile":  "QQ*",
+					"param":     "/S",
+					"PS": [],
+					"Command": []
+				},
+				{
+					"GUID":      "1da42d07-876c-4134-9b22-c2608634e8d8",
+					"Name":      "Weixin",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Social application",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "https://dldir1v6.qq.com/weixin/Universal/Windows/WeChatWin_4.1.6.exe",
+						"x86":   "https://dldir1v6.qq.com/weixin/Windows/WeChatSetup_x86.exe"
+					},
+					"FindFile":  "WeChat*",
+					"param":     "/S",
+					"PS": [],
+					"Command": []
+				}
+			]
+		},
+		{
+			"Group": "Office Software",
+			"App": [
+				{
+					"GUID":      "a19f3dc1-e77c-4001-903b-00fe4624d757",
+					"Name":      "WPS Office",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Office Software",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "",
+						"x86":   "https://official-package.wpscdn.cn/wps/download/WPS_Setup_24034.exe"
+					},
+					"FindFile":  "WPS_Setup*.exe",
+					"param":     "/S -agreelicense",
+					"PS": [],
+					"Command": []
+				}
+			]
+	    },
+	    {
+			"Group": "Browser",
+			"App": [
+				{
+					"GUID":      "45bf2c42-ec67-440a-8403-0ad31864f47a",
+					"Name":      "Google Chrome",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Browser",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "",
+						"x86":   "https://dl.google.com/chrome/install/latest/chrome_installer.exe"
+					},
+					"FindFile":  "Chrome*",
+					"param":     "/silent /install",
+					"PS": [],
+					"Command": []
+				},
+				{
+					"GUID":      "9559adbe-95f3-4cc1-ad3e-fd3189d093aa",
+					"Name":      "Google Chrome Canary",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Browser",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "",
+						"x86":   "https://commondatastorage.googleapis.com/chrome-canary/chrome_installer.exe"
+					},
+					"FindFile":  "Chrome*",
+					"param":     "/silent /install",
+					"PS": [],
+					"Command": []
+				}
+			]
+		},
+		{
+			"Group": "Media software",
+			"App": [
+				{
+					"GUID":      "1c871e39-4a3a-4478-a583-a9fa6e03bfb3",
+					"Name":      "QQ music",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Media software",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "",
+						"x86":   "https://dldir.y.qq.com/ecosfile/music_clntupate/pc/other/QQMusic_Setup_2201.exe"
+					},
+					"FindFile":  "QQMusic*",
+					"param":     "/S",
+					"PS": [],
+					"Command": []
+				},
+				{
+					"GUID":      "a356e629-30b6-4e9a-bc9d-a4fa50cb0bfd",
+					"Name":      "Kugou music",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Media software",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "",
+						"x86":   "https://pcpackagebssdlbigapk.cosama.cn/202512290441/6501244ad6160fba4a4bc9d74c2a395f/web/kugou_release_20090.exe"
+					},
+					"FindFile":  "kugou*",
+					"param":     "/S",
+					"PS": [],
+					"Command": []
+				},
+				{
+					"GUID":      "79da884e-a8a2-4738-bc9d-3719134119f9",
+					"Name":      "NetEase Cloud Music",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Media software",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "",
+						"x86":   "https://d8.music.126.net/dmusic2/NeteaseCloudMusic_Music_official_3.1.25.204860_64.exe"
+					},
+					"FindFile":  "NeteaseCloudMusic*",
+					"param":     "/S",
+					"PS": [],
+					"Command": []
+				}
+			]
+		},
+		{
+			"Group": "Video software",
+			"App": [
+				{
+					"GUID":      "7ae9149d-c7af-4c11-aaae-3c6190fcb23a",
+					"Name":      "Tencent Video",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Video software",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "",
+						"x86":   "https://c755acd4090ed2b4cddc137685102a85.dlied1.cdntips.net/dldir1.qq.com/qqtv/TencentVideo11.149.2279.0.exe"
+					},
+					"FindFile":  "TencentVideo*",
+					"param":     "/S",
+					"PS": [],
+					"Command": []
+				},
+				{
+					"GUID":      "1d83e689-0cf9-4389-a751-f9ae2fd884a9",
+					"Name":      "iQiyi video",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Video software",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "",
+						"x86":   "https://dl-static.iqiyi.com/hz/IQIYIsetup_z42.exe"
+					},
+					"FindFile":  "IQIYIsetup*",
+					"param":     "/S",
+					"PS": [],
+					"Command": []
+				},
+				{
+					"GUID":      "61c20779-3e14-4d54-ba83-5923b5b8ff4c",
+					"Name":      "VLC media player",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Video software",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "https://artifacts.videolan.org/vlc/nightly-win64-arm-llvm/20241114-0438/vlc-4.0.0-dev-win64-90558b4a.exe",
+						"x64":   "https://get.videolan.org/vlc/3.0.21/win64/vlc-3.0.21-win64.exe",
+						"x86":   "https://get.videolan.org/vlc/3.0.21/win32/vlc-3.0.21-win32.exe"
+					},
+					"FindFile":  "vlc*",
+					"param":     "/S",
+					"PS": [],
+					"Command": []
+				},
+				{
+					"GUID":      "b2a5fd2b-8664-4743-a037-9bdf69605de5",
+					"Name":      "Potplayer",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Video software",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup64.exe",
+						"x86":   "https://t1.daumcdn.net/potplayer/PotPlayer/Version/Latest/PotPlayerSetup.exe"
+					},
+					"FindFile":  "PotPlayer*",
+					"param":     "/S",
+					"PS": [],
+					"Command": []
+				}
+			]
+		},
+		{
+			"Group": "Develop software",
+			"App": [
+				{
+					"GUID":      "60830361-902c-4c73-9fcc-ce6e4c3d8e0d",
+					"Name":      "Visual Studio Code",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Develop software",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "https://code.visualstudio.com/docs/?dv=arm64",
+						"x64":   "https://code.visualstudio.com/docs/?dv=win64",
+						"x86":   "https://code.visualstudio.com/docs/?dv=win32"
+					},
+					"FindFile":  "VSCodeUserSetup*",
+					"param":     "/VERYSILENT /NORESTART /MERGETASKS=!runcode",
+					"PS": [],
+					"Command": []
+				},
+				{
+					"GUID":      "e4628f19-74cf-43ad-9167-3ed69d1b7a5a",
+					"Name":      "Python",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Develop software",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "https://www.python.org/ftp/python/3.14.2/python-3.14.2-arm64.exe",
+						"x64":   "https://www.python.org/ftp/python/3.14.2/python-3.14.2-amd64.exe",
+						"x86":   "https://www.python.org/ftp/python/3.14.2/python-3.14.2.exe"
+					},
+					"FindFile":  "python-*",
+					"param":     "/quiet InstallAllUsers=1 PrependPath=1 Include_test=0",
+					"PS": [],
+					"Command": []
+				}
+			]
+		},
+		{
+			"Group": "Download tool",
+			"App": [
+				{
+					"GUID":      "db1a6219-c7ef-4b80-83a0-7f642da78763",
+					"Name":      "Xunlei 12",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Download software",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "",
+						"x86":   "https://down.sandai.net/thunder11/XunLeiSetup12.4.9.3916.exe"
+					},
+					"FindFile":  "XunLeiSetup12*",
+					"param":     "/S",
+					"PS": [],
+					"Command": []
+				}
+			]
+		},
+		{
+			"Group": "Runtime library",
+			"App": [
+				{
+					"GUID":      "2d4983a1-3568-4a23-8824-ffbd33a88dcc",
+					"Name":      "VisualCppRedist AIO",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Runtime library",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "https://github.com/abbodi1406/vcredist/releases/download/v0.103.0/VisualCppRedist_AIO_x86_x64.exe",
+						"x86":   "https://github.com/abbodi1406/vcredist/releases/download/v0.103.0/VisualCppRedist_AIO_x86only.exe"
+					},
+					"FindFile":  "VisualCppRedist*",
+					"param":     "/y",
+					"PS": [],
+					"Command": []
+				}
+			]
+		},
+		{
+			"Group": "Other",
+			"App": [
+				{
+					"GUID":      "73854748-e3a1-45b3-aa6f-13c2d3a12722",
+					"Name":      "Gpg4win",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "auto",
+					"Structure": "Installation package\\Other",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "",
+						"x86":   "https://files.gpg4win.org/gpg4win-latest.exe"
+					},
+					"FindFile":  "gpg4win*",
+					"param":     "/S",
+					"PS": [],
+					"Command": []
+				},
+				{
+					"GUID":      "f966b38e-a1fd-4982-8ddc-09159455353f",
+					"Name":      "Power Toys",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "Auto",
+					"Structure": "Yi\\Installation package\\Other",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "https://github.com/microsoft/PowerToys/releases/download/v0.97.0/PowerToysUserSetup-0.97.0-arm64.exe",
+						"x64":   "https://github.com/microsoft/PowerToys/releases/download/v0.97.0/PowerToysUserSetup-0.97.0-x64.exe",
+						"x86":   ""
+					},
+					"FindFile":  "PowerToys*",
+					"param":     "--silent",
+					"PS": [],
+					"Command": []
+				}
+			]
+		},
+		{
+			"Group": "Drive",
+			"App": [
+				{
+					"GUID":      "a5889804-b6e2-481f-bdf6-df216ac1bf65",
+					"Name":      "Intel Wireless Bluetooth Drivers",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "Auto",
+					"Structure": "Yi\\Installation package\\Drive",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "",
+						"x86":   "https://downloadmirror.intel.com/871690/BT-24.10.0-64UWD-Win10-Win11.exe"
+					},
+					"FindFile":  "BT-*",
+					"param":     "/qn",
+					"PS": [],
+					"Command": []
+				},
+				{
+					"GUID":      "3d617284-f5ed-4656-b5f9-cc75e5452128",
+					"Name":      "Intel Wireless Wi-Fi Drivers",
+					"Action":    "Install",
+					"Manner":    "Queue",
+					"DLetter":   "Auto",
+					"Structure": "Yi\\Installation package\\Drive",
+					"Unpwd":     "",
+					"Url": {
+						"arm64": "",
+						"x64":   "",
+						"x86":   "https://downloadmirror.intel.com/871633/WiFi-24.10.0-Driver64-Win10-Win11.exe"
+					},
+					"FindFile":  "WiFi*",
+					"param":     "-s -norestart",
+					"PS": [
+						"Set_WiFi -SSID 'Yi' -PSK 'P@ssw0rd'"
+					],
+					"Command": []
+				}
+			]
+		}
+	]
+}
