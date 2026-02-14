@@ -145,7 +145,7 @@
 					}
 				},
 				"ISO": {
-					"Author": true,
+					"Author": false,
 					"SaveTo": "",
 					"Structure": {
 						"InstallType":    true,
