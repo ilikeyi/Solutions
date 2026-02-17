@@ -34,8 +34,8 @@ Function Drive_Add_UI_Autopilot
 		<#
 			.全局
 		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-			$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue) {
+			$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue
 			$GetSelectVer = $GetSelectVer | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 			if ($GetSelectVer.count -gt 0) {
@@ -54,8 +54,8 @@ Function Drive_Add_UI_Autopilot
 		<#
 			.当前
 		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-			$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue) {
+			$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue
 			$GetSelectVer = $GetSelectVer | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 			if ($GetSelectVer.Count -gt 0) {
@@ -80,15 +80,15 @@ Function Drive_Add_UI_Autopilot
 		<#
 			.全局
 		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-			$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue) {
+			$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue
 		}
 
 		<#
 			.当前
 		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-			$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue) {
+			$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue
 		}
 
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
@@ -322,8 +322,8 @@ Function Drive_Add_UI_Autopilot
 		}
 		$UI_Main_Rule.controls.AddRange($UI_Main_Other_Rule)
 
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-			$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue) {
+			$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue
 		} else {
 			$GetSelectVer = ""
 		}
@@ -617,7 +617,7 @@ Function Drive_Add_UI_Autopilot
 		ActiveLinkColor = "#FF0000"
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
-			Remove-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -Force -ErrorAction SilentlyContinue | out-null
+			Remove-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -Force -ErrorAction SilentlyContinue | out-null
 
 			Refres_Event_Tasks_Drive_Add_UI_Autopilot
 
@@ -644,7 +644,7 @@ Function Drive_Add_UI_Autopilot
 		ActiveLinkColor = "#FF0000"
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
-			Remove-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -Force -ErrorAction SilentlyContinue | out-null
+			Remove-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -Force -ErrorAction SilentlyContinue | out-null
 
 			Refres_Event_Tasks_Drive_Add_UI_Autopilot
 
@@ -889,11 +889,11 @@ Function Drive_Add_UI_Autopilot
 
 			if ($Temp_Queue_Drive_Add_Select.Count -gt 0) {
 				if ($UI_Main_Event_Sync_To_Global.Checked) {
-					Save_Dynamic -regkey "Solutions\Autopilot\Deploy\Drive" -name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -value $Temp_Queue_Drive_Add_Select -Type "MultiString"
+					Save_Dynamic -regkey "Solutions\Autopilot\Deploy\Drive" -name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -value $Temp_Queue_Drive_Add_Select -Type "MultiString"
 
-					Remove-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -Force -ErrorAction SilentlyContinue | out-null
+					Remove-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -Force -ErrorAction SilentlyContinue | out-null
 				} else {
-					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -value $Temp_Queue_Drive_Add_Select -Type "MultiString"
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -value $Temp_Queue_Drive_Add_Select -Type "MultiString"
 				}
 
 				Refres_Event_Tasks_Drive_Add_UI_Autopilot
@@ -938,15 +938,15 @@ Function Drive_Add_UI_Autopilot
 	<#
 		.全局
 	#>
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-		$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue) {
+		$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue
 	}
 
 	<#
 		.当前
 	#>
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-		$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue) {
+		$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue
 	}
 
 	$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
@@ -1048,8 +1048,8 @@ Function Autopilot_Drive_Add_UI_Import
 					<#
 						.当前
 					#>
-					if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-						$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+					if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue) {
+						$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue
 
 						if ($GetSelectVer.Count -gt 0) {
 							Write-Host "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid)"
@@ -1064,8 +1064,8 @@ Function Autopilot_Drive_Add_UI_Import
 				}
 
 				if ($New_Tasks_Assign_Auto_Schome.Count -le 0) {
-					if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-						$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+					if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue) {
+						$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue
 
 						if ($GetSelectVer.Count -gt 0) {
 							Write-Host $lang.Autopilot_Sync_To_Global

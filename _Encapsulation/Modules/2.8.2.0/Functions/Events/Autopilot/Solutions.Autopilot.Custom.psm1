@@ -354,10 +354,10 @@ Function Image_Assign_Autopilot_Master
 			.Autopilot: Add update
 			.自动驾驶：添加更新
 		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$($Uid)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$($Uid)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue) {
 			$FlagIsWait += "Cumulative_updates_Add_UI_Autopilot"
 		}
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$($Uid)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$($Uid)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue) {
 			$FlagIsWait += "Cumulative_updates_Add_UI_Autopilot"
 		}
 
@@ -365,10 +365,10 @@ Function Image_Assign_Autopilot_Master
 			.Autopilot: Delete update
 			.自动驾驶：删除更新
 		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$($Uid)_$(Get_Autopilot_Location)_$($Global:ImageType)_Del_Auto" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$($Uid)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -ErrorAction SilentlyContinue) {
 			$FlagIsWait += "Cumulative_updates_Delete_UI_Autopilot"
 		}
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$($Uid)_$(Get_Autopilot_Location)_$($Global:ImageType)_Del_Auto" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$($Uid)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -ErrorAction SilentlyContinue) {
 			$FlagIsWait += "Cumulative_updates_Delete_UI_Autopilot"
 		}
 
@@ -376,10 +376,10 @@ Function Image_Assign_Autopilot_Master
 			.Autopilot: Add driver
 			.自动驾驶：添加驱动
 		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$($Uid)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$($Uid)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue) {
 			$FlagIsWait += "Drive_Add_UI_Autopilot"
 		}
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$($Uid)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$($Uid)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue) {
 			$FlagIsWait += "Drive_Add_UI_Autopilot"
 		}
 
@@ -387,10 +387,10 @@ Function Image_Assign_Autopilot_Master
 			.Autopilot: Remove driver
 			.自动驾驶：删除驱动
 		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$($Uid)_$(Get_Autopilot_Location)_$($Global:ImageType)_Del_Auto" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Drive" -Name "$($Uid)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -ErrorAction SilentlyContinue) {
 			$FlagIsWait += "Drive_Delete_UI_Autopilot"
 		}
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$($Uid)_$(Get_Autopilot_Location)_$($Global:ImageType)_Del_Auto" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Drive\Autopilot" -Name "$($Uid)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -ErrorAction SilentlyContinue) {
 			$FlagIsWait += "Drive_Delete_UI_Autopilot"
 		}
 

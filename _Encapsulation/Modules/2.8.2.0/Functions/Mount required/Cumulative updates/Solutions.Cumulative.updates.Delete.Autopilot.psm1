@@ -1,8 +1,8 @@
 ﻿<#
-	.Autopilot: Add update
-	.自动驾驶：添加更新
+	.Autopilot: Delete update
+	.自动驾驶：删除更新
 #>
-Function Cumulative_updates_Add_UI_Autopilot
+Function Cumulative_updates_Delete_UI_Autopilot
 {
 	<#
 		.转换架构类型
@@ -17,8 +17,8 @@ Function Cumulative_updates_Add_UI_Autopilot
 		初始化全局变量
 	#>
 	$SearchFolderRule = @(
-		Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Update\$($ArchitectureNew)\Add"
-		"$(Get_MainMasterFolder)\$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Update\Add"
+		Join-Path -Path $Global:Mount_To_Route -ChildPath "$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Update\$($ArchitectureNew)\Del"
+		"$(Get_MainMasterFolder)\$($Global:Primary_Key_Image.Master)\$($Global:Primary_Key_Image.ImageFileName)\Update\Del"
 	)
 	$SearchFolderRule = $SearchFolderRule | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
@@ -33,13 +33,13 @@ Function Cumulative_updates_Add_UI_Autopilot
 	Add-Type -AssemblyName System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
-	Function Refres_Event_Tasks_Cumulative_updates_Add_UI_Autopilot
+	Function Refres_Event_Tasks_Update_Del_UI_Autopilot
 	{
 		<#
 			.全局
 		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-			$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -ErrorAction SilentlyContinue) {
+			$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -ErrorAction SilentlyContinue
 			$GetSelectVer = $GetSelectVer | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 			if ($GetSelectVer.count -gt 0) {
@@ -57,8 +57,8 @@ Function Cumulative_updates_Add_UI_Autopilot
 		<#
 			.当前
 		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-			$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -ErrorAction SilentlyContinue) {
+			$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -ErrorAction SilentlyContinue
 			$GetSelectVer = $GetSelectVer | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 			if ($GetSelectVer.Count -gt 0) {
@@ -85,36 +85,18 @@ Function Cumulative_updates_Add_UI_Autopilot
 			"AMD64" { $ArchitectureNew = "x64" }
 			"x86" { $ArchitectureNew = "x86" }
 		}
-
+	
 		Check_Folder -chkpath "$($this.Tag)\$($RandomGuid)\$($ArchitectureNew)\Add"
 		Check_Folder -chkpath "$($this.Tag)\$($RandomGuid)\$($ArchitectureNew)\Del"
 
-		Update_Add_Refresh_Sourcs_Autopilot
+		Update_Del_Refresh_Sourcs_Autopilot
 	}
 
-	Function Update_Add_Refresh_Sourcs_Autopilot
+	Function Update_Del_Refresh_Sourcs_Autopilot
 	{
 		$UI_Main_Error.Text = ""
 		$UI_Main_Error_Icon.Image = $null
 		$UI_Main_Rule.controls.Clear()
-
-		$Temp_Assign_Task_Select = @()
-
-		<#
-			.全局
-		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-			$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
-		}
-
-		<#
-			.当前
-		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-			$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
-		}
-
-		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
 		<#
 			.计算公式：
@@ -160,7 +142,6 @@ Function Cumulative_updates_Add_UI_Autopilot
 						$UI_Main_Error_Icon.Image = $null
 					}
 				}
-
 				$UI_Main_Rule.controls.AddRange($CheckBox)
 
 				$AddSourcesPath     = New-Object system.Windows.Forms.LinkLabel -Property @{
@@ -196,7 +177,7 @@ Function Cumulative_updates_Add_UI_Autopilot
 				$AddSourcesPathOpen = New-Object system.Windows.Forms.LinkLabel -Property @{
 					Height          = 40
 					Width           = 525
-					Padding         = "46,0,0,0"
+					Padding         = "48,0,0,0"
 					Text            = $lang.OpenFolder
 					Tag             = $item
 					LinkColor       = "#008000"
@@ -226,7 +207,7 @@ Function Cumulative_updates_Add_UI_Autopilot
 				$AddSourcesPathPaste = New-Object system.Windows.Forms.LinkLabel -Property @{
 					Height          = 40
 					Width           = 525
-					Padding         = "46,0,0,0"
+					Padding         = "48,0,0,0"
 					Text            = $lang.Paste
 					Tag             = $item
 					LinkColor       = "#008000"
@@ -269,27 +250,6 @@ Function Cumulative_updates_Add_UI_Autopilot
 						}
 					}
 
-					$NewTipsText = "$($lang.SearchOrder): "
-					$SearchOrderInxde = Join-Path -Path $item -ChildPath "Custom\Index"
-					if (Test-Path -Path $SearchOrderInxde -PathType Container) {
-						$NewTipsText += "$($lang.MountedIndex), $($lang.Prerequisite_satisfy)"
-					} else {
-						$NewTipsText += "$($lang.MountedIndex), $($lang.Inoperable)"
-					}
-
-					$SearchOrderEdition = Join-Path -Path $item -ChildPath "Custom\Edition"
-					if (Test-Path -Path $SearchOrderEdition -PathType Container) {
-						$NewTipsText += ", $($lang.Wim_Edition), $($lang.Prerequisite_satisfy)"
-					} else {
-						$NewTipsText += ", $($lang.Wim_Edition), $($lang.Inoperable)"
-					}
-					$AddSourcesSearchOrder_Wrap = New-Object system.Windows.Forms.Label -Property @{
-						Height         = 30
-						Width          = 520
-						Padding        = "46,0,0,0"
-						Text           = $NewTipsText
-					}
-
 					<#
 						.不再检查目录里是否存在文件
 					#>
@@ -303,10 +263,10 @@ Function Cumulative_updates_Add_UI_Autopilot
 							<#
 								.提示，未发现文件
 							#>
+
 							$UI_Main_Rule.controls.AddRange($AddSourcesPath)
 							$CheckBox.Enabled = $False
 						} else {
-							$UI_Main_Rule.controls.AddRange($AddSourcesSearchOrder_Wrap)
 							$CheckBox.Enabled = $True
 						}
 					}
@@ -325,7 +285,7 @@ Function Cumulative_updates_Add_UI_Autopilot
 
 					$AddSourcesPathNoFolder = New-Object system.Windows.Forms.LinkLabel -Property @{
 						autosize        = 1
-						Padding         = "46,0,0,0"
+						Padding         = "48,0,0,0"
 						Text            = $lang.RuleMatchNoFindFolder
 						Tag             = $item
 						LinkColor       = "#008000"
@@ -333,9 +293,10 @@ Function Cumulative_updates_Add_UI_Autopilot
 						LinkBehavior    = "NeverUnderline"
 						add_Click       = {
 							Check_Folder -chkpath $this.Tag
-							Update_Add_Refresh_Sourcs_Autopilot
+							Update_Del_Refresh_Sourcs_Autopilot
 						}
 					}
+
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 30
 						Width          = 520
@@ -395,8 +356,8 @@ Function Cumulative_updates_Add_UI_Autopilot
 						ActiveLinkColor = "#FF0000"
 						LinkBehavior    = "NeverUnderline"
 						add_Click       = {
-							Create_Template_UI -Auto -NewAdd
-							Update_Add_Refresh_Sourcs_Autopilot
+							Create_Template_UI -Auto -NewDel
+							Update_Del_Refresh_Sourcs_Autopilot
 						}
 					}
 					$UI_Main_Rule.controls.AddRange($No_Find_Multistage_Rule_Create_New_Template)
@@ -436,7 +397,7 @@ Function Cumulative_updates_Add_UI_Autopilot
 						}
 						$UI_Main_Rule.controls.AddRange($AddSourcesPathName)
 
-						Update_Add_Refresh_Sources_New_Autopilot -Sources $_.FullName -NewMaster $Global:Primary_Key_Image.Master -ImageName $Global:Primary_Key_Image.ImageFileName
+						Update_Del_Refresh_Sources_New_Autopilot -Sources $_.FullName -NewMaster $Global:Primary_Key_Image.Master -ImageName $Global:Primary_Key_Image.ImageFileName
 
 						$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
 							Height         = 30
@@ -456,8 +417,8 @@ Function Cumulative_updates_Add_UI_Autopilot
 						ActiveLinkColor = "#FF0000"
 						LinkBehavior    = "NeverUnderline"
 						add_Click       = {
-							Create_Template_UI -Auto -NewAdd
-							Update_Add_Refresh_Sourcs_Autopilot
+							Create_Template_UI -Auto -NewDel
+							Update_Del_Refresh_Sourcs_Autopilot
 						}
 					}
 					$UI_Main_Rule.controls.AddRange($No_Find_Multistage_Rule_Create_New_Template)
@@ -564,7 +525,7 @@ Function Cumulative_updates_Add_UI_Autopilot
 				$AddSourcesPathOpen = New-Object system.Windows.Forms.LinkLabel -Property @{
 					Height          = 40
 					Width           = 470
-					Padding         = "46,0,0,0"
+					Padding         = "48,0,0,0"
 					Text            = $lang.OpenFolder
 					Tag             = $item
 					LinkColor       = "#008000"
@@ -594,7 +555,7 @@ Function Cumulative_updates_Add_UI_Autopilot
 				$AddSourcesPathPaste = New-Object system.Windows.Forms.LinkLabel -Property @{
 					Height          = 40
 					Width           = 470
-					Padding         = "46,0,0,0"
+					Padding         = "48,0,0,0"
 					Text            = $lang.Paste
 					Tag             = $item
 					LinkColor       = "#008000"
@@ -637,27 +598,6 @@ Function Cumulative_updates_Add_UI_Autopilot
 						}
 					}
 
-					$NewTipsText = "$($lang.SearchOrder): "
-					$SearchOrderInxde = Join-Path -Path $item -ChildPath "Custom\Index"
-					if (Test-Path -Path $SearchOrderInxde -PathType Container) {
-						$NewTipsText += "$($lang.MountedIndex), $($lang.Prerequisite_satisfy)"
-					} else {
-						$NewTipsText += "$($lang.MountedIndex), $($lang.Inoperable)"
-					}
-
-					$SearchOrderEdition = Join-Path -Path $item -ChildPath "Custom\Edition"
-					if (Test-Path -Path $SearchOrderEdition -PathType Container) {
-						$NewTipsText += ", $($lang.Wim_Edition), $($lang.Prerequisite_satisfy)"
-					} else {
-						$NewTipsText += ", $($lang.Wim_Edition), $($lang.Inoperable)"
-					}
-					$AddSourcesSearchOrder_Wrap = New-Object system.Windows.Forms.Label -Property @{
-						Height         = 30
-						Width          = 520
-						Padding        = "46,0,0,0"
-						Text           = $NewTipsText
-					}
-
 					<#
 						.不再检查目录里是否存在文件
 					#>
@@ -674,7 +614,6 @@ Function Cumulative_updates_Add_UI_Autopilot
 							$UI_Main_Rule.controls.AddRange($AddSourcesPath)
 							$CheckBox.Enabled = $False
 						} else {
-							$UI_Main_Rule.controls.AddRange($AddSourcesSearchOrder_Wrap)
 							$CheckBox.Enabled = $True
 						}
 					}
@@ -693,7 +632,7 @@ Function Cumulative_updates_Add_UI_Autopilot
 
 					$AddSourcesPathNoFolder = New-Object system.Windows.Forms.LinkLabel -Property @{
 						autosize        = 1
-						Padding         = "46,0,0,0"
+						Padding         = "48,0,0,0"
 						Text            = $lang.RuleMatchNoFindFolder
 						Tag             = $item
 						LinkColor       = "#008000"
@@ -701,7 +640,7 @@ Function Cumulative_updates_Add_UI_Autopilot
 						LinkBehavior    = "NeverUnderline"
 						add_Click       = {
 							Check_Folder -chkpath $this.Tag
-							Update_Del_Refresh_Sourcs
+							Update_Del_Refresh_Sourcs_Autopilot
 						}
 					}
 					$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
@@ -732,7 +671,7 @@ Function Cumulative_updates_Add_UI_Autopilot
 		}
 	}
 
-	Function Update_Add_Refresh_Sources_New_Autopilot
+	Function Update_Del_Refresh_Sources_New_Autopilot
 	{
 		param
 		(
@@ -745,15 +684,15 @@ Function Cumulative_updates_Add_UI_Autopilot
 		<#
 			.全局
 		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-			$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -ErrorAction SilentlyContinue) {
+			$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -ErrorAction SilentlyContinue
 		}
 
 		<#
 			.当前
 		#>
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-			$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -ErrorAction SilentlyContinue) {
+			$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -ErrorAction SilentlyContinue
 		}
 
 		$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
@@ -767,7 +706,7 @@ Function Cumulative_updates_Add_UI_Autopilot
 			"x86" { $ArchitectureNew = "x86" }
 		}
 
-		$MarkNewFolder = "$($Sources)\$($ArchitectureNew)\Add"
+		$MarkNewFolder = "$($Sources)\$($ArchitectureNew)\Del"
 		$AddSourcesPathNoFile = New-Object system.Windows.Forms.LinkLabel -Property @{
 			autosize        = 1
 			Padding         = "71,0,0,0"
@@ -802,7 +741,7 @@ Function Cumulative_updates_Add_UI_Autopilot
 			Height    = 35
 			Width     = 450
 			margin    = "55,0,0,0"
-			Text      = "$($ArchitectureNew)\Add"
+			Text      = "$($ArchitectureNew)\Del"
 			Tag       = $MarkNewFolder
 			add_Click = {
 				$UI_Main_Error.Text = ""
@@ -832,27 +771,6 @@ Function Cumulative_updates_Add_UI_Autopilot
 				}
 			}
 
-			$NewTipsText = "$($lang.SearchOrder): "
-			$SearchOrderInxde = Join-Path -Path $MarkNewFolder -ChildPath "Custom\Index"
-			if (Test-Path -Path $SearchOrderInxde -PathType Container) {
-				$NewTipsText += "$($lang.MountedIndex), $($lang.Prerequisite_satisfy)"
-			} else {
-				$NewTipsText += "$($lang.MountedIndex), $($lang.Inoperable)"
-			}
-
-			$SearchOrderEdition = Join-Path -Path $MarkNewFolder -ChildPath "Custom\Edition"
-			if (Test-Path -Path $SearchOrderEdition -PathType Container) {
-				$NewTipsText += ", $($lang.Wim_Edition), $($lang.Prerequisite_satisfy)"
-			} else {
-				$NewTipsText += ", $($lang.Wim_Edition), $($lang.Inoperable)"
-			}
-			$AddSourcesSearchOrder_Wrap = New-Object system.Windows.Forms.Label -Property @{
-				Height         = 30
-				Width          = 520
-				Padding        = "66,0,0,0"
-				Text           = $NewTipsText
-			}
-
 			<#
 				.不再检查目录里是否存在文件
 			#>
@@ -869,7 +787,6 @@ Function Cumulative_updates_Add_UI_Autopilot
 					$UI_Main_Rule.controls.AddRange($AddSourcesPathNoFile)
 					$CheckBoxInstall.Enabled = $False
 				} else {
-					$UI_Main_Rule.controls.AddRange($AddSourcesSearchOrder_Wrap)
 					$CheckBoxInstall.Enabled = $True
 				}
 			}
@@ -886,7 +803,7 @@ Function Cumulative_updates_Add_UI_Autopilot
 				LinkBehavior    = "NeverUnderline"
 				add_Click       = {
 					Check_Folder -chkpath $this.Tag
-					Update_Add_Refresh_Sourcs_Autopilot
+					Update_Del_Refresh_Sourcs_Autopilot
 				}
 			}
 			$AddSourcesPath_Wrap = New-Object system.Windows.Forms.Label -Property @{
@@ -929,7 +846,7 @@ Function Cumulative_updates_Add_UI_Autopilot
 						$UI_Main_Error.Text = $lang.Existed
 					} else {
 						$Script:Temp_Select_Custom_Folder_Queue += $filename
-						Update_Add_Refresh_Sourcs_Autopilot
+						Update_Del_Refresh_Sourcs_Autopilot
 					}
 				} else {
 					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.ico")
@@ -943,18 +860,17 @@ Function Cumulative_updates_Add_UI_Autopilot
 		autoScaleMode  = 2
 		Height         = 720
 		Width          = 928
-		Text           = "$($lang.CUpdate): $($lang.AddTo) [ $($lang.Autopilot), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
+		Text           = "$($lang.CUpdate): $($lang.Del) [ $($lang.Autopilot), $($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid) ]"
 		Font           = New-Object System.Drawing.Font($lang.FontsUI, 9, [System.Drawing.FontStyle]::Regular)
 		StartPosition  = "CenterScreen"
 		MaximizeBox    = $False
-		MinimizeBox    = $true
-		ControlBox     = $true
+		MinimizeBox    = $False
+		ControlBox     = $False
 		BackColor      = "#FFFFFF"
 		FormBorderStyle = "Fixed3D"
 		AllowDrop      = $true
 		Add_DragOver   = $UI_Main_DragOver
 		Add_DragDrop   = $UI_Main_DragDrop
-		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\..\Assets\icon\Yi.ico")
 	}
 	$UI_Main_Menu      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
@@ -991,9 +907,9 @@ Function Cumulative_updates_Add_UI_Autopilot
 		ActiveLinkColor = "#FF0000"
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
-			Remove-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -Force -ErrorAction SilentlyContinue | out-null
+			Remove-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -Force -ErrorAction SilentlyContinue | out-null
 
-			Refres_Event_Tasks_Cumulative_updates_Add_UI_Autopilot
+			Refres_Event_Tasks_Update_Del_UI_Autopilot
 
 			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Error.Text = "$($lang.EventManagerCurrentClear), $($lang.Done)"
@@ -1018,9 +934,9 @@ Function Cumulative_updates_Add_UI_Autopilot
 		ActiveLinkColor = "#FF0000"
 		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
-			Remove-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -Force -ErrorAction SilentlyContinue | out-null
+			Remove-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -Force -ErrorAction SilentlyContinue | out-null
 
-			Refres_Event_Tasks_Cumulative_updates_Add_UI_Autopilot
+			Refres_Event_Tasks_Update_Del_UI_Autopilot
 
 			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
 			$UI_Main_Error.Text = "$($lang.EventManagerCurrentClear), $($lang.Done)"
@@ -1031,7 +947,7 @@ Function Cumulative_updates_Add_UI_Autopilot
 		.可选功能
 	#>
 	$UI_Main_Adv       = New-Object system.Windows.Forms.Label -Property @{
-		Height         = 40
+		Height         = 30
 		Width          = 530
 		margin         = "0,35,0,0"
 		Text           = $lang.AdvOption
@@ -1047,16 +963,16 @@ Function Cumulative_updates_Add_UI_Autopilot
 		Text           = "$($lang.RuleSkipFolderCheck): $($Global:Search_KB_File_Type)"
 		add_Click      = {
 			if ($UI_Main_Dont_Checke_Is_File.Checked) {
-				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Skip_Check_File_Add_Autopilot" -value "True"
+				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Skip_Check_File_Del_Autopilot" -value "True"
 			} else {
-				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Skip_Check_File_Add_Autopilot" -value "False"
+				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Skip_Check_File_Del_Autopilot" -value "False"
 			}
 
-			Update_Add_Refresh_Sourcs_Autopilot
+			Update_Del_Refresh_Sourcs_Autopilot
 		}
 	}
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Skip_Check_File_Add_Autopilot" -ErrorAction SilentlyContinue) {
-		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Skip_Check_File_Add_Autopilot" -ErrorAction SilentlyContinue) {
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Skip_Check_File_Del_Autopilot" -ErrorAction SilentlyContinue) {
+		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Skip_Check_File_Del_Autopilot" -ErrorAction SilentlyContinue) {
 			"True" {
 				$UI_Main_Dont_Checke_Is_File.Checked = $True
 			}
@@ -1088,16 +1004,16 @@ Function Cumulative_updates_Add_UI_Autopilot
 			Text           = $lang.RulePre
 			add_Click      = {
 				if ($UI_Main_Dont_Checke_Is_RulePre.Checked) {
-					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_Available_Add_Autopilot" -value "True"
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_Available_Del_Autopilot" -value "True"
 				} else {
-					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_Available_Add_Autopilot" -value "False"
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_Available_Del_Autopilot" -value "False"
 				}
 
-				Update_Add_Refresh_Sourcs_Autopilot
+				Update_Del_Refresh_Sourcs_Autopilot
 			}
 		}
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_Available_Add_Autopilot" -ErrorAction SilentlyContinue) {
-			switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_Available_Add_Autopilot" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_Available_Del_Autopilot" -ErrorAction SilentlyContinue) {
+			switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_Available_Del_Autopilot" -ErrorAction SilentlyContinue) {
 				"True" {
 					$UI_Main_Dont_Checke_Is_RulePre.Checked = $True
 				}
@@ -1119,16 +1035,16 @@ Function Cumulative_updates_Add_UI_Autopilot
 			Text           = $lang.RuleMultistage
 			add_Click      = {
 				if ($UI_Main_Dont_Checke_Is_RuleMultistage.Checked) {
-					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_RuleMultistage_Add_Autopilot" -value "True"
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_RuleMultistage_Del_Autopilot" -value "True"
 				} else {
-					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_RuleMultistage_Add_Autopilot" -value "False"
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_RuleMultistage_Del_Autopilot" -value "False"
 				}
 
-				Update_Add_Refresh_Sourcs_Autopilot
+				Update_Del_Refresh_Sourcs_Autopilot
 			}
 		}
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_RuleMultistage_Add_Autopilot" -ErrorAction SilentlyContinue) {
-			switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_RuleMultistage_Add_Autopilot" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_RuleMultistage_Del_Autopilot" -ErrorAction SilentlyContinue) {
+			switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_RuleMultistage_Del_Autopilot" -ErrorAction SilentlyContinue) {
 				"True" {
 					$UI_Main_Dont_Checke_Is_RuleMultistage.Checked = $True
 				}
@@ -1150,16 +1066,16 @@ Function Cumulative_updates_Add_UI_Autopilot
 			Text           = $lang.RuleCustomize
 			add_Click      = {
 				if ($UI_Main_Dont_Checke_Is_RuleOther.Checked) {
-					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_RuleOther_Add_Autopilot" -value "True"
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_RuleOther_Del_Autopilot" -value "True"
 				} else {
-					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_RuleOther_Add_Autopilot" -value "False"
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_Folder_RuleOther_Del_Autopilot" -value "False"
 				}
 
-				Update_Add_Refresh_Sourcs_Autopilot
+				Update_Del_Refresh_Sourcs_Autopilot
 			}
 		}
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_RuleOther_Add_Autopilot" -ErrorAction SilentlyContinue) {
-			switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_RuleOther_Add_Autopilot" -ErrorAction SilentlyContinue) {
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_RuleOther_Del_Autopilot" -ErrorAction SilentlyContinue) {
+			switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_Folder_RuleOther_Del_Autopilot" -ErrorAction SilentlyContinue) {
 				"True" {
 					$UI_Main_Dont_Checke_Is_RuleOther.Checked = $True
 				}
@@ -1198,8 +1114,8 @@ Function Cumulative_updates_Add_UI_Autopilot
 		Width          = 280
 		Text           = $lang.Refresh
 		add_Click      = {
-			Update_Add_Refresh_Sourcs_Autopilot
-			Refres_Event_Tasks_Cumulative_updates_Add_UI_Autopilot
+			Update_Del_Refresh_Sourcs_Autopilot
+			Refres_Event_Tasks_Update_Del_UI_Autopilot
 
 			$UI_Main_Error.Text = "$($lang.Refresh), $($lang.Done)"
 			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
@@ -1233,7 +1149,7 @@ Function Cumulative_updates_Add_UI_Autopilot
 					$UI_Main_Error.Text = $lang.Existed
 				} else {
 					$Script:Temp_Select_Custom_Folder_Queue += $FolderBrowser.SelectedPath
-					Update_Add_Refresh_Sourcs_Autopilot
+					Update_Del_Refresh_Sourcs_Autopilot
 				}
 			} else {
 				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.ico")
@@ -1281,87 +1197,6 @@ Function Cumulative_updates_Add_UI_Autopilot
 		}
 	}
 
-	<#
-		.显示提示蒙层
-	#>
-	$UI_Main_Mask_Tips = New-Object system.Windows.Forms.Panel -Property @{
-		BorderStyle    = 0
-		Height         = 678
-		Width          = 1006
-		autoSizeMode   = 1
-		Padding        = "8,8,8,8"
-		Location       = '0,0'
-		Visible        = $False
-	}
-	$UI_Main_Mask_Tips_Results = New-Object System.Windows.Forms.RichTextBox -Property @{
-		Height         = 555
-		Width          = 885
-		BorderStyle    = 0
-		Location       = "15,15"
-		Text           = $lang.SearchOrderTips
-		BackColor      = "#FFFFFF"
-		ReadOnly       = $True
-	}
-	$UI_Main_Mask_Tips_Global_Do_Not = New-Object System.Windows.Forms.CheckBox -Property @{
-		Location       = "20,607"
-		Height         = 40
-		Width          = 550
-		Text           = $lang.LXPsAddDelTipsGlobal
-		add_Click      = {
-			$UI_Main_Error.Text = ""
-			$UI_Main_Error_Icon.Image = $null
-
-			if ($UI_Main_Mask_Tips_Global_Do_Not.Checked) {
-				Save_Dynamic -regkey "Solutions" -name "Tips_Warning_CU_Global" -value "True"
-				$UI_Main_Mask_Tips_Do_Not.Enabled = $False
-			} else {
-				Save_Dynamic -regkey "Solutions" -name "Tips_Warning_CU_Global" -value "False"
-				$UI_Main_Mask_Tips_Do_Not.Enabled = $True
-			}
-		}
-	}
-	$UI_Main_Mask_Tips_Do_Not = New-Object System.Windows.Forms.CheckBox -Property @{
-		Location       = "20,635"
-		Height         = 40
-		Width          = 550
-		Text           = $lang.LXPsAddDelTips
-		add_Click      = {
-			$UI_Main_Error.Text = ""
-			$UI_Main_Error_Icon.Image = $null
-
-			if ($UI_Main_Mask_Tips_Do_Not.Checked) {
-				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "Tips_Warning_CU" -value "True"
-			} else {
-				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "Tips_Warning_CU" -value "False"
-			}
-		}
-	}
-	$UI_Main_Mask_Tips_Hide = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "620,635"
-		Height         = 36
-		Width          = 280
-		Text           = $lang.Hide
-		add_Click      = {
-			$UI_Main_Mask_Tips.Visible = $False
-		}
-	}
-	$UI_Main_Tips_New  = New-Object system.Windows.Forms.LinkLabel -Property @{
-		Height         = 30
-		Width          = 530
-		Padding        = "16,0,0,0"
-		Text           = $lang.LXPsAddDelTipsView
-		LinkColor      = "#008000"
-		ActiveLinkColor = "#FF0000"
-		LinkBehavior   = "NeverUnderline"
-		add_Click      = {
-			$UI_Main_Error.Text = ""
-			$UI_Main_Error_Icon.Image = $null
-
-			$UI_Main_Mask_Tips.Visible = $True
-		}
-	}
-
 	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
 		Location       = "620,523"
 		Height         = 20
@@ -1382,14 +1217,14 @@ Function Cumulative_updates_Add_UI_Autopilot
 		Text           = "$($lang.SaveTo): $($lang.Autopilot_Sync_To_Global)"
 		add_Click      = {
 			if ($UI_Main_Event_Sync_To_Global.Checked) {
-				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_SyncTo_Global_Add_Autopilot" -value "True"
+				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_SyncTo_Global_Del_Autopilot" -value "True"
 			} else {
-				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_SyncTo_Global_Add_Autopilot" -value "False"
+				Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -name "$(Get_GPS_Location)_Is_Check_SyncTo_Global_Del_Autopilot" -value "False"
 			}
 		}
 	}
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_SyncTo_Global_Add_Autopilot" -ErrorAction SilentlyContinue) {
-		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_SyncTo_Global_Add_Autopilot" -ErrorAction SilentlyContinue) {
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_SyncTo_Global_Del_Autopilot" -ErrorAction SilentlyContinue) {
+		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "$(Get_GPS_Location)_Is_Check_SyncTo_Global_Del_Autopilot" -ErrorAction SilentlyContinue) {
 			"True" {
 				$UI_Main_Event_Sync_To_Global.Checked = $True
 			}
@@ -1424,14 +1259,14 @@ Function Cumulative_updates_Add_UI_Autopilot
 
 			if ($Temp_Queue_Select_Item.Count -gt 0) {
 				if ($UI_Main_Event_Sync_To_Global.Checked) {
-					Save_Dynamic -regkey "Solutions\Autopilot\Deploy\Update" -name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -value $Temp_Queue_Select_Item -Type "MultiString"
+					Save_Dynamic -regkey "Solutions\Autopilot\Deploy\Update" -name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -value $Temp_Queue_Select_Item -Type "MultiString"
 
-					Remove-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -Force -ErrorAction SilentlyContinue | out-null
+					Remove-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -Force -ErrorAction SilentlyContinue | out-null
 				} else {
-					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -value $Temp_Queue_Select_Item -Type "MultiString"
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -value $Temp_Queue_Select_Item -Type "MultiString"
 				}
 
-				Refres_Event_Tasks_Cumulative_updates_Add_UI_Autopilot
+				Refres_Event_Tasks_Update_Del_UI_Autopilot
 
 				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
 				$UI_Main_Error.Text = "$($lang.Save), $($lang.Done)"
@@ -1442,7 +1277,6 @@ Function Cumulative_updates_Add_UI_Autopilot
 		}
 	}
 	$UI_Main.controls.AddRange((
-		$UI_Main_Mask_Tips,
 		$UI_Main_View_Detailed,
 		$UI_Main_Menu,
 		$UI_Main_Refresh_Sources,
@@ -1465,7 +1299,6 @@ Function Cumulative_updates_Add_UI_Autopilot
 		$UI_Main_Dashboard_Event_Current_Status,
 		$UI_Main_Dashboard_Event_Current_Clear,
 		$UI_Main_Adv,
-		$UI_Main_Tips_New,
 		$UI_Main_Dont_Checke_Is_File,
 		$UI_Main_Auto_select_Folder,
 			$UI_Main_Dont_Checke_Is_RulePre,
@@ -1476,62 +1309,21 @@ Function Cumulative_updates_Add_UI_Autopilot
 		$UI_Main_Rule
 	))
 
-	$UI_Main_Mask_Tips.controls.AddRange((
-		$UI_Main_Mask_Tips_Results,
-		$UI_Main_Mask_Tips_Global_Do_Not,
-		$UI_Main_Mask_Tips_Do_Not,
-		$UI_Main_Mask_Tips_Hide
-	))
-
-	<#
-		.提示
-	#>
-	$MarkShowNewTips = $True
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions" -Name "Tips_Warning_CU_Global" -ErrorAction SilentlyContinue) {
-		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions" -Name "Tips_Warning_CU_Global" -ErrorAction SilentlyContinue) {
-			"True" {
-				$MarkShowNewTips = $False
-				$UI_Main_Mask_Tips_Global_Do_Not.Checked = $True
-				$UI_Main_Mask_Tips_Do_Not.Enabled = $False
-			}
-			"False" {
-				$UI_Main_Mask_Tips_Global_Do_Not.Checked = $False
-				$UI_Main_Mask_Tips_Do_Not.Enabled = $True
-			}
-		}
-	}
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "Tips_Warning_CU" -ErrorAction SilentlyContinue) {
-		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update" -Name "Tips_Warning_CU" -ErrorAction SilentlyContinue) {
-			"True" {
-				$MarkShowNewTips = $False
-				$UI_Main_Mask_Tips_Do_Not.Checked = $True
-			}
-			"False" {
-				$UI_Main_Mask_Tips_Do_Not.Checked = $False
-			}
-		}
-	}
-	if ($MarkShowNewTips) {
-		$UI_Main_Mask_Tips.Visible = $True
-	} else {
-		$UI_Main_Mask_Tips.Visible = $False
-	}
-
-	Update_Add_Refresh_Sourcs_Autopilot
+	Update_Del_Refresh_Sourcs_Autopilot
 
 	$Temp_Assign_Task_Select = @()
 	<#
 		.全局
 	#>
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-		$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -ErrorAction SilentlyContinue) {
+		$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -ErrorAction SilentlyContinue
 	}
 
 	<#
 		.当前
 	#>
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-		$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -ErrorAction SilentlyContinue) {
+		$Temp_Assign_Task_Select = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Del;Auto" -ErrorAction SilentlyContinue
 	}
 
 	$Temp_Assign_Task_Select = $Temp_Assign_Task_Select | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
@@ -1551,8 +1343,8 @@ Function Cumulative_updates_Add_UI_Autopilot
 		}
 	}
 
-	Update_Add_Refresh_Sourcs_Autopilot
-	Refres_Event_Tasks_Cumulative_updates_Add_UI_Autopilot
+	Update_Del_Refresh_Sourcs_Autopilot
+	Refres_Event_Tasks_Update_Del_UI_Autopilot
 
 	if ($Temp_Assign_Task_Select.count -gt 0) {
 		$UI_Main_Rule.Controls | ForEach-Object {

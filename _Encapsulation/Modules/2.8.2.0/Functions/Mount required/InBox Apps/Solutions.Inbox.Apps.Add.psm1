@@ -497,7 +497,7 @@ Function InBox_Apps_Add_UI
 				if ($_.Checked) {
 					$MarkCheckedSelectRuleName = $True
 					$Script:InBoxAppsSearchRuleSelected = $_.Tag
-					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\InBox" -name "$(Get_GPS_Location)_SelectGUID" -value $_.Tag
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\InBox" -name "$(Get_GPS_Location)SelectGUID" -value $_.Tag
 				}
 			}
 		}
@@ -1528,8 +1528,8 @@ Function InBox_Apps_Add_UI
 	<#
 		.选择全局唯一规则 GUID
 	#>
-	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\InBox" -Name "$(Get_GPS_Location)_SelectGUID" -ErrorAction SilentlyContinue) {
-		$GetDefaultSelectLabel = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\InBox" -Name "$(Get_GPS_Location)_SelectGUID" -ErrorAction SilentlyContinue
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\InBox" -Name "$(Get_GPS_Location)SelectGUID" -ErrorAction SilentlyContinue) {
+		$GetDefaultSelectLabel = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\InBox" -Name "$(Get_GPS_Location)SelectGUID" -ErrorAction SilentlyContinue
 	} else {
 		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\MVS" -Name "GUID" -ErrorAction SilentlyContinue) {
 			$GetDefaultSelectLabel = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\MVS" -Name "GUID" -ErrorAction SilentlyContinue
@@ -2595,7 +2595,7 @@ Function InBox_Apps_Check_Customize
 				if ($_.Checked) {
 					$MarkCheckedRuleNaming = $True
 					$Script:InBoxAppsSearchRuleSelected = $_.Tag
-					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\InBox" -name "$(Get_GPS_Location)_SelectGUID" -value $_.Tag
+					Save_Dynamic -regkey "Solutions\ImageSources\$($Global:MainImage)\Deploy\InBox" -name "$(Get_GPS_Location)SelectGUID" -value $_.Tag
 				}
 			}
 		}

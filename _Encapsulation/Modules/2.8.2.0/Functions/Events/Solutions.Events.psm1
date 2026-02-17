@@ -1043,16 +1043,34 @@ Function AZ_Error_Page
 		FormBorderStyle = "Fixed3D"
 		Icon = [System.Drawing.Icon]::ExtractAssociatedIcon("$($PSScriptRoot)\..\..\..\Assets\icon\Yi.ico")
 	}
+
+	$UI_Main_Error_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
+		Location       = "15,15"
+		Height         = 36
+		Width          = 36
+		SizeMode       = "StretchImage"
+		Image          = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+	}
+	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
+		Location       = "58,28"
+		Height         = 30
+		Width          = 455
+		Text           = $lang.SelectFromError
+	}
 	$UI_Main_Tips      = New-Object System.Windows.Forms.RichTextBox -Property @{
-		Height         = 645
-		Width          = 500
+		Height         = 590
+		Width          = 495
 		BorderStyle    = 0
-		Location       = "15,20"
+		Location       = "20,75"
 		Text           = $lang.HealthyForceStop
 		BackColor      = "#FFFFFF"
 		ReadOnly       = $True
 	}
 
-	$UI_Main.controls.AddRange($UI_Main_Tips)
+	$UI_Main.controls.AddRange((
+		$UI_Main_Error_Icon,
+		$UI_Main_Error,
+		$UI_Main_Tips
+	))
 	$UI_Main.ShowDialog() | Out-Null
 }

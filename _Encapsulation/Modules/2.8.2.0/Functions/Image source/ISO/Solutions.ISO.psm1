@@ -4479,7 +4479,7 @@ Function ISO_Create_UI
 			$GUIISO_SP.Checked = $True
 			$GUIISO_SP_Version.Enabled = $True
 
-			if ($Autopilot.VersionNumber.Code -eq "Auto") {
+			if ($Autopilot.VersionNumber.Version -eq "Auto") {
 				$GUIISO_SP_Version.Text = Auto_Get_Image_Index
 			} else {
 				if ([string]::IsNullOrEmpty($Autopilot.VersionNumber.InitialRelease)) {

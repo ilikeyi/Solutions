@@ -2033,8 +2033,8 @@ Function Autopilot_Cumulative_updates_Add_UI_Import
 					<#
 						.当前
 					#>
-					if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-						$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+					if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue) {
+						$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ImageSources\$($Global:MainImage)\Deploy\Update\Autopilot" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue
 
 						if ($GetSelectVer.Count -gt 0) {
 							Write-Host "$($lang.Event_Primary_Key): $($Global:Primary_Key_Image.Uid)"
@@ -2049,8 +2049,8 @@ Function Autopilot_Cumulative_updates_Add_UI_Import
 				}
 
 				if ($New_Tasks_Assign_Auto_Schome.Count -le 0) {
-					if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue) {
-						$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)_$(Get_Autopilot_Location)_$($Global:ImageType)_Add_Auto" -ErrorAction SilentlyContinue
+					if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue) {
+						$GetSelectVer = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\Autopilot\Deploy\Update" -Name "$(Get_GPS_Location)$(Get_Autopilot_Location);$($Global:ImageType);Add;Auto" -ErrorAction SilentlyContinue
 
 						if ($GetSelectVer.Count -gt 0) {
 							Write-Host $lang.Autopilot_Sync_To_Global
