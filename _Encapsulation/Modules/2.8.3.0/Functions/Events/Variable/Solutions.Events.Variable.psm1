@@ -609,5 +609,11 @@ Function Event_Need_Mount_Global_Variable
 	#>
 	New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($Uid)" -Value $False -Force
 	New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_Abandon_Allow_$($Uid)" -Value $False -Force
+
+	<#
+		.附加版本
+	#>
+	New-Variable -Scope global -Name "AE_Eject_Do_Not_Save_Abandon_Allow_$($Uid)" -Value $False -Force
+
 	New-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($Uid)" -Value $False -Force
 }
