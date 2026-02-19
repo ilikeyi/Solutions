@@ -3749,12 +3749,10 @@ Function Image_Select
 		$UIUnzipPanel_SHA512_Calibration.Name = ""
 
 		if ($UIUnzip_Search_Show_Select.Checked) {
-			$UIUnzip_Search_Show.Enabled = $True
 			$UIUnzip_Search_Rule_Show.Enabled = $False
 		}
 
 		if ($UIUnzip_Search_Rule_Select.Checked) {
-			$UIUnzip_Search_Show.Enabled = $False
 			$UIUnzip_Search_Rule_Show.Enabled = $True
 		}
 
@@ -4196,15 +4194,23 @@ Function Image_Select
 
 				if ($Script:Init_Folder_All_File_Show.count -gt 0) {
 					ForEach ($WildCard in $Script:Init_Folder_All_File_Show) {
-						if ($Script:User_Custom_Select_Rule.ISO -contains [IO.Path]::GetFileName($WildCard)) {
-							$Script:Init_Folder_All_File_Exclude += $WildCard
+						$NewFileName = [IO.Path]::GetFileName($WildCard)
+
+						if ($Script:User_Custom_Select_Rule.ISO -contains $NewFileName) {
+							if ([string]::IsNullOrEmpty($UIUnzip_Search_Sift_Custon.Text)) {
+								$Script:Init_Folder_All_File_Exclude += $WildCard
+							} else {
+								if ($NewFileName -like "*$($UIUnzip_Search_Sift_Custon.Text)*") {
+									$Script:Init_Folder_All_File_Exclude += $WildCard
+								}
+							}
 						}
 					}
 
-					$UI_Main_Pre_Rule  = New-Object system.Windows.Forms.Label -Property @{
-						Height         = 40
-						Width          = 645
-						Text           = "$($lang.ISO_Other): $($Script:Init_Folder_All_File_Exclude.Count) $($lang.EventManagerCount)"
+					$UI_Main_Pre_Rule = New-Object system.Windows.Forms.Label -Property @{
+						Height        = 40
+						Width         = 645
+						Text          = "$($lang.ISO_Other): $($Script:Init_Folder_All_File_Exclude.Count) $($lang.EventManagerCount)"
 					}
 					$UIUnzip_Select_Sources.controls.AddRange($UI_Main_Pre_Rule)
 
@@ -4274,9 +4280,18 @@ Function Image_Select
 						分类：功能包、语言包
 					#>
 					ForEach ($WildCard in $Script:Init_Folder_All_File_Show) {
-						if ($Script:User_Custom_Select_Rule.Language -contains [IO.Path]::GetFileName($WildCard)) {
-							$Script:Init_File_Type_Fod_And_Lang += $WildCard
-							$Script:Init_Folder_All_File_Match_Done += $WildCard
+						$NewFileName = [IO.Path]::GetFileName($WildCard)
+
+						if ($Script:User_Custom_Select_Rule.Language -contains $NewFileName) {
+							if ([string]::IsNullOrEmpty($UIUnzip_Search_Sift_Custon.Text)) {
+								$Script:Init_File_Type_Fod_And_Lang += $WildCard
+								$Script:Init_Folder_All_File_Match_Done += $WildCard
+							} else {
+								if ($NewFileName -like "*$($UIUnzip_Search_Sift_Custon.Text)*") {
+									$Script:Init_File_Type_Fod_And_Lang += $WildCard
+									$Script:Init_Folder_All_File_Match_Done += $WildCard
+								}
+							}
 						}
 					}
 
@@ -4356,9 +4371,18 @@ Function Image_Select
 						.分类：InBox Apps
 					#>
 					ForEach ($WildCard in $Script:Init_Folder_All_File_Show) {
-						if ($Script:User_Custom_Select_Rule.InboxApps -contains [IO.Path]::GetFileName($WildCard)) {
-							$Script:Init_File_Type_InBox_Apps += $WildCard
-							$Script:Init_Folder_All_File_Match_Done += $WildCard
+						$NewFileName = [IO.Path]::GetFileName($WildCard)
+
+						if ($Script:User_Custom_Select_Rule.InboxApps -contains $NewFileName) {
+							if ([string]::IsNullOrEmpty($UIUnzip_Search_Sift_Custon.Text)) {
+								$Script:Init_File_Type_InBox_Apps += $WildCard
+								$Script:Init_Folder_All_File_Match_Done += $WildCard
+							} else {
+								if ($NewFileName -like "*$($UIUnzip_Search_Sift_Custon.Text)*") {
+									$Script:Init_File_Type_InBox_Apps += $WildCard
+									$Script:Init_Folder_All_File_Match_Done += $WildCard
+								}
+							}
 						}
 					}
 
@@ -9381,27 +9405,10 @@ Function Image_Select
 	#>
 	$UIUnzip_Search_Show_FULL_Group = New-Object System.Windows.Forms.FlowLayoutPanel -Property @{
 		BorderStyle    = 0
-		Height         = 240
+		Height         = 230
 		Width          = 280
-		Location       = "764,55"
+		Location       = "764,65"
 		autoScroll     = $False
-	}
-
-	<#
-		.显示全部
-	#>
-	$UIUnzip_Search_Show_Select = New-Object System.Windows.Forms.RadioButton -Property @{
-		Height         = 40
-		Width          = 280
-		Text           = $lang.Rule_Show_Full
-		add_Click      = { ISO_Select_Refresh_Sources_List }
-	}
-	$UIUnzip_Search_Show = New-Object System.Windows.Forms.FlowLayoutPanel -Property @{
-		BorderStyle    = 0
-		autoSize       = 1
-		autoSizeMode   = 1
-		autoScroll     = $False
-		Padding        = "13,0,0,0"
 	}
 
 	$UIUnzip_Search_Sift = New-Object system.Windows.Forms.Label -Property @{
@@ -9412,7 +9419,7 @@ Function Image_Select
 	$UIUnzip_Search_Sift_Custon = New-Object System.Windows.Forms.TextBox -Property @{
 		Height         = 30
 		Width          = 215
-		Margin         = "22,0,0,30"
+		Margin         = "22,0,0,20"
 		Text           = ""
 		BackColor      = "#FFFFFF"
 		add_Click      = {
@@ -9421,6 +9428,16 @@ Function Image_Select
 			$UIUnzipPanelErrorMsg_Icon.Image = $null
 			$UIUnzipPanelErrorMsg.ForeColor = "#000000"
 		}
+	}
+
+	<#
+		.显示全部
+	#>
+	$UIUnzip_Search_Show_Select = New-Object System.Windows.Forms.RadioButton -Property @{
+		Height         = 40
+		Width          = 280
+		Text           = $lang.Rule_Show_Full
+		add_Click      = { ISO_Select_Refresh_Sources_List }
 	}
 
 	<#
@@ -11323,14 +11340,11 @@ Function Image_Select
 		$UIUnzipPanelCanel
 	))
 	$UIUnzip_Search_Show_FULL_Group.controls.AddRange((
+		$UIUnzip_Search_Sift,
+		$UIUnzip_Search_Sift_Custon,
 		$UIUnzip_Search_Show_Select,
-		$UIUnzip_Search_Show,
 		$UIUnzip_Search_Rule_Select,
 		$UIUnzip_Search_Rule_Show
-	))
-	$UIUnzip_Search_Show.controls.AddRange((
-		$UIUnzip_Search_Sift,
-		$UIUnzip_Search_Sift_Custon
 	))
 	$UIUnzip_Search_Rule_Show.controls.AddRange((
 		$UIUnzip_Search_Rule_Show_Select_Custom

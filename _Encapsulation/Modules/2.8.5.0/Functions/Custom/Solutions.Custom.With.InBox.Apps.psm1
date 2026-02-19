@@ -684,7 +684,9 @@ $Global:Pre_Config_Rules = @(
 						}
 						arm64 = @{
 							ISO = @{
-								Language = @()
+								Language = @(
+									"26100.1.240331-1435.ge_release_arm64fre_CLIENT_LOF_PACKAGES_OEM.iso"
+								)
 								InBoxApps = @(
 									"26100.6584.250904-1728.ge_release_svc_prod1_amd64fre_InboxApps.iso"
 								)
@@ -1188,6 +1190,7 @@ $Global:Pre_Config_Rules = @(
 							AlternativeFilenames = @(
 								"mul_languages_and_optional_features_for_windows_11_version_24h2_x64_dvd_eb44bee0.iso"
 								"SW_DVD9_Win_11_24H2_x64_MultiLang_LangPackAll_LIP_LoF_X23-69888.ISO"
+								"SW_DVD9_Win_11_24H2_25H2_x64_MultiLang_LangPackAll_LIP_LoF_X23-69888.ISO"
 							)
 							FileList = "https://files.rg-adguard.net/file/025cfc5d-f5fa-7d00-246e-76c04a40e210"
 							CRCSHA = @{
@@ -1199,6 +1202,8 @@ $Global:Pre_Config_Rules = @(
 							ISO = "26100.1.240331-1435.ge_release_arm64fre_CLIENT_LOF_PACKAGES_OEM.iso";
 							AlternativeFilenames = @(
 								"mul_languages_and_optional_features_for_windows_11_version_24h2_arm64_dvd_5c4dae5b.iso"
+								"SW_DVD9_Win_11_24H2_25H2_Arm64_MultiLang_LangPackAll_LIP_LoF_X23-69887.ISO"
+								"SW_DVD9_Win_11_24H2_Arm64_MultiLang_LangPackAll_LIP_LoF_X23-69887.ISO"
 							)
 							FileList = "https://files.rg-adguard.net/file/a75a5453-30a4-2197-1ecb-3a602d92d9a0"
 							CRCSHA = @{
