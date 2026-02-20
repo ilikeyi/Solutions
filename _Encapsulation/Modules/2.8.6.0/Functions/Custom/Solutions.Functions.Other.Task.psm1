@@ -231,6 +231,9 @@ Function Other_Tasks_RAMDISK
 
 	Write-Host "  $($lang.RuleDescription): ".PadRight(22) -NoNewline
 	Write-host $lang.Other_Tasks_RAMDISK -ForegroundColor Yellow
+
+	Write-Host
+	Write-Host "  $($lang.Abandon_Terms)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 
 	Refresh_Eject_Abandon_Agreement
@@ -267,6 +270,7 @@ Function Other_Tasks_RAMDISK
 		if ($CustomRAMDisk_Abandon_Disks.Count -gt 0) {
 			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
+			Write-host
 			Write-host "  $($lang.Abandon_Allow_Format): " -ForegroundColor Yellow
 			write-host "  $('-' * 80)"
 			foreach ($item in $CustomRAMDisk_Abandon_Disks) {
@@ -334,7 +338,8 @@ Function Other_Tasks_RAMDISK
 								
 					if ($CustomRAMDisk_Abandon_Disks.Count -gt 0) {
 						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
-					
+
+						Write-host
 						Write-host "  $($lang.Abandon_Allow_Format): " -ForegroundColor Yellow
 						write-host "  $('-' * 80)"
 						foreach ($item in $CustomRAMDisk_Abandon_Disks) {
@@ -354,6 +359,7 @@ Function Other_Tasks_RAMDISK
 			} else {
 				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			}
+			write-host
 
 			ForEach ($item in $WaitFormatTasks) {
 				Write-Host "  $($lang.AutoSelectRAMDISK): " -NoNewline
@@ -362,6 +368,7 @@ Function Other_Tasks_RAMDISK
 				Write-Host "  $($lang.Select_Path): " -NoNewline
 				Write-Host $item.DriveLetter -ForegroundColor Green
 
+				Write-Host
 				Write-Host "  " -NoNewline
 				Write-Host " $($lang.Abandon_Allow_Format) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				if ($CustomRAMDisk_Abandon_Disks -contains $item.DriveLetter) {
@@ -416,6 +423,9 @@ Function Other_Tasks_RAMDISK_AR
 	Write-Host "`n  $($lang.Repair)" -ForegroundColor Yellow
 	Write-Host "    * $($lang.HistoryClearDismSave)" -ForegroundColor Green
 	Write-Host "    * $($lang.Clear_Bad_Mount)" -ForegroundColor Green
+
+	Write-Host
+	Write-Host "  $($lang.Abandon_Terms)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 
 	Refresh_Eject_Abandon_Agreement
@@ -452,6 +462,7 @@ Function Other_Tasks_RAMDISK_AR
 		if ($CustomRAMDisk_Abandon_Disks.Count -gt 0) {
 			Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 
+			Write-host
 			Write-host "  $($lang.Abandon_Allow_Format): " -ForegroundColor Yellow
 			write-host "  $('-' * 80)"
 			foreach ($item in $CustomRAMDisk_Abandon_Disks) {
@@ -519,7 +530,8 @@ Function Other_Tasks_RAMDISK_AR
 								
 					if ($CustomRAMDisk_Abandon_Disks.Count -gt 0) {
 						Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
-					
+
+						Write-host
 						Write-host "  $($lang.Abandon_Allow_Format): " -ForegroundColor Yellow
 						write-host "  $('-' * 80)"
 						foreach ($item in $CustomRAMDisk_Abandon_Disks) {
@@ -539,6 +551,7 @@ Function Other_Tasks_RAMDISK_AR
 			} else {
 				Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 			}
+			write-host
 
 			ForEach ($item in $WaitFormatTasks) {
 				Write-Host "  $($lang.AutoSelectRAMDISK): " -NoNewline
@@ -547,6 +560,7 @@ Function Other_Tasks_RAMDISK_AR
 				Write-Host "  $($lang.Select_Path): " -NoNewline
 				Write-Host $item.DriveLetter -ForegroundColor Green
 
+				Write-host
 				Write-Host "  " -NoNewline
 				Write-Host " $($lang.Abandon_Allow_Format) " -NoNewline -BackgroundColor White -ForegroundColor Black
 				if ($CustomRAMDisk_Abandon_Disks -contains $item.DriveLetter) {

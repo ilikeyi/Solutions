@@ -8,6 +8,179 @@
 	.排序：内核、系统类型、boot 或 Install、所需文件、文件路径
 #>
 $Global:Preconfigured_Rule_Language = @(
+	#region Windows Inside rPreview Server vNext 29531
+	@{
+		GUID        = "e9829778-95a1-465e-959e-8b01423e6712"
+		Author      = 'Yi'
+		Copyright   = 'FengYi, Inc. All rights reserved.'
+		Name        = "Windows Inside rPreview Server vNext 29531"
+		Description = ""
+		Autopilot   = @{
+			Prerequisite = @{
+				x64 = @{
+					ISO = @{
+						Language = @(
+							"Microsoft_Server_InsiderPreview_LangPack_FOD_29531.iso"
+						)
+						InBoxApps = @()
+					}
+				}
+			}
+		}
+		ISO = @(
+			@{
+				ISO = "Windows_InsiderPreview_Server_vNext_en-us_29531.iso"
+				FileList = ""
+				CRCSHA = @{
+					SHA256 = ""
+					SHA512 = ""
+				}
+			}
+		)
+		InboxApps = @{
+			ISO = @()
+			SN = @{}
+			Edition = @()
+			Rule = @()
+		}
+		Language = @{
+			ISO = @(
+				@{
+					ISO = "Microsoft_Server_InsiderPreview_LangPack_FOD_29531.iso"
+					AlternativeFilenames = @()
+					FileList = ""
+					CRCSHA = @{
+						SHA256 = ""
+						SHA512 = ""
+					}
+				}
+			)
+			Rule = @(
+				@{
+					Uid = @(
+						"Boot;wim;Boot;wim;"
+					)
+					Rule = @(
+						@{
+							Architecture = "Auto"
+							Rule = @(
+								@{ Match = "WinPE-FontSupport-{Lang}.cab";     Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs"; }
+								@{ Match = "lp.cab";                           Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "WinPE-Setup_{Lang}.cab";           Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "WINPE-SETUP-Server_{Lang}.CAB";    Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-securestartup_{Lang}.cab";   Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-atbroker_{Lang}.cab";        Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-audiocore_{Lang}.cab";       Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-audiodrivers_{Lang}.cab";    Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-enhancedstorage_{Lang}.cab"; Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-narrator_{Lang}.cab";        Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-scripting_{Lang}.cab";       Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-speech-tts_{Lang}.cab";      Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-srh_{Lang}.cab";             Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-srt_{Lang}.cab";             Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-wds-tools_{Lang}.cab";       Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-wmi_{Lang}.cab";             Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-Troubleshooting_{Lang}.cab"; Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+							)
+						}
+					)
+				}
+				@{
+					Uid = @(
+						"Install;wim;Install;wim;"
+						"Install;esd;Install;esd;"
+					)
+					Rule = @(
+						@{
+							Architecture = "Auto"
+							Rule = @(
+								@{ Match = "Microsoft-Windows-LanguageFeatures-Fonts-{DiyLang}-Package~31bf3856ad364e35~{ARCH}~~.cab";                           Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-Server-Language-Pack_{ARCHC}_{Lang}.cab";                                                          Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-LanguageFeatures-Basic-{Lang}-Package~31bf3856ad364e35~{ARCH}~~.cab";                              Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-LanguageFeatures-Handwriting-{Lang}-Package~31bf3856ad364e35~{ARCH}~~.cab";                        Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-LanguageFeatures-OCR-{Lang}-Package~31bf3856ad364e35~{ARCH}~~.cab";                                Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-LanguageFeatures-Speech-{Lang}-Package~31bf3856ad364e35~{ARCH}~~.cab";                             Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-LanguageFeatures-TextToSpeech-{Lang}-Package~31bf3856ad364e35~{ARCH}~~.cab";                       Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-InternetExplorer-Optional-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                            Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-MSPaint-FoD-Package~31bf3856ad364e35~amd64~{Lang}~.cab";                                           Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-MSPaint-FoD-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                                           Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~amd64~{Lang}~.cab";                                           Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                                           Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-MediaPlayer-Package~31bf3856ad364e35~amd64~{Lang}~.cab";                                           Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-MediaPlayer-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                                           Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~amd64~{Lang}~.cab";                                    Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                                    Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~amd64~{Lang}~.cab";                                         Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                                         Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-SnippingTool-FoD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                                     Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-WMIC-FoD-Package~31bf3856ad364e35~amd64~{Lang}~.cab";                                              Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-WMIC-FoD-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                                              Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-ProjFS-OptionalFeature-FOD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                           Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-SenseClient-FoD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                                      Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-Telnet-Client-FOD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                                    Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-TFTP-Client-FOD-Package~31bf3856ad364e35~{ARCH}~{Lang}~.cab";                                      Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-VBSCRIPT-FoD-Package~31bf3856ad364e35~amd64~{Lang}~.cab";                                          Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-VBSCRIPT-FoD-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                                          Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-WinOcr-FOD-Package~31bf3856ad364e35~amd64~{Lang}~.cab";                                            Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-WinOcr-FOD-Package~31bf3856ad364e35~wow64~{Lang}~.cab";                                            Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-ServerCoreFonts-NonCritical-Fonts-BitmapFonts-FOD-Package~31bf3856ad364e35~amd64~{Lang}~.cab";     Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-ServerCoreFonts-NonCritical-Fonts-MinConsoleFonts-FOD-Package~31bf3856ad364e35~amd64~{Lang}~.cab"; Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-ServerCoreFonts-NonCritical-Fonts-Support-FOD-Package~31bf3856ad364e35~amd64~{Lang}~.cab";         Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-ServerCoreFonts-NonCritical-Fonts-TrueType-FOD-Package~31bf3856ad364e35~amd64~{Lang}~.cab";        Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-ServerCoreFonts-NonCritical-Fonts-UAPFonts-FOD-Package~31bf3856ad364e35~amd64~{Lang}~.cab";        Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-SimpleTCP-FOD-Package~31bf3856ad364e35~amd64~{Lang}~.cab";                                         Structure = "LanguagesAndOptionalFeatures"; }
+								@{ Match = "Microsoft-Windows-Server-Core-WOW-Package~31bf3856ad364e35~amd64~{Lang}~.cab";                                       Structure = "LanguagesAndOptionalFeatures"; }
+							)
+						}
+					)
+				}
+				@{
+					Uid  = @(
+						"Install;wim;WinRE;wim;"
+						"Install;esd;WinRE;wim;"
+					)
+					Rule = @(
+						@{
+							Architecture = "Auto"
+							Rule = @(
+								@{ Match = "WinPE-FontSupport-{Lang}.cab";        Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs"; }
+								@{ Match = "lp.cab";                              Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-securestartup_{Lang}.cab";      Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-atbroker_{Lang}.cab";           Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-audiocore_{Lang}.cab";          Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-audiodrivers_{Lang}.cab";       Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-enhancedstorage_{Lang}.cab";    Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-narrator_{Lang}.cab";           Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-scripting_{Lang}.cab";          Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-speech-tts_{Lang}.cab";         Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-srh_{Lang}.cab";                Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-srt_{Lang}.cab";                Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-wds-tools_{Lang}.cab";          Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-wmi_{Lang}.cab";                Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-appxdeployment_{Lang}.cab";     Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-appxpackaging_{Lang}.cab";      Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-storagewmi_{Lang}.cab";         Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-wifi_{Lang}.cab";               Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-windowsupdate_{Lang}.cab";      Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-rejuv_{Lang}.cab";              Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-opcservices_{Lang}.cab";        Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-hta_{Lang}.cab";                Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-connectivity_{Lang}.cab";       Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-DismCmdlets_{Lang}.cab";        Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-PlatformId_{Lang}.cab";         Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-PowerShell_{Lang}.cab";         Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-SecureBootCmdlets_{Lang}.cab";  Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-Troubleshooting_{Lang}.cab";    Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+								@{ Match = "winpe-UpdateOrchestrator_{Lang}.cab"; Structure = "Windows Preinstallation Environment\{ARCHC}\WinPE_OCs\{Lang}"; }
+							)
+						}
+					)
+				}
+			)
+		}
+	}
+	#endregion
+
 	#region Windows Server 2025
 	@{
 		GUID        = "11fe132f-1c84-41fd-a66e-fbc60b79d457"

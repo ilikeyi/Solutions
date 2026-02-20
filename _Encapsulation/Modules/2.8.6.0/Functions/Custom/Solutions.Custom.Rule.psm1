@@ -48,6 +48,20 @@ $Global:Search_File_Order = @{
 		"*ServerCoreFonts-NonCritical-Fonts-TrueType-FOD-Package*~wow64~*"
 		"*ServerCoreFonts-NonCritical-Fonts-TrueType-FOD-Package*~arm64.x86~*"
 		"*ServerCoreFonts-NonCritical-Fonts-TrueType-FOD-Package*~arm64~*"
+
+		"*ServerCoreFonts-NonCritical-Fonts-MinConsoleFonts-FOD-Package*~x86~*"
+		"*ServerCoreFonts-NonCritical-Fonts-MinConsoleFonts-FOD-Package*~x64~*"
+		"*ServerCoreFonts-NonCritical-Fonts-MinConsoleFonts-FOD-Package*~amd64~*"
+		"*ServerCoreFonts-NonCritical-Fonts-MinConsoleFonts-FOD-Package*~wow64~*"
+		"*ServerCoreFonts-NonCritical-Fonts-MinConsoleFonts-FOD-Package*~arm64.x86~*"
+		"*ServerCoreFonts-NonCritical-Fonts-MinConsoleFonts-FOD-Package*~arm64~*"
+
+		"*ServerCoreFonts-NonCritical-Fonts-UAPFonts-FOD-Package*~x86~*"
+		"*ServerCoreFonts-NonCritical-Fonts-UAPFonts-FOD-Package*~x64~*"
+		"*ServerCoreFonts-NonCritical-Fonts-UAPFonts-FOD-Package*~amd64~*"
+		"*ServerCoreFonts-NonCritical-Fonts-UAPFonts-FOD-Package*~wow64~*"
+		"*ServerCoreFonts-NonCritical-Fonts-UAPFonts-FOD-Package*~arm64.x86~*"
+		"*ServerCoreFonts-NonCritical-Fonts-UAPFonts-FOD-Package*~arm64~*"
 	)
 
 	<#
@@ -280,6 +294,16 @@ $Global:Search_File_Order = @{
 		"*TerminalServices-AppServer-Client-FOD-Package*~arm64.x86~*"
 		"*TerminalServices-AppServer-Client-FOD-Package*~arm64~*"
 
+		<#
+			.Server
+		#>
+		"*Server-Core-WOW-Package*~x86~*"
+		"*Server-Core-WOW-Package*~x64~*"
+		"*Server-Core-WOW-Package*~amd64~*"
+		"*Server-Core-WOW-Package*~wow64~*"
+		"*Server-Core-WOW-Package*~arm64.x86~*"
+		"*Server-Core-WOW-Package*~arm64~*"
+
 			<#
 				.WinRE
 			#>
@@ -293,6 +317,10 @@ $Global:Search_File_Order = @{
 			"*winpe-hta*"
 			"*winpe-PlatformId*"
 			"*winpe-UpdateOrchestrator*"
+			"*winpe-DismCmdlets*"
+			"*winpe-PlatformId*"
+			"*winpe-PowerShell*"
+			"*winpe-SecureBootCmdlets*"
 
 		<#
 			.Boot

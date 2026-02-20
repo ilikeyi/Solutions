@@ -94,7 +94,7 @@ Function Language_Menu
 			Write-Host "  $($lang.BootProcess -f "boot")" -ForegroundColor Red
 		}
 	} else {
-		Write-Host " $($lang.NotMounted) " -BackgroundColor DarkRed -ForegroundColor White
+		Write-Host "  $($lang.NotMounted)" -ForegroundColor Red
 	}
 
 	Write-Host "`n  $($lang.MoreFeature)" -ForegroundColor Yellow
