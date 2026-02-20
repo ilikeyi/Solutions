@@ -2351,28 +2351,32 @@ Function Image_Select
 		$GoTo = [Collections.ArrayList]@()
 		$GoToGroup = @{
 			GroupA = @(
-				@{ Path = "";                                      Lang = $lang.Ok_Go_To_No; }
-				@{ Path = "Event_Assign_Task_Customize_Autopilot"; Lang = $lang.Autopilot; }
-				@{ Path = "Event_Assign_Task_Customize";           Lang = $lang.OnDemandPlanTask; }
-				@{ Path = "Image_Capture_UI";                      Lang = $lang.Wim_Capture }
+				@{ Path = "";                                                  Lang = $lang.Ok_Go_To_No; }
+				@{ Path = "Event_Assign_Task_Customize_Autopilot";             Lang = $lang.Autopilot; }
+				@{ Path = "Event_Assign_Task_Customize";                       Lang = $lang.OnDemandPlanTask; }
+				@{ Path = "Image_Capture_UI";                                  Lang = $lang.Wim_Capture }
 			)
 			GroupB = @(
-				@{ Path = "Eject_Forcibly_All -Save -DontSave";    Lang = "$($lang.Image_Unmount_After): $($lang.Save)"; }
-				@{ Path = "Eject_Forcibly_All -DontSave";          Lang = "$($lang.Image_Unmount_After): $($lang.DoNotSave)"; }
-				@{ Path = "Language_Extract_UI";                   Lang = "$($lang.Language): $($lang.LanguageExtract)"; }
-				@{ Path = "Solutions";                             Lang = "$($lang.Solution): $($lang.IsCreate)"; }
-				@{ Path = "Image_Convert";                         Lang = "$($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm)"; }
-				@{ Path = "Shortcuts_Euwl";                        Lang = $lang.Wim_Rule_Update; }
-				@{ Path = "ISO_Create";                            Lang = $lang.UnpackISO; }
+				@{ Path = "";                                                  Lang = "$($lang.Image_Unmount_After)"; }
+				@{ Path = "Eject_Forcibly_All -Save -DontSave";                Lang = "    | $($lang.Save)"; }
+				@{ Path = "Eject_Forcibly_All -Save -DontSave -Quick";         Lang = "    | $($lang.Save) [ $($lang.Abandon_Allow) ]"; }
+				@{ Path = "Eject_Forcibly_All -DontSave";                      Lang = "    | $($lang.DoNotSave)"; }
+				@{ Path = "Eject_Forcibly_All -DontSave -Quick";               Lang = "    | $($lang.DoNotSave) [ $($lang.Abandon_Allow) ]"; }
+				@{ Path = "Language_Extract_UI";                               Lang = "$($lang.Language): $($lang.LanguageExtract)"; }
+				@{ Path = "Solutions";                                         Lang = "$($lang.Solution): $($lang.IsCreate)"; }
+				@{ Path = "Image_Convert";                                     Lang = "$($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm)"; }
+				@{ Path = "Shortcuts_Euwl";                                    Lang = $lang.Wim_Rule_Update; }
+				@{ Path = "ISO_Create";                                        Lang = $lang.UnpackISO; }
 			)
 			GroupPK = @(
-				@{ Path = "Shortcuts_Append";                      Lang = "$($lang.Sel_Primary_Key): $($lang.Wim_Append)"; }
-				@{ Path = "Shortcuts_Apply";                       Lang = "$($lang.Sel_Primary_Key): $($lang.Apply)"; }
-				@{ Path = "Shortcuts_Remove";                      Lang = "$($lang.Sel_Primary_Key): $($lang.Del)"; }
-				@{ Path = "Shortcuts_Go_Select_Index";             Lang = "$($lang.Sel_Primary_Key): $($lang.Mount)"; }
-				@{ Path = "Shortcuts_Save_Current";                Lang = "$($lang.Sel_Primary_Key): $($lang.Save)"; }
-				@{ Path = "Shortcuts_Dont_Save_Current";           Lang = "$($lang.Sel_Primary_Key): $($lang.Unmount)"; }
-				@{ Path = "Event_Assign -Rule ""Additional_Edition_UI"" -Run"; Lang = "$($lang.Sel_Primary_Key): $($lang.AdditionalEdition)"; }
+				@{ Path = "";                                                  Lang = "$($lang.Sel_Primary_Key)"; }
+				@{ Path = "Event_Assign -Rule ""Additional_Edition_UI"" -Run"; Lang = "    | $($lang.AdditionalEdition)"; }
+				@{ Path = "Shortcuts_Append";                                  Lang = "    | $($lang.Wim_Append)"; }
+				@{ Path = "Shortcuts_Apply";                                   Lang = "    | $($lang.Apply)"; }
+				@{ Path = "Shortcuts_Remove";                                  Lang = "    | $($lang.Del)"; }
+				@{ Path = "Shortcuts_Go_Select_Index";                         Lang = "    | $($lang.Mount)"; }
+				@{ Path = "Shortcuts_Save_Current";                            Lang = "    | $($lang.Save)"; }
+				@{ Path = "Shortcuts_Dont_Save_Current";                       Lang = "    | $($lang.Unmount)"; }
 			)
 		}
 
