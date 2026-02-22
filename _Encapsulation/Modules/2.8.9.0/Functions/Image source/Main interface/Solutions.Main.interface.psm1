@@ -9118,6 +9118,64 @@ Function Image_Select
 		Dock           = 3
 		Padding        = "15,15,10,10"
 	}
+	
+	$UIUnzipPanel_Select_Rule_Filter = New-Object system.Windows.Forms.Label -Property @{
+		Height         = 30
+		Width          = 428
+		Location       = "560,20"
+		Text           = $lang.LanguageExtractRuleFilter
+	}
+
+	$UIUnzipPanel_Select_Rule_Filter_arm64 = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 428
+		Location       = "575,55"
+		Text           = "arm64"
+		LinkColor      = "#008000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$UIUnzip_Search_Sift_Custon.Text = "arm64"
+			ISO_Select_Refresh_Sources_List
+
+			$UIUnzipPanel_Select_Rule_MenuMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
+			$UIUnzipPanel_Select_Rule_MenuMsg.Text = "$($lang.Setting) > $($lang.LanguageExtractRuleFilter) ( arm64 ) $($lang.Done)"
+		}
+	}
+
+	$UIUnzipPanel_Select_Rule_Filter_x64 = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 428
+		Location       = "575,95"
+		Text           = "x64"
+		LinkColor      = "#008000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$UIUnzip_Search_Sift_Custon.Text = "x64"
+			ISO_Select_Refresh_Sources_List
+
+			$UIUnzipPanel_Select_Rule_MenuMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
+			$UIUnzipPanel_Select_Rule_MenuMsg.Text = "$($lang.Setting) > $($lang.LanguageExtractRuleFilter) ( x64 ) $($lang.Done)"
+		}
+	}
+
+	$UIUnzipPanel_Select_Rule_Filter_x86 = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 428
+		Location       = "575,135"
+		Text           = "x86"
+		LinkColor      = "#008000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$UIUnzip_Search_Sift_Custon.Text = "x86"
+			ISO_Select_Refresh_Sources_List
+
+			$UIUnzipPanel_Select_Rule_MenuMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
+			$UIUnzipPanel_Select_Rule_MenuMsg.Text = "$($lang.Setting) > $($lang.LanguageExtractRuleFilter) ( x86 ) $($lang.Done)"
+		}
+	}
 
 	$UIUnzipPanel_Select_Rule_MenuMsg_Icon = New-Object system.Windows.Forms.PictureBox -Property @{
 		Location       = "560,598"
@@ -11319,6 +11377,10 @@ Function Image_Select
 	#>
 	$UIUnzipPanel_Select_Rule.controls.AddRange((
 		$UIUnzipPanel_Select_Rule_Menu,
+		$UIUnzipPanel_Select_Rule_Filter,
+		$UIUnzipPanel_Select_Rule_Filter_arm64,
+		$UIUnzipPanel_Select_Rule_Filter_x64,
+		$UIUnzipPanel_Select_Rule_Filter_x86,
 		$UIUnzipPanel_Select_Rule_MenuMsg_Icon,
 		$UIUnzipPanel_Select_Rule_MenuMsg,
 		$UIUnzipPanel_Select_Rule_Menu_OK,
