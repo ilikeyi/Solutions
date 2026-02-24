@@ -1102,7 +1102,7 @@ Function Additional_Edition_UI
 			Name    = $Name
 			Height  = 35
 			Width   = 435
-			Text    = "[$($SN)/$($AllSN)] > $($lang.AdditionalEdition): $($Name)"
+			Text    = "[$($SN)/$($AllSN)] $($lang.AdditionalEdition): $($Name)"
 			Tag     = $GUID
 			Checked = $true
 			add_Click = {
@@ -1617,7 +1617,7 @@ Function Additional_Edition_UI
 		BorderStyle    = 0
 		autoSizeMode   = 0
 		autoScroll     = $True
-		Padding        = "8,8,8,8"
+		Padding        = "8,0,8,0"
 	}
 
 	$UI_Main_DAdv      = New-Object system.Windows.Forms.FlowLayoutPanel -Property @{

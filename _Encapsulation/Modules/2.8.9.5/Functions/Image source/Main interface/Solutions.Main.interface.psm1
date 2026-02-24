@@ -2438,10 +2438,19 @@ Function Image_Select
 			$Global:MainMasterFolder
 		)
 
-		$UI_Main_Pre_Rule  = New-Object system.Windows.Forms.Label -Property @{
+		$UI_Main_Pre_Rule = New-Object system.Windows.Forms.LinkLabel -Property @{
 			Height         = 35
 			Width          = 658
 			Text           = "$($lang.RulePre): $($Pre_Search_Folder_ISO.Count) $($lang.EventManagerCount)"
+			LinkColor      = "#008000"
+			ActiveLinkColor = "#FF0000"
+			LinkBehavior   = "NeverUnderline"
+			add_Click      = {
+				Image_Select_Refresh_Sources_List
+
+				$UI_Main_Error.Text = "$($lang.Refresh), $($lang.Done)"
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
+			}
 		}
 		$UI_Main_Select_Sources.controls.AddRange($UI_Main_Pre_Rule)
 
@@ -2551,10 +2560,19 @@ Function Image_Select
 			$TempSelectAraayOtherRule += $item
 		}
 
-		$UI_Main_Other_Rule = New-Object system.Windows.Forms.Label -Property @{
+		$UI_Main_Other_Rule = New-Object system.Windows.Forms.LinkLabel -Property @{
 			Height         = 35
 			Width          = 658
 			Text           = "$($lang.RuleOther): $($TempSelectAraayOtherRule.Count) $($lang.EventManagerCount)"
+			LinkColor      = "#008000"
+			ActiveLinkColor = "#FF0000"
+			LinkBehavior   = "NeverUnderline"
+			add_Click      = {
+				Image_Select_Refresh_Sources_List
+
+				$UI_Main_Error.Text = "$($lang.Refresh), $($lang.Done)"
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
+			}
 		}
 		$UI_Main_Select_Sources.controls.AddRange($UI_Main_Other_Rule)
 
@@ -8999,30 +9017,12 @@ Function Image_Select
 	}
 
 	<#
-		.刷新
-	#>
-	$GUISelectRefresh = New-Object system.Windows.Forms.Button -Property @{
-		TabIndex       = 2
-		UseVisualStyleBackColor = $True
-		Location       = "764,50"
-		Height         = 36
-		Width          = 280
-		Text           = $lang.Refresh
-		add_Click      = {
-			Image_Select_Refresh_Sources_List
-
-			$UI_Main_Error.Text = "$($lang.Refresh), $($lang.Done)"
-			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.ico")
-		}
-	}
-
-	<#
 		.解压 ISO
 	#>
 	$UIUnzip           = New-Object system.Windows.Forms.Button -Property @{
 		TabIndex       = 3
 		UseVisualStyleBackColor = $True
-		Location       = "764,90"
+		Location       = "764,50"
 		Height         = 36
 		Width          = 280
 		Text           = "ISO"
@@ -10491,7 +10491,7 @@ Function Image_Select
 		BorderStyle    = 0
 		autoSizeMode   = 0
 		autoScroll     = $False
-		Location       = "764,140"
+		Location       = "764,90"
 		Visible        = $False
 	}
 	$UI_Primary_Key_Name = New-Object System.Windows.Forms.CheckBox -Property @{
@@ -10737,11 +10737,6 @@ Function Image_Select
 			.按钮：设置
 		#>
 		$GUIImageSourceSetting,
-
-		<#
-			.按钮：刷新
-		#>
-		$GUISelectRefresh,
 
 		<#
 			.按钮：解压 ISO
