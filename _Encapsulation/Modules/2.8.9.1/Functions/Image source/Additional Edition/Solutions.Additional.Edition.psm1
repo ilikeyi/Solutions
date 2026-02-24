@@ -169,11 +169,13 @@ Function Additional_Edition_UI
 		$UI_Main_Menu.controls.Clear()
 		$Script:Additional_Edition_OK = @()
 		$Script:Additional_Edition_Failed = @()
+		[int]$SNTasks = "0"
 
 		$Temp_Additional_Edition = (Get-Variable -Scope global -Name "Queue_Additional_Edition_Rule_$($Global:Primary_Key_Image.Uid)" -ErrorAction SilentlyContinue).Value
 		if ($Temp_Additional_Edition.Count -gt 0) {
 			ForEach ($itemRule in $Temp_Additional_Edition.Rule) {
-				Image_Additional_Edition_Import_To_Edit -GUID $itemRule.GUID -Name $itemRule.Name -Requiredversion $itemRule.Requiredversion -NewEditionId $itemRule.NewEditionId -Productkey $itemRule.Productkey -NewImageName $itemRule.Detailed.ImageName -NewDescription $itemRule.Detailed.Description -NewDisplayName $itemRule.Detailed.DisplayName -NewDisplayDescription $itemRule.Detailed.DisplayDescription
+				$SNTasks++
+				Image_Additional_Edition_Import_To_Edit -GUID $itemRule.GUID -Name $itemRule.Name -Requiredversion $itemRule.Requiredversion -NewEditionId $itemRule.NewEditionId -Productkey $itemRule.Productkey -NewImageName $itemRule.Detailed.ImageName -NewDescription $itemRule.Detailed.Description -NewDisplayName $itemRule.Detailed.DisplayName -NewDisplayDescription $itemRule.Detailed.DisplayDescription -SN $SNTasks -AllSN $Temp_Additional_Edition.Rule.Count -DevCode "BBQ"
 			}
 
 			$UI_Main_Error.Text = "$($lang.Import): $($lang.Prerequisite_satisfy) ( $($Script:Additional_Edition_OK.count) ), $($lang.Failed) ( $($Script:Additional_Edition_Failed.count) ), $($lang.Done)"
@@ -1036,8 +1038,15 @@ Function Additional_Edition_UI
 			$NewImageName,
 			$NewDescription,
 			$NewDisplayName,
-			$NewDisplayDescription
+			$NewDisplayDescription,
+			$SN,
+			$AllSN,
+			$DevCode
 		)
+
+		if ($Global:Developers_Mode) {
+			Write-Host "  $($lang.Developers_Mode_Location): $($DevCode)" -ForegroundColor Green
+		}
 
 		if ($NoAuto) {
 			$Region = Language_Region
@@ -1093,7 +1102,7 @@ Function Additional_Edition_UI
 			Name    = $Name
 			Height  = 35
 			Width   = 435
-			Text    = "$($lang.AdditionalEdition): $($Name)"
+			Text    = "[$($SN)/$($AllSN)] > $($lang.AdditionalEdition): $($Name)"
 			Tag     = $GUID
 			Checked = $true
 			add_Click = {
@@ -1378,9 +1387,11 @@ Function Additional_Edition_UI
 				$Script:Additional_Edition_OK = @()
 				$Script:Additional_Edition_Failed = @()
 
+				[int]$SNTasks = "0"
 				ForEach ($itemRule in $Temp_Additional_Edition) {
+					$SNTasks++
 					if ($IsSelectImport -contains $itemRule.GUID) {
-						Image_Additional_Edition_Import_To_Edit -NoAuto -GUID $itemRule.GUID -Name $itemRule.Name -Requiredversion $itemRule.Requiredversion -NewEditionId $itemRule.NewEditionId -Productkey $itemRule.Productkey -NewImageName $itemRule.Detailed.ImageName -NewDescription $itemRule.Detailed.Description -NewDisplayName $itemRule.Detailed.DisplayName -NewDisplayDescription $itemRule.Detailed.DisplayDescription
+						Image_Additional_Edition_Import_To_Edit -NoAuto -GUID $itemRule.GUID -Name $itemRule.Name -Requiredversion $itemRule.Requiredversion -NewEditionId $itemRule.NewEditionId -Productkey $itemRule.Productkey -NewImageName $itemRule.Detailed.ImageName -NewDescription $itemRule.Detailed.Description -NewDisplayName $itemRule.Detailed.DisplayName -NewDisplayDescription $itemRule.Detailed.DisplayDescription -SN $SNTasks -AllSN $Temp_Additional_Edition.Count -DevCode "AA"
 					}
 				}
 
