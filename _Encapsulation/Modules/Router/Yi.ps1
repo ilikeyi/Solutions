@@ -792,7 +792,7 @@ $AvailableLanguages = @(
 		Name     = "Japanese (Japan)"
 		Language = @{
 			FontsUI              = "Yu Gothic UI"
-			Usage                = "利用方法："
+			Usage                = "利用方法: "
 			Learn                = "勉強"
 			Choose               = "選んでください"
 			Reset                = "リセット"
@@ -802,7 +802,7 @@ $AvailableLanguages = @(
 			NoWork               = "タスクがありません"
 			Remove               = "消去"
 			SIP                  = "システムパッケージングスクリプト"
-			VerifyAutopilot      = "検証：自動運転プロファイル"
+			VerifyAutopilot      = "検証: 自動運転プロファイル"
 			VerifyUnattend       = "検証: テンプレート ファイルを事前に回答する必要があります"
 			Unpack               = "ベール"
 			ChkUpdate            = "アップデートを確認"
@@ -813,7 +813,7 @@ $AvailableLanguages = @(
 			All                  = "全て"
 			HistoryClearDismSave = "レジストリに保存されている DISM マウント レコードを削除します"
 			Clear_Bad_Mount      = "破損したマウントされたイメージに関連付けられたすべてのリソースを削除します"
-			CleanupLogs          = "クリーンアップ: 一時ファイル、ソリューション ログ、DISM ログ"
+			CleanupLogs          = "クリーンアップ: 一時ファイル, ソリューション ログ, DISM ログ"
 			CleanupDisk          = "すべての一時ディスク ファイルをクリーンアップする"
 			API                  = "アプリケーションプログラミングインターフェース"
 			NoAPI                = "有効な API 名が見つかりません"
@@ -1584,7 +1584,7 @@ $AvailableLanguages = @(
 		Name     = "Chinese (Simplified, China)"
 		Language = @{
 			FontsUI              = "Microsoft YaHei UI"
-			Usage                = "用法："
+			Usage                = "用法: "
 			Learn                = "学习"
 			Choose               = "请选择"
 			Reset                = "重置"
@@ -1594,8 +1594,8 @@ $AvailableLanguages = @(
 			NoWork               = "无任务"
 			Remove               = "删除"
 			SIP                  = "系统封装脚本"
-			VerifyAutopilot      = "验证：自动驾驶配置文件"
-			VerifyUnattend       = "验证：应预答模板文件"
+			VerifyAutopilot      = "验证: 自动驾驶配置文件"
+			VerifyUnattend       = "验证: 应预答模板文件"
 			Unpack               = "打包"
 			ChkUpdate            = "检查更新"
 			CreateTemplate       = "创建模板"
@@ -1605,10 +1605,10 @@ $AvailableLanguages = @(
 			All                  = "所有"
 			HistoryClearDismSave = "删除保存在注册表里的 DISM 挂载记录"
 			Clear_Bad_Mount      = "删除与已损坏的已装载映像关联的所有资源"
-			CleanupLogs          = "清理：Temp 临时文件、解决方案日志、DISM 日志"
+			CleanupLogs          = "清理: Temp 临时文件, 解决方案日志, DISM 日志"
 			CleanupDisk          = "清理所有磁盘临时文件"
 			API                  = "应用程序编程接口"
-			NoAPI                = "未找到有效的 API 名称。"
+			NoAPI                = "未找到有效的 API 名称."
 			RuleName             = "规则名称"
 			Filename             = "文件名"
 			Select_Path          = "选择路径"
@@ -1628,7 +1628,7 @@ $AvailableLanguages = @(
 		Name     = "Chinese (Traditional, Taiwan)"
 		Language = @{
 			FontsUI              = "Microsoft JhengHei UI"
-			Usage                = "用法："
+			Usage                = "用法: "
 			Learn                = "學習"
 			Choose               = "請選擇"
 			Reset                = "重置"
@@ -1638,8 +1638,8 @@ $AvailableLanguages = @(
 			NoWork               = "無任務"
 			Remove               = "刪除"
 			SIP                  = "系統封裝腳本"
-			VerifyAutopilot      = "驗證：自動駕駛設定檔"
-			VerifyUnattend       = "驗證：應預答範本文件"
+			VerifyAutopilot      = "驗證: 自動駕駛設定檔"
+			VerifyUnattend       = "驗證: 應預答範本文件"
 			Unpack               = "打包"
 			ChkUpdate            = "檢查更新"
 			CreateTemplate       = "創建範本"
@@ -1649,7 +1649,7 @@ $AvailableLanguages = @(
 			All                  = "所有"
 			HistoryClearDismSave = "刪除儲存在登錄機碼裡的 DISM 掛載記錄"
 			Clear_Bad_Mount      = "刪除與已損壞的已裝載映像關聯的所有資源"
-			CleanupLogs          = "清理：Temp 臨時檔案、解決方案日誌、DISM 日誌"
+			CleanupLogs          = "清理: Temp 臨時檔案, 解決方案日誌, DISM 日誌"
 			CleanupDisk          = "清理所有磁碟臨時文件"
 			API                  = "應用程式介面"
 			NoAPI                = "沒有找到有效的 API 名稱"
@@ -1774,7 +1774,7 @@ Function System_Env_Test_Order
 
 		<#
 			.Configure the system variables from the registry and delete the routing directory
-			.从注册表里系统变量配置，并删除路由目录
+			.从注册表里系统变量配置, 并删除路由目录
 		#>
 		$NewGroupPathNotOldPath = @()
 		Foreach ($item in $windows_path) {
@@ -1969,7 +1969,7 @@ Function Cleanup_Disk
 
 	<#
 		.Do the clean-up. Have to convert the SageSet number
-		.进行清理。 必须转换 SageSet 编号
+		.进行清理. 必须转换 SageSet 编号
 	#>
 	$Args = "/sagerun:$([string]([int]$SageSet.Substring($SageSet.Length-4)))"
 	Start-Process -FilePath "$($env:SystemRoot)\System32\cleanmgr.exe" -ArgumentList $Args

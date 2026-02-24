@@ -35,10 +35,10 @@ Remove-Module -Name LXPs -Force -ErrorAction Ignore | Out-Null
 Import-Module -Name $PSScriptRoot\Modules\LXPs.psd1 -PassThru -Force | Out-Null
 
 <#
-	.设置语言，用法
+	.设置语言, 用法
 	.Set language pack, usage:
-	 Language                  | Language selected by the user       | 选择语言，交互
-	 Language -Auto            | Automatic matching                  | 自动选择，不提示
+	 Language                  | Language selected by the user       | 选择语言, 交互
+	 Language -Auto            | Automatic matching                  | 自动选择, 不提示
 	 Language -NewLang "zh-CN" | Mandatory use of specified language | 强制选择语言
 #>
 Language -Auto
@@ -50,8 +50,8 @@ Language -Auto
 Prerequisite
 
 <#
-	.启用日志记录并将其保存在脚本文件夹中。
-	.Enabled logging and save it in the script folder.
+	.启用日志记录并将其保存在脚本文件夹中
+	.Enabled logging and save it in the script folder
 #>
 Logging
 

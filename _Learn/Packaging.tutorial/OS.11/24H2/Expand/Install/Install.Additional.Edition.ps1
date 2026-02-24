@@ -233,7 +233,7 @@ ForEach ($itemRule in $AdditionalEdition.Rule) {
 				}
 
 				<#
-					.排除项：是否排除挂载
+					.排除项: 是否排除挂载
 				#>
 				write-host "`n  Mounted Status: " -NoNewline -ForegroundColor Yellow
 				if ($AdditionalEdition.Exclude -contains $itemRule.NewEditionId) {

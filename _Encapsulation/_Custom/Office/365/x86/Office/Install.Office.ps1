@@ -543,7 +543,7 @@ Function Install-Process
 	$Global:OfficeSP = Convert-Path "$($PSScriptRoot)" -ErrorAction SilentlyContinue
 
 	<#
-		.部署前，获取已知语言并同步至配置文件
+		.部署前, 获取已知语言并同步至配置文件
 
 		.获取已安装的语言包
 	#>
@@ -611,7 +611,7 @@ Function Install-Process
 
 	<#
 		.Convert the architecture type, configure according to the architecture settings
-		.转换架构类型，按架构设置配置
+		.转换架构类型, 按架构设置配置
 	#>
 	$XmlConfiguration = "Default"
 	switch ($env:PROCESSOR_ARCHITECTURE) {
@@ -659,7 +659,7 @@ Function Install-Process
 
 			<#
 				.After passing the installation status check, get whether to clear the installation package after success
-				.通过安装状态检查后，成功后获取是否清除安装包
+				.通过安装状态检查后, 成功后获取是否清除安装包
 			#>
 			if ($Cleanup) {
 				$FlagsClean = $True
@@ -703,7 +703,7 @@ Function Install-Process
 
 			<#
 				.In order to prevent the installation package from being unable to be cleaned up, the next time you log in, execute it again
-				.为了防止无法清理安装包，下次登录时，再次执行
+				.为了防止无法清理安装包, 下次登录时, 再次执行
 			#>
 			Write-Host "   After logging in next time, Clear Office Install Folder`n" -ForegroundColor Green
 			$regPath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce"
@@ -894,7 +894,7 @@ Function ResetDesktop
 	.安装 Office 版本
 
 	Usage:
-	用法：
+	用法: 
 
 	-Version
 		"365"
@@ -908,11 +908,11 @@ Function ResetDesktop
 
 
 	-Activation  | After the installation is successful, try the activation method
-                   安装成功后，尝试激活方式
+                   安装成功后, 尝试激活方式
 	-Cleanup     | After the installation is successful, clear the Office installation package directory
-                   安装成功后，清除 Office 安装包目录
+                   安装成功后, 清除 Office 安装包目录
 	-Force       | Regardless of whether the installation succeeds or fails, the installation package directory is forcibly cleared
-                   无论安装成功和失败时，强制清除 Office 安装包目录
+                   无论安装成功和失败时, 强制清除 Office 安装包目录
 
 #>
 
