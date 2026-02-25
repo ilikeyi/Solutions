@@ -8960,95 +8960,50 @@ Function Image_Select
 	<#
 		.主界面
 	#>
-	$UI_Main_Image_Sources_Menu = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "1020,12"
-		Height         = 20
-		Width          = 20
-		SizeMode       = "StretchImage"
-		Image          = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\menu.ico")
-		Cursor         = [System.Windows.Forms.Cursors]::Hand
-		add_Click      = {
-			$UI_Main_Image_Sources_Menu_Show.visible = $True
-		}
-	}
-	$UI_Main_Image_Sources_Menu_Hide = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "260,12"
-		Height         = 20
-		Width          = 20
-		SizeMode       = "StretchImage"
-		Image          = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\hide.ico")
-		Cursor         = [System.Windows.Forms.Cursors]::Hand
-		add_Click      = {
-			$UI_Main_Image_Sources_Menu_Show.visible = $False
-		}
-	}
-
-	$UI_Main_Image_Sources_Menu_Show = New-Object system.Windows.Forms.Panel -Property @{
-		BorderStyle    = 0
-		Height         = 678
-		Width          = 290
-		autoSizeMode   = 1
-		Padding        = "8,8,8,8"
-		Location       = '760,0'
-		Visible        = $False
-	}
-
 	<#
-		.菜单
+		.解压 ISO
 	#>
-	$GUIImageSourceSetting_Menu = New-Object system.Windows.Forms.Label -Property @{
-		Height         = 35
-		Width          = 235
-		Text           = $lang.Menu
-		Location       = "15,20"
-	}
+	$UIUnzip_Click = {
+		$UI_Main.Text = $lang.ISO_File
 
-	$GUIImageSourceSetting_Menu_Capture = New-Object system.Windows.Forms.LinkLabel -Property @{
-		Height         = 40
-		Width          = 250
-		Location       = "30,55"
-		Text           = $lang.Wim_Capture
-		LinkColor      = "#008000"
+		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions" -Name "DiskTo" -ErrorAction SilentlyContinue) {
+			$itemISO = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions" -Name "DiskTo" -ErrorAction SilentlyContinue
+			$UIUnzipPanel_Menu_Sources_Path.Text = Join-Path -Path $itemISO -ChildPath $Global:Init_Search_ISO_Folder_Name
+		}
+
+		$UI_Main.remove_DragDrop($UI_Main_DragDrop)
+		$UI_Main.Add_DragDrop($UI_Main_Unzip_DragDrop)
+
+		$GUIImageSourceGroupAPI.visible = $False             # 蒙板: 设置 API
+		$GUIImageSourceGroupSetting.visible = $False         # 蒙板: 设置界面
+		$UI_Mask_Image_Mount_To.visible = $False             # 蒙板: 更改挂载到
+		$UI_Mask_Image_Language.visible = $False             # 蒙板: 更改 ISO 挂载的映像主语言
+		$UI_Main_View_Detailed.visible = $False              # 蒙板: 解压 ISO, 显示详细规则
+		$UIUnzipPanel_Select_Rule.visible = $False           # 蒙板: 解压 ISO, 选择规则
+		$UIUnzipPanel.visible = $True                        # 蒙板: 解压 ISO
+		$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板: 其它信息
+		$UI_Main_Image_Sources.visible = $False              # 设置主界面
+
+		ISO_Select_Refresh_Sources_List
+	}
+	$UIUnzip_ICO       = New-Object system.Windows.Forms.PictureBox -Property @{
+		Location       = "764,635"
+		Height         = 22
+		Width          = 22
+		SizeMode       = "StretchImage"
+		Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\iso.ico")
+		Cursor = [System.Windows.Forms.Cursors]::Hand
+		add_Click      = $UIUnzip_Click
+	}
+	$UIUnzip           = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 45
+		Location       = "790,638"
+		Text           = "ISO"
+		LinkColor      = "#000000"
 		ActiveLinkColor = "#FF0000"
 		LinkBehavior   = "NeverUnderline"
-		add_Click      = {
-			$UI_Main.Hide()
-			Image_Capture_UI
-			Image_Select -Page "Menu"
-			$UI_Main.Close()
-		}
-	}
-
-	$GUIImageSourceSetting_Menu_Tempate = New-Object system.Windows.Forms.LinkLabel -Property @{
-		Height         = 40
-		Width          = 250
-		Location       = "30,95"
-		Text           = $lang.RuleNewTempate
-		LinkColor      = "#008000"
-		ActiveLinkColor = "#FF0000"
-		LinkBehavior   = "NeverUnderline"
-		add_Click      = {
-			$UI_Main.Hide()
-			Create_Template_UI
-			Image_Select -Page "Menu"
-			$UI_Main.Close()
-		}
-	}
-
-	$GUIImageSourceSetting_Menu_Unpack = New-Object system.Windows.Forms.LinkLabel -Property @{
-		Height         = 40
-		Width          = 250
-		Location       = "30,135"
-		Text           = $lang.Backup
-		LinkColor      = "#008000"
-		ActiveLinkColor = "#FF0000"
-		LinkBehavior   = "NeverUnderline"
-		add_Click      = {
-			$UI_Main.Hide()
-			UnPack_Create_UI
-			Image_Select -Page "Menu"
-			$UI_Main.Close()
-		}
+		add_Click      = $UIUnzip_Click
 	}
 
 	<#
@@ -9077,7 +9032,7 @@ Function Image_Select
 		$UI_Main_Image_Sources.visible = $False              # 设置主界面
 	}
 	$GUIImageSourceSetting_ICO = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "764,15"
+		Location       = "840,635"
 		Height         = 22
 		Width          = 22
 		SizeMode       = "StretchImage"
@@ -9087,8 +9042,8 @@ Function Image_Select
 	}
 	$GUIImageSourceSetting = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 30
-		Width          = 220
-		Location       = "790,18"
+		Width          = 140
+		Location       = "866,638"
 		Text           = $lang.Setting
 		LinkColor      = "#000000"
 		ActiveLinkColor = "#FF0000"
@@ -9096,50 +9051,95 @@ Function Image_Select
 		add_Click      = $GUIImageSourceSetting_Click
 	}
 
-	<#
-		.解压 ISO
-	#>
-	$UIUnzip_Click = {
-		$UI_Main.Text = $lang.ISO_File
-
-		if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions" -Name "DiskTo" -ErrorAction SilentlyContinue) {
-			$itemISO = Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions" -Name "DiskTo" -ErrorAction SilentlyContinue
-			$UIUnzipPanel_Menu_Sources_Path.Text = Join-Path -Path $itemISO -ChildPath $Global:Init_Search_ISO_Folder_Name
-		}
-
-		$UI_Main.remove_DragDrop($UI_Main_DragDrop)
-		$UI_Main.Add_DragDrop($UI_Main_Unzip_DragDrop)
-
-		$GUIImageSourceGroupAPI.visible = $False             # 蒙板: 设置 API
-		$GUIImageSourceGroupSetting.visible = $False         # 蒙板: 设置界面
-		$UI_Mask_Image_Mount_To.visible = $False             # 蒙板: 更改挂载到
-		$UI_Mask_Image_Language.visible = $False             # 蒙板: 更改 ISO 挂载的映像主语言
-		$UI_Main_View_Detailed.visible = $False              # 蒙板: 解压 ISO, 显示详细规则
-		$UIUnzipPanel_Select_Rule.visible = $False           # 蒙板: 解压 ISO, 选择规则
-		$UIUnzipPanel.visible = $True                        # 蒙板: 解压 ISO
-		$GUIImageSourceGroupOtherPanel.visible = $False      # 蒙板: 其它信息
-		$UI_Main_Image_Sources.visible = $False              # 设置主界面
-
-		ISO_Select_Refresh_Sources_List
-	}
-	$UIUnzip_ICO       = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "764,55"
-		Height         = 22
-		Width          = 22
+	$UI_Main_Image_Sources_Menu = New-Object system.Windows.Forms.PictureBox -Property @{
+		Location       = "1010,635"
+		Height         = 20
+		Width          = 20
 		SizeMode       = "StretchImage"
-		Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\iso.ico")
-		Cursor = [System.Windows.Forms.Cursors]::Hand
-		add_Click      = $UIUnzip_Click
+		Image          = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\menu.ico")
+		Cursor         = [System.Windows.Forms.Cursors]::Hand
+		add_Click      = {
+			$UI_Main_Image_Sources_Menu_Show.visible = $True
+		}
 	}
-	$UIUnzip           = New-Object system.Windows.Forms.LinkLabel -Property @{
-		Height         = 30
+	$UI_Main_Image_Sources_Menu_Hide = New-Object system.Windows.Forms.PictureBox -Property @{
+		Location       = "250,635"
+		Height         = 20
+		Width          = 20
+		SizeMode       = "StretchImage"
+		Image          = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\hide.ico")
+		Cursor         = [System.Windows.Forms.Cursors]::Hand
+		add_Click      = {
+			$UI_Main_Image_Sources_Menu_Show.visible = $False
+		}
+	}
+
+	$UI_Main_Image_Sources_Menu_Show = New-Object system.Windows.Forms.Panel -Property @{
+		BorderStyle    = 0
+		Height         = 678
+		Width          = 290
+		autoSizeMode   = 1
+		Padding        = "8,8,8,8"
+		Location       = '760,0'
+		Visible        = $False
+	}
+
+	<#
+		.菜单
+	#>
+	$GUIImageSourceSetting_Menu = New-Object system.Windows.Forms.Label -Property @{
+		Height         = 35
+		Width          = 235
+		Text           = $lang.Menu
+		Location       = "15,635"
+	}
+
+	$GUIImageSourceSetting_Menu_Capture = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 40
 		Width          = 250
-		Location       = "790,58"
-		Text           = "ISO"
-		LinkColor      = "#000000"
+		Location       = "30,510"
+		Text           = $lang.Wim_Capture
+		LinkColor      = "#008000"
 		ActiveLinkColor = "#FF0000"
 		LinkBehavior   = "NeverUnderline"
-		add_Click      = $UIUnzip_Click
+		add_Click      = {
+			$UI_Main.Hide()
+			Image_Capture_UI
+			Image_Select -Page "Menu"
+			$UI_Main.Close()
+		}
+	}
+
+	$GUIImageSourceSetting_Menu_Tempate = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 40
+		Width          = 250
+		Location       = "30,550"
+		Text           = $lang.RuleNewTempate
+		LinkColor      = "#008000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$UI_Main.Hide()
+			Create_Template_UI
+			Image_Select -Page "Menu"
+			$UI_Main.Close()
+		}
+	}
+
+	$GUIImageSourceSetting_Menu_Unpack = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 40
+		Width          = 250
+		Location       = "30,590"
+		Text           = $lang.Backup
+		LinkColor      = "#008000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$UI_Main.Hide()
+			UnPack_Create_UI
+			Image_Select -Page "Menu"
+			$UI_Main.Close()
+		}
 	}
 
 	<#
@@ -10709,7 +10709,7 @@ Function Image_Select
 		BorderStyle    = 0
 		autoSizeMode   = 0
 		autoScroll     = $False
-		Location       = "764,90"
+		Location       = "764,100"
 		Visible        = $False
 	}
 	$UI_Primary_Key_Name = New-Object System.Windows.Forms.CheckBox -Property @{
@@ -10752,7 +10752,7 @@ Function Image_Select
 		TabIndex       = 5
 		Height         = 30
 		Width          = 280
-		Location       = "764,600"
+		Location       = "764,55"
 		Text           = ""
 		DropDownStyle  = "DropDownList"
 		Visible        = $False
@@ -10767,7 +10767,7 @@ Function Image_Select
 	$UI_Main_Ok        = New-Object system.Windows.Forms.Button -Property @{
 		TabIndex       = 4
 		UseVisualStyleBackColor = $True
-		Location       = "764,635"
+		Location       = "764,10"
 		Height         = 36
 		Width          = 280
 		Text           = $lang.OK
@@ -10955,16 +10955,16 @@ Function Image_Select
 		$UI_Main_Image_Sources_Menu,
 
 		<#
-			.按钮: 设置
-		#>
-		$GUIImageSourceSetting_ICO,
-		$GUIImageSourceSetting,
-
-		<#
 			.按钮: 解压 ISO
 		#>
 		$UIUnzip_ICO,
 		$UIUnzip,
+
+		<#
+			.按钮: 设置
+		#>
+		$GUIImageSourceSetting_ICO,
+		$GUIImageSourceSetting,
 
 		<#
 			.动态显示: 选择 ISO 来源
