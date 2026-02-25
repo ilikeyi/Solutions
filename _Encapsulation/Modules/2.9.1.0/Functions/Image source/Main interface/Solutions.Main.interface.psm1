@@ -4226,12 +4226,16 @@ Function Image_Select
 						$NewFileName = [IO.Path]::GetFileName($WildCard)
 
 						if ($Script:User_Custom_Select_Rule.ISO -contains $NewFileName) {
-							if ([string]::IsNullOrEmpty($UIUnzip_Search_Sift_Custon.Text)) {
-								$Script:Init_Folder_All_File_Exclude += $WildCard
-							} else {
-								if ($NewFileName -like "*$($UIUnzip_Search_Sift_Custon.Text)*") {
+							if ($UIUnzip_Search_RuleFilter_Apply_OtherFile.Checked) {
+								if ([string]::IsNullOrEmpty($UIUnzip_Search_Sift_Custon.Text)) {
 									$Script:Init_Folder_All_File_Exclude += $WildCard
+								} else {
+									if ($NewFileName -like "*$($UIUnzip_Search_Sift_Custon.Text)*") {
+										$Script:Init_Folder_All_File_Exclude += $WildCard
+									}
 								}
+							} else {
+								$Script:Init_Folder_All_File_Exclude += $WildCard
 							}
 						}
 					}
@@ -4240,6 +4244,11 @@ Function Image_Select
 						Height        = 40
 						Width         = 645
 						Text          = "$($lang.ISO_Other): $($Script:Init_Folder_All_File_Exclude.Count) $($lang.EventManagerCount)"
+					}
+					if ($UIUnzip_Search_RuleFilter_Apply_OtherFile.Checked) {
+						$UI_Main_Pre_Rule.Text= "$($lang.LanguageExtractRuleFilter) > $($lang.ISO_Other): $($Script:Init_Folder_All_File_Exclude.Count) $($lang.EventManagerCount)"
+					} else {
+						$UI_Main_Pre_Rule.Text= "$($lang.ISO_Other): $($Script:Init_Folder_All_File_Exclude.Count) $($lang.EventManagerCount)"
 					}
 					$UIUnzip_Select_Sources.controls.AddRange($UI_Main_Pre_Rule)
 
@@ -4312,14 +4321,19 @@ Function Image_Select
 						$NewFileName = [IO.Path]::GetFileName($WildCard)
 
 						if ($Script:User_Custom_Select_Rule.Language -contains $NewFileName) {
-							if ([string]::IsNullOrEmpty($UIUnzip_Search_Sift_Custon.Text)) {
-								$Script:Init_File_Type_Fod_And_Lang += $WildCard
-								$Script:Init_Folder_All_File_Match_Done += $WildCard
-							} else {
-								if ($NewFileName -like "*$($UIUnzip_Search_Sift_Custon.Text)*") {
+							if ($UIUnzip_Search_RuleFilter_Apply_Language.Checked) {
+								if ([string]::IsNullOrEmpty($UIUnzip_Search_Sift_Custon.Text)) {
 									$Script:Init_File_Type_Fod_And_Lang += $WildCard
 									$Script:Init_Folder_All_File_Match_Done += $WildCard
+								} else {
+									if ($NewFileName -like "*$($UIUnzip_Search_Sift_Custon.Text)*") {
+										$Script:Init_File_Type_Fod_And_Lang += $WildCard
+										$Script:Init_Folder_All_File_Match_Done += $WildCard
+									}
 								}
+							} else {
+								$Script:Init_File_Type_Fod_And_Lang += $WildCard
+								$Script:Init_Folder_All_File_Match_Done += $WildCard
 							}
 						}
 					}
@@ -4330,7 +4344,12 @@ Function Image_Select
 					$UI_Main_Pre_Rule  = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 40
 						Width          = 645
-						Text           = "$($lang.Unzip_Language), $($lang.Unzip_Fod): $($Script:Init_File_Type_Fod_And_Lang.Count) $($lang.EventManagerCount)"
+						Text           = ""
+					}
+					if ($UIUnzip_Search_RuleFilter_Apply_Language.Checked) {
+						$UI_Main_Pre_Rule.Text= "$($lang.LanguageExtractRuleFilter) > $($lang.Unzip_Language), $($lang.Unzip_Fod): $($Script:Init_File_Type_Fod_And_Lang.Count) $($lang.EventManagerCount)"
+					} else {
+						$UI_Main_Pre_Rule.Text= "$($lang.Unzip_Language), $($lang.Unzip_Fod): $($Script:Init_File_Type_Fod_And_Lang.Count) $($lang.EventManagerCount)"
 					}
 					$UIUnzip_Select_Sources.controls.AddRange($UI_Main_Pre_Rule)
 
@@ -4403,14 +4422,19 @@ Function Image_Select
 						$NewFileName = [IO.Path]::GetFileName($WildCard)
 
 						if ($Script:User_Custom_Select_Rule.InboxApps -contains $NewFileName) {
-							if ([string]::IsNullOrEmpty($UIUnzip_Search_Sift_Custon.Text)) {
-								$Script:Init_File_Type_InBox_Apps += $WildCard
-								$Script:Init_Folder_All_File_Match_Done += $WildCard
-							} else {
-								if ($NewFileName -like "*$($UIUnzip_Search_Sift_Custon.Text)*") {
+							if ($UIUnzip_Search_RuleFilter_Apply_InBoxApps.Checked) {
+								if ([string]::IsNullOrEmpty($UIUnzip_Search_Sift_Custon.Text)) {
 									$Script:Init_File_Type_InBox_Apps += $WildCard
 									$Script:Init_Folder_All_File_Match_Done += $WildCard
+								} else {
+									if ($NewFileName -like "*$($UIUnzip_Search_Sift_Custon.Text)*") {
+										$Script:Init_File_Type_InBox_Apps += $WildCard
+										$Script:Init_Folder_All_File_Match_Done += $WildCard
+									}
 								}
+							} else {
+								$Script:Init_File_Type_InBox_Apps += $WildCard
+								$Script:Init_Folder_All_File_Match_Done += $WildCard
 							}
 						}
 					}
@@ -4421,7 +4445,12 @@ Function Image_Select
 					$UI_Main_Pre_Rule  = New-Object system.Windows.Forms.Label -Property @{
 						Height         = 40
 						Width          = 645
-						Text           = "InBox Apps: $($Script:Init_File_Type_InBox_Apps.Count) $($lang.EventManagerCount)"
+						Text           = ""
+					}
+					if ($UIUnzip_Search_RuleFilter_Apply_InBoxApps.Checked) {
+						$UI_Main_Pre_Rule.Text= "$($lang.LanguageExtractRuleFilter) > InBox Apps: $($Script:Init_File_Type_InBox_Apps.Count) $($lang.EventManagerCount)"
+					} else {
+						$UI_Main_Pre_Rule.Text= "InBox Apps: $($Script:Init_File_Type_InBox_Apps.Count) $($lang.EventManagerCount)"
 					}
 					$UIUnzip_Select_Sources.controls.AddRange($UI_Main_Pre_Rule)
 
@@ -9535,10 +9564,137 @@ Function Image_Select
 		autoScroll     = $False
 	}
 
-	$UIUnzip_Search_Sift = New-Object system.Windows.Forms.Label -Property @{
-		Height         = 40
-		Width          = 240
+	$UIUnzip_Search_RuleFilter_Show = New-Object system.Windows.Forms.Panel -Property @{
+		BorderStyle    = 0
+		Height         = 678
+		Width          = 290
+		autoSizeMode   = 1
+		Padding        = "8,8,8,8"
+		Location       = '760,0'
+		Visible        = $False
+	}
+	$UIUnzip_Search_RuleFilter_Hide = New-Object system.Windows.Forms.PictureBox -Property @{
+		Location       = "260,12"
+		Height         = 20
+		Width          = 20
+		SizeMode       = "StretchImage"
+		Image          = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\hide.ico")
+		Cursor         = [System.Windows.Forms.Cursors]::Hand
+		add_Click      = {
+			$UIUnzip_Search_RuleFilter_Show.visible = $False
+		}
+	}
+
+	<#
+		.筛选规则
+	#>
+	$UIUnzip_Search_RuleFilter_Label = New-Object system.Windows.Forms.Label -Property @{
+		Height         = 35
+		Width          = 235
 		Text           = $lang.LanguageExtractRuleFilter
+		Location       = "15,20"
+	}
+	$UIUnzip_Search_RuleFilter_Apply = New-Object system.Windows.Forms.Label -Property @{
+		Height         = 35
+		Width          = 235
+		Text           = $lang.Options
+		Location       = "15,80"
+	}
+	$UIUnzip_Search_RuleFilter_Apply_OtherFile = New-Object System.Windows.Forms.CheckBox -Property @{
+		Height         = 30
+		Width          = 270
+		Location       = "35,120"
+		Text           = $lang.ISO_Other
+		add_Click      = {
+			if ($This.Checked) {
+				Save_Dynamic -regkey "Solutions\ISO" -name "Filter_OtherFile" -value "True"
+			} else {
+				Save_Dynamic -regkey "Solutions\ISO" -name "Filter_OtherFile" -value "False"
+			}
+
+			ISO_Select_Refresh_Sources_List
+		}
+	}
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ISO" -Name "Filter_OtherFile" -ErrorAction SilentlyContinue) {
+		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ISO" -Name "Filter_OtherFile" -ErrorAction SilentlyContinue) {
+			"True" { $UIUnzip_Search_RuleFilter_Apply_OtherFile.Checked = $True }
+			"False" { $UIUnzip_Search_RuleFilter_Apply_OtherFile.Checked = $False }
+			default {
+				$UIUnzip_Search_RuleFilter_Apply_OtherFile.Checked = $True 
+			}
+		}
+	} else {
+		Save_Dynamic -regkey "Solutions\ISO" -name "Filter_OtherFile" -value "True"
+		$UIUnzip_Search_RuleFilter_Apply_OtherFile.Checked = $True 
+	}
+
+	$UIUnzip_Search_RuleFilter_Apply_Language = New-Object System.Windows.Forms.CheckBox -Property @{
+		Height         = 55
+		Width          = 240
+		Location       = "35,155"
+		Text           = "$($lang.Unzip_Language)`n$($lang.Unzip_Fod)"
+		add_Click      = {
+			if ($This.Checked) {
+				Save_Dynamic -regkey "Solutions\ISO" -name "Filter_Language" -value "True"
+			} else {
+				Save_Dynamic -regkey "Solutions\ISO" -name "Filter_Language" -value "False"
+			}
+
+			ISO_Select_Refresh_Sources_List
+		}
+	}
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ISO" -Name "Filter_Language" -ErrorAction SilentlyContinue) {
+		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ISO" -Name "Filter_Language" -ErrorAction SilentlyContinue) {
+			"True" { $UIUnzip_Search_RuleFilter_Apply_Language.Checked = $True }
+			"False" { $UIUnzip_Search_RuleFilter_Apply_Language.Checked = $False }
+			default {
+				$UIUnzip_Search_RuleFilter_Apply_Language.Checked = $True 
+			}
+		}
+	} else {
+		Save_Dynamic -regkey "Solutions\ISO" -name "Filter_Language" -value "True"
+		$UIUnzip_Search_RuleFilter_Apply_Language.Checked = $True 
+	}
+
+	$UIUnzip_Search_RuleFilter_Apply_InBoxApps = New-Object System.Windows.Forms.CheckBox -Property @{
+		Height         = 30
+		Width          = 240
+		Location       = "35,215"
+		Text           = "InBox Apps"
+		add_Click      = {
+			if ($This.Checked) {
+				Save_Dynamic -regkey "Solutions\ISO" -name "Filter_InBoxApps" -value "True"
+			} else {
+				Save_Dynamic -regkey "Solutions\ISO" -name "Filter_InBoxApps" -value "False"
+			}
+
+			ISO_Select_Refresh_Sources_List
+		}
+	}
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ISO" -Name "Filter_InBoxApps" -ErrorAction SilentlyContinue) {
+		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\ISO" -Name "Filter_InBoxApps" -ErrorAction SilentlyContinue) {
+			"True" { $UIUnzip_Search_RuleFilter_Apply_InBoxApps.Checked = $True }
+			"False" { $UIUnzip_Search_RuleFilter_Apply_InBoxApps.Checked = $False }
+			default {
+				$UIUnzip_Search_RuleFilter_Apply_InBoxApps.Checked = $True 
+			}
+		}
+	} else {
+		Save_Dynamic -regkey "Solutions\ISO" -name "Filter_InBoxApps" -value "True"
+		$UIUnzip_Search_RuleFilter_Apply_InBoxApps.Checked = $True 
+	}
+
+	$UIUnzip_Search_Sift = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 240
+		Location       = "30,55"
+		Text           = $lang.LanguageExtractRuleFilter
+		LinkColor      = "#008000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			$UIUnzip_Search_RuleFilter_Show.visible = $True
+		}
 	}
 	$UIUnzip_Search_Sift_Custon = New-Object System.Windows.Forms.TextBox -Property @{
 		Height         = 30
@@ -11452,6 +11608,7 @@ Function Image_Select
 		.蒙板: 解压 ISO, 添加控件区域
 	#>
 	$UIUnzipPanel.controls.AddRange((
+		$UIUnzip_Search_RuleFilter_Show,
 		$UIUnzipPanel_Menu,
 		<#
 			搜索按钮
@@ -11465,6 +11622,14 @@ Function Image_Select
 		$UI_Main_Mount,
 		$UIUnzipPanelOK,
 		$UIUnzipPanelCanel
+	))
+	$UIUnzip_Search_RuleFilter_Show.controls.AddRange((
+		$UIUnzip_Search_RuleFilter_Hide,
+		$UIUnzip_Search_RuleFilter_Label,
+		$UIUnzip_Search_RuleFilter_Apply,
+		$UIUnzip_Search_RuleFilter_Apply_OtherFile,
+		$UIUnzip_Search_RuleFilter_Apply_Language,
+		$UIUnzip_Search_RuleFilter_Apply_InBoxApps
 	))
 	$UIUnzip_Search_Show_FULL_Group.controls.AddRange((
 		$UIUnzip_Search_Sift,
