@@ -499,6 +499,23 @@ Function Update_And_Download
 	write-host
 
 	if (Test-Path -Path $output -PathType Leaf) {
+		<#
+			.删除旧版内容
+		#>
+		$ClearOldVersion = "$($PSScriptRoot)\..\..\..\..\..\_Custom\Engine"
+		$ClearOldScope = @(
+			"LXPs"
+			"Multilingual"
+			"Yi.Suite"
+		)
+
+		foreach ($item in $ClearOldScope) {
+			$PathOneFUll = "$($ClearOldVersion)\$($item)\Modules"
+			if (Test-Path -Path $PathOneFUll -PathType Container) {
+				Remove_Tree $PathOneFUll
+			}
+		}
+
 		Archive -filename $output -to "$($PSScriptRoot)\..\..\..\..\..\.."
 
 		$SaveOldVersionShort = (Get-Module -Name Solutions).Version.ToString().Replace('.', '')
