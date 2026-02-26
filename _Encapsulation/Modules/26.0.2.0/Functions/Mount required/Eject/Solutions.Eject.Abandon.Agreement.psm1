@@ -266,6 +266,18 @@ Function Eject_Abandon_Agreement
 			}
 		}
 	}
+	if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\RAMDisk" -Name "Tips_Abandon_Terms" -ErrorAction SilentlyContinue) {
+		switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\RAMDisk" -Name "Tips_Abandon_Terms" -ErrorAction SilentlyContinue) {
+			"True" {
+				$UI_Main_Terms_Tips_Do_Not.Checked = $True
+			}
+			"False" {
+				$UI_Main_Terms_Tips_Do_Not.Checked = $False
+			}
+		}
+	} else {
+		$UI_Main_Terms_Tips_Do_Not.Checked = $False
+	}
 
 	$UI_Main_Accept    = New-Object System.Windows.Forms.CheckBox -Property @{
 		Height         = 60
@@ -540,7 +552,7 @@ Function Refresh_Eject_Abandon_Compatibility
 
 					if ($WaitFormatTasks.Count -gt 0) {
 						if (Get-ItemProperty -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\RAMDisk" -Name "Tips_Abandon_Terms" -ErrorAction SilentlyContinue) {
-							switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\RAMDisk" -Name "Tips_Abandon_Terms" -ErrorAction SilentlyContinue) {
+							switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\$($Global:Author)\Solutions\RAMDisk" -Name "Tips_Abandon_Terms" -ErrorAction SilentlyContinue) {
 								"True" {
 									Eject_Abandon_Agreement
 								}

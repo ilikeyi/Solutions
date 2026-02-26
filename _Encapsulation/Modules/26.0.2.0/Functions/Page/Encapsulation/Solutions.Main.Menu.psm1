@@ -288,7 +288,12 @@ Function Mainpage
 						"False" {
 							Write-Host " $($lang.Prerequisite_Not_satisfied) " -BackgroundColor DarkRed -ForegroundColor White
 						}
+						default {
+							Write-Host " $($lang.Prerequisite_Not_satisfied) " -BackgroundColor DarkRed -ForegroundColor White
+						}
 					}
+				} else {
+					Write-Host " $($lang.Prerequisite_Not_satisfied) " -BackgroundColor DarkRed -ForegroundColor White
 				}
 			}
 		} else {
@@ -337,7 +342,12 @@ Function Mainpage
 							"False" {
 								Write-Host " $($lang.Prerequisite_Not_satisfied) " -BackgroundColor DarkRed -ForegroundColor White
 							}
+							default {
+								Write-Host " $($lang.Prerequisite_Not_satisfied) " -BackgroundColor DarkRed -ForegroundColor White
+							}
 						}
+					} else {
+						Write-Host " $($lang.Prerequisite_Not_satisfied) " -BackgroundColor DarkRed -ForegroundColor White
 					}
 				}
 			} else {
@@ -390,7 +400,12 @@ Function Mainpage
 						"False" {
 							Write-Host " $($lang.Prerequisite_Not_satisfied) " -BackgroundColor DarkRed -ForegroundColor White
 						}
+						default {
+							Write-Host " $($lang.Prerequisite_Not_satisfied) " -BackgroundColor DarkRed -ForegroundColor White
+						}
 					}
+				} else {
+					Write-Host " $($lang.Prerequisite_Not_satisfied) " -BackgroundColor DarkRed -ForegroundColor White
 				}
 			}
 		} else {
