@@ -12,8 +12,7 @@ Function Image_Select_Del_UI
 	Write-Host "`n  $($lang.SelectSettingImage): $($lang.Del)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	Function Verify_Is_Select_New_Remove_Index

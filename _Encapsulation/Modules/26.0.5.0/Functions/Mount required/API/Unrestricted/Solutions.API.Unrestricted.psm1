@@ -8,8 +8,7 @@
 	Write-Host "`n  $($lang.API): $($lang.Function_Unrestricted)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	Function Refresh_API_Unrestricated_UI

@@ -29,8 +29,7 @@ Function Cumulative_updates_Add_UI_Autopilot
 
 	$Script:Temp_Select_Custom_Folder_Queue = @()
 
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	Function Refres_Event_Tasks_Cumulative_updates_Add_UI_Autopilot

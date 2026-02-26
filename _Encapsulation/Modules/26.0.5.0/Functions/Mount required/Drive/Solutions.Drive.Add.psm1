@@ -30,8 +30,7 @@ Function Drive_Add_UI
 
 	$Script:Temp_Select_Custom_Folder_Queue = @()
 
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	<#

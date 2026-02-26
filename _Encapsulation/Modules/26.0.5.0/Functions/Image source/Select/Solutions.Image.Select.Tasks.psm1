@@ -12,8 +12,7 @@ Function Image_Select_Tasks_UI
 
 	$Script:custom_array = @()
 
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	<#

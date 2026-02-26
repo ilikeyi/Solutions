@@ -16,8 +16,7 @@ Function Create_Template_UI
 
 	Image_Init_Disk_Sources
 
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	Function Create_Template_Verify_Rule_Name

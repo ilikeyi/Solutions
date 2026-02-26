@@ -4,8 +4,7 @@
 #>
 Function ISO_Associated_UI
 {
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	Function Refres_Event_Tasks_ISO_Associated

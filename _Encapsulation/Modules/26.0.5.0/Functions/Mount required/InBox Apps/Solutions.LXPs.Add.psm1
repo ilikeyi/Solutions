@@ -15,8 +15,7 @@ Function LXPs_Region_Add
 		@{ Path = "_Custom\Engine\LXPs"; Engine = "LXPs.ps1"; }
 	)
 
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	Function Autopilot_LXPs_Region_Add_Save

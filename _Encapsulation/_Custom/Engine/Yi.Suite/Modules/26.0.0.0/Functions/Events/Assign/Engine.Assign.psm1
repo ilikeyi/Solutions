@@ -52,8 +52,7 @@ Function Image_Assign_Event_Master
 	$Global:Queue_Assign_Not_Monuted_Expand = @()
 	$Global:Queue_Assign_Not_Monuted_Expand_Select = @()
 
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	Function Refresh_Assign_Select

@@ -42,8 +42,7 @@ Function Image_Assign_Autopilot_Master
 	Write-Host "`n  $($lang.Autopilot)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	Function Autopilot_Import_Eject_ISO

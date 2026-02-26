@@ -4,8 +4,7 @@
 #>
 Function InBox_Apps_Offline_Delete_UI
 {
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	Function InBox_Apps_Refresh_Offline_Install_UWP

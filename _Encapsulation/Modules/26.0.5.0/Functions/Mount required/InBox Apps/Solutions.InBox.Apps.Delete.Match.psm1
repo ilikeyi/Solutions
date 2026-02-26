@@ -9,8 +9,7 @@ Function InBox_Apps_Match_Delete_UI
 		[array]$Autopilot
 	)
 
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	$UI_Main_Extract_Rule_Select_SourcestClick = {

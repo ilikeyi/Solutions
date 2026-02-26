@@ -76,8 +76,7 @@ Function Image_Eject_UI
 	Write-Host "`n  $($lang.Mounted_Status): $($lang.Mount), $($lang.Unmount)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	<#

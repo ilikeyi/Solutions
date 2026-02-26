@@ -164,8 +164,7 @@ Function Solutions_Create_UI
 		}
 	}
 
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	Function Refres_Event_Tasks_Solutions_Add
@@ -7343,8 +7342,7 @@ Function Solutions_Index_UI
 		[array]$Autopilot
 	)
 
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	Function Solutions_Index_Save
@@ -7572,8 +7570,7 @@ Function Solutions_Index_UI
 #>
 Function KMSkeys
 {
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	$UI_Main           = New-Object system.Windows.Forms.Form -Property @{

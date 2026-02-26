@@ -1025,8 +1025,7 @@ Function Init_Canel_Event
 
 Function AZ_Error_Page
 {
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	$UI_Main           = New-Object system.Windows.Forms.Form -Property @{

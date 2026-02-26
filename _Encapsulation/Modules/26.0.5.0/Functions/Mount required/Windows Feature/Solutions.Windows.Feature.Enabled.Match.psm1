@@ -14,8 +14,7 @@ Function Feature_Enabled_Match_UI
 		[array]$Autopilot
 	)
 
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	Function Autopilot_Feature_Enabled_Match_UI_Save

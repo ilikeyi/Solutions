@@ -1299,8 +1299,7 @@ Function Install_Start_Process
 #>
 Function Update_Setting_UI
 {
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	$UI_Main           = New-Object system.Windows.Forms.Form -Property @{
@@ -1568,8 +1567,7 @@ Function Update_Process
 
 Function Install_UI
 {
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	function Instl_Save

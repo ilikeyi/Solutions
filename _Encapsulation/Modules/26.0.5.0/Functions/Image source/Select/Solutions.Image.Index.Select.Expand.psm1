@@ -11,8 +11,7 @@ Function Image_Select_Index_Custom_UI
 	Write-Host "`n  $($lang.SelectSettingImage) $($lang.MountedIndexSelect)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
 
-	Add-Type -AssemblyName System.Windows.Forms
-	Add-Type -AssemblyName System.Drawing
+	Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 	[System.Windows.Forms.Application]::EnableVisualStyles()
 
 	Function Image_Select_Index_Refresh_Button_Status
