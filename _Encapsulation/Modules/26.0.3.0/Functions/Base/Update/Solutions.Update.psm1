@@ -313,7 +313,7 @@ Function Update_Process
 		Write-Host "`n  $($lang.UpdateMinimumVersion -f $((Get-Module -Name Solutions).PrivateData.PSData.MinimumVersion))"
 		$IsUpdateAvailable = $false
 
-		if ($getSerVer.version.version.Replace('.', '') -ge (Get-Module -Name Solutions).Version.ToString().Replace('.', '')) {
+		if ($getSerVer.version.version.Replace('.', '') -gt (Get-Module -Name Solutions).Version.ToString().Replace('.', '')) {
 			$IsUpdateAvailable = $true
 		} else {
 			$IsUpdateAvailable = $false
