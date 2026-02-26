@@ -2377,7 +2377,8 @@ Function Image_Select
 				@{ Path = "Shortcuts_Remove";                                  Lang = "    | $($lang.Del)"; }
 				@{ Path = "Shortcuts_Go_Select_Index";                         Lang = "    | $($lang.Mount)"; }
 				@{ Path = "Shortcuts_Save_Current";                            Lang = "    | $($lang.Save)"; }
-				@{ Path = "Shortcuts_Dont_Save_Current";                       Lang = "    | $($lang.Unmount)"; }
+				@{ Path = "Shortcuts_Dont_Save_Current_Go";                    Lang = "    | $($lang.Unmount)"; }
+				@{ Path = "Shortcuts_Dont_Save_Current_Go -Quick";             Lang = "    | $($lang.Unmount) [ $($lang.Abandon_Allow) ]"; }
 			)
 		}
 
@@ -10999,8 +11000,8 @@ Function Image_Select
 	$UI_Main_To        = New-Object system.Windows.Forms.ComboBox -Property @{
 		TabIndex       = 5
 		Height         = 30
-		Width          = 280
-		Location       = "764,55"
+		Width          = 278
+		Location       = "765,55"
 		Text           = ""
 		DropDownStyle  = "DropDownList"
 		Visible        = $False

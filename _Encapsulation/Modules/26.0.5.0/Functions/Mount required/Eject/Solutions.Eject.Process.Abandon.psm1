@@ -1,6 +1,30 @@
 ﻿<#
 	.快捷指令: 不保存当前
 #>
+Function Shortcuts_Dont_Save_Current_Go
+{
+	param
+	(
+		[switch]$Quick
+	)
+
+	Write-Host
+	Write-Host "  " -NoNewline
+	Write-Host " $($lang.Abandon_Allow) " -NoNewline -BackgroundColor White -ForegroundColor Black
+	if ($Quick) {
+		if (Image_Is_Select_IAB) {
+			Write-Host " $($lang.Prerequisite_satisfy) " -BackgroundColor DarkGreen -ForegroundColor White
+			New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_Abandon_Allow_$($Global:Primary_Key_Image.Uid)" -Value $True -Force
+		} else {
+			Write-Host "  $($lang.IABSelectNo)" -ForegroundColor Red
+		}
+	} else {
+		Write-Host " $($lang.UpdateUnavailable) " -BackgroundColor DarkRed -ForegroundColor White
+	}
+
+	Shortcuts_Dont_Save_Current
+}
+
 Function Shortcuts_Dont_Save_Current
 {
 	Write-Host "`n  $($lang.Unmount)"
