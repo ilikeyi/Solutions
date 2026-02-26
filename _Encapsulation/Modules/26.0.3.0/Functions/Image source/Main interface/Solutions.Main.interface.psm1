@@ -7498,7 +7498,7 @@ Function Image_Select
 	}
 	$GUIImageSourceGroupSetting_Hide = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 30
-		Width          = 210
+		Width          = 200
 		Location       = "846,638"
 		Text           = $lang.Hide
 		LinkColor      = "#000000"
@@ -7597,7 +7597,7 @@ Function Image_Select
 	}
 	$UI_Mask_Image_Language_Save = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 30
-		Width          = 210
+		Width          = 255
 		Location       = "790,602"
 		Text           = $lang.Save
 		LinkColor      = "#000000"
@@ -7635,7 +7635,7 @@ Function Image_Select
 	}
 	$UI_Mask_Image_Language_Hide = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 30
-		Width          = 210
+		Width          = 255
 		Location       = "790,638"
 		Text           = $lang.Hide
 		LinkColor      = "#000000"
@@ -8653,7 +8653,7 @@ Function Image_Select
 	}
 	$UI_Mask_Image_Mount_To_Hide = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 30
-		Width          = 210
+		Width          = 220
 		Location       = "826,638"
 		Text           = $lang.Hide
 		LinkColor      = "#000000"
@@ -9079,7 +9079,7 @@ Function Image_Select
 	}
 	$GUIImageSourceGroupOther_Hide = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 30
-		Width          = 210
+		Width          = 250
 		Location       = "790,638"
 		Text           = $lang.Hide
 		LinkColor      = "#000000"
@@ -10007,7 +10007,7 @@ Function Image_Select
 	}
 	$UI_Main_Eject_Cdrom = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 30
-		Width          = 210
+		Width          = 255
 		Location       = "790,482"
 		Text           = $lang.Eject_Cdrom
 		LinkColor      = "#000000"
@@ -10066,7 +10066,7 @@ Function Image_Select
 	}
 	$UI_Main_Eject     = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 30
-		Width          = 210
+		Width          = 255
 		Location       = "790,522"
 		Text           = $lang.Eject
 		LinkColor      = "#000000"
@@ -10125,7 +10125,7 @@ Function Image_Select
 	}
 	$UI_Main_Mount     = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 30
-		Width          = 210
+		Width          = 255
 		Location       = "790,562"
 		Text           = $lang.Mount
 		LinkColor      = "#000000"
@@ -10279,7 +10279,7 @@ Function Image_Select
 	}
 	$UIUnzipPanelOK    = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 30
-		Width          = 210
+		Width          = 255
 		Location       = "790,602"
 		Text           = $lang.Unzip_ISO
 		LinkColor      = "#000000"
@@ -10327,7 +10327,7 @@ Function Image_Select
 	}
 	$UIUnzipPanelHide  = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 30
-		Width          = 210
+		Width          = 255
 		Location       = "790,638"
 		Text           = $lang.Hide
 		LinkColor      = "#000000"
