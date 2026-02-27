@@ -1,0 +1,135 @@
+﻿ConvertFrom-StringData -StringData @'
+	# th-TH
+	# Thai (Thailand)
+
+	IsCreate                        = สร้าง
+	Solution                        = สารละลาย
+	EnabledSoftwarePacker           = ของสะสม
+	EnabledUnattend                 = ควรตอบล่วงหน้าครับ
+	EnabledEnglish                  = เอ็นจิ้นการปรับใช้
+	UnattendSelectVer               = เลือกภาษาของโซลูชัน 'ตอบคำถาม'
+	UnattendLangPack                = เลือกชุดภาษา 'โซลูชัน'
+	UnattendSelectSingleInstl       = หลายภาษา เป็นตัวเลือกระหว่างการติดตั้ง
+	UnattendSelectMulti             = พูดได้หลายภาษา
+	UnattendSelectDisk              = เลือกโซลูชัน Autounattend.xml
+	UnattendSelectSemi              = ระบบกึ่งอัตโนมัติใช้ได้กับวิธีการติดตั้งทั้งหมด
+	UnattendSelectUefi              = UEFI จะติดตั้งโดยอัตโนมัติและจำเป็นต้องระบุ
+	UnattendSelectLegacy            = ระบบเดิมได้รับการติดตั้งโดยอัตโนมัติและจำเป็นต้องระบุ
+	NeedSpecified                   = โปรดเลือกสิ่งที่ต้องระบุ:
+	OOBESetupOS                     = อินเตอร์เฟซการติดตั้ง
+	OOBEProductKey                  = รหัสผลิตภัณฑ์
+	OOBEOSImage                     = เลือกระบบปฏิบัติการที่จะติดตั้ง
+	OOBEEula                        = ยอมรับเงื่อนไขใบอนุญาต
+	OOBEDoNotServerManager          = ตัวจัดการเซิร์ฟเวอร์ไม่เริ่มทำงานโดยอัตโนมัติเมื่อเข้าสู่ระบบ
+	OOBEIE                          = การกำหนดค่าความปลอดภัยขั้นสูงของ Internet Explorer
+	OOBEIEAdmin                     = ปิด "ผู้ดูแลระบบ"
+	OObeIEUser                      = ปิด "ผู้ใช้"
+
+	OOBE_Init_User                  = ผู้ใช้ครั้งแรกระหว่างประสบการณ์แกะกล่อง
+	OOBE_init_Create                = สร้างผู้ใช้ที่กำหนดเอง
+	OOBE_init_Specified             = ระบุผู้ใช้
+	OOBE_Init_Autologin             = เข้าสู่ระบบอัตโนมัติ
+
+	InstlMode                       = วิธีการติดตั้ง
+	Business                        = รุ่นธุรกิจ
+	BusinessTips                    = ขึ้นอยู่กับ EI.cfg จะต้องระบุหมายเลขดัชนีสำหรับการติดตั้งอัตโนมัติ
+	Consumer                        = รุ่นผู้บริโภค
+	ConsumerTips                    = ไม่ต้องอาศัย EI.cfg จำเป็นต้องระบุหมายเลขซีเรียลสำหรับการติดตั้งอัตโนมัติ เมื่อหยุดชั่วคราวในอินเทอร์เฟซการเลือกเวอร์ชัน จะต้องระบุหมายเลขดัชนี
+	CreateUnattendISO               = [ISO]:\\Autounattend.xml
+	CreateUnattendISOSources        = [ISO]:\\sources\\Unattend.xml
+	CreateUnattendISOSourcesOEM     = [ISO]:\\sources\\$OEM$\\$$\\Panther\\unattend.xml
+	CreateUnattendPanther           = [ติดไปที่]:\\Windows\\Panther\\unattend.xml
+
+	VerifyName                      = เพิ่มไปยังชื่อโฮมไดเร็กทอรีของดิสก์ระบบ
+	VerifyNameUse                   = ตรวจสอบว่าชื่อไดเร็กทอรีไม่สามารถมีได้
+	VerifyNameTips                  = อนุญาตให้ใช้เฉพาะตัวอักษรภาษาอังกฤษและตัวเลขผสมกันเท่านั้น และต้องไม่มี: ช่องว่าง ความยาวต้องไม่เกิน 260 ตัวอักษร, \\ / : * ? & @ ! "" < > |
+	VerifyNumberFailed              = การยืนยันล้มเหลว โปรดป้อนหมายเลขที่ถูกต้อง
+	VerifyNameSync                  = ตั้งชื่อไดเรกทอรีเป็นชื่อผู้ใช้หลัก
+	VerifyNameSyncTips              = ไม่ได้ใช้อีกต่อไป administrator
+	ManualKey                       = เลือกหรือป้อนรหัสผลิตภัณฑ์ของคุณด้วยตนเอง
+	ManualKeyTips                   = ป้อนรหัสผลิตภัณฑ์ที่ถูกต้อง หากไม่มีภูมิภาคที่เลือก โปรดไปที่เว็บไซต์อย่างเป็นทางการของ Microsoft เพื่อตรวจสอบ
+	ManualKeyError                  = รหัสผลิตภัณฑ์ที่คุณป้อนไม่ถูกต้อง
+	KMSLink1                        = คีย์การตั้งค่าไคลเอ็นต์ KMS
+	KMSUnlock                       = แสดงหมายเลขซีเรียล KMS ที่รู้จักทั้งหมด
+	KMSSelect                       = โปรดเลือกหมายเลขซีเรียล VOL
+	KMSKey                          = หมายเลขซีเรียล
+	KMSKeySelect                    = เปลี่ยนหมายเลขซีเรียลของผลิตภัณฑ์
+	ClearOld                        = ทำความสะอาดไฟล์เก่า
+	SolutionsSkip                   = ข้ามการสร้างโซลูชัน
+	SolutionsTo                     = เพิ่ม 'โซลูชัน' ลงใน:
+	SolutionsToMount                = ติดตั้งหรือเพิ่มลงในคิว
+	SolutionsToError                = ฟังก์ชั่นบางอย่างถูกปิดใช้งาน หากคุณต้องการบังคับให้ใช้งาน โปรดคลิกปุ่ม "ปลดล็อค"\n\n
+	UnlockBoot                      = ปลดล็อค
+	SolutionsToSources              = โฮมไดเร็กตอรี่, [ISO]:\\Sources\\$OEM$
+	SolutionsScript                 = เลือกเวอร์ชัน 'Deployment Engine'
+	SolutionsEngineRegionaUTF8      = เบต้า: รองรับภาษาสากลโดยใช้ Unicode UTF-8
+	SolutionsEngineRegionaUTF8Tips  = ดูเหมือนว่าอาจทำให้เกิดปัญหาใหม่หลังจากเปิดขึ้นมา ไม่แนะนำ.
+	SolutionsEngineRegionaling      = เปลี่ยนเป็นภาษาใหม่:
+	SolutionsEngineRegionalingTips  = เปลี่ยนภาษาของระบบซึ่งส่งผลต่อบัญชีผู้ใช้ทั้งหมดบนคอมพิวเตอร์
+	SolutionsEngineRegional         = เปลี่ยนภาษาของระบบ
+	SolutionsEngineRegionalTips     = ค่าเริ่มต้นสากล: {0} เปลี่ยนเป็น: {1}
+	SolutionsEngineCopyPublic       = คัดลอกพับลิก {0} ไปยังการปรับใช้
+	SolutionsEngineCopyOpen         = เรียกดูตำแหน่งที่เก็บพับลิก {0}
+	EnglineDoneReboot               = รีสตาร์ทคอมพิวเตอร์ของคุณ
+	SolutionsTipsArm64              = แนะนำให้ใช้แพ็คเกจ arm64 และคุณเลือกตามลำดับ: x64, x86
+	SolutionsTipsAMD64              = ต้องการแพ็คเกจ x64 ตามลำดับ: x86
+	SolutionsTipsX86                = เพิ่มเฉพาะแพ็คเกจ x86 เท่านั้น
+	SolutionsReport                 = สร้างรายงานก่อนการใช้งาน
+	SolutionsDeployOfficeInstall    = ปรับใช้แพ็คเกจการติดตั้ง Microsoft Office
+	SolutionsDeployOfficeChange     = เปลี่ยนการกำหนดค่าการปรับใช้
+	SolutionsDeployOfficePre        = เวอร์ชันแพ็คเกจที่ติดตั้งไว้ล่วงหน้า
+	SolutionsDeployOfficeNoSelect   = ไม่ได้เลือกแพ็คเกจการติดตั้งล่วงหน้าของ Office
+	SolutionsDeployOfficeVersion    = {0} เวอร์ชัน
+	SolutionsDeployOfficeOnly       = เก็บชุดภาษาที่ระบุ
+	SolutionsDeployOfficeSync       = รักษาการซิงค์ภาษากับการกำหนดค่าการใช้งาน
+	SolutionsDeployOfficeSyncTips   = หลังจากการซิงโครไนซ์ สคริปต์การติดตั้งไม่สามารถระบุภาษาที่ต้องการได้
+	DeploySyncMainLanguage          = ประสานกับภาษาหลัก
+	SolutionsDeployOfficeTo         = ปรับใช้แพ็คเกจการติดตั้งไปที่
+	SolutionsDeployOfficeToPublic   = เดสก์ท็อปสาธารณะ
+	DeployPackage                   = ปรับใช้แพ็คเกจคอลเลกชันแบบกำหนดเอง
+	DeployPackageSelect             = เลือกแพ็คเกจก่อนการรวบรวม
+	DeployPackageTo                 = ปรับใช้แพ็คเกจก่อนการรวบรวมไปที่
+	DeployToRoot                    = ดิสก์ระบบ
+	DeployPackageToSolutions        = ในโฮมไดเร็กตอรี่ของโซลูชัน
+	DeployTimeZone                  = เขตเวลา
+	DeployTimeZoneChange            = เปลี่ยนโซนเวลา
+	DeployTimeZoneChangeTips        = ตั้งค่าพื้นที่เวลาเริ่มต้นที่ควรตอบคำตอบล่วงหน้าตามพื้นที่ภาษา
+
+	Deploy_Tags                     = แท็กการทำให้ใช้งานได้
+	FirstExpProcess                 = ประสบการณ์ครั้งแรก ระหว่างข้อกำหนดเบื้องต้นในการปรับใช้:
+	FirstExpProcessTips             = หลังจากทำตามข้อกำหนดเบื้องต้นแล้ว ให้รีสตาร์ทคอมพิวเตอร์เพื่อแก้ไขปัญหาที่ต้องรีสตาร์ทจึงจะมีผล
+	FirstExpFinish                  = ประสบการณ์ครั้งแรก หลังจากผ่านข้อกำหนดเบื้องต้นแล้ว
+	FirstExpSyncMark                = อนุญาตการค้นหาทั่วโลกและการซิงโครไนซ์แท็กการปรับใช้
+	FirstExpDefender                = เพิ่มโฮมไดเร็กตอรี่เพื่อป้องกันไดเร็กทอรีที่ถูกแยกออก
+	FirstExpSyncLabel               = ป้ายชื่อไดรฟ์ข้อมูลดิสก์ระบบ: ชื่อโฮมไดเร็กทอรีเหมือนกัน
+	MultipleLanguages               = เมื่อต้องเผชิญหลายภาษา:
+	NetworkLocationWizard           = ตัวช่วยสร้างตำแหน่งเครือข่าย
+	PreAppxCleanup                  = บล็อกงานบำรุงรักษาการล้างข้อมูล Appx
+	LanguageComponents              = ป้องกันการล้างชุดภาษาฟีเจอร์ตามความต้องการที่ไม่ได้ใช้
+	PreventCleaningUnusedLP         = ป้องกันการทำความสะอาดชุดภาษาที่ไม่ได้ใช้
+	FirstExpContextCustomize        = เพิ่ม "เมนูบริบท" ส่วนตัว
+	FirstExpContextCustomizeShift   = กดปุ่ม Shift ค้างไว้แล้วคลิกขวา
+
+	FirstExpFinishTips              = ไม่มีเหตุการณ์สำคัญหลังจากการปรับใช้เสร็จสิ้น ขอแนะนำให้คุณยกเลิก
+	FirstExpFinishPopup             = เปิดอินเทอร์เฟซหลักของเอ็นจิ้นการปรับใช้
+	FirstExpFinishOnDemand          = อนุญาตให้แสดงตัวอย่างครั้งแรกตามที่วางแผนไว้
+	SolutionsEngineRestricted       = กู้คืนนโยบายการดำเนินการ Powershell: ถูกจำกัด
+	EnglineDoneClearFull            = ลบโซลูชันทั้งหมด
+	EnglineDoneClear                = ลบกลไกการปรับใช้และเก็บเครื่องมืออื่นๆ ไว้
+
+	Unattend_Auto_Fix_Next          = ครั้งต่อไปที่คุณพบมัน ให้เลือกรายการที่จำเป็นโดยอัตโนมัติเพื่อแก้ไขโดยอัตโนมัติ
+	Unattend_Auto_Fix               = ซ่อมแซมโดยอัตโนมัติเมื่อไม่ได้เลือกข้อกำหนดเบื้องต้น
+	Unattend_Auto_Fix_Tips          = เมื่อเพิ่มเอ็นจิ้นการปรับใช้และไม่เลือกคำสั่งที่รันครั้งแรก จะถูกซ่อมแซมและเลือกโดยอัตโนมัติ: นโยบายการดำเนินการ Powershell: รันเอ็นจิ้นการปรับใช้โดยไม่มีข้อจำกัดใดๆ
+	Unattend_Version_Tips           = รวมเฉพาะหรือไม่ก็ได้ ใช้ค่าเริ่มต้นเพื่อรองรับ ARM64, x64, x86
+	First_Run_Commmand              = คำสั่งให้รันเมื่อใช้งานครั้งแรก
+	First_Run_Commmand_Setting      = เลือกคำสั่งที่จะรัน
+	Command_Not_Class               = ไม่จัดหมวดหมู่โดยอัตโนมัติอีกต่อไปเมื่อกรอง
+	Command_WinSetup                = การติดตั้งวินโดวส์
+	Command_WinPE                   = Windows PE
+	Command_Tips                    = โปรดกำหนดแอป First Run ให้กับ: การติดตั้ง Windows, Windows PE\n\nโปรดทราบว่าเมื่อมีการเพิ่มเอ็นจิ้นการปรับใช้ คุณจะต้องตรวจสอบสิ่งต่อไปนี้เมื่อรันเป็นครั้งแรก: นโยบายการดำเนินการของ Powershell: ถูกจำกัด อนุญาตให้รันสคริปต์กลไกการปรับใช้
+	Waring_Not_Select_Command       = เมื่อเพิ่มกลไกการปรับใช้ ไม่ได้เลือกนโยบายการดำเนินการ Powershell: อย่าตั้งค่าข้อจำกัดใด ๆ และอนุญาตให้สคริปต์กลไกการปรับใช้ทำงาน โปรดเลือกแล้วลองอีกครั้ง หรือคลิก "ไม่ได้เลือกการแก้ไขด่วน"
+	Quic_Fix_Not_Select_Command     = การแก้ไขด่วนไม่ใช่ตัวเลือก
+
+	PowerShell_Unrestricted         = นโยบายการดำเนินการ Powershell: ไม่มีข้อจำกัด
+	Allow_Running_Deploy_Engine     = อนุญาตให้สคริปต์กลไกการปรับใช้ทำงาน
+'@

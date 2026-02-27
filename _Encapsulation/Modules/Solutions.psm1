@@ -673,7 +673,7 @@ Function Language_Select_GUI
 		Location       = "10,568"
 		Height         = 20
 		Width          = 20
-		SizeMode       = "StretchImage"
+		SizeMode       = "Zoom"
 	}
 	$UI_Main_Error     = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
