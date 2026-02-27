@@ -4817,16 +4817,16 @@ Function Image_Select
 	}
 
 	$GUIImageSourceGroupAPISetting_Learn_ICO = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "360,605"
-		Height         = 38
-		Width          = 38
+		Location       = "360,590"
+		Height         = 22
+		Width          = 22
 		SizeMode       = "Zoom"
 		Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Learn.png")
 	}
 	$GUIImageSourceGroupAPISetting_Learn = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
-		Width          = 160
-		Location       = '410,598'
+		Width          = 180
+		Location       = '360,634'
 		Text           = $lang.Learn
 	}
 
@@ -11587,7 +11587,7 @@ Function Image_Select
 		$NewApiDocx        = New-Object system.Windows.Forms.LinkLabel -Property @{
 			Height         = 35
 			Width          = 60
-			Location       = '410,630'
+			Location       = '390,594'
 			Text           = "Docx"
 			Tag            = $ApiDocx
 			LinkColor      = "#008000"
@@ -11637,7 +11637,7 @@ Function Image_Select
 		$NewApiDocx        = New-Object system.Windows.Forms.LinkLabel -Property @{
 			Height         = 35
 			Width          = 60
-			Location       = '410,630'
+			Location       = '390,594'
 			Text           = "Docx"
 			Tag            = "https://github.com/ilikeyi/Solutions/blob/main/_Learn/API/API.docx"
 			LinkColor      = "#008000"
@@ -11691,7 +11691,7 @@ Function Image_Select
 		$NewApiPdf        = New-Object system.Windows.Forms.LinkLabel -Property @{
 			Height         = 35
 			Width          = 60
-			Location       = '480,630'
+			Location       = '460,594'
 			Text           = "Pdf"
 			Tag            = $ApiPdf
 			LinkColor      = "#008000"
@@ -11741,7 +11741,7 @@ Function Image_Select
 		$NewApiPdf        = New-Object system.Windows.Forms.LinkLabel -Property @{
 			Height         = 35
 			Width          = 60
-			Location       = '480,630'
+			Location       = '460,594'
 			Text           = "Pdf"
 			Tag            = "https://github.com/ilikeyi/Solutions/blob/main/_Learn/API/API.pdf"
 			LinkColor      = "#008000"
