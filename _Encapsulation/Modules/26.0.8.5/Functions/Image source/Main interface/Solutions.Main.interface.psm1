@@ -4826,7 +4826,7 @@ Function Image_Select
 	$GUIImageSourceGroupAPISetting_Learn = New-Object system.Windows.Forms.Label -Property @{
 		Height         = 30
 		Width          = 180
-		Location       = '360,634'
+		Location       = '390,594'
 		Text           = $lang.Learn
 	}
 
@@ -11587,7 +11587,7 @@ Function Image_Select
 		$NewApiDocx        = New-Object system.Windows.Forms.LinkLabel -Property @{
 			Height         = 35
 			Width          = 60
-			Location       = '390,594'
+			Location       = '390,634'
 			Text           = "Docx"
 			Tag            = $ApiDocx
 			LinkColor      = "#008000"
@@ -11637,7 +11637,7 @@ Function Image_Select
 		$NewApiDocx        = New-Object system.Windows.Forms.LinkLabel -Property @{
 			Height         = 35
 			Width          = 60
-			Location       = '390,594'
+			Location       = '390,534'
 			Text           = "Docx"
 			Tag            = "https://github.com/ilikeyi/Solutions/blob/main/_Learn/API/API.docx"
 			LinkColor      = "#008000"
@@ -11691,7 +11691,7 @@ Function Image_Select
 		$NewApiPdf        = New-Object system.Windows.Forms.LinkLabel -Property @{
 			Height         = 35
 			Width          = 60
-			Location       = '460,594'
+			Location       = '460,634'
 			Text           = "Pdf"
 			Tag            = $ApiPdf
 			LinkColor      = "#008000"
@@ -11741,7 +11741,7 @@ Function Image_Select
 		$NewApiPdf        = New-Object system.Windows.Forms.LinkLabel -Property @{
 			Height         = 35
 			Width          = 60
-			Location       = '460,594'
+			Location       = '460,634'
 			Text           = "Pdf"
 			Tag            = "https://github.com/ilikeyi/Solutions/blob/main/_Learn/API/API.pdf"
 			LinkColor      = "#008000"
