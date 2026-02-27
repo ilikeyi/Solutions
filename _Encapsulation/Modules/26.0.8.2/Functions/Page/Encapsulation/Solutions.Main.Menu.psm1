@@ -134,15 +134,13 @@ Function Mainpage
 		Image_Get_Mount_Status -IsHotkey
 	}
 
-	Write-Host "`n  $($lang.EventManager)" -ForegroundColor Yellow
-	Write-Host "  $('-' * 80)"
-	Write-host "   " -NoNewline
+	Write-host
+	Write-host "  " -NoNewline
+	Write-Host " $($lang.EventManager) " -NoNewline -BackgroundColor DarkYellow -ForegroundColor White
+	Write-Host " $($lang.Autopilot) " -NoNewline -BackgroundColor White -ForegroundColor Black
 	Write-Host " A " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host " $($lang.Autopilot)" -NoNewline -ForegroundColor Green
-
-	Write-host "    " -NoNewline
-	Write-Host " C " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
-	Write-Host " $($lang.OnDemandPlanTask)" -ForegroundColor Green
+	Write-Host " $($lang.OnDemandPlanTask) " -NoNewline -BackgroundColor White -ForegroundColor Black
+	Write-Host " C " -BackgroundColor DarkMagenta -ForegroundColor White
 
 	Write-Host
 	Write-Host "  " -NoNewline
@@ -232,10 +230,6 @@ Function Mainpage
 		Write-Host " 3 " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
 		Write-Host " $($lang.Convert_Only), $($lang.Conver_Merged), $($lang.Conver_Split_To_Swm)" -ForegroundColor Green
 	}
-
-	Write-host "   " -NoNewline
-	Write-Host " 4 " -NoNewline -BackgroundColor Green -ForegroundColor Black
-	Write-Host " $($lang.MoreFeature)" -ForegroundColor Yellow
 
 	Write-Host "`n  $($lang.AssignNeedMount)" -ForegroundColor Yellow
 	Write-Host "  $('-' * 80)"
@@ -772,7 +766,7 @@ Function Mainpage
 		Write-Host " API * " -BackgroundColor DarkMagenta -ForegroundColor White
 	}
 
-	Solutions_Input_Menu -PS
+	Solutions_Input_Menu -PS -More
 	$NewEnter = Read-Host
 
 	<#
@@ -816,11 +810,6 @@ Function Mainpage
 		}
 		"3" {
 			Image_Convert
-			ToWait -wait 2
-			Mainpage
-		}
-		"4" {
-			Feature_More_Menu
 			ToWait -wait 2
 			Mainpage
 		}
@@ -914,6 +903,12 @@ Function Mainpage
 			Write-host $lang.Prerequisites -ForegroundColor Yellow
 
 			Modules_Refresh -Function "ToWait -wait 2", "Prerequisite", "Mainpage"
+		}
+
+		"XX" {
+			Feature_More_Menu
+			ToWait -wait 2
+			Mainpage
 		}
 
 		<#

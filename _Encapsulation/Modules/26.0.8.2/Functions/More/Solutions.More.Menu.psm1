@@ -169,20 +169,26 @@ Function Solutions_Menu_Shortcut
 			}
 		}
 	}
-
-	write-host
 }
 
 Function Solutions_Input_Menu
 {
 	param (
-		[switch]$PS
+		[switch]$PS,
+		[switch]$More
 	)
 
 	Write-Host
 	Write-Host "  " -NoNewline
 	Write-Host " $($lang.RefreshModules) " -NoNewline -BackgroundColor White -ForegroundColor Black
-	Write-Host " R'R " -BackgroundColor DarkMagenta -ForegroundColor White
+	Write-Host " R'R " -NoNewline -BackgroundColor DarkMagenta -ForegroundColor White
+
+	if ($More) {
+		Write-Host " $($lang.MoreFeature) " -NoNewline -BackgroundColor White -ForegroundColor Black
+		Write-Host " XX " -BackgroundColor DarkMagenta -ForegroundColor White
+	} else {
+		Write-host
+	}
 
 	Write-Host "  " -NoNewline
 	Write-Host " $($lang.Help) " -NoNewline -BackgroundColor White -ForegroundColor Black

@@ -9304,7 +9304,7 @@ Function Image_Select
 		ISO_Select_Refresh_Sources_List
 	}
 	$UIUnzip_ICO       = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "764,50"
+		Location       = "764,55"
 		Height         = 22
 		Width          = 22
 		SizeMode       = "StretchImage"
@@ -9315,7 +9315,7 @@ Function Image_Select
 	$UIUnzip           = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 30
 		Width          = 50
-		Location       = "790,52"
+		Location       = "790,57"
 		Text           = "ISO"
 		LinkColor      = "#000000"
 		ActiveLinkColor = "#FF0000"
@@ -9324,7 +9324,7 @@ Function Image_Select
 	}
 
 	$UI_Refresh_ICO    = New-Object system.Windows.Forms.PictureBox -Property @{
-		Location       = "860,50"
+		Location       = "764,95"
 		Height         = 22
 		Width          = 22
 		SizeMode       = "StretchImage"
@@ -9340,7 +9340,7 @@ Function Image_Select
 	$UI_Refresh        = New-Object system.Windows.Forms.LinkLabel -Property @{
 		Height         = 30
 		Width          = 160
-		Location       = "886,52"
+		Location       = "790,97"
 		Text           = $lang.Refresh
 		LinkColor      = "#000000"
 		ActiveLinkColor = "#FF0000"
