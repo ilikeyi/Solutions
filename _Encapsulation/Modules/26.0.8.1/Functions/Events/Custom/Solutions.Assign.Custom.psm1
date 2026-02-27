@@ -2623,508 +2623,274 @@ Function Image_Assign_Event_Master
 		Width          = 455
 		Text           = ""
 	}
-	$UI_Main_Ok        = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "560,635"
-		Height         = 36
-		Width          = 240
-		Text           = $lang.OK
-		add_Click      = {
-			$UI_Main_Error.Text = ""
-			$UI_Main_Error_Icon.Image = $null
 
-			<#
-				.初始化变量
-			#>
-			ForEach ($item in $Global:Image_Rule) {
-				New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.Uid)" -Value $False -Force
-				New-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($item.Main.Uid)" -Value $False -Force
-				New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -Value $False -Force
-				New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_Abandon_Allow_$($item.Main.Uid)" -Value $False -Force
-				New-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($item.Main.Uid)" -Value $False -Force
+	$UI_Main_Ok_Click = {
+		$UI_Main_Error.Text = ""
+		$UI_Main_Error_Icon.Image = $null
 
-				if ($item.Expand.Count -gt 0) {
-					ForEach ($itemExpandNew in $item.Expand) {
-						New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($itemExpandNew.Uid)" -Value $False -Force
-						New-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($itemExpandNew.Uid)" -Value $False -Force
-						New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpandNew.Uid)" -Value $False -Force
-						New-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($itemExpandNew.Uid)" -Value $False -Force
+		<#
+			.初始化变量
+		#>
+		ForEach ($item in $Global:Image_Rule) {
+			New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.Uid)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($item.Main.Uid)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_Abandon_Allow_$($item.Main.Uid)" -Value $False -Force
+			New-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($item.Main.Uid)" -Value $False -Force
+
+			if ($item.Expand.Count -gt 0) {
+				ForEach ($itemExpandNew in $item.Expand) {
+					New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($itemExpandNew.Uid)" -Value $False -Force
+					New-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($itemExpandNew.Uid)" -Value $False -Force
+					New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpandNew.Uid)" -Value $False -Force
+					New-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($itemExpandNew.Uid)" -Value $False -Force
+				}
+			}
+		}
+
+		<#
+			.全局多任务分配
+		#>
+		$Global:Queue_Assign_Full = @()
+
+		<#
+			.分配无需挂载项
+		#>
+		$Global:Queue_Assign_Not_Monuted_Expand = @()
+		$Global:Queue_Assign_Not_Monuted_Expand_Select = @()
+		$UI_Main_Select_No_Mounting.Controls | ForEach-Object {
+			if ($_ -is [System.Windows.Forms.CheckBox]) {
+				$Global:Queue_Assign_Not_Monuted_Expand += $_.Tag
+
+				if ($_.Enabled) {
+					if ($_.Checked) {
+						$Global:Queue_Assign_Not_Monuted_Expand_Select += $_.Tag
 					}
 				}
 			}
+		}
 
-			<#
-				.全局多任务分配
-			#>
-			$Global:Queue_Assign_Full = @()
-
-			<#
-				.分配无需挂载项
-			#>
-			$Global:Queue_Assign_Not_Monuted_Expand = @()
-			$Global:Queue_Assign_Not_Monuted_Expand_Select = @()
-			$UI_Main_Select_No_Mounting.Controls | ForEach-Object {
-				if ($_ -is [System.Windows.Forms.CheckBox]) {
-					$Global:Queue_Assign_Not_Monuted_Expand += $_.Tag
-
-					if ($_.Enabled) {
-						if ($_.Checked) {
-							$Global:Queue_Assign_Not_Monuted_Expand_Select += $_.Tag
-						}
+		<#
+			.所有任务, 有可用挂载时
+		#>
+		$Global:Queue_Assign_Available_Select = @()
+		$GUIImageSelectEventHave_Group.Controls | ForEach-Object {
+			if ($_ -is [System.Windows.Forms.CheckBox]) {
+				if ($_.Enabled) {
+					if ($_.Checked) {
+						$Global:Queue_Assign_Available_Select += $_.Tag
 					}
 				}
 			}
+		}
 
+		<#
+			.进入批量模式
+		#>
+		if ($Global:EventQueueMode) {
 			<#
-				.所有任务, 有可用挂载时
+				.不处理, 仅判断是否选择挂载项
 			#>
-			$Global:Queue_Assign_Available_Select = @()
-			$GUIImageSelectEventHave_Group.Controls | ForEach-Object {
-				if ($_ -is [System.Windows.Forms.CheckBox]) {
-					if ($_.Enabled) {
-						if ($_.Checked) {
-							$Global:Queue_Assign_Available_Select += $_.Tag
-						}
-					}
-				}
-			}
-
-			<#
-				.进入批量模式
-			#>
-			if ($Global:EventQueueMode) {
-				<#
-					.不处理, 仅判断是否选择挂载项
-				#>
-				if ($UI_Main_Is_Select_Wim.Checked) {
-					$Global:EventQueueMode = $False
-					
-					if ($Global:Queue_Assign_Not_Monuted_Expand_Select.Count -gt 0) {
-						$UI_Main.Close()
-					} else {
-						$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.AssignNoMount)"
-						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.ico")
-					}
+			if ($UI_Main_Is_Select_Wim.Checked) {
+				$Global:EventQueueMode = $False
+				
+				if ($Global:Queue_Assign_Not_Monuted_Expand_Select.Count -gt 0) {
+					$UI_Main.Close()
 				} else {
-					<#
-						.多任务分配
-					#>
+					$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.AssignNoMount)"
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.ico")
+				}
+			} else {
+				<#
+					.多任务分配
+				#>
 
-					<#
-						.开始分配可用的多会话任务
-					#>
-					<#
-						1. 分配前获取已选的所有项, 根据唯一识别码
-					#>
-					$MainItem = @()
-					$disable = @()
+				<#
+					.开始分配可用的多会话任务
+				#>
+				<#
+					1. 分配前获取已选的所有项, 根据唯一识别码
+				#>
+				$MainItem = @()
+				$disable = @()
 
-					$Wait_Sync_Some_Select = @()
-					$UI_Main_Select_Wim.Controls | ForEach-Object {
-						if ($_.Enabled) {
-							if ($_.Checked) {
-								$Wait_Sync_Some_Select += $_.Tag
-							}
+				$Wait_Sync_Some_Select = @()
+				$UI_Main_Select_Wim.Controls | ForEach-Object {
+					if ($_.Enabled) {
+						if ($_.Checked) {
+							$Wait_Sync_Some_Select += $_.Tag
 						}
 					}
+				}
 
-					ForEach ($item in $Global:Image_Rule) {
-						if ($Global:SMExt -contains $item.Main.Suffix) {
-							if ($Wait_Sync_Some_Select -contains $item.Main.uid) {
-								$MainItem += $item.Main.uid
-							}
+				ForEach ($item in $Global:Image_Rule) {
+					if ($Global:SMExt -contains $item.Main.Suffix) {
+						if ($Wait_Sync_Some_Select -contains $item.Main.uid) {
+							$MainItem += $item.Main.uid
+						}
 
-							if ($item.Expand.Count -gt 0) {
-								ForEach ($Expand in $item.Expand) {
-									if ($Wait_Sync_Some_Select -contains $Expand.uid) {
-										$MainItem += $item.Main.uid
-										$MainItem += $Expand.uid
+						if ($item.Expand.Count -gt 0) {
+							ForEach ($Expand in $item.Expand) {
+								if ($Wait_Sync_Some_Select -contains $Expand.uid) {
+									$MainItem += $item.Main.uid
+									$MainItem += $Expand.uid
 
-										if ($Wait_Sync_Some_Select -notcontains $item.Main.uid) {
-											$disable += $item.Main.uid
-										}
+									if ($Wait_Sync_Some_Select -notcontains $item.Main.uid) {
+										$disable += $item.Main.uid
 									}
 								}
 							}
 						}
 					}
-					$MainItem = $MainItem | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
-					$disable = $disable | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
+				}
+				$MainItem = $MainItem | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
+				$disable = $disable | Where-Object { -not ([string]::IsNullOrEmpty($_) -or [string]::IsNullOrWhiteSpace($_))} | Select-Object -Unique
 
-					#region Image Rule
-					ForEach ($item in $Global:Image_Rule) {
-						$Fix_Eject_Force_Expand = $False
+				#region Image Rule
+				ForEach ($item in $Global:Image_Rule) {
+					$Fix_Eject_Force_Expand = $False
 
-						#region Main
-						$Mark_Allow_Add_To = $False
+					#region Main
+					$Mark_Allow_Add_To = $False
 
-						<#
-							.主要项, 临时保存
-						#>
-						$Mul_Temp_Save_UI_Main = @()
-						$Mul_Temp_Save_UI_Expand = @()
+					<#
+						.主要项, 临时保存
+					#>
+					$Mul_Temp_Save_UI_Main = @()
+					$Mul_Temp_Save_UI_Expand = @()
 
-						<#
-							.判断是否分配事件
-						#>
-						$UI_Main_Select_Assign_Multitasking.Controls | ForEach-Object {
-							if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
-								if ($item.Main.Uid -eq $_.Name) {
-									$_.Controls | ForEach-Object {
-										if ($_.Name -eq "ImageSources") {
-											$TempQueueProcessImageSelectPending = [pscustomobject]@()
-											$MarkSelectIndexin = @()
-
-											ForEach ($ItemNew in $_.Controls) {
-												if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
-													if ($ItemNew.Enabled) {
-														if ($ItemNew.Checked) {
-															$MarkSelectIndexin += $ItemNew.Tag
-														}
-													}
-												}
-											}
-
-											if ($MarkSelectIndexin.Count -gt 0) {
-												ForEach ($itemIndex in $MarkSelectIndexin) {
-													ForEach ($WildCard in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_$($item.Main.Uid)" -ErrorAction SilentlyContinue).Value) {
-														if ($itemIndex -eq $WildCard.Index) {
-															$TempQueueProcessImageSelectPending += [pscustomobject]@{
-																Index            = $WildCard.Index
-																Name             = $WildCard.Name
-																ImageDescription = $WildCard.ImageDescription
-															}
-														}
-													}
-												}
-
-												New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($item.Main.Uid)" -Value $TempQueueProcessImageSelectPending -Force
-											}
-										}
+					<#
+						.判断是否分配事件
+					#>
+					$UI_Main_Select_Assign_Multitasking.Controls | ForEach-Object {
+						if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
+							if ($item.Main.Uid -eq $_.Name) {
+								$_.Controls | ForEach-Object {
+									if ($_.Name -eq "ImageSources") {
+										$TempQueueProcessImageSelectPending = [pscustomobject]@()
+										$MarkSelectIndexin = @()
 
 										ForEach ($ItemNew in $_.Controls) {
 											if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
-												if ($ItemNew.Name -eq "EjectForce") {
-													if ($ItemNew.Enabled) {
-														if ($ItemNew.Checked) {
-															<#
-																.强制打开扩展项不保存, 不管选没有选
-															#>
-															$Fix_Eject_Force_Expand = $True
-
-															New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -Value $True -Force
-														}
-													}
-												}
-
-												#region Enabled
-												if ($ItemNew.Name -eq "IsAssign") {
-													if ($ItemNew.Enabled) {
-														if ($ItemNew.Checked) {
-															$Mul_Temp_Save_UI_Main += $ItemNew.Tag
-														}
-													}
-												}
-												#endregion
-											}
-
-											if ($ItemNew -is [System.Windows.Forms.FlowLayoutPanel]) {
-												#region 保存: 主要项
-												if ($ItemNew.Tag -eq "EjectMain") {
-													ForEach ($ItemNewTwo in $ItemNew.Controls) {
-														if ($ItemNewTwo -is [System.Windows.Forms.CheckBox]) {
-															<#
-																.判断: 允许自动开启快速抛弃方式
-															#>
-															if ($ItemNewTwo.Enabled) {
-																if ($ItemNewTwo.Checked) {
-																	if ($ItemNewTwo.Tag -eq "AbandonAllow") {
-																		New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_Abandon_Allow_$($item.Main.Uid)" -Value $True -Force
-																	}
-																}
-															}
-														}
-
-														if ($ItemNewTwo -is [System.Windows.Forms.RadioButton]) {
-															<#
-																.判断保存
-															#>
-															if ($ItemNewTwo.Enabled) {
-																if ($ItemNewTwo.Checked) {
-																	if ($ItemNewTwo.Tag -eq "Save") {
-																		New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.Uid)" -Value $True -Force
-
-																		if ($Global:Developers_Mode) {
-																			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectMain.101x1`n  Start"
-																			Write-Host "$($lang.Event_Assign_Main), " -NoNewline
-																			Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
-																			Write-Host "Queue_Eject_Only_Save_$($item.Main.Uid)"
-																		}
-																	}
-
-																	if ($ItemNew.Tag -eq "DoNotSave") {
-																		New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -Value $True -Force
-
-																		if ($Global:Developers_Mode) {
-																			Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectMain.200x1`n  Start"
-																			Write-Host "$($lang.Event_Assign_Main), " -NoNewline
-																			Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
-																			Write-Host "Queue_Eject_Do_Not_Save_$($item.Main.Uid)"
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
-												#endregion
-											}
-
-											#region ADV
-											if ($ItemNew.Tag -eq "ADV") {
-												ForEach ($ItemNew in $ItemNew.Controls) {
-													if ($ItemNew.Enabled) {
-														if ($ItemNew.Checked) {
-															New-Variable -Scope global -Name "Queue_$($ItemNew.Tag)_$($item.Main.Uid)" -Value $True -Force
-														}
+												if ($ItemNew.Enabled) {
+													if ($ItemNew.Checked) {
+														$MarkSelectIndexin += $ItemNew.Tag
 													}
 												}
 											}
 										}
 
-										<#
-											.验证是否分配事件
-										#>
-										if (($Mul_Temp_Save_UI_Main.Count -gt 0) -or ($Mul_Temp_Save_UI_Expand.Count -gt 0)) {
-											$Mark_Allow_Add_To = $True
-										} else {
-											$UI_Main_Error.Text = "$($lang.Event_Primary_Key), $($item.Main.ImageFileName)"
-											$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.ico")
-											return
+										if ($MarkSelectIndexin.Count -gt 0) {
+											ForEach ($itemIndex in $MarkSelectIndexin) {
+												ForEach ($WildCard in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_$($item.Main.Uid)" -ErrorAction SilentlyContinue).Value) {
+													if ($itemIndex -eq $WildCard.Index) {
+														$TempQueueProcessImageSelectPending += [pscustomobject]@{
+															Index            = $WildCard.Index
+															Name             = $WildCard.Name
+															ImageDescription = $WildCard.ImageDescription
+														}
+													}
+												}
+											}
+
+											New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($item.Main.Uid)" -Value $TempQueueProcessImageSelectPending -Force
 										}
-										#endregion
 									}
-								}
-							}
-						}
-						#endregion
 
-						#region Expand
-						if ($item.Expand.Count -gt 0) {
-							ForEach ($itemExpand in $item.Expand) {
-								<#
-									.创建一个临时保存的数组, 保存: 选择的 UI
-								#>
-								$Temp_New_Save_UI_Expand = @()
-								$Temp_New_Save_UI_Expand_Expand = @()
+									ForEach ($ItemNew in $_.Controls) {
+										if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
+											if ($ItemNew.Name -eq "EjectForce") {
+												if ($ItemNew.Enabled) {
+													if ($ItemNew.Checked) {
+														<#
+															.强制打开扩展项不保存, 不管选没有选
+														#>
+														$Fix_Eject_Force_Expand = $True
 
-								if ($Wait_Sync_Some_Select -Contains $itemExpand.Uid) {
-									#region 判断是否分配事件
-									$UI_Main_Select_Assign_Multitasking.Controls | ForEach-Object {
-										if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
-											if ($itemExpand.Uid -eq $_.Name) {
-												$_.Controls | ForEach-Object {
-													if ($_.Name -eq "ImageSources") {
-														$TempQueueProcessImageSelectPending = [pscustomobject]@()
-														$MarkSelectIndexin = @()
-
-														ForEach ($ItemNew in $_.Controls) {
-															if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
-																if ($ItemNew.Enabled) {
-																	if ($ItemNew.Checked) {
-																		$MarkSelectIndexin += $ItemNew.Tag
-																	}
-																}
-															}
-														}
-
-														if ($MarkSelectIndexin.Count -gt 0) {
-															ForEach ($itemIndex in $MarkSelectIndexin) {
-																ForEach ($WildCard in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_$($itemExpand.Uid)" -ErrorAction SilentlyContinue).Value) {
-																	if ($itemIndex -eq $WildCard.Index) {
-																		$TempQueueProcessImageSelectPending += [pscustomobject]@{
-																			Index            = $WildCard.Index
-																			Name             = $WildCard.Name
-																			ImageDescription = $WildCard.ImageDescription
-																		}
-																	}
-																}
-															}
-
-															New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($itemExpand.Uid)" -Value $TempQueueProcessImageSelectPending -Force
-														}
-													}
-
-													ForEach ($ItemNew in $_.Controls) {
-														if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
-															if ($ItemNew.Name -eq "EjectForce") {
-																if ($ItemNew.Enabled) {
-																	if ($ItemNew.Checked) {
-																		New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)" -Value $True -Force
-																	}
-																}
-															}
-
-															#region Enabled
-															if ($ItemNew.Name -eq "IsAssign") {
-																if ($ItemNew.Enabled) {
-																	if ($ItemNew.Checked) {
-																		$Temp_New_Save_UI_Expand += $ItemNew.Tag
-																	}
-																}
-															}
-															#endregion
-														}
-
-														if ($ItemNew -is [System.Windows.Forms.FlowLayoutPanel]) {
-															#region 保存: 主要项
-															if ($ItemNew.Tag -eq "EjectMain") {
-																ForEach ($ItemNewTwo in $ItemNew.Controls) {
-																	if ($ItemNewTwo -is [System.Windows.Forms.CheckBox]) {
-																		<#
-																			.判断: 允许自动开启快速抛弃方式
-																		#>
-																		if ($ItemNewTwo.Enabled) {
-																			if ($ItemNewTwo.Checked) {
-																				if ($ItemNewTwo.Tag -eq "AbandonAllow") {
-																					New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_Abandon_Allow_$($item.Main.Uid)" -Value $True -Force
-																				}
-																			}
-																		}
-																	}
-
-																	if ($ItemNewTwo -is [System.Windows.Forms.RadioButton]) {
-																		<#
-																			.判断保存
-																		#>
-																		if ($ItemNewTwo.Enabled) {
-																			if ($ItemNewTwo.Checked) {
-																				if ($ItemNewTwo.Tag -eq "Save") {
-																					New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.Uid)" -Value $True -Force
-
-																					if ($Global:Developers_Mode) {
-																						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectMain.11200x1`n  Start"
-																						Write-Host "$($lang.Event_Assign_Main), " -NoNewline
-																						Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
-																						Write-Host "Queue_Eject_Only_Save_$($item.Main.Uid)"
-																					}
-																				}
-
-																				if ($ItemNewTwo.Tag -eq "DoNotSave") {
-																					New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -Value $True -Force
-
-																					if ($Global:Developers_Mode) {
-																						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectMain.21200x1`n  Start"
-																						Write-Host "$($lang.Event_Assign_Main), " -NoNewline
-																						Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
-																						Write-Host "Queue_Eject_Do_Not_Save_$($item.Main.Uid)"
-																					}
-																				}
-																			}
-																		}
-																	}
-																}
-															}
-															#endregion
-
-															#region 保存: 扩展项
-															if ($ItemNew.Tag -eq "EjectExpand") {
-																ForEach ($ItemNewTwo in $ItemNew.Controls) {
-																	if ($ItemNewTwo -is [System.Windows.Forms.CheckBox]) {
-																		<#
-																			.判断: 允许自动开启快速抛弃方式
-																		#>
-																		if ($ItemNewTwo.Enabled) {
-																			if ($ItemNewTwo.Checked) {
-																				if ($ItemNewTwo.Tag -eq "AbandonAllow") {
-																					New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_Abandon_Allow_$($itemExpand.Uid)" -Value $True -Force
-																				}
-																			}
-																		}
-																	}
-
-																	if ($ItemNewTwo -is [System.Windows.Forms.RadioButton]) {
-																		<#
-																			.判断保存
-																		#>
-																		if ($ItemNewTwo.Enabled) {
-																			if ($ItemNewTwo.Checked) {
-																				if ($ItemNewTwo.Tag -eq "Save") {
-																					New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($itemExpand.Uid)" -Value $True -Force
-
-																					if ($Global:Developers_Mode) {
-																						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectExpand.200x1`n  Start"
-																						Write-Host "$($lang.Event_Assign_Expand), " -NoNewline
-																						Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
-																						Write-Host "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)"
-																					}
-																				}
-
-																				if ($ItemNewTwo.Tag -eq "DoNotSave") {
-																					New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)" -Value $True -Force
-
-																					if ($Global:Developers_Mode) {
-																						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectExpand.222x1`n  Start"
-																						Write-Host "$($lang.Event_Assign_Expand), " -NoNewline
-																						Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
-																						Write-Host "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)"
-																					}
-																				}
-																			}
-																		}
-																	}
-																}
-
-																<#
-																	.强行修复不保存项
-																	如果主要项选择了不保存, 扩展项默认强制弹出
-																#>
-																if ($Fix_Eject_Force_Expand) {
-																	New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)" -Value $True -Force
-																}
-															}
-															#endregion
-														}
-
-														#region ADV
-														if ($ItemNew.Tag -eq "ADV") {
-															ForEach ($ItemNewTwo in $ItemNew.Controls) {
-																if ($ItemNewTwo.Enabled) {
-																	if ($ItemNewTwo.Checked) {
-																		$Temp_New_Save_UI_Expand_Expand += "Queue_$($ItemNewTwo.Tag)_$($itemExpand.Uid)"
-																		New-Variable -Scope global -Name "Queue_$($ItemNewTwo.Tag)_$($itemExpand.Uid)" -Value $True -Force
-																	} else {
-																		New-Variable -Scope global -Name "Queue_$($ItemNewTwo.Tag)_$($itemExpand.Uid)" -Value $False -Force
-																	}
-																} else {
-																	New-Variable -Scope global -Name "Queue_$($ItemNewTwo.Tag)_$($itemExpand.Uid)" -Value $False -Force
-																}
-															}
-														}
-														#endregion
+														New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -Value $True -Force
 													}
 												}
-	
-												#region 判断是否有新 UI, 有则添加, 没有是跳过
-												if ($Temp_New_Save_UI_Expand.Count -gt 0) {
-													$Mul_Temp_Save_UI_Expand += [pscustomobject]@{
-														Group         = $item.Main.Group
-														Uid           = $itemExpand.Uid
-														ImageFileName = $itemExpand.ImageFileName
-														Suffix        = $itemExpand.Suffix
-														Path          = $itemExpand.Path
-														UpdatePath    = $itemExpand.UpdatePath
-														UI            = $Temp_New_Save_UI_Expand
+											}
+
+											#region Enabled
+											if ($ItemNew.Name -eq "IsAssign") {
+												if ($ItemNew.Enabled) {
+													if ($ItemNew.Checked) {
+														$Mul_Temp_Save_UI_Main += $ItemNew.Tag
 													}
 												}
-												#endregion
+											}
+											#endregion
+										}
+
+										if ($ItemNew -is [System.Windows.Forms.FlowLayoutPanel]) {
+											#region 保存: 主要项
+											if ($ItemNew.Tag -eq "EjectMain") {
+												ForEach ($ItemNewTwo in $ItemNew.Controls) {
+													if ($ItemNewTwo -is [System.Windows.Forms.CheckBox]) {
+														<#
+															.判断: 允许自动开启快速抛弃方式
+														#>
+														if ($ItemNewTwo.Enabled) {
+															if ($ItemNewTwo.Checked) {
+																if ($ItemNewTwo.Tag -eq "AbandonAllow") {
+																	New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_Abandon_Allow_$($item.Main.Uid)" -Value $True -Force
+																}
+															}
+														}
+													}
+
+													if ($ItemNewTwo -is [System.Windows.Forms.RadioButton]) {
+														<#
+															.判断保存
+														#>
+														if ($ItemNewTwo.Enabled) {
+															if ($ItemNewTwo.Checked) {
+																if ($ItemNewTwo.Tag -eq "Save") {
+																	New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.Uid)" -Value $True -Force
+
+																	if ($Global:Developers_Mode) {
+																		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectMain.101x1`n  Start"
+																		Write-Host "$($lang.Event_Assign_Main), " -NoNewline
+																		Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
+																		Write-Host "Queue_Eject_Only_Save_$($item.Main.Uid)"
+																	}
+																}
+
+																if ($ItemNew.Tag -eq "DoNotSave") {
+																	New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -Value $True -Force
+
+																	if ($Global:Developers_Mode) {
+																		Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectMain.200x1`n  Start"
+																		Write-Host "$($lang.Event_Assign_Main), " -NoNewline
+																		Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
+																		Write-Host "Queue_Eject_Do_Not_Save_$($item.Main.Uid)"
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+											#endregion
+										}
+
+										#region ADV
+										if ($ItemNew.Tag -eq "ADV") {
+											ForEach ($ItemNew in $ItemNew.Controls) {
+												if ($ItemNew.Enabled) {
+													if ($ItemNew.Checked) {
+														New-Variable -Scope global -Name "Queue_$($ItemNew.Tag)_$($item.Main.Uid)" -Value $True -Force
+													}
+												}
 											}
 										}
 									}
-									#endregion
-	
-									#region 验证是否分配事件
-									if (($Temp_New_Save_UI_Expand.Count -gt 0) -or ($Temp_New_Save_UI_Expand_Expand.Count -gt 0)) {
+
+									<#
+										.验证是否分配事件
+									#>
+									if (($Mul_Temp_Save_UI_Main.Count -gt 0) -or ($Mul_Temp_Save_UI_Expand.Count -gt 0)) {
 										$Mark_Allow_Add_To = $True
 									} else {
 										$UI_Main_Error.Text = "$($lang.Event_Primary_Key), $($item.Main.ImageFileName)"
@@ -3135,184 +2901,445 @@ Function Image_Assign_Event_Master
 								}
 							}
 						}
-						#endregion
+					}
+					#endregion
 
-						#region 保存本次事件
-						if ($Mark_Allow_Add_To) {
+					#region Expand
+					if ($item.Expand.Count -gt 0) {
+						ForEach ($itemExpand in $item.Expand) {
 							<#
-								.判断主要项是否有
+								.创建一个临时保存的数组, 保存: 选择的 UI
 							#>
-							$Global:Queue_Assign_Full += @(
-								@{
-									Main = @(
-										@{
-											Group         = $item.Main.Group
-											Uid           = $item.Main.Uid
-											ImageFileName = $item.Main.ImageFileName
-											Suffix        = $item.Main.Suffix
-											Path          = $item.Main.Path
-											UI            = $Mul_Temp_Save_UI_Main
-										}
-									)
-									Expand = $Mul_Temp_Save_UI_Expand
-								}
-							)
-						}
-						#endregion
-					}
-					#endregion
+							$Temp_New_Save_UI_Expand = @()
+							$Temp_New_Save_UI_Expand_Expand = @()
 
-					#region 验证保存和不保存事件
-					if ($Global:Developers_Mode) {
-						Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): Developers_Mode.0x009200x1`n  Start"
-						Write-Host "`n  $($lang.Verify_Save_And_DonSave)" -ForegroundColor Yellow
-						Write-Host "  $('-' * 80)"
-						ForEach ($item in $Global:Image_Rule) {
-							if ($Global:SMExt -contains $item.Main.Suffix) {
-								Write-Host "  $($item.Main.Uid)"
-								Write-Host "  $('-' * 80)"
-								Write-Host "  $($lang.Event_Assign_Main)"
-								Write-Host "  $($lang.Main_quests)" -ForegroundColor Yellow
-								Write-Host "  $($lang.SaveTo)"
-								if ((Get-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.Uid)" -ErrorAction SilentlyContinue).Value) {
-									Write-Host "  $($lang.Enable), Queue_Eject_Only_Save_$($item.Main.Uid)" -ForegroundColor Green
-								} else {
-									Write-Host "  $($lang.Disable), Queue_Eject_Only_Save_$($item.Main.Uid)"
-								}
-								if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($item.Main.Uid)" -ErrorAction SilentlyContinue).Value) {
-									Write-Host "  $($lang.Enable), Queue_Expand_Eject_Only_Save_$($item.Main.Uid)" -ForegroundColor Green
-								} else {
-									Write-Host "  $($lang.Disable), Queue_Expand_Eject_Only_Save_$($item.Main.Uid)"
-								}
+							if ($Wait_Sync_Some_Select -Contains $itemExpand.Uid) {
+								#region 判断是否分配事件
+								$UI_Main_Select_Assign_Multitasking.Controls | ForEach-Object {
+									if ($_ -is [System.Windows.Forms.FlowLayoutPanel]) {
+										if ($itemExpand.Uid -eq $_.Name) {
+											$_.Controls | ForEach-Object {
+												if ($_.Name -eq "ImageSources") {
+													$TempQueueProcessImageSelectPending = [pscustomobject]@()
+													$MarkSelectIndexin = @()
 
-								Write-Host "`n  $($lang.DoNotSave)"
-								if ((Get-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -ErrorAction SilentlyContinue).Value) {
-									Write-Host "  $($lang.Enable), Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -ForegroundColor Green
-								} else {
-									Write-Host "  $($lang.Disable), Queue_Eject_Do_Not_Save_$($item.Main.Uid)"
-								}
-								if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($item.Main.Uid)" -ErrorAction SilentlyContinue).Value) {
-									Write-Host "  $($lang.Enable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.Uid)" -ForegroundColor Green
-								} else {
-									Write-Host "  $($lang.Disable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.Uid)"
-								}
+													ForEach ($ItemNew in $_.Controls) {
+														if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
+															if ($ItemNew.Enabled) {
+																if ($ItemNew.Checked) {
+																	$MarkSelectIndexin += $ItemNew.Tag
+																}
+															}
+														}
+													}
 
-								Write-Host "`n  $($lang.Event_Assign_Expand)"
-								Write-Host "  $($lang.Side_quests)" -ForegroundColor Yellow
-								if ($item.Expand.Count -gt 0) {
-									ForEach ($itemExpand in $item.Expand) {
-										Write-Host "  $($lang.SaveTo)"
-										if ((Get-Variable -Scope global -Name "Queue_Eject_Only_Save_$($itemExpand.Uid)" -ErrorAction SilentlyContinue).Value) {
-											Write-Host "  $($lang.Enable), Queue_Eject_Only_Save_$($itemExpand.Uid)" -ForegroundColor Green
-										} else {
-											Write-Host "  $($lang.Disable), Queue_Eject_Only_Save_$($itemExpand.Uid)"
-										}
-										if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($itemExpand.Uid)" -ErrorAction SilentlyContinue).Value) {
-											Write-Host "  $($lang.Enable), Queue_Expand_Eject_Only_Save_$($itemExpand.Uid)" -ForegroundColor Green
-										} else {
-											Write-Host "  $($lang.Disable), Queue_Expand_Eject_Only_Save_$($itemExpand.Uid)"
-										}
+													if ($MarkSelectIndexin.Count -gt 0) {
+														ForEach ($itemIndex in $MarkSelectIndexin) {
+															ForEach ($WildCard in (Get-Variable -Scope global -Name "Queue_Process_Image_Select_$($itemExpand.Uid)" -ErrorAction SilentlyContinue).Value) {
+																if ($itemIndex -eq $WildCard.Index) {
+																	$TempQueueProcessImageSelectPending += [pscustomobject]@{
+																		Index            = $WildCard.Index
+																		Name             = $WildCard.Name
+																		ImageDescription = $WildCard.ImageDescription
+																	}
+																}
+															}
+														}
 
-										Write-Host "`n  $($lang.DoNotSave)"
-										if ((Get-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)" -ErrorAction SilentlyContinue).Value) {
-											Write-Host "  $($lang.Enable), Queue_Eject_Do_Not_Save_$($itemExpand.Uid)" -ForegroundColor Green
-										} else {
-											Write-Host "  $($lang.Disable), Queue_Eject_Do_Not_Save_$($itemExpand.Uid)"
-										}
-										if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($itemExpand.Uid)" -ErrorAction SilentlyContinue).Value) {
-											Write-Host "  $($lang.Enable), Queue_Expand_Eject_Do_Not_Save_$($itemExpand.Uid)" -ForegroundColor Green
-										} else {
-											Write-Host "  $($lang.Disable), Queue_Expand_Eject_Do_Not_Save_$($itemExpand.Uid)"
+														New-Variable -Scope global -Name "Queue_Process_Image_Select_Pending_$($itemExpand.Uid)" -Value $TempQueueProcessImageSelectPending -Force
+													}
+												}
+
+												ForEach ($ItemNew in $_.Controls) {
+													if ($ItemNew -is [System.Windows.Forms.CheckBox]) {
+														if ($ItemNew.Name -eq "EjectForce") {
+															if ($ItemNew.Enabled) {
+																if ($ItemNew.Checked) {
+																	New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)" -Value $True -Force
+																}
+															}
+														}
+
+														#region Enabled
+														if ($ItemNew.Name -eq "IsAssign") {
+															if ($ItemNew.Enabled) {
+																if ($ItemNew.Checked) {
+																	$Temp_New_Save_UI_Expand += $ItemNew.Tag
+																}
+															}
+														}
+														#endregion
+													}
+
+													if ($ItemNew -is [System.Windows.Forms.FlowLayoutPanel]) {
+														#region 保存: 主要项
+														if ($ItemNew.Tag -eq "EjectMain") {
+															ForEach ($ItemNewTwo in $ItemNew.Controls) {
+																if ($ItemNewTwo -is [System.Windows.Forms.CheckBox]) {
+																	<#
+																		.判断: 允许自动开启快速抛弃方式
+																	#>
+																	if ($ItemNewTwo.Enabled) {
+																		if ($ItemNewTwo.Checked) {
+																			if ($ItemNewTwo.Tag -eq "AbandonAllow") {
+																				New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_Abandon_Allow_$($item.Main.Uid)" -Value $True -Force
+																			}
+																		}
+																	}
+																}
+
+																if ($ItemNewTwo -is [System.Windows.Forms.RadioButton]) {
+																	<#
+																		.判断保存
+																	#>
+																	if ($ItemNewTwo.Enabled) {
+																		if ($ItemNewTwo.Checked) {
+																			if ($ItemNewTwo.Tag -eq "Save") {
+																				New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.Uid)" -Value $True -Force
+
+																				if ($Global:Developers_Mode) {
+																					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectMain.11200x1`n  Start"
+																					Write-Host "$($lang.Event_Assign_Main), " -NoNewline
+																					Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
+																					Write-Host "Queue_Eject_Only_Save_$($item.Main.Uid)"
+																				}
+																			}
+
+																			if ($ItemNewTwo.Tag -eq "DoNotSave") {
+																				New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -Value $True -Force
+
+																				if ($Global:Developers_Mode) {
+																					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectMain.21200x1`n  Start"
+																					Write-Host "$($lang.Event_Assign_Main), " -NoNewline
+																					Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
+																					Write-Host "Queue_Eject_Do_Not_Save_$($item.Main.Uid)"
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+														#endregion
+
+														#region 保存: 扩展项
+														if ($ItemNew.Tag -eq "EjectExpand") {
+															ForEach ($ItemNewTwo in $ItemNew.Controls) {
+																if ($ItemNewTwo -is [System.Windows.Forms.CheckBox]) {
+																	<#
+																		.判断: 允许自动开启快速抛弃方式
+																	#>
+																	if ($ItemNewTwo.Enabled) {
+																		if ($ItemNewTwo.Checked) {
+																			if ($ItemNewTwo.Tag -eq "AbandonAllow") {
+																				New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_Abandon_Allow_$($itemExpand.Uid)" -Value $True -Force
+																			}
+																		}
+																	}
+																}
+
+																if ($ItemNewTwo -is [System.Windows.Forms.RadioButton]) {
+																	<#
+																		.判断保存
+																	#>
+																	if ($ItemNewTwo.Enabled) {
+																		if ($ItemNewTwo.Checked) {
+																			if ($ItemNewTwo.Tag -eq "Save") {
+																				New-Variable -Scope global -Name "Queue_Eject_Only_Save_$($itemExpand.Uid)" -Value $True -Force
+
+																				if ($Global:Developers_Mode) {
+																					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectExpand.200x1`n  Start"
+																					Write-Host "$($lang.Event_Assign_Expand), " -NoNewline
+																					Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
+																					Write-Host "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)"
+																				}
+																			}
+
+																			if ($ItemNewTwo.Tag -eq "DoNotSave") {
+																				New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)" -Value $True -Force
+
+																				if ($Global:Developers_Mode) {
+																					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): EjectExpand.222x1`n  Start"
+																					Write-Host "$($lang.Event_Assign_Expand), " -NoNewline
+																					Write-Host "$($lang.DoNotSave), " -NoNewline -ForegroundColor Green
+																					Write-Host "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)"
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+
+															<#
+																.强行修复不保存项
+																如果主要项选择了不保存, 扩展项默认强制弹出
+															#>
+															if ($Fix_Eject_Force_Expand) {
+																New-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)" -Value $True -Force
+															}
+														}
+														#endregion
+													}
+
+													#region ADV
+													if ($ItemNew.Tag -eq "ADV") {
+														ForEach ($ItemNewTwo in $ItemNew.Controls) {
+															if ($ItemNewTwo.Enabled) {
+																if ($ItemNewTwo.Checked) {
+																	$Temp_New_Save_UI_Expand_Expand += "Queue_$($ItemNewTwo.Tag)_$($itemExpand.Uid)"
+																	New-Variable -Scope global -Name "Queue_$($ItemNewTwo.Tag)_$($itemExpand.Uid)" -Value $True -Force
+																} else {
+																	New-Variable -Scope global -Name "Queue_$($ItemNewTwo.Tag)_$($itemExpand.Uid)" -Value $False -Force
+																}
+															} else {
+																New-Variable -Scope global -Name "Queue_$($ItemNewTwo.Tag)_$($itemExpand.Uid)" -Value $False -Force
+															}
+														}
+													}
+													#endregion
+												}
+											}
+	
+											#region 判断是否有新 UI, 有则添加, 没有是跳过
+											if ($Temp_New_Save_UI_Expand.Count -gt 0) {
+												$Mul_Temp_Save_UI_Expand += [pscustomobject]@{
+													Group         = $item.Main.Group
+													Uid           = $itemExpand.Uid
+													ImageFileName = $itemExpand.ImageFileName
+													Suffix        = $itemExpand.Suffix
+													Path          = $itemExpand.Path
+													UpdatePath    = $itemExpand.UpdatePath
+													UI            = $Temp_New_Save_UI_Expand
+												}
+											}
+											#endregion
 										}
 									}
-								} else {
-									Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 								}
-
-								Write-Host
+								#endregion
+	
+								#region 验证是否分配事件
+								if (($Temp_New_Save_UI_Expand.Count -gt 0) -or ($Temp_New_Save_UI_Expand_Expand.Count -gt 0)) {
+									$Mark_Allow_Add_To = $True
+								} else {
+									$UI_Main_Error.Text = "$($lang.Event_Primary_Key), $($item.Main.ImageFileName)"
+									$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.ico")
+									return
+								}
+								#endregion
 							}
 						}
 					}
 					#endregion
 
-					if ($Global:Queue_Assign_Full.Count -gt 0) {
-						$UI_Main.Hide()
+					#region 保存本次事件
+					if ($Mark_Allow_Add_To) {
+						<#
+							.判断主要项是否有
+						#>
+						$Global:Queue_Assign_Full += @(
+							@{
+								Main = @(
+									@{
+										Group         = $item.Main.Group
+										Uid           = $item.Main.Uid
+										ImageFileName = $item.Main.ImageFileName
+										Suffix        = $item.Main.Suffix
+										Path          = $item.Main.Path
+										UI            = $Mul_Temp_Save_UI_Main
+									}
+								)
+								Expand = $Mul_Temp_Save_UI_Expand
+							}
+						)
+					}
+					#endregion
+				}
+				#endregion
 
-						ForEach ($item in $Global:Queue_Assign_Full) {
-							Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
-							Write-Host $item.Main.Uid -ForegroundColor Green
-
-							Write-Host "`n      $($lang.User_Interaction): $($lang.OnDemandPlanTask): " -NoNewline -ForegroundColor Yellow
-							Write-Host "$($item.Main.UI.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-							Write-Host "      $('-' * 77)"
-							ForEach ($itemMain in $item.Main.UI) {
-								Write-Host "      $($itemMain)" -ForegroundColor Green
+				#region 验证保存和不保存事件
+				if ($Global:Developers_Mode) {
+					Write-Host "`n  $('-' * 80)`n  $($lang.Developers_Mode_Location): Developers_Mode.0x009200x1`n  Start"
+					Write-Host "`n  $($lang.Verify_Save_And_DonSave)" -ForegroundColor Yellow
+					Write-Host "  $('-' * 80)"
+					ForEach ($item in $Global:Image_Rule) {
+						if ($Global:SMExt -contains $item.Main.Suffix) {
+							Write-Host "  $($item.Main.Uid)"
+							Write-Host "  $('-' * 80)"
+							Write-Host "  $($lang.Event_Assign_Main)"
+							Write-Host "  $($lang.Main_quests)" -ForegroundColor Yellow
+							Write-Host "  $($lang.SaveTo)"
+							if ((Get-Variable -Scope global -Name "Queue_Eject_Only_Save_$($item.Main.Uid)" -ErrorAction SilentlyContinue).Value) {
+								Write-Host "  $($lang.Enable), Queue_Eject_Only_Save_$($item.Main.Uid)" -ForegroundColor Green
+							} else {
+								Write-Host "  $($lang.Disable), Queue_Eject_Only_Save_$($item.Main.Uid)"
+							}
+							if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($item.Main.Uid)" -ErrorAction SilentlyContinue).Value) {
+								Write-Host "  $($lang.Enable), Queue_Expand_Eject_Only_Save_$($item.Main.Uid)" -ForegroundColor Green
+							} else {
+								Write-Host "  $($lang.Disable), Queue_Expand_Eject_Only_Save_$($item.Main.Uid)"
 							}
 
+							Write-Host "`n  $($lang.DoNotSave)"
+							if ((Get-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -ErrorAction SilentlyContinue).Value) {
+								Write-Host "  $($lang.Enable), Queue_Eject_Do_Not_Save_$($item.Main.Uid)" -ForegroundColor Green
+							} else {
+								Write-Host "  $($lang.Disable), Queue_Eject_Do_Not_Save_$($item.Main.Uid)"
+							}
+							if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($item.Main.Uid)" -ErrorAction SilentlyContinue).Value) {
+								Write-Host "  $($lang.Enable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.Uid)" -ForegroundColor Green
+							} else {
+								Write-Host "  $($lang.Disable), Queue_Expand_Eject_Do_Not_Save_$($item.Main.Uid)"
+							}
+
+							Write-Host "`n  $($lang.Event_Assign_Expand)"
+							Write-Host "  $($lang.Side_quests)" -ForegroundColor Yellow
 							if ($item.Expand.Count -gt 0) {
-								Write-Host "`n     $($lang.Event_Assign_Expand): " -NoNewline -ForegroundColor Yellow
-								Write-Host "$($item.Expand.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-								Write-Host "      $('-' * 77)"
 								ForEach ($itemExpand in $item.Expand) {
-									Write-Host "      $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
-									Write-Host $itemExpand.Uid -ForegroundColor Green
-
-									Write-Host "`n         $($lang.User_Interaction): $($lang.OnDemandPlanTask): " -NoNewline -ForegroundColor Yellow
-									Write-Host "$($itemExpand.UI.Count) $($lang.EventManagerCount)" -ForegroundColor Green
-									Write-Host "         $('-' * 74)"
-									ForEach ($itemMainExpandNew in $itemExpand.UI) {
-										Write-Host "         $($itemMainExpandNew)" -ForegroundColor Green
+									Write-Host "  $($lang.SaveTo)"
+									if ((Get-Variable -Scope global -Name "Queue_Eject_Only_Save_$($itemExpand.Uid)" -ErrorAction SilentlyContinue).Value) {
+										Write-Host "  $($lang.Enable), Queue_Eject_Only_Save_$($itemExpand.Uid)" -ForegroundColor Green
+									} else {
+										Write-Host "  $($lang.Disable), Queue_Eject_Only_Save_$($itemExpand.Uid)"
 									}
-									Write-Host
+									if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Only_Save_$($itemExpand.Uid)" -ErrorAction SilentlyContinue).Value) {
+										Write-Host "  $($lang.Enable), Queue_Expand_Eject_Only_Save_$($itemExpand.Uid)" -ForegroundColor Green
+									} else {
+										Write-Host "  $($lang.Disable), Queue_Expand_Eject_Only_Save_$($itemExpand.Uid)"
+									}
+
+									Write-Host "`n  $($lang.DoNotSave)"
+									if ((Get-Variable -Scope global -Name "Queue_Eject_Do_Not_Save_$($itemExpand.Uid)" -ErrorAction SilentlyContinue).Value) {
+										Write-Host "  $($lang.Enable), Queue_Eject_Do_Not_Save_$($itemExpand.Uid)" -ForegroundColor Green
+									} else {
+										Write-Host "  $($lang.Disable), Queue_Eject_Do_Not_Save_$($itemExpand.Uid)"
+									}
+									if ((Get-Variable -Scope global -Name "Queue_Expand_Eject_Do_Not_Save_$($itemExpand.Uid)" -ErrorAction SilentlyContinue).Value) {
+										Write-Host "  $($lang.Enable), Queue_Expand_Eject_Do_Not_Save_$($itemExpand.Uid)" -ForegroundColor Green
+									} else {
+										Write-Host "  $($lang.Disable), Queue_Expand_Eject_Do_Not_Save_$($itemExpand.Uid)"
+									}
 								}
+							} else {
+								Write-Host "  $($lang.NoWork)" -ForegroundColor Red
 							}
 
 							Write-Host
-						}
-
-						$UI_Main.Close()
-					} else {
-						$UI_Main_Error.Text = $lang.IABSelectNo
-						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.ico")
-					}
-				}
-			} else {
-				#region 判断是否选择 Install, WinRE, Boot
-				$UI_Main_Select_Wim.Controls | ForEach-Object {
-					if ($_.Enabled) {
-						if ($_.Checked) {
-							$UI_Main.Hide()
-							Image_Set_Global_Primary_Key -Uid $_.Tag -Detailed -DevCode "6"
-							Image_Select_Index_UI
-							$UI_Main.Close()
 						}
 					}
 				}
 				#endregion
 
-				$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.NoChoose)"
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.ico")
-			}
-		}
-	}
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "807,635"
-		Height         = 36
-		Width          = 240
-		Text           = $lang.Cancel
-		add_Click      = {
-			$UI_Main.Hide()
-			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+				if ($Global:Queue_Assign_Full.Count -gt 0) {
+					$UI_Main.Hide()
 
-			<#
-				.重置变量
-			#>
-			Additional_Edition_Reset
-			Event_Reset_Variable -Silent
-			$UI_Main.Close()
+					ForEach ($item in $Global:Queue_Assign_Full) {
+						Write-Host "  $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+						Write-Host $item.Main.Uid -ForegroundColor Green
+
+						Write-Host "`n      $($lang.User_Interaction): $($lang.OnDemandPlanTask): " -NoNewline -ForegroundColor Yellow
+						Write-Host "$($item.Main.UI.Count) $($lang.EventManagerCount)" -ForegroundColor Green
+						Write-Host "      $('-' * 77)"
+						ForEach ($itemMain in $item.Main.UI) {
+							Write-Host "      $($itemMain)" -ForegroundColor Green
+						}
+
+						if ($item.Expand.Count -gt 0) {
+							Write-Host "`n     $($lang.Event_Assign_Expand): " -NoNewline -ForegroundColor Yellow
+							Write-Host "$($item.Expand.Count) $($lang.EventManagerCount)" -ForegroundColor Green
+							Write-Host "      $('-' * 77)"
+							ForEach ($itemExpand in $item.Expand) {
+								Write-Host "      $($lang.Event_Primary_Key): " -NoNewline -ForegroundColor Yellow
+								Write-Host $itemExpand.Uid -ForegroundColor Green
+
+								Write-Host "`n         $($lang.User_Interaction): $($lang.OnDemandPlanTask): " -NoNewline -ForegroundColor Yellow
+								Write-Host "$($itemExpand.UI.Count) $($lang.EventManagerCount)" -ForegroundColor Green
+								Write-Host "         $('-' * 74)"
+								ForEach ($itemMainExpandNew in $itemExpand.UI) {
+									Write-Host "         $($itemMainExpandNew)" -ForegroundColor Green
+								}
+								Write-Host
+							}
+						}
+
+						Write-Host
+					}
+
+					$UI_Main.Close()
+				} else {
+					$UI_Main_Error.Text = $lang.IABSelectNo
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.ico")
+				}
+			}
+		} else {
+			#region 判断是否选择 Install, WinRE, Boot
+			$UI_Main_Select_Wim.Controls | ForEach-Object {
+				if ($_.Enabled) {
+					if ($_.Checked) {
+						$UI_Main.Hide()
+						Image_Set_Global_Primary_Key -Uid $_.Tag -Detailed -DevCode "6"
+						Image_Select_Index_UI
+						$UI_Main.Close()
+					}
+				}
+			}
+			#endregion
+
+			$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.NoChoose)"
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.ico")
 		}
 	}
+	$UI_Main_Ok_ICO = New-Object system.Windows.Forms.PictureBox -Property @{
+		Location       = "560,635"
+		Height         = 22
+		Width          = 22
+		SizeMode       = "StretchImage"
+		Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Yes.ico")
+		Cursor = [System.Windows.Forms.Cursors]::Hand
+		add_Click      = $UI_Main_Ok_Click
+	}
+	$UI_Main_Ok        = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 210
+		Location       = "586,638"
+		Text           = $lang.OK
+		LinkColor      = "#000000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = $UI_Main_Ok_Click
+	}
+
+	$UI_Main_Canel_Click = {
+		$UI_Main.Hide()
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+
+		<#
+			.重置变量
+		#>
+		Additional_Edition_Reset
+		Event_Reset_Variable -Silent
+		$UI_Main.Close()
+	}
+	$UI_Main_Canel_ICO = New-Object system.Windows.Forms.PictureBox -Property @{
+		Location       = "807,635"
+		Height         = 22
+		Width          = 22
+		SizeMode       = "StretchImage"
+		Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Cancel.ico")
+		Cursor = [System.Windows.Forms.Cursors]::Hand
+		add_Click      = $UI_Main_Canel_Click
+	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 210
+		Location       = "833,638"
+		Text           = $lang.Cancel
+		LinkColor      = "#000000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = $UI_Main_Canel_Click
+	}
+
 	$UI_Main.controls.AddRange((
 		$UI_Main_Exclude_Not_Recommended,
 		$UI_Main_Select_Assign_Multitasking,
@@ -3325,7 +3352,9 @@ Function Image_Assign_Event_Master
 		$UI_Main_Select_Wim,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
+		$UI_Main_Ok_ICO,
 		$UI_Main_Ok,
+		$UI_Main_Canel_ICO,
 		$UI_Main_Canel
 	))
 

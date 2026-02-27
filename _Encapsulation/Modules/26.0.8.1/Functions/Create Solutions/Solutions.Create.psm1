@@ -2153,12 +2153,26 @@ volume
 		AutoSize       = 1
 		Text           = $lang.SolutionsEngineRegionalingTips
 	}
-	$GUISolutionsRegionalCanel = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Height         = 36
-		Width          = 240
+
+	$GUISolutionsRegional_Hide_ICO = New-Object system.Windows.Forms.PictureBox -Property @{
 		Location       = "807,635"
+		Height         = 22
+		Width          = 22
+		SizeMode       = "StretchImage"
+		Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Hide.ico")
+		Cursor = [System.Windows.Forms.Cursors]::Hand
+		add_Click      = {
+			$GUISolutionsRegional.visible = $False
+		}
+	}
+	$GUISolutionsRegional_Hide = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 200
+		Location       = "833,638"
 		Text           = $lang.Hide
+		LinkColor      = "#000000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$GUISolutionsRegional.visible = $False
 		}
@@ -2444,12 +2458,26 @@ volume
 		Width          = 455
 		Text           = ""
 	}
-	$GUISolutionsCollectionChangeCanel = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Height         = 36
-		Width          = 240
+
+	$GUISolutionsCollectionChange_Hide_ICO = New-Object system.Windows.Forms.PictureBox -Property @{
 		Location       = "807,635"
+		Height         = 22
+		Width          = 22
+		SizeMode       = "StretchImage"
+		Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Hide.ico")
+		Cursor = [System.Windows.Forms.Cursors]::Hand
+		add_Click      = {
+			$GUISolutionsCollectionChange.visible = $False
+		}
+	}
+	$GUISolutionsCollectionChange_Hide = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 200
+		Location       = "833,638"
 		Text           = $lang.Hide
+		LinkColor      = "#000000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$GUISolutionsCollectionChange.visible = $False
 		}
@@ -2639,12 +2667,26 @@ volume
 		Width          = 455
 		Text           = ""
 	}
-	$GUISolutionsOfficeChangeCanel = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Height         = 36
-		Width          = 240
+
+	$GUISolutionsOfficeChange_Hide_ICO = New-Object system.Windows.Forms.PictureBox -Property @{
 		Location       = "807,635"
+		Height         = 22
+		Width          = 22
+		SizeMode       = "StretchImage"
+		Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Hide.ico")
+		Cursor = [System.Windows.Forms.Cursors]::Hand
+		add_Click      = {
+			$GUISolutionsOfficeChange.visible = $False
+		}
+	}
+	$GUISolutionsOfficeChange_Hide = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 200
+		Location       = "833,638"
 		Text           = $lang.Hide
+		LinkColor      = "#000000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$GUISolutionsOfficeChange.visible = $False
 		}
@@ -4001,23 +4043,52 @@ volume
 		Width          = 455
 		Text           = ""
 	}
-	$UIUnzipPanel_Select_Rule_Menu_OK = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
+
+	$UIUnzipPanel_Select_Rule_Menu_OK_ICO = New-Object system.Windows.Forms.PictureBox -Property @{
 		Location       = "560,635"
-		Height         = 36
-		Width          = 240
-		Text           = $lang.OK
+		Height         = 22
+		Width          = 22
+		SizeMode       = "StretchImage"
+		Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Yes.ico")
+		Cursor = [System.Windows.Forms.Cursors]::Hand
 		add_Click      = {
 			Save_User_Select_Command_To_Regedit
 			$UIUnzipPanel_Select_Rule.visible = $False
 		}
 	}
-	$UIUnzipPanel_Select_Rule_Menu_Canel = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
+	$UIUnzipPanel_Select_Rule_Menu_OK = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 200
+		Location       = "586,638"
+		Text           = $lang.OK
+		LinkColor      = "#000000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = {
+			Save_User_Select_Command_To_Regedit
+			$UIUnzipPanel_Select_Rule.visible = $False
+		}
+	}
+
+	$UIUnzipPanel_Select_Rule_Menu_Canel_ICO = New-Object system.Windows.Forms.PictureBox -Property @{
 		Location       = "807,635"
-		Height         = 36
-		Width          = 240
+		Height         = 22
+		Width          = 22
+		SizeMode       = "StretchImage"
+		Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Hide.ico")
+		Cursor = [System.Windows.Forms.Cursors]::Hand
+		add_Click      = {
+			$UIUnzipPanel_Select_Rule.visible = $False
+		}
+	}
+	$UIUnzipPanel_Select_Rule_Menu_Canel = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 200
+		Location       = "833,638"
 		Text           = $lang.Hide
+		LinkColor      = "#000000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$UIUnzipPanel_Select_Rule.visible = $False
 		}
@@ -4063,12 +4134,26 @@ volume
 		Text           = $lang.DeployTimeZoneChangeTips
 		Location       = "485,95"
 	}
-	$GUISolutionsUnattendChangeCanel = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
+
+	$GUISolutionsUnattendChange_Hide_ICO = New-Object system.Windows.Forms.PictureBox -Property @{
 		Location       = "807,635"
-		Height         = 36
-		Width          = 240
+		Height         = 22
+		Width          = 22
+		SizeMode       = "StretchImage"
+		Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Hide.ico")
+		Cursor = [System.Windows.Forms.Cursors]::Hand
+		add_Click      = {
+			$GUISolutionsUnattendChange.visible = $False
+		}
+	}
+	$GUISolutionsUnattendChange_Hide = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 200
+		Location       = "833,638"
 		Text           = $lang.Hide
+		LinkColor      = "#000000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
 		add_Click      = {
 			$GUISolutionsUnattendChange.visible = $False
 		}
@@ -4841,43 +4926,88 @@ volume
 		Width          = 460
 		Text           = ""
 	}
-	$UI_Main_Event_Clear = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
+
+	<#
+		.清除
+	#>
+	$UI_Main_Event_Clear_ICO = New-Object system.Windows.Forms.PictureBox -Property @{
 		Location       = "560,635"
-		Height         = 36
-		Width          = 158
-		Text           = $lang.EventManagerCurrentClear
+		Height         = 22
+		Width          = 22
+		SizeMode       = "StretchImage"
+		Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\\Assets\icon\Clear.ico")
+		Cursor = [System.Windows.Forms.Cursors]::Hand
 		add_Click      = { Solutions_Event_Clear -All }
 	}
-	$UI_Main_Save      = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "725,635"
-		Height         = 36
-		Width          = 158
+	$UI_Main_Event_Clear = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 125
+		Location       = "586,638"
+		Text           = $lang.EventManagerCurrentClear
+		LinkColor      = "#000000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = { Solutions_Event_Clear -All }
+	}
+
+	<#
+		.保存
+	#>
+	$UI_Main_Save_Click = {
+		if (Autopilot_Solutions_Save) {
+
+		}
+	}
+	$UI_Main_Save_ICO  = New-Object system.Windows.Forms.PictureBox -Property @{
+		Location       = "733,635"
+		Height         = 22
+		Width          = 22
+		SizeMode       = "StretchImage"
+		Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Save.ico")
+		Cursor = [System.Windows.Forms.Cursors]::Hand
+		add_Click      = $UI_Main_Save_Click
+	}
+	$UI_Main_Save      = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 125
+		Location       = "759,638"
 		Text           = $lang.Save
-		add_Click      = {
-			if (Autopilot_Solutions_Save) {
-
-			}
-		}
+		LinkColor      = "#000000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = $UI_Main_Save_Click
 	}
-	$UI_Main_Canel     = New-Object system.Windows.Forms.Button -Property @{
-		UseVisualStyleBackColor = $True
-		Location       = "889,635"
-		Height         = 36
-		Width          = 158
+
+	$UI_Main_Canel_Click = {
+		$UI_Main.Hide()
+
+		if ($UI_Main_Suggestion_Not.Checked) {
+			Init_Canel_Event
+		}
+
+		Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
+		$UI_Main.Close()
+	}
+	$UI_Main_Canel_ICO = New-Object system.Windows.Forms.PictureBox -Property @{
+		Location       = "890,635"
+		Height         = 22
+		Width          = 22
+		SizeMode       = "StretchImage"
+		Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Cancel.ico")
+		Cursor = [System.Windows.Forms.Cursors]::Hand
+		add_Click      = $UI_Main_Canel_Click
+	}
+	$UI_Main_Canel     = New-Object system.Windows.Forms.LinkLabel -Property @{
+		Height         = 30
+		Width          = 125
+		Location       = "916,638"
 		Text           = $lang.Cancel
-		add_Click      = {
-			$UI_Main.Hide()
-
-			if ($UI_Main_Suggestion_Not.Checked) {
-				Init_Canel_Event
-			}
-
-			Write-Host "  $($lang.UserCancel)" -ForegroundColor Red
-			$UI_Main.Close()
-		}
+		LinkColor      = "#000000"
+		ActiveLinkColor = "#FF0000"
+		LinkBehavior   = "NeverUnderline"
+		add_Click      = $UI_Main_Canel_Click
 	}
+
 	$UI_Main.controls.AddRange((
 		$UIUnzipPanel_Select_Rule,
 		$GUISolutionsUnattendChange,
@@ -4888,8 +5018,11 @@ volume
 		$GUISolutionsShowGlobal,
 		$UI_Main_Error_Icon,
 		$UI_Main_Error,
+		$UI_Main_Event_Clear_ICO,
 		$UI_Main_Event_Clear,
+		$UI_Main_Save_ICO,
 		$UI_Main_Save,
+		$UI_Main_Canel_ICO,
 		$UI_Main_Canel
 	))
 
@@ -4902,7 +5035,9 @@ volume
 		$UIUnzipPanel_Error_Tips,
 		$UIUnzipPanel_Tips,
 		$UIUnzipPanel_Error,
+		$UIUnzipPanel_Select_Rule_Menu_OK_ICO,
 		$UIUnzipPanel_Select_Rule_Menu_OK,
+		$UIUnzipPanel_Select_Rule_Menu_Canel_ICO,
 		$UIUnzipPanel_Select_Rule_Menu_Canel
 	))
 
@@ -4973,7 +5108,8 @@ volume
 		$GUISolutionsCollectionLangSync,
 		$GUISolutionsCollectionChange_Error_Icon,
 		$GUISolutionsCollectionChange_Error,
-		$GUISolutionsCollectionChangeCanel
+		$GUISolutionsCollectionChange_Hide_ICO,
+		$GUISolutionsCollectionChange_Hide
 	))
 	
 	$GUISolutionsOfficeChange.controls.AddRange((
@@ -4986,7 +5122,8 @@ volume
 		$GUISolutionsGroupOfficeTo,
 		$GUISolutionsOfficeChange_Error_Icon,
 		$GUISolutionsOfficeChange_Error,
-		$GUISolutionsOfficeChangeCanel
+		$GUISolutionsOfficeChange_Hide_ICO,
+		$GUISolutionsOfficeChange_Hide
 	))
 
 	$GUISolutionsRegional.controls.AddRange((
@@ -4997,8 +5134,8 @@ volume
 		$GUISolutionsShowLanguageTitle,
 		$GUISolutionsShowNewLanguage,
 		$GUISolutionsRegionalChangeTips,
-
-		$GUISolutionsRegionalCanel
+		$GUISolutionsRegional_Hide_ICO,
+		$GUISolutionsRegional_Hide
 	))
 
 	$GUISolutionsGroupOfficeTo.controls.AddRange((
@@ -5165,7 +5302,8 @@ volume
 		$GUISolutionsUnattendChangeCustomize,
 		$GUISolutionsUnattendChangeCustomizeInput,
 		$GUISolutionsUnattendChangeInputTips,
-		$GUISolutionsUnattendChangeCanel
+		$GUISolutionsUnattendChange_Hide_ICO,
+		$GUISolutionsUnattendChange_Hide
 	))
 
 	<#
@@ -7252,7 +7390,6 @@ Function Solutions_Office_Copy_Prerequisite
 }
 
 <#
-	.Copy 合集
 	.复制 合集
 #>
 Function Solutions_Copy_Package_Prerequisite
