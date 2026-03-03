@@ -2411,7 +2411,22 @@ Function Unpack_API_Process_Rule_Name
 					Write-Host
 					Write-Host "  " -NoNewline
 					Write-Host " $($lang.Running) " -NoNewline -BackgroundColor White -ForegroundColor Black
-					Start-Process "powershell" -ArgumentList $arguments -Verb RunAs -Wait
+					if (Get-ItemProperty -Path "HKCU:\SOFTWARE\Yi\Solutions\Unpack\API\Custom\$($RuleName)" -Name "NoWait" -ErrorAction SilentlyContinue) {
+						switch (Get-ItemPropertyValue -Path "HKCU:\SOFTWARE\Yi\Solutions\Unpack\API\Custom\$($RuleName)" -Name "NoWait" -ErrorAction SilentlyContinue) {
+							"True" {
+								Start-Process "powershell" -ArgumentList $arguments -Verb RunAs
+							}
+							"False" {
+								Start-Process "powershell" -ArgumentList $arguments -Verb RunAs -Wait
+							}
+							Default {
+								Start-Process "powershell" -ArgumentList $arguments -Verb RunAs -Wait
+							}
+						}
+					} else {
+						Start-Process "powershell" -ArgumentList $arguments -Verb RunAs -Wait
+					}
+
 					Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
 					Write-Host
 				}

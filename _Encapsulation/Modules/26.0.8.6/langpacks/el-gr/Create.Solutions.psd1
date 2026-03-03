@@ -1,0 +1,135 @@
+﻿ConvertFrom-StringData -StringData @'
+	# el-gr
+	# Greek (Greece)
+
+	IsCreate                        = Δημιουργώ
+	Solution                        = Διάλυμα
+	EnabledSoftwarePacker           = Συλλογή
+	EnabledUnattend                 = Θα πρέπει να απαντήσει εκ των προτέρων
+	EnabledEnglish                  = Κινητήρας ανάπτυξης
+	UnattendSelectVer               = Επιλέξτε γλώσσα λύσης "Απάντηση σε".
+	UnattendLangPack                = Επιλέξτε το πακέτο γλώσσας "Λύση".
+	UnattendSelectSingleInstl       = Πολυγλωσσική, προαιρετική κατά την εγκατάσταση
+	UnattendSelectMulti             = Πολύγλωσσος
+	UnattendSelectDisk              = Επιλέξτε τη λύση Autounattend.xml
+	UnattendSelectSemi              = Το ημιαυτόματο ισχύει για όλες τις μεθόδους εγκατάστασης
+	UnattendSelectUefi              = Το UEFI εγκαθίσταται αυτόματα και πρέπει να καθοριστεί
+	UnattendSelectLegacy            = Το Legacy εγκαθίσταται αυτόματα και πρέπει να καθοριστεί
+	NeedSpecified                   = Επιλέξτε τι πρέπει να διευκρινιστεί:
+	OOBESetupOS                     = Διεπαφή εγκατάστασης
+	OOBEProductKey                  = Κλειδί προϊόντος
+	OOBEOSImage                     = Επιλέξτε το λειτουργικό σύστημα για εγκατάσταση
+	OOBEEula                        = Αποδεχτείτε τους όρους άδειας χρήσης
+	OOBEDoNotServerManager          = Ο Διαχειριστής διακομιστή δεν ξεκινά αυτόματα κατά τη σύνδεση
+	OOBEIE                          = Διαμόρφωση βελτιωμένης ασφάλειας του Internet Explorer
+	OOBEIEAdmin                     = Κλείσιμο "Διαχειριστής"
+	OObeIEUser                      = Κλείσιμο "Χρήστες"
+
+	OOBE_Init_User                  = Αρχικός χρήστης κατά την εμπειρία unboxing
+	OOBE_init_Create                = Δημιουργήστε προσαρμοσμένους χρήστες
+	OOBE_init_Specified             = Καθορίστε χρήστη
+	OOBE_Init_Autologin             = Αυτόματη σύνδεση
+
+	InstlMode                       = Μέθοδος εγκατάστασης
+	Business                        = Business έκδοση
+	BusinessTips                    = Ανάλογα με το EI.cfg, ο αριθμός ευρετηρίου πρέπει να καθοριστεί για αυτόματη εγκατάσταση.
+	Consumer                        = Έκδοση καταναλωτή
+	ConsumerTips                    = Δεν βασίζεται στο EI.cfg Ο σειριακός αριθμός πρέπει να καθοριστεί για αυτόματη εγκατάσταση Κατά την παύση στη διεπαφή επιλογής έκδοσης, πρέπει να καθοριστεί ο αριθμός ευρετηρίου.
+	CreateUnattendISO               = [ISO]:\\Autounattend.xml
+	CreateUnattendISOSources        = [ISO]:\\sources\\Unattend.xml
+	CreateUnattendISOSourcesOEM     = [ISO]:\\sources\\$OEM$\\$$\\Panther\\unattend.xml
+	CreateUnattendPanther           = [τοποθετήστε σε]:\\Windows\\Panther\\unattend.xml
+
+	VerifyName                      = Προσθήκη στο όνομα του αρχικού καταλόγου του δίσκου συστήματος
+	VerifyNameUse                   = Βεβαιωθείτε ότι το όνομα του καταλόγου δεν μπορεί να περιέχει
+	VerifyNameTips                  = Επιτρέπεται μόνο ένας συνδυασμός αγγλικών γραμμάτων και αριθμών και δεν μπορεί να περιέχει: κενά, το μήκος δεν μπορεί να είναι μεγαλύτερο από 260 χαρακτήρες, \\ / : * & @ ?
+	VerifyNumberFailed              = Η επαλήθευση απέτυχε. Εισαγάγετε τον σωστό αριθμό.
+	VerifyNameSync                  = Ορίστε το όνομα καταλόγου ως κύριο όνομα χρήστη
+	VerifyNameSyncTips              = Ο διαχειριστής δεν χρησιμοποιείται πλέον.
+	ManualKey                       = Επιλέξτε ή εισαγάγετε τον αριθμό-κλειδί προϊόντος με μη αυτόματο τρόπο
+	ManualKeyTips                   = Εισαγάγετε έναν έγκυρο αριθμό-κλειδί προϊόντος Εάν η επιλεγμένη περιοχή δεν είναι διαθέσιμη, μεταβείτε στον επίσημο ιστότοπο της Microsoft για έλεγχο.
+	ManualKeyError                  = Το κλειδί προϊόντος που εισαγάγατε δεν είναι έγκυρο.
+	KMSLink1                        = Κλειδί ρυθμίσεων πελάτη KMS
+	KMSUnlock                       = Εμφάνιση όλων των γνωστών σειριακών αριθμών KMS
+	KMSSelect                       = Επιλέξτε τον σειριακό αριθμό VOL
+	KMSKey                          = Αύξων αριθμός
+	KMSKeySelect                    = Αλλαγή σειριακού αριθμού προϊόντος
+	ClearOld                        = Καθαρίστε παλιά αρχεία
+	SolutionsSkip                   = Παράλειψη δημιουργίας λύσης
+	SolutionsTo                     = Προσθήκη "λύσης" σε:
+	SolutionsToMount                = Τοποθετήθηκε ή προστέθηκε στην ουρά
+	SolutionsToError                = Ορισμένες λειτουργίες έχουν απενεργοποιηθεί. Εάν θέλετε να τις χρησιμοποιήσετε, κάντε κλικ στο κουμπί "Ξεκλείδωμα".\n\n
+	UnlockBoot                      = Ξεκλειδώνω
+	SolutionsToSources              = Οικιακός κατάλογος, [ISO]:\\Sources\\$OEM$
+	SolutionsScript                 = Επιλέξτε την έκδοση "Deployment Engine".
+	SolutionsEngineRegionaUTF8      = Beta: Παγκόσμια υποστήριξη γλώσσας με χρήση Unicode UTF-8
+	SolutionsEngineRegionaUTF8Tips  = Φαίνεται ότι μπορεί να δημιουργήσει νέα προβλήματα μετά το άνοιγμα. Δεν συνιστάται.
+	SolutionsEngineRegionaling      = Αλλαγή σε νέα τοπική ρύθμιση:
+	SolutionsEngineRegionalingTips  = Αλλάξτε τις τοπικές ρυθμίσεις συστήματος, οι οποίες επηρεάζουν όλους τους λογαριασμούς χρηστών στον υπολογιστή.
+	SolutionsEngineRegional         = Αλλαγή τοπικών ρυθμίσεων συστήματος
+	SolutionsEngineRegionalTips     = Καθολική προεπιλογή: {0}, άλλαξε σε: {1}
+	SolutionsEngineCopyPublic       = Αντιγράψτε το δημόσιο {0} στην ανάπτυξη
+	SolutionsEngineCopyOpen         = Περιηγηθείτε στο δημόσιο χώρο αποθήκευσης {0}
+	EnglineDoneReboot               = Κάντε επανεκκίνηση του υπολογιστή σας
+	SolutionsTipsArm64              = Προτιμάται το πακέτο arm64 και επιλέγετε με τη σειρά: x64, x86.
+	SolutionsTipsAMD64              = Προτιμήστε πακέτα x64, με σειρά: x86.
+	SolutionsTipsX86                = Προστίθενται μόνο πακέτα x86.
+	SolutionsReport                 = Δημιουργία αναφοράς πριν από την ανάπτυξη
+	SolutionsDeployOfficeInstall    = Αναπτύξτε το πακέτο εγκατάστασης του Microsoft Office
+	SolutionsDeployOfficeChange     = Αλλαγή διαμόρφωσης ανάπτυξης
+	SolutionsDeployOfficePre        = Προεγκατεστημένη έκδοση πακέτου
+	SolutionsDeployOfficeNoSelect   = Δεν έχει επιλεγεί πακέτο προεγκατάστασης του Office
+	SolutionsDeployOfficeVersion    = Έκδοση {0}
+	SolutionsDeployOfficeOnly       = Διατηρήστε καθορισμένα πακέτα γλωσσών
+	SolutionsDeployOfficeSync       = Διατήρηση συγχρονισμού γλώσσας στη διαμόρφωση ανάπτυξης
+	SolutionsDeployOfficeSyncTips   = Μετά το συγχρονισμό, το σενάριο εγκατάστασης δεν μπορεί να καθορίσει την προτιμώμενη γλώσσα.
+	DeploySyncMainLanguage          = Συγχρονισμός με την κύρια γλώσσα
+	SolutionsDeployOfficeTo         = Αναπτύξτε το πακέτο εγκατάστασης στο
+	SolutionsDeployOfficeToPublic   = Δημόσια επιφάνεια εργασίας
+	DeployPackage                   = Αναπτύξτε ένα προσαρμοσμένο πακέτο συλλογής
+	DeployPackageSelect             = Επιλέξτε ένα πακέτο προσυλλογής
+	DeployPackageTo                 = Αναπτύξτε το πακέτο προσυλλογής στο
+	DeployToRoot                    = Δίσκος συστήματος
+	DeployPackageToSolutions        = Στον κεντρικό κατάλογο λύσεων
+	DeployTimeZone                  = Ζώνη ώρας
+	DeployTimeZoneChange            = Αλλαγή ζώνης ώρας
+	DeployTimeZoneChangeTips        = Ορίστε την προεπιλεγμένη περιοχή ώρας όπου θα πρέπει να απαντώνται οι προαπαντήσεις, ανά περιοχή γλώσσας.
+
+	Deploy_Tags                     = Ετικέτα ανάπτυξης
+	FirstExpProcess                 = Πρώτη εμπειρία, κατά την ανάπτυξη προαπαιτούμενα:
+	FirstExpProcessTips             = Αφού ολοκληρώσετε τις προϋποθέσεις, επανεκκινήστε τον υπολογιστή για να λύσετε το πρόβλημα της απαίτησης επανεκκίνησης για να τεθεί σε ισχύ.
+	FirstExpFinish                  = Πρώτη εμπειρία, μετά από συμπλήρωση προαπαιτούμενων
+	FirstExpSyncMark                = Να επιτρέπεται η καθολική αναζήτηση και ο συγχρονισμός των ετικετών ανάπτυξης
+	FirstExpDefender                = Προσθήκη οικιακού καταλόγου στους καταλόγους που εξαιρούνται από το Defend
+	FirstExpSyncLabel               = Ετικέτα τόμου δίσκου συστήματος: Το όνομα του οικιακού καταλόγου είναι το ίδιο
+	MultipleLanguages               = Όταν συναντάτε πολλές γλώσσες:
+	NetworkLocationWizard           = Οδηγός τοποθεσίας δικτύου
+	PreAppxCleanup                  = Αποκλεισμός εργασιών συντήρησης καθαρισμού Appx
+	LanguageComponents              = Αποτρέψτε την εκκαθάριση αχρησιμοποίητων πακέτων γλωσσών δυνατοτήτων κατ' απαίτηση
+	PreventCleaningUnusedLP         = Αποτρέψτε τον καθαρισμό αχρησιμοποίητων πακέτων γλώσσας
+	FirstExpContextCustomize        = Προσθέστε ένα εξατομικευμένο "μενού περιβάλλοντος"
+	FirstExpContextCustomizeShift   = Κρατήστε πατημένο το πλήκτρο Shift και κάντε δεξί κλικ
+
+	FirstExpFinishTips              = Δεν υπάρχουν σημαντικά γεγονότα μετά την ολοκλήρωση της ανάπτυξης Συνιστάται να ακυρώσετε.
+	FirstExpFinishPopup             = Ανοίξτε την κύρια διεπαφή του κινητήρα ανάπτυξης
+	FirstExpFinishOnDemand          = Επιτρέψτε την πρώτη προεπισκόπηση, όπως έχει προγραμματιστεί
+	SolutionsEngineRestricted       = Επαναφορά πολιτικής εκτέλεσης Powershell: περιορισμένη
+	EnglineDoneClearFull            = Διαγράψτε ολόκληρη τη λύση
+	EnglineDoneClear                = Διαγράψτε τον κινητήρα ανάπτυξης και κρατήστε τους άλλους
+
+	Unattend_Auto_Fix_Next          = Την επόμενη φορά που θα το συναντήσετε, επιλέξτε αυτόματα τα απαραίτητα στοιχεία για να το διορθώσετε αυτόματα.
+	Unattend_Auto_Fix               = Αυτόματη επισκευή όταν δεν έχουν επιλεγεί προαπαιτούμενα
+	Unattend_Auto_Fix_Tips          = Όταν προσθέτετε τον κινητήρα ανάπτυξης και δεν επιλέγετε την εντολή πρώτης εκτέλεσης, επιδιορθώνεται και επιλέγεται αυτόματα: Πολιτική εκτέλεσης Powershell: εκτελέστε τον κινητήρα ανάπτυξης χωρίς περιορισμούς.
+	Unattend_Version_Tips           = Συμπεριλάβετε μόνο προαιρετικά, χρησιμοποιήστε την προεπιλογή για υποστήριξη ARM64, x64, x86.
+	First_Run_Commmand              = Εντολές για εκτέλεση κατά την ανάπτυξη για πρώτη φορά
+	First_Run_Commmand_Setting      = Επιλέξτε την εντολή για εκτέλεση
+	Command_Not_Class               = Δεν υπάρχει πλέον αυτόματη ταξινόμηση κατά το φιλτράρισμα
+	Command_WinSetup                = Εγκατάσταση των Windows
+	Command_WinPE                   = Windows PE
+	Command_Tips                    = Εκχωρήστε την εφαρμογή First Run σε: Εγκατάσταση Windows, Windows PE\n\nΛάβετε υπόψη ότι όταν προστίθεται ένας κινητήρας ανάπτυξης, πρέπει να ελέγξετε τα ακόλουθα κατά την εκτέλεση για πρώτη φορά: Πολιτική εκτέλεσης Powershell: Περιορισμένη, επιτρέψτε την εκτέλεση σεναρίων μηχανών ανάπτυξης.
+	Waring_Not_Select_Command       = Κατά την προσθήκη ενός μηχανισμού ανάπτυξης, δεν επιλέχθηκε η πολιτική εκτέλεσης του Powershell: Μην ορίσετε περιορισμούς και επιτρέψτε στο σενάριο του μηχανισμού ανάπτυξης να εκτελεστεί, επιλέξτε το και δοκιμάστε ξανά ή κάντε κλικ στην επιλογή "Η γρήγορη επιδιόρθωση δεν είναι επιλεγμένη".
+	Quic_Fix_Not_Select_Command     = Γρήγορη επιδιόρθωση όχι επιλογή
+
+	PowerShell_Unrestricted         = Πολιτική εκτέλεσης Powershell: χωρίς περιορισμούς
+	Allow_Running_Deploy_Engine     = Να επιτρέπεται η εκτέλεση σεναρίων μηχανισμού ανάπτυξης
+'@

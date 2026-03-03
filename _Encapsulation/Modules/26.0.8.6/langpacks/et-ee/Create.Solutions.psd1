@@ -1,0 +1,135 @@
+﻿ConvertFrom-StringData -StringData @'
+	# et-ee
+	# Estonian (Estonia)
+
+	IsCreate                        = Luua
+	Solution                        = Lahendus
+	EnabledSoftwarePacker           = Kollektsioon
+	EnabledUnattend                 = Peaks vastama ette
+	EnabledEnglish                  = Kasutuselevõtu mootor
+	UnattendSelectVer               = Valige lahenduskeel "Vasta.
+	UnattendLangPack                = Valige keelepakett "Lahendus.
+	UnattendSelectSingleInstl       = Mitmekeelne, paigaldamise ajal valikuline
+	UnattendSelectMulti             = Mitmekeelne
+	UnattendSelectDisk              = Valige lahendus Autounattend.xml
+	UnattendSelectSemi              = Poolautomaatne kehtib kõikide paigaldusviiside puhul
+	UnattendSelectUefi              = UEFI installib automaatselt ja vajab täpsustamist
+	UnattendSelectLegacy            = Legacy automaatne paigaldus, vaja täpsustada
+	NeedSpecified                   = Palun valige, mida on vaja täpsustada: 
+	OOBESetupOS                     = Paigaldusliides
+	OOBEProductKey                  = Tootevõti
+	OOBEOSImage                     = Valige installitav operatsioonisüsteem
+	OOBEEula                        = Nõustuge litsentsitingimustega
+	OOBEDoNotServerManager          = Server Manager ei käivitu sisselogimisel automaatselt
+	OOBEIE                          = Internet Exploreri täiustatud turbekonfiguratsioon
+	OOBEIEAdmin                     = Sulgege "Administraator"
+	OObeIEUser                      = Sule "Kasutajad"
+
+	OOBE_Init_User                  = Esmane kasutaja lahtipakkimise ajal
+	OOBE_init_Create                = Loo kohandatud kasutajad
+	OOBE_init_Specified             = Määra kasutaja
+	OOBE_Init_Autologin             = Automaatne sisselogimine
+
+	InstlMode                       = Paigaldusmeetod
+	Business                        = Äriversioon
+	BusinessTips                    = Olenevalt failist EI.cfg tuleb automaatseks installimiseks määrata indeksi number.
+	Consumer                        = Tarbijaversioon
+	ConsumerTips                    = See ei tugine EI.cfg-le. Automaatse installi jaoks tuleb määrata indeksi number.
+	CreateUnattendISO               = [ISO]:\\Autounattend.xml
+	CreateUnattendISOSources        = [ISO]:\\sources\\Unattend.xml
+	CreateUnattendISOSourcesOEM     = [ISO]:\\sources\\$OEM$\\$$\\Panther\\unattend.xml
+	CreateUnattendPanther           = [külge kinnitada]:\\Windows\\Panther\\unattend.xml
+
+	VerifyName                      = Lisage süsteemikettale kodukataloogi nimi
+	VerifyNameUse                   = Veenduge, et kataloogi nimi ei tohi sisaldada
+	VerifyNameTips                  = Lubatud on ainult ingliskeelsete tähtede ja numbrite kombinatsioon, mis ei tohi sisaldada: tühikuid, pikkus ei tohi olla pikem kui 260 tähemärki, \\ / : * ? & @ ! "" < > |
+	VerifyNumberFailed              = Kinnitamine ebaõnnestus, sisestage õige number.
+	VerifyNameSync                  = Määrake kataloogi nimi esmaseks kasutajanimeks
+	VerifyNameSyncTips              = Administraatorit enam ei kasutata.
+	ManualKey                       = Valige või sisestage tootenumber käsitsi
+	ManualKeyTips                   = Sisestage kehtiv tootevõti Kui valitud piirkond pole saadaval, minge kontrollimiseks Microsofti ametlikule veebisaidile.
+	ManualKeyError                  = Sisestatud tootevõti on kehtetu.
+	KMSLink1                        = KMS-i kliendi seadete võti
+	KMSUnlock                       = Kuva kõik teadaolevad KMS-i seerianumbrid
+	KMSSelect                       = Valige VOL-i seerianumber
+	KMSKey                          = Seerianumber
+	KMSKeySelect                    = Muutke toote seerianumbrit
+	ClearOld                        = Puhastage vanad failid
+	SolutionsSkip                   = Jäta lahenduse loomine vahele
+	SolutionsTo                     = Lisa "lahendus":
+	SolutionsToMount                = Paigaldatud või järjekorda lisatud
+	SolutionsToError                = Mõned funktsioonid on keelatud. Kui peate neid kasutama, klõpsake nuppu "Ava".\n\n
+	UnlockBoot                      = Avage lukustus
+	SolutionsToSources              = Kodukataloog, [ISO]:\\Sources\\$OEM$
+	SolutionsScript                 = Valige "Juurutusmootori versioon
+	SolutionsEngineRegionaUTF8      = Beeta: globaalne keeletugi Unicode UTF-8 abil
+	SolutionsEngineRegionaUTF8Tips  = Näib, et pärast avamist võib see põhjustada uusi probleeme. Ei soovita.
+	SolutionsEngineRegionaling      = Muuda uuele lokaadile:
+	SolutionsEngineRegionalingTips  = Muutke süsteemi lokaati, mis mõjutab kõiki arvuti kasutajakontosid.
+	SolutionsEngineRegional         = Süsteemi lokaadi muutmine
+	SolutionsEngineRegionalTips     = Globaalne vaikeseade: {0}, muudetud väärtuseks: {1}
+	SolutionsEngineCopyPublic       = Kopeerige avalik {0} juurutusse
+	SolutionsEngineCopyOpen         = Sirvige avaliku hoidla {0} asukohta
+	EnglineDoneReboot               = Taaskäivitage arvuti
+	SolutionsTipsArm64              = Eelistatakse arm64 paketti ja valite järjekorras: x64, x86.
+	SolutionsTipsAMD64              = Eelista x64 pakette, järjekorras: x86.
+	SolutionsTipsX86                = Lisatakse ainult x86 paketid.
+	SolutionsReport                 = Loo kasutuselevõtueelne aruanne
+	SolutionsDeployOfficeInstall    = Juurutage Microsoft Office'i installipakett
+	SolutionsDeployOfficeChange     = Muutke juurutamise konfiguratsiooni
+	SolutionsDeployOfficePre        = Eelinstallitud paketi versioon
+	SolutionsDeployOfficeNoSelect   = Office'i eelinstallipaketti pole valitud
+	SolutionsDeployOfficeVersion    = {0} versioon
+	SolutionsDeployOfficeOnly       = Hoidke kindlaksmääratud keelepaketid alles
+	SolutionsDeployOfficeSync       = Säilitage keele sünkroonimine juurutuse konfiguratsiooniga
+	SolutionsDeployOfficeSyncTips   = Pärast sünkroonimist ei saa installiskript eelistatud keelt määrata.
+	DeploySyncMainLanguage          = Sünkroonige põhikeelega
+	SolutionsDeployOfficeTo         = Juurutage installipakett aadressile
+	SolutionsDeployOfficeToPublic   = Avalik töölaud
+	DeployPackage                   = Juurutage kohandatud kogumispakett
+	DeployPackageSelect             = Valige eelkogumispakett
+	DeployPackageTo                 = Juurutage eelkogumispakett aadressile
+	DeployToRoot                    = Süsteemi ketas
+	DeployPackageToSolutions        = Lahenduse kodukataloogis
+	DeployTimeZone                  = Ajavöönd
+	DeployTimeZoneChange            = Muutke ajavööndit
+	DeployTimeZoneChangeTips        = Määrake vaikeajapiirkond, kus eelvastustele tuleks vastata, keelealade kaupa.
+
+	Deploy_Tags                     = Juurutamise silt
+	FirstExpProcess                 = Esmakordne kogemus juurutamise ajal eeldused:
+	FirstExpProcessTips             = Pärast eeltingimuste täitmist taaskäivitage arvuti, et lahendada taaskäivitamise nõudmise probleem.
+	FirstExpFinish                  = Esmakordne kogemus, peale eeltingimuste täitmist
+	FirstExpSyncMark                = Lubage globaalne otsing ja juurutusmärgendite sünkroonimine
+	FirstExpDefender                = Lisa kodukataloog välistatud kataloogide kaitsmiseks
+	FirstExpSyncLabel               = Süsteemiketta helitugevuse silt: kodukataloogi nimi on sama
+	MultipleLanguages               = Kui puutute kokku mitme keelega:
+	NetworkLocationWizard           = Võrgu asukoha viisard
+	PreAppxCleanup                  = Blokeeri Appx puhastushooldustööd
+	LanguageComponents              = Vältige kasutamata tellitavate funktsioonide keelepakettide puhastamist
+	PreventCleaningUnusedLP         = Vältige kasutamata keelepakettide puhastamist
+	FirstExpContextCustomize        = Lisage isikupärastatud kontekstimenüü
+	FirstExpContextCustomizeShift   = Hoidke all tõstuklahvi ja paremklõpsake
+
+	FirstExpFinishTips              = Pärast juurutamise lõpetamist ei toimu olulisi sündmusi. Soovitatav on tühistada.
+	FirstExpFinishPopup             = Avage juurutusmootori põhiliides
+	FirstExpFinishOnDemand          = Luba esimene eelvaade, nagu plaanitud
+	SolutionsEngineRestricted       = Powershelli täitmispoliitika taastamine: piiratud
+	EnglineDoneClearFull            = Kustutage kogu lahendus
+	EnglineDoneClear                = Kustutage juurutusmootor ja hoidke teised alles
+
+	Unattend_Auto_Fix_Next          = Järgmine kord, kui sellega kokku puutute, valige selle automaatseks parandamiseks automaatselt vajalikud üksused.
+	Unattend_Auto_Fix               = Automaatne remont, kui eeltingimusi pole valitud
+	Unattend_Auto_Fix_Tips          = Kui lisate juurutusmootori ja ei vali esimest käivituskäsku, parandatakse see automaatselt ja valitakse: Powershelli täitmispoliitika: käivitage juurutusmootor ilma piiranguteta.
+	Unattend_Version_Tips           = Valikuliselt ainult kaasas, kasutage ARM64, x64, x86 toetamiseks vaikeseadet.
+	First_Run_Commmand              = Esmakordsel kasutuselevõtul käivituskäsud
+	First_Run_Commmand_Setting      = Valige käivitatav käsk
+	Command_Not_Class               = Filtreerimisel pole enam automaatset klassifitseerimist
+	Command_WinSetup                = Windowsi installimine
+	Command_WinPE                   = Windows PE
+	Command_Tips                    = Määrake rakendus First Run rakendusele: Windows Installation, Windows PE\n\nPange tähele, et juurutusmootori lisamisel peate esmakordsel käivitamisel kontrollima järgmist: Powershelli täitmispoliitika: piiratud, lubage juurutusmootori skriptide käitamine.
+	Waring_Not_Select_Command       = Juurutusmootori lisamisel ei valitud Powershelli täitmispoliitikat: ärge seadke piiranguid ja lubage juurutusmootori skriptil käitada. Valige see ja proovige uuesti või klõpsake nuppu "Kiirparandus pole valitud".
+	Quic_Fix_Not_Select_Command     = Kiirparandus pole valik
+
+	PowerShell_Unrestricted         = Powershelli täitmispoliitika: piiranguid pole
+	Allow_Running_Deploy_Engine     = Luba juurutusmootori skriptidel käitada
+'@
