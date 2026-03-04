@@ -728,8 +728,8 @@ Function Language_Select_GUI
 			if ($FlagsLanguageCheck) {
 				$UI_Main.Close()
 			} else {
-				write-host "$($PSScriptRoot)\Assets\icon\Error.ico"
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\Assets\icon\Error.ico")
+				write-host "$($PSScriptRoot)\Assets\icon\Error.png"
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\Assets\icon\Error.png")
 				$UI_Main_Error.Text = $lang.LanguageNoSel
 			}
 		}

@@ -335,7 +335,7 @@ Function LXPs_Download
 				.判断: 1. 空值
 			#>
 			if ([string]::IsNullOrEmpty($UI_Main_Download_Match_Version_Select.Text)) {
-				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Download_Match_Version_Error.Text = "$($lang.SelectFromError): $($lang.NoSetLabel)"
 				return
 			}
@@ -345,7 +345,7 @@ Function LXPs_Download
 				.判断: 2. 前缀不能带空格
 			#>
 			if ($UI_Main_Download_Match_Version_Select.Text -match '^\s') {
-				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Download_Match_Version_Error.Text = "$($lang.SelectFromError): $($lang.ISO9660TipsErrorSpace)"
 				return
 			}
@@ -355,7 +355,7 @@ Function LXPs_Download
 				.判断: 3. 后缀不能带空格
 			#>
 			if ($UI_Main_Download_Match_Version_Select.Text -match '\s$') {
-				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Download_Match_Version_Error.Text = "$($lang.SelectFromError): $($lang.ISO9660TipsErrorSpace)"
 				return
 			}
@@ -365,7 +365,7 @@ Function LXPs_Download
 				.判断: 4. 后缀不能带多空格
 			#>
 			if ($UI_Main_Download_Match_Version_Select.Text -match '\s{2,}$') {
-				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Download_Match_Version_Error.Text = "$($lang.SelectFromError): $($lang.ISO9660TipsErrorSpace)"
 				return
 			}
@@ -375,7 +375,7 @@ Function LXPs_Download
 				.判断: 5. 中间不能含有二个空格
 			#>
 			if ($UI_Main_Download_Match_Version_Select.Text -match '\s{1,}') {
-				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Download_Match_Version_Error.Text = "$($lang.SelectFromError): $($lang.ISO9660TipsErrorSpace)"
 				return
 			}
@@ -385,7 +385,7 @@ Function LXPs_Download
 				.判断: 6. 不能包含: 字母 A-Z
 			#>
 			if ($UI_Main_Download_Match_Version_Select.Text -match '[A-Za-z]+') {
-				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Download_Match_Version_Error.Text = "$($lang.SelectFromError): $($lang.ISO9660TipsErrorAZ)"
 				return
 			}
@@ -395,7 +395,7 @@ Function LXPs_Download
 				.判断: 7, 不能包含: \\ / : * ? "" < > |
 			#>
 			if ($UI_Main_Download_Match_Version_Select.Text -match '[~#$@!%&*{}<>?/|+".]') {
-				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Download_Match_Version_Error.Text = "$($lang.SelectFromError): $($lang.ISO9660TipsErrorOther)"
 				return
 			}
@@ -405,7 +405,7 @@ Function LXPs_Download
 				.判断: 8. 不能小于 5 字符
 			#>
 			if ($UI_Main_Download_Match_Version_Select.Text.length -lt 5) {
-				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Download_Match_Version_Error.Text = "$($lang.SelectFromError): $($lang.ISOShortError -f "5")"
 				return
 			}
@@ -415,7 +415,7 @@ Function LXPs_Download
 				.判断: 9. 不能大于 16 字符
 			#>
 			if ($UI_Main_Download_Match_Version_Select.Text.length -gt 16) {
-				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Download_Match_Version_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Download_Match_Version_Error.Text = "$($lang.SelectFromError): $($lang.ISOLengthError -f "16")"
 				return
 			}
@@ -635,15 +635,15 @@ Function LXPs_Download
 						#>
 						$UI_Main_Sync_Some_Location.Checked = $False
 					} else {
-						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+						$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 						$UI_Main_Error.Text = $lang.Inoperable
 					}
 				} else {
-					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 					$UI_Main_Error.Text = $lang.Inoperable
 				}
 			} else {
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Error.Text = $lang.UserCancel
 			}
 
@@ -671,7 +671,7 @@ Function LXPs_Download
 
 			LXPs_Refresh_Sources_To_Event
 
-			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+			$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.png")
 			$UI_Main_Error.Text = "$($lang.SaveToSync), $($lang.Done)"
 		}
 	}
@@ -733,16 +733,16 @@ Function LXPs_Download
 			$UI_Main_Error_Icon.Image = $null
 
 			if ([string]::IsNullOrEmpty($UI_Main_Save_To.Text)) {
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
 			} else {
 				if (Test-Path -Path $UI_Main_Save_To.Text -PathType Container) {
 					Start-Process $UI_Main_Save_To.Text
 
-					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.png")
 					$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Done)"
 				} else {
-					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 					$UI_Main_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
 				}
 			}
@@ -761,12 +761,12 @@ Function LXPs_Download
 			$UI_Main_Error_Icon.Image = $null
 
 			if ([string]::IsNullOrEmpty($UI_Main_Save_To.Text)) {
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Error.Text = "$($lang.Paste), $($lang.Inoperable)"
 			} else {
 				Set-Clipboard -Value $UI_Main_Save_To.Text
 
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.png")
 				$UI_Main_Error.Text = "$($lang.Paste), $($lang.Done)"
 			}
 		}
@@ -831,10 +831,10 @@ Function LXPs_Download
 					}
 				}
 
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.png")
 				$UI_Main_Error.Text = "$($lang.MatchNoDownloadItem), $($lang.Done)"
 			} else {
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Error.Text = $lang.MatchDownloadNoNewitem
 			}
 		}
@@ -926,13 +926,13 @@ Function LXPs_Download
 
 					LXPs_Refresh_Sources_To_Status
 
-					$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+					$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.png")
 					$UI_Main_Mask_Report_Error.Text = "$($lang.SelectFolder), $($lang.Done)"
 				} else {
 					$UI_Main_Mask_Report_Save_To.Text = Join-Path -Path $DesktopOldpath -ChildPath "Report.$($RandomGuid).csv"
 				}
 			} else {
-				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Mask_Report_Error.Text = $lang.UserCancel
 			}
 		}
@@ -950,16 +950,16 @@ Function LXPs_Download
 			$UI_Main_Mask_Report_Error_Icon.Image = $null
 
 			if ([string]::IsNullOrEmpty($UI_Main_Mask_Report_Sources_Path.Text)) {
-				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Mask_Report_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
 			} else {
 				if (Test-Path -Path $UI_Main_Mask_Report_Sources_Path.Text -PathType Container) {
 					Start-Process $UI_Main_Mask_Report_Sources_Path.Text
 
-					$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+					$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.png")
 					$UI_Main_Mask_Report_Error.Text = "$($lang.OpenFolder), $($lang.Done)"
 				} else {
-					$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+					$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 					$UI_Main_Mask_Report_Error.Text = "$($lang.OpenFolder), $($lang.Inoperable)"
 				}
 			}
@@ -978,12 +978,12 @@ Function LXPs_Download
 			$UI_Main_Mask_Report_Error_Icon.Image = $null
 
 			if ([string]::IsNullOrEmpty($UI_Main_Mask_Report_Sources_Path.Text)) {
-				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Mask_Report_Error.Text = "$($lang.Paste), $($lang.Inoperable)"
 			} else {
 				Set-Clipboard -Value $UI_Main_Mask_Report_Sources_Path.Text
 
-				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.png")
 				$UI_Main_Mask_Report_Error.Text = "$($lang.Paste), $($lang.Done)"
 			}
 		}
@@ -1020,7 +1020,7 @@ Function LXPs_Download
 
 			LXPs_Refresh_Sources_To_Status
 
-			$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+			$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.png")
 			$UI_Main_Mask_Report_Error.Text = "$($lang.SaveToSync), $($lang.Done)"
 		}
 	}
@@ -1073,10 +1073,10 @@ Function LXPs_Download
 			if ($FileBrowser.ShowDialog() -eq "OK") {
 				$UI_Main_Mask_Report_Save_To.Text = $FileBrowser.FileName
 
-				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.png")
 				$UI_Main_Mask_Report_Error.Text = "$($lang.SelectFolder), $($lang.Done)"
 			} else {
-				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Mask_Report_Error.Text = $lang.UserCancel
 			}
 		}
@@ -1094,12 +1094,12 @@ Function LXPs_Download
 			$UI_Main_Mask_Report_Error_Icon.Image = $null
 
 			if ([string]::IsNullOrEmpty($UI_Main_Mask_Report_Save_To.Text)) {
-				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Mask_Report_Error.Text = "$($lang.Paste), $($lang.Inoperable)"
 			} else {
 				Set-Clipboard -Value $UI_Main_Mask_Report_Save_To.Text
 
-				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.ico")
+				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Success.png")
 				$UI_Main_Mask_Report_Error.Text = "$($lang.Paste), $($lang.Done)"
 			}
 		}
@@ -1136,7 +1136,7 @@ Function LXPs_Download
 				LXPs_Download_Report_Process -Path $UI_Main_Mask_Report_Sources_Path.Text -SaveTo $UI_Main_Mask_Report_Save_To.Text
 				$UI_Main.Close()
 			} else {
-				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Mask_Report_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Mask_Report_Error.Text = $lang.Inoperable
 			}
 		}
@@ -1275,7 +1275,7 @@ Function LXPs_Download
 			if ($Script:Queue_Language_Download_Select.count -gt 0) {
 				Save_Dynamic -regkey "LXPs" -name "Select_Download_Language" -value $Script:Queue_Language_Download_Select -Type "MultiString"
 			} else {
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 				$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.Not_Select)"
 				return
 			}
@@ -1288,7 +1288,7 @@ Function LXPs_Download
 				$Script:IsDownload = $True
 			} else {
 				if ([string]::IsNullOrEmpty($Script:Version)) {
-					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+					$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 					$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.OSVersion)"
 					return
 				}

@@ -64,7 +64,7 @@
 				}
 			} else {
 				$UI_Main_Error.Text = $lang.LocationFolderError
-				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+				$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 			}
 		}
 	}
@@ -120,7 +120,7 @@
 						#>
 						if ([string]::IsNullOrEmpty($GUILocationCustomizeShow.Text)) {
 							$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.NoSetFolderLabel)"
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 							return
 						}
 
@@ -130,7 +130,7 @@
 						#>
 						if ($GUILocationCustomizeShow.Text -match '^\s') {
 							$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.ISO9660TipsErrorSpace)"
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 							return
 						}
 
@@ -140,7 +140,7 @@
 						#>
 						if ($GUILocationCustomizeShow.Text -match '\s$') {
 							$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.ISO9660TipsErrorSpace)"
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 							return
 						}
 
@@ -150,7 +150,7 @@
 						#>
 						if ($GUILocationCustomizeShow.Text -match '\s{2,}') {
 							$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.ISO9660TipsErrorSpace)"
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 							return
 						}
 
@@ -160,7 +160,7 @@
 						#>
 						if ($GUILocationCustomizeShow.Text -match '[~#$@!%&*{}\\:<>?/|+"]') {
 							$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.ISO9660TipsErrorOther)"
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 							return
 						}
 						<#
@@ -169,7 +169,7 @@
 						#>
 						if ($GUILocationCustomizeShow.Text.length -gt 128) {
 							$UI_Main_Error.Text = "$($lang.SelectFromError): $($lang.ISOLengthError -f "260")"
-							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.ico")
+							$UI_Main_Error_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\Assets\icon\Error.png")
 							return
 						}
 
