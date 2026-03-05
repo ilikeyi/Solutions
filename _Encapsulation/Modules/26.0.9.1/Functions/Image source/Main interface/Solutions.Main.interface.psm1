@@ -5597,12 +5597,12 @@ Function Image_Select
 				Save_Dynamic -regkey "Solutions" -name "ShowCommand" -value "True"
 
 				$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
-				$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.UI_Main_Adv_Cmd), $($lang.Enable), $($lang.Done)"
+				$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.ShowCommand), $($lang.Enable), $($lang.Done)"
 			} else {
 				Save_Dynamic -regkey "Solutions" -name "ShowCommand" -value "False"
 
 				$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
-				$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.UI_Main_Adv_Cmd), $($lang.Disable), $($lang.Done)"
+				$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.ShowCommand), $($lang.Disable), $($lang.Done)"
 			}
 		}
 	}
@@ -5996,6 +5996,8 @@ Function Image_Select
 		add_Click      = {
 			if ($This.Checked) {
 				Save_Dynamic -regkey "Solutions\RAMDisk" -name "RAMDisk_Exclude" -value "True"
+				$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
+				$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.DefenderExclude), $($lang.Enable), $($lang.Done)"
 				Exclude_Add_Ramdisk
 			} else {
 				Save_Dynamic -regkey "Solutions\RAMDisk" -name "RAMDisk_Exclude" -value "False"
@@ -6488,8 +6490,13 @@ Function Image_Select
 						}
 					}
 				}
+
+				$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
+				$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.ISOSaveSync), $($lang.Enable), $($lang.Done)"
 			} else {
 				Save_Dynamic -regkey "Solutions" -name "IsSearchSyncPath" -value "False"
+				$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
+				$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.ISOSaveSync), $($lang.Disable), $($lang.Done)"
 			}
 		}
 	}
@@ -6505,8 +6512,12 @@ Function Image_Select
 		add_Click      = {
 			if ($this.Checked) {
 				Save_Dynamic -regkey "Solutions" -name "IsCheckWrite" -value "True"
+				$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
+				$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.ISOFolderWrite), $($lang.Enable), $($lang.Done)"
 			} else {
 				Save_Dynamic -regkey "Solutions" -name "IsCheckWrite" -value "False"
+				$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
+				$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.ISOFolderWrite), $($lang.Disable), $($lang.Done)"
 			}
 		}
 	}
@@ -6522,8 +6533,12 @@ Function Image_Select
 		add_Click      = {
 			if ($this.Checked) {
 				Save_Dynamic -regkey "Solutions" -name "IsCheckISOToFolderName" -value "True"
+				$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
+				$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.ISO9660), $($lang.Enable), $($lang.Done)"
 			} else {
 				Save_Dynamic -regkey "Solutions" -name "IsCheckISOToFolderName" -value "False"
+				$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
+				$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.ISO9660), $($lang.Disable), $($lang.Done)"
 			}
 		}
 	}
@@ -6544,10 +6559,14 @@ Function Image_Select
 		add_Click      = {
 			if ($This.Checked) {
 				Save_Dynamic -regkey "Solutions" -name "IsSuggested" -value "True"
+				$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
+				$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.SuggestedAllow), $($lang.Enable), $($lang.Done)"
 				$GUIImageSourceSettingSuggestedPanel.Enabled = $True
 			} else {
 				Save_Dynamic -regkey "Solutions" -name "IsSuggested" -value "False"
 				$GUIImageSourceSettingSuggestedPanel.Enabled = $False
+				$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
+				$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.SuggestedAllow), $($lang.Disable), $($lang.Done)"
 			}
 		}
 	}
@@ -7062,6 +7081,8 @@ Function Image_Select
 			if ($This.Checked) {
 				Save_Dynamic -regkey "Solutions" -name "IsDefenderExclude" -value "True"
 				Exclude_Add_DiskTo
+				$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
+				$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.DefenderExclude), $($lang.Enable), $($lang.Done)"
 			} else {
 				Save_Dynamic -regkey "Solutions" -name "IsDefenderExclude" -value "False"
 
@@ -7096,6 +7117,8 @@ Function Image_Select
 			}
 
 			Image_Select_Refresh_Disk_Local
+			$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
+			$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.DefenderExclude), $($lang.Disable), $($lang.Done)"
 		}
 	}
 

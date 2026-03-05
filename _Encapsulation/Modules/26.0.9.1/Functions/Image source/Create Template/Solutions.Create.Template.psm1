@@ -1369,21 +1369,19 @@ Function Create_Template_UI
 	}
 	$UI_Main_Ok_ICO    = New-Object system.Windows.Forms.PictureBox -Property @{
 		Location       = "620,635"
-		Height         = 22
-		Width          = 22
+		Height         = 30
+		Width          = 30
 		SizeMode       = "Zoom"
-		Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
+		Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Yes.png")
 		Cursor = [System.Windows.Forms.Cursors]::Hand
 		add_Click      = $UI_Main_Ok_Click
 	}
-	$UI_Main_Ok        = New-Object system.Windows.Forms.LinkLabel -Property @{
-		Height         = 30
-		Width          = 255
-		Location       = "646,638"
+	$UI_Main_Ok        = New-Object system.Windows.Forms.Button -Property @{
+		UseVisualStyleBackColor = $True
+		Location       = "655,633"
+		Height         = 36
+		Width          = 245
 		Text           = $lang.OK
-		LinkColor      = "#000000"
-		ActiveLinkColor = "#FF0000"
-		LinkBehavior   = "NeverUnderline"
 		add_Click      = $UI_Main_Ok_Click
 	}
 

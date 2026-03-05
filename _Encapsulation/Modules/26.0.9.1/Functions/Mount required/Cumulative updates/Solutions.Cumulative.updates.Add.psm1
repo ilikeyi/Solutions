@@ -2369,7 +2369,11 @@ Function Update_Add_Process
 				}
 				#endregion
 			} else {
-				write-host "  $($lang.NoWork)" -ForegroundColor Red
+				write-host "  1. $($lang.MountedIndex)" -ForegroundColor Yellow
+				write-host "     $($lang.Prerequisite_Not_satisfied)" -ForegroundColor Red
+
+				write-host "`n  2. $($lang.Wim_Edition)" -ForegroundColor Yellow
+				write-host "     $($lang.Prerequisite_Not_satisfied)" -ForegroundColor Red
 			}
 
 			write-host "`n  3. $($lang.RuleOther)" -ForegroundColor Yellow
