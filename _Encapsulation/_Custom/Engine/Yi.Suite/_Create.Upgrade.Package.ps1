@@ -728,6 +728,7 @@ Function Update_Create_Version
 		"url":  "$((Get-Module -Name Engine).HelpInfoURI)"
 	},
 	"version": {
+		"Time":        "$(Get-Date -Format "yyyy/MM/dd HH:mm:ss tt")",
 		"buildstring": "$($Buildstring)",
 		"version":     "$($CurrentVersion)",
 		"minau":       "$($LowVer)"
