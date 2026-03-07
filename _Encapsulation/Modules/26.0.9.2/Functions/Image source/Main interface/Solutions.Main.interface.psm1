@@ -553,9 +553,13 @@ Function Image_Select
 				if ($GetAddFolderExclude.Count -gt 0) {
 					foreach ($item in $GetAddFolderExclude) {
 						if ($WaitAddExclude -contains $item) {
-							Add-MpPreference -ExclusionPath $item -ErrorAction SilentlyContinue | Out-Null
-							$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
-							$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.DefenderExclude): $($lang.AddTo), $($lang.Done)"
+							try {
+								Add-MpPreference -ExclusionPath $item -ErrorAction SilentlyContinue | Out-Null
+								$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
+								$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.DefenderExclude): $($lang.AddTo), $($lang.Done)"
+							} catch {
+								
+							}
 						} else {
 							$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.png")
 							$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.DefenderExclude): $($lang.AddTo), $($lang.Existed)"
@@ -625,9 +629,13 @@ Function Image_Select
 
 				foreach ($item in $GetAddFolderExclude) {
 					if ($WaitAddExclude -contains $item) {
-						Add-MpPreference -ExclusionPath $item -ErrorAction SilentlyContinue | Out-Null
-						$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
-						$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.DefenderExclude): $($lang.AddTo), $($lang.Done)"
+						try {
+							Add-MpPreference -ExclusionPath $item -ErrorAction SilentlyContinue | Out-Null
+							$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
+							$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.DefenderExclude): $($lang.AddTo), $($lang.Done)"
+						} catch {
+							
+						}
 					} else {
 						$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.png")
 						$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.DefenderExclude): $($lang.AddTo), $($lang.Existed)"
@@ -690,7 +698,11 @@ Function Image_Select
 
 					if ($WaitAddExclude.Count -gt 0) {
 						foreach ($item in $WaitAddExclude) {
-							Add-MpPreference -ExclusionPath $item -ErrorAction SilentlyContinue | Out-Null
+							try {
+								Add-MpPreference -ExclusionPath $item -ErrorAction SilentlyContinue | Out-Null
+							} catch {
+								
+							}
 						}
 
 						$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
@@ -6048,7 +6060,11 @@ Function Image_Select
 
 							if ($WaitAddExclude.Count -gt 0) {
 								foreach ($item in $WaitAddExclude) {
-									Remove-MpPreference -ExclusionPath $item -ErrorAction SilentlyContinue | Out-Null
+									try {
+										Remove-MpPreference -ExclusionPath $item -ErrorAction SilentlyContinue | Out-Null
+									} catch {
+										
+									}
 								}
 
 								$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
@@ -6283,7 +6299,11 @@ Function Image_Select
 
 							if ($WaitAddExclude.Count -gt 0) {
 								foreach ($item in $WaitAddExclude) {
-									Remove-MpPreference -ExclusionPath $item -ErrorAction SilentlyContinue | Out-Null
+									try {
+										Remove-MpPreference -ExclusionPath $item -ErrorAction SilentlyContinue | Out-Null
+									} catch {
+										
+									}
 								}
 
 								$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
@@ -7103,9 +7123,13 @@ Function Image_Select
 					}
 
 					if ($isExclude) {
-						Remove-MpPreference -ExclusionPath $GetDiskTo -ErrorAction SilentlyContinue | Out-Null
-						$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
-						$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.DefenderExclude): $($lang.Del), $($lang.Done)"
+						try {
+							Remove-MpPreference -ExclusionPath $GetDiskTo -ErrorAction SilentlyContinue | Out-Null
+							$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Success.png")
+							$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.DefenderExclude): $($lang.Del), $($lang.Done)"
+						} catch {
+							
+						}
 					} else {
 						$GUIImageSourceGroupSettingErrorMsg_Icon.Image = [System.Drawing.Image]::Fromfile("$($PSScriptRoot)\..\..\..\..\Assets\icon\Error.png")
 						$GUIImageSourceGroupSettingErrorMsg.Text = "$($lang.DefenderExclude): $($lang.Del), $($lang.NoWork)"

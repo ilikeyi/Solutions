@@ -286,8 +286,12 @@ Function Prerequisite
 
 							Write-Host ", $($lang.AddTo): " -NoNewline
 							if ($WaitAddExclude -contains $item) {
-								Add-MpPreference -ExclusionPath $item -ErrorAction SilentlyContinue | Out-Null
-								Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+								try {
+									Add-MpPreference -ExclusionPath $item -ErrorAction SilentlyContinue | Out-Null
+									Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+								} catch {
+
+								}
 							} else {
 								Write-Host " $($lang.Existed) " -BackgroundColor DarkRed -ForegroundColor White
 							}
@@ -377,8 +381,12 @@ Function Prerequisite
 									
 										Write-Host ", $($lang.AddTo): " -NoNewline
 										if ($WaitAddExclude -contains $item) {
-											Add-MpPreference -ExclusionPath $item -ErrorAction SilentlyContinue | Out-Null
-											Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+											try {
+												Add-MpPreference -ExclusionPath $item -ErrorAction SilentlyContinue | Out-Null
+												Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+											} catch {
+
+											}
 										} else {
 											Write-Host " $($lang.Existed) " -BackgroundColor DarkRed -ForegroundColor White
 										}
@@ -473,8 +481,12 @@ Function Prerequisite
 
 										Write-Host ", $($lang.AddTo): " -NoNewline
 										if ($WaitAddExclude -contains $item) {
-											Add-MpPreference -ExclusionPath $item -ErrorAction SilentlyContinue | Out-Null
-											Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+											try {
+												Add-MpPreference -ExclusionPath $item -ErrorAction SilentlyContinue | Out-Null
+												Write-Host " $($lang.Done) " -BackgroundColor DarkGreen -ForegroundColor White
+											} catch {
+												
+											}
 										} else {
 											Write-Host " $($lang.Existed) " -BackgroundColor DarkRed -ForegroundColor White
 										}
